@@ -1,0 +1,21 @@
+# whole folders to ignore
+gensim/*
+ontologies/*
+
+
+
+
+
+
+
+
+
+# things to always ignore no matter what
+*.html
+*.pyc
+*.history
+*.Rhistory
+
+
+# the keep rule
+!*/.keep
