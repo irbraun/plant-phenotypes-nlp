@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 import fastsemsim as fss
 import string
+import itertools
 
 
 
@@ -48,7 +49,7 @@ def get_similarity_df_using_ontologies(ontology_obo_file, annotated_corpus_tsv_f
 	ac_params = {}
 	ac_params['multiple'] = True 	# Set to True if there are many associations per line (the object in the first field is associated to all the objects in the other fields within the same line).
 	ac_params['term first'] = False # Set to True if the first field of each row is a term. Set to False if the first field represents an object.
-	ac_params['separator'] = "," 	# Select the separtor used to divide fields.
+	ac_params['separator'] = "\t" 	# Select the separtor used to divide fields.
 	ac = fss.load_ac(ontology, source_file=annotated_corpus_tsv_file, file_type=ac_source_file_type, species=None, ac_descriptor=None, params = ac_params)
 
 	# Create the object for calculating semantic similarity.
@@ -72,7 +73,7 @@ def get_similarity_df_using_ontologies(ontology_obo_file, annotated_corpus_tsv_f
 
 
 	# Generate the pairwise calculations (dataframe) for this batch.
-	object_list = object_dict.keys()
+	object_list = list(object_dict.keys())
 	result = ssbatch.SemSim(query=object_list, query_type="pairwise")
 	result.columns = ["from", "to", "similarity"]
 	return(result)
@@ -117,7 +118,7 @@ def get_similarity_df_using_doc2vec(doc2vec_model_file, object_dict):
 	matrix = cosine_similarity(vectors)
 
 	result = pd.DataFrame(columns=["from", "to", "similarity"])
-	for p1, p2 in product(object_dict, object_dict):
+	for (p1, p2) in list(itertools.combinations_with_replacement(object_dict, 2)):	
 		row = [p1, p2, matrix[identifier_to_index_in_matrix[p1]][identifier_to_index_in_matrix[p2]]]
 		result.loc[len(result)] = row
 
@@ -196,7 +197,7 @@ def get_similarity_df_using_bagofwords(object_dict):
 	matrix = get_cosine_sim_matrix(*descriptions)
 
 	result = pd.DataFrame(columns=["from", "to", "similarity"])
-	for p1, p2 in product(object_dict, object_dict):
+	for (p1, p2) in list(itertools.combinations_with_replacement(object_dict, 2)):	
 		row = [p1, p2, matrix[identifier_to_index_in_matrix[p1]][identifier_to_index_in_matrix[p2]]]
 		result.loc[len(result)] = row
 
@@ -235,7 +236,8 @@ def get_similarity_df_using_setofwords(object_dict):
 	matrix = get_jaccard_sim_matrix(*descriptions)
 
 	result = pd.DataFrame(columns=["from", "to", "similarity"])
-	for p1, p2 in product(object_dict, object_dict):
+	
+	for (p1, p2) in list(itertools.combinations_with_replacement(object_dict, 2)):	
 		row = [p1, p2, matrix[identifier_to_index_in_matrix[p1]][identifier_to_index_in_matrix[p2]]]
 		result.loc[len(result)] = row
 
