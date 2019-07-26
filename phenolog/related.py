@@ -17,6 +17,9 @@ from pywsd.lesk import cosine_lesk
 
 
 
+from phenolog.nlp import get_clean_token_list
+
+
 
 
 
@@ -104,7 +107,10 @@ def get_word2vec_related_words(word, model, threshold, max_qty):
 	"""
 	
 	related_words = []
-	matches = model.most_similar(word, topn=max_qty)
+	try:
+		matches = model.most_similar(word, topn=max_qty)
+	except KeyError:
+		matches = []
 	for match in matches:
 		word_in_model = match[0]
 		similarity = match[1]

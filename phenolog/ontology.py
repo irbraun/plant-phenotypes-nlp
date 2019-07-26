@@ -17,7 +17,7 @@ from collections import defaultdict
 
 
 
-from utils.nlp import rabin_karp_search
+from phenolog.nlp import binary_search_rabin_karp
 
 
 
@@ -117,7 +117,7 @@ def annotate_with_rabin_karp(object_dict, term_dict):
 	prime = 101
 	for identifer,description in object_dict.items():
 		for word,term_list in term_dict.items():
-			if rabin_karp_search(word, description, prime):
+			if binary_search_rabin_karp(word, description, prime):
 				annotations[identifer].extend(term_list)
 	return(annotations)
 
@@ -126,16 +126,17 @@ def annotate_with_rabin_karp(object_dict, term_dict):
 
 
 
-def write_annotations_to_tsv_file(annotations_dict, annotation_output_file):
+def write_annotations_to_tsv_file(annotations_dict, annotations_output_file):
 	"""Create a tsv file of annotations that is compatable with fastsemsim.
 	Args:
-	    annotations_dict (dict): Mapping from IDs to ontology term IDs.
+	    annotations_dict (dict): Mapping from IDs to lists of ontology term IDs.
 	    annotation_output_file (str): Path to the output file to create. 
 	"""
-	outfile = open(annotation_output_file,'w')
-	flatten = lambda l: [item for sublist in l for item in sublist]
+	outfile = open(annotations_output_file,'w')
 	for identifer,term_list in annotations_dict.items():
-		outfile.write("\t".join(flatten([identifer, term_list])).strip()+"\n")
+		row_values = [str(identifer)]
+		row_values.extend(term_list)
+		outfile.write("\t".join(row_values).strip()+"\n")
 	outfile.close()
 
 

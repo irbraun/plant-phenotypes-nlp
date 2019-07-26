@@ -77,11 +77,11 @@ def binary_search_rabin_karp(pat, txt, q):
 	Adapted from implementation by Bhavya Jain found at
 	https://www.geeksforgeeks.org/rabin-karp-algorithm-for-pattern-searching/
 	Args:
-	    pat (str): The shorter text to search for.
-	    txt (str): The larger text to search in.
-	    q (int): A prime number that is used for hashing.
+		pat (str): The shorter text to search for.
+		txt (str): The larger text to search in.
+		q (int): A prime number that is used for hashing.
 	Returns:
-	    boolean: True if the pattern was found, false is it was not.
+		boolean: True if the pattern was found, false is it was not.
 	"""
 
 	# Make sure the pattern is smaller than the text.
@@ -132,22 +132,22 @@ def binary_search_rabin_karp(pat, txt, q):
 
 def binary_search_fuzzy(pat, txt, threshold, local=1):
 	"""Searches for fuzzy matches to a pattern in a longer string (slow).
-    Args:
-	    pat (str): The shorter text to search for.
-	    txt (str): The larger text to search in.
-        threshold (int): Value between 0 and 1 at which matches are considered real.
-        local (int, optional): Alignment method, 0 for global 1 for local.
+	Args:
+		pat (str): The shorter text to search for.
+		txt (str): The larger text to search in.
+		threshold (int): Value between 0 and 1 at which matches are considered real.
+		local (int, optional): Alignment method, 0 for global 1 for local.
 	Returns:
-	    boolean: True if the pattern was found, false if it was not.
+		boolean: True if the pattern was found, false if it was not.
 	"""
-    similarity_score = 0.000
-    if local==1:
-    	similarity_score = fuzz.partial_ratio(pat, txt)
-   	else:
-   		similarity_score = fuzz.ratio(pat, txt)
-   	if similarity_score >= threshold*100:
-   		return(True)
-    return(False)
+	similarity_score = 0.000
+	if local==1:
+		similarity_score = fuzz.partial_ratio(pat, txt)
+	else:
+		similarity_score = fuzz.ratio(pat, txt)
+	if similarity_score >= threshold*100:
+		return(True)
+	return(False)
 
 
 
@@ -160,12 +160,12 @@ def occurences_search_fuzzy(patterns, txt, threshold, local=1):
 	that pattern.
 	
 	Args:
-	    patterns (list): The shorter text strings to search for.
-	    txt (str): The larger text to search in.
-        threshold (int): Value between 0 and 1 at which matches are considered real.
-        local (int, optional): Alignment method, 0 for global 1 for local.
-    Returns:
-    	list: A sublist of the patterns argument containing only the found strings.
+		patterns (list): The shorter text strings to search for.
+		txt (str): The larger text to search in.
+		threshold (int): Value between 0 and 1 at which matches are considered real.
+		local (int, optional): Alignment method, 0 for global 1 for local.
+	Returns:
+		list: A sublist of the patterns argument containing only the found strings.
 	"""
 	patterns_found = []
 	threshold = threshold*100
