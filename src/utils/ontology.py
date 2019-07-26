@@ -10,6 +10,16 @@ import numpy as np
 import pandas as pd
 import fastsemsim as fss
 import string
+import itertools
+import pronto
+from collections import defaultdict
+
+
+
+
+from utils.nlp import rabin_karp_search
+
+
 
 
 
@@ -26,13 +36,119 @@ import string
 
 
 
-# Methods below to describe each read datastructure taken from the fastsemsim example documentation.
+
+
+
+
+def get_term_dictionaries(ontology_obo_file):
+	"""
+	Produces a mapping between ontology term IDs and a list of the strings which are related
+	to them (the name of the term and any synonyms specified in the ontology) which is the
+	forward dictionary, and a mapping between strings and all the ontology term IDs that those
+	strings were associated with, which is the reverse mapping.
+	Args:
+	    ontology_obo_file (str): Path to the ontology file in the obo format.
+	Returns:
+	    tuple: The forward and reverse mapping dictionaries.
+	"""
+	forward_dict = {}
+	reverse_dict = defaultdict(list)
+	ontology = pronto.Ontology(ontology_obo_file)
+	for term in ontology:
+		if "obsolete" not in term.name:
+			words = [term.name]
+			words.extend([x.desc for x in list(term.synonyms)])
+			forward_dict[term.id] = words
+			for word in words:
+				reverse_dict[word].append(term.id)
+	return(forward_dict, reverse_dict)
+
+
+def get_forward_term_dictionary(ontology_obo_file):
+	"""Get one of the mapping types defined by the larger method.
+	Args:
+	    ontology_obo_file (TYPE): Description
+	Returns:
+	    TYPE: Description
+	"""
+	return(get_term_dictionaries(ontology_obo_file)[0])
+
+
+def get_reverse_term_dictionary(ontology_obo_file):
+	"""Get one of the mapping types defined by the larger method.
+	Args:
+	    ontology_obo_file (TYPE): Description
+	Returns:
+	    TYPE: Description
+	"""
+	return(get_term_dictionaries(ontology_obo_file)[1])
 
 
 
 
 
-def describe_ontology(ontology_source_file):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def annotate_with_rabin_karp(object_dict, term_dict):
+	"""Build a dictionary of annotations using Rabin Karp search.
+	Args:
+	    object_dict (dict): Mapping from IDs to natural language descriptions.
+	    term_dict (dict): Mapping from strings to ontology term IDs.
+	
+	Returns:
+	    dict: Mapping from IDs to ontology term IDs.
+	"""
+	#from nlp import rabin_karp_search
+	annotations = defaultdict(list)
+	prime = 101
+	for identifer,description in object_dict.items():
+		for word,term_list in term_dict.items():
+			if rabin_karp_search(word, description, prime):
+				annotations[identifer].extend(term_list)
+	return(annotations)
+
+
+
+
+
+
+def write_annotations_to_tsv_file(annotations_dict, annotation_output_file):
+	"""Create a tsv file of annotations that is compatable with fastsemsim.
+	Args:
+	    annotations_dict (dict): Mapping from IDs to ontology term IDs.
+	    annotation_output_file (str): Path to the output file to create. 
+	"""
+	outfile = open(annotation_output_file,'w')
+	flatten = lambda l: [item for sublist in l for item in sublist]
+	for identifer,term_list in annotations_dict.items():
+		outfile.write("\t".join(flatten([identifer, term_list])).strip()+"\n")
+	outfile.close()
+
+
+
+
+
+
+
+
+
+
+
+def check_ontology(ontology_source_file):
 
 	# Parameters for the ontology file.
 	ontology_file_type = "obo"
@@ -49,7 +165,6 @@ def describe_ontology(ontology_source_file):
 	print("\n#################################")
 	print("# Ontology successfully loaded.")
 	print("#################################\n")
-
 
 	print("source_file: " + str(ontology_source_file))
 	print("file_type: " + str(ontology_file_type))
@@ -74,7 +189,7 @@ def describe_ontology(ontology_source_file):
 
 
 
-def describe_annotation_corpus(ac_source_file):
+def check_annotations(ac_source_file):
 
 	# Parameters for annotation corpus file with descriptions from fastsemsim documentation.
 	ac_source_file_type = "plain"
@@ -89,7 +204,6 @@ def describe_annotation_corpus(ac_source_file):
 
 	# Load the file.
 	ac = fss.load_ac(ontology, source_file=ac_source_file, file_type=ac_source_file_type, species=None, ac_descriptor=None, params = ac_params)
-
 
 	print("\n#################################")
 	print("# Annotation corpus successfully loaded.")
