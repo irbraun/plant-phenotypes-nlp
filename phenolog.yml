@@ -13,3 +13,4 @@ dependencies:
   - fuzzywuzzy
   - nltk
   - pronto
+  - biopython
