@@ -42,3 +42,10 @@ print(utils.similarity.get_similarity_df_using_setofwords(d))
 print(utils.similarity.get_similarity_df_using_bagofwords(d))
 print(utils.similarity.get_similarity_df_using_doc2vec(model_file, d))
 print(utils.similarity.get_similarity_df_using_ontologies(merged_ontology_file, annotations_file, d))
+
+
+
+#from Bio.Blast import NCBIWWW
+#help(NCBIWWW.qblast)
+#seq = "MEVQLGLGRVYPRPPSKTYRGAFQNLFQSVREVIQNPGPRHPEAAAAAAAAAAAAASAAPPGAHLQQQQETSPRQQQQQGEDGSPQTQSRGPTGYLALAREAAGAPTCSKDSYLGCSSTIS"
+#result = NCBIWWW.qblast(program="blastp", database="refseq_genomic", entrez_query="txid6656[ORGN]", sequence=seq, hitlist_size=2) 
