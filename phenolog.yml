@@ -1,4 +1,4 @@
-name: phenolog-db
+name: phenolog
 channels:
   - conda-forge
   - bioconda

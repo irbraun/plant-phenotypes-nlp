@@ -29,12 +29,10 @@ def get_similarity_df_using_ontologies(ontology_obo_file, annotated_corpus_tsv_f
 	any terms that are annotated to the natural language (included in the annnotated corpus file)
 	but are not found in the ontology are ignored when calculating similarity. This method also
 	assumes that there is a single root to the DAG specified in the obo file which has ID "Thing".
-
 	Args:
 	    ontology_obo_file (str): File specifying the ontology that was used during annotation.
 	    annotated_corpus_tsv_file (str): File specifying the annotations that were made.
 	    object_dict (dict): Mapping between object IDs and the natural language descriptions. 
-	
 	Returns:
 	    pandas.DataFrame: Each row in the dataframe is [first ID, second ID, similarity].
 	"""
@@ -96,11 +94,9 @@ def get_similarity_df_using_doc2vec(doc2vec_model_file, object_dict):
 	model. No assumptions are made about the format of the natural language descriptions, so any
 	preprocessing or cleaning of the text should be done prior to being provied in the dictionary
 	here.
-	
 	Args:
 	    doc2vec_model_file (str): File where the Doc2Vec model to be loaded is stored.
 	    object_dict (dict): Mapping between object IDs and the natural language descriptions. 
-	
 	Returns:
 	    pandas.DataFrame: Each row in the dataframe is [first ID, second ID, similarity].
 	"""
@@ -179,10 +175,8 @@ def get_similarity_df_using_bagofwords(object_dict):
 	using vectors to represent each of the natural language descriptions as a bag-of-words. No 
 	assumptions are made about the format of the natural language descriptions, so any cleaning
 	or preprocessing of the text should be done prior to being provied in the dictionary here.
-	
 	Args:
 	    object_dict (dict): Mapping between object IDs and the natural language descriptions. 
-	
 	Returns:
 	    pandas.DataFrame: Each row in the dataframe is [first ID, second ID, similarity].
 	"""
@@ -219,10 +213,8 @@ def get_similarity_df_using_setofwords(object_dict):
 	using vectors to represent each of the natural language descriptions as a set-of-words. No 
 	assumptions are made about the format of the natural language descriptions, so any cleaning
 	or preprocessing of the text should be done prior to being provied in the dictionary here.
-	
 	Args:
 	    object_dict (dict): Mapping between object IDs and the natural language descriptions. 
-	
 	Returns:
 	    pandas.DataFrame: Each row in the dataframe is [first ID, second ID, similarity].
 	"""
