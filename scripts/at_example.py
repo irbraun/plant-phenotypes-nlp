@@ -22,6 +22,10 @@ df.rename(columns=renamed, inplace=True)
 df["id"] = [str(i) for i in df.index.values]
 
 
+print(len(df))
+
+
+
 # Use a small subset of the data for this example.
 df = df.head(100)
 
