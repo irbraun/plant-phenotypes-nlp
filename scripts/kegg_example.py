@@ -12,7 +12,7 @@ import phenolog.pathway
 
 
 # Read in a dataframe from a TAIR public release tsv containing fields of interest.
-filename = "/Users/irbraun/phenolog/data/Locus_Germplasm_Phenotype_20180702.txt"
+filename = "/Users/irbraun/phenolog/data/tair/Locus_Germplasm_Phenotype_20180702.txt"
 usecols = ["LOCUS_NAME", "GERMPLASM_NAME", "PHENOTYPE", "PUBMED_ID"]
 names = ["locus", "germplasm", "phenotype", "pubmed_id"]
 renamed = {k:v for k,v in zip(usecols,names)}
