@@ -6,6 +6,7 @@ from collections import defaultdict
 
 
 
+
 def get_kegg_pathway_dictionary(kegg_species_pathway_abbreviation):
     """
     Create a dictionary mapping KEGG pathways to lists of genes. Code is adapted from the example of
