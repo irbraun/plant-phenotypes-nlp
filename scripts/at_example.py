@@ -62,3 +62,12 @@ print(phenolog.similarity.get_similarity_df_using_ontologies(merged_ontology_fil
 print(phenolog.similarity.get_similarity_df_using_doc2vec(doc2vec_model_file, description_dict).head())
 print(phenolog.similarity.get_similarity_df_using_bagofwords(description_dict).head())
 print(phenolog.similarity.get_similarity_df_using_setofwords(description_dict).head())
+
+
+
+
+
+#from Bio.Blast import NCBIWWW
+#help(NCBIWWW.qblast)
+#seq = "MEVQLGLGRVYPRPPSKTYRGAFQNLFQSVREVIQNPGPRHPEAAAAAAAAAAAAASAAPPGAHLQQQQETSPRQQQQQGEDGSPQTQSRGPTGYLALAREAAGAPTCSKDSYLGCSSTIS"
+#result = NCBIWWW.qblast(program="blastp", database="refseq_genomic", entrez_query="txid6656[ORGN]", sequence=seq, hitlist_size=2) 
