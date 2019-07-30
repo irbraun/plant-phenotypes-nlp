@@ -18,7 +18,6 @@ import sys
 import glob
 
 
-
 from phenolog.nlp import binary_search_rabin_karp
 
 
@@ -41,7 +40,6 @@ from phenolog.nlp import binary_search_rabin_karp
 
 
 
-
 def get_term_dictionaries(ontology_obo_file):
 	"""
 	Produces a mapping between ontology term IDs and a list of the strings which are related
@@ -51,7 +49,7 @@ def get_term_dictionaries(ontology_obo_file):
 	Args:
 	    ontology_obo_file (str): Path to the ontology file in the obo format.
 	Returns:
-	    tuple: The forward and reverse mapping dictionaries.
+	    (dict,dict): The forward and reverse mapping dictionaries.
 	"""
 	forward_dict = {}
 	reverse_dict = defaultdict(list)
@@ -66,41 +64,6 @@ def get_term_dictionaries(ontology_obo_file):
 	return(forward_dict, reverse_dict)
 
 
-def get_forward_term_dictionary(ontology_obo_file):
-	"""Get one of the mapping types defined by the larger method.
-	Args:
-	    ontology_obo_file (TYPE): Description
-	Returns:
-	    TYPE: Description
-	"""
-	return(get_term_dictionaries(ontology_obo_file)[0])
-
-
-def get_reverse_term_dictionary(ontology_obo_file):
-	"""Get one of the mapping types defined by the larger method.
-	Args:
-	    ontology_obo_file (TYPE): Description
-	Returns:
-	    TYPE: Description
-	"""
-	return(get_term_dictionaries(ontology_obo_file)[1])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -112,7 +75,7 @@ def annotate_with_rabin_karp(object_dict, term_dict):
 	    term_dict (dict): Mapping from strings to ontology term IDs.
 	
 	Returns:
-	    dict: Mapping from IDs to ontology term IDs.
+	    dict: Mapping from object (phenotype) IDs to ontology term IDs.
 	"""
 	annotations = defaultdict(list)
 	prime = 101
@@ -129,6 +92,17 @@ def annotate_with_rabin_karp(object_dict, term_dict):
 
 
 def annotate_with_noble_coder(object_dict, path_to_jarfile, ontology_names, precise=1):
+	"""Build a dictionary of annotations using external tool NOBLE Coder.
+	Args:
+	    object_dict (dict): Mapping from object IDs to natural language descriptions.
+	    path_to_jarfile (str): Path to the jar file for the NOBLE Coder tool.
+	    ontology_names (list): Strings used to find the correct terminology file, should match obo files too.
+	    precise (int, optional): Set to 1 to do precise matching, set to 0 to accept partial matches.
+	Returns:
+	    dict: Mapping from object (phenotype) IDs to ontology term IDs.
+	Raises:
+	    FileNotFoundError: NOBLE Coder will check for a terminology file matching this ontology.
+	"""
 
 	# Configuration for running the NOBLE Coder script.
 	tempfiles_directory = "temp_textfiles"
@@ -142,6 +116,7 @@ def annotate_with_noble_coder(object_dict, path_to_jarfile, ontology_names, prec
 	else:
 		specificity = "partial-match"
 
+
 	# Generate temporary text files for each of the text descriptions.
 	# Identifiers for descriptions are encoded into the filenames themselves.
 	annotations = defaultdict(list)
@@ -150,68 +125,22 @@ def annotate_with_noble_coder(object_dict, path_to_jarfile, ontology_names, prec
 		with open(tempfile_path, "w") as file:
 			file.write(description)
 
+
 	# Use all specified ontologies to annotate each text file.
+	# Also NOBLE Coder will check for a terminology file matching this ontology, check it's there.
 	for ontology_name in ontology_names:
+		expected_terminology_file = os.path.expanduser(os.path.join("~",".noble", "terminologies", f"{ontology_name}.term"))
+		if not os.path.exists(expected_terminology_file):
+			raise FileNotFoundError(expected_terminology_file)
 		os.system(f"java -jar {path_to_jarfile} -terminology {ontology_name} -input {tempfiles_directory} -output {output_directory} -search '{specificity}' -score.concepts")
 		default_results_filename = "RESULTS.tsv"		
-		for identifier,term_list in parse_noble_coder_results(default_results_path).items():
+		for identifier,term_list in _parse_noble_coder_results(default_results_path).items():
 			annotations[identifier].extend(term_list)
 
+
 	# Cleanup and return the annotation dictionary.
-	cleanup_noble_coder_results(output_directory, tempfiles_directory)
+	_cleanup_noble_coder_results(output_directory, tempfiles_directory)
 	return(annotations)
-
-
-
-
-
-def parse_noble_coder_results(results_filename):
-	df = pd.read_csv(results_filename, usecols=["Document", "Matched Term", "Code"], sep="\t")
-	annotations = defaultdict(list)
-	for row in df.itertuples():
-		textfile_processed = row[1]
-		identifer = str(textfile_processed.split(".")[0])
-		tokens_matched = row[2].split()
-		ontology_term_id = row[3]
-		annotations[identifer].append(ontology_term_id)
-	return(annotations)
-
-
-def cleanup_noble_coder_results(output_directory, textfiles_directory):
-	
-	# Expected paths to each object that should be removed.
-	html_file = os.path.join(output_directory,"index.html")
-	results_file = os.path.join(output_directory,"RESULTS.tsv")
-	properties_file = os.path.join(output_directory,"search.properties")
-	reports_directory = os.path.join(output_directory,"reports")
-
-	# Safely remove everything in the output directory.
-	if os.path.isfile(html_file):
-		os.remove(html_file)
-	if os.path.isfile(results_file):
-		os.remove(results_file)
-	if os.path.isfile(properties_file):
-		os.remove(properties_file)
-	for filepath in glob.iglob(os.path.join(reports_directory,"*.html")):
-		os.remove(filepath)
-	os.rmdir(reports_directory)
-	os.rmdir(output_directory)
-
-	# Safely remove everything in the text file directory.
-	for filepath in glob.iglob(os.path.join(textfiles_directory,"*.txt")):
-		os.remove(filepath)
-	os.rmdir(textfiles_directory)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -248,6 +177,61 @@ def write_annotations_to_tsv_file(annotations_dict, annotations_output_file):
 
 
 
+
+
+
+def _parse_noble_coder_results(results_filename):
+	"""
+	Returns a mapping from object IDs to ontology term IDs inferred from reading
+	a NOBLE Coder output file, this is helper function.
+	Args:
+	    results_filename (str): Path to the output file created by NOBLE Coder.
+	Returns:
+	    dict: Mapping from object (phenotype) IDs to ontology term IDs.
+	"""
+	df = pd.read_csv(results_filename, usecols=["Document", "Matched Term", "Code"], sep="\t")
+	annotations = defaultdict(list)
+	for row in df.itertuples():
+		textfile_processed = row[1]
+		identifer = str(textfile_processed.split(".")[0])
+		tokens_matched = row[2].split()
+		ontology_term_id = row[3]
+		annotations[identifer].append(ontology_term_id)
+	return(annotations)
+
+
+
+def _cleanup_noble_coder_results(output_directory, textfiles_directory):
+	"""
+	Removes all directories and files created and used by running NOBLE Coder.
+	This is a helper function.
+	Args:
+	    output_directory (str): Path to directory containing NOBLE Coder outputs.
+	    textfiles_directory (str): Path to the directory of input text files.
+	"""
+
+	# Expected paths to each object that should be removed.
+	html_file = os.path.join(output_directory,"index.html")
+	results_file = os.path.join(output_directory,"RESULTS.tsv")
+	properties_file = os.path.join(output_directory,"search.properties")
+	reports_directory = os.path.join(output_directory,"reports")
+
+	# Safely remove everything in the output directory.
+	if os.path.isfile(html_file):
+		os.remove(html_file)
+	if os.path.isfile(results_file):
+		os.remove(results_file)
+	if os.path.isfile(properties_file):
+		os.remove(properties_file)
+	for filepath in glob.iglob(os.path.join(reports_directory,"*.html")):
+		os.remove(filepath)
+	os.rmdir(reports_directory)
+	os.rmdir(output_directory)
+
+	# Safely remove everything in the text file directory.
+	for filepath in glob.iglob(os.path.join(textfiles_directory,"*.txt")):
+		os.remove(filepath)
+	os.rmdir(textfiles_directory)
 
 
 
@@ -301,6 +285,10 @@ def check_ontology(ontology_source_file):
 	print("-------------")
 	print("\nInter edges (link between different namespaces - within the same ontology):\n-------------\n" + str(ontology.edges.loc[(ontology.edges['intra'] == False) & (ontology.edges['inner'] == True)]))
 	print("-------------")
+
+
+
+
 
 
 
