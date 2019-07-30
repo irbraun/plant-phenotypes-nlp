@@ -4,6 +4,7 @@ import pandas as pd
 
 
 sys.path.append("../.")
+from phenolog.Dataset import Dataset
 import phenolog.nlp
 import phenolog.similarity
 import phenolog.ontology
@@ -12,24 +13,29 @@ import phenolog.related
 
 
 
-# Read in a dataframe from a TAIR public release tsv containing fields of interest.
+
+
+
+
+# Read in a subset of dataframe from a TAIR public release tsv containing fields of interest.
 filename = "/Users/irbraun/phenolog/data/tair/Locus_Germplasm_Phenotype_20180702.txt"
 usecols = ["LOCUS_NAME", "GERMPLASM_NAME", "PHENOTYPE", "PUBMED_ID"]
-names = ["locus", "germplasm", "phenotype", "pubmed_id"]
-renamed = {k:v for k,v in zip(usecols,names)}
+usenames = ["locus", "germplasm", "description", "pubmed"]
+renamed = {k:v for k,v in zip(usecols,usenames)}
 df = pd.read_table(filename, usecols=usecols)
 df.rename(columns=renamed, inplace=True)
-df["id"] = [str(i) for i in df.index.values]
-
-
-
-# Use a small subset of the data for this example.
 df = df.head(100)
+
+
+# Create a dataset object that can be added to.
+dataset = Dataset()
+dataset.add_data(df)
+
 
 
 
 # Prepare a dictionary of phenotype descriptions where each has a unique ID value.
-description_dict = {identifier:description for (identifier,description) in zip(df.id,df.phenotype)}
+description_dict = dataset.get_description_dictionary(all_rows=1)
 description_dict = {i:phenolog.nlp.get_clean_description(d) for (i,d) in description_dict.items()}
 
 
@@ -39,6 +45,7 @@ description_dict = {i:phenolog.nlp.get_clean_description(d) for (i,d) in descrip
 word2vec_model_file = "../gensim/wiki_sg/word2vec.bin"
 word2vec_model = phenolog.nlp.load_word2vec_model(word2vec_model_file)
 description_dict_expanded = {i:phenolog.nlp.append_related_words(d, phenolog.related.get_all_word2vec_related_words(d,word2vec_model,0.5,10)) for (i,d) in description_dict.items()}
+
 
 
 
@@ -61,9 +68,6 @@ print(phenolog.similarity.get_similarity_df_using_ontologies(merged_ontology_fil
 print(phenolog.similarity.get_similarity_df_using_doc2vec(doc2vec_model_file, description_dict).head(30))
 print(phenolog.similarity.get_similarity_df_using_bagofwords(description_dict).head(30))
 print(phenolog.similarity.get_similarity_df_using_setofwords(description_dict).head(30))
-
-
-
 
 
 #from Bio.Blast import NCBIWWW

@@ -5,31 +5,41 @@ import itertools
 
 
 sys.path.append("../.")
+from phenolog.Dataset import Dataset
 import phenolog.nlp
 import phenolog.pathway
 
 
 
 
-# Read in a dataframe from a TAIR public release tsv containing fields of interest.
+# Read in a subset of dataframe from a TAIR public release tsv containing fields of interest.
 filename = "/Users/irbraun/phenolog/data/tair/Locus_Germplasm_Phenotype_20180702.txt"
 usecols = ["LOCUS_NAME", "GERMPLASM_NAME", "PHENOTYPE", "PUBMED_ID"]
-names = ["locus", "germplasm", "phenotype", "pubmed_id"]
-renamed = {k:v for k,v in zip(usecols,names)}
+usenames = ["locus", "germplasm", "description", "pubmed"]
+renamed = {k:v for k,v in zip(usecols,usenames)}
 df = pd.read_table(filename, usecols=usecols)
 df.rename(columns=renamed, inplace=True)
-df["id"] = [str(i) for i in df.index.values]
+
+# Create a dataset object that can be added to.
+dataset = Dataset()
+dataset.add_data(df)
 
 
 
 # Prepare a dictionary of phenotype descriptions where each has a unique ID value.
-description_dict = {identifier:description for (identifier,description) in zip(df.id,df.phenotype)}
+description_dict = dataset.get_description_dictionary(all_rows=1)
 description_dict = {i:phenolog.nlp.get_clean_description(d) for (i,d) in description_dict.items()}
 
 
 
 # Prepare a dictionary mapping those identifiers to locus names.
-locus_dict = {identifier:locus_name for (identifier,locus_name) in zip(df.id, df.locus)}
+locus_dict = dataset.get_locus_dictionary(all_rows=1)
+
+
+
+
+
+
 
 
 # Get mappings between pathways in KEGG and sets of related loci, and inverse as well.
@@ -46,8 +56,8 @@ pathways_in_textdata = set(itertools.chain.from_iterable([pathway_dict_rev[loci]
 
 
 # Some information about what was read in.
-print("Number of text descriptions:", len(df.phenotype))
-print("Number of loci in text data:", len(df.locus))
+print("Number of text descriptions:", len(description_dict))
+print("Number of loci in text data:", len(textdata_loci_set))
 print("Number of pathways:", len(pathway_dict_fwd))
 print("Number of unique loci in those pathways:", len(pathway_loci_set))
 print("Number of loci in both datasets:", len(intersection))

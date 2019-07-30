@@ -4,6 +4,7 @@ import pandas as pd
 
 
 sys.path.append("../.")
+from phenolog.Dataset import Dataset
 import phenolog.nlp
 import phenolog.ontology
 import phenolog.similarity
@@ -11,23 +12,23 @@ import phenolog.similarity
 
 
 
-# Read in a dataframe from a TAIR public release tsv containing fields of interest.
+# Read in a subset of dataframe from a TAIR public release tsv containing fields of interest.
 filename = "/Users/irbraun/phenolog/data/tair/Locus_Germplasm_Phenotype_20180702.txt"
 usecols = ["LOCUS_NAME", "GERMPLASM_NAME", "PHENOTYPE", "PUBMED_ID"]
-names = ["locus", "germplasm", "phenotype", "pubmed_id"]
-renamed = {k:v for k,v in zip(usecols,names)}
+usenames = ["locus", "germplasm", "description", "pubmed"]
+renamed = {k:v for k,v in zip(usecols,usenames)}
 df = pd.read_table(filename, usecols=usecols)
-df.rename(columns=renamed, inplace=True)
-df["id"] = [str(i) for i in df.index.values]
-
-
-# Use a small subset of the data for this example.
 df = df.head(100)
+df.rename(columns=renamed, inplace=True)
+
+# Create a dataset object that can be added to.
+dataset = Dataset()
+dataset.add_data(df)
 
 
 
 # Prepare a dictionary of phenotype descriptions where each has a unique ID value.
-description_dict = {identifier:description for (identifier,description) in zip(df.id,df.phenotype)}
+description_dict = dataset.get_description_dictionary(all_rows=1)
 description_dict = {i:phenolog.nlp.get_clean_description(d) for (i,d) in description_dict.items()}
 
 
