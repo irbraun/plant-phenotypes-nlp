@@ -13,7 +13,9 @@ import string
 import itertools
 import pronto
 from collections import defaultdict
-
+import os
+import sys
+import glob
 
 
 
@@ -112,7 +114,6 @@ def annotate_with_rabin_karp(object_dict, term_dict):
 	Returns:
 	    dict: Mapping from IDs to ontology term IDs.
 	"""
-	#from nlp import rabin_karp_search
 	annotations = defaultdict(list)
 	prime = 101
 	for identifer,description in object_dict.items():
@@ -120,6 +121,99 @@ def annotate_with_rabin_karp(object_dict, term_dict):
 			if binary_search_rabin_karp(word, description, prime):
 				annotations[identifer].extend(term_list)
 	return(annotations)
+
+
+
+
+
+
+
+def annotate_with_noble_coder(object_dict, path_to_jarfile, ontology_names, precise=1):
+
+	# Configuration for running the NOBLE Coder script.
+	tempfiles_directory = "temp_textfiles"
+	output_directory = "temp_output"
+	if not os.path.exists(tempfiles_directory):
+		os.makedirs(tempfiles_directory)
+	default_results_filename = "RESULTS.tsv"
+	default_results_path = os.path.join(output_directory,default_results_filename)
+	if precise == 1:
+		specificity = "precise-match"
+	else:
+		specificity = "partial-match"
+
+	# Generate temporary text files for each of the text descriptions.
+	# Identifiers for descriptions are encoded into the filenames themselves.
+	annotations = defaultdict(list)
+	for identifier,description in object_dict.items():
+		tempfile_path = os.path.join(tempfiles_directory, f"{identifier}.txt")
+		with open(tempfile_path, "w") as file:
+			file.write(description)
+
+	# Use all specified ontologies to annotate each text file.
+	for ontology_name in ontology_names:
+		os.system(f"java -jar {path_to_jarfile} -terminology {ontology_name} -input {tempfiles_directory} -output {output_directory} -search '{specificity}' -score.concepts")
+		default_results_filename = "RESULTS.tsv"		
+		for identifier,term_list in parse_noble_coder_results(default_results_path).items():
+			annotations[identifier].extend(term_list)
+
+	# Cleanup and return the annotation dictionary.
+	cleanup_noble_coder_results(output_directory, tempfiles_directory)
+	return(annotations)
+
+
+
+
+
+def parse_noble_coder_results(results_filename):
+	df = pd.read_csv(results_filename, usecols=["Document", "Matched Term", "Code"], sep="\t")
+	annotations = defaultdict(list)
+	for row in df.itertuples():
+		textfile_processed = row[1]
+		identifer = str(textfile_processed.split(".")[0])
+		tokens_matched = row[2].split()
+		ontology_term_id = row[3]
+		annotations[identifer].append(ontology_term_id)
+	return(annotations)
+
+
+def cleanup_noble_coder_results(output_directory, textfiles_directory):
+	
+	# Expected paths to each object that should be removed.
+	html_file = os.path.join(output_directory,"index.html")
+	results_file = os.path.join(output_directory,"RESULTS.tsv")
+	properties_file = os.path.join(output_directory,"search.properties")
+	reports_directory = os.path.join(output_directory,"reports")
+
+	# Safely remove everything in the output directory.
+	if os.path.isfile(html_file):
+		os.remove(html_file)
+	if os.path.isfile(results_file):
+		os.remove(results_file)
+	if os.path.isfile(properties_file):
+		os.remove(properties_file)
+	for filepath in glob.iglob(os.path.join(reports_directory,"*.html")):
+		os.remove(filepath)
+	os.rmdir(reports_directory)
+	os.rmdir(output_directory)
+
+	# Safely remove everything in the text file directory.
+	for filepath in glob.iglob(os.path.join(textfiles_directory,"*.txt")):
+		os.remove(filepath)
+	os.rmdir(textfiles_directory)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -138,6 +232,29 @@ def write_annotations_to_tsv_file(annotations_dict, annotations_output_file):
 		row_values.extend(term_list)
 		outfile.write("\t".join(row_values).strip()+"\n")
 	outfile.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
