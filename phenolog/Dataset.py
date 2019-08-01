@@ -26,8 +26,13 @@ import glob
 class Dataset:
 
 
+
+
+
+
+
 	def __init__(self):
-		self.col_names = ["id", "description", "locus", "pubmed"]
+		self.col_names = ["id", "species", "description", "locus", "pubmed"]
 		self.col_names_without_id = self.col_names
 		self.col_names_without_id.remove("id")
 		self.df = pd.DataFrame(columns=self.col_names)
@@ -38,15 +43,17 @@ class Dataset:
 		df_newlines = df_newlines[self.col_names_without_id]
 		df_newlines["id"] = None
 		self.df = self.df.append(df_newlines, ignore_index=True, sort=False)
+		self.df = self.df.drop_duplicates(keep="first", inplace=False)
+		self._reset_ids()
+
+
+	def subsample_data(self, num_to_retain):
+		self.df = self.df.sample(n=num_to_retain)
 		self._reset_ids()
 
 
 	def _reset_ids(self):
 		self.df["id"] = [str(i) for i in self.df.index.values]
-
-
-
-
 
 
 
@@ -87,12 +94,12 @@ class Dataset:
 
 
 
-
 	def check(self):
 		print("Number of rows in the dataframe:", len(self.df))
 		print("Number of unique IDs:", len(pd.unique(self.df.id)))
 		print("Number of unique descriptions:", len(pd.unique(self.df.description)))
 		print("Number of unique loci:", len(pd.unique(self.df.locus)))
+		print("Number of species represented:", len(pd.unique(self.df.species)))
 
 
 

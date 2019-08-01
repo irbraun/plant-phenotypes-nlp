@@ -19,6 +19,7 @@ usenames = ["locus", "germplasm", "description", "pubmed"]
 renamed = {k:v for k,v in zip(usecols,usenames)}
 df = pd.read_table(filename, usecols=usecols)
 df.rename(columns=renamed, inplace=True)
+df["species"] = "ath"
 
 # Create a dataset object that can be added to.
 dataset = Dataset()
