@@ -1,13 +1,22 @@
 import sys
 import os
 import pandas as pd
+import numpy as np
 import itertools
 
 
 sys.path.append("../.")
 from phenolog.Dataset import Dataset
 import phenolog.nlp
-import phenolog.pathway
+from phenolog.Pathways import Pathways
+
+
+
+
+
+
+
+
 
 
 
@@ -16,15 +25,16 @@ import phenolog.pathway
 filename = "/Users/irbraun/phenolog/data/maizegdb/maizegdb_locus_phenotype_data_2019.csv"
 
 
-
-
 usecols = ["locus_name", "phenotype_description"]
-usenames = ["locus", "description"]
+usenames = ["gene_names", "description"]
 renamed = {k:v for k,v in zip(usecols,usenames)}
 df = pd.read_csv(filename, usecols=usecols)
 df.rename(columns=renamed, inplace=True)
 df["pubmed"] = "unknown"
 df["species"] = "zma"
+df["gene_ncbi"] = ""
+df["gene_uniprot"] = ""
+
 
 # Create a dataset object that can be added to.
 dataset = Dataset()
@@ -36,18 +46,54 @@ description_dict = dataset.get_description_dictionary(all_rows=1)
 description_dict = {i:phenolog.nlp.get_clean_description(d) for (i,d) in description_dict.items()}
 
 
-
 # Prepare a dictionary mapping those identifiers to locus names.
-locus_dict = dataset.get_locus_dictionary(all_rows=1)
+gene_dict = dataset.get_gene_dictionary()
+
+
+
+# Generate dataframes from KEGG information for each species.
+species_codes = ["ath", "zma", "mtr", "osa", "gmx", "sly"]
+species_codes = ["zma"]
+pathways = Pathways(species_codes)
 
 
 
 
 
-# Get mappings between pathways in KEGG and sets of related loci, and inverse as well.
-df = phenolog.pathway.get_kegg_pathway_dataframe("zma") 
 
-print(df.head(30))
+d = pathways.get_kegg_pathway_dict(species="zma", gene_dict=gene_dict)
+
+
+num_pathways_by_gene = [len(pathway_list) for pathway_list in d.values()]
+print(np.histogram(num_pathways_by_gene, density=False))
+
+
+
+
+
+
+
+
+#print(d)
+print("done")
+sys.exit()
+
+
+
+
+
+
+# Print out the information found for each species.
+for species_code in species_codes:
+	df = species_to_df[species_code]
+	print("Species:", species_code)
+	print("Number of pathways:", len(pd.unique(df.pathway_id)))
+	print("Number of unique genes in those pathways:", len(pd.unique(df.pathway_id)))
+	print("N")
+
+
+
+
 
 
 

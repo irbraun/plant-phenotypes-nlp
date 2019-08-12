@@ -31,6 +31,13 @@ df.drop_duplicates(keep="first", inplace=True)
 df["pubmed"] = "unknown"
 dataset.add_data(df)
 
+
+print(pd.unique(df.species))
+sys.exit()
+
+
+
+
 # Read in the phene descriptions dataframe from the Oellrich, Walls et al dataset.
 filename = "/Users/irbraun/phenolog/data/ppn/oellrich_walls_textdata_only.csv"
 usecols = ["species", "locus", "phene"]
