@@ -20,6 +20,9 @@ import glob
 
 
 
+from phenolog.Gene import Gene
+
+
 
 
 
@@ -32,7 +35,7 @@ class Dataset:
 
 
 	def __init__(self):
-		self.col_names = ["id", "species", "description", "locus", "pubmed"]
+		self.col_names = ["id", "species", "description", "pubmed", "gene_names", "gene_ncbi", "gene_uniprot"]
 		self.col_names_without_id = self.col_names
 		self.col_names_without_id.remove("id")
 		self.df = pd.DataFrame(columns=self.col_names)
@@ -81,11 +84,21 @@ class Dataset:
 			description = description+"."
 		return(description)
 
-	def get_locus_dictionary(self, all_rows):
-		# Every entry in the dataset is a key.
-		if all_rows == 1:
-			locus_dict = {identifier:locus for (identifier,locus) in zip(self.df.id,self.df.locus)}
-			return(locus_dict)
+
+
+
+	# There are a bunch of different ways to do this
+	# figure out how to shrink the dataset when genes overlap etc.
+
+
+	def get_gene_dictionary(self):
+		gene_dict = {}
+		for row in self.df.itertuples():
+			delim = "|"
+			gene_names = row.gene_names.split(delim)
+			gene_obj = Gene(names=gene_names, uniprot_id=row.gene_uniprot, ncbi_id=row.gene_ncbi)
+			gene_dict[row.id] = gene_obj
+		return(gene_dict)
 
 
 
@@ -94,7 +107,7 @@ class Dataset:
 
 
 
-	def check(self):
+	def describe(self):
 		print("Number of rows in the dataframe:", len(self.df))
 		print("Number of unique IDs:", len(pd.unique(self.df.id)))
 		print("Number of unique descriptions:", len(pd.unique(self.df.description)))
