@@ -1,68 +1,63 @@
 import sys
 import os
 import pandas as pd
+import numpy as np
 import itertools
 
 
 sys.path.append("../.")
 from phenolog.Dataset import Dataset
+from phenolog.Pathways import Pathways
 import phenolog.nlp
-import phenolog.pathway
+import phenolog.utils
 
 
 
 
-# Read in a subset of dataframe from a TAIR public release tsv containing fields of interest.
-filename = "/Users/irbraun/phenolog/data/tair/Locus_Germplasm_Phenotype_20180702.txt"
-usecols = ["LOCUS_NAME", "GERMPLASM_NAME", "PHENOTYPE", "PUBMED_ID"]
-usenames = ["locus", "germplasm", "description", "pubmed"]
-renamed = {k:v for k,v in zip(usecols,usenames)}
-df = pd.read_table(filename, usecols=usecols)
-df.rename(columns=renamed, inplace=True)
-df["species"] = "ath"
 
-# Create a dataset object that can be added to.
+
+
+
+# Create a dataset of the phenotype descriptions and corresponding gene information.
 dataset = Dataset()
-dataset.add_data(df)
+dataset.add_data(pd.read_csv("../data/reshaped/arabidopsis_phenotypes.csv", lineterminator="\n"))
+dataset.add_data(pd.read_csv("../data/reshaped/maize_phenotypes.csv", lineterminator="\n"))
+dataset.add_data(pd.read_csv("../data/reshaped/ppn_phenotypes.csv", lineterminator="\n"))
+dataset.add_data(pd.read_csv("../data/reshaped/ppn_phenes.csv", lineterminator="\n"))
+dataset.describe()
 
+
+# Collapse the dataset so that multiple mentions of the same genes are merged.
+dataset.set_genes_as_nodes()
 
 
 # Prepare a dictionary of phenotype descriptions where each has a unique ID value.
-description_dict = dataset.get_description_dictionary(all_rows=1)
+description_dict = dataset.get_description_dictionary()
 description_dict = {i:phenolog.nlp.get_clean_description(d) for (i,d) in description_dict.items()}
 
 
-
-# Prepare a dictionary mapping those identifiers to locus names.
-locus_dict = dataset.get_locus_dictionary(all_rows=1)
-
+# Prepare a dictionary mapping those ID values to gene objects with gene name information.
+gene_dict = dataset.get_gene_dictionary()
 
 
 
 
 
 
-
-# Get mappings between pathways in KEGG and sets of related loci, and inverse as well.
-pathway_dicts = phenolog.pathway.get_kegg_pathway_dictionary("ath")
-pathway_dict_fwd = pathway_dicts[0]
-pathway_dict_rev = pathway_dicts[1]
-
-
-# Relating the two datasets to one another.
-pathway_loci_set = set.union(*pathway_dict_fwd.values())
-textdata_loci_set = set(locus_dict.values())
-intersection = pathway_loci_set.intersection(textdata_loci_set)
-pathways_in_textdata = set(itertools.chain.from_iterable([pathway_dict_rev[loci] for loci in intersection])) 
+# Create a Pathways object with KEGG database information for each species in the dataset.
+species_codes = ["ath", "zma", "mtr", "osa", "gmx", "sly"]
+pathways = Pathways(species_codes)
+pathways.describe()
 
 
-# Some information about what was read in.
-print("Number of text descriptions:", len(description_dict))
-print("Number of loci in text data:", len(textdata_loci_set))
-print("Number of pathways:", len(pathway_dict_fwd))
-print("Number of unique loci in those pathways:", len(pathway_loci_set))
-print("Number of loci in both datasets:", len(intersection))
-print("NUmber of pathways represented in text data:", len(pathways_in_textdata))
+
+
+
+# Look at histograms of pathway membership within each species.
+for species in species_codes:
+	kegg_dict = pathways.get_kegg_pathway_dict(species=species, gene_dict=gene_dict)
+	num_pathways_by_gene = [len(pathway_list) for pathway_list in kegg_dict.values()]
+	histogram = np.histogram(num_pathways_by_gene, bins=np.arange(np.max(num_pathways_by_gene)), density=False)
 
 
 
