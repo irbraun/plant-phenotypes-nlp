@@ -21,6 +21,7 @@ import glob
 
 
 from phenolog.Gene import Gene
+import phenolog.nlp
 
 
 
@@ -29,13 +30,8 @@ from phenolog.Gene import Gene
 class Dataset:
 
 
-
-
-
-
-
 	def __init__(self):
-		self.col_names = ["id", "species", "description", "pubmed", "gene_names", "gene_ncbi", "gene_uniprot"]
+		self.col_names = ["id", "species", "description", "gene_names", "pmid"]
 		self.col_names_without_id = self.col_names
 		self.col_names_without_id.remove("id")
 		self.df = pd.DataFrame(columns=self.col_names)
@@ -45,60 +41,110 @@ class Dataset:
 	def add_data(self, df_newlines):
 		df_newlines = df_newlines[self.col_names_without_id]
 		df_newlines["id"] = None
+		df_newlines.fillna("", inplace=True)
 		self.df = self.df.append(df_newlines, ignore_index=True, sort=False)
 		self.df = self.df.drop_duplicates(keep="first", inplace=False)
+		self.df.reset_index(drop=True, inplace=True)
 		self._reset_ids()
 
 
-	def subsample_data(self, num_to_retain):
+
+	def randomly_subsample_dataset(self, num_to_retain):
 		self.df = self.df.sample(n=num_to_retain)
 		self._reset_ids()
 
 
+
 	def _reset_ids(self):
-		self.df["id"] = [str(i) for i in self.df.index.values]
+		self.df.id = [str(i) for i in self.df.index.values]
+		self.df = self.df[["id", "species", "description", "gene_names", "pmid"]]
 
 
 
 
-
-	def get_description_dictionary(self, all_rows):
-		# Every entry in the dataset is a key.
-		if all_rows == 1:
-			description_dict = {identifier:description for (identifier,description) in zip(self.df.id,self.df.description)}
-			return(description_dict)
-		# Every locus in the dataset is a key.
-		if all_rows == 0:
-			description_dict = {}
-			for locus in pd.unique(self.df.locus):
-				descriptions = self.df[self.df.locus == locus].description.values
-				descriptions = [self._add_end_tokens(desc) for desc in descriptions]
-				description = " ".join(description_dict).strip()
-				description_dict[locus] = description
-			return(description_dict)
-
-	def _add_end_tokens(self, description):
-		last_character = description[len(description)-1]
-		end_tokens = [".", ";"]
-		if not last_character in end_tokens:
-			description = description+"."
-		return(description)
-
-
-
-
-	# There are a bunch of different ways to do this
-	# figure out how to shrink the dataset when genes overlap etc.
-
+	
 
 	def get_gene_dictionary(self):
 		gene_dict = {}
 		for row in self.df.itertuples():
 			delim = "|"
 			gene_names = row.gene_names.split(delim)
-			gene_obj = Gene(names=gene_names, uniprot_id=row.gene_uniprot, ncbi_id=row.gene_ncbi)
+			gene_obj = Gene(names=gene_names, species=row.species)
 			gene_dict[row.id] = gene_obj
 		return(gene_dict)
+
+	
+	def get_description_dictionary(self):
+		description_dict = {identifier:description for (identifier,description) in zip(self.df.id, self.df.description)}
+		return(description_dict)
+
+
+
+
+
+
+	def set_genes_as_nodes(self):
+
+		# Only perform this operation on slices of the data for one species at a time.
+		# Enforces that genes with the same name across two species have to be two seperate nodes.
+		# Nodes that correspond to different species can never be merged.
+		num_new_rows = 0
+		for species in pd.unique(self.df.species):
+			print(species)
+
+
+			# (1). Create a mapping from gene name strings to row indices where that string is mentioned.
+			gene_mention_map = defaultdict(list)
+			for row in self.df.itertuples():
+				if row.species == species:
+					delim = "|"
+					gene_names = row.gene_names.split(delim)
+					for gene_name in gene_names:
+						gene_mention_map[gene_name].append(row.Index)
+
+
+			# (2). Create a list of sets where all indices in a given set contain synonymous genes (overlap in >=1 name used).
+			list_of_sets_of_row_indices = []
+			for gene_name in gene_mention_map.keys():
+
+				# Determine which existing synonymous set this gene belongs to, if any.
+				set_index_where_this_gene_belongs = -1
+				i = 0
+				for set_of_row_indices in list_of_sets_of_row_indices:
+					if len(set(gene_mention_map[gene_name]).intersection(set_of_row_indices)) > 0:
+						set_index_where_this_gene_belongs = i
+						list_of_sets_of_row_indices[i].update(gene_mention_map[gene_name])
+						break
+					i = i+1
+
+				# If this gene doesn't belong in any of those sets, start a new set with all it's corresponding row indices.
+				if set_index_where_this_gene_belongs == -1:
+					list_of_sets_of_row_indices.append(set(gene_mention_map[gene_name]))
+
+
+			# (3). Add rows which contain merged information from multiple rows where the same gene was mentioned.
+			num_new_rows = num_new_rows + len(list_of_sets_of_row_indices)
+			for set_of_row_indices in list_of_sets_of_row_indices:
+				#print(list(set_of_row_indices))
+				relevant_rows = self.df.iloc[list(set_of_row_indices)]
+				description = phenolog.nlp.concatenate_descriptions(*relevant_rows.description.tolist())
+				gene_names = phenolog.nlp.concatenate_with_bar_delim(*relevant_rows.gene_names.tolist())
+				pmids = phenolog.nlp.concatenate_with_bar_delim(*relevant_rows.pmid.tolist())
+				new_row = {
+					"id":None,
+					"species":species,
+					"description":description,
+					"gene_names":gene_names,
+					"pmid":pmids,
+				}
+				self.df.append(new_row, ignore_index=True, sort=False)
+
+
+		# Retain only the newly added rows, reset the ID values for each row that correspond to one node.
+		self.df = self.df.iloc[-num_new_rows:]
+		self.df.reset_index(drop=True, inplace=True)
+		self._reset_ids()
+
 
 
 
@@ -108,10 +154,11 @@ class Dataset:
 
 
 	def describe(self):
+		print("\nDescribing the Dataset object...")
 		print("Number of rows in the dataframe:", len(self.df))
 		print("Number of unique IDs:", len(pd.unique(self.df.id)))
 		print("Number of unique descriptions:", len(pd.unique(self.df.description)))
-		print("Number of unique loci:", len(pd.unique(self.df.locus)))
+		print("Number of unique gene name sets:", len(pd.unique(self.df.gene_names)))
 		print("Number of species represented:", len(pd.unique(self.df.species)))
 
 
