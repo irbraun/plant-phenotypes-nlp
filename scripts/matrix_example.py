@@ -26,7 +26,7 @@ dataset.describe()
 
 
 # Subsample the data that is available.
-dataset.randomly_subsample_dataset(num_to_retain=5)
+dataset.randomly_subsample_dataset(n=5)
 dataset.describe()
 
 
@@ -57,26 +57,23 @@ df2 = phenolog.similarity.get_similarity_df_using_doc2vec(doc2vec_model_file, de
 df3 = phenolog.similarity.get_similarity_df_using_bagofwords(description_dict)
 df4 = phenolog.similarity.get_similarity_df_using_setofwords(description_dict)
 
+# Look at the contents of each dataframe.
 print(df1)
 print(df2)
 print(df3)
 print(df4)
 
+# Create a mapping between names and each dataframe and corresponding weights.
 dfs = [df1, df2, df3, df4]
-df_names = ["a","b","c","d"]
+df_names = ["ont","d2v","bow","sow"]
 weights = [0.014, 0.914, 0.004, 0.006]
-
 df_dict = {k:v for (k,v) in zip(df_names,dfs)}
 wt_dict = {k:v for (k,v) in zip(df_names,weights)}
 
-
+# Define which of the dataframes to use as the target values for fitting.
 target_df = df4
-
-
-
-reg_model = phenolog.combine.learn_weights_linear_regression(df_dict, target_df)
+reg_model = phenolog.combine.learn_weights_linear_regression(dfs_dict=df_dict, target_df=target_df)
 df = phenolog.combine.combine_with_linear_model(df_dict, reg_model)
 print(df)
-
 
 
