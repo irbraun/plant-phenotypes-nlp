@@ -33,6 +33,37 @@ def remove_punctuation(text):
 	translator = str.maketrans('', '', string.punctuation)
 	return(text.translate(translator))
 
+def remove_newlines(text):
+	text = text.replace("\n", " ")
+	text = text.replace("\t", " ")
+	text = text.replace("\r", " ")
+	return(text)
+
+def add_end_tokens(description):
+	if len(description) > 0:
+		last_character = description[len(description)-1]
+		end_tokens = [".", ";"]
+		if not last_character in end_tokens:
+			description = description+"."
+	return(description)
+
+def concatenate_descriptions(*descriptions):
+	descriptions = [add_end_tokens(description) for description in descriptions]
+	description = " ".join(descriptions).strip()
+	description = remove_newlines(description)
+	return(description)
+
+def concatenate_with_bar_delim(*tokens):
+	tokens = [token.split("|") for token in tokens]
+	tokens = itertools.chain.from_iterable(tokens)
+	tokens = filter(None, tokens)
+	joined = "|".join(tokens).strip()
+	joined = remove_newlines(joined)
+	return(joined)
+
+
+
+
 
 
 
