@@ -49,8 +49,8 @@ class Dataset:
 
 
 
-	def randomly_subsample_dataset(self, num_to_retain):
-		self.df = self.df.sample(n=num_to_retain)
+	def randomly_subsample_dataset(self, n):
+		self.df = self.df.sample(n=n)
 		self._reset_ids()
 
 
