@@ -5,6 +5,9 @@ import re
 import itertools
 
 
+import phenolog.utils
+
+
 
 
 
@@ -15,30 +18,18 @@ class Pathways:
 
     def __init__(self, species_list):
 
+
         # Create one dataframe and pair of dictionaries for each species code.
+        self.species_list = species_list
         self.species_to_df_dict = {}
-        self.species_to_fwd_gene_mappings_by_name = {}
-        self.species_to_rev_gene_mappings_by_name = {}
-        self.species_to_fwd_gene_mappings_by_uniprot_id = {}
-        self.species_to_rev_gene_mappings_by_uniprot_id = {}
-        self.species_to_fwd_gene_mappings_by_ncbi_id = {}
-        self.species_to_rev_gene_mappings_by_ncbi_id = {}
+        self.species_to_fwd_gene_mappings = {}
+        self.species_to_rev_gene_mappings = {}
         for species in species_list:
-            
             df = self._get_kegg_pathway_dataframe(species)
             self.species_to_df_dict[species] = df
-
-            fwd_mapping, rev_mapping = self._get_kegg_pathway_gene_mappings(species, df, accession_type="name")
-            self.species_to_fwd_gene_mappings_by_name[species] = fwd_mapping
-            self.species_to_rev_gene_mappings_by_name[species] = rev_mapping
-
-            fwd_mapping, rev_mapping = self._get_kegg_pathway_gene_mappings(species, df, accession_type="ncbi")
-            self.species_to_fwd_gene_mappings_by_ncbi_id[species] = fwd_mapping
-            self.species_to_rev_gene_mappings_by_ncbi_id[species] = rev_mapping
-
-            fwd_mapping, rev_mapping = self._get_kegg_pathway_gene_mappings(species, df, accession_type="uniprot")
-            self.species_to_fwd_gene_mappings_by_uniprot_id[species] = fwd_mapping
-            self.species_to_rev_gene_mappings_by_uniprot_id[species] = rev_mapping
+            fwd_mapping, rev_mapping = self._get_kegg_pathway_gene_mappings(species, df)
+            self.species_to_fwd_gene_mappings[species] = fwd_mapping
+            self.species_to_rev_gene_mappings[species] = rev_mapping
 
 
 
@@ -46,43 +37,27 @@ class Pathways:
 
 
 
-    def _get_kegg_pathway_gene_mappings(self, kegg_species_abbreviation, kegg_pathways_df, accession_type="name", delim="|"):
-        """Summary
-        
+    def _get_kegg_pathway_gene_mappings(self, kegg_species_abbreviation, kegg_pathways_df):
+        """ Obtain forward and reverse mappings between pathways and gene names.
         Args:
-            kegg_species_abbreviation (TYPE): Description
-            kegg_pathways_df (TYPE): Description
-            accession_type (str, optional): Description
-            delim (str, optional): Description
-        
+            kegg_species_abbreviation (str): The species code for which genes to look at.
+            kegg_pathways_df (pandas.DataFrame): The dataframe containing all the pathway information.
         Returns:
-            TYPE: Description
+            (dict,dict): A mapping from pathway IDs to lists of gene names,
+                         and a mapping from gene names to lists of pathway IDs. 
         """
         pathway_dict_fwd = defaultdict(list)
         pathway_dict_rev = defaultdict(list)
-
-        # The default case, use gene names to create the mappings.
-        if accession_type == "name":
-            for row in kegg_pathways_df.itertuples():
-                gene_names = row.gene_names.strip().split(delim)
-                for gene_name in gene_names:
-                    pathway_dict_fwd[row.pathway_id].append(gene_name)
-                    pathway_dict_rev[gene_name].append(row.pathway_id)
-
-        # Use NCBI accession numbers to create the mappings instead.
-        if accession_type == "ncbi":
-            for row in kegg_pathways_df.itertuples():
-                if not row.gene_ncbi == "":
-                    pathway_dict_fwd[row.pathway_id].append(row.gene_ncbi.strip())
-                    pathway_dict_rev[row.gene_ncbi.strip()].append(row.pathway_id)
-
-        # Use UniProt accession numbers to create the mappings instead.
-        if accession_type == "uniprot":
-            for row in kegg_pathways_df.itertuples():
-                if not row.gene_uniprot == "":
-                    pathway_dict_fwd[row.pathway_id].append(row.gene_uniprot.strip())
-                    pathway_dict_rev[row.gene_uniprot.strip()].append(row.pathway_id)
-
+        delim = "|"
+        for row in kegg_pathways_df.itertuples():
+            gene_names = row.gene_names.strip().split(delim)
+            if not row.ncbi_id == "":
+                gene_names.append(phenolog.utils.add_tag(row.ncbi_id, phenolog.utils.ncbi_tag))
+            if not row.uniprot_id == "":
+                gene_names.append(phenolog.utils.add_tag(row.uniprot_id, phenolog.utils.uniprot_tag))
+            for gene_name in gene_names:
+                pathway_dict_fwd[row.pathway_id].append(gene_name)
+                pathway_dict_rev[gene_name].append(row.pathway_id)
         return(pathway_dict_fwd, pathway_dict_rev)
 
 
@@ -92,17 +67,12 @@ class Pathways:
 
 
     def get_kegg_pathway_dict(self, species, gene_dict):
-        """Summary
-        
+        """ Obtain a mapping between gene IDs and pathway IDs.
         Args:
-            species (TYPE): Description
-            gene_dict (TYPE): Description
-        
+            species (str): The species coe for which genes to look at.
+            gene_dict (dict): A mapping between gene IDs and gene objects.
         Returns:
-            TYPE: Description
-        
-        Deleted Parameters:
-            gene_list (TYPE): Description
+            dict: A mapping from those same gene IDs to the pathways they belong to.
         """
         membership_dict = {}
         for gene_id, gene_obj in gene_dict.items():
@@ -110,38 +80,28 @@ class Pathways:
         return(membership_dict)
 
 
-
-
     def _get_kegg_pathway_membership(self, species, gene_obj):
-        """Use all available information to find the which pathways this gene belongs to.
-        
+        """ Use available information about the gene to identify the KEGG pathways it's in.
         Args:
-            species (TYPE): Description
-            gene (TYPE): Description
-        
+            species (str): The species coe for which genes to look at.
+            gene_obj (Gene): A gene object that contains a list of relevant names and accessions.
         Returns:
-            TYPE: Description
+            list: A list of pathway IDs that this gene was found to belong to.
         """
         pathway_ids = []
-        pathway_ids.extend(itertools.chain.from_iterable([self.species_to_rev_gene_mappings_by_name[species][name] for name in gene_obj.names]))
-        pathway_ids.extend(self.species_to_rev_gene_mappings_by_uniprot_id[species][gene_obj.uniprot_id])
-        pathway_ids.extend(self.species_to_rev_gene_mappings_by_ncbi_id[species][gene_obj.ncbi_id])
+        pathway_ids.extend(itertools.chain.from_iterable([self.species_to_rev_gene_mappings[species][name] for name in gene_obj.names]))
         return(pathway_ids)
 
 
 
 
+    def get_pathway_ids_from_gene_name(self, species, gene_name):
+        return(self.species_to_rev_gene_mappings[species][name])
 
 
 
-    def get_kegg_pathway_representation():
-        return(None)
-
-
-
-
-
-
+    def get_gene_names_from_pathway_id(self, species, pathway_id):
+        return(self.species_to_fwd_gene_mappings[species][pathway_id])
 
 
 
@@ -158,10 +118,10 @@ class Pathways:
         Args:
             kegg_species_pathway_abbreviation (str): Species abbreviation string, see table of options.
         Returns:
-            TYPE: description
+            pandas.DataFrame: The dataframe containing all relevant information about all applicable KEGG pathways.
         """
 
-        col_names = ["species", "pathway_id", "pathway_name", "gene_names", "gene_ncbi", "gene_uniprot", "gene_ko_number", "gene_ec_number"]
+        col_names = ["species", "pathway_id", "pathway_name", "gene_names", "ncbi_id", "uniprot_id", "ko_number", "ec_number"]
         df = pd.DataFrame(columns=col_names)
 
         pathway_dict_fwd = {}
@@ -174,7 +134,7 @@ class Pathways:
         for pathway in pathways:
 
             ctr = ctr+1
-            if ctr>10000:
+            if ctr>5:
                 break
 
             pathway_file = REST.kegg_get(dbentries=pathway).read()
@@ -226,10 +186,10 @@ class Pathways:
                         "pathway_id":pathway,
                         "pathway_name":pathway,
                         "gene_names":names_str,
-                        "gene_ncbi":ncbi_accession,
-                        "gene_uniprot":uniprot_accession,
-                        "gene_ko_number":ko_accession,
-                        "gene_ec_number":ec_accession
+                        "ncbi_id":ncbi_accession,
+                        "uniprot_id":uniprot_accession,
+                        "ko_number":ko_accession,
+                        "ec_number":ec_accession
                     }
                     df = df.append(row, ignore_index=True, sort=False)
 
@@ -241,10 +201,32 @@ class Pathways:
                     pathway_ids_dict[pathway] = pathway_id
 
 
-
         # Update the pathway ID fields using the dictionary.
         df.replace({"pathway_id":pathway_ids_dict}, inplace=True)
         return(df)
+
+
+
+
+
+
+
+
+
+    def describe(self):
+        print("\nDescribing the Pathways object...")
+        print("Number of pathways found for each species:")
+        for species in self.species_list:
+            print("{}: {}".format(species, len(self.species_to_fwd_gene_mappings[species].keys())))
+        print("Number of unique genes found mapped to pathways by species:")
+        for species in self.species_list:
+            query_str = "species=='{}'".format(species)
+            print("{}: {}".format(species, len(self.species_to_df_dict[species].query(query_str))))
+        print("Number of genes names found mapped to pathways by species:")
+        for species in self.species_list:
+            print("{}: {}".format(species, len(self.species_to_rev_gene_mappings[species].keys())))
+
+
 
 
 
