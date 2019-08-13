@@ -4,7 +4,6 @@
 
 class Gene:
 
-	def __init__(self, names, uniprot_id="", ncbi_id=""):
+	def __init__(self, names, species):
 		self.names = names
-		self.uniprot_id = uniprot_id
-		self.ncbi_id = ncbi_id
+		self.species = species
