@@ -20,8 +20,8 @@ import glob
 
 
 
-from phenolog.Gene import Gene
-import phenolog.nlp
+from phenolog.datasets.gene import Gene
+from phenolog.language.nlp import concatenate_descriptions, concatenate_with_bar_delim
 
 
 
@@ -127,9 +127,9 @@ class Dataset:
 			for set_of_row_indices in list_of_sets_of_row_indices:
 				#print(list(set_of_row_indices))
 				relevant_rows = self.df.iloc[list(set_of_row_indices)]
-				description = phenolog.nlp.concatenate_descriptions(*relevant_rows.description.tolist())
-				gene_names = phenolog.nlp.concatenate_with_bar_delim(*relevant_rows.gene_names.tolist())
-				pmids = phenolog.nlp.concatenate_with_bar_delim(*relevant_rows.pmid.tolist())
+				description = concatenate_descriptions(*relevant_rows.description.tolist())
+				gene_names = concatenate_with_bar_delim(*relevant_rows.gene_names.tolist())
+				pmids = concatenate_with_bar_delim(*relevant_rows.pmid.tolist())
 				new_row = {
 					"id":None,
 					"species":species,

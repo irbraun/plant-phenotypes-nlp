@@ -58,7 +58,7 @@ dfs = [df1, df2, df3, df4]
 
 
 # Create names for method used to generate similarity dataframes and map to them.
-methods = ["ontology", "doc2vec", "bagofwords", "setofwords"]
+methods = ["ontology", "doc2vec", "bagofwords", "setofwords", "onto_unwt", "onto_wt"]
 method_to_df = {k:v for (k,v) in zip(methods,dfs)}
 
 
