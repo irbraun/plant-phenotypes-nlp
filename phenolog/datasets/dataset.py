@@ -21,7 +21,7 @@ import glob
 
 
 from phenolog.datasets.gene import Gene
-from phenolog.language.nlp import concatenate_descriptions, concatenate_with_bar_delim
+from phenolog.nlp.preprocess import concatenate_descriptions, concatenate_with_bar_delim
 
 
 
@@ -49,8 +49,8 @@ class Dataset:
 
 
 
-	def randomly_subsample_dataset(self, n):
-		self.df = self.df.sample(n=n)
+	def randomly_subsample_dataset(self, n, seed):
+		self.df = self.df.sample(n=n, random_state=seed)
 		self._reset_ids()
 
 
@@ -125,7 +125,6 @@ class Dataset:
 			# (3). Add rows which contain merged information from multiple rows where the same gene was mentioned.
 			num_new_rows = num_new_rows + len(list_of_sets_of_row_indices)
 			for set_of_row_indices in list_of_sets_of_row_indices:
-				#print(list(set_of_row_indices))
 				relevant_rows = self.df.iloc[list(set_of_row_indices)]
 				description = concatenate_descriptions(*relevant_rows.description.tolist())
 				gene_names = concatenate_with_bar_delim(*relevant_rows.gene_names.tolist())
@@ -154,12 +153,11 @@ class Dataset:
 
 
 	def describe(self):
-		print("\nDescribing the Dataset object...")
-		print("Number of rows in the dataframe:", len(self.df))
-		print("Number of unique IDs:", len(pd.unique(self.df.id)))
-		print("Number of unique descriptions:", len(pd.unique(self.df.description)))
-		print("Number of unique gene name sets:", len(pd.unique(self.df.gene_names)))
-		print("Number of species represented:", len(pd.unique(self.df.species)))
+		print("Number of rows in the dataframe: {}".format(len(self.df)))
+		print("Number of unique IDs:            {}".format(len(pd.unique(self.df.id))))
+		print("Number of unique descriptions:   {}".format(len(pd.unique(self.df.description))))
+		print("Number of unique gene name sets: {}".format(len(pd.unique(self.df.gene_names))))
+		print("Number of species represented:   {}".format(len(pd.unique(self.df.species))))
 
 
 

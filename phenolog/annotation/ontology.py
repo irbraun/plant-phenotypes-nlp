@@ -19,7 +19,7 @@ import glob
 import math
 import re
 
-from phenolog.language.nlp import binary_search_rabin_karp
+from phenolog.nlp.search import binary_search_rabin_karp
 
 
 

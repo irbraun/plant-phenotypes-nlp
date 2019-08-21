@@ -19,7 +19,7 @@ import glob
 import math
 import re
 
-from phenolog.language.nlp import binary_search_rabin_karp
+from phenolog.nlp.search import binary_search_rabin_karp
 
 
 
@@ -44,6 +44,7 @@ def annotate_using_rabin_karp(object_dict, ontology): # fix doc
 	annotations = defaultdict(list)
 	prime = 193
 	for identifer,description in object_dict.items():
+		annotations[identifer].extend([])
 		for word,term_list in ontology.reverse_term_dict.items():
 			if binary_search_rabin_karp(word, description, prime):
 				annotations[identifer].extend(term_list)

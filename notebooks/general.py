@@ -35,6 +35,16 @@ description_dict = {i:get_clean_description(d) for (i,d) in description_dict.ite
 
 
 
+
+
+
+
+
+
+
+
+
+
 # Generate annotations and other structures needed for assessing similarity.
 merged_ontology_file = "../ontologies/mo.obo"
 annotations_file = "../data/annotations/annotations_with_mo.tsv"

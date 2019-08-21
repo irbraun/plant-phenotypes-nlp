@@ -142,6 +142,12 @@ def combine_dfs_with_name_dict(dfs_dict):
 	return(merged_df)
 
 
+def subset_based_on_ids(df, ids):
+	df = df[df["from"].isin(ids) & df["to"].isin(ids)]
+	return(df)
+
+
+
 
 
 
@@ -160,7 +166,7 @@ def _verify_dfs_are_consistent(*similarity_dfs):
 		id_sets[i].update(list(pd.unique(similarity_dfs[i]["to"].values)))
 	for (s1, s2) in list(itertools.combinations_with_replacement(id_sets, 2)):	
 		if not len(s1.difference(s2)) == 0:
-			raise Error("Dataframes specifying networks are not consisent.")
+			raise ValueError("Dataframes specifying networks are not consisent.")
 
 
 

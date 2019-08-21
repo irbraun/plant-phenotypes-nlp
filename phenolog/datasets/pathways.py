@@ -6,7 +6,9 @@ import re
 import itertools
 
 
-import phenolog.utils
+from phenolog.nlp.preprocess import concatenate_with_bar_delim
+from phenolog.nlp.preprocess import add_prefix
+from phenolog.utils.constants import REFGEN_V3_TAG, REFGEN_V4_TAG, NCBI_TAG, UNIPROT_TAG
 
 
 
@@ -47,26 +49,29 @@ class Pathways:
 
 
 
-
-    def get_pathway_dict(self, species, gene_dict):
+    # Returns a mapping from IDs to lists of pathway IDs.
+    def get_pathway_dict(self, gene_dict):
         membership_dict = {}
         for gene_id, gene_obj in gene_dict.items():
-            membership_dict[gene_id] = self.get_pathway_membership(species=species, gene_obj=gene_obj)
+            membership_dict[gene_id] = self.get_pathway_ids_from_gene_obj(gene_obj)
         return(membership_dict)
 
 
-    def get_pathway_membership(self, species, gene_obj):
+    # Returns a list of pathway IDs.
+    def get_pathway_ids_from_gene_obj(self, gene_obj):
         pathway_ids = []
-        pathway_ids.extend(itertools.chain.from_iterable([self.species_to_rev_gene_mappings[species][name] for name in gene_obj.names]))
+        species = gene_obj.species
+        gene_names = gene_obj.names
+        pathway_ids.extend(list(itertools.chain.from_iterable([self.species_to_rev_gene_mappings[species][name] for name in gene_names])))
         return(pathway_ids)
 
 
-
+    # Returns a list of pathways IDs.
     def get_pathway_ids_from_gene_name(self, species, gene_name):
         return(self.species_to_rev_gene_mappings[species][name])
 
 
-
+    # Returns a list of gene names.
     def get_gene_names_from_pathway_id(self, species, pathway_id):
         return(self.species_to_fwd_gene_mappings[species][pathway_id])
 
@@ -83,7 +88,6 @@ class Pathways:
 
     def _get_plantcyc_pathway_dataframe(self, species_code, pathways_filepath):
 
-
         usecols = ["Pathway-id", "Pathway-name", "Reaction-id", "EC", "Protein-id", "Protein-name", "Gene-id", "Gene-name"]
         usenames = ["pathway_id", "pathway_name", "reaction_id", "ec_number", "protein_id", "protein_name", "gene_id", "gene_name"]
         renamed = {k:v for k,v in zip(usecols,usenames)}
@@ -91,19 +95,14 @@ class Pathways:
         df.rename(columns=renamed, inplace=True)
         df.fillna("", inplace=True)
         
-
         # Have to manually look for conventions to avoid mistakes with including gene names.
         # The string "unknown" is used for missing values, don't add this as a gene name.
         df.replace(to_replace="unknown", value="", inplace=True)
         
-
-        df["gene_names"] = np.vectorize(phenolog.nlp.concatenate_with_bar_delim)(df["protein_id"], df["protein_name"], df["gene_id"], df["gene_name"])
+        df["gene_names"] = np.vectorize(concatenate_with_bar_delim)(df["protein_id"], df["protein_name"], df["gene_id"], df["gene_name"])
         df["species"] = species_code
         df = df[["species", "pathway_id", "pathway_name", "gene_names", "ec_number"]]
         return(df)
-
-
-
 
 
 
@@ -139,10 +138,13 @@ class Pathways:
         The specifications for those files state that the first 12 characeters of each line are reserved
         for the string which species the section, like "GENE", and the remainder of the line is for 
         everything else.
+        
         Args:
-            kegg_species_pathway_abbreviation (str): Species abbreviation string, see table of options.
+            kegg_species_abbreviation (str): Species abbreviation string, see table of options.
+
         Returns:
             pandas.DataFrame: The dataframe containing all relevant information about all applicable KEGG pathways.
+
         """
 
         col_names = ["species", "pathway_id", "pathway_name", "gene_names", "ncbi_id", "uniprot_id", "ko_number", "ec_number"]
@@ -153,20 +155,22 @@ class Pathways:
         pathways = REST.kegg_list("pathway", kegg_species_abbreviation)
         pathway_ids_dict = {}
 
+        limit = 5
         ctr = 0
 
         for pathway in pathways:
 
+            # Check if limit reached.
             ctr = ctr+1
-            if ctr>5:
+            if ctr>limit:
                 break
 
+            # Continue.
             pathway_file = REST.kegg_get(dbentries=pathway).read()
             for line in pathway_file.rstrip().split("\n"):
                 section = line[:12].strip()
                 if not section == "":
                     current_section = section
-
 
 
                 # Collect information about the gene described on this line.
@@ -250,9 +254,9 @@ class Pathways:
         for row in kegg_pathways_df.itertuples():
             gene_names = row.gene_names.strip().split(delim)
             if not row.ncbi_id == "":
-                gene_names.append(phenolog.utils.add_tag(row.ncbi_id, phenolog.utils.ncbi_tag))
+                gene_names.append(add_prefix(row.ncbi_id, NCBI_TAG))
             if not row.uniprot_id == "":
-                gene_names.append(phenolog.utils.add_tag(row.uniprot_id, phenolog.utils.uniprot_tag))
+                gene_names.append(add_prefix(row.uniprot_id, UNIPROT_TAG))
             for gene_name in gene_names:
                 pathway_dict_fwd[row.pathway_id].append(gene_name)
                 pathway_dict_rev[gene_name].append(row.pathway_id)
@@ -261,15 +265,9 @@ class Pathways:
 
 
 
-
-
-
-
-
-
-
-
-
+    def write_to_csv(self, path):
+        df = pd.concat(self.species_to_df_dict.values(), ignore_index=True) 
+        df.to_csv(path, index=False)
 
 
 
@@ -278,17 +276,16 @@ class Pathways:
 
 
     def describe(self):
-        print("\nDescribing the Pathways object...")
-        print("Number of pathways found for each species:")
+        print("Number of pathways found for each species")
         for species in self.species_list:
-            print("{}: {}".format(species, len(self.species_to_fwd_gene_mappings[species].keys())))
-        print("Number of unique genes found mapped to pathways by species:")
+            print("  {}: {}".format(species, len(self.species_to_fwd_gene_mappings[species].keys())))
+        print("Number of gene entries found mapped to pathways by species")
         for species in self.species_list:
             query_str = "species=='{}'".format(species)
-            print("{}: {}".format(species, len(self.species_to_df_dict[species].query(query_str))))
-        print("Number of genes names found mapped to pathways by species:")
+            print("  {}: {}".format(species, len(self.species_to_df_dict[species].query(query_str))))
+        print("Number of genes names found mapped to pathways by species")
         for species in self.species_list:
-            print("{}: {}".format(species, len(self.species_to_rev_gene_mappings[species].keys())))
+            print("  {}: {}".format(species, len(self.species_to_rev_gene_mappings[species].keys())))
 
 
 
