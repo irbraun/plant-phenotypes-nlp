@@ -25,7 +25,7 @@ from phenolog.nlp import get_clean_token_list
 
 
 
-def get_wordnet_related_words(word, context, synonyms=1, hypernyms=0, hyponyms=0):
+def get_wordnet_synonyms(word, context, synonyms=1, hypernyms=0, hyponyms=0):
 	"""
 	Method to generate a list of words that are found to be related to the input word through
 	the WordNet ontology/resource. The correct sense of the input word to used within the
@@ -43,7 +43,6 @@ def get_wordnet_related_words(word, context, synonyms=1, hypernyms=0, hyponyms=0
 	Returns:
 	    list: The list of related words that were found, could be empty if nothing was found.
 	"""
-
 
 	# To get the list of synsets for this word if not using disambiguation.
 	list_of_possible_s = wordnet.synsets(word)
@@ -66,8 +65,8 @@ def get_wordnet_related_words(word, context, synonyms=1, hypernyms=0, hyponyms=0
 		hypernym_lemmas_nested_list = [x.lemma_names() for x in s.hypernyms()] 
 		hyponym_lemmas_nested_list = [x.lemma_names() for x in s.hyponyms()]
 		# Flatten those lists of lists.
-		hypernym_lemmas = [word for lemma_list in hypernym_lemmas_nested_list for word in lemma_list]
-		hyponym_lemmas = [word for lemma_list in hyponym_lemmas_nested_list for word in lemma_list]
+		hypernym_lemmas = list(itertools.chain.from_iterable(hypernym_lemmas_nested_list))
+		hyponym_lemmas = list(itertools.chain.from_iterable(hyponym_lemmas_nested_list))
 
 		# Print out information about the synset that was picked during disambiguation.
 		#print(synset_definition)
@@ -90,7 +89,7 @@ def get_wordnet_related_words(word, context, synonyms=1, hypernyms=0, hyponyms=0
 
 
 
-def get_word2vec_related_words(word, model, threshold, max_qty):
+def get_word2vec_synonyms(word, model, threshold, max_qty):
 	"""
 	Method to generate a list of words that are found to be related to the input word through
 	assessing similarity to other words in a word2vec model of word embeddings. The model can
@@ -125,23 +124,56 @@ def get_word2vec_related_words(word, model, threshold, max_qty):
 
 
 
+def get_wordnet_synonyms_from_description(description, synonyms=1, hyperhyms=0, hyponyms=1):
+	"""
+	Get a dictionary mapping tokens in a description to synonyms found with WordNet.
+	Note that these could not only be synonyms but also hypernyms and hyponyms depending
+	on what parameters are used.
+	
+	Args:
+	    description (str): Any string of text, a description of something.
+	    synonyms (int, optional): Set to 1 to include synonyms in the set of related words.
+	    hypernyms (int, optional): Set to 1 to included hypernyms in the set of related words.
+	    hyponyms (int, optional): Set to 1 to include hyponyms in the set of related words.
+	
+	Returns:
+	    dict: A mapping from a string to a list of strings, the found synonyms.
+	"""
+	tokens = get_clean_token_list(description)
+	synonym_dict = {token:get_wordnet_synonyms(token,description,synonyms,hypernyms,hyponyms) for token in tokens}
+	return(synonym_dict)
 
 
-# Methods to apply the above methods to an entire description and return the flattened list of words.
 
 
 
-def get_all_wordnet_related_words(description, synonyms=1, hypernyms=0, hyponyms=0):
-	flatten = lambda l: [item for sublist in l for item in sublist]
-	return flatten([get_wordnet_related_words(word,description) for word in get_clean_token_list(description)])
+def get_word2vec_synonyms_from_description(description, model, threshold, max_qty):
+	"""
+	Get a dictionary mapping tokens in a description to synonyms found with Word2Vec.
+	Note that these are not necessarily truly synonyms, but may just be words that are 
+	strongly or weakly related to a given word, depending on how strict the threshold
+	parameters are that are used.
+	
+	Args:
+	    description (str): Any string of text, a description of something.
+	    model (Word2Vec): The actual model object that has already been loaded.
+	    threshold (float): Similarity threshold that must be satisfied to add a word as related.
+	    max_qty (int): Maximum number of related words to accept for a single token.
+	
+	Returns:
+	    dict: A mapping from a string to a list of strings, the found synonyms.
+	"""
+	tokens = get_clean_token_list(description)
+	synonym_dict = {token:get_word2vec_synonyms(token,model,threshold,max_qty) for token in tokens}
+	return(synonym_dict)
 
 
 
 
 
-def get_all_word2vec_related_words(description, model, threshold, max_qty):
-	flatten = lambda l: [item for sublist in l for item in sublist]
-	return flatten([get_word2vec_related_words(word, model, threshold, max_qty) for word in get_clean_token_list(description)])
+
+
+
 
 
 

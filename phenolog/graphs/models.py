@@ -24,12 +24,20 @@ from sklearn.ensemble import RandomForestClassifier
 
 
 
-
-
-
-
-
 def apply_weights(df, predictor_columns, weights_dict):
+	"""
+	Generates a dataframe with a single value column calculated from combining a
+	number of the old columns with the provided weights. Checks to make sure that
+	the weights refer to columns which exist in the passed in dataframe.
+
+	Args:
+	    df (pandas.DataFrame): A dataframe with predictor columns to be combined.
+	    predictor_columns (list): The names of the predictor columns in a list.
+	    weights_dict (dict): Mapping from predictor column names to their weight.
+	
+	Returns:
+	    pandas.DataFrame: The resulting dataframe with columns combined.
+	"""
 	# Check to make sure the arguments are compatible with each other.
 	if not len(set(predictor_columns).difference(set(weights_dict.keys()))) == 0:
 		raise Error("Names in the weight dictionary don't match list of predictors.")
@@ -91,6 +99,7 @@ def train_linear_regression_model(df, predictor_columns, target_column):
 
 
 
+
 def train_random_forest_model(df, predictor_columns, target_column, num_trees=100, function="gini", max_depth=None, seed=None):
 	X,y = _get_X_and_y(df, predictor_columns, target_column)
 	rf = RandomForestClassifier(n_estimators=num_trees, max_depth=max_depth, criterion=function, random_state=seed)
@@ -113,16 +122,18 @@ def train_random_forest_model(df, predictor_columns, target_column, num_trees=10
 
 
 
-
-
-
-
-
-
-
-
-# Produce a dataframe in the shape that can be used to easily train models.
 def combine_dfs_with_name_dict(dfs_dict):
+	"""Produce a dataframe in a shape that can be used to train models.
+	Args:
+	    dfs_dict (dict): Mapping from name strings to dataframe objects.
+	Returns:
+	    pandas.DataFrame: A single dataframe where each similarity column
+	    in the original dataframes has become a new column in the combined
+	    dataframe where the header for that column is the name that was in
+	    the dictionary. This way each individual passed in dictionary can
+	    be used to collect named features for a new dataframe that can be 
+	    used to train models for predicting the best combination of features.
+	"""
 	for name,df in dfs_dict.items():
 		df.rename(columns={"similarity":name}, inplace=True)
 	_verify_dfs_are_consistent(*dfs_dict.values())
@@ -133,8 +144,16 @@ def combine_dfs_with_name_dict(dfs_dict):
 
 
 
-# Check that each dataframe passed in has the same set of edges specified.
+
+
+
 def _verify_dfs_are_consistent(*similarity_dfs):
+	"""Check that each dataframe specifies the same set of edges.
+	Args:
+	    *similarity_dfs: Any number of dataframe arguments.
+	Raises:
+	    Error: The dataframes were found to not all be describing the same graph.
+	"""
 	id_sets = [set() for i in range(0,len(similarity_dfs))]
 	for i in range(0,len(similarity_dfs)):
 		id_sets[i].update(list(pd.unique(similarity_dfs[i]["from"].values)))
@@ -147,19 +166,20 @@ def _verify_dfs_are_consistent(*similarity_dfs):
 
 
 
-
-
-
-
-
-# Converting dataframes into arrays of the correct shape.
 def _get_X_and_y(df, predictor_columns, target_column):
+	"""Get arrays for X and y from the dataframe.
+	"""
 	feature_sets = df[predictor_columns].values.tolist()
 	target_values = df[target_column].values.tolist()
 	X = np.array(feature_sets)
 	y = np.array(target_values)
 	return(X,y)
+
+
+
 def _get_X(df, predictor_columns):
+	"""Get array for X from the dataframe.
+	"""
 	feature_sets = df[predictor_columns].values.tolist()
 	X = np.array(feature_sets)
 	return(X)

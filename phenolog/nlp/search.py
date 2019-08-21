@@ -19,87 +19,6 @@ from fuzzywuzzy import process
 
 
 
-def get_clean_description(description):
-	description = remove_punctuation(description)
-	description = description.lower()
-	return(description)
-
-def get_clean_token_list(description):
-	description = remove_punctuation(description)
-	token_list = description.lower().split()
-	return(token_list)
-
-def remove_punctuation(text):
-	translator = str.maketrans('', '', string.punctuation)
-	return(text.translate(translator))
-
-def remove_newlines(text):
-	text = text.replace("\n", " ")
-	text = text.replace("\t", " ")
-	text = text.replace("\r", " ")
-	return(text)
-
-def add_end_tokens(description):
-	if len(description) > 0:
-		last_character = description[len(description)-1]
-		end_tokens = [".", ";"]
-		if not last_character in end_tokens:
-			description = description+"."
-	return(description)
-
-def concatenate_descriptions(*descriptions):
-	descriptions = [add_end_tokens(description) for description in descriptions]
-	description = " ".join(descriptions).strip()
-	description = remove_newlines(description)
-	return(description)
-
-def concatenate_with_bar_delim(*tokens):
-	tokens = [token.split("|") for token in tokens]
-	tokens = itertools.chain.from_iterable(tokens)
-	tokens = filter(None, tokens)
-	joined = "|".join(tokens).strip()
-	joined = remove_newlines(joined)
-	return(joined)
-
-
-
-
-
-
-
-def append_related_words(description, related_word_list):
-	combined_list = [description]
-	combined_list.extend(related_word_list)
-	description = " ".join(combined_list).strip()
-	return(description)
-
-
-
-
-
-
-
-def load_word2vec_model(model_path):
-	model = gensim.models.word2vec.Word2Vec.load(model_path)
-	return(model)
-
-def train_word2vec_model(model_path, training_textfile_path, size=300, sg=1, hs=1, sample=1e-3, window=10, alpha=0.025, workers=5):
-	text = gensim.models.word2vec.Text8Corpus(training_textfile_path)
-	model = gensim.models.word2vec.Word2Vec(sentences, size=size, sg=sg, hs=hs, sample=sample, window=window, alpha=alpha, workers=workers) 
-	model.save(model_path)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def binary_search_rabin_karp(pat, txt, q): 
@@ -114,22 +33,18 @@ def binary_search_rabin_karp(pat, txt, q):
 	Returns:
 		boolean: True if the pattern was found, false is it was not.
 	"""
-
 	# Make sure the pattern is smaller than the text.
 	if len(pat)>len(txt):
 		return(False)
-
-	d = 256					# number of characters in vocabulary
+	d = 256				# number of characters in vocabulary
 	M = len(pat) 
 	N = len(txt) 
 	i = 0
 	j = 0
-	p = 0    				# hash value for pattern 
-	t = 0    				# hash value for txt 
+	p = 0    			# hash value for pattern 
+	t = 0    			# hash value for txt 
 	h = 1
-
 	found_indices = []
-
 	for i in range(M-1): 
 		h = (h * d)% q 
 	for i in range(M): 
@@ -145,14 +60,43 @@ def binary_search_rabin_karp(pat, txt, q):
 				# Pattern found at index i.
 				# found_indices.append(i)
 				return(True)
-
 		if i < N-M: 
 			t = (d*(t-ord(txt[i])*h) + ord(txt[i + M]))% q 
 			if t < 0: 
 				t = t + q 
-
 	# Pattern was never found.			
 	return(False)
+
+
+
+
+
+def occurences_search_rabin_karp(patterns, txt, q):
+	"""Searches for occurences of any of the patterns in the longer string.
+	Args:
+	    patterns (list): The list of shorter text strings to search for.
+	    txt (str): The larger text string to search in.
+	    q (int): A prime number that is used for hashing.
+	Returns:
+	    list: A sublist of the patterns argument containing only the found strings.
+	"""
+	patterns_found = []
+	for pat in patterns:
+		if binary_search_rabin_karp(pat, txt, q):
+			patterns_found.append(pat)
+	return(patterns_found)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -171,6 +115,9 @@ def binary_search_fuzzy(pat, txt, threshold, local=1):
 	Returns:
 		boolean: True if the pattern was found, false if it was not.
 	"""
+	# Make sure the pattern is smaller than the text.
+	if len(pat)>len(txt):
+		return(False)
 	similarity_score = 0.000
 	if local==1:
 		similarity_score = fuzz.partial_ratio(pat, txt)
@@ -207,17 +154,6 @@ def occurences_search_fuzzy(patterns, txt, threshold, local=1):
 	best_matches = process.extractBests(query=txt, choices=patterns, scorer=method, score_cutoff=threshold)
 	patterns_found = [match[0] for match in best_matches]
 	return(patterns_found)
-
-
-
-
-
-
-
-
-
-
-
 
 
 

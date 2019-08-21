@@ -23,26 +23,6 @@ from collections import defaultdict
 
 
 
-def add_prefix(token, prefix):
-	"""
-	Attaches the passed in prefix argument to the front of the token,
-	unless the token is an empty string in which case nothing happens
-	(avoids accidentally making a meaningless token ("") meaningful by
-	modifying it).
-	Args:
-	    token (str): Any string.
-	    prefix (str): Any string.
-	Returns:
-	    str: The token with the prefix added to the beginning.
-	"""
-	if len(token) > 0:
-		return("{}{}".format(prefix, token))
-	else:
-		return("")
-
-
-
-
 
 
 def save_to_pickle(obj, path):
