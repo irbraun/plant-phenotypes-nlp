@@ -18,9 +18,9 @@ from collections import defaultdict
 
 
 
-
-
-
+def function_wrapper(function, args):
+	result = function(*args)
+	return(result)
 
 
 
