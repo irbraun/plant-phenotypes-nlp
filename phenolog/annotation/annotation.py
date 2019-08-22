@@ -189,14 +189,14 @@ def _cleanup_noble_coder_results(output_directory, textfiles_directory):
 
 
 
-def write_annotations_to_tsv_file(annotations_dict, annotations_output_file):
+def write_annotations_to_tsv_file(annotations_dict, annotations_output_path):
 	"""Create a tsv file of annotations that is compatable with fastsemsim.
 	
 	Args:
 	    annotations_dict (dict): Mapping from IDs to lists of ontology term IDs.
 	    annotations_output_file (str): Path to the output file to create.
 	"""
-	outfile = open(annotations_output_file,"w")
+	outfile = open(annotations_output_path,"w")
 	for identifer,term_list in annotations_dict.items():
 		row_values = [str(identifer)]
 		row_values.extend(term_list)
@@ -209,7 +209,7 @@ def write_annotations_to_tsv_file(annotations_dict, annotations_output_file):
 
 
 
-def read_annotations_from_tsv_file(annotations_input_file):
+def read_annotations_from_tsv_file(annotations_input_path):
 	"""Get a dictionary mapping ID's to list of ontology term ID's.
 
 	Args:
@@ -218,7 +218,7 @@ def read_annotations_from_tsv_file(annotations_input_file):
 	Returns:
 	    dict: Mapping from object IDs to lists of ontology term IDs.
 	"""
-	infile = open(annotations_input_file, "r")
+	infile = open(annotations_input_path, "r")
 	annotations_dict = {}
 	separator = "\t"
 	for line in infile.read():
