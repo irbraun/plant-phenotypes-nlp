@@ -18,6 +18,7 @@ import sys
 import glob
 import math
 import re
+import time
 
 from phenolog.nlp.search import binary_search_rabin_karp
 
@@ -28,7 +29,7 @@ from phenolog.nlp.search import binary_search_rabin_karp
 
 
 
-def get_similarity_df_using_fastsemsim(ontology_obo_file, annotated_corpus_tsv_file, object_dict):
+def get_similarity_df_using_fastsemsim(ontology_obo_file, annotated_corpus_tsv_file, object_dict, duration=False):
 	"""
 	Method for creating a pandas dataframe of similarity values between all passed in object IDs
 	based on the annotations of ontology terms to to all the natural language descriptions that
@@ -47,6 +48,7 @@ def get_similarity_df_using_fastsemsim(ontology_obo_file, annotated_corpus_tsv_f
 	"""
 
 	# Intended values for loading the ontology from a generic obo file. Load the ontology.
+	start_time = time.perf_counter()
 	ontology_file_type = "obo"
 	ontology_type = "Ontology"
 	ignore_parameters = {}
@@ -82,6 +84,13 @@ def get_similarity_df_using_fastsemsim(ontology_obo_file, annotated_corpus_tsv_f
 	object_list = list(object_dict.keys())
 	result = ssbatch.SemSim(query=object_list, query_type="pairwise")
 	result.columns = ["from", "to", "similarity"]
+
+
+	# Return the results.
+	if (duration):
+		end_time = time.perf_counter()
+		duration_in_seconds = end_time-start_time
+		return(result,duration_in_seconds)
 	return(result)
 
 
@@ -95,7 +104,7 @@ def get_similarity_df_using_fastsemsim(ontology_obo_file, annotated_corpus_tsv_f
 
 
 
-def get_similarity_df_using_doc2vec(doc2vec_model_file, object_dict):
+def get_similarity_df_using_doc2vec(doc2vec_model_file, object_dict, duration=False):
 	"""
 	Method for creating a pandas dataframe of similarity values between all passed in object IDs
 	using vector embeddings inferred for each natural language description using the passed in 
@@ -111,7 +120,7 @@ def get_similarity_df_using_doc2vec(doc2vec_model_file, object_dict):
 	Returns:
 	    pandas.DataFrame: Each row in the dataframe is [first ID, second ID, similarity].
 	"""
-
+	start_time = time.perf_counter()
 	model = gensim.models.Doc2Vec.load(doc2vec_model_file)
 
 	vectors = []
@@ -129,6 +138,11 @@ def get_similarity_df_using_doc2vec(doc2vec_model_file, object_dict):
 		row = [p1, p2, matrix[identifier_to_index_in_matrix[p1]][identifier_to_index_in_matrix[p2]]]
 		result.loc[len(result)] = row
 
+	# Return the results.
+	if (duration):
+		end_time = time.perf_counter()
+		duration_in_seconds = end_time-start_time
+		return(result,duration_in_seconds)
 	return(result)
 
 
@@ -179,7 +193,7 @@ def get_binary_vectors(*strs):
 
 
 
-def get_similarity_df_using_bagofwords(object_dict):
+def get_similarity_df_using_bagofwords(object_dict, duration=False):
 	"""
 	Method for creating a pandas dataframe of similarity values between all passed in object IDs
 	using vectors to represent each of the natural language descriptions as a bag-of-words. No 
@@ -193,7 +207,7 @@ def get_similarity_df_using_bagofwords(object_dict):
 	    pandas.DataFrame: Each row in the dataframe is [first ID, second ID, similarity].
 	"""
 
-
+	start_time = time.perf_counter()
 	descriptions = []
 	identifier_to_index_in_matrix = {}
 	for identifier,description in object_dict.items():
@@ -208,6 +222,11 @@ def get_similarity_df_using_bagofwords(object_dict):
 		row = [p1, p2, matrix[identifier_to_index_in_matrix[p1]][identifier_to_index_in_matrix[p2]]]
 		result.loc[len(result)] = row
 
+	# Return the results.
+	if (duration):
+		end_time = time.perf_counter()
+		duration_in_seconds = end_time-start_time
+		return(result,duration_in_seconds)
 	return(result)
 
 
@@ -219,7 +238,7 @@ def get_similarity_df_using_bagofwords(object_dict):
 
 
 
-def get_similarity_df_using_setofwords(object_dict):
+def get_similarity_df_using_setofwords(object_dict, duration=False):
 	"""
 	Method for creating a pandas dataframe of similarity values between all passed in object IDs
 	using vectors to represent each of the natural language descriptions as a set-of-words. No 
@@ -228,11 +247,13 @@ def get_similarity_df_using_setofwords(object_dict):
 	
 	Args:
 	    object_dict (dict): Mapping between object IDs and the natural language descriptions. 
+	    duration (bool, optional): Description
 	
 	Returns:
 	    pandas.DataFrame: Each row in the dataframe is [first ID, second ID, similarity].
 	"""
 
+	start_time = time.perf_counter()
 	descriptions = []
 	identifier_to_index_in_matrix = {}
 	for identifier,description in object_dict.items():
@@ -248,6 +269,11 @@ def get_similarity_df_using_setofwords(object_dict):
 		row = [p1, p2, matrix[identifier_to_index_in_matrix[p1]][identifier_to_index_in_matrix[p2]]]
 		result.loc[len(result)] = row
 
+	# Return the results.
+	if (duration):
+		end_time = time.perf_counter()
+		duration_in_seconds = end_time-start_time
+		return(result,duration_in_seconds)
 	return(result)
 
 
@@ -284,7 +310,7 @@ def jaccard_similarity(set_1, set_2):
 
 
 
-def get_similarity_df_using_annotations_unweighted_jaccard(annotations_dict, ontology):
+def get_similarity_df_using_annotations_unweighted_jaccard(annotations_dict, ontology, duration=False):
 	"""
 	Method for creating a pandas dataframe of similarity values between all passed in object IDs
 	based on the annotations of ontology terms to to all the natural language descriptions that
@@ -302,6 +328,7 @@ def get_similarity_df_using_annotations_unweighted_jaccard(annotations_dict, ont
 	"""
 	
 	# annotations_dict maps object IDs to a list of term annotations.
+	start_time = time.perf_counter()
 	joined_term_strings = []
 	identifier_to_index_in_matrix = {}
 	for identifier, term_list in annotations_dict.items():
@@ -324,6 +351,12 @@ def get_similarity_df_using_annotations_unweighted_jaccard(annotations_dict, ont
 	for (p1, p2) in list(itertools.combinations_with_replacement(annotations_dict, 2)):	
 		row = [p1, p2, matrix[identifier_to_index_in_matrix[p1]][identifier_to_index_in_matrix[p2]]]
 		result.loc[len(result)] = row
+	
+	# Return the results.
+	if (duration):
+		end_time = time.perf_counter()
+		duration_in_seconds = end_time-start_time
+		return(result,duration_in_seconds)
 	return(result)
 
 
@@ -331,7 +364,7 @@ def get_similarity_df_using_annotations_unweighted_jaccard(annotations_dict, ont
 
 
 
-def get_similarity_df_using_annotations_weighted_jaccard(annotations_dict, ontology):
+def get_similarity_df_using_annotations_weighted_jaccard(annotations_dict, ontology, duration=False):
 	"""
 	Method for creating a pandas dataframe of similarity values between all passed in object IDs
 	based on the annotations of ontology terms to to all the natural language descriptions that
@@ -349,6 +382,7 @@ def get_similarity_df_using_annotations_weighted_jaccard(annotations_dict, ontol
 	"""
 	
 	# Produce a pandas dataframe to contain the produced results.
+	start_time = time.perf_counter()
 	result = pd.DataFrame(columns=["from", "to", "similarity"])
 	for (p1, p2) in list(itertools.combinations_with_replacement(annotations_dict, 2)):	
 		row = [p1, p2, None]
@@ -375,6 +409,12 @@ def get_similarity_df_using_annotations_weighted_jaccard(annotations_dict, ontol
 			similarity = 0.000
 		else:
 			result.loc[row.Index, "similarity"] = float(intersection_sum)/float(union_sum)
+	
+	# Return the results.
+	if (duration):
+		end_time = time.perf_counter()
+		duration_in_seconds = end_time-start_time
+		return(result,duration_in_seconds)
 	return(result)
 
 
