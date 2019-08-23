@@ -41,7 +41,6 @@ pd.set_option('mode.chained_assignment', None)
 
 
 
-
 # Read in the text descriptions and associated genetic data.
 dataset = Dataset()
 dataset.add_data(pd.read_csv("../data/reshaped/arabidopsis_phenotypes.csv", lineterminator="\n"))
@@ -106,7 +105,7 @@ savings = total_time_mp/sum(durations)
 for (name,duration) in zip(names,durations):
 	print("{:15} {}".format(name, to_hms(duration)))
 print("-----------------------------------------------------------------")
-print("{:15} {}".format("total", to_hms(duration)))
+print("{:15} {}".format("total", to_hms(sum(durations))))
 print("{:15} {} ({:.2%} of single thread time)".format("multiprocess", to_hms(total_time_mp), savings))
 print("\n\n")
 
