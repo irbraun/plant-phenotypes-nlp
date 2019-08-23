@@ -42,6 +42,7 @@ def get_similarity_df_using_fastsemsim(ontology_obo_file, annotated_corpus_tsv_f
 	    ontology_obo_file (str): File specifying the ontology that was used during annotation.
 	    annotated_corpus_tsv_file (str): File specifying the annotations that were made.
 	    object_dict (dict): Mapping between object IDs and the natural language descriptions. 
+	    duration (bool, optional): Set to true to return the runtime for this method in seconds.
 	
 	Returns:
 	    pandas.DataFrame: Each row in the dataframe is [first ID, second ID, similarity].
@@ -116,6 +117,7 @@ def get_similarity_df_using_doc2vec(doc2vec_model_file, object_dict, duration=Fa
 	Args:
 	    doc2vec_model_file (str): File where the Doc2Vec model to be loaded is stored.
 	    object_dict (dict): Mapping between object IDs and the natural language descriptions. 
+	    duration (bool, optional): Set to true to return the runtime for this method in seconds.
 	
 	Returns:
 	    pandas.DataFrame: Each row in the dataframe is [first ID, second ID, similarity].
@@ -202,6 +204,7 @@ def get_similarity_df_using_bagofwords(object_dict, duration=False):
 	
 	Args:
 	    object_dict (dict): Mapping between object IDs and the natural language descriptions. 
+	    duration (bool, optional): Set to true to return the runtime for this method in seconds.
 	
 	Returns:
 	    pandas.DataFrame: Each row in the dataframe is [first ID, second ID, similarity].
@@ -247,7 +250,7 @@ def get_similarity_df_using_setofwords(object_dict, duration=False):
 	
 	Args:
 	    object_dict (dict): Mapping between object IDs and the natural language descriptions. 
-	    duration (bool, optional): Description
+	    duration (bool, optional): Set to true to return the runtime for this method in seconds.
 	
 	Returns:
 	    pandas.DataFrame: Each row in the dataframe is [first ID, second ID, similarity].
@@ -322,6 +325,7 @@ def get_similarity_df_using_annotations_unweighted_jaccard(annotations_dict, ont
 	Args:
 	    annotations_dict (dict): Mapping from object IDs to lists of ontology term IDs.
 	    ontology (Ontology): Ontology object with all necessary fields.
+	    duration (bool, optional): Set to true to return the runtime for this method in seconds.
 	
 	Returns:
 	    pandas.Dataframe: Each row in the dataframe is [first ID, second ID, similarity].
@@ -376,6 +380,7 @@ def get_similarity_df_using_annotations_weighted_jaccard(annotations_dict, ontol
 	Args:
 	    annotations_dict (dict): Mapping from object IDs to lists of ontology term IDs.
 	    ontology (Ontology): Ontology object with all necessary fields.
+	    duration (bool, optional): Set to true to return the runtime for this method in seconds.
 	
 	Returns:
 	    pandas.Dataframe: Each row in the dataframe is [first ID, second ID, similarity].

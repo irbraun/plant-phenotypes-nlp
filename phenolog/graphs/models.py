@@ -15,7 +15,9 @@ import itertools
 import pronto
 from collections import defaultdict
 from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
+
 
 
 
@@ -47,12 +49,8 @@ def apply_weights(df, predictor_columns, weights_dict):
 	multiplied = np.multiply(X,W)
 	y = [np.sum(row) for row in multiplied]
 	df = df[["from", "to"]]
-	df["similarity"] = y
-
-
+	df.loc[:,"similarity"] = y
 	return(df)
-
-
 
 
 def apply_mean(df, predictor_columns):
@@ -64,13 +62,30 @@ def apply_mean(df, predictor_columns):
 
 
 
+
+
+
+
+
 def apply_linear_regression_model(df, predictor_columns, model):
 	X = _get_X(df, predictor_columns)
 	y = model.predict(X)
 	df = df[["from", "to"]]
-	df["similarity"] = y
+	df.loc[:,"similarity"] = y
 	return(df)
 
+
+
+
+def apply_logistic_regression_model(df, predictor_columns, model, positive_label=1):
+	X = _get_X(df, predictor_columns)
+	class_probabilities = model.predict_proba(X)
+	positive_class_label = positive_label
+	positive_class_index = model.classes_.tolist().index(positive_class_label)
+	positive_class_probs = [x[positive_class_index] for x in class_probabilities]
+	df = df[["from", "to"]]
+	df.loc[:,"similarity"] = positive_class_probs
+	return(df)
 
 
 
@@ -81,8 +96,13 @@ def apply_random_forest_model(df, predictor_columns, model, positive_label=1):
 	positive_class_index = model.classes_.tolist().index(positive_class_label)
 	positive_class_probs = [x[positive_class_index] for x in class_probabilities]
 	df = df[["from", "to"]]
-	df["similarity"] = positive_class_probs
+	df.loc[:,"similarity"] = positive_class_probs
 	return(df)
+
+
+
+
+
 
 
 
@@ -99,6 +119,13 @@ def train_linear_regression_model(df, predictor_columns, target_column):
 	intercept = reg.intercept_ 
 	return(reg)
 
+
+
+def train_logistic_regression_model(df, predictor_columns, target_column, solver="liblinear", seed=None):
+	X,y = _get_X_and_y(df, predictor_columns, target_column)
+	lrg = LogisticRegression(random_state=seed, solver=solver)
+	lrg.fit(X,y)
+	return(lrg)
 
 
 

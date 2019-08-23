@@ -97,6 +97,9 @@ def concatenate_with_bar_delim(*tokens):
 	resulting string. This is useful for preparing things like gene names for entry
 	into a table that could be written to a csv where multiple elements need to go 
 	into a single column but a standard delimiter like a comma should not be used.
+	Some of the tokens passed in can strings that are already delimited with a bar 
+	character. These are treated as seperate elements that should be incorporated 
+	into the string that is returned, trailing and leading bars are handled.
 	Args:
 	    *tokens: Description
 	Returns:

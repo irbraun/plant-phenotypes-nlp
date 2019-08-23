@@ -144,7 +144,6 @@ class Pathways:
 
         Returns:
             pandas.DataFrame: The dataframe containing all relevant information about all applicable KEGG pathways.
-
         """
 
         col_names = ["species", "pathway_id", "pathway_name", "gene_names", "ncbi_id", "uniprot_id", "ko_number", "ec_number"]
@@ -265,9 +264,64 @@ class Pathways:
 
 
 
+
+
     def write_to_csv(self, path):
+        """
+        Write the contents of the combined dataframe for all the pathway inforomation
+        out to a csv file. 
+        Args:
+            path (str): Full path to where the output file should be written.
+        """
         df = pd.concat(self.species_to_df_dict.values(), ignore_index=True) 
         df.to_csv(path, index=False)
+
+
+
+
+    
+    def get_complete_df_all_species(self):
+        """
+        Returns a df with the contents of the combined dataframe for all the pathway
+        information that is used for this dataset. This the same dataframe that is
+        built when the function to write the objecj to a csv is called.
+        Returns:
+            pandas.DataFrame: The resulting dataframe object.
+        """
+        df = pd.concat(self.species_to_df_dict.values(), ignore_index=True) 
+        return(df)
+
+
+
+
+
+    def get_representation_df_by_species(self):
+        """
+        Get a dataframe with pathways as rows and species as columns. The values in the 
+        dataframe correspond to the number of genes from each species that are mapped to
+        that pathway in the dataset.
+        Returns:
+            pandas.DataFrame: The resulting dataframe object.
+        """
+        col_names = ["pathway_id"]
+        col_names.extend(self.species_list)
+        df_summary = pd.DataFrame(columns=col_names)
+        df_all_data = pd.concat(self.species_to_df_dict.values(), ignore_index=True) 
+        pathway_ids = pd.unique(df_all_data["pathway_id"])
+        for pathway_id in pathway_ids:
+            row = {"pathway_id":pathway_id}
+            for species in self.species_list:
+                row[species] = len(self.species_to_fwd_gene_mappings[species][pathway_id])
+            df_summary = df_summary.append(row, ignore_index=True, sort=False)
+        return(df_summary)
+
+
+
+
+
+
+
+
 
 
 

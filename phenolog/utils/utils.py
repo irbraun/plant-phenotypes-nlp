@@ -13,6 +13,7 @@ import string
 import itertools
 import pronto
 import pickle
+import time
 from collections import defaultdict
 
 
@@ -21,6 +22,12 @@ from collections import defaultdict
 def function_wrapper(function, args):
 	result = function(*args)
 	return(result)
+
+
+
+def to_hms(num_seconds):
+	hms_str = time.strftime('%H:%M:%S',time.gmtime(num_seconds))
+	return(hms_str)
 
 
 
