@@ -33,6 +33,7 @@ from phenolog.graphs.models import train_random_forest_model
 from phenolog.graphs.models import apply_random_forest_model
 
 from phenolog.datasets.pathways import Pathways
+from phenolog.utils.utils import load_from_pickle
 
 
 
@@ -98,7 +99,7 @@ df = combine_dfs_with_name_dict(name_to_df_mapping)
 
 # Look at how long it took to build each pairwise similarity matrix.
 print("\n\n")
-print("Durations of generating each pairwise similarity matrix (seconds)")
+print("Durations of generating each pairwise similarity matrix (hh:mm:ss)")
 print("-----------------------------------------------------------------")
 durations = [result[1] for result in results]
 savings = total_time_mp/sum(durations)
@@ -114,15 +115,8 @@ print("\n\n")
 
 
 
-# Create the pathways object.
-species_dict = {
-    "ath":"../data/pathways/plantcyc/aracyc_pathways.20180702", 
-    "zma":"../data/pathways/plantcyc/corncyc_pathways.20180702", 
-    "mtr":"../data/pathways/plantcyc/mtruncatulacyc_pathways.20180702", 
-    "osa":"../data/pathways/plantcyc/oryzacyc_pathways.20180702", 
-    "gmx":"../data/pathways/plantcyc/soycyc_pathways.20180702",
-    "sly":"../data/pathways/plantcyc/tomatocyc_pathways.20180702"}
-pathways = Pathways(species_dict, source="pmn")
+# Load pathway object previously created and pickled.
+pathways = load_from_pickle(path="../data/pickles/kegg_pathways.pickle")
 
 
 
