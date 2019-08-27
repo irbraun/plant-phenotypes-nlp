@@ -23,7 +23,7 @@ class Pathways:
 
 
         # Create one dataframe and pair of dictionaries for each species code.
-        self.species_list = species_dict.keys()
+        self.species_list = list(species_dict.keys())
         self.species_to_df_dict = {}
         self.species_to_fwd_gene_mappings = {}
         self.species_to_rev_gene_mappings = {}
@@ -154,15 +154,15 @@ class Pathways:
         pathways = REST.kegg_list("pathway", kegg_species_abbreviation)
         pathway_ids_dict = {}
 
-        limit = 5
-        ctr = 0
+        #limit = 5
+        #ctr = 0
 
         for pathway in pathways:
 
             # Check if limit reached.
-            ctr = ctr+1
-            if ctr>limit:
-                break
+            #ctr = ctr+1
+            #if ctr>limit:
+            #    break
 
             # Continue.
             pathway_file = REST.kegg_get(dbentries=pathway).read()

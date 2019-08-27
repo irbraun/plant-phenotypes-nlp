@@ -31,7 +31,7 @@ class Dataset:
 
 
 	def __init__(self):
-		self.col_names = ["id", "species", "description", "gene_names", "pmid"]
+		self.col_names = ["id", "species", "gene_names", "description", "terms", "reference"]
 		self.col_names_without_id = self.col_names
 		self.col_names_without_id.remove("id")
 		self.df = pd.DataFrame(columns=self.col_names)
@@ -57,7 +57,7 @@ class Dataset:
 
 	def _reset_ids(self):
 		self.df.id = [str(i) for i in self.df.index.values]
-		self.df = self.df[["id", "species", "description", "gene_names", "pmid"]]
+		self.df = self.df[["id", "species", "gene_names", "description", "terms", "evidence", "reference"]]
 
 
 
@@ -77,6 +77,7 @@ class Dataset:
 	def get_description_dictionary(self):
 		description_dict = {identifier:description for (identifier,description) in zip(self.df.id, self.df.description)}
 		return(description_dict)
+
 
 
 
