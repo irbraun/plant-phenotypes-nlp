@@ -12,8 +12,9 @@ import fastsemsim as fss
 import string
 import itertools
 import pronto
-import pickle
+import _pickle as pickle
 import time
+import json
 from collections import defaultdict
 
 
@@ -25,6 +26,8 @@ def function_wrapper(function, args):
 
 
 
+
+
 def to_hms(num_seconds):
 	hms_str = time.strftime('%H:%M:%S',time.gmtime(num_seconds))
 	return(hms_str)
@@ -32,11 +35,9 @@ def to_hms(num_seconds):
 
 
 
+
 def save_to_pickle(obj, path):
 	pickle.dump(obj, open(path,"wb"))
-
-
-
 
 def load_from_pickle(path):
 	obj = pickle.load(open(path,"rb"))
