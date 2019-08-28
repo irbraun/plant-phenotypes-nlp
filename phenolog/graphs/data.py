@@ -62,6 +62,9 @@ def subset_df_based_on_ids(df, ids):
 
 
 
+
+
+
 def _verify_dfs_are_consistent(*similarity_dfs):
 	"""Check that each dataframe specifies the same set of edges.
 	Args:
@@ -76,3 +79,7 @@ def _verify_dfs_are_consistent(*similarity_dfs):
 	for (s1, s2) in list(itertools.combinations_with_replacement(id_sets, 2)):	
 		if not len(s1.difference(s2)) == 0:
 			raise ValueError("Dataframes specifying networks are not consisent.")
+
+
+
+

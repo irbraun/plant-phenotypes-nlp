@@ -48,7 +48,7 @@ dataset.add_data(pd.read_csv("../data/reshaped/arabidopsis_go_annotations.csv", 
 dataset.add_data(pd.read_csv("../data/reshaped/arabidopsis_descriptions.csv", lineterminator="\n"))
 dataset.add_data(pd.read_csv("../data/reshaped/maize_descriptions.csv", lineterminator="\n"))
 dataset.add_data(pd.read_csv("../data/reshaped/pppn_dataset.csv", lineterminator="\n"))
-dataset.randomly_subsample_dataset(n=40, seed=78263)
+dataset.randomly_subsample_dataset(n=200, seed=78263)
 
 # Get dictionaries mapping IDs to text descriptions or genes.
 descriptions = dataset.get_description_dictionary()
@@ -122,18 +122,19 @@ print("\n\n")
 
 
 # Load pathway object previously created and pickled.
-pathways = load_from_pickle(path="../data/pickles/kegg_pathways.pickle")
+pathways = load_from_pickle(path="../data/pickles/pmn_pathways.pickle")
 
 
 
 # Find the subset of information (IDs) that have associated pathway data.
-pathway_membership = pathways.get_pathway_dict(genes)
-ids_with_pathway_info = [identifer for (identifer,pathway_list) in pathway_membership.items() if len(pathway_list)>0]
+id_to_pathway_ids = pathways.get_fwd_pathway_dict(genes)
+pathway_id_to_ids = pathways.get_rev_pathway_dict(genes)
+ids_with_pathway_info = [identifer for (identifer,pathway_list) in id_to_pathway_ids.items() if len(pathway_list)>0]
 df_train = subset_df_based_on_ids(df,ids_with_pathway_info)
 
 
 # Assign target classes to each pair of IDs based on whether they share pathway membership.
-target_classes = [int(len(set(pathway_membership[id1]).intersection(set(pathway_membership[id2])))>0) for (id1,id2) in zip(df_train["from"].values,df_train["to"].values)]
+target_classes = [int(len(set(id_to_pathway_ids[id1]).intersection(set(id_to_pathway_ids[id2])))>0) for (id1,id2) in zip(df_train["from"].values,df_train["to"].values)]
 df_train.loc[:,"class"] = target_classes
 
 
@@ -157,6 +158,18 @@ print(df)
 
 
 
+
+
+from phenolog.objectives.functions import classification
+from phenolog.objectives.functions import consistency_index
+from phenolog.graphs.graph import Graph
+from phenolog.objectives.functions import pr_curve
+
+g = Graph(df=df, value="doc2vec")
+a,b = classification(graph=g, id_to_labels=id_to_pathway_ids, label_to_ids=pathway_id_to_ids)
+mapp = consistency_index(graph=g, id_to_labels=id_to_pathway_ids, label_to_ids=pathway_id_to_ids)
+for m in mapp.items():
+	print(m)
 
 
 

@@ -49,12 +49,29 @@ class Pathways:
 
 
 
-    # Returns a mapping from IDs to lists of pathway IDs.
-    def get_pathway_dict(self, gene_dict):
+    # Returns a mapping from (object) IDs to lists of pathway IDs.
+    def get_fwd_pathway_dict(self, gene_dict):
         membership_dict = {}
         for gene_id, gene_obj in gene_dict.items():
             membership_dict[gene_id] = self.get_pathway_ids_from_gene_obj(gene_obj)
         return(membership_dict)
+
+
+    # Returns a mapping from pathway IDs to lists of (object) IDs.
+    def get_rev_pathway_dict(self, gene_dict):
+        reverse_membership_dict = defaultdict(list)
+        for gene_id, gene_obj in gene_dict.items():
+            pathway_ids = self.get_pathway_ids_from_gene_obj(gene_obj)
+            for pathway_id in pathway_ids:
+                reverse_membership_dict[pathway_id].append(gene_id)
+        return(reverse_membership_dict)
+
+
+
+
+
+
+
 
 
     # Returns a list of pathway IDs.
