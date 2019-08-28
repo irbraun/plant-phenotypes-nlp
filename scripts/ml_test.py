@@ -44,16 +44,22 @@ pd.set_option('mode.chained_assignment', None)
 
 # Read in the text descriptions and associated genetic data.
 dataset = Dataset()
-dataset.add_data(pd.read_csv("../data/reshaped/arabidopsis_phenotypes.csv", lineterminator="\n"))
-dataset.add_data(pd.read_csv("../data/reshaped/maize_phenotypes.csv", lineterminator="\n"))
-dataset.add_data(pd.read_csv("../data/reshaped/ppn_phenotypes.csv", lineterminator="\n"))
-dataset.add_data(pd.read_csv("../data/reshaped/ppn_phenes.csv", lineterminator="\n"))
+dataset.add_data(pd.read_csv("../data/reshaped/arabidopsis_go_annotations.csv", lineterminator="\n"))
+dataset.add_data(pd.read_csv("../data/reshaped/arabidopsis_descriptions.csv", lineterminator="\n"))
+dataset.add_data(pd.read_csv("../data/reshaped/maize_descriptions.csv", lineterminator="\n"))
+dataset.add_data(pd.read_csv("../data/reshaped/pppn_dataset.csv", lineterminator="\n"))
 dataset.randomly_subsample_dataset(n=40, seed=78263)
 
 # Get dictionaries mapping IDs to text descriptions or genes.
 descriptions = dataset.get_description_dictionary()
 descriptions = {i:get_clean_description(d) for (i,d) in descriptions.items()}
 genes = dataset.get_gene_dictionary()
+
+
+
+
+
+
 
 # Setup some of the ontology and document embeddings stuff.
 merged_ontology_file = "../ontologies/mo.obo"
