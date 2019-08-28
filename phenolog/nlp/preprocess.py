@@ -86,6 +86,7 @@ def concatenate_with_bar_delim(*tokens):
 	tokens = [token.split("|") for token in tokens]
 	tokens = itertools.chain.from_iterable(tokens)
 	tokens = filter(None, tokens)
+	tokens = [token.strip() for token in tokens]
 	joined = "|".join(tokens).strip()
 	joined = remove_newlines(joined)
 	return(joined)
@@ -252,7 +253,7 @@ def concatenate_descriptions(*descriptions):
 ############### Other useful methods for looking at source data ################
 
 
-def get_list_of_ontology_ids(string):
+def get_ontology_ids(string):
 	"""
 	Find all ontology IDs inside of some text. This makes the assumption that
 	all (and exactly) seven digits of the ontology term ID number are included,
