@@ -17,6 +17,7 @@ import time
 import json
 from collections import defaultdict
 
+from phenolog.utils import constants
 
 
 
@@ -31,6 +32,18 @@ def function_wrapper(function, args):
 def to_hms(num_seconds):
 	hms_str = time.strftime('%H:%M:%S',time.gmtime(num_seconds))
 	return(hms_str)
+
+
+
+
+def to_abbreviation(name, mapping=None):
+	if not mapping == None:
+		return(mapping[name])
+	else:
+		return(constants.ABBREVIATIONS_MAP[name])
+
+
+
 
 
 
