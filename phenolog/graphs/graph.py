@@ -26,15 +26,9 @@ class Graph:
 
 
 	def __init__(self, df, value):
-
-		df["fromm"] = df["from"]
-		df["too"] = df["to"]
-
 		self.ids_in_graph = self._get_ids_in_graph(df)
 		self.id_to_array_index = self._get_mapping_from_id_to_index(df)
 		self.np_array = self._to_np_array(df, value)
-
-
 
 
 	def _get_ids_in_graph(self, df):
@@ -43,9 +37,6 @@ class Graph:
 		ids_set.update(list(pd.unique(df["to"].values)))
 		ids = list(ids_set)
 		return(ids)
-
-
-
 
 
 	def _get_mapping_from_id_to_index(self, df):
