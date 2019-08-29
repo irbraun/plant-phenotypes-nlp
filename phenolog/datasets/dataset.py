@@ -37,6 +37,14 @@ class Dataset:
 		self.df = pd.DataFrame(columns=self.col_names)
 
 	def _reset_ids(self):
+		"""
+		This method is called after every preprocessing, subsampling, sorting, or merging step
+		done during the preprocessing and creation of a given dataset. It resets the actual row
+		indices of the internal dataframe object, forgets the old ones, and uses the new ones 
+		to populate a column to use as IDs for entries in the dataset. This ensures that there
+		will always be a ID value to access where the IDs are always unique integers.
+		"""
+		self.df.reset_index(drop=True,inplace=True)
 		self.df.id = [str(i) for i in self.df.index.values]
 		self.df = self.df[["id", "species", "gene_names", "description", "term_ids", "pmid"]]
 
@@ -60,7 +68,6 @@ class Dataset:
 		df_newlines.fillna("", inplace=True)
 		self.df = self.df.append(df_newlines, ignore_index=True, sort=False)
 		self.df = self.df.drop_duplicates(keep="first", inplace=False)
-		self.df.reset_index(drop=True, inplace=True)
 		self._reset_ids()
 
 
@@ -142,9 +149,41 @@ class Dataset:
 
 
 
+	def collapse_by_first_gene_name(self):
+		"""
+		This method reorganizes the internal dataframe object so that any lines that were referring
+		to the same species and where the first value in the list of gene names is identical for 
+		the entry are merged. Text descriptions are concatenated and a union of the gene names, term
+		IDs and references are retained. This is much faster than collapsing based on all the gene
+		names because it can use the groupby because it's looking at a single value rather than 
+		overlap in a list of values. 
+		"""
+
+		# Create the column that can be used to group by.
+		self.df["first_gene_name"] = self.df["gene_names"].apply(lambda x: x.split("|")[0])
+		self.df["first_gene_name"] = self.df["first_gene_name"]+":"+self.df["species"]
+
+		# Groupy by that column and merge the other fields appropriately.
+		collapsed_df = self.df.groupby("first_gene_name").agg({"species": lambda x: x.values[0],
+																"gene_names": lambda x: concatenate_with_bar_delim(*x),
+																"description":lambda x: concatenate_descriptions(*x),
+																"term_ids":lambda x: concatenate_with_bar_delim(*x),
+																"pmid":lambda x: concatenate_with_bar_delim(*x)})
+		collapsed_df["id"] = None
+		self.df = collapsed_df
+		self._reset_ids()
 
 
-	def collapse_by_gene_names(self):
+
+
+
+
+
+
+
+
+
+	def collapse_by_all_gene_names(self):
 		"""
 		This method reorganizes the internal dataframe object so that any lines that were referring
 		to the same species and that have an overlap of atleast one in the gene names that were included
@@ -211,13 +250,21 @@ class Dataset:
 
 		# Retain only the newly added rows, reset the ID values for each row that correspond to one node.
 		self.df = self.df.iloc[-num_new_rows:]
-		self.df.reset_index(drop=True, inplace=True)
 		self._reset_ids()
 
 
 
 
 
+	def sort_by_species(self):
+		self.df.sort_values(by=["species"], inplace=True)
+		self._reset_ids()
+
+
+
+	def write_to_csv(self, path):
+		self.sort_by_species()
+		self.df.to_csv(path, index=False)
 
 
 
