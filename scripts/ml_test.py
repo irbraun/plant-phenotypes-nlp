@@ -33,7 +33,8 @@ from phenolog.graphs.models import train_random_forest_model
 from phenolog.graphs.models import apply_random_forest_model
 
 from phenolog.datasets.pathways import Pathways
-from phenolog.utils.utils import load_from_pickle
+from phenolog.utils.utils import save_to_pickle, load_from_pickle
+
 
 
 
@@ -47,8 +48,21 @@ dataset = Dataset()
 dataset.add_data(pd.read_csv("../data/reshaped/arabidopsis_go_annotations.csv", lineterminator="\n"))
 dataset.add_data(pd.read_csv("../data/reshaped/arabidopsis_descriptions.csv", lineterminator="\n"))
 dataset.add_data(pd.read_csv("../data/reshaped/maize_descriptions.csv", lineterminator="\n"))
+dataset.add_data(pd.read_csv("../data/reshaped/oryzabase_dataset.csv", lineterminator="\n"))
 dataset.add_data(pd.read_csv("../data/reshaped/pppn_dataset.csv", lineterminator="\n"))
-dataset.randomly_subsample_dataset(n=200, seed=78263)
+
+# Filtering the data that was available from those files.
+dataset.collapse_by_first_gene_name()
+dataset.subsample_has_description()
+dataset.subsample_has_annotation()
+
+# Randomly subsampling the data.
+dataset.randomly_subsample_dataset(n=100, seed=78263)
+
+
+
+
+
 
 # Get dictionaries mapping IDs to text descriptions or genes.
 descriptions = dataset.get_description_dictionary()
@@ -140,7 +154,7 @@ df_train.loc[:,"class"] = target_classes
 
 
 
-
+'''
 # Train the random forest on this subset, then apply to the whole dataset.
 model = train_random_forest_model(df=df_train, predictor_columns=names, target_column="class")
 df_rf = apply_random_forest_model(df=df, predictor_columns=names, model=model)
@@ -155,7 +169,7 @@ model = train_logistic_regression_model(df=df_train, predictor_columns=names, ta
 df_lr = apply_logistic_regression_model(df=df, predictor_columns=names, model=model)
 df.loc[:,"logreg"] = df_lr["similarity"].values
 print(df)
-
+'''
 
 
 
@@ -163,9 +177,13 @@ print(df)
 from phenolog.objectives.functions import classification
 from phenolog.objectives.functions import consistency_index
 from phenolog.graphs.graph import Graph
-from phenolog.objectives.functions import pr_curve
+from phenolog.objectives.functions import pr
 
 g = Graph(df=df, value="doc2vec")
+
+
+
+
 a,b = classification(graph=g, id_to_labels=id_to_pathway_ids, label_to_ids=pathway_id_to_ids)
 mapp = consistency_index(graph=g, id_to_labels=id_to_pathway_ids, label_to_ids=pathway_id_to_ids)
 for m in mapp.items():
