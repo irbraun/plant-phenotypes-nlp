@@ -87,6 +87,7 @@ def concatenate_with_bar_delim(*tokens):
 	tokens = itertools.chain.from_iterable(tokens)
 	tokens = filter(None, tokens)
 	tokens = [token.strip() for token in tokens]
+	tokens = list(set(tokens)) # Remove duplicates that may have been introduced.
 	joined = "|".join(tokens).strip()
 	joined = remove_newlines(joined)
 	return(joined)
