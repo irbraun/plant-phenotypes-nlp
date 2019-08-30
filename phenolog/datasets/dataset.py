@@ -72,29 +72,38 @@ class Dataset:
 
 
 
-	def randomly_subsample_dataset(self, n, seed):
-		"""Remove all but n randomly sampled points from the dataset.
+	def filter_random_k(self, k, seed):
+		"""Remove all but k randomly sampled points from the dataset.
 		Args:
-		    n (int): The number of datapoints or rows to retain.
+		    k (int): The number of datapoints or rows to retain.
 		    seed (int): Seed value for reproducibility of random process.
 		"""
-		self.df = self.df.sample(n=n, random_state=seed)
+		self.df = self.df.sample(n=k, random_state=seed)
 		self._reset_ids()
 
 
 
-	def subsample_has_description(self):
+	def filter_has_description(self):
 		"""Remove points that don't have a text description.
 		"""
 		self.df = self.df[self.df["description"] != ""] 
 		self._reset_ids()
 
 
-	def subsample_has_annotation(self):
+	def filter_has_annotation(self):
 		"""Remove points that don't have atleast one ontology term annotation.
 		"""
 		self.df = self.df[self.df["term_ids"] != ""]
 		self._reset_ids()
+
+
+
+	def filter_with_ids(self, ids):
+		"""Retain only points that have IDs in the list. 
+		"""
+		self.df = self.df[self.df["id"].isin(ids)]
+		self._reset_ids()
+
 
 
 

@@ -94,14 +94,18 @@ def concatenate_with_bar_delim(*tokens):
 
 
 
-def comma_delim_to_bar_delim(string):
-	"""Convert string delimited with commas to one delimited with bars.
+def other_delim_to_bar_delim(string, delim):
+	"""Convert string delimited with some character (semicolon, comma, etc) to one delimited with bars.
 	"""
-	tokens = string.split(",")
+	if not len(delim) == 1:
+		raise ValueError("delimiter {} is not a single character".format(delim))
+	tokens = string.split(delim)
 	tokens = [token.strip() for token in tokens]
 	joined = "|".join(tokens)
 	joined = remove_newlines(joined)
 	return(joined)
+
+
 
 
 

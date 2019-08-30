@@ -57,7 +57,7 @@ dataset.subsample_has_description()
 dataset.subsample_has_annotation()
 
 # Randomly subsampling the data.
-dataset.randomly_subsample_dataset(n=100, seed=78263)
+dataset.filter_random_k(k=200, seed=78263)
 
 
 

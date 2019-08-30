@@ -49,7 +49,7 @@ def combine_dfs_with_name_dict(dfs_dict):
 
 
 
-def subset_df_based_on_ids(df, ids):
+def subset_df_with_ids(df, ids):
 	df = df[df["from"].isin(ids) & df["to"].isin(ids)]
 	return(df)
 
