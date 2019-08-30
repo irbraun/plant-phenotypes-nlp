@@ -14,12 +14,31 @@ from phenolog.utils.constants import REFGEN_V3_TAG, REFGEN_V4_TAG, NCBI_TAG, UNI
 
 
 
-class Pathways:
+class Groupings:
 
 
 
 
     def __init__(self, species_dict, source):
+
+
+
+        """
+        The dataframe for each species is only for viewing the input data, should not be used for anything else
+        because the columns names are not meant to be consisent between different types of input data, such as 
+        searching for pathway information from a database or providing your own CSV file of gene to group mappings.
+        Only then number of rows should be allowed to be used as a value to be obtained from these dataframes,
+        because it's not dependent on column name and always indicates the number of records look at generally.
+
+        The pair of dictionaries for each species is always the same however. There is forward mapping between 
+        group IDs (no matter what the groups are) and gene names, and a reverse mapping between gene names and 
+        group IDs.
+
+        When providing a CSV, the first two columns are always used, and no header should be included. The first
+        column is assumed to be group IDs (bar delimited if there are more than one mentioned on a line), and the
+        second column is assumed to be gene names (bar delimited if there are more than one mentioned on a line).
+        For a given row, all gene names are assumed to be members of all group IDs mentioned.
+        """
 
 
         # Create one dataframe and pair of dictionaries for each species code.
@@ -29,18 +48,24 @@ class Pathways:
         self.species_to_rev_gene_mappings = {}
         for species,path in species_dict.items():
             
+            # Use the PlantCyc files from PMN as the source of the groupings.
             if source.lower() == "plantcyc" or source.lower() == "pmn":
                 df = self._get_plantcyc_pathway_dataframe(species,path)
                 fwd_mapping, rev_mapping = self._get_plantcyc_pathway_gene_mappings(species, df)
             
+            # Use the KEGG REST API to obtain the groupings.
             elif source.lower() == "kegg":
                 df = self._get_kegg_pathway_dataframe(species)
                 fwd_mapping, rev_mapping = self._get_kegg_pathway_gene_mappings(species, df)
-            
+
+            # Use any arbitrary CSV file that is provided as the soure for the groupings.
+            elif source.lower() == "csv":
+                df = self._get_dataframe_from_csv(species,path)
+                fwd_mapping, rev_mapping = self._get_gene_mappings_from_csv(species, df)
+
+            # Not supporting whatever type of source string was provided yet.
             else:
-                print("name of source ({}) not recognized, attempting to use PlantCyc".format(source))
-                df = self._get_plantcyc_pathway_dataframe(species,path)
-                fwd_mapping, rev_mapping = self._get_plantcyc_pathway_gene_mappings(species, df)
+                raise ValueError("name of groupings source ({}) not recognized, attempting to use PlantCyc".format(source))
 
             self.species_to_df_dict[species] = df            
             self.species_to_fwd_gene_mappings[species] = fwd_mapping
@@ -49,21 +74,32 @@ class Pathways:
 
 
 
-    # Returns a mapping from (object) IDs to lists of pathway IDs.
-    def get_fwd_pathway_dict(self, gene_dict):
+
+
+
+
+
+
+
+
+
+
+
+    # Returns a mapping from (object) IDs to lists of group IDs.
+    def get_forward_dict(self, gene_dict):
         membership_dict = {}
         for gene_id, gene_obj in gene_dict.items():
-            membership_dict[gene_id] = self.get_pathway_ids_from_gene_obj(gene_obj)
+            membership_dict[gene_id] = self.get_group_ids_from_gene_obj(gene_obj)
         return(membership_dict)
 
 
-    # Returns a mapping from pathway IDs to lists of (object) IDs.
-    def get_rev_pathway_dict(self, gene_dict):
+    # Returns a mapping from group IDs to lists of (object) IDs.
+    def get_reverse_dict(self, gene_dict):
         reverse_membership_dict = defaultdict(list)
         for gene_id, gene_obj in gene_dict.items():
-            pathway_ids = self.get_pathway_ids_from_gene_obj(gene_obj)
-            for pathway_id in pathway_ids:
-                reverse_membership_dict[pathway_id].append(gene_id)
+            group_ids = self.get_group_ids_from_gene_obj(gene_obj)
+            for group_id in group_ids:
+                reverse_membership_dict[group_id].append(gene_id)
         return(reverse_membership_dict)
 
 
@@ -74,23 +110,23 @@ class Pathways:
 
 
 
-    # Returns a list of pathway IDs.
-    def get_pathway_ids_from_gene_obj(self, gene_obj):
-        pathway_ids = []
+
+
+    # Returns a list of group IDs.
+    def get_group_ids_from_gene_obj(self, gene_obj):
+        group_ids = []
         species = gene_obj.species
         gene_names = gene_obj.names
-        pathway_ids.extend(list(itertools.chain.from_iterable([self.species_to_rev_gene_mappings[species][name] for name in gene_names])))
-        return(pathway_ids)
+        group_ids.extend(list(itertools.chain.from_iterable([self.species_to_rev_gene_mappings.get(species,{}).get(name,[]) for name in gene_names])))
+        return(group_ids)
 
-
-    # Returns a list of pathways IDs.
-    def get_pathway_ids_from_gene_name(self, species, gene_name):
+    # Returns a list of group IDs.
+    def get_group_ids_from_gene_name(self, species, gene_name):
         return(self.species_to_rev_gene_mappings[species][name])
 
-
     # Returns a list of gene names.
-    def get_gene_names_from_pathway_id(self, species, pathway_id):
-        return(self.species_to_fwd_gene_mappings[species][pathway_id])
+    def get_gene_names_from_group_id(self, species, group_id):
+        return(self.species_to_fwd_gene_mappings[species][group_id])
 
 
 
@@ -102,9 +138,12 @@ class Pathways:
 
 
 
+
+
+
+    #################### Methods specific to handling the PlantCyc files obtained through PMN ####################
 
     def _get_plantcyc_pathway_dataframe(self, species_code, pathways_filepath):
-
         usecols = ["Pathway-id", "Pathway-name", "Reaction-id", "EC", "Protein-id", "Protein-name", "Gene-id", "Gene-name"]
         usenames = ["pathway_id", "pathway_name", "reaction_id", "ec_number", "protein_id", "protein_name", "gene_id", "gene_name"]
         renamed = {k:v for k,v in zip(usecols,usenames)}
@@ -121,11 +160,7 @@ class Pathways:
         df = df[["species", "pathway_id", "pathway_name", "gene_names", "ec_number"]]
         return(df)
 
-
-
-
     def _get_plantcyc_pathway_gene_mappings(self, species_code, pathways_df):
-        
         pathway_dict_fwd = defaultdict(list)
         pathway_dict_rev = defaultdict(list)
         delim = "|"
@@ -145,6 +180,12 @@ class Pathways:
 
 
 
+
+
+
+
+
+    #################### Methods specific to using KEGG through the REST API ####################
 
 
     def _get_kegg_pathway_dataframe(self, kegg_species_abbreviation):
@@ -171,17 +212,8 @@ class Pathways:
         pathways = REST.kegg_list("pathway", kegg_species_abbreviation)
         pathway_ids_dict = {}
 
-        #limit = 5
-        #ctr = 0
-
         for pathway in pathways:
 
-            # Check if limit reached.
-            #ctr = ctr+1
-            #if ctr>limit:
-            #    break
-
-            # Continue.
             pathway_file = REST.kegg_get(dbentries=pathway).read()
             for line in pathway_file.rstrip().split("\n"):
                 section = line[:12].strip()
@@ -250,11 +282,6 @@ class Pathways:
         return(df)
 
 
-
-
-
-
-
     def _get_kegg_pathway_gene_mappings(self, kegg_species_abbreviation, kegg_pathways_df):
         """ Obtain forward and reverse mappings between pathways and gene names.
         Args:
@@ -283,6 +310,51 @@ class Pathways:
 
 
 
+
+
+
+
+
+
+    #################### Methods for using an arbitrary CSV to define pathways (or pathway-like groups) ####################
+
+    def _get_dataframe_from_csv(self, species_code, filepath):
+        df = pd.read_csv(filepath,usecols=[0,1])
+        df.columns = ["group_id","gene_names"]
+        df["species"] = species_code
+        df = df[["species","group_id","gene_names"]]
+        return(df)
+
+    def _get_gene_mappings_from_csv(self, species_code, df):
+        group_dict_fwd = defaultdict(list)
+        group_dict_rev = defaultdict(list)
+        delim = "|"
+        for row in df.itertuples():
+            gene_names = row.gene_names.strip().split(delim)
+            group_ids = row.group_id.strip().split(delim)
+            for gene_name in gene_names:
+                for group_id in group_ids:
+                    group_dict_fwd[group_id].append(gene_name)
+                    group_dict_rev[gene_name].append(group_id)
+        return(group_dict_fwd, group_dict_rev)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     def write_to_csv(self, path):
         """
         Write the contents of the combined dataframe for all the pathway inforomation
@@ -297,7 +369,7 @@ class Pathways:
 
 
     
-    def get_complete_df_all_species(self):
+    def get_df(self):
         """
         Returns a df with the contents of the combined dataframe for all the pathway
         information that is used for this dataset. This the same dataframe that is
@@ -311,7 +383,7 @@ class Pathways:
 
 
 
-
+    '''
     def get_representation_df_by_species(self):
         """
         Get a dataframe with pathways as rows and species as columns. The values in the 
@@ -331,15 +403,12 @@ class Pathways:
                 row[species] = len(self.species_to_fwd_gene_mappings[species][pathway_id])
             df_summary = df_summary.append(row, ignore_index=True, sort=False)
         return(df_summary)
+    '''
 
 
 
 
-
-
-
-
-
+    
 
 
 
@@ -347,13 +416,12 @@ class Pathways:
 
 
     def describe(self):
-        print("Number of pathways found for each species")
+        print("Number of groups present for each species")
         for species in self.species_list:
             print("  {}: {}".format(species, len(self.species_to_fwd_gene_mappings[species].keys())))
-        print("Number of gene entries found mapped to pathways by species")
+        print("Number of entries present in the input data for each species")
         for species in self.species_list:
-            query_str = "species=='{}'".format(species)
-            print("  {}: {}".format(species, len(self.species_to_df_dict[species].query(query_str))))
+            print("  {}: {}".format(species, len(self.species_to_df_dict[species])))
         print("Number of genes names found mapped to pathways by species")
         for species in self.species_list:
             print("  {}: {}".format(species, len(self.species_to_rev_gene_mappings[species].keys())))
