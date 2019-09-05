@@ -2,11 +2,9 @@ import sys
 import pandas as pd
 import numpy as np
 
-
-sys.path.append("../.")
-from phenolog.datasets.groupings import Groupings
-from phenolog.utils.utils import save_to_pickle, load_from_pickle
-from phenolog.nlp.preprocess import other_delim_to_bar_delim, concatenate_with_bar_delim
+from oats.datasets.groupings import Groupings
+from oats.utils.utils import save_to_pickle, load_from_pickle
+from oats.nlp.preprocess import other_delim_to_bar_delim, concatenate_with_bar_delim
 
 
 

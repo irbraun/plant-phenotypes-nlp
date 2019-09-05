@@ -5,13 +5,20 @@ import numpy as np
 import itertools
 import re
 
-sys.path.append("../.")
-import phenolog.nlp.preprocess
-import phenolog.utils.constants
-from phenolog.nlp.preprocess import add_prefix
-from phenolog.nlp.preprocess import concatenate_with_bar_delim
-from phenolog.nlp.preprocess import get_ontology_ids
-from phenolog.utils.utils import to_abbreviation
+import oats.utils.constants as constants
+from oats.utils.utils import to_abbreviation
+
+from oats.nlp.preprocess import add_prefix
+from oats.nlp.preprocess import concatenate_with_bar_delim
+from oats.nlp.preprocess import other_delim_to_bar_delim
+from oats.nlp.preprocess import get_ontology_ids
+from oats.nlp.preprocess import concatenate_descriptions
+from oats.nlp.preprocess import remove_character
+from oats.nlp.preprocess import remove_punctuation
+from oats.nlp.preprocess import handle_synonym_in_parentheses
+from oats.nlp.preprocess import remove_enclosing_brackets
+from oats.nlp.preprocess import remove_short_tokens
+from oats.nlp.preprocess import concatenate_with_bar_delim
 
 
 
@@ -131,12 +138,12 @@ df = pd.read_table(filename, usecols=usecols)
 df.fillna("", inplace=True)
 
 # Column manipulation that's specific to this dataset.
-df["description"] = np.vectorize(phenolog.nlp.preprocess.concatenate_descriptions)(df["phenotype_name"], df["phenotype_description"])
-df["v3_gene_model"] = df["v3_gene_model"].apply(add_prefix, prefix=phenolog.utils.constants.REFGEN_V3_TAG)
-df["v4_gene_model"] = df["v4_gene_model"].apply(add_prefix, prefix=phenolog.utils.constants.REFGEN_V4_TAG)
-df["uniprot_id"] = df["uniprot_id"].apply(add_prefix, prefix=phenolog.utils.constants.UNIPROT_TAG)
-df["ncbi_gene"] = df["ncbi_gene"].apply(add_prefix, prefix=phenolog.utils.constants.NCBI_TAG)
-df["gene_names"] = np.vectorize(phenolog.nlp.preprocess.concatenate_with_bar_delim)(df["locus_name"], df["alleles"], df["locus_synonyms"], df["v3_gene_model"], df["v4_gene_model"], df["uniprot_id"], df["ncbi_gene"])
+df["description"] = np.vectorize(concatenate_descriptions)(df["phenotype_name"], df["phenotype_description"])
+df["v3_gene_model"] = df["v3_gene_model"].apply(add_prefix, prefix=constants.REFGEN_V3_TAG)
+df["v4_gene_model"] = df["v4_gene_model"].apply(add_prefix, prefix=constants.REFGEN_V4_TAG)
+df["uniprot_id"] = df["uniprot_id"].apply(add_prefix, prefix=constants.UNIPROT_TAG)
+df["ncbi_gene"] = df["ncbi_gene"].apply(add_prefix, prefix=constants.NCBI_TAG)
+df["gene_names"] = np.vectorize(concatenate_with_bar_delim)(df["locus_name"], df["alleles"], df["locus_synonyms"], df["v3_gene_model"], df["v4_gene_model"], df["uniprot_id"], df["ncbi_gene"])
 df["species"] = "zma"
 df["term_ids"] = ""
 df["pmid"] = ""
@@ -160,26 +167,26 @@ df.to_csv(path, index=False)
 
 # Small functions necessary for accurately parsing this file.
 def clean_oryzabase_symbol(string):
-	string = phenolog.nlp.preprocess.remove_character(string, "*")
-	names = phenolog.nlp.preprocess.handle_synonym_in_parentheses(string, min_length=4)
-	names = [phenolog.nlp.preprocess.remove_enclosing_brackets(name) for name in names]
-	names = phenolog.nlp.preprocess.remove_short_tokens(names, min_length=2)
-	names_string = phenolog.nlp.preprocess.concatenate_with_bar_delim(*names)
+	string = remove_character(string, "*")
+	names = handle_synonym_in_parentheses(string, min_length=4)
+	names = [remove_enclosing_brackets(name) for name in names]
+	names = remove_short_tokens(names, min_length=2)
+	names_string = concatenate_with_bar_delim(*names)
 	return(names_string)
 
 def clean_oryzabase_symbol_synonyms(string):
-	string = phenolog.nlp.preprocess.remove_character(string, "*")
+	string = remove_character(string, "*")
 	names = string.split(",")
 	names = [name.strip() for name in names]
-	names = [phenolog.nlp.preprocess.remove_enclosing_brackets(name) for name in names]
-	names_string = phenolog.nlp.preprocess.concatenate_with_bar_delim(*names)
+	names = [remove_enclosing_brackets(name) for name in names]
+	names_string = concatenate_with_bar_delim(*names)
 	return(names_string)
 
 def clean_oryzabase_explainations(string):
 	ontology_ids = get_ontology_ids(string)
 	for ontology_id in ontology_ids:
 		string = string.replace(ontology_id,"")
-	string = phenolog.nlp.preprocess.remove_punctuation(string)
+	string = remove_punctuation(string)
 	return(string)
 
 # Description of some columns of interest in the data available at Oryzabase.
@@ -198,7 +205,7 @@ df.fillna("", inplace=True)
 df["CGSNL Gene Symbol"] = df["CGSNL Gene Symbol"].apply(clean_oryzabase_symbol)
 df["Gene symbol synonym(s)"] = df["Gene symbol synonym(s)"].apply(clean_oryzabase_symbol_synonyms)
 df["CGSNL Gene Name"] = df["CGSNL Gene Name"].apply(lambda x: x.replace("_","").strip())
-df["Gene name synonym(s)"] = df["Gene name synonym(s)"].apply(phenolog.nlp.preprocess.comma_delim_to_bar_delim)
+df["Gene name synonym(s)"] = df["Gene name synonym(s)"].apply(lambda x: other_delim_to_bar_delim(string=x, delim=","))
 df["Gene Ontology"] = df["Gene Ontology"].apply(lambda x: concatenate_with_bar_delim(*get_ontology_ids(x))) 
 df["Trait Ontology"] = df["Trait Ontology"].apply(lambda x: concatenate_with_bar_delim(*get_ontology_ids(x))) 
 df["Plant Ontology"] = df["Plant Ontology"].apply(lambda x: concatenate_with_bar_delim(*get_ontology_ids(x))) 
