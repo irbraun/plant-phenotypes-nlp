@@ -5,40 +5,39 @@ import numpy as np
 import time
 import multiprocessing as mp
 
-sys.path.append("../.")
 
-from phenolog.utils.utils import function_wrapper
-from phenolog.utils.utils import to_hms
-from phenolog.utils.utils import save_to_pickle, load_from_pickle
-from phenolog.datasets.dataset import Dataset
-from phenolog.datasets.groupings import Groupings
-from phenolog.nlp.preprocess import get_clean_description
-from phenolog.annotation.ontology import Ontology
-from phenolog.annotation.annotation import annotate_using_rabin_karp, annotate_using_noble_coder 
-from phenolog.annotation.annotation import write_annotations_to_tsv_file, read_annotations_from_tsv_file
+from oats.utils.utils import function_wrapper
+from oats.utils.utils import to_hms
+from oats.utils.utils import save_to_pickle, load_from_pickle
+from oats.datasets.dataset import Dataset
+from oats.datasets.groupings import Groupings
+from oats.nlp.preprocess import get_clean_description
+from oats.annotation.ontology import Ontology
+from oats.annotation.annotation import annotate_using_rabin_karp, annotate_using_noble_coder 
+from oats.annotation.annotation import write_annotations_to_tsv_file, read_annotations_from_tsv_file
 
 
-from phenolog.graphs.similarity import get_similarity_df_using_fastsemsim
-from phenolog.graphs.similarity import get_similarity_df_using_doc2vec
-from phenolog.graphs.similarity import get_similarity_df_using_bagofwords
-from phenolog.graphs.similarity import get_similarity_df_using_setofwords
-from phenolog.graphs.similarity import get_similarity_df_using_annotations_unweighted_jaccard
-from phenolog.graphs.similarity import get_similarity_df_using_annotations_weighted_jaccard
-from phenolog.graphs.data import combine_dfs_with_name_dict
-from phenolog.graphs.data import subset_df_with_ids
+from oats.graphs.similarity import get_similarity_df_using_fastsemsim
+from oats.graphs.similarity import get_similarity_df_using_doc2vec
+from oats.graphs.similarity import get_similarity_df_using_bagofwords
+from oats.graphs.similarity import get_similarity_df_using_setofwords
+from oats.graphs.similarity import get_similarity_df_using_annotations_unweighted_jaccard
+from oats.graphs.similarity import get_similarity_df_using_annotations_weighted_jaccard
+from oats.graphs.data import combine_dfs_with_name_dict
+from oats.graphs.data import subset_df_with_ids
 
-from phenolog.graphs.models import apply_mean
-from phenolog.graphs.models import train_linear_regression_model
-from phenolog.graphs.models import apply_linear_regression_model
-from phenolog.graphs.models import train_logistic_regression_model
-from phenolog.graphs.models import apply_logistic_regression_model
-from phenolog.graphs.models import train_random_forest_model
-from phenolog.graphs.models import apply_random_forest_model
+from oats.graphs.models import apply_mean
+from oats.graphs.models import train_linear_regression_model
+from oats.graphs.models import apply_linear_regression_model
+from oats.graphs.models import train_logistic_regression_model
+from oats.graphs.models import apply_logistic_regression_model
+from oats.graphs.models import train_random_forest_model
+from oats.graphs.models import apply_random_forest_model
 
-from phenolog.objectives.functions import classification
-from phenolog.objectives.functions import consistency_index
-from phenolog.graphs.graph import Graph
-from phenolog.objectives.functions import pr
+from oats.objectives.functions import classification
+from oats.objectives.functions import consistency_index
+from oats.graphs.graph import Graph
+from oats.objectives.functions import pr
 
 
 
