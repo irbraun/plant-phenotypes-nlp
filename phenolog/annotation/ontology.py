@@ -58,6 +58,10 @@ class Ontology:
 
 
 
+
+
+
+
 	def _get_subclass_dict(self):
 		"""
 		Produces a mapping between ontology term IDs and a list of other IDs which include
@@ -196,6 +200,13 @@ class Ontology:
 
 
 
+
+
+	def get_label_from_id(self, term_id):
+		try:
+			return(self.pronto_ontology_obj[term_id].name)
+		except:
+			raise KeyError("Term ID matches no terms in the ontology.")
 
 
 

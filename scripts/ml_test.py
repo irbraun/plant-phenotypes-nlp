@@ -9,11 +9,14 @@ sys.path.append("../.")
 
 from phenolog.utils.utils import function_wrapper
 from phenolog.utils.utils import to_hms
+from phenolog.utils.utils import save_to_pickle, load_from_pickle
 from phenolog.datasets.dataset import Dataset
+from phenolog.datasets.groupings import Groupings
 from phenolog.nlp.preprocess import get_clean_description
 from phenolog.annotation.ontology import Ontology
 from phenolog.annotation.annotation import annotate_using_rabin_karp, annotate_using_noble_coder 
 from phenolog.annotation.annotation import write_annotations_to_tsv_file, read_annotations_from_tsv_file
+
 
 from phenolog.graphs.similarity import get_similarity_df_using_fastsemsim
 from phenolog.graphs.similarity import get_similarity_df_using_doc2vec
@@ -21,9 +24,9 @@ from phenolog.graphs.similarity import get_similarity_df_using_bagofwords
 from phenolog.graphs.similarity import get_similarity_df_using_setofwords
 from phenolog.graphs.similarity import get_similarity_df_using_annotations_unweighted_jaccard
 from phenolog.graphs.similarity import get_similarity_df_using_annotations_weighted_jaccard
-
 from phenolog.graphs.data import combine_dfs_with_name_dict
-from phenolog.graphs.data import subset_df_based_on_ids
+from phenolog.graphs.data import subset_df_with_ids
+
 from phenolog.graphs.models import apply_mean
 from phenolog.graphs.models import train_linear_regression_model
 from phenolog.graphs.models import apply_linear_regression_model
@@ -32,8 +35,10 @@ from phenolog.graphs.models import apply_logistic_regression_model
 from phenolog.graphs.models import train_random_forest_model
 from phenolog.graphs.models import apply_random_forest_model
 
-from phenolog.datasets.pathways import Pathways
-from phenolog.utils.utils import save_to_pickle, load_from_pickle
+from phenolog.objectives.functions import classification
+from phenolog.objectives.functions import consistency_index
+from phenolog.graphs.graph import Graph
+from phenolog.objectives.functions import pr
 
 
 
@@ -53,11 +58,11 @@ dataset.add_data(pd.read_csv("../data/reshaped/pppn_dataset.csv", lineterminator
 
 # Filtering the data that was available from those files.
 dataset.collapse_by_first_gene_name()
-dataset.subsample_has_description()
-dataset.subsample_has_annotation()
+dataset.filter_has_description()
+dataset.filter_has_annotation()
 
 # Randomly subsampling the data.
-dataset.filter_random_k(k=200, seed=78263)
+dataset.filter_random_k(k=20, seed=78263)
 
 
 
@@ -65,9 +70,25 @@ dataset.filter_random_k(k=200, seed=78263)
 
 
 # Get dictionaries mapping IDs to text descriptions or genes.
+start = time.perf_counter()
 descriptions = dataset.get_description_dictionary()
 descriptions = {i:get_clean_description(d) for (i,d) in descriptions.items()}
 genes = dataset.get_gene_dictionary()
+total= time.perf_counter()-start
+print("\n\nTime for getting and cleaning descriptions and gene dict: {}\n\n".format(to_hms(total)))
+
+
+
+
+# Create/read in the different objects for organizing gene groupings.
+groupings_kegg = load_from_pickle(path="../data/pickles/kegg_pathways.pickle")
+groupings_pmn = load_from_pickle(path="../data/pickles/pmn_pathways.pickle")
+groupings_subset = load_from_pickle(path="../data/pickles/lloyd_subsets.pickle")
+groupings_class = load_from_pickle(path="../data/pickles/lloyd_classes.pickle")
+
+
+id_to_pathway_ids = groupings_kegg.get_forward_dict(genes)
+pathway_id_to_ids = groupings_kegg.get_reverse_dict(genes)
 
 
 
@@ -80,8 +101,12 @@ merged_ontology_file = "../ontologies/mo.obo"
 annotations_file = "../data/annotations/mo_annotations.tsv"
 doc2vec_model_file = "../gensim/enwiki_dbow/doc2vec.bin"
 mo = Ontology(merged_ontology_file)
+
+start = time.perf_counter()
 annotations = annotate_using_rabin_karp(object_dict=descriptions, ontology=mo)
 write_annotations_to_tsv_file(annotations_dict=annotations, annotations_output_path=annotations_file)
+total= time.perf_counter()-start
+print("\n\nTime for rabin karp and writing to file: {}\n\n".format(to_hms(total)))
 
 
 
@@ -112,9 +137,13 @@ total_time_mp = time.perf_counter()-start_time_mp
 
 
 # Create a mapping between method names and the similarity matrices that were generated.
+start = time.perf_counter()
 names = ["ontology", "doc2vec", "bagofwords", "setofwords", "onto_unwt", "onto_wt"]
 name_to_df_mapping = {name:result[0] for (name,result) in zip(names,results)}
 df = combine_dfs_with_name_dict(name_to_df_mapping)
+total= time.perf_counter()-start
+print("\n\nTime for combining the tables into one table: {}\n\n".format(to_hms(total)))
+
 
 
 # Look at how long it took to build each pairwise similarity matrix.
@@ -134,7 +163,7 @@ print("\n\n")
 
 
 
-
+'''
 # Load pathway object previously created and pickled.
 pathways = load_from_pickle(path="../data/pickles/pmn_pathways.pickle")
 
@@ -154,7 +183,6 @@ df_train.loc[:,"class"] = target_classes
 
 
 
-'''
 # Train the random forest on this subset, then apply to the whole dataset.
 model = train_random_forest_model(df=df_train, predictor_columns=names, target_column="class")
 df_rf = apply_random_forest_model(df=df, predictor_columns=names, model=model)
@@ -172,23 +200,19 @@ print(df)
 '''
 
 
-
-
-from phenolog.objectives.functions import classification
-from phenolog.objectives.functions import consistency_index
-from phenolog.graphs.graph import Graph
-from phenolog.objectives.functions import pr
-
+start = time.perf_counter()
 g = Graph(df=df, value="doc2vec")
+total= time.perf_counter()-start
+print("\n\nTime for creating the graph: {}\n\n".format(to_hms(total)))
 
 
-
-
+start = time.perf_counter()
 a,b = classification(graph=g, id_to_labels=id_to_pathway_ids, label_to_ids=pathway_id_to_ids)
 mapp = consistency_index(graph=g, id_to_labels=id_to_pathway_ids, label_to_ids=pathway_id_to_ids)
 for m in mapp.items():
 	print(m)
-
+total= time.perf_counter()-start
+print("\n\nTime for getting the overall metrics: {}\n\n".format(to_hms(total)))
 
 
 

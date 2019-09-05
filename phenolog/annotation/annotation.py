@@ -31,13 +31,15 @@ from phenolog.nlp.search import binary_search_rabin_karp
 
 
 
-def annotate_using_rabin_karp(object_dict, ontology): # fix doc
+def annotate_using_rabin_karp(object_dict, ontology, fixcase=1):
 	"""Build a dictionary of annotations using Rabin Karp search.
-	
+
 	Args:
 	    object_dict (dict): Mapping from IDs to natural language descriptions.
 	    ontology (Ontology): Ontology object with specified terms.
-	
+	    fixcase (int, optional): Set to 1 to make words from ontologies and 
+	    the searched text both lowercase, set to 0 else.
+
 	Returns:
 	    dict: Mapping from object (phenotype) IDs to ontology term IDs.
 	"""
@@ -46,6 +48,9 @@ def annotate_using_rabin_karp(object_dict, ontology): # fix doc
 	for identifer,description in object_dict.items():
 		annotations[identifer].extend([])
 		for word,term_list in ontology.reverse_term_dict.items():
+			if fixcase==1:
+				word = word.lower()
+				description = description.lower()
 			if binary_search_rabin_karp(word, description, prime):
 				annotations[identifer].extend(term_list)
 	return(annotations)
