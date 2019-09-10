@@ -4,8 +4,10 @@ import pandas as pd
 import numpy as np
 import time
 import multiprocessing as mp
+from sklearn.model_selection import train_test_split
 
 
+# General functions for oats objects and cleaning/preparing text and terms.
 from oats.utils.utils import function_wrapper
 from oats.utils.utils import to_hms
 from oats.utils.utils import save_to_pickle, load_from_pickle
@@ -16,7 +18,7 @@ from oats.annotation.ontology import Ontology
 from oats.annotation.annotation import annotate_using_rabin_karp, annotate_using_noble_coder 
 from oats.annotation.annotation import write_annotations_to_tsv_file, read_annotations_from_tsv_file
 
-
+# Functions for calculating similarity between objects and working with graphs.
 from oats.graphs.similarity import get_similarity_df_using_fastsemsim
 from oats.graphs.similarity import get_similarity_df_using_doc2vec
 from oats.graphs.similarity import get_similarity_df_using_bagofwords
@@ -26,6 +28,7 @@ from oats.graphs.similarity import get_similarity_df_using_annotations_weighted_
 from oats.graphs.data import combine_dfs_with_name_dict
 from oats.graphs.data import subset_df_with_ids
 
+# Functions for combining different similarity metrics with ml/non-ml models.
 from oats.graphs.models import apply_mean
 from oats.graphs.models import train_linear_regression_model
 from oats.graphs.models import apply_linear_regression_model
@@ -34,6 +37,7 @@ from oats.graphs.models import apply_logistic_regression_model
 from oats.graphs.models import train_random_forest_model
 from oats.graphs.models import apply_random_forest_model
 
+# Functions for evaluting graphs based on some objective functions.
 from oats.objectives.functions import classification
 from oats.objectives.functions import consistency_index
 from oats.graphs.graph import Graph
@@ -43,6 +47,9 @@ from oats.objectives.functions import pr
 
 
 pd.set_option('mode.chained_assignment', None)
+pd.set_option('display.multi_sparse', False)
+
+
 
 
 
@@ -68,16 +75,16 @@ dataset.filter_random_k(k=20, seed=78263)
 
 
 
+
+
+
+
+
+
 # Get dictionaries mapping IDs to text descriptions or genes.
-start = time.perf_counter()
 descriptions = dataset.get_description_dictionary()
 descriptions = {i:get_clean_description(d) for (i,d) in descriptions.items()}
 genes = dataset.get_gene_dictionary()
-total= time.perf_counter()-start
-print("\n\nTime for getting and cleaning descriptions and gene dict: {}\n\n".format(to_hms(total)))
-
-
-
 
 # Create/read in the different objects for organizing gene groupings.
 groupings_kegg = load_from_pickle(path="../data/pickles/kegg_pathways.pickle")
@@ -85,9 +92,6 @@ groupings_pmn = load_from_pickle(path="../data/pickles/pmn_pathways.pickle")
 groupings_subset = load_from_pickle(path="../data/pickles/lloyd_subsets.pickle")
 groupings_class = load_from_pickle(path="../data/pickles/lloyd_classes.pickle")
 
-
-id_to_pathway_ids = groupings_kegg.get_forward_dict(genes)
-pathway_id_to_ids = groupings_kegg.get_reverse_dict(genes)
 
 
 
@@ -97,15 +101,11 @@ pathway_id_to_ids = groupings_kegg.get_reverse_dict(genes)
 
 # Setup some of the ontology and document embeddings stuff.
 merged_ontology_file = "../ontologies/mo.obo"
-annotations_file = "../data/annotations/mo_annotations.tsv"
+annotations_file = "../data/scratch/mo_annotations.tsv"
 doc2vec_model_file = "../gensim/enwiki_dbow/doc2vec.bin"
 mo = Ontology(merged_ontology_file)
-
-start = time.perf_counter()
 annotations = annotate_using_rabin_karp(object_dict=descriptions, ontology=mo)
 write_annotations_to_tsv_file(annotations_dict=annotations, annotations_output_path=annotations_file)
-total= time.perf_counter()-start
-print("\n\nTime for rabin karp and writing to file: {}\n\n".format(to_hms(total)))
 
 
 
@@ -132,16 +132,13 @@ pool.close()
 pool.join()    
 total_time_mp = time.perf_counter()-start_time_mp
 
-
-
-
 # Create a mapping between method names and the similarity matrices that were generated.
-start = time.perf_counter()
 names = ["ontology", "doc2vec", "bagofwords", "setofwords", "onto_unwt", "onto_wt"]
 name_to_df_mapping = {name:result[0] for (name,result) in zip(names,results)}
 df = combine_dfs_with_name_dict(name_to_df_mapping)
-total= time.perf_counter()-start
-print("\n\nTime for combining the tables into one table: {}\n\n".format(to_hms(total)))
+
+
+
 
 
 
@@ -162,56 +159,60 @@ print("\n\n")
 
 
 
+
+
+
+
+
+# Get mappings between object IDs and pathways IDs and the reverse.
+id_to_pathway_ids = {}
+id_to_pathway_ids.update(groupings_kegg.get_forward_dict(genes))
+id_to_pathway_ids.update(groupings_pmn.get_forward_dict(genes))
+id_to_pathway_ids.update(groupings_subset.get_forward_dict(genes))
+
+
+
+
 '''
-# Load pathway object previously created and pickled.
-pathways = load_from_pickle(path="../data/pickles/pmn_pathways.pickle")
+# Get the IDs of objects in the dataset that are mapped to atleast one group.
+ids_with_grouping_info = [identifier for (identifier,group_list) in id_to_pathway_ids.items() if len(group_list)>0]
+df_subset = subset_df_with_ids(df, ids_with_grouping_info)
+df_train, df_test = train_test_split(df_subset, test_size=0.2)
+print("The size of the training set is {}".format(len(df_train)))
+print("The size of the testing set is {}".format(len(df_test)))
 
 
+# Create a class column for the training dataframe (target value).
+df_train.loc[:,"class"] = [int(len(set(id_to_pathway_ids[id1]).intersection(set(id_to_pathway_ids[id2])))>0) for (id1,id2) in zip(df_train["from"].values,df_train["to"].values)]
 
-# Find the subset of information (IDs) that have associated pathway data.
-id_to_pathway_ids = pathways.get_fwd_pathway_dict(genes)
-pathway_id_to_ids = pathways.get_rev_pathway_dict(genes)
-ids_with_pathway_info = [identifer for (identifer,pathway_list) in id_to_pathway_ids.items() if len(pathway_list)>0]
-df_train = subset_df_based_on_ids(df,ids_with_pathway_info)
-
-
-# Assign target classes to each pair of IDs based on whether they share pathway membership.
-target_classes = [int(len(set(id_to_pathway_ids[id1]).intersection(set(id_to_pathway_ids[id2])))>0) for (id1,id2) in zip(df_train["from"].values,df_train["to"].values)]
-df_train.loc[:,"class"] = target_classes
-
-
-
-
-# Train the random forest on this subset, then apply to the whole dataset.
+# Train the random forest on the training data and apply to the testing set.
 model = train_random_forest_model(df=df_train, predictor_columns=names, target_column="class")
-df_rf = apply_random_forest_model(df=df, predictor_columns=names, model=model)
-df.loc[:,"ranforest"] = df_rf["similarity"].values
-print(df)
-
-
-
-
-# Train a logistic regression model on this subset, then apply to the whole dataset.
-model = train_logistic_regression_model(df=df_train, predictor_columns=names, target_column="class")
-df_lr = apply_logistic_regression_model(df=df, predictor_columns=names, model=model)
-df.loc[:,"logreg"] = df_lr["similarity"].values
-print(df)
+df_test.loc[:,"ranforest"] = apply_random_forest_model(df=df_test, predictor_columns=names, model=model)
 '''
 
 
+
+
+
+# Create graph objects using different similarity measures. Get values of objective functions.
 start = time.perf_counter()
-g = Graph(df=df, value="doc2vec")
+
+graphs = [Graph(df=df, value=name) for name in names]
+
 total= time.perf_counter()-start
 print("\n\nTime for creating the graph: {}\n\n".format(to_hms(total)))
 
 
-start = time.perf_counter()
-a,b = classification(graph=g, id_to_labels=id_to_pathway_ids, label_to_ids=pathway_id_to_ids)
-mapp = consistency_index(graph=g, id_to_labels=id_to_pathway_ids, label_to_ids=pathway_id_to_ids)
-for m in mapp.items():
-	print(m)
-total= time.perf_counter()-start
-print("\n\nTime for getting the overall metrics: {}\n\n".format(to_hms(total)))
+results = {name:classification(graph=graph, id_to_labels=id_to_pathway_ids) for (name,graph) in zip(names,graphs)}
+cimaps = {name:consistency_index(graph=graph, id_to_labels=id_to_pathway_ids) for (name,graph) in zip(names,graphs)}
+print(pd.DataFrame(cimaps))
+
+
+
+
+
+
+
 
 
 

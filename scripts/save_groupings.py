@@ -26,7 +26,7 @@ save_to_pickle(obj=pathways, path="../data/pickles/pmn_pathways.pickle")
 
 
 # Create and save a pathways object using KEGG.
-pathways = Groupings(species_dict, source="kegg")
+#pathways = Groupings(species_dict, source="kegg")
 pathways.describe()
 save_to_pickle(obj=pathways, path="../data/pickles/kegg_pathways.pickle")
 
