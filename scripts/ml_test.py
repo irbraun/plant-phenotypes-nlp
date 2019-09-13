@@ -45,9 +45,15 @@ from oats.objectives.functions import pr
 
 
 
-
 pd.set_option('mode.chained_assignment', None)
 pd.set_option('display.multi_sparse', False)
+
+
+
+
+
+
+
 
 
 
@@ -68,22 +74,14 @@ dataset.filter_has_description()
 dataset.filter_has_annotation()
 
 # Randomly subsampling the data.
-dataset.filter_random_k(k=20, seed=78263)
-
-
-
-
-
-
-
-
-
-
-
+dataset.filter_random_k(k=80, seed=78263)
 
 # Get dictionaries mapping IDs to text descriptions or genes.
 descriptions = dataset.get_description_dictionary()
 descriptions = {i:get_clean_description(d) for (i,d) in descriptions.items()}
+sys.exit()
+
+
 genes = dataset.get_gene_dictionary()
 
 # Create/read in the different objects for organizing gene groupings.
@@ -92,20 +90,27 @@ groupings_pmn = load_from_pickle(path="../data/pickles/pmn_pathways.pickle")
 groupings_subset = load_from_pickle(path="../data/pickles/lloyd_subsets.pickle")
 groupings_class = load_from_pickle(path="../data/pickles/lloyd_classes.pickle")
 
-
-
-
+# Get mappings between object IDs and pathways IDs and the reverse.
+id_to_pathway_ids = {}
+id_to_pathway_ids.update(groupings_kegg.get_forward_dict(genes))
+id_to_pathway_ids.update(groupings_pmn.get_forward_dict(genes))
+id_to_pathway_ids.update(groupings_subset.get_forward_dict(genes))
 
 
 
 
 # Setup some of the ontology and document embeddings stuff.
 merged_ontology_file = "../ontologies/mo.obo"
-annotations_file = "../data/scratch/mo_annotations.tsv"
+annotations_file = "../data/scratch/annot.tsv"
 doc2vec_model_file = "../gensim/enwiki_dbow/doc2vec.bin"
 mo = Ontology(merged_ontology_file)
 annotations = annotate_using_rabin_karp(object_dict=descriptions, ontology=mo)
 write_annotations_to_tsv_file(annotations_dict=annotations, annotations_output_path=annotations_file)
+
+
+
+
+
 
 
 
@@ -139,9 +144,6 @@ df = combine_dfs_with_name_dict(name_to_df_mapping)
 
 
 
-
-
-
 # Look at how long it took to build each pairwise similarity matrix.
 print("\n\n")
 print("Durations of generating each pairwise similarity matrix (hh:mm:ss)")
@@ -164,16 +166,15 @@ print("\n\n")
 
 
 
-# Get mappings between object IDs and pathways IDs and the reverse.
-id_to_pathway_ids = {}
-id_to_pathway_ids.update(groupings_kegg.get_forward_dict(genes))
-id_to_pathway_ids.update(groupings_pmn.get_forward_dict(genes))
-id_to_pathway_ids.update(groupings_subset.get_forward_dict(genes))
 
 
 
 
-'''
+
+
+
+
+
 # Get the IDs of objects in the dataset that are mapped to atleast one group.
 ids_with_grouping_info = [identifier for (identifier,group_list) in id_to_pathway_ids.items() if len(group_list)>0]
 df_subset = subset_df_with_ids(df, ids_with_grouping_info)
@@ -181,28 +182,26 @@ df_train, df_test = train_test_split(df_subset, test_size=0.2)
 print("The size of the training set is {}".format(len(df_train)))
 print("The size of the testing set is {}".format(len(df_test)))
 
-
 # Create a class column for the training dataframe (target value).
 df_train.loc[:,"class"] = [int(len(set(id_to_pathway_ids[id1]).intersection(set(id_to_pathway_ids[id2])))>0) for (id1,id2) in zip(df_train["from"].values,df_train["to"].values)]
 
 # Train the random forest on the training data and apply to the testing set.
 model = train_random_forest_model(df=df_train, predictor_columns=names, target_column="class")
 df_test.loc[:,"ranforest"] = apply_random_forest_model(df=df_test, predictor_columns=names, model=model)
-'''
+
+
+
+
+
+
+
 
 
 
 
 
 # Create graph objects using different similarity measures. Get values of objective functions.
-start = time.perf_counter()
-
 graphs = [Graph(df=df, value=name) for name in names]
-
-total= time.perf_counter()-start
-print("\n\nTime for creating the graph: {}\n\n".format(to_hms(total)))
-
-
 results = {name:classification(graph=graph, id_to_labels=id_to_pathway_ids) for (name,graph) in zip(names,graphs)}
 cimaps = {name:consistency_index(graph=graph, id_to_labels=id_to_pathway_ids) for (name,graph) in zip(names,graphs)}
 print(pd.DataFrame(cimaps))
