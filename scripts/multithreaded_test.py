@@ -7,10 +7,11 @@ import multiprocessing as mp
 from sklearn.model_selection import train_test_split
 
 
+
+
+sys.path.append("../../oats")
 # General functions for oats objects and cleaning/preparing text and terms.
-from oats.utils.utils import function_wrapper
-from oats.utils.utils import to_hms
-from oats.utils.utils import save_to_pickle, load_from_pickle
+from oats.utils.utils import function_wrapper, to_hms, save_to_pickle, load_from_pickle
 from oats.datasets.dataset import Dataset
 from oats.datasets.groupings import Groupings
 from oats.nlp.preprocess import get_clean_description
@@ -25,8 +26,7 @@ from oats.graphs.similarity import get_similarity_df_using_bagofwords
 from oats.graphs.similarity import get_similarity_df_using_setofwords
 from oats.graphs.similarity import get_similarity_df_using_annotations_unweighted_jaccard
 from oats.graphs.similarity import get_similarity_df_using_annotations_weighted_jaccard
-from oats.graphs.data import combine_dfs_with_name_dict
-from oats.graphs.data import subset_df_with_ids
+from oats.graphs.data import combine_dfs_with_name_dict, subset_df_with_ids
 
 # Functions for combining different similarity metrics with ml/non-ml models.
 from oats.graphs.models import apply_mean
@@ -50,23 +50,10 @@ pd.set_option('display.multi_sparse', False)
 
 
 
-
-
-
-
-
-
-
-
-
-
 # Read in the text descriptions and associated genetic data.
 dataset = Dataset()
-dataset.add_data(pd.read_csv("../data/reshaped/arabidopsis_go_annotations.csv", lineterminator="\n"))
-dataset.add_data(pd.read_csv("../data/reshaped/arabidopsis_descriptions.csv", lineterminator="\n"))
-dataset.add_data(pd.read_csv("../data/reshaped/maize_descriptions.csv", lineterminator="\n"))
-dataset.add_data(pd.read_csv("../data/reshaped/oryzabase_dataset.csv", lineterminator="\n"))
-dataset.add_data(pd.read_csv("../data/reshaped/pppn_dataset.csv", lineterminator="\n"))
+dataset.add_data(pd.read_csv("../data/reshaped_files/ath_tair_gene_text.csv", lineterminator="\n"))
+dataset.add_data(pd.read_csv("../data/reshaped_files/ath_tair_gene_annot_go.csv", lineterminator="\n"))
 
 # Filtering the data that was available from those files.
 dataset.collapse_by_first_gene_name()
@@ -74,14 +61,11 @@ dataset.filter_has_description()
 dataset.filter_has_annotation()
 
 # Randomly subsampling the data.
-dataset.filter_random_k(k=80, seed=78263)
+dataset.filter_random_k(k=20, seed=78263)
 
 # Get dictionaries mapping IDs to text descriptions or genes.
 descriptions = dataset.get_description_dictionary()
 descriptions = {i:get_clean_description(d) for (i,d) in descriptions.items()}
-sys.exit()
-
-
 genes = dataset.get_gene_dictionary()
 
 # Create/read in the different objects for organizing gene groupings.
@@ -188,10 +172,6 @@ df_train.loc[:,"class"] = [int(len(set(id_to_pathway_ids[id1]).intersection(set(
 # Train the random forest on the training data and apply to the testing set.
 model = train_random_forest_model(df=df_train, predictor_columns=names, target_column="class")
 df_test.loc[:,"ranforest"] = apply_random_forest_model(df=df_test, predictor_columns=names, model=model)
-
-
-
-
 
 
 
