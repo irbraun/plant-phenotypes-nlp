@@ -1,10 +1,12 @@
 import sys
 import pandas as pd
 import numpy as np
+import warnings
+warnings.simplefilter('ignore')
 
 sys.path.append("../../oats")
 from oats.datasets.groupings import Groupings
-from oats.utils.utils import save_to_pickle, load_from_pickle
+from oats.utils.utils import save_to_pickle
 from oats.nlp.preprocess import other_delim_to_bar_delim, concatenate_with_bar_delim
 
 
@@ -27,7 +29,7 @@ save_to_pickle(obj=pathways, path="../data/pickles/pmn_pathways.pickle")
 
 
 # Create and save a pathways object using KEGG.
-#pathways = Groupings(species_dict, source="kegg")
+pathways = Groupings(species_dict, source="kegg")
 pathways.describe()
 save_to_pickle(obj=pathways, path="../data/pickles/kegg_pathways.pickle")
 
@@ -50,7 +52,6 @@ df_subset.columns = ["group_id", "gene_names"]
 df_subset["group_id"] = df_subset["group_id"].apply(lambda x: x.replace("W:", "").replace("S:",""))
 df_subset["group_id"] = df_subset["group_id"].apply(lambda x: other_delim_to_bar_delim(string=x, delim=","))
 df_subset.to_csv("../data/scratch/arabidopsis_subsets.csv", index=False)
-
 
 
 
