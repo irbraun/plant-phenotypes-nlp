@@ -8,8 +8,6 @@ import multiprocessing as mp
 from sklearn.model_selection import train_test_split
 
 
-
-
 sys.path.append("../../oats")
 
 
@@ -125,7 +123,6 @@ df = merge_edgelists(name_to_df_mapping, default_value=0.000)
 
 
 
-
 # Muliprocessing approach, with check for whether there is any savings.
 '''
 
@@ -173,12 +170,6 @@ print("\n\n")
 
 
 
-
-
-
-
-
-
 # Get the IDs of objects in the dataset that are mapped to atleast one group.
 ids_with_grouping_info = [identifier for (identifier,group_list) in id_to_pathway_ids.items() if len(group_list)>0]
 df_subset = subset_edgelist_with_ids(df, ids_with_grouping_info)
@@ -199,9 +190,6 @@ graphs = [IndexedGraph(df=df, value=name) for name in names]
 results = {name:classification(graph=graph, id_to_labels=id_to_pathway_ids) for (name,graph) in zip(names,graphs)}
 cimaps = {name:consistency_index(graph=graph, id_to_labels=id_to_pathway_ids) for (name,graph) in zip(names,graphs)}
 print(pd.DataFrame(cimaps))
-
-
-
 
 
 

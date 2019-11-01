@@ -16,3 +16,4 @@ dependencies:
   - biopython
   - seaborn
   - networkx
+  - scipy
