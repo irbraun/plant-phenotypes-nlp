@@ -22,17 +22,22 @@ species_dict = {
     "sly":"../data/group_related_files/pmn/tomatocyc_pathways.20180702"}
 
 
-# Create and save the pathways object using PMN.
+
+
+
+# Create and save the pathways object using PMN. This one uses the filenames in the dictionary.
 pathways = Groupings(species_dict, source="pmn")
 pathways.describe()
 save_to_pickle(obj=pathways, path="../data/pickles/pmn_pathways.pickle")
 
 
-# Create and save a pathways object using KEGG.
-#pathways = Groupings(species_dict, source="kegg")
+
+
+# Create and save a pathways object using KEGG. This one doesn't use the filenames in the dictionary.
+# All the pathways asocations are looked up when the groupings object is created through the KEGG API.
+pathways = Groupings(species_dict, source="kegg")
 pathways.describe()
 save_to_pickle(obj=pathways, path="../data/pickles/kegg_pathways.pickle")
-
 
 
 
@@ -60,11 +65,15 @@ print(class_id_to_name_dict)
 
 
 
+
 # Create the save the grouping object using Lloyd function hierarchy dataset of subsets.
 species_dict = {"ath":"../data/scratch/arabidopsis_subsets.csv"}
 subsets = Groupings(species_dict, source="csv", name_mapping=subset_id_to_name_dict)
 subsets.describe()
 save_to_pickle(obj=subsets, path="../data/pickles/lloyd_subsets.pickle")
+
+
+
 
 # Create the save the grouping object using Lloyd function hierarchy dataset of classes.
 species_dict = {"ath":"../data/scratch/arabidopsis_classes.csv"}
