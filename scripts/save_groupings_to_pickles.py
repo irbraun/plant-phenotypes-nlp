@@ -61,7 +61,6 @@ df_subset.to_csv("../data/scratch/arabidopsis_subsets.csv", index=False)
 df = pd.read_csv("../data/group_related_files/lloyd/lloyd_function_hierarchy_irb_cleaned.csv")
 subset_id_to_name_dict = {row[5]:row[7] for row in df.itertuples()}
 class_id_to_name_dict = {row[3]:row[4] for row in df.itertuples()}
-print(class_id_to_name_dict)
 
 
 
