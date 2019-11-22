@@ -6,7 +6,7 @@ nltk.download('brown')
 
 sys.path.append("../../oats")
 from oats.nlp.vocabulary import vocabulary_by_feature_selection
-from oats.pubmed.querying import search, fetch_details
+from oats.pubmed.query import search, fetch_details
 
 
 
