@@ -54,7 +54,7 @@ df_class.to_csv("../data/scratch/arabidopsis_classes.csv", index=False)
 # Specific to subsets (more specific).
 df_subset = df[["Phenotype Subsetsb", "gene_names"]]
 df_subset.columns = ["group_id", "gene_names"]
-df_subset["group_id"] = df_subset["group_id"].apply(lambda x: x.replace("W:", "").replace("S:",""))
+df_subset["group_id"] = df_subset["group_id"].apply(lambda x: x.replace("W:", "").replace("S:","").replace("(",",").replace(")",",").replace(";",","))
 df_subset["group_id"] = df_subset["group_id"].apply(lambda x: other_delim_to_bar_delim(string=x, delim=","))
 df_subset.to_csv("../data/scratch/arabidopsis_subsets.csv", index=False)
 # Provide a mapping from subset or class IDs to the longer names that define them.
