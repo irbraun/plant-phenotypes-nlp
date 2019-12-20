@@ -14,7 +14,7 @@ from oats.pubmed.query import search, fetch_details
 
 # Where to save the corpora files from either background or interesting text.
 background_path = "../data/corpus_related_files/background.txt"
-ofinterest_path = "../data/corpus_related_files/phenotypes_large.txt"
+ofinterest_path = "../data/corpus_related_files/phenotypes_maize.txt"
 
 # Getting a sampling of text that could be considered background or general information.
 background_text = " ".join(brown.words(categories=['news',"editorial","reviews","lore"]))
@@ -28,7 +28,7 @@ limit = 1000000
 fetch_batch_size = 1000
 seconds_between_fetch = 5
 
-query = "arabidopsis AND phenotype"
+query = "maize AND phenotype"
 print("querying")
 results = search(query, limit)
 id_list = results['IdList']

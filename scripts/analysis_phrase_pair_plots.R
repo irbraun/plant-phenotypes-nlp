@@ -9,8 +9,8 @@ library(lattice)
 
 
 # Specifying paths to input files and for saving figures.
-infile_handpicked = "../data/scratch/phrase_pair_handpicked_results.csv"
-infile_generalized = "../data/scratch/phrase_pair_generalized_results.csv"
+infile_handpicked = "/Users/irbraun/phenologs-with-oats/data/scratch/phrase_pair_handpicked_results.csv"
+infile_generalized = "/Users/irbraun/phenologs-with-oats/data/scratch/phrase_pair_generalized_results.csv"
 outfile_handpicked = "~/Desktop/figure1.png"
 outfile_generalized = "~/Desktop/figure2.png"
 
@@ -55,6 +55,8 @@ ggsave(outfile_handpicked, plot=last_plot(), device="png", path=NULL, scale=1, w
 
 # Reading in the csv file and converting to long format.
 df <- read.csv(file=infile_generalized, header=T, sep=",")
+df <- subset(df, N_Gram_raw==1.00)
+
 df_long <- gather(df, method, value, Wikipedia, PubMed, factor_key=TRUE)
 
 # Mapping training sets to colors.
@@ -67,7 +69,7 @@ ggplot(df_long, aes(x=value, fill=method)) +
   geom_density(alpha=0.4) +
   scale_fill_grey(name="Training Set") +
   theme_bw() +
-  facet_grid(rows=vars(Ontology),cols=vars(method)) +
+  facet_grid(rows=vars(Ontology,Relationship),cols=vars(method)) +
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
         panel.grid.major = element_blank(), 
         axis.text.y = element_blank(),
