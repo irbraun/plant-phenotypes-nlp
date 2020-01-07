@@ -3,13 +3,27 @@ library(tidyr)
 library(dplyr)
 library(viridis)
 library(RColorBrewer)
+library(hashmap)
 
 
 
 
 # Reading in the CSV file of results.
-path <- "~/Downloads/Phenologs Paper Tables - Sheet4 (3).csv"
+path <- "~/Downloads/Phenologs Paper Tables - Sheet2 (1).csv"
 df <- read.csv(file=path, header=T, sep=",")
+
+# Collapse the dataframe to average across all hyperparameters for each method and find the standard deviation.
+map <- hashmap(as.character(df$Method), as.character(df$Group))
+mapping_function <- function(x){return(map[[x]])}
+df <- data.frame(df %>% group_by(Method) %>% summarize(auc_avg=mean(auc), auc_sd=sd(auc)))
+#df[is.na(df)] <- 0.000
+df$Category <- mapping_function(df$Method)
+df$Order <- 0:8
+
+
+
+
+
 
 
 # Organizing the different methods presented into general categories.
@@ -21,17 +35,18 @@ group_mapping <- setNames(group_colors, group_names)
 
 
 # Options for the plot.
-y_lim <- 1.00
-step_size <- 0.25
-df$y_percent <- df$y_ratio*(100)
+y_lim <- 0.1
+step_size <- 0.025
+#df$y_percent <- df$y_ratio*(100)
 
 
-df <- subset(df, Topic=="Biochemical Pathways" & Data=="Entire Dataset")
+#df <- subset(df, Topic=="Biochemical Pathways" & Data=="Entire Dataset")
 #df <- subset(df, Topic=="Biochemical Pathways")
 
-baseline = df$baseline[1]
+#baseline = df$baseline[1]
+baseline = 0.02
 
-ggplot(data=df, aes(x=reorder(Method,Order),y=auc,fill=group))+geom_bar(stat="identity") + geom_bar(stat="identity", color="black") +
+ggplot(data=df, aes(x=reorder(Method,Order),y=auc_avg,fill=group))+geom_bar(stat="identity") + geom_bar(stat="identity", color="black") + geom_errorbar(aes(ymin=auc_avg, ymax=auc_avg+auc_sd), width=.3) +
   #facet_grid(cols=vars(Data), rows=vars(Topic), scales="free") +
   theme_bw() +
   scale_fill_manual(name="Approach Used",values=group_mapping) +

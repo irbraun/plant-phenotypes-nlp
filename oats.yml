@@ -12,7 +12,7 @@ dependencies:
   - sparqlwrapper
   - fuzzywuzzy
   - nltk
-  - pronto
+  - pronto=0.12.2
   - biopython
   - seaborn
   - networkx
