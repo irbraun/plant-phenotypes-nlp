@@ -17,6 +17,7 @@ from oats.utils.utils import save_to_pickle
 
 
 def save_combined_dataset_to_pickle(pickle_path, input_dir, *input_filenames):
+
 	dataset = Dataset()
 	for filename in input_filenames:
 		filepath = os.path.join(input_dir, filename)
@@ -33,8 +34,11 @@ def save_combined_dataset_to_pickle(pickle_path, input_dir, *input_filenames):
 
 
 reshaped_dir = "../data/reshaped_files"
-save_combined_dataset_to_pickle("../data/pickles/full_dataset.pickle", reshaped_dir, glob.iglob(os.path.join(reshaped_dir,"*.csv")))
+all_csv_files = [os.path.basename(f) for f in glob.iglob(os.path.join(reshaped_dir,"*.csv"))]
+#save_combined_dataset_to_pickle("../data/pickles/full_dataset.pickle", reshaped_dir, *all_csv_files)
+save_combined_dataset_to_pickle("../data/pickles/text_dataset.pickle", reshaped_dir, "ppn_phenes.csv", "ppn_phenes.csv", "sly_phenotypes.csv", "zma_phenotypes.csv", "ath_phenotypes.csv")
+save_combined_dataset_to_pickle("../data/pickles/text_plus_annotations_dataset.pickle", reshaped_dir, "ppn_phenes.csv", "ppn_phenes.csv", "sly_phenotypes.csv", "zma_phenotypes.csv", "ath_phenotypes.csv", "ath_high_confidence_go_annotations.csv", "ath_high_confidence_po_annotations.csv")
 save_combined_dataset_to_pickle("../data/pickles/ppn_dataset.pickle", reshaped_dir, "ppn_annotations.csv", "ppn_phenes.csv", "ppn_phenes.csv")
-save_combined_dataset_to_pickle("../data/pickles/ath_go_dataset.pickle", reshaped_dir, "ath_high_confidence_go_annotations.csv", "ath_phenotypes.csv")
-save_combined_dataset_to_pickle("../data/pickles/ath_po_dataset.pickle", reshaped_dir, "ath_high_confidence_po_annotations.csv", "ath_phenotypes.csv")
+#save_combined_dataset_to_pickle("../data/pickles/ath_go_dataset.pickle", reshaped_dir, "ath_high_confidence_go_annotations.csv", "ath_phenotypes.csv")
+#save_combined_dataset_to_pickle("../data/pickles/ath_po_dataset.pickle", reshaped_dir, "ath_high_confidence_po_annotations.csv", "ath_phenotypes.csv")
 
