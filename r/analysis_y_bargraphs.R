@@ -9,7 +9,7 @@ library(hashmap)
 
 
 # Reading in the CSV file of results.
-PATH <- "~/Downloads/Phenologs Paper Tables - Sheet2 (2).csv"
+PATH <- "~/Desktop/lloyd.csv"
 df <- read.csv(file=PATH, header=T, sep=",")
 
 
@@ -31,7 +31,8 @@ df$Category <- mapping_function(df$Method)
 
 # Organizing the different methods presented into general categories.
 df$group <- factor(df$Category, levels = c("NLP","Ensemble","Curated"))
-group_colors <- c(grey.colors(n=3,start=0.1,end=0.9,alpha=1))
+group_colors <- c(grey.colors(n=3,start=0.1,end=1.0,alpha=1))
+#group_colors <- viridis(5)[3:5]
 group_names <-  c("NLP","Ensemble","Curated")
 group_mapping <- setNames(group_colors, group_names)
 
@@ -39,9 +40,9 @@ group_mapping <- setNames(group_colors, group_names)
 
 
 # Change these to change what values are used for plotting, so that the ggplot() call doesn't need to be changed.
-baseline = 0.02
-y_lim <- 0.1
-step_size <- 0.025
+baseline = 0.12
+y_lim <- 0.75
+step_size <- 0.15
 df$metric_to_use <- df$auc_avg
 df$error_to_use <- df$auc_sd
 
@@ -52,7 +53,7 @@ ggplot(data=df, aes(x=reorder(Method,Order),y=metric_to_use,fill=group))+geom_ba
   #facet_grid(cols=vars(Data), rows=vars(Topic), scales="free") +
   theme_bw() +
   scale_fill_manual(name="Approach Used",values=group_mapping) +
-  geom_abline(slope=0, intercept=baseline,  col = "white", lty=2) +
+  geom_abline(slope=0, intercept=baseline,  col = "red", lty=2) +
   scale_x_discrete(breaks=df$Method,labels=df$Method) +
   scale_y_continuous(breaks=seq(0,y_lim,step_size), limits=c(NA,y_lim)) +
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
@@ -68,7 +69,7 @@ ggplot(data=df, aes(x=reorder(Method,Order),y=metric_to_use,fill=group))+geom_ba
 
 # Save the image of the plot.
 path <- "~/Desktop/plot.png"
-ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=17, height=5, units=c("cm"), dpi=300, limitsize=TRUE)
+ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=12, height=6, units=c("cm"), dpi=300, limitsize=TRUE)
 
 
 
