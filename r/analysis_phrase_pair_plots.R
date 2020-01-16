@@ -4,6 +4,7 @@ library(dplyr)
 library(viridis)
 library(RColorBrewer)
 library(lattice)
+library(hashmap)
 
 
 
@@ -49,10 +50,6 @@ ggsave(outfile_handpicked, plot=last_plot(), device="png", path=NULL, scale=1, w
 
 
 
-
-
-
-
 # Reading in the csv file and converting to long format.
 df <- read.csv(file=infile_generalized, header=T, sep=",")
 df <- subset(df, N_Gram_raw==1.00)
@@ -81,6 +78,9 @@ ggplot(df_long, aes(x=value, fill=method)) +
 
 # Save the image of the plot.
 ggsave(outfile_generalized, plot=last_plot(), device="png", path=NULL, scale=1, width=15, height=7, units=c("cm"), dpi=500, limitsize=FALSE)
+
+
+
 
 
 
