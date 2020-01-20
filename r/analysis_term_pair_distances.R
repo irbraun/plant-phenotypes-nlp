@@ -83,6 +83,9 @@ ggplot(df_long, aes(x=value, fill=category)) +
 
 
 
+path <- "~/Desktop/plot.png"
+ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=20, height=12, units=c("cm"), dpi=300, limitsize=TRUE)
+
 
 
 
