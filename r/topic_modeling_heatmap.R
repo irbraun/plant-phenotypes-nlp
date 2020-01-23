@@ -32,7 +32,7 @@ ggplot(data=df_long, aes(x=reorder(subset,order), y=reorder(topic,-order))) + ge
   theme_bw() +
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.border = element_blank(), axis.line = element_blank()) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
-  ylab("LDA Topic") +
+  ylab("Topic") +
   xlab("Phenotype Subset") + 
   theme(legend.position="right") +
   theme(legend.text = element_text(lineheight=1 ,hjust=0.5, size=6), legend.title =element_text(lineheight=1, hjust=0.5, size=7))

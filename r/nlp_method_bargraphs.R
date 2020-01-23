@@ -41,7 +41,7 @@ group_mapping <- setNames(group_colors, group_names)
 # Change these to change what values are used for plotting, so that the ggplot() call doesn't need to be changed.
 baseline = read.csv(file=PATH, header=T, sep=",")$baseline[1]
 y_lim <- 0.3
-step_size <- 0.1
+step_size <- 0.05
 df$metric_to_use <- df$auc_avg
 df$error_to_use <- df$auc_sd
 
@@ -52,7 +52,7 @@ ggplot(data=df, aes(x=reorder(Method,Order),y=metric_to_use,fill=group))+geom_ba
   #facet_grid(cols=vars(Data), rows=vars(Topic), scales="free") +
   theme_bw() +
   scale_fill_manual(name="Approach Used",values=group_mapping) +
-  geom_abline(slope=0, intercept=baseline,  col = "red", lty=2) +
+  geom_abline(slope=0, intercept=baseline,  col = "gray", lty=2) +
   scale_x_discrete(breaks=df$Method,labels=df$Method) +
   scale_y_continuous(breaks=seq(0,y_lim,step_size), limits=c(NA,y_lim)) +
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
