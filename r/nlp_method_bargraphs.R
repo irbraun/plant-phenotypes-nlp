@@ -9,7 +9,7 @@ library(hashmap)
 
 
 # Reading in the CSV file of results.
-PATH <- "~/Desktop/lloyd.csv"
+PATH <- "~/Desktop/full_table.csv"
 df <- read.csv(file=PATH, header=T, sep=",")
 
 
@@ -32,7 +32,6 @@ df$Category <- mapping_function(df$Method)
 # Organizing the different methods presented into general categories.
 df$group <- factor(df$Category, levels = c("NLP","Ensemble","Curated"))
 group_colors <- c(grey.colors(n=3,start=0.1,end=1.0,alpha=1))
-#group_colors <- viridis(5)[3:5]
 group_names <-  c("NLP","Ensemble","Curated")
 group_mapping <- setNames(group_colors, group_names)
 
@@ -40,9 +39,9 @@ group_mapping <- setNames(group_colors, group_names)
 
 
 # Change these to change what values are used for plotting, so that the ggplot() call doesn't need to be changed.
-baseline = 0.12
-y_lim <- 0.75
-step_size <- 0.15
+baseline = read.csv(file=PATH, header=T, sep=",")$baseline[1]
+y_lim <- 0.3
+step_size <- 0.1
 df$metric_to_use <- df$auc_avg
 df$error_to_use <- df$auc_sd
 
