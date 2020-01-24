@@ -50,7 +50,7 @@ methods = [
     Method("N-Grams", "Simple,Words,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
     Method("N-Grams", "Simple,Words,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
     
-    # Methods that use variations on the n-grams approach selecting for specific parts-of-speech.
+    # Methods that use variations on the n-grams approach selecting for specific parts-of-speech (includes stemming).
     Method("N-Grams", "Full,Nouns,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_only_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
     Method("N-Grams", "Full,Nouns,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_only_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
     Method("N-Grams", "Full,Nouns,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_only_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
@@ -59,8 +59,19 @@ methods = [
     Method("N-Grams", "Full,Adjectives,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_adj_only_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
     Method("N-Grams", "Full,Adjectives,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_adj_only_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
     Method("N-Grams", "Full,Adjectives,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_adj_only_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
+    Method("N-Grams", "Full,Adjectives,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_adj_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
+    Method("N-Grams", "Full,Adjectives,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_adj_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
+    Method("N-Grams", "Full,Adjectives,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_adj_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
+    Method("N-Grams", "Full,Adjectives,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_adj_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
     
-    
+    # Methods that use variations on the n-grams approach with a reduced vocabulary size and simple preproocessing (no stemming).
+    Method("N-Grams", "Full,Words,Linares Pontes,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
+    Method("N-Grams", "Full,Words,Linares Pontes,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
+    Method("N-Grams", "Full,Words,Linares Pontes,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
+    Method("N-Grams", "Full,Words,Linares Pontes,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
+
+
+
     # Methods that use terms inferred from automated annotation of the text.
     Method("NOBLE Coder", "Precise", pw.pairwise_square_annotations, {"ids_to_annotations":annotations_noblecoder_precise, "ontology":ontology, "binary":True, "metric":"jaccard", "tfidf":False}, spatial.distance.jaccard),
     Method("NOBLE Coder", "Partial", pw.pairwise_square_annotations, {"ids_to_annotations":annotations_noblecoder_partial, "ontology":ontology, "binary":True, "metric":"jaccard", "tfidf":False}, spatial.distance.jaccard),
