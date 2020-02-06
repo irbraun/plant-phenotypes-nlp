@@ -9,7 +9,7 @@ library(hashmap)
 
 
 # Reading in the CSV file of results.
-PATH <- "~/Desktop/full_table.csv"
+PATH <- "~/Desktop/part_6_full_table.csv"
 df <- read.csv(file=PATH, header=T, sep=",")
 
 
@@ -29,9 +29,24 @@ df$Category <- mapping_function(df$Method)
 
 
 
+# Colors used.
+#581845 (purple)
+#900C3F (dark red)
+#C70039 (red)
+#FF5733 (orange)
+#FFC300 (yellow)
+#DAF7A6 (light green)
+
+
+
+
+
 # Organizing the different methods presented into general categories.
 df$group <- factor(df$Category, levels = c("NLP","Ensemble","Curated"))
-group_colors <- c(grey.colors(n=3,start=0.1,end=1.0,alpha=1))
+group_colors_bw <- c(grey.colors(n=3,start=0.1,end=1.0,alpha=1))
+group_colors <- c("#581845", "#900C3F", "#C70039", "#FF5733", "#FFC300", "#DAF7A6")
+# Pick from those colors to match the same number of values present in group_names.
+group_colors <- c(group_colors[1], group_colors[2], group_colors[4])
 group_names <-  c("NLP","Ensemble","Curated")
 group_mapping <- setNames(group_colors, group_names)
 

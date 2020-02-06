@@ -8,7 +8,7 @@ library(hashmap)
 
 
 
-PATH <- "~/Desktop/silhouette_scores.csv"
+PATH <- "~/Desktop/part_5_silhouette_scores_by_n.csv"
 df <- read.csv(file=PATH, header=T, sep=",")
 
 
