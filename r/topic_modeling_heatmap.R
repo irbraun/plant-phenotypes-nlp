@@ -23,8 +23,8 @@ df_long$topic = as.factor(df_long$topic)
 
 high_color <- "black"
 low_color <- "white"
-
 legend_label <- "Topic Fraction"
+
 
 ggplot(data=df_long, aes(x=reorder(subset,order), y=reorder(topic,-order))) + geom_tile(aes(fill=value), colour="black") +
   #scale_fill_gradient(low=low_color, high=high_color, name=legend_label, limits=c(0,.5), breaks=seq(0,.5,.25)) +
@@ -37,8 +37,8 @@ ggplot(data=df_long, aes(x=reorder(subset,order), y=reorder(topic,-order))) + ge
   theme(legend.position="right") +
   theme(legend.text = element_text(lineheight=1 ,hjust=0.5, size=6), legend.title =element_text(lineheight=1, hjust=0.5, size=7))
 
-  
-  
+
+
 
 # Save the image of the plot.
 path <- "~/Desktop/plot.png"

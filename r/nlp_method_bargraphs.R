@@ -9,7 +9,7 @@ library(hashmap)
 
 
 # Reading in the CSV file of results.
-PATH <- "~/Desktop/part_6_full_table.csv"
+PATH <- "/Users/irbraun/phenologs-with-oats/outputs/02_07_2020_h14m14s25/part_6_full_table.csv"
 df <- read.csv(file=PATH, header=T, sep=",")
 
 
