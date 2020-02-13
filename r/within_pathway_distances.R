@@ -9,14 +9,14 @@ library(hashmap)
 
 
 
-df <- read.csv(file="/Users/irbraun/Desktop/part_6_within_distances.csv")
+df <- read.csv(file="/Users/irbraun/phenologs-with-oats/outputs/a_presentation_pmn/part_6_within_distances.csv")
 
 
 # Include the value for n with the full names.
 df$name_for_plot = paste(df$full_name, " (n=", df$n, ")", sep="") 
 
 # Only look at the top 50 pathways, if more were found.
-df <- df[1:min(50,nrow(df)),]
+df <- df[1:min(30,nrow(df)),]
 
 
 ggplot(df, aes(x=mean_percentile, y=reorder(name_for_plot,-mean_percentile))) + 

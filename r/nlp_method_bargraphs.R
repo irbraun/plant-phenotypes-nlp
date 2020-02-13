@@ -9,7 +9,7 @@ library(hashmap)
 
 
 # Reading in the CSV file of results.
-PATH <- "/Users/irbraun/phenologs-with-oats/outputs/02_07_2020_h14m14s25/part_6_full_table.csv"
+PATH <- "/Users/irbraun/Desktop/part_bottom.csv"
 df <- read.csv(file=PATH, header=T, sep=",")
 
 
@@ -55,7 +55,7 @@ group_mapping <- setNames(group_colors, group_names)
 
 # Change these to change what values are used for plotting, so that the ggplot() call doesn't need to be changed.
 baseline = read.csv(file=PATH, header=T, sep=",")$baseline[1]
-y_lim <- 0.3
+y_lim <- 0.2
 step_size <- 0.05
 df$metric_to_use <- df$auc_avg
 df$error_to_use <- df$auc_sd
