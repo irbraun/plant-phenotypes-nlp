@@ -16,7 +16,7 @@ df <- read.csv(file="/Users/irbraun/phenologs-with-oats/outputs/a_presentation_p
 df$name_for_plot = paste(df$full_name, " (n=", df$n, ")", sep="") 
 
 # Only look at the top 50 pathways, if more were found.
-df <- df[1:min(30,nrow(df)),]
+df <- df[1:min(50,nrow(df)),]
 
 
 ggplot(df, aes(x=mean_percentile, y=reorder(name_for_plot,-mean_percentile))) + 
@@ -28,4 +28,6 @@ ggplot(df, aes(x=mean_percentile, y=reorder(name_for_plot,-mean_percentile))) +
 
 path <- "~/Desktop/plot.png"
 ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=20, height=12, units=c("cm"), dpi=500, limitsize=FALSE)
+
+
 
