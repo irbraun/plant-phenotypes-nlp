@@ -9,7 +9,7 @@ library(hashmap)
 
 
 
-df <- read.csv(file="/Users/irbraun/Desktop/part_5_topic_modelling.csv")
+df <- read.csv(file="/Users/irbraun/phenologs-with-oats/outputs/phenome_subsets/part_5_topic_modeling.csv")
 
 df_long <- gather(df, subset, value, c(-order,-topic), factor_key=TRUE)
 

@@ -9,7 +9,7 @@ library(hashmap)
 
 
 # Reading in the CSV file of results.
-PATH <- "/Users/irbraun/Desktop/part_bottom.csv"
+PATH <- "/Users/irbraun/phenologs-with-oats/outputs/phenome_kegg/part_6_full_table.csv"
 df <- read.csv(file=PATH, header=T, sep=",")
 
 
@@ -23,7 +23,7 @@ df <- read.csv(file=PATH, header=T, sep=",")
 # Collapse the dataframe to average across all hyperparameters for each method and find the standard deviation.
 map <- hashmap(as.character(df$Method), as.character(df$Group))
 mapping_function <- function(x){return(map[[x]])}
-df <- data.frame(df %>% group_by(Method) %>% summarize(auc_avg=mean(auc), auc_sd=sd(auc), Order=mean(Order)))
+df <- data.frame(df %>% group_by(Method) %>% summarize(f1_max_avg=mean(f1_max), f1_max_sd=sd(f1_max), Order=mean(Order)))
 df[is.na(df)] <- 0.000 # Replace NA with 0 so that sd bars of height 0 can be added to bars for methods with no hyperparamter variation.
 df$Category <- mapping_function(df$Method)
 
@@ -56,9 +56,9 @@ group_mapping <- setNames(group_colors, group_names)
 # Change these to change what values are used for plotting, so that the ggplot() call doesn't need to be changed.
 baseline = read.csv(file=PATH, header=T, sep=",")$baseline[1]
 y_lim <- 0.2
-step_size <- 0.05
-df$metric_to_use <- df$auc_avg
-df$error_to_use <- df$auc_sd
+step_size <- 0.02
+df$metric_to_use <- df$f1_max_avg
+df$error_to_use <- df$f1_max_sd
 
 
 
@@ -78,12 +78,12 @@ ggplot(data=df, aes(x=reorder(Method,Order),y=metric_to_use,fill=group))+geom_ba
         panel.grid.minor = element_line(color="lightgray"), 
         panel.grid.major=element_blank(), 
         axis.line=element_blank()) +
-  ylab("AUC")
+  ylab("F1")
 
 
 # Save the image of the plot.
 path <- "~/Desktop/plot.png"
-ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=12, height=6, units=c("cm"), dpi=300, limitsize=TRUE)
+ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=12, height=8, units=c("cm"), dpi=300, limitsize=TRUE)
 
 
 
