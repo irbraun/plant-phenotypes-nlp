@@ -39,27 +39,30 @@ training_methods = [
 
 
 	# Methods that use topic models to generate embeddings.
-	Method("Topic Models", "LDA,Simple,Topics=20", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":20, "algorithm":"lda"}, spatial.distance.cosine),
-	Method("Topic Models", "LDA,Simple,Topics=50", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":50, "algorithm":"lda"}, spatial.distance.cosine),
-	Method("Topic Models", "LDA,Simple,Topics=100", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"lda"}, spatial.distance.cosine),
-	Method("Topic Models", "LDA,Simple,Topics=200", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":200, "algorithm":"lda"}, spatial.distance.cosine),
-	Method("Topic Models", "LDA,Full,Topics=20", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":20, "algorithm":"lda"}, spatial.distance.cosine),
-	Method("Topic Models", "LDA,Full,Topics=50", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":50, "algorithm":"lda"}, spatial.distance.cosine),
-	Method("Topic Models", "LDA,Full,Topics=100", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"lda"}, spatial.distance.cosine),
-	Method("Topic Models", "LDA,Full,Topics=200", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":200, "algorithm":"lda"}, spatial.distance.cosine),
+	Method("Topic Models", "LDA,Simple,Topics=20", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":20, "algorithm":"lda"}, spatial.distance.cosine),
+	Method("Topic Models", "LDA,Simple,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":50, "algorithm":"lda"}, spatial.distance.cosine),
+	Method("Topic Models", "LDA,Simple,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"lda"}, spatial.distance.cosine),
+	Method("Topic Models", "LDA,Simple,Topics=200", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":200, "algorithm":"lda"}, spatial.distance.cosine),
+	Method("Topic Models", "LDA,Full,Topics=20", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":20, "algorithm":"lda"}, spatial.distance.cosine),
+	Method("Topic Models", "LDA,Full,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":50, "algorithm":"lda"}, spatial.distance.cosine),
+	Method("Topic Models", "LDA,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"lda"}, spatial.distance.cosine),
+	Method("Topic Models", "LDA,Full,Topics=200", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":200, "algorithm":"lda"}, spatial.distance.cosine),
 
-	Method("Topic Models", "NMF,Simple,Topics=20", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":20, "algorithm":"nmf"}, spatial.distance.cosine),
-	Method("Topic Models", "NMF,Simple,Topics=50", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":50, "algorithm":"nmf"}, spatial.distance.cosine),
-	Method("Topic Models", "NMF,Simple,Topics=100", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
-	Method("Topic Models", "NMF,Simple,Topics=200", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":200, "algorithm":"nmf"}, spatial.distance.cosine),
-	Method("Topic Models", "NMF,Full,Topics=20", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":20, "algorithm":"nmf"}, spatial.distance.cosine),
-	Method("Topic Models", "NMF,Full,Topics=50", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":50, "algorithm":"nmf"}, spatial.distance.cosine),
-	Method("Topic Models", "NMF,Full,Topics=100", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
-	Method("Topic Models", "NMF,Full,Topics=200", pw.pairwise_square_topic_models, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":200, "algorithm":"nmf"}, spatial.distance.cosine),
+	Method("Topic Models", "NMF,Simple,Topics=20", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":20, "algorithm":"nmf"}, spatial.distance.cosine),
+	Method("Topic Models", "NMF,Simple,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":50, "algorithm":"nmf"}, spatial.distance.cosine),
+	Method("Topic Models", "NMF,Simple,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
+	Method("Topic Models", "NMF,Simple,Topics=200", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":200, "algorithm":"nmf"}, spatial.distance.cosine),
+	Method("Topic Models", "NMF,Full,Topics=20", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":20, "algorithm":"nmf"}, spatial.distance.cosine),
+	Method("Topic Models", "NMF,Full,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":50, "algorithm":"nmf"}, spatial.distance.cosine),
+	Method("Topic Models", "NMF,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
+	Method("Topic Models", "NMF,Full,Topics=200", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":200, "algorithm":"nmf"}, spatial.distance.cosine),
+
+	Method("Topic Models", "NMF,Simple,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_noun_only_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
+	Method("Topic Models", "NMF,Simple,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_adj_only_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
+	Method("Topic Models", "NMF,Simple,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_noun_adj_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
+	Method("Topic Models", "NMF,Simple,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
 
 
-
-		
 	# Methods that use variations on the n-grams approach with full preprocessing (includes stemming).
 	Method("N-Grams", "Full,Words,1-grams,2-grams", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2),"max_features":10000, "tfidf":False}, spatial.distance.cosine),
 	Method("N-Grams", "Full,Words,1-grams,2-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),

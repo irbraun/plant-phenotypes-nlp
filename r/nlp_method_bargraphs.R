@@ -9,7 +9,7 @@ library(hashmap)
 
 
 # Reading in the CSV file of results.
-PATH <- "/Users/irbraun/phenologs-with-oats/outputs/phenome_kegg/part_6_full_table.csv"
+PATH <- "/Users/irbraun/phenologs-with-oats/outputs/02_21_2020_h12m48s54/part_6_full_table.csv"
 df <- read.csv(file=PATH, header=T, sep=",")
 
 
@@ -23,8 +23,8 @@ df <- read.csv(file=PATH, header=T, sep=",")
 # Collapse the dataframe to average across all hyperparameters for each method and find the standard deviation.
 map <- hashmap(as.character(df$Method), as.character(df$Group))
 mapping_function <- function(x){return(map[[x]])}
-df <- data.frame(df %>% group_by(Method) %>% summarize(f1_max_avg=mean(f1_max), f1_max_sd=sd(f1_max), Order=mean(Order)))
-df[is.na(df)] <- 0.000 # Replace NA with 0 so that sd bars of height 0 can be added to bars for methods with no hyperparamter variation.
+df <- data.frame(df %>% group_by(Method) %>% summarize(f1_max_avg=mean(f1_max), f1_max_sd=mean(f1_std), Order=mean(Order)))
+#df[is.na(df)] <- 0.000 # Replace NA with 0 so that sd bars of height 0 can be added to bars for methods with no hyperparamter variation.
 df$Category <- mapping_function(df$Method)
 
 
@@ -69,7 +69,7 @@ ggplot(data=df, aes(x=reorder(Method,Order),y=metric_to_use,fill=group))+geom_ba
   scale_fill_manual(name="Approach Used",values=group_mapping) +
   geom_abline(slope=0, intercept=baseline,  col = "gray", lty=2) +
   scale_x_discrete(breaks=df$Method,labels=df$Method) +
-  scale_y_continuous(breaks=seq(0,y_lim,step_size), limits=c(NA,y_lim)) +
+  scale_y_continuous(breaks=seq(0,y_lim,step_size), limits=c(NA,y_lim), expand = c(0, 0)) +
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
         axis.text.x = element_text(angle=60, vjust=1.0, hjust=1),
         axis.title.x = element_blank(),
