@@ -9,7 +9,8 @@ library(hashmap)
 
 
 # Reading in the CSV file of results.
-PATH <- "/Users/irbraun/phenologs-with-oats/outputs/02_21_2020_h12m48s54/part_6_full_table.csv"
+PATH <- "/Users/irbraun/phenologs-with-oats/outputs/03_02_2020_h12m06s11/part_6_full_table.csv"
+PATH <- "/Users/irbraun/Desktop/mgc_plots/s3.csv"
 df <- read.csv(file=PATH, header=T, sep=",")
 
 
@@ -38,16 +39,19 @@ df$Category <- mapping_function(df$Method)
 #DAF7A6 (light green)
 
 
+#https://meyerweb.com/eric/tools/color-blend/#581845:900C3F::hex
+##771142 (halfway between purple and dark red)
+
 
 
 
 # Organizing the different methods presented into general categories.
-df$group <- factor(df$Category, levels = c("NLP","Ensemble","Curated"))
+df$group <- factor(df$Category, levels = c("NLP","Embedding","Curated","Other"))
 group_colors_bw <- c(grey.colors(n=3,start=0.1,end=1.0,alpha=1))
-group_colors <- c("#581845", "#900C3F", "#C70039", "#FF5733", "#FFC300", "#DAF7A6")
+group_colors <- c("#581845", "#900C3F", "#C70039", "#FF5733", "#FFC300", "#DAF7A6", "#771142")
 # Pick from those colors to match the same number of values present in group_names.
-group_colors <- c(group_colors[1], group_colors[2], group_colors[4])
-group_names <-  c("NLP","Ensemble","Curated")
+group_colors <- c(group_colors[7], group_colors[1], group_colors[4], group_colors[2])
+group_names <-  c("NLP","Embedding","Curated", "Other")
 group_mapping <- setNames(group_colors, group_names)
 
 
@@ -55,8 +59,8 @@ group_mapping <- setNames(group_colors, group_names)
 
 # Change these to change what values are used for plotting, so that the ggplot() call doesn't need to be changed.
 baseline = read.csv(file=PATH, header=T, sep=",")$baseline[1]
-y_lim <- 0.2
-step_size <- 0.02
+y_lim <- 0.7
+step_size <- 0.05
 df$metric_to_use <- df$f1_max_avg
 df$error_to_use <- df$f1_max_sd
 
@@ -74,7 +78,8 @@ ggplot(data=df, aes(x=reorder(Method,Order),y=metric_to_use,fill=group))+geom_ba
         axis.text.x = element_text(angle=60, vjust=1.0, hjust=1),
         axis.title.x = element_blank(),
         legend.direction = "vertical", 
-        legend.position = "right", 
+        #legend.position = "right", 
+        legend.position = "none",
         panel.grid.minor = element_line(color="lightgray"), 
         panel.grid.major=element_blank(), 
         axis.line=element_blank()) +
@@ -82,8 +87,8 @@ ggplot(data=df, aes(x=reorder(Method,Order),y=metric_to_use,fill=group))+geom_ba
 
 
 # Save the image of the plot.
-path <- "~/Desktop/plot.png"
-ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=12, height=8, units=c("cm"), dpi=300, limitsize=TRUE)
+path <- "~/Desktop/mgc_plots/plot3.png"
+ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=7, height=9, units=c("cm"), dpi=300, limitsize=TRUE)
 
 
 
