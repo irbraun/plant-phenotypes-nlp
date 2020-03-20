@@ -11,6 +11,7 @@ library(hashmap)
 # Reading in the CSV file of results.
 PATH <- "/Users/irbraun/phenologs-with-oats/outputs/03_02_2020_h12m06s11/part_6_full_table.csv"
 PATH <- "/Users/irbraun/Desktop/mgc_plots/s3.csv"
+#PATH <- "/Users/irbraun/Desktop/mgc_plots/pw3.csv"
 df <- read.csv(file=PATH, header=T, sep=",")
 
 
@@ -39,6 +40,13 @@ df$Category <- mapping_function(df$Method)
 #DAF7A6 (light green)
 
 
+# Gokul
+#7571B3 blue
+#DA6000 orange
+#189E78 green
+
+
+
 #https://meyerweb.com/eric/tools/color-blend/#581845:900C3F::hex
 ##771142 (halfway between purple and dark red)
 
@@ -49,8 +57,10 @@ df$Category <- mapping_function(df$Method)
 df$group <- factor(df$Category, levels = c("NLP","Embedding","Curated","Other"))
 group_colors_bw <- c(grey.colors(n=3,start=0.1,end=1.0,alpha=1))
 group_colors <- c("#581845", "#900C3F", "#C70039", "#FF5733", "#FFC300", "#DAF7A6", "#771142")
+group_colors <- c("#7571B3", "#DA6000", "#189E78", "#000000")
+
 # Pick from those colors to match the same number of values present in group_names.
-group_colors <- c(group_colors[7], group_colors[1], group_colors[4], group_colors[2])
+group_colors <- c(group_colors[2], group_colors[3], group_colors[4], group_colors[1])
 group_names <-  c("NLP","Embedding","Curated", "Other")
 group_mapping <- setNames(group_colors, group_names)
 
@@ -59,8 +69,8 @@ group_mapping <- setNames(group_colors, group_names)
 
 # Change these to change what values are used for plotting, so that the ggplot() call doesn't need to be changed.
 baseline = read.csv(file=PATH, header=T, sep=",")$baseline[1]
-y_lim <- 0.7
-step_size <- 0.05
+y_lim <- 0.75
+step_size <- 0.15
 df$metric_to_use <- df$f1_max_avg
 df$error_to_use <- df$f1_max_sd
 
@@ -76,6 +86,7 @@ ggplot(data=df, aes(x=reorder(Method,Order),y=metric_to_use,fill=group))+geom_ba
   scale_y_continuous(breaks=seq(0,y_lim,step_size), limits=c(NA,y_lim), expand = c(0, 0)) +
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
         axis.text.x = element_text(angle=60, vjust=1.0, hjust=1),
+        #axis.text.x = element_blank(),
         axis.title.x = element_blank(),
         legend.direction = "vertical", 
         #legend.position = "right", 
@@ -83,15 +94,14 @@ ggplot(data=df, aes(x=reorder(Method,Order),y=metric_to_use,fill=group))+geom_ba
         panel.grid.minor = element_line(color="lightgray"), 
         panel.grid.major=element_blank(), 
         axis.line=element_blank()) +
-  ylab("F1")
+  ylab("Performance (F1)")
 
 
 # Save the image of the plot.
-path <- "~/Desktop/mgc_plots/plot3.png"
-ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=7, height=9, units=c("cm"), dpi=300, limitsize=TRUE)
+path <- "~/Desktop/mgc_plots/ps3.png"
+ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=7, height=5.5, units=c("cm"), dpi=300, limitsize=TRUE)
 
 
-
-
-
+# 7 by 3.5 for without x axis names
+# 7 by 5.5 for with x axis names
 
