@@ -19,6 +19,7 @@ dependencies:
   - scipy
   - flask
   - pip 
+  - more-itertools
   - pip:
     - pywsd==1.2.4
     - gensim==3.8.1
