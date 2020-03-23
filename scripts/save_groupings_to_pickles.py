@@ -28,7 +28,7 @@ species_dict = {
 # Create and save the pathways object using PMN. This one uses the filenames in the dictionary.
 pathways = Groupings(species_dict, source="pmn")
 pathways.describe()
-save_to_pickle(obj=pathways, path="../data/pickles/pmn_pathways.pickle")
+save_to_pickle(obj=pathways, path="../data/pickles/groupings_from_pmn_pathways.pickle")
 
 
 
@@ -37,7 +37,7 @@ save_to_pickle(obj=pathways, path="../data/pickles/pmn_pathways.pickle")
 # All the pathways asocations are looked up when the groupings object is created through the KEGG API.
 pathways = Groupings(species_dict, source="kegg")
 pathways.describe()
-save_to_pickle(obj=pathways, path="../data/pickles/kegg_pathways.pickle")
+save_to_pickle(obj=pathways, path="../data/pickles/groupings_from_kegg_pathways.pickle")
 
 
 
@@ -69,7 +69,7 @@ class_id_to_name_dict = {row[3]:row[4] for row in df.itertuples()}
 species_dict = {"ath":"../data/scratch/arabidopsis_subsets.csv"}
 subsets = Groupings(species_dict, source="csv", name_mapping=subset_id_to_name_dict)
 subsets.describe()
-save_to_pickle(obj=subsets, path="../data/pickles/lloyd_subsets.pickle")
+save_to_pickle(obj=subsets, path="../data/pickles/groupings_from_lloyd_subsets.pickle")
 
 
 
@@ -78,4 +78,4 @@ save_to_pickle(obj=subsets, path="../data/pickles/lloyd_subsets.pickle")
 species_dict = {"ath":"../data/scratch/arabidopsis_classes.csv"}
 classes = Groupings(species_dict, source="csv", name_mapping=class_id_to_name_dict)
 classes.describe()
-save_to_pickle(obj=classes, path="../data/pickles/lloyd_classes.pickle")
+save_to_pickle(obj=classes, path="../data/pickles/groupings_from_lloyd_classes.pickle")
