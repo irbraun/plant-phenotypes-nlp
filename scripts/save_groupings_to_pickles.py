@@ -5,7 +5,7 @@ import warnings
 warnings.simplefilter('ignore')
 
 sys.path.append("../../oats")
-from oats.datasets.groupings import Groupings
+from oats.biology.groupings import Groupings
 from oats.utils.utils import save_to_pickle
 from oats.nlp.preprocess import other_delim_to_bar_delim, concatenate_with_bar_delim
 

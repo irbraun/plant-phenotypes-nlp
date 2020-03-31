@@ -6,7 +6,7 @@ import os
 import warnings
 warnings.simplefilter('ignore')
 sys.path.append("../../oats")
-from oats.datasets.dataset import Dataset
+from oats.biology.dataset import Dataset
 from oats.utils.utils import save_to_pickle, load_from_pickle
 
 

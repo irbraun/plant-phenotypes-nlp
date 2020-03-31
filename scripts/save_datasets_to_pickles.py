@@ -6,7 +6,7 @@ import os
 import warnings
 warnings.simplefilter('ignore')
 sys.path.append("../../oats")
-from oats.datasets.dataset import Dataset
+from oats.biology.dataset import Dataset
 from oats.utils.utils import save_to_pickle
 
 
@@ -44,6 +44,6 @@ reshaped_dir = "../data/reshaped_files"
 #all_csv_files = [os.path.basename(f) for f in glob.iglob(os.path.join(reshaped_dir,"*.csv"))]
 #save_combined_dataset_to_pickle("../data/pickles/full_dataset.pickle", reshaped_dir, *all_csv_files)
 save_combined_dataset_to_pickle("../data/pickles/gene_phenotype_dataset_all_text.pickle", reshaped_dir, "ppn_phenes.csv", "ppn_phenotypes.csv", "sly_phenotypes.csv", "zma_phenotypes.csv", "ath_phenotypes.csv")
-save_combined_dataset_to_pickle("../data/pickles/gene_phenotype_dataset_all_text_and_annotations.pickle", reshaped_dir, "ppn_phenes.csv", "ppn_phenotypes.csv", "sly_phenotypes.csv", "zma_phenotypes.csv", "ath_phenotypes.csv", "ath_high_confidence_go_annotations.csv", "ath_high_confidence_po_annotations.csv", "zma_high_confidence_go_annotations.csv")
+save_combined_dataset_to_pickle("../data/pickles/gene_phenotype_dataset_all_text_and_annotations.pickle", reshaped_dir, "ppn_phenes.csv", "ppn_phenotypes.csv", "ppn_annotations.csv", "sly_phenotypes.csv", "zma_phenotypes.csv", "ath_phenotypes.csv", "ath_high_confidence_go_annotations.csv", "ath_high_confidence_po_annotations.csv", "zma_high_confidence_go_annotations.csv")
 save_combined_dataset_to_pickle("../data/pickles/gene_phenotype_dataset_ppn_text_and_annotations.pickle", reshaped_dir, "ppn_phenes.csv", "ppn_phenotypes.csv", "ppn_annotations.csv")
 
