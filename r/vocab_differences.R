@@ -7,7 +7,6 @@ library(hashmap)
 library(ggrepel)
 
 
-
 PATH <- "~/Desktop/a.csv"
 df <- read.csv(file=PATH, header=T, sep=",")
 df$token <- as.character(df$token)
@@ -24,29 +23,6 @@ threshold_ath <- 0.6
 df$plotword <- ""
 df[df$zma_rate>=threshold_zma,]$plotword <- df[df$zma_rate>=threshold_zma,]$token
 df[df$ath_rate>=threshold_ath,]$plotword <- df[df$ath_rate>=threshold_ath,]$token
-
-
-#df$group <- "both"
-#df[df$zma_rate==0,]$group <- "ath"
-#df[df$ath_rate==0,]$group <- "zma"
-
-
-
-
-
-
-# Organizing the different methods presented into general categories.
-
-#df$group <- factor(df$Category, levels = c("NLP","Embedding","Curated","Other"))
-#group_colors_bw <- c(grey.colors(n=3,start=0.1,end=1.0,alpha=1))
-#group_colors <- c("#581845", "#900C3F", "#C70039", "#FF5733", "#FFC300", "#DAF7A6", "#771142")
-
-# Pick from those colors to match the same number of values present in group_names.
-#group_colors <- c("#000000", group_colors[4], group_colors[5])
-#group_names <-  c("both","ath","zma")
-#group_mapping <- setNames(group_colors, group_names)
-
-
 
 
 
@@ -75,49 +51,72 @@ ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=20, heigh
 
 
 
-df <- df[df["ath_freq"]>0]
+
+
+
+
+
+# Pick from those colors to match the same number of values present in group_names.
+group_colors <- c("#575757", "#E7E8EA")
+group_names <-  c(TRUE,FALSE)
+group_mapping <- setNames(group_colors, group_names)
+label_mapping <- setNames(group_names, c("yesss", "no"))
 
 
 
 # What if we want the frequencies by which range they fit into?
 # Have to make the numeric column categorical by binning.
 bin_breaks <- c(-Inf, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100, Inf)
-bin_names <- c("low", "1","2","3","4","5","6", "7", "8", "9", "10-100",">100")
-
-
+bin_names <- c("1","2","3","4","5","6", "7", "8", "9", "10", "11-100", ">100")
 df$ath_freq_bin <- cut(df$ath_freq, breaks=bin_breaks, labels=bin_names)
+df$zma_freq_bin <- cut(df$zma_freq, breaks=bin_breaks, labels=bin_names)
+df$ath_present <- (df$ath_freq>0)
+df$zma_present <- (df$zma_freq>0)
 
 
-head(df)
 
 
+# Make a new dataframe in the shape necessary for making a faceted plot easily.
+a = df[df["ath_freq"]>0,c("ath_freq_bin","zma_present")]
+a$facet <- "Arabidopsis"
+colnames(a) <- c("freq", "other", "facet")
+b = df[df["zma_freq"]>0,c("zma_freq_bin","ath_present")]
+b$facet <- "Maize"
+colnames(b) <- c("freq", "other", "facet")
+facet_df <- rbind(a,b)
+head(facet_df)
 
-#df_a = df[df$ath_freq >0,]
+# Size of the plot in cm when saving to file.
+h = 10
+w = 14
 
-
-# Generate the plot.
-ggplot(df, aes(x=ath_freq_bin)) +
-  geom_histogram(alpha=0.4, stat="count") +
-  #scale_fill_grey(name="Training Set") +
+# Generate the plot for the frequency of lemmes in Arabidopsis phenotypes.
+ggplot(facet_df, aes(x=freq, fill=other)) +
+  geom_histogram(alpha=1.0, stat="count") + 
+  geom_histogram(alpha=1.0, stat="count", color="black") +
+  facet_grid(rows=vars(facet), scales="free") +
+  scale_fill_manual(name="Frequecy>0 in other Species", values=group_mapping, labels=c("No","Yes")) +
   theme_bw() +
-  #facet_grid(rows=vars(Ontology,Relationship),cols=vars(method)) +
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
         panel.grid.major = element_blank(), 
-        #axis.text.y = element_blank(),
-        #axis.ticks.y = element_blank(),
-        legend.direction = "vertical",
-        legend.position = "right")+ 
-  ylab("Number of Words") +
-  xlab("Total Word Frequency")
+        legend.direction = "horizontal",
+        legend.position = "bottom")+ 
+  ylab("Bin Size") +
+  xlab("Words Binned by Count")
+
+# Save the image of the plot.
+path <- "~/Desktop/facet_plot.png"
+ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=w, height=h, units=c("cm"), dpi=300, limitsize=TRUE)
 
 
 
-
-
-
-
-
-
+# What about a simple Venn Diagram for the vocabularies too?
+ath <- nrow(df[df["ath_freq"]>0,])
+overlap <- nrow(df[(df["ath_freq"]>0) & (df["zma_freq"]>0),])
+zma <- nrow(df[df["zma_freq"]>0,])
+ath_only <- ath-overlap
+zma_only <- zma-overlap
+paste(ath_only, overlap, zma_only)
 
 
 
