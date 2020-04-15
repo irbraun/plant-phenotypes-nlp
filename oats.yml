@@ -12,7 +12,6 @@ dependencies:
   - sparqlwrapper
   - fuzzywuzzy
   - nltk
-  - pronto=0.12.2
   - biopython
   - seaborn
   - networkx
@@ -26,3 +25,4 @@ dependencies:
     - fastsemsim==1.0.0
     - pytorch-pretrained-bert==0.6.2
     - rapidfuzz==0.3.0
+    - pronto==2.1.0

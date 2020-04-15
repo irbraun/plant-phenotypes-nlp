@@ -18,8 +18,8 @@ df$token <- as.character(df$token)
 
 
 
-threshold_zma <- 0.6
-threshold_ath <- 0.6
+threshold_zma <- 0.75
+threshold_ath <- 0.75
 df$plotword <- ""
 df[df$zma_rate>=threshold_zma,]$plotword <- df[df$zma_rate>=threshold_zma,]$token
 df[df$ath_rate>=threshold_ath,]$plotword <- df[df$ath_rate>=threshold_ath,]$token
@@ -28,25 +28,26 @@ df[df$ath_rate>=threshold_ath,]$plotword <- df[df$ath_rate>=threshold_ath,]$toke
 
 
 
-ggplot(df, aes(x=ath_rate, y=zma_rate)) +
+ggplot(df, aes(x=zma_rate, y=ath_rate)) +
   geom_point(alpha=0.6) +
   geom_text_repel(aes(label=plotword),color="black", hjust=-0.1, vjust=0.3) +
   theme_bw() +
   #scale_color_manual(name="Only",values=group_mapping) +
-  scale_x_continuous(breaks=seq(0,2.0,0.5), limits=c(0,2.0), expand = c(0.01, 0)) +
-  scale_y_continuous(breaks=seq(0,3.0,0.5), limits=c(0,3), expand = c(0.01, 0)) +
+  scale_x_continuous(breaks=seq(0,3.0,0.5), limits=c(0,3), expand = c(0.01, 0)) +
+  scale_y_continuous(breaks=seq(0,2.0,0.5), limits=c(0,2), expand = c(0.01, 0)) +
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
-        #panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.grid.major = element_blank(), 
         legend.direction = "vertical",
         legend.position = "right")+ 
-  ylab("Maize (Per 100 Words)") +
-  xlab("Arabidopsis (Per 100 Words)")
+  ylab("Arabidopsis (Per 100 Words)") +
+  xlab("Maize (Per 100 Words)")
 
 
 
 # Save the image of the plot.
 path <- "~/Desktop/plot.png"
-ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=20, height=20, units=c("cm"), dpi=300, limitsize=TRUE)
+ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=20, height=14, units=c("cm"), dpi=300, limitsize=TRUE)
 
 
 
