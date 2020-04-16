@@ -12,12 +12,7 @@ df <- read.csv(file=PATH, header=T, sep=",")
 df$token <- as.character(df$token)
 
 
-
-
-
-
-
-
+# Thresholds and assigning labels to certain points.
 threshold_zma <- 0.75
 threshold_ath <- 0.75
 df$plotword <- ""
@@ -25,21 +20,32 @@ df[df$zma_rate>=threshold_zma,]$plotword <- df[df$zma_rate>=threshold_zma,]$toke
 df[df$ath_rate>=threshold_ath,]$plotword <- df[df$ath_rate>=threshold_ath,]$token
 
 
+df$exclusive <- "neither"
+df[df$zma_freq == 0,]$exclusive <- "all_ath"
+df[df$ath_freq == 0,]$exclusive <- "all_zma"
+df <- df[order(-df$exclusive),]
 
 
+# Pick from those colors to match the same number of values present in group_names.
+group_colors <- c("#FFDA67", "#E69238", "#000000")
+group_names <-  c("all_ath","all_zma","neither")
+group_mapping <- setNames(group_colors, group_names)
+#label_mapping <- setNames(group_names, c("yesss", "no"))
 
-ggplot(df, aes(x=zma_rate, y=ath_rate)) +
-  geom_point(alpha=0.6) +
+
+ggplot(df, aes(x=zma_rate, y=ath_rate, color=exclusive)) +
+  geom_point(alpha=0.9) +
   geom_text_repel(aes(label=plotword),color="black", hjust=-0.1, vjust=0.3) +
   theme_bw() +
-  #scale_color_manual(name="Only",values=group_mapping) +
+  scale_color_manual(name="Only",values=group_mapping) +
   scale_x_continuous(breaks=seq(0,3.0,0.5), limits=c(0,3), expand = c(0.01, 0)) +
   scale_y_continuous(breaks=seq(0,2.0,0.5), limits=c(0,2), expand = c(0.01, 0)) +
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
         panel.grid.minor = element_blank(),
         panel.grid.major = element_blank(), 
-        legend.direction = "vertical",
-        legend.position = "right")+ 
+        #legend.direction = "vertical",
+        #legend.position = "right")+ 
+        legend.position = "none")+
   ylab("Arabidopsis (Per 100 Words)") +
   xlab("Maize (Per 100 Words)")
 
