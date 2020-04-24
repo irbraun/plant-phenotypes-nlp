@@ -1,3 +1,8 @@
+import pandas as pd
+
+
+
+
 class Method:
 	def __init__(self, name_str, hyperparameter_str, function, kwargs, metric, tag=""):
 		"""Constructor for a Method class to define a single approach for distance measurements.
@@ -38,7 +43,6 @@ class IndexedGraph:
 		Args:
 		    df (pandas.DataFrame): A dataframe with columns {from, to, method1, method2, ...}.
 		"""
-		import pandas as pd
 		self.ids_in_graph = self._get_ids_in_graph(df)
 		self.indexed_df = self._index_df(df)
 
