@@ -141,7 +141,7 @@ nltk.download('averaged_perceptron_tagger', quiet=True)
 # Command line arguments for running this notebook as a a script.
 parser = argparse.ArgumentParser()
 parser.add_argument("-o", "--objective", dest="objective", required=True, choices=["phenotypes", "pathways", "interactions", "orthologs"], help="the biological question")
-parser.add_argument("-c", "--curated", dest="curated", required=True, action='store_true')
+parser.add_argument("-c", "--curated", dest="curated", required=False, action='store_true')
 args = parser.parse_args()
 OBJECTIVE = args.objective
 CURATED_SUBSET = args.curated
