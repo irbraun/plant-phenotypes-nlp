@@ -194,6 +194,29 @@ training_methods = [
 
 
 
+methods = [
+    # Curation-based methods
+    Method("GO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":go_annotations, "ontology":go, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
+    Method("PO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":po_annotations, "ontology":po, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
+    # Phenotype descriptions
+    Method("Doc2Vec", "Wikipedia,Size=300", pw.pairwise_square_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine),
+    Method("Word2Vec", "Wikipedia,Size=300,Mean,Nouns,Adjectives", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions_noun_adj_simple_preprocessing, "metric":"cosine", "method":"mean"}, spatial.distance.cosine),
+    Method("BERT", "Base:Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine),
+    Method("BioBERT", "PubMed,PMC,Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine),
+    Method("N-Grams", "Simple,Words,Linares Pontes,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
+    Method("N-Grams", "Full,Words,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
+    Method("NOBLE Coder", "Partial,TFIDF", pw.pairwise_square_annotations, {"ids_to_annotations":annotations_noblecoder_partial, "ontology":ontology, "binary":True, "metric":"cosine", "tfidf":True}, spatial.distance.cosine),
+	Method("Topic Models", "LDA,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"lda"}, spatial.distance.cosine),
+	Method("Topic Models", "NMF,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
+
+    # Phene descriptions
+    #Method("Doc2Vec (Phenes)", "Wikipedia,Size=300", pw.pairwise_square_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="phenes"),
+    #Method("Word2Vec (Phenes)", "Wikipedia,Size=300,Mean,Nouns,Adjectives", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":phenes_noun_adj_simple_preprocessing, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="phenes"),
+    #Method("N-Grams (Phenes)", "Simple,Words,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
+]
+
+
+
 
 
 

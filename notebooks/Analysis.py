@@ -64,7 +64,7 @@
 # - Python package for loading pretrained BERT models: [PyTorch Pretrained BERT](https://pypi.org/project/pytorch-pretrained-bert/)
 # - For BERT Models pretrained on PubMed and PMC: [BioBERT Paper](https://arxiv.org/abs/1901.08746), [BioBERT Models](https://github.com/naver/biobert-pretrained)
 
-# In[1]:
+# In[ ]:
 
 
 import datetime
@@ -135,7 +135,7 @@ nltk.download('averaged_perceptron_tagger', quiet=True)
 # ### Setting up the input and output paths and summarizing output table
 # This section defines some constants which are used for creating a uniquely named directory to contain all the outputs from running this instance of this notebook. The naming scheme is based on the time that the notebook is run. The other constants are used for specifying information in the output table about what the topic was for this notebook when it was run, such as looking at KEGG biochemical pathways or STRING protein-protein interaction data some other type of gene function grouping or hierarchy. These values are arbitrary and are just for keeping better notes about what the output of the notebook corresponds to. All the input and output file paths for loading datasets or models are also contained within this cell, so that if anything is moved the directories and file names should only have to be changed at this point and nowhere else further into the notebook. If additional files are added to the notebook cells they should be put here as well.
 
-# In[6]:
+# In[ ]:
 
 
 # Command line arguments for running this notebook as a a script.
@@ -152,7 +152,7 @@ CURATED_SUBSET = args.curated
 #OBJECTIVE = "pathways"
 #OBJECTIVE = "interactions"
 #OBJECTIVE = "pairs"
-#CURATED_SUBSET = True
+#CURATED_SUBSET = False
 
 
 # The summarizing output dictionary has the shape TABLE[approach][metric] --> value.
@@ -161,7 +161,7 @@ OUTPUT_DIR = os.path.join("../outputs",datetime.datetime.now().strftime('%m_%d_%
 os.mkdir(OUTPUT_DIR)
 
 
-# In[7]:
+# In[ ]:
 
 
 dataset_filename_for_testing = "../data/pickles/gene_phenotype_dataset_all_text_and_annotations.pickle"  # The full dataset pickle.
@@ -179,8 +179,9 @@ phenotypes_corpus_filename = "../data/corpus_related_files/untagged_text_corpora
 doc2vec_pubmed_filename = "../gensim/pubmed_dbow/doc2vec_2.bin"                                      # File holding saved Doc2Vec model.
 doc2vec_wikipedia_filename = "../gensim/enwiki_dbow/doc2vec.bin"                                     # File holding saved Doc2Vec model.
 word2vec_model_filename = "../gensim/wiki_sg/word2vec.bin"                                           # File holding saved Word2Vec model.
-go_ontology_filename = "../ontologies/go.obo"                                                           # Ontology file in OBO format.
-po_ontology_filename = "../ontologies/po.obo"
+go_filename = "../ontologies/go.obo"                                                           # Ontology file in OBO format.
+po_filename = "../ontologies/po.obo"
+pato_filename = "../ontologies/pato.obo"
 pato_ontology_filename = "../ontologies/pato.obo"   
 noblecoder_jarfile_path = "../lib/NobleCoder-1.0.jar"                                                # Jar for NOBLE Coder tool.
 biobert_pmc_path = "../gensim/biobert_v1.0_pmc/pytorch_model"                                        # Path for PyTorch BioBERT model.
@@ -193,7 +194,7 @@ panther_to_omim_filename = "../data/orthology_related_files/ath_to_hsa/pantherdb
 # ### Reading in the dataset of genes and their associated phenotype descriptions and annotations
 # The actual choice of pickle that is loaded here depends on the objective that is being used for this notebook.
 
-# In[8]:
+# In[ ]:
 
 
 # Reading in the dataset of genes, descriptions, and annotations.
@@ -207,7 +208,7 @@ dataset = load_from_pickle(dataset_filename)
 dataset.describe()
 
 
-# In[9]:
+# In[ ]:
 
 
 # Should the dataset be subset to only include genes with annotations?
@@ -216,11 +217,11 @@ if CURATED_SUBSET: dataset.filter_has_annotation("PO")
 dataset.describe()
 
 
-# In[10]:
+# In[ ]:
 
 
 # DELETE THIS
-#dataset.filter_random_k(200)
+#dataset.filter_random_k(10)
 #dataset.describe()
 
 
@@ -228,7 +229,7 @@ dataset.describe()
 # ### Relating the dataset of genes to the dataset of groupings or categories
 # This section generates tables that indicate how the genes present in the dataset were mapped to the defined pathways or groups. This includes a summary table that indicates how many genes by species were succcessfully mapped to atleast one pathway or group, as well as a more detailed table describing how many genes from each species were mapped to each particular pathway or group.
 
-# In[11]:
+# In[ ]:
 
 
 def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filename, name):
@@ -269,6 +270,26 @@ def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filenam
     table = table[table.columns.tolist()[-1:] + table.columns.tolist()[:-1]]
     table.to_csv(os.path.join(OUTPUT_DIR,"part_1_{}_mappings_by_group.csv".format(name)), index=False)
     
+    # What are the similarites between the groups for the genes present in this dataset?
+    group_sims = defaultdict(dict)
+    for group_id_1,ids_1 in group_id_to_ids.items():
+        for group_id_2,ids_2 in group_id_to_ids.items():
+            jaccard_sim = len(set(ids_1).intersection(set(ids_2)))/len(set(ids_1).union(set(ids_2)))
+            group_sims[group_id_1][group_id_2] = jaccard_sim
+    table = pd.DataFrame(group_sims)
+    # Changing the order of the Lloyd, Meinke phenotype subsets to match other figures for consistency.
+    if name == "lmsubsets":
+        filename = "../data/group_related_files/lloyd/lloyd_function_hierarchy_irb_cleaned.csv"
+        lmtm_df = pd.read_csv(filename)    
+        subsets_in_order = [col for col in lmtm_df["Subset Symbol"].values if col in table.columns]
+        table = table[subsets_in_order]
+        table = table.reindex(subsets_in_order)
+    # Formatting the column names for this table correctly and outputting to a file.
+    table = table.reset_index(drop=False).rename({"index":"group"},axis=1).reset_index(drop=False).rename({"index":"order"},axis=1)
+    table.to_csv(os.path.join(OUTPUT_DIR,"part_1_{}_similarity_matrix.csv".format(name)), index=False)
+    
+    
+
     # Returning the read-in groupings object.
     return(groups)
 
@@ -354,7 +375,7 @@ dataset.describe()
 
 # ### Option 3: Filtering the dataset based on orthologous genes
 
-# In[12]:
+# In[ ]:
 
 
 if OBJECTIVE == "orthologs":
@@ -532,9 +553,11 @@ vocabulary_from_ontology = get_vocab_from_tokens(ontology.tokens())
 
 # Run the ontology term annotators over the raw input text descriptions. NOBLE-Coder handles simple issues like case
 # normalization so preprocessed descriptions are not used for this step.
-ontology = Ontology(pato_ontology_filename)
-annotations_noblecoder_precise = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "pato", precise=1)
-annotations_noblecoder_partial = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "pato", precise=0)
+pato = Ontology(pato_filename)
+po = Ontology(po_filename)
+go = Ontology(go_filename)
+annotations_noblecoder_precise = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "po", precise=1)
+annotations_noblecoder_partial = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "po", precise=0)
 
 
 # In[ ]:
@@ -801,8 +824,21 @@ testing_methods = [
 # In[ ]:
 
 
-#methods = training_methods if NOTEBOOK_TAGS["training"] else testing_methods
-methods = testing_methods
+methods = [
+    # Curation-based methods
+    Method("GO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":go_annotations, "ontology":go, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
+    Method("PO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":po_annotations, "ontology":po, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
+    # Phenotype descriptions
+    Method("Doc2Vec", "Wikipedia,Size=300", pw.pairwise_square_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine),
+    Method("Word2Vec", "Wikipedia,Size=300,Mean,Nouns,Adjectives", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions_noun_adj_simple_preprocessing, "metric":"cosine", "method":"mean"}, spatial.distance.cosine),
+    Method("BERT", "Base:Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine),
+    Method("BioBERT", "PubMed,PMC,Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine),
+    Method("N-Grams", "Simple,Words,Linares Pontes,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
+    Method("N-Grams", "Full,Words,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
+    Method("NOBLE Coder", "Partial,TFIDF", pw.pairwise_square_annotations, {"ids_to_annotations":annotations_noblecoder_partial, "ontology":po, "binary":True, "metric":"cosine", "tfidf":True}, spatial.distance.cosine),
+    Method("Topic Models", "LDA,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"lda"}, spatial.distance.cosine),
+    Method("Topic Models", "NMF,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
+]
 
 
 # <a id="running"></a>
@@ -923,7 +959,7 @@ if OBJECTIVE not in ("phenotypes", "pathways", "interactions", "orthologs"):
 # # Part 5. Cluster Analysis
 # The purpose of this section is to look at different ways that the embeddings obtained for the dataset of phenotype descriptions can be used to cluster or organize the genes to which those phenotypes are mapped into subgroups or representations. These approaches include generating topic models from the data, and doing agglomerative clustering to find clusters to which each gene belongs.
 
-# In[16]:
+# In[ ]:
 
 
 # TODO this whole section doesn't really need to be run for the interactions or orthologs objectives, it only applies
@@ -944,9 +980,6 @@ id_to_group_ids, group_id_to_ids = groups.get_groupings_for_dataset(dataset)
 # Topic models define topics present in a dataset of texts as word or n-gram probability distributions. These models represent each instance of text then as being composed of or generated as as mixture of these topics. The vector for each text that indicates which fraction of that text is generated by a each topic is of length *n* where *n* is the number of topics, and can be used as a reduced dimensionality of the text, with a much smaller vector length than the n-grams embedding itself. Therefore we can build a topic model of the data with 100 topics for example in order to then represent each description in the dataset as a a vector of length 100. This section constructs topic models from the n-gram representations of the dataset and selects different values for the number of topics in order to find a value that works well during the grid search over the training dataset.
 
 # In[ ]:
-
-
-
 
 
 # Get a list of texts to create a topic model from, from one of the processed description dictionaries above. 
@@ -1236,6 +1269,13 @@ if OBJECTIVE == "pathways":
 df.head(10)
 
 
+# In[ ]:
+
+
+CURATED_SUBSET = True
+df.shape
+
+
 # ### Option 3: Merging with information about protein-protein interactions
 
 # In[ ]:
@@ -1268,6 +1308,36 @@ if OBJECTIVE == "orthologs":
     print(Counter(df["shared"].values))
     print(Counter(df["same"].values))
 df.head(10)
+
+
+# ### Checking to make sure that the number of genes and pairs matches what is expected at this point
+
+# In[ ]:
+
+
+# Sanity check for the number of genes and positive and negative pairs that are being used here. Matches table?
+
+# How many genes are being used and how many pairs are being used as instances?
+num_genes = len(set(df["from"].values).union(set(df["to"].values)))
+num_pairs_calc = int(((num_genes**2)-num_genes)/2)
+num_pairs_used = df.shape[0]
+#assert num_pairs_calc == num_pairs_used
+
+# What is the class representation?
+shared = Counter(df["shared"].values)
+num_positives = shared[1]
+num_negatives = shared[0]
+assert num_pairs_used == num_positives+num_negatives
+
+# Write the values that were tested to a file so they could be read later.
+tested_values = {"genes":num_genes,
+                 "pairs_calc":num_pairs_calc,
+                 "pairs_used":num_pairs_used,
+                 "pos":num_positives,
+                 "neg":num_negatives,
+                }
+with open(os.path.join(OUTPUT_DIR,"part_6_asserts.txt"), "w") as f:
+    f.write(str(tested_values))
 
 
 # <a id="ks"></a>
