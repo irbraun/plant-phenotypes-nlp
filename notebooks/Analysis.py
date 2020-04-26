@@ -146,6 +146,7 @@ args = parser.parse_args()
 OBJECTIVE = args.objective
 CURATED_SUBSET = args.curated
 
+
 # Running the notebook as a notebook instead.
 #OBJECTIVE = "orthologs"
 #OBJECTIVE = "phenotypes"
@@ -1269,11 +1270,6 @@ if OBJECTIVE == "pathways":
 df.head(10)
 
 
-# In[ ]:
-
-
-CURATED_SUBSET = True
-df.shape
 
 
 # ### Option 3: Merging with information about protein-protein interactions
