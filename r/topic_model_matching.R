@@ -88,7 +88,6 @@ num_to_right_label <- function(x){return(right_hashmap[[x]])}
 
 
 for (i in 1:nrow(df)){
-#for (i in 1:400){
   pl <- pl + geom_segment(aes_string(x=df[i,"x"], y=df[i,"y"], xend=df[i,"xend"], yend=df[i,"yend"]), "size"=df[i,"alpha"]*10, "color"=df[i, "color"])
 }
 
