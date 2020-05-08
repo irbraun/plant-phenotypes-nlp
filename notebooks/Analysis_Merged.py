@@ -64,7 +64,7 @@
 # - Python package for loading pretrained BERT models: [PyTorch Pretrained BERT](https://pypi.org/project/pytorch-pretrained-bert/)
 # - For BERT Models pretrained on PubMed and PMC: [BioBERT Paper](https://arxiv.org/abs/1901.08746), [BioBERT Models](https://github.com/naver/biobert-pretrained)
 
-# In[ ]:
+# In[1]:
 
 
 import datetime
@@ -91,7 +91,7 @@ from sklearn.metrics import precision_recall_curve, f1_score, auc
 from sklearn.model_selection import train_test_split, KFold
 from scipy import spatial, stats
 from statsmodels.sandbox.stats.multicomp import multipletests
-from nltk.corpus import brown
+from nltk.corpus import brown, stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from sklearn.neighbors import KNeighborsClassifier
 from pytorch_pretrained_bert import BertTokenizer, BertModel, BertForMaskedLM
@@ -135,7 +135,7 @@ nltk.download('averaged_perceptron_tagger', quiet=True)
 # ### Setting up the input and output paths and summarizing output table
 # This section defines some constants which are used for creating a uniquely named directory to contain all the outputs from running this instance of this notebook. The naming scheme is based on the time that the notebook is run. The other constants are used for specifying information in the output table about what the topic was for this notebook when it was run, such as looking at KEGG biochemical pathways or STRING protein-protein interaction data some other type of gene function grouping or hierarchy. These values are arbitrary and are just for keeping better notes about what the output of the notebook corresponds to. All the input and output file paths for loading datasets or models are also contained within this cell, so that if anything is moved the directories and file names should only have to be changed at this point and nowhere else further into the notebook. If additional files are added to the notebook cells they should be put here as well.
 
-# In[ ]:
+# In[2]:
 
 
 # Create and name an output directory according to when the notebooks or script was run.
@@ -143,7 +143,7 @@ OUTPUT_DIR = os.path.join("../outputs",datetime.datetime.now().strftime('%m_%d_%
 os.mkdir(OUTPUT_DIR)
 
 
-# In[ ]:
+# In[3]:
 
 
 dataset_filename = "../data/pickles/gene_phenotype_dataset_all_text_and_annotations.pickle"          # The full dataset pickle.
@@ -164,8 +164,6 @@ biobert_pmc_path = "../gensim/biobert_v1.0_pmc/pytorch_model"                   
 biobert_pubmed_path = "../gensim/biobert_v1.0_pubmed/pytorch_model"                                  # Path for PyTorch BioBERT model.
 biobert_pubmed_pmc_path = "../gensim/biobert_v1.0_pubmed_pmc/pytorch_model"                          # Path for PyTorch BioBERT model.
 panther_to_omim_filename = "../data/orthology_related_files/ath_to_hsa/pantherdb_omim_df.csv"        # File with mappings to human orthologs and disease phenotypes.
-
-
 pppn_edgelist_path = "../data/supplemental_files_oellrich_walls/13007_2015_53_MOESM9_ESM.txt"
 ortholog_file_path = "../data/orthology_related_files/pantherdb/PlantGenomeOrthologs_IRB_Modified.txt"
 
@@ -174,7 +172,7 @@ ortholog_file_path = "../data/orthology_related_files/pantherdb/PlantGenomeOrtho
 # ### Reading in the dataset of genes and their associated phenotype descriptions and annotations
 # The actual choice of pickle that is loaded here depends on the objective that is being used for this notebook.
 
-# In[ ]:
+# In[4]:
 
 
 dataset = load_from_pickle(dataset_filename)
@@ -186,7 +184,7 @@ dataset.describe()
 # ### Relating the dataset of genes to the dataset of groupings or categories
 # This section generates tables that indicate how the genes present in the dataset were mapped to the defined pathways or groups. This includes a summary table that indicates how many genes by species were succcessfully mapped to atleast one pathway or group, as well as a more detailed table describing how many genes from each species were mapped to each particular pathway or group.
 
-# In[ ]:
+# In[5]:
 
 
 def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filename, name):
@@ -256,61 +254,62 @@ def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filenam
     return(groups, group_mapped_ids)
 
 
-# <a id="read_in_kegg"></a>
-# ### Reading in the dataset of groupings from KEGG
+# ### Pathways from KEGG
 
-# In[ ]:
+# In[6]:
 
 
+# Readin in the dataset of groupings for pathways in KEGG.
 kegg_groups, kegg_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, kegg_pathways_filename, "kegg")
 kegg_groups.to_pandas().head(20)
 
 
-# <a id="read_in_plantcyc"></a>
-# ### Reading in the dataset of groupings from PlantCyc
+# ### Pathways from PlantCyc
 
-# In[ ]:
+# In[7]:
 
 
+# Reading in the dataset of groupings for pathways in PlantCyc.
 pmn_groups, pmn_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, pmn_pathways_filename, "pmn")
 pmn_groups.to_pandas().head(20)
 
 
-# <a id="read_in_lloyd_meinke_subsets"></a>
-# ### Reading in the dataset of phenotype subsets from Lloyd and Meinke, 2012
+# ### Phenotype subsets from Lloyd and Meinke (2012)
 
-# In[ ]:
+# In[8]:
 
 
+# Reading in the datasets of phenotype subset classifications from the Lloyd, Meinke 2012 paper.
 phe_subsets_groups, subsets_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, lloyd_subsets_filename, "subsets")
 phe_subsets_groups.to_pandas().head(20)
 
 
-# <a id="read_in_lloyd_meinke_classes"></a>
-# ### Reading in the dataset of phenotype classes from Lloyd and Meinke, 2012
+# ### Phenotype subsets from Lloyd and Meinke (2012)
 
-# In[ ]:
+# In[9]:
 
 
+# Reading in the datasets of phenotype class classifications from the Lloyd, Meinke 2012 paper.
 phe_classes_groups, classes_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, lloyd_classes_filename, "classes")
 phe_classes_groups.to_pandas().head(20)
 
 
 # <a id="filtering"></a>
-# ### Option 1: Filtering the dataset based on presence in the curated Oellrich, Walls et al. (2015) dataset
-# TODO maybe this part should not actually subset data? because only the non zero interactions are listed in that file? So the IDs shouldn't be used to do subsetting here?
+# ### Relating pairs of genes to information about network edges from other sources
+# This is done to only include genes (and the corresponding phenotype descriptions and annotations) which are useful for the current analysis. In this case we want to only retain genes that are mentioned atleast one time in the STRING database for a given species. If a gene is not mentioned at all in STRING, there is no information available for whether or not it interacts with any other proteins in the dataset so choose to not include it in the analysis. Only genes that have atleast one true positive are included because these are the only ones for which the missing information (negatives) is meaningful. This should be run instead of the subsequent cell, or the other way around, based on whether or not protein-protein interactions is the prediction goal for the current analysis.
 
-# In[ ]:
+# ### EQ-based similarities from Oellrich, Walls et al., (2015)
+
+# In[10]:
 
 
 ow_edgelist = AnyInteractions(dataset.get_name_to_id_dictionary(), pppn_edgelist_path)
 ow_edgelist.df.head(10)
 
 
-# ### Option 2: Filtering the dataset based on protein-protein interactions
-# This is done to only include genes (and the corresponding phenotype descriptions and annotations) which are useful for the current analysis. In this case we want to only retain genes that are mentioned atleast one time in the STRING database for a given species. If a gene is not mentioned at all in STRING, there is no information available for whether or not it interacts with any other proteins in the dataset so choose to not include it in the analysis. Only genes that have atleast one true positive are included because these are the only ones for which the missing information (negatives) is meaningful. This should be run instead of the subsequent cell, or the other way around, based on whether or not protein-protein interactions is the prediction goal for the current analysis.
+# ### Protein associations from STRING
 
-# In[ ]:
+# In[11]:
 
 
 naming_file = "../data/group_related_files/string/all_organisms.name_2_string.tsv"
@@ -327,31 +326,20 @@ string_edgelist = ProteinInteractions(genes, naming_file, *interaction_files)
 string_edgelist.df.head(10)
 
 
-# ### Option 3: Filtering the dataset based on orthologous genes
+# ### Orthologous genes from PANTHER
 
-# In[ ]:
+# In[12]:
 
 
 panther_edgelist = AnyInteractions(dataset.get_name_to_id_dictionary(), ortholog_file_path)
 panther_edgelist.df.head(10)
 
 
-# ### Option 4: Filtering the dataset based on membership in pathways or phenotype category
+# ### Subsetting the dataset to include only genes with relevance to any of the biological questions
 # This is done to only include genes (and the corresponding phenotype descriptions and annotations) which are useful for the current analysis. In this case we want to only retain genes that are mapped to atleast one pathway in whatever the source of pathway membership we are using is (KEGG, Plant Metabolic Network, etc). This is because for these genes, it will be impossible to correctly predict their pathway membership, and we have no evidence that they belong or do not belong in certain pathways so they can not be identified as being true or false negatives in any case. This should not actually be necessary if the dataset used to start the notebook analysis has already be subset for just the genes that either have pathway information of phenotype classification information, this should just be used to double check that the numbers make sense.
 
-# In[ ]:
+# In[13]:
 
-
-
-
-
-# In[ ]:
-
-
-# ADD A ROW TO THE TABLE THAT SHOWS WHAT THIS VALUE IS (SOMETHING LIKE TOTAL) ON TEH BOTTOM
-# TO THE TABLE OF BIOLOGICAL QUESTIONS THIS IS THE N
-
-# ADD SOMETHING ELSE THAT TAKES ABOUT WHAT THE OVERLAP BETWEEN THESE GENES FOR EACH QUESTION ARE.
 
 # Get the list of all the IDs in this dataset that have any relevant mapping at all to the biological questions.
 ids_with_any_mapping = list(set(flatten([
@@ -362,13 +350,12 @@ ids_with_any_mapping = list(set(flatten([
     string_edgelist.ids,
     panther_edgelist.ids
 ])))
-print(len(ids_with_any_mapping))
 
 
-# In[ ]:
+# In[14]:
 
 
-# WHAT ARE THE IDS THAT HAVE ALL THE REQUIRED ANNOTATIONS FOR COMPARISON
+# Get the list of all the IDs in this dataset that have all of types of curated values we want to look at. 
 annots = dataset.get_annotations_dictionary()
 go_mapped_ids = [i for i in dataset.get_ids() if "GO" in annots[i]]
 po_mapped_ids = [i for i in dataset.get_ids() if "PO" in annots[i]]
@@ -377,28 +364,14 @@ ids_with_all_annotations = list(set(flatten([
     po_mapped_ids,
     ow_edgelist.ids
 ])))
-print(len(ids_with_all_annotations))
 
 
-# In[ ]:
+# In[15]:
 
 
-# ALWAYS DO THIS
 dataset.filter_with_ids(ids_with_any_mapping)
 dataset.filter_random_k(300)
 dataset.describe()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
 
 # <a id="part_2"></a>
@@ -418,7 +391,7 @@ dataset.describe()
 # ### Loading trained and saved models
 # Versions of the architectures discussed above which have been saved as trained models are loaded here. Some of these models are loaded as pretrained models from the work of other groups, and some were trained on data specific to this notebook and loaded here.
 
-# In[ ]:
+# In[16]:
 
 
 # Files and models related to the machine learning text embedding methods used here.
@@ -438,7 +411,7 @@ bert_model_pubmed_pmc = BertModel.from_pretrained(biobert_pubmed_pmc_path)
 # ### Reading in the descriptions from hand-picked dataset of phenotype pairs
 # See the other notebook for the creation of this dataset. This is included in this notebook instead of a separated notebook because we want the treatment of the individual phenotype text instances to be the same as is done for the descriptions from the real dataset of plant phenotypes. The list of computational approaches being evaluated for this task is the same in both cases so all of the cells between the point where the descriptions are read in and when the distance matrices are found using all those methods are the same for this task as any of the biological questions that this notebook is focused on.
 
-# In[ ]:
+# In[17]:
 
 
 # This would only impact the notebook if run in the absence of the subsequent cells, never matters in the script.
@@ -459,87 +432,144 @@ descriptions
 # ### Preprocessing text descriptions
 # The preprocessing methods applied to the phenotype descriptions are a choice which impacts the subsequent vectorization and similarity methods which construct the pairwise distance matrix from each of these descriptions. The preprocessing methods that make sense are also highly dependent on the vectorization method or embedding method that is to be applied. For example, stemming (which is part of the full proprocessing done below using the Gensim preprocessing function) is useful for the n-grams and bag-of-words methods but not for the document embeddings methods which need each token to be in the vocabulary that was constructed and used when the model was trained. For this reason, embedding methods with pretrained models where the vocabulary is fixed should have a lighter degree of preprocessing not involving stemming or lemmatization but should involve things like removal of non-alphanumerics and normalizing case. 
 
-# In[ ]:
+# In[18]:
 
 
 # Obtain a mapping between IDs and the raw text descriptions associated with that ID from the dataset.
 descriptions = dataset.get_description_dictionary()
 
-# Preprocessing of the text descriptions. Different methods are necessary for different approaches.
-descriptions_full_preprocessing = {i:" ".join(preprocess_string(d)) for i,d in descriptions.items()}
-descriptions_simple_preprocessing = {i:" ".join(simple_preprocess(d)) for i,d in descriptions.items()}
-descriptions_no_stopwords = {i:remove_stopwords(d) for i,d in descriptions.items()}
+
+# In[19]:
+
+
+# Create a dictionary of phene descriptions and a dictionary to convert back to the phenotype/gene IDs.
+phenotype_ids = list(descriptions.keys())
+phenes = {}
+phene_id_to_id = {}
+phene_id = max(phenotype_ids)+1
+for i,phene_list in {i:sent_tokenize(d) for i,d in descriptions.items()}.items():
+    for phene in phene_list:
+        phenes[phene_id] = phene
+        phene_id_to_id[phene_id] = i
+        phene_id = phene_id+1
+phene_ids = list(phenes.keys())
+
+# Update the dictionary of descriptions to also include the individualy parsed phenes.
+descriptions.update(phenes)
+assert len(descriptions) == len(phenotype_ids)+len(phene_ids)
+
+
+# In[20]:
+
+
+
+
+# Applying canned prepreprocessing approaches to the descriptions.
+processed = defaultdict(dict)
+processed["simple"] = {i:" ".join(simple_preprocess(d)) for i,d in descriptions.items()}
+processed["simple_no_stops"] = {i:remove_stopwords(" ".join(simple_preprocess(d))) for i,d in descriptions.items()}
+processed["full"] = {i:" ".join(preprocess_string(d)) for i,d in descriptions.items()}
+
+# Set of stopwords, used later for checking it tokens in a list are stopwords or not.
+stop_words = set(stopwords.words('english')) 
 
 
 # <a id="pos_tagging"></a>
 # ### POS tagging the phenotype descriptions for nouns and adjectives
 # Note that preprocessing of the descriptions should be done after part-of-speech tagging, because tokens that are removed during preprocessing before n-gram analysis contain information that the parser needs to accurately call parts-of-speech. This step should be done on the raw descriptions and then the resulting bags of words can be subset using additional preprocesssing steps before input in one of the vectorization methods.
 
-# In[ ]:
+# In[21]:
 
 
 get_pos_tokens = lambda text,pos: " ".join([t[0] for t in nltk.pos_tag(word_tokenize(text)) if t[1].lower()==pos.lower()])
-descriptions_noun_only =  {i:get_pos_tokens(d,"NN") for i,d in descriptions.items()}
-descriptions_noun_only_full_preprocessing = {i:" ".join(preprocess_string(d)) for i,d in descriptions_noun_only.items()}
-descriptions_noun_only_simple_preprocessing = {i:" ".join(simple_preprocess(d)) for i,d in descriptions_noun_only.items()}
-descriptions_adj_only =  {i:get_pos_tokens(d,"JJ") for i,d in descriptions.items()}
-descriptions_adj_only_full_preprocessing = {i:" ".join(preprocess_string(d)) for i,d in descriptions_adj_only.items()}
-descriptions_adj_only_simple_preprocessing = {i:" ".join(simple_preprocess(d)) for i,d in descriptions_adj_only.items()}
-descriptions_noun_adj = {i:"{} {}".format(descriptions_noun_only[i],descriptions_adj_only[i]) for i in descriptions.keys()}
-descriptions_noun_adj_full_preprocessing = {i:"{} {}".format(descriptions_noun_only_full_preprocessing[i],descriptions_adj_only_full_preprocessing[i]) for i in descriptions.keys()}
-descriptions_noun_adj_simple_preprocessing = {i:"{} {}".format(descriptions_noun_only_simple_preprocessing[i],descriptions_adj_only_simple_preprocessing[i]) for i in descriptions.keys()}
-
-
-# <a id="vocab"></a>
-# ### Reducing the vocabulary size using a word distance matrix
-# These approaches for reducing the vocabulary size of the dataset work by replacing multiple words that occur throughout the dataset of descriptions with an identical word that is representative of this larger group of words. The total number of unique words across all descriptions is therefore reduced, and when observing n-gram overlaps between vector representations of these descriptions, overlaps will now occur between descriptions that included different but similar words. These methods work by actually generating versions of these descriptions that have the word replacements present. The returned objects for these methods are the revised description dictionary, a dictionary mapping tokens in the full vocabulary to tokens in the reduced vocabulary, and a dictionary mapping tokens in the reduced vocabulary to a list of tokens in the full vocabulary.
-
-# In[ ]:
-
-
-# Reducing the size of the vocabulary for descriptions treated with simple preprocessing.
-tokens = list(set([w for w in flatten(d.split() for d in descriptions_simple_preprocessing.values())]))
-tokens_dict = {i:w for i,w in enumerate(tokens)}
-graph = pw.pairwise_square_word2vec(word2vec_model, tokens_dict, "cosine")
-
-# Make sure that the tokens list is in the same order as the indices representing each word in the distance matrix.
-# This is only trivial here because the IDs used are ordered integers 0 to n, but this might not always be the case.
-distance_matrix = graph.array
-tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
-n = 3
-threshold = 0.2
-descriptions_linares_pontes, reduce_lp, unreduce_lp = reduce_vocab_linares_pontes(descriptions_simple_preprocessing, tokens, distance_matrix, n)
-descriptions_connected_components, reduce_cc, unreduce_cc = reduce_vocab_connected_components(descriptions_simple_preprocessing, tokens, distance_matrix, threshold)
+processed["nouns"] =  {i:get_pos_tokens(d,"NN") for i,d in descriptions.items()}
+processed["nouns_full"] = {i:" ".join(preprocess_string(d)) for i,d in processed["nouns"].items()}
+processed["nouns_simple"] = {i:" ".join(simple_preprocess(d)) for i,d in processed["nouns"].items()}
+processed["adjectives"] =  {i:get_pos_tokens(d,"JJ") for i,d in descriptions.items()}
+processed["adjectives_full"] = {i:" ".join(preprocess_string(d)) for i,d in processed["adjectives"].items()}
+processed["adjectives_simple"] = {i:" ".join(simple_preprocess(d)) for i,d in processed["adjectives"].items()}
+processed["nouns_adjectives"] = {i:"{} {}".format(processed["nouns"][i],processed["adjectives"][i]) for i in descriptions.keys()}
+processed["nouns_adjectives_full"] = {i:"{} {}".format(processed["nouns_full"][i],processed["adjectives_full"][i]) for i in descriptions.keys()}
+processed["nouns_adjectives_simple"] = {i:"{} {}".format(processed["nouns_simple"][i],processed["adjectives_simple"][i]) for i in descriptions.keys()}
 
 
 # ### Reducing vocabulary size based on identifying important words
 # These approcahes for reducing the vocabulary size of the dataset work by identifying which words in the descriptions are likely to be the most important for identifying differences between the phenotypes and meaning of the descriptions. One approach is to determine which words occur at a higher rate in text of interest such as articles about plant phenotypes as compared to their rates in more general texts such as a corpus of news articles. These approaches do not create modified versions of the descriptions but rather provide vocabulary objects that can be passed to the sklearn vectorizer or constructors.
 
-# In[ ]:
-
-
-# Constructing a vocabulary by looking at what words are overrepresented in domain specific text.
-background_corpus = open(background_corpus_filename,"r").read()
-phenotypes_corpus = open(phenotypes_corpus_filename,"r").read()
-tokens = get_overrepresented_tokens(phenotypes_corpus, background_corpus, max_features=5000)
-vocabulary_from_text = get_vocab_from_tokens(tokens)
-
-# Constructing a vocabulary by assuming all words present in a given ontology are important.
-ontology = Ontology(pato_filename)
-vocabulary_from_ontology = get_vocab_from_tokens(ontology.tokens())
-
-
-# <a id="annotation"></a>
-# ### Annotating descriptions with ontology terms
-# This section generates dictionaries that map gene IDs from the dataset to lists of strings, where those strings are ontology term IDs. How the term IDs are found for each gene entry with its corresponding phenotype description depends on the cell below. Firstly, the terms are found by using the NOBLE Coder annotation tool through these wrapper functions to identify the terms by looking for instances of the term's label or synonyms in the actual text of the phenotype descriptions. Secondly, the next cell just draws the terms directly from the dataset itself. In this case, these are high-confidence annotations done by curators for a comparison against what can be accomplished through computational analysis of the text.
-
-# In[ ]:
+# In[23]:
 
 
 # Create ontology objects for all the biological ontologies being used.
 pato = Ontology(pato_filename)
 po = Ontology(po_filename)
 go = Ontology(go_filename)
+
+
+# In[26]:
+
+
+# Getting sets of tokens that are part of bio ontology term labels or synonyms.
+bio_ontology_tokens = list(set(po.tokens()).union(set(go.tokens())))
+bio_ontology_tokens = [t for t in bio_ontology_tokens if t not in stop_words]
+bio_ontology_tokens_simple = flatten([simple_preprocess(t) for t in bio_ontology_tokens])
+bio_ontology_tokens_full = flatten([preprocess_string(t) for t in bio_ontology_tokens])
+with open(os.path.join(OUTPUT_DIR,"part_3_bio_ontology_vocab_size_{}.txt".format(len(bio_ontology_tokens))),"w") as f:
+    f.write(" ".join(bio_ontology_tokens))
+
+
+# In[27]:
+
+
+# Getting sets of tokens that are overprepresented in plant phenotype papers as compared to some background corpus.
+maximum_number_of_tokens = 10000
+background_corpus = open(background_corpus_filename,"r").read()
+phenotypes_corpus = open(phenotypes_corpus_filename,"r").read()
+ppp_overrepresented_tokens = get_overrepresented_tokens(phenotypes_corpus, background_corpus, max_features=maximum_number_of_tokens)
+ppp_overrepresented_tokens = [t for t in ppp_overrepresented_tokens if t not in stop_words]
+ppp_overrepresented_tokens_simple = flatten([simple_preprocess(t) for t in ppp_overrepresented_tokens])
+ppp_overrepresented_tokens_full = flatten([preprocess_string(t) for t in ppp_overrepresented_tokens])
+with open(os.path.join(OUTPUT_DIR,"part_3_plant_phenotype_vocab_size_{}.txt".format(len(ppp_overrepresented_tokens))), "w") as f:
+    f.write(" ".join(ppp_overrepresented_tokens))
+
+
+# In[28]:
+
+
+# Generating processed description entries by subsetting tokens to only include ones from these vocabularies.
+ppp_overrepresented_tokens_full_set = set(ppp_overrepresented_tokens_full)
+bio_ontology_tokens_full_set = set(bio_ontology_tokens_full)
+processed["plant_overrepresented_tokens"] = {i:" ".join([token for token in word_tokenize(text) if token in ppp_overrepresented_tokens_full_set]) for i,text in processed["full"].items()}
+processed["bio_ontology_tokens"] = {i:" ".join([token for token in word_tokenize(text) if token in bio_ontology_tokens_full_set]) for i,text in processed["full"].items()}
+
+
+# <a id="vocab"></a>
+# ### Reducing the vocabulary size using a word distance matrix
+# These approaches for reducing the vocabulary size of the dataset work by replacing multiple words that occur throughout the dataset of descriptions with an identical word that is representative of this larger group of words. The total number of unique words across all descriptions is therefore reduced, and when observing n-gram overlaps between vector representations of these descriptions, overlaps will now occur between descriptions that included different but similar words. These methods work by actually generating versions of these descriptions that have the word replacements present. The returned objects for these methods are the revised description dictionary, a dictionary mapping tokens in the full vocabulary to tokens in the reduced vocabulary, and a dictionary mapping tokens in the reduced vocabulary to a list of tokens in the full vocabulary.
+
+# In[29]:
+
+
+# Generate a pairwise distance matrix object using the oats subpackage, and create an appropriately shaped matrix,
+# making sure that the tokens list is in the same order as the indices representing each word in the distance matrix.
+# This is currently triviala because the IDs that are used are ordered integers 0 to n, but this might not always be
+# the case so it's not directly assumed here.
+tokens = list(set([w for w in flatten(d.split() for d in processed["simple"].values())]))
+tokens_dict = {i:w for i,w in enumerate(tokens)}
+graph = pw.pairwise_square_word2vec(word2vec_model, tokens_dict, "cosine")
+distance_matrix = graph.array
+tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
+
+# The other argument that the Linares Pontes algorithm needs is a value for n, see paper or description above.
+n = 3
+processed["linares_pontes"], reduce_lp, unreduce_lp = reduce_vocab_linares_pontes(processed["simple"], tokens, distance_matrix, n)
+
+
+# <a id="annotation"></a>
+# ### Annotating descriptions with ontology terms
+# This section generates dictionaries that map gene IDs from the dataset to lists of strings, where those strings are ontology term IDs. How the term IDs are found for each gene entry with its corresponding phenotype description depends on the cell below. Firstly, the terms are found by using the NOBLE Coder annotation tool through these wrapper functions to identify the terms by looking for instances of the term's label or synonyms in the actual text of the phenotype descriptions. Secondly, the next cell just draws the terms directly from the dataset itself. In this case, these are high-confidence annotations done by curators for a comparison against what can be accomplished through computational analysis of the text.
+
+# In[30]:
+
 
 # Run the NOBLE Coder annotator over the raw input text descriptions, which handles things like case normalization.
 direct_annots_nc_go_precise = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "go", precise=1)
@@ -562,15 +592,25 @@ all_precise_annotations = {i:flatten([inherited_annots_nc_go_precise[i],inherite
 all_partial_annotations = {i:flatten([inherited_annots_nc_go_partial[i],inherited_annots_nc_po_partial[i],inherited_annots_nc_pato_partial[i]]) for i in descriptions.keys()}
 
 
-# In[ ]:
+# In[31]:
+
+
+# Treating these sets of inherited ontology terms as tokens so that they can be used as n-grams.
+processed["precise_annotations"] = {i:" ".join(annots) for i,annots in all_precise_annotations.items()}
+processed["partial_annotations"] = {i:" ".join(annots) for i,annots in all_partial_annotations.items()}
+
+
+# In[32]:
 
 
 # Create description strings with all ontology term anntotations concatenated to the end of the descriptions.
-descriptions_with_precise_terms = {i:" ".join(flatten([text,all_precise_annotations[i]])) for i,text in descriptions.items()}
-descriptions_with_partial_terms = {i:" ".join(flatten([text,all_partial_annotations[i]])) for i,text in descriptions.items()}
+processed["simple_plus_precise_annotations"] = {i:" ".join(flatten([text,all_precise_annotations[i]])) for i,text in processed["simple"].items()}
+processed["simple_plus_partial_annotations"] = {i:" ".join(flatten([text,all_partial_annotations[i]])) for i,text in processed["simple"].items()}
+processed["full_plus_precise_annotations"] = {i:" ".join(flatten([text,all_precise_annotations[i]])) for i,text in processed["full"].items()}
+processed["full_plus_partial_annotations"] = {i:" ".join(flatten([text,all_partial_annotations[i]])) for i,text in processed["full"].items()}
 
 
-# In[ ]:
+# In[33]:
 
 
 # Create ontology term annotations dictionaries for all the high confidence annotations present in the dataset.
@@ -582,44 +622,22 @@ curated_po_annotations = dataset.get_annotations_dictionary("po")
 # ### Splitting the descriptions into individual phenes
 # As a preprocessing step, split into a new set of descriptions that's larger. Note that phenotypes are split into phenes, and the phenes that are identical are retained as separate entries in the dataset. This makes the distance matrix calculation more needlessly expensive, because vectors need to be found for the same string more than once, but it simplifies converting the edgelist back to having IDs that reference the genes (full phenotypes) instead of the smaller phenes. If anything, that problem should be addressed in the pairwise functions, not here. (The package should handle it, not when creating input data for those methods).
 
-# In[ ]:
+# In[34]:
 
 
-# Create a dictionary of phene descriptions and a dictionary to convert back to the phenotype/gene IDs.
-phenes = {}
-phene_id_to_id = {}
-phene_id = 0
-for i,phene_list in {i:sent_tokenize(d) for i,d in descriptions.items()}.items():
-    for phene in phene_list:
-        phenes[phene_id] = phene
-        phene_id_to_id[phene_id] = i
-        phene_id = phene_id+1
-        
-# Repeating the reprocessing options for the individual phenes instead of the full phenotype descriptions.
-phenes_full_preprocessing = {i:" ".join(preprocess_string(d)) for i,d in phenes.items()}
-phenes_simple_preprocessing = {i:" ".join(simple_preprocess(d)) for i,d in phenes.items()}
-phenes_no_stopwords = {i:remove_stopwords(d) for i,d in phenes.items()}
-get_pos_tokens = lambda text,pos: " ".join([t[0] for t in nltk.pos_tag(word_tokenize(text)) if t[1].lower()==pos.lower()])
-phenes_noun_only =  {i:get_pos_tokens(d,"NN") for i,d in phenes.items()}
-phenes_noun_only_full_preprocessing = {i:" ".join(preprocess_string(d)) for i,d in phenes_noun_only.items()}
-phenes_noun_only_simple_preprocessing = {i:" ".join(simple_preprocess(d)) for i,d in phenes_noun_only.items()}
-phenes_adj_only =  {i:get_pos_tokens(d,"JJ") for i,d in phenes.items()}
-phenes_adj_only_full_preprocessing = {i:" ".join(preprocess_string(d)) for i,d in phenes_adj_only.items()}
-phenes_adj_only_simple_preprocessing = {i:" ".join(simple_preprocess(d)) for i,d in phenes_adj_only.items()}
-phenes_noun_adj = {i:"{} {}".format(phenes_noun_only[i],phenes_adj_only[i]) for i in phenes.keys()}
-phenes_noun_adj_full_preprocessing = {i:"{} {}".format(phenes_noun_only_full_preprocessing[i],phenes_adj_only_full_preprocessing[i]) for i in phenes.keys()}
-phenes_noun_adj_simple_preprocessing = {i:"{} {}".format(phenes_noun_only_simple_preprocessing[i],phenes_adj_only_simple_preprocessing[i]) for i in phenes.keys()}
+# Transform the processed description dictionaries back into referencing either just phenotypes or phenes.
+descriptions = dataset.get_description_dictionary()
+processes = list(processed.keys())
+unmerged = defaultdict(dict)
+for process,di in processed.items():
+    unmerged["{}_phenes".format(process)] = {i:text for i,text in di.items() if i in phene_ids}
+    unmerged[process] = {i:text for i,text in di.items() if i in phenotype_ids}
+processed = unmerged
 
-# Repeating the vocbulary reduction step using the individual phenes instead of full phenotype descriptions.
-tokens = list(set([w for w in flatten(d.split() for d in phenes_simple_preprocessing.values())]))
-tokens_dict = {i:w for i,w in enumerate(tokens)}
-graph = pw.pairwise_square_word2vec(word2vec_model, tokens_dict, "cosine")
-distance_matrix = graph.array
-tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
-n = 3
-threshold = 0.2
-phenes_linares_pontes, reduce_lp, unreduce_lp = reduce_vocab_linares_pontes(phenes_simple_preprocessing, tokens, distance_matrix, n)
-phenes_connected_components, reduce_cc, unreduce_cc = reduce_vocab_connected_components(phenes_simple_preprocessing, tokens, distance_matrix, threshold)
+# Checking to make sure the size of each dictionary is as expected.
+for process in processes:
+    assert len(phenotype_ids) == len(processed[process].keys())
+    assert len(phene_ids) == len(processed["{}_phenes".format(process)].keys())
 
 
 # <a id="part_4"></a>
@@ -630,223 +648,51 @@ phenes_connected_components, reduce_cc, unreduce_cc = reduce_vocab_connected_com
 # ### Specifying a list of NLP methods to use
 # Something here if needed.
 
-# In[ ]:
+# In[64]:
 
 
-training_methods = [
-
-
-    # Full phenotype descriptions
-
-
+methods = [ 
     # Methods that use neural networks to generate embeddings.
     Method("Doc2Vec", "Wikipedia,Size=300", pw.pairwise_square_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine),
-    Method("Doc2Vec", "PubMed,Size=100", pw.pairwise_square_doc2vec, {"model":doc2vec_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine),
     Method("Word2Vec", "Wikipedia,Size=300,Mean", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine),
     Method("Word2Vec", "Wikipedia,Size=300,Max", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine),
-    Method("Word2Vec", "Wikipedia,Size=300,Mean,Nouns,Adjectives", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions_noun_adj_simple_preprocessing, "metric":"cosine", "method":"mean"}, spatial.distance.cosine),
-    Method("Word2Vec", "Wikipedia,Size=300,Max,Nouns,Adjectives", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions_noun_adj_simple_preprocessing, "metric":"cosine", "method":"max"}, spatial.distance.cosine),
-    Method("Word2Vec", "Wikipedia,Size=300,Mean,Linares Pontes", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine),
-    Method("Word2Vec", "Wikipedia,Size=300,Max,Linares Pontes", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "method":"max"}, spatial.distance.cosine),
-
-    #Method("BERT", "Base:Layers=2,Concatenated", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine),
-    #Method("BERT", "Base:Layers=3,Concatenated", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine),
-    #Method("BERT", "Base:Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine),
-    #Method("BERT", "Base:Layers=2,Summed", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine),
-    #Method("BERT", " Base:Layers=3,Summed", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine),
-    #Method("BERT", "Base:Layers=4,Summed", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":4}, spatial.distance.cosine),
-    #Method("BioBERT", "PMC,Layers=2,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pmc, "tokenizer":bert_tokenizer_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine),
-    #Method("BioBERT", "PMC,Layers=3,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pmc, "tokenizer":bert_tokenizer_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine),
-    #Method("BioBERT", "PMC,Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pmc, "tokenizer":bert_tokenizer_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine),
-    #Method("BioBERT", "PubMed,Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pubmed, "tokenizer":bert_tokenizer_pubmed, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine),
-    #Method("BioBERT", "PubMed,PMC,Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine),
-
 
     # Methods that use topic models to generate embeddings.
-    Method("Topic Models", "LDA,Simple,Topics=20", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":20, "algorithm":"lda"}, spatial.distance.cosine),
-    Method("Topic Models", "LDA,Simple,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":50, "algorithm":"lda"}, spatial.distance.cosine),
-    Method("Topic Models", "LDA,Simple,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"lda"}, spatial.distance.cosine),
-    Method("Topic Models", "LDA,Simple,Topics=200", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":200, "algorithm":"lda"}, spatial.distance.cosine),
-    Method("Topic Models", "LDA,Full,Topics=20", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":20, "algorithm":"lda"}, spatial.distance.cosine),
-    Method("Topic Models", "LDA,Full,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":50, "algorithm":"lda"}, spatial.distance.cosine),
-    Method("Topic Models", "LDA,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"lda"}, spatial.distance.cosine),
-    Method("Topic Models", "LDA,Full,Topics=200", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":200, "algorithm":"lda"}, spatial.distance.cosine),
-
-    Method("Topic Models", "NMF,Simple,Topics=20", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":20, "algorithm":"nmf"}, spatial.distance.cosine),
-    Method("Topic Models", "NMF,Simple,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":50, "algorithm":"nmf"}, spatial.distance.cosine),
-    Method("Topic Models", "NMF,Simple,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
-    Method("Topic Models", "NMF,Simple,Topics=200", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "num_topics":200, "algorithm":"nmf"}, spatial.distance.cosine),
-    Method("Topic Models", "NMF,Full,Topics=20", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":20, "algorithm":"nmf"}, spatial.distance.cosine),
-    Method("Topic Models", "NMF,Full,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":50, "algorithm":"nmf"}, spatial.distance.cosine),
-    Method("Topic Models", "NMF,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
-    Method("Topic Models", "NMF,Full,Topics=200", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":200, "algorithm":"nmf"}, spatial.distance.cosine),
-
+    Method("Topic Models", "NMF,Full,Topics=20", pw.pairwise_square_topic_model, {"ids_to_texts":processed["full"], "metric":"cosine", "num_topics":20, "algorithm":"nmf"}, spatial.distance.cosine),
+    Method("Topic Models", "NMF,Full,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":processed["full"], "metric":"cosine", "num_topics":50, "algorithm":"nmf"}, spatial.distance.cosine),
+    Method("Topic Models", "NMF,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":processed["full"], "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
+    Method("Topic Models", "NMF,Full,Topics=200", pw.pairwise_square_topic_model, {"ids_to_texts":processed["full"], "metric":"cosine", "num_topics":200, "algorithm":"nmf"}, spatial.distance.cosine),
 
     # Methods that use variations on the n-grams approach with full preprocessing (includes stemming).
-    Method("N-Grams", "Full,Words,1-grams,2-grams", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2),"max_features":10000, "tfidf":False}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Words,1-grams,2-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
-    Method("N-Grams", "Full,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Words,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
-    Method("N-Grams", "Full,Words,1-grams,2-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2),"max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Words,1-grams,2-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Words,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Words,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
+    Method("N-Grams", "Full,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
+    Method("N-Grams", "Full,Words,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full"], "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
+    Method("N-Grams", "Full,Words,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
+    Method("N-Grams", "Full,Words,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full"], "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
 
-    # Methods that use variations on the n-grams approach with simple preprocessing (no stemming).
-    Method("N-Grams", "Simple,Words,1-grams,2-grams", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2),"max_features":10000, "tfidf":False}, spatial.distance.cosine),
-    Method("N-Grams", "Simple,Words,1-grams,2-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
-    Method("N-Grams", "Simple,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
-    Method("N-Grams", "Simple,Words,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
-    Method("N-Grams", "Simple,Words,1-grams,2-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2),"max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Simple,Words,1-grams,2-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Simple,Words,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Simple,Words,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_simple_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-
-    # Methods that use variations on the n-grams approach selecting for specific parts-of-speech (includes stemming).
-    Method("N-Grams", "Full,Nouns,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_only_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Nouns,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_only_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
-    Method("N-Grams", "Full,Nouns,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_only_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Nouns,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_only_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Adjectives,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_adj_only_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Adjectives,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_adj_only_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
-    Method("N-Grams", "Full,Adjectives,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_adj_only_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Adjectives,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_adj_only_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Nouns,Adjectives,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_adj_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Nouns,Adjectives,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_adj_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
-    Method("N-Grams", "Full,Nouns,Adjectives,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_adj_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Nouns,Adjectives,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_noun_adj_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-
-    # Methods that use variations on the n-grams approach with a reduced vocabulary size and simple preprocessing (no stemming).
-    Method("N-Grams", "Simple,Words,Linares Pontes,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
-    Method("N-Grams", "Simple,Words,Linares Pontes,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard),
-    Method("N-Grams", "Simple,Words,Linares Pontes,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Simple,Words,Linares Pontes,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-
-
+    Method("N-Grams", "Full,Nouns,Adjectives,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["nouns_adjectives_full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
+    Method("N-Grams", "Linares_Pontes,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["linares_pontes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
+    Method("N-Grams", "Full,Precise_Annotations,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full_plus_precise_annotations"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
+    Method("N-Grams", "Full,Partial_Annotations,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full_plus_partial_annotations"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine),
 
     # Methods that use terms inferred from automated annotation of the text.
-    Method("NOBLE Coder", "Precise", pw.pairwise_square_annotations, {"ids_to_annotations":annotations_noblecoder_precise, "ontology":ontology, "binary":True, "metric":"jaccard", "tfidf":False}, spatial.distance.jaccard),
-    Method("NOBLE Coder", "Partial", pw.pairwise_square_annotations, {"ids_to_annotations":annotations_noblecoder_partial, "ontology":ontology, "binary":True, "metric":"jaccard", "tfidf":False}, spatial.distance.jaccard),
-    Method("NOBLE Coder", "Precise,TFIDF", pw.pairwise_square_annotations, {"ids_to_annotations":annotations_noblecoder_precise, "ontology":ontology, "binary":True, "metric":"cosine", "tfidf":True}, spatial.distance.cosine),
-    Method("NOBLE Coder", "Partial,TFIDF", pw.pairwise_square_annotations, {"ids_to_annotations":annotations_noblecoder_partial, "ontology":ontology, "binary":True, "metric":"cosine", "tfidf":True}, spatial.distance.cosine),
+    Method("NOBLE Coder", "Precise", pw.pairwise_square_ngrams, {"ids_to_texts":processed["precise_annotations"], "binary":True, "analyzer":"word", "ngram_range":(1,1), "metric":"jaccard", "tfidf":False}, spatial.distance.jaccard),
+    Method("NOBLE Coder", "Partial", pw.pairwise_square_ngrams, {"ids_to_texts":processed["partial_annotations"], "binary":True, "analyzer":"word", "ngram_range":(1,1), "metric":"jaccard", "tfidf":False}, spatial.distance.jaccard),
+    Method("NOBLE Coder", "Precise,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":processed["precise_annotations"], "binary":True, "analyzer":"word", "ngram_range":(1,1), "metric":"cosine", "tfidf":True}, spatial.distance.cosine),
+    Method("NOBLE Coder", "Partial,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":processed["partial_annotations"], "binary":True, "analyzer":"word", "ngram_range":(1,1), "metric":"cosine", "tfidf":True}, spatial.distance.cosine),
 
     # Methods that use terms assigned by humans that are present in the dataset.
-    Method("GO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":go_annotations, "ontology":ontology, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
-    Method("PO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":po_annotations, "ontology":ontology, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
-
-
-
-
-
-
-    # Individual phenes from those larger phenotypes.
-
-
-    # Approaches were the phenotype descriptions were split into individual phenes first (computationally expensive).
-    Method("Doc2Vec (Phenes)", "Wikipedia,Size=300", pw.pairwise_square_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="phenes"),
-    Method("Doc2Vec (Phenes)", "PubMed,Size=100", pw.pairwise_square_doc2vec, {"model":doc2vec_pubmed_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="phenes"),
-    Method("Word2Vec (Phenes)", "Wikipedia,Size=300,Mean", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="phenes"),
-    Method("Word2Vec (Phenes)", "Wikipedia,Size=300,Max", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="phenes"),
-    Method("Word2Vec (Phenes)", "Wikipedia,Size=300,Mean,Nouns,Adjectives", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":phenes_noun_adj_simple_preprocessing, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="phenes"),
-    Method("Word2Vec (Phenes)", "Wikipedia,Size=300,Max,Nouns,Adjectives", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":phenes_noun_adj_simple_preprocessing, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="phenes"),
-    Method("Word2Vec (Phenes)", "Wikipedia,Size=300,Mean,Linares Pontes", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":phenes_linares_pontes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="phenes"),
-    Method("Word2Vec (Phenes)", "Wikipedia,Size=300,Max,Linares Pontes", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":phenes_linares_pontes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="phenes"),
-
-    #Method("BERT (Phenes)", "Base:Layers=2,Concatenated", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="phenes"),
-    #Method("BERT (Phenes)", "Base:Layers=3,Concatenated", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="phenes"),
-    #Method("BERT (Phenes)", "Base:Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="phenes"),
-    #Method("BERT (Phenes)", "Base:Layers=2,Summed", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="phenes"),
-    #Method("BERT (Phenes)", "Base:Layers=3,Summed", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="phenes"),
-    #Method("BERT (Phenes)", "Base:Layers=4,Summed", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":4}, spatial.distance.cosine, tag="phenes"),
-    #Method("BioBERT (Phenes)", "PMC,Layers=2,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pmc, "tokenizer":bert_tokenizer_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="phenes"),
-    #Method("BioBERT (Phenes)", "PMC,Layers=3,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pmc, "tokenizer":bert_tokenizer_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="phenes"),
-    #Method("BioBERT (Phenes)", "PMC,Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pmc, "tokenizer":bert_tokenizer_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="phenes"),
-    #Method("BioBERT (Phenes)", "PubMed,Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pubmed, "tokenizer":bert_tokenizer_pubmed, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="phenes"),
-    #Method("BioBERT (Phenes)", "PubMed,PMC,Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="phenes"),
-
-
-
-    # Methods that use variations on the N-Grams (Phenes) approach with full preprocessing (includes stemming).
-    Method("N-Grams (Phenes)", "Full,Words,1-grams,2-grams", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2),"max_features":10000, "tfidf":False}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Words,1-grams,2-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "tfidf":False}, spatial.distance.jaccard, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Words,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Words,1-grams,2-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2),"max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Words,1-grams,2-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Words,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Words,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-
-    # Methods that use variations on the N-Grams (Phenes) approach with simple preprocessing (no stemming).
-    Method("N-Grams (Phenes)", "Simple,Words,1-grams,2-grams", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_simple_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2),"max_features":10000, "tfidf":False}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Simple,Words,1-grams,2-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_simple_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "tfidf":False}, spatial.distance.jaccard, tag="phenes"),
-    Method("N-Grams (Phenes)", "Simple,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_simple_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Simple,Words,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_simple_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard, tag="phenes"),
-    Method("N-Grams (Phenes)", "Simple,Words,1-grams,2-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_simple_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2),"max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Simple,Words,1-grams,2-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_simple_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Simple,Words,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_simple_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Simple,Words,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_simple_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-
-    # Methods that use variations on the N-Grams (Phenes) approach selecting for specific parts-of-speech (includes stemming).
-    Method("N-Grams (Phenes)", "Full,Nouns,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_noun_only_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Nouns,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_noun_only_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Nouns,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_noun_only_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Nouns,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_noun_only_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Adjectives,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_adj_only_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Adjectives,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_adj_only_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Adjectives,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_adj_only_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Adjectives,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_adj_only_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Nouns,Adjectives,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_noun_adj_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Nouns,Adjectives,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_noun_adj_full_preprocessing, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Nouns,Adjectives,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_noun_adj_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Full,Nouns,Adjectives,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_noun_adj_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-
-    # Methods that use variations on the N-Grams (Phenes) approach with a reduced vocabulary size and simple preprocessing (no stemming).
-    Method("N-Grams (Phenes)", "Simple,Words,Linares Pontes,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_linares_pontes, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Simple,Words,Linares Pontes,1-grams,Binary", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_linares_pontes, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.jaccard, tag="phenes"),
-    Method("N-Grams (Phenes)", "Simple,Words,Linares Pontes,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_linares_pontes, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-    Method("N-Grams (Phenes)", "Simple,Words,Linares Pontes,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_linares_pontes, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-
-]
-
-
-# In[ ]:
-
-
-testing_methods = [
-    # Curation-based methods
-    #Method("GO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":go_annotations, "ontology":ontology, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
-    #Method("PO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":po_annotations, "ontology":ontology, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
-    # Phenotype descriptions
-    Method("Doc2Vec", "Wikipedia,Size=300", pw.pairwise_square_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine),
-    Method("Word2Vec", "Wikipedia,Size=300,Mean,Nouns,Adjectives", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions_noun_adj_simple_preprocessing, "metric":"cosine", "method":"mean"}, spatial.distance.cosine),
-    #Method("BERT", "Base:Layers=3,Concatenated", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine),
-    #Method("BioBERT", "PubMed,PMC,Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine),
-    #Method("N-Grams", "Simple,Words,Linares Pontes,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    #Method("NOBLE Coder", "Partial,TFIDF", pw.pairwise_square_annotations, {"ids_to_annotations":annotations_noblecoder_partial, "ontology":ontology, "binary":True, "metric":"cosine", "tfidf":True}, spatial.distance.cosine),
-    # Phene descriptions
-    #Method("Doc2Vec (Phenes)", "Wikipedia,Size=300", pw.pairwise_square_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="phenes"),
-    #Method("Word2Vec (Phenes)", "Wikipedia,Size=300,Mean,Nouns,Adjectives", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":phenes_noun_adj_simple_preprocessing, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="phenes"),
-    #Method("N-Grams (Phenes)", "Simple,Words,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":phenes_full_preprocessing, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine, tag="phenes"),
-]
-
-
-# In[ ]:
-
-
-methods = [
-    # Curation-based methods
-    #Method("GO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":go_annotations, "ontology":go, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
+    Method("GO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":curated_go_annotations, "ontology":go, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
     Method("PO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":curated_po_annotations, "ontology":po, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
-    # Phenotype descriptions
-    Method("Doc2Vec", "Wikipedia,Size=300", pw.pairwise_square_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine),
-    Method("Word2Vec", "Wikipedia,Size=300,Mean,Nouns,Adjectives", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions_noun_adj_simple_preprocessing, "metric":"cosine", "method":"mean"}, spatial.distance.cosine),
-    #Method("BERT", "Base:Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine),
-    #Method("BioBERT", "PubMed,PMC,Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine),
-    Method("N-Grams", "Simple,Words,Linares Pontes,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("N-Grams", "Full,Words,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    #Method("NOBLE Coder", "Partial,TFIDF", pw.pairwise_square_annotations, {"ids_to_annotations":annotations_noblecoder_partial, "ontology":po, "binary":True, "metric":"cosine", "tfidf":True}, spatial.distance.cosine),
-    Method("Topic Models", "LDA,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"lda"}, spatial.distance.cosine),
-    Method("Topic Models", "NMF,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
+
+    
+    # Split into phene descriptions
+    
+    
+    # Methods that use neural networks to generate embeddings.
+    Method("Doc2Vec Phenes", "Wikipedia,Size=300", pw.pairwise_square_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="phenes"),
+    Method("Word2Vec Phenes", "Wikipedia,Size=300,Mean", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="phenes"),
+    Method("Word2Vec Phenes", "Wikipedia,Size=300,Max", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="phenes"),
+    Method("N-Grams Phenes", "Linares_Pontes,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["linares_pontes_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":False}, spatial.distance.cosine, tag="phenes"),
 ]
 
 
@@ -854,7 +700,7 @@ methods = [
 # ### Running all of the methods to generate distance matrices
 # Notes- Instead of passing in similarity function like cosine distance that will get evaluated for every possible i,j pair of vetors that are created (this is very big when splitting by phenes), don't use a specific similarity function, but instead let the object use a KNN classifier. pass in some limit for k like 100. then the object uses some more efficient (not brute force) algorithm to set the similarity of some vector v to its 100 nearest neighbors as those 100 probabilities, and sets everything else to 0. This would need to be implemented as a matching but separate function from the get_square_matrix_from_vectors thing. And then this would need to be noted in the similarity function that was used for these in the big table of methods. This won't work because the faster (not brute force algorithms) are not for sparse vectors like n-grams, and the non-sparse embeddings aren't really the problem here because those vectors are relatively much short, even when concatenating BERT encoder layers thats only up to around length of ~1000.
 
-# In[ ]:
+# In[65]:
 
 
 # Generate all the pairwise distance matrices (not in parallel).
@@ -875,7 +721,7 @@ durations_df.to_csv(os.path.join(OUTPUT_DIR,"part_4_durations.csv"), index=False
 # ### Merging all of the distance matrices into a single dataframe specifying edges
 # This section also handles replacing IDs from the individual methods that are references individual phenes that are part of a larger phenotype, and replacing those IDs with IDs referencing the full phenotypes (one-to-one relationship between phenotypes and genes). In this case, the minimum distance found between any two phenes from those two phenotypes represents the distance between that pair of phenotypes.
 
-# In[ ]:
+# In[66]:
 
 
 # Merging all the edgelists together.
@@ -908,7 +754,7 @@ df.head(20)
 # ### Combining multiple distances measurements into summarizing distance values
 # The purpose of this section is to iteratively train models on subsections of the dataset using simple regression or machine learning approaches to predict a value from zero to one indicating indicating how likely is it that two genes share atleast one of the specified groups in common. The information input to these models is the distance scores provided by each method in some set of all the methods used in this notebook. The purpose is to see whether or not a function of these similarity scores specifically trained to the task of predicting common groupings is better able to used the distance metric information to report a score for this task.
 
-# In[ ]:
+# In[68]:
 
 
 # Get the average distance percentile as a means of combining multiple scores.
@@ -919,7 +765,7 @@ names.append(name)
 df.head(20)
 
 
-# In[ ]:
+# In[69]:
 
 
 # Normalizing all of the array representations of the graphs so they can be combined. Then this version of the arrays
@@ -966,129 +812,135 @@ if OBJECTIVE == 2:
     pd.DataFrame(small_table).transpose()
 
 
-# <a id="part_6"></a>
-# # Part 5. Supervised Tasks
+# <a id="part_5"></a>
+# # Part 5. Biological Questions
 
-# In[ ]:
+# In[52]:
 
 
 df.head(20)
 
 
-# ## Pathways (both KEGG and PlantCyc)
+# <a id="pathway_objective"></a>
+# ### Using shared pathway membership (PlantCyc and KEGG) as the objective
 
-# In[ ]:
+# In[53]:
 
 
 # Add a column that indicates whether or not both genes of the pair mapped to a pathway resource.
 pathway_mapped_ids = set(kegg_mapped_ids+pmn_mapped_ids)
 df["from_is_valid"] = df["from"].map(lambda x: x in pathway_mapped_ids)
 df["to_is_valid"] = df["to"].map(lambda x: x in pathway_mapped_ids)
-df["pwy"] = df["from_is_valid"]*df["to_is_valid"]
-df.drop(labels=["from_is_valid","to_is_valid"], axis="columns", inplace=True)
+df["pair_is_valid"] = df["from_is_valid"]*df["to_is_valid"]
+
 
 # Add a column giving the actual target output value for this biological task, with -1 for the irrelevant rows.
-df["pwy_y"] = -1
+df["pathways"] = -1
 id_to_kegg_group_ids, kegg_group_id_to_ids = kegg_groups.get_groupings_for_dataset(dataset)
 id_to_pmn_group_ids, pmn_group_id_to_ids = pmn_groups.get_groupings_for_dataset(dataset)
 id_to_group_ids = {i:flatten([id_to_kegg_group_ids[i],id_to_pmn_group_ids[i]]) for i in dataset.get_ids()}
-df.loc[(df["pwy"]==True),"pwy_y"] = df[["from","to"]].apply(lambda x: len(set(id_to_group_ids[x["from"]]).intersection(set(id_to_group_ids[x["to"]])))>0, axis=1)*1
+df.loc[(df["pair_is_valid"]==True),"pathways"] = df[["from","to"]].apply(lambda x: len(set(id_to_group_ids[x["from"]]).intersection(set(id_to_group_ids[x["to"]])))>0, axis=1)*1
+df.drop(labels=["from_is_valid","to_is_valid","pair_is_valid"], axis="columns", inplace=True)
 
 df.head(20)
 
 
-# ## Phenotype Subsets from the Classification
+# <a id="subset_objective"></a>
+# ### Using shared phenotype classification (Lloyd and Meinke et al., 2012) as the objective
 
-# In[ ]:
+# In[54]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to a phenotype classification.
 relevant_ids = set(subsets_mapped_ids)
 df["from_is_valid"] = df["from"].map(lambda x: x in relevant_ids)
 df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
-df["phe"] = df["from_is_valid"]*df["to_is_valid"]
-df.drop(labels=["from_is_valid","to_is_valid"], axis="columns", inplace=True)
+df["pair_is_valid"] = df["from_is_valid"]*df["to_is_valid"]
 
 # Add a column giving the actual target output value for this biological task, with -1 for the irrelevant rows.
-df["phe_y"] = -1
+df["subsets"] = -1
 id_to_group_ids,_ = phe_subsets_groups.get_groupings_for_dataset(dataset)
-df.loc[(df["phe"]==True),"phe_y"] = df[["from","to"]].apply(lambda x: len(set(id_to_group_ids[x["from"]]).intersection(set(id_to_group_ids[x["to"]])))>0, axis=1)*1
+df.loc[(df["pair_is_valid"]==True),"subsets"] = df[["from","to"]].apply(lambda x: len(set(id_to_group_ids[x["from"]]).intersection(set(id_to_group_ids[x["to"]])))>0, axis=1)*1
+df.drop(labels=["from_is_valid","to_is_valid", "pair_is_valid"], axis="columns", inplace=True)
 
 df.head(20)
 
 
-# ## Protein Associations
+# <a id="association_objective"></a>
+# ### Using protein assocations (STRING) as the objective 
 
-# In[ ]:
+# In[55]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to a phenotype classification.
 relevant_ids = set(string_edgelist.ids)
 df["from_is_valid"] = df["from"].map(lambda x: x in relevant_ids)
 df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
-df["ppi"] = df["from_is_valid"]*df["to_is_valid"]
-df.drop(labels=["from_is_valid","to_is_valid"], axis="columns", inplace=True)
+df["pair_is_valid"] = df["from_is_valid"]*df["to_is_valid"]
 
 # Add a column giving the actual target output value for this biological task, with -1 for the irrelevant rows.
-df["ppi_y"] = -1
+df["known"] = -1
+df["predicted"] = -1
 df = df.merge(right=string_edgelist.df, how="left", on=["from","to"])
-df["experimental"].fillna(value=0, inplace=True)
-df.loc[(df["ppi"]==True),"ppi_y"] = df["experimental"]
+df["known_associations"].fillna(value=0, inplace=True)
+df["predicted_associations"].fillna(value=0, inplace=True)
+df.loc[(df["pair_is_valid"]==True),"known"] = df["known_associations"]
+df.loc[(df["pair_is_valid"]==True),"predicted"] = df["predicted_associations"]
 
 # Convert all the positive values from string on range 0 to arbitrary n to be equal to 1.
-df.loc[df["ppi_y"] >= 1, "ppi_y"] = 1 
-df.drop(labels=["experimental"], axis="columns", inplace=True)
+df.loc[df["known"] >= 1, "known"] = 1 
+df.loc[df["predicted"] >= 1, "predicted"] = 1 
+df.drop(labels=["from_is_valid","to_is_valid","pair_is_valid","known_associations","predicted_associations"], axis="columns", inplace=True)
 
 df.head(20)
 
 
-# # orthologs
+# <a id="ortholog_objective"></a>
+# ### Using orthology between genes (PANTHER) as the objective
 
-# In[ ]:
+# In[56]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to a phenotype classification.
 relevant_ids = set(panther_edgelist.ids)
 df["from_is_valid"] = df["from"].map(lambda x: x in relevant_ids)
 df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
-df["ort"] = df["from_is_valid"]*df["to_is_valid"]
-df.drop(labels=["from_is_valid","to_is_valid"], axis="columns", inplace=True)
+df["pair_is_valid"] = df["from_is_valid"]*df["to_is_valid"]
 
 # Add a column giving the actual target output value for this biological task, with -1 for the irrelevant rows.
-df["ort_y"] = -1
+df["orthologs"] = -1
 df = df.merge(right=panther_edgelist.df, how="left", on=["from","to"])
 df["value"].fillna(value=0, inplace=True)
-df.loc[(df["ort"]==True),"ort_y"] = df["value"]
-df.drop(labels=["value"], axis="columns", inplace=True)
+df.loc[(df["pair_is_valid"]==True),"orthologs"] = df["value"]
+df.drop(labels=["from_is_valid","to_is_valid","pair_is_valid","value"], axis="columns", inplace=True)
 
 df.head(20)    
 
 
-# # EQs
+# ### Curator-derived similarity values from Oellrich, Walls et al., 2015
 
-# In[ ]:
+# In[57]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to all the curation types.
 relevant_ids = set(ow_edgelist.ids)
 df["from_is_valid"] = df["from"].map(lambda x: x in relevant_ids)
 df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
-df["eqs"] = df["from_is_valid"]*df["to_is_valid"]
-df.drop(labels=["from_is_valid","to_is_valid"], axis="columns", inplace=True)
+df["pair_is_valid"] = df["from_is_valid"]*df["to_is_valid"]
 
 # Add a column giving the actual target output value for this biological task, with -1 for the irrelevant rows.
-df["eqs_y"] = -1
+df["eqs_distance"] = -1
 df = df.merge(right=ow_edgelist.df, how="left", on=["from","to"])
 df["value"].fillna(value=0, inplace=True)
-df.loc[(df["eqs"]==True),"eqs_y"] = 1-df["value"]
-df.drop(labels=["value"], axis="columns", inplace=True)
+df.loc[(df["pair_is_valid"]==True),"eqs_distance"] = 1-df["value"]
+df.drop(labels=["from_is_valid","to_is_valid","pair_is_valid","value"], axis="columns", inplace=True)
 
 df.head(20)   
 
 
-# # CURATED
+# ### Checking whether gene pairs are considered curated or not
 
-# In[ ]:
+# In[58]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to all the curation types.
@@ -1101,9 +953,9 @@ df.drop(labels=["from_is_valid","to_is_valid"], axis="columns", inplace=True)
 df.head(20)   
 
 
-# # Species
+# ### Checking whether gene pairs are intraspecies or not
 
-# In[ ]:
+# In[59]:
 
 
 species_dict = dataset.get_species_dictionary()
@@ -1113,13 +965,13 @@ df.head(10)
 
 # ### Checking to make sure that the number of genes and pairs matches what is expected at this point
 
-# In[ ]:
+# In[60]:
 
 
 # Defining a nested dictionary with shape dict[curated][question][species][approach][metric] --> value.
 curated = [True,False]
 species = ["intra","inter","both"]
-question = ["pwy_y","phe_y","ppi_y","ort_y"]
+question = ["subsets", "pathways", "known", "predicted", "orthologs"]
 tables = defaultdict(dict)
 for c,q in itertools.product(curated,question): 
     tables[c][q] = defaultdict(dict)
@@ -1127,7 +979,7 @@ for c,q,s in itertools.product(curated,question,species):
     tables[c][q][s] = defaultdict(dict)
 
 
-# In[ ]:
+# In[61]:
 
 
 print("Making the tables now")
@@ -1135,7 +987,7 @@ print("Making the tables now")
 
 # ### What are the value of *n* for each type of iteration through a subset of the dataset?
 
-# In[ ]:
+# In[62]:
 
 
 subset_idx_lists = []
@@ -1179,7 +1031,7 @@ pairs_table.to_csv(os.path.join(OUTPUT_DIR,"part_5_biological_question_n_values.
 pairs_table
 
 
-# In[ ]:
+# In[63]:
 
 
 # Looking more at the distributions of target values for each of the biological questions.
@@ -1372,8 +1224,8 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
 
     y_true_dict = {name:subset[q].values for name in names}       #just added .values here...
     y_prob_dict = {name:(1 - subset[name].values) for name in names}
-    #num_plots, plots_per_row, row_width, row_height = (len(names), 4, 14, 3)
-    #fig,axs = plt.subplots(math.ceil(num_plots/plots_per_row), plots_per_row, squeeze=False)
+    num_plots, plots_per_row, row_width, row_height = (len(names), 4, 14, 3)
+    fig,axs = plt.subplots(math.ceil(num_plots/plots_per_row), plots_per_row, squeeze=False)
     for name,ax in zip(names, axs.flatten()):
 
         # Obtaining the values and metrics.
@@ -1426,7 +1278,7 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
     #fig.set_size_inches(row_width, row_height*math.ceil(num_plots/plots_per_row))
     #fig.tight_layout()
     #fig.savefig(os.path.join(OUTPUT_DIR,"part_6_prcurve_shared.png"),dpi=400)
-    #plt.close()
+    plt.close()
 
     print("done")
 
@@ -1615,8 +1467,8 @@ print(stophere)
 
 
 
-# <a id="part_5"></a>
-# # Part 5. Cluster Analysis
+# <a id="part_6"></a>
+# # Part 6. Clustering Analysis
 # The purpose of this section is to look at different ways that the embeddings obtained for the dataset of phenotype descriptions can be used to cluster or organize the genes to which those phenotypes are mapped into subgroups or representations. These approaches include generating topic models from the data, and doing agglomerative clustering to find clusters to which each gene belongs.
 
 # In[ ]:
