@@ -64,7 +64,7 @@
 # - Python package for loading pretrained BERT models: [PyTorch Pretrained BERT](https://pypi.org/project/pytorch-pretrained-bert/)
 # - For BERT Models pretrained on PubMed and PMC: [BioBERT Paper](https://arxiv.org/abs/1901.08746), [BioBERT Models](https://github.com/naver/biobert-pretrained)
 
-# In[1]:
+# In[ ]:
 
 
 import datetime
@@ -135,7 +135,7 @@ nltk.download('averaged_perceptron_tagger', quiet=True)
 # ### Setting up the input and output paths and summarizing output table
 # This section defines some constants which are used for creating a uniquely named directory to contain all the outputs from running this instance of this notebook. The naming scheme is based on the time that the notebook is run. The other constants are used for specifying information in the output table about what the topic was for this notebook when it was run, such as looking at KEGG biochemical pathways or STRING protein-protein interaction data some other type of gene function grouping or hierarchy. These values are arbitrary and are just for keeping better notes about what the output of the notebook corresponds to. All the input and output file paths for loading datasets or models are also contained within this cell, so that if anything is moved the directories and file names should only have to be changed at this point and nowhere else further into the notebook. If additional files are added to the notebook cells they should be put here as well.
 
-# In[2]:
+# In[ ]:
 
 
 # Create and name an output directory according to when the notebooks or script was run.
@@ -143,7 +143,7 @@ OUTPUT_DIR = os.path.join("../outputs",datetime.datetime.now().strftime('%m_%d_%
 os.mkdir(OUTPUT_DIR)
 
 
-# In[3]:
+# In[ ]:
 
 
 dataset_filename = "../data/pickles/gene_phenotype_dataset_all_text_and_annotations.pickle"          # The full dataset pickle.
@@ -174,7 +174,7 @@ ortholog_file_path = "../data/orthology_related_files/pantherdb/PlantGenomeOrtho
 # ### Reading in the dataset of genes and their associated phenotype descriptions and annotations
 # The actual choice of pickle that is loaded here depends on the objective that is being used for this notebook.
 
-# In[4]:
+# In[ ]:
 
 
 dataset = load_from_pickle(dataset_filename)
@@ -186,7 +186,7 @@ dataset.describe()
 # ### Relating the dataset of genes to the dataset of groupings or categories
 # This section generates tables that indicate how the genes present in the dataset were mapped to the defined pathways or groups. This includes a summary table that indicates how many genes by species were succcessfully mapped to atleast one pathway or group, as well as a more detailed table describing how many genes from each species were mapped to each particular pathway or group.
 
-# In[5]:
+# In[ ]:
 
 
 def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filename, name):
@@ -259,7 +259,7 @@ def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filenam
 # <a id="read_in_kegg"></a>
 # ### Reading in the dataset of groupings from KEGG
 
-# In[6]:
+# In[ ]:
 
 
 kegg_groups, kegg_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, kegg_pathways_filename, "kegg")
@@ -269,7 +269,7 @@ kegg_groups.to_pandas().head(20)
 # <a id="read_in_plantcyc"></a>
 # ### Reading in the dataset of groupings from PlantCyc
 
-# In[7]:
+# In[ ]:
 
 
 pmn_groups, pmn_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, pmn_pathways_filename, "pmn")
@@ -279,20 +279,20 @@ pmn_groups.to_pandas().head(20)
 # <a id="read_in_lloyd_meinke_subsets"></a>
 # ### Reading in the dataset of phenotype subsets from Lloyd and Meinke, 2012
 
-# In[8]:
+# In[ ]:
 
 
-phe_subsets_groups, phe_subsets_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, lloyd_subsets_filename, "subsets")
+phe_subsets_groups, subsets_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, lloyd_subsets_filename, "subsets")
 phe_subsets_groups.to_pandas().head(20)
 
 
 # <a id="read_in_lloyd_meinke_classes"></a>
 # ### Reading in the dataset of phenotype classes from Lloyd and Meinke, 2012
 
-# In[9]:
+# In[ ]:
 
 
-phe_classes_groups, phe_classes_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, lloyd_classes_filename, "classes")
+phe_classes_groups, classes_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, lloyd_classes_filename, "classes")
 phe_classes_groups.to_pandas().head(20)
 
 
@@ -300,17 +300,17 @@ phe_classes_groups.to_pandas().head(20)
 # ### Option 1: Filtering the dataset based on presence in the curated Oellrich, Walls et al. (2015) dataset
 # TODO maybe this part should not actually subset data? because only the non zero interactions are listed in that file? So the IDs shouldn't be used to do subsetting here?
 
-# In[10]:
+# In[ ]:
 
 
-pppn_edgelist = AnyInteractions(dataset.get_name_to_id_dictionary(), pppn_edgelist_path)
-pppn_edgelist.df.head(10)
+ow_edgelist = AnyInteractions(dataset.get_name_to_id_dictionary(), pppn_edgelist_path)
+ow_edgelist.df.head(10)
 
 
 # ### Option 2: Filtering the dataset based on protein-protein interactions
 # This is done to only include genes (and the corresponding phenotype descriptions and annotations) which are useful for the current analysis. In this case we want to only retain genes that are mentioned atleast one time in the STRING database for a given species. If a gene is not mentioned at all in STRING, there is no information available for whether or not it interacts with any other proteins in the dataset so choose to not include it in the analysis. Only genes that have atleast one true positive are included because these are the only ones for which the missing information (negatives) is meaningful. This should be run instead of the subsequent cell, or the other way around, based on whether or not protein-protein interactions is the prediction goal for the current analysis.
 
-# In[11]:
+# In[ ]:
 
 
 naming_file = "../data/group_related_files/string/all_organisms.name_2_string.tsv"
@@ -323,17 +323,17 @@ interaction_files = [
     "../data/group_related_files/string/3847.protein.links.detailed.v11.0.txt", # Soybean
 ]
 genes = dataset.get_gene_dictionary()
-string_data = ProteinInteractions(genes, naming_file, *interaction_files)
-string_data.df.head(10)
+string_edgelist = ProteinInteractions(genes, naming_file, *interaction_files)
+string_edgelist.df.head(10)
 
 
 # ### Option 3: Filtering the dataset based on orthologous genes
 
-# In[12]:
+# In[ ]:
 
 
-ortholog_edgelist = AnyInteractions(dataset.get_name_to_id_dictionary(), ortholog_file_path)
-ortholog_edgelist.df.head(10)
+panther_edgelist = AnyInteractions(dataset.get_name_to_id_dictionary(), ortholog_file_path)
+panther_edgelist.df.head(10)
 
 
 # ### Option 4: Filtering the dataset based on membership in pathways or phenotype category
@@ -345,7 +345,7 @@ ortholog_edgelist.df.head(10)
 
 
 
-# In[13]:
+# In[ ]:
 
 
 # ADD A ROW TO THE TABLE THAT SHOWS WHAT THIS VALUE IS (SOMETHING LIKE TOTAL) ON TEH BOTTOM
@@ -357,15 +357,15 @@ ortholog_edgelist.df.head(10)
 ids_with_any_mapping = list(set(flatten([
     kegg_mapped_ids,
     pmn_mapped_ids,
-    phe_subsets_mapped_ids,
-    phe_classes_mapped_ids,
-    string_data.ids,
-    ortholog_edgelist.ids
+    subsets_mapped_ids,
+    classes_mapped_ids,
+    string_edgelist.ids,
+    panther_edgelist.ids
 ])))
 print(len(ids_with_any_mapping))
 
 
-# In[14]:
+# In[ ]:
 
 
 # WHAT ARE THE IDS THAT HAVE ALL THE REQUIRED ANNOTATIONS FOR COMPARISON
@@ -375,17 +375,17 @@ po_mapped_ids = [i for i in dataset.get_ids() if "PO" in annots[i]]
 ids_with_all_annotations = list(set(flatten([
     go_mapped_ids,
     po_mapped_ids,
-    pppn_edgelist.ids
+    ow_edgelist.ids
 ])))
 print(len(ids_with_all_annotations))
 
 
-# In[15]:
+# In[ ]:
 
 
 # ALWAYS DO THIS
 dataset.filter_with_ids(ids_with_any_mapping)
-#dataset.filter_random_k(300)
+dataset.filter_random_k(300)
 dataset.describe()
 
 
@@ -418,7 +418,7 @@ dataset.describe()
 # ### Loading trained and saved models
 # Versions of the architectures discussed above which have been saved as trained models are loaded here. Some of these models are loaded as pretrained models from the work of other groups, and some were trained on data specific to this notebook and loaded here.
 
-# In[16]:
+# In[ ]:
 
 
 # Files and models related to the machine learning text embedding methods used here.
@@ -438,7 +438,7 @@ bert_model_pubmed_pmc = BertModel.from_pretrained(biobert_pubmed_pmc_path)
 # ### Reading in the descriptions from hand-picked dataset of phenotype pairs
 # See the other notebook for the creation of this dataset. This is included in this notebook instead of a separated notebook because we want the treatment of the individual phenotype text instances to be the same as is done for the descriptions from the real dataset of plant phenotypes. The list of computational approaches being evaluated for this task is the same in both cases so all of the cells between the point where the descriptions are read in and when the distance matrices are found using all those methods are the same for this task as any of the biological questions that this notebook is focused on.
 
-# In[17]:
+# In[ ]:
 
 
 # This would only impact the notebook if run in the absence of the subsequent cells, never matters in the script.
@@ -459,7 +459,7 @@ descriptions
 # ### Preprocessing text descriptions
 # The preprocessing methods applied to the phenotype descriptions are a choice which impacts the subsequent vectorization and similarity methods which construct the pairwise distance matrix from each of these descriptions. The preprocessing methods that make sense are also highly dependent on the vectorization method or embedding method that is to be applied. For example, stemming (which is part of the full proprocessing done below using the Gensim preprocessing function) is useful for the n-grams and bag-of-words methods but not for the document embeddings methods which need each token to be in the vocabulary that was constructed and used when the model was trained. For this reason, embedding methods with pretrained models where the vocabulary is fixed should have a lighter degree of preprocessing not involving stemming or lemmatization but should involve things like removal of non-alphanumerics and normalizing case. 
 
-# In[18]:
+# In[ ]:
 
 
 # Obtain a mapping between IDs and the raw text descriptions associated with that ID from the dataset.
@@ -475,7 +475,7 @@ descriptions_no_stopwords = {i:remove_stopwords(d) for i,d in descriptions.items
 # ### POS tagging the phenotype descriptions for nouns and adjectives
 # Note that preprocessing of the descriptions should be done after part-of-speech tagging, because tokens that are removed during preprocessing before n-gram analysis contain information that the parser needs to accurately call parts-of-speech. This step should be done on the raw descriptions and then the resulting bags of words can be subset using additional preprocesssing steps before input in one of the vectorization methods.
 
-# In[19]:
+# In[ ]:
 
 
 get_pos_tokens = lambda text,pos: " ".join([t[0] for t in nltk.pos_tag(word_tokenize(text)) if t[1].lower()==pos.lower()])
@@ -494,7 +494,7 @@ descriptions_noun_adj_simple_preprocessing = {i:"{} {}".format(descriptions_noun
 # ### Reducing the vocabulary size using a word distance matrix
 # These approaches for reducing the vocabulary size of the dataset work by replacing multiple words that occur throughout the dataset of descriptions with an identical word that is representative of this larger group of words. The total number of unique words across all descriptions is therefore reduced, and when observing n-gram overlaps between vector representations of these descriptions, overlaps will now occur between descriptions that included different but similar words. These methods work by actually generating versions of these descriptions that have the word replacements present. The returned objects for these methods are the revised description dictionary, a dictionary mapping tokens in the full vocabulary to tokens in the reduced vocabulary, and a dictionary mapping tokens in the reduced vocabulary to a list of tokens in the full vocabulary.
 
-# In[20]:
+# In[ ]:
 
 
 # Reducing the size of the vocabulary for descriptions treated with simple preprocessing.
@@ -515,7 +515,7 @@ descriptions_connected_components, reduce_cc, unreduce_cc = reduce_vocab_connect
 # ### Reducing vocabulary size based on identifying important words
 # These approcahes for reducing the vocabulary size of the dataset work by identifying which words in the descriptions are likely to be the most important for identifying differences between the phenotypes and meaning of the descriptions. One approach is to determine which words occur at a higher rate in text of interest such as articles about plant phenotypes as compared to their rates in more general texts such as a corpus of news articles. These approaches do not create modified versions of the descriptions but rather provide vocabulary objects that can be passed to the sklearn vectorizer or constructors.
 
-# In[22]:
+# In[ ]:
 
 
 # Constructing a vocabulary by looking at what words are overrepresented in domain specific text.
@@ -533,32 +533,56 @@ vocabulary_from_ontology = get_vocab_from_tokens(ontology.tokens())
 # ### Annotating descriptions with ontology terms
 # This section generates dictionaries that map gene IDs from the dataset to lists of strings, where those strings are ontology term IDs. How the term IDs are found for each gene entry with its corresponding phenotype description depends on the cell below. Firstly, the terms are found by using the NOBLE Coder annotation tool through these wrapper functions to identify the terms by looking for instances of the term's label or synonyms in the actual text of the phenotype descriptions. Secondly, the next cell just draws the terms directly from the dataset itself. In this case, these are high-confidence annotations done by curators for a comparison against what can be accomplished through computational analysis of the text.
 
-# In[23]:
+# In[ ]:
 
 
-# Run the ontology term annotators over the raw input text descriptions. NOBLE-Coder handles simple issues like case
-# normalization so preprocessed descriptions are not used for this step.
+# Create ontology objects for all the biological ontologies being used.
 pato = Ontology(pato_filename)
 po = Ontology(po_filename)
-#go = Ontology(go_filename)
-annotations_noblecoder_precise = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "po", precise=1)
-annotations_noblecoder_partial = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "po", precise=0)
+go = Ontology(go_filename)
+
+# Run the NOBLE Coder annotator over the raw input text descriptions, which handles things like case normalization.
+direct_annots_nc_go_precise = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "go", precise=1)
+direct_annots_nc_go_partial = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "go", precise=0)
+direct_annots_nc_po_precise = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "po", precise=1)
+direct_annots_nc_po_partial = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "po", precise=0)
+direct_annots_nc_pato_precise = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "pato", precise=1)
+direct_annots_nc_pato_partial = annotate_using_noble_coder(descriptions, noblecoder_jarfile_path, "pato", precise=0)
+
+# Use the ontology hierarchies to add terms that are inherited by the terms that were annotated to the text.
+inherited_annots_nc_go_precise = {i:go.inherited(term_id_list) for i,term_id_list in direct_annots_nc_go_precise.items()}
+inherited_annots_nc_go_partial = {i:go.inherited(term_id_list) for i,term_id_list in direct_annots_nc_go_partial.items()}
+inherited_annots_nc_po_precise = {i:po.inherited(term_id_list) for i,term_id_list in direct_annots_nc_po_precise.items()}
+inherited_annots_nc_po_partial = {i:po.inherited(term_id_list) for i,term_id_list in direct_annots_nc_po_partial.items()}
+inherited_annots_nc_pato_precise = {i:pato.inherited(term_id_list) for i,term_id_list in direct_annots_nc_pato_precise.items()}
+inherited_annots_nc_pato_partial = {i:pato.inherited(term_id_list) for i,term_id_list in direct_annots_nc_pato_partial.items()}
+
+# Merge the ontology term annotations for each descritpion into a single dictionary for the precise and partial levels.
+all_precise_annotations = {i:flatten([inherited_annots_nc_go_precise[i],inherited_annots_nc_po_precise[i],inherited_annots_nc_pato_precise[i]]) for i in descriptions.keys()}
+all_partial_annotations = {i:flatten([inherited_annots_nc_go_partial[i],inherited_annots_nc_po_partial[i],inherited_annots_nc_pato_partial[i]]) for i in descriptions.keys()}
 
 
-# In[24]:
+# In[ ]:
 
 
-# Get the ID to term list annotation dictionaries for each ontology in the dataset.
-annotations = dataset.get_annotations_dictionary()
-go_annotations = {k:[term for term in v if term[0:2]=="GO"] for k,v in annotations.items()}
-po_annotations = {k:[term for term in v if term[0:2]=="PO"] for k,v in annotations.items()}
+# Create description strings with all ontology term anntotations concatenated to the end of the descriptions.
+descriptions_with_precise_terms = {i:" ".join(flatten([text,all_precise_annotations[i]])) for i,text in descriptions.items()}
+descriptions_with_partial_terms = {i:" ".join(flatten([text,all_partial_annotations[i]])) for i,text in descriptions.items()}
+
+
+# In[ ]:
+
+
+# Create ontology term annotations dictionaries for all the high confidence annotations present in the dataset.
+curated_go_annotations = dataset.get_annotations_dictionary("go")
+curated_po_annotations = dataset.get_annotations_dictionary("po")
 
 
 # <a id="phenes"></a>
 # ### Splitting the descriptions into individual phenes
 # As a preprocessing step, split into a new set of descriptions that's larger. Note that phenotypes are split into phenes, and the phenes that are identical are retained as separate entries in the dataset. This makes the distance matrix calculation more needlessly expensive, because vectors need to be found for the same string more than once, but it simplifies converting the edgelist back to having IDs that reference the genes (full phenotypes) instead of the smaller phenes. If anything, that problem should be addressed in the pairwise functions, not here. (The package should handle it, not when creating input data for those methods).
 
-# In[25]:
+# In[ ]:
 
 
 # Create a dictionary of phene descriptions and a dictionary to convert back to the phenotype/gene IDs.
@@ -806,13 +830,13 @@ testing_methods = [
 ]
 
 
-# In[26]:
+# In[ ]:
 
 
 methods = [
     # Curation-based methods
     #Method("GO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":go_annotations, "ontology":go, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
-    Method("PO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":po_annotations, "ontology":po, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
+    Method("PO", "None", pw.pairwise_square_annotations, {"ids_to_annotations":curated_po_annotations, "ontology":po, "metric":"jaccard", "binary":True, "analyzer":"word", "ngram_range":(1,1), "tfidf":False}, spatial.distance.jaccard),
     # Phenotype descriptions
     Method("Doc2Vec", "Wikipedia,Size=300", pw.pairwise_square_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine),
     Method("Word2Vec", "Wikipedia,Size=300,Mean,Nouns,Adjectives", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions_noun_adj_simple_preprocessing, "metric":"cosine", "method":"mean"}, spatial.distance.cosine),
@@ -820,7 +844,7 @@ methods = [
     #Method("BioBERT", "PubMed,PMC,Layers=4,Concatenated", pw.pairwise_square_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine),
     Method("N-Grams", "Simple,Words,Linares Pontes,1-grams,Binary,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_linares_pontes, "metric":"cosine", "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
     Method("N-Grams", "Full,Words,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "tfidf":True}, spatial.distance.cosine),
-    Method("NOBLE Coder", "Partial,TFIDF", pw.pairwise_square_annotations, {"ids_to_annotations":annotations_noblecoder_partial, "ontology":po, "binary":True, "metric":"cosine", "tfidf":True}, spatial.distance.cosine),
+    #Method("NOBLE Coder", "Partial,TFIDF", pw.pairwise_square_annotations, {"ids_to_annotations":annotations_noblecoder_partial, "ontology":po, "binary":True, "metric":"cosine", "tfidf":True}, spatial.distance.cosine),
     Method("Topic Models", "LDA,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"lda"}, spatial.distance.cosine),
     Method("Topic Models", "NMF,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":descriptions_full_preprocessing, "metric":"cosine", "num_topics":100, "algorithm":"nmf"}, spatial.distance.cosine),
 ]
@@ -830,7 +854,7 @@ methods = [
 # ### Running all of the methods to generate distance matrices
 # Notes- Instead of passing in similarity function like cosine distance that will get evaluated for every possible i,j pair of vetors that are created (this is very big when splitting by phenes), don't use a specific similarity function, but instead let the object use a KNN classifier. pass in some limit for k like 100. then the object uses some more efficient (not brute force) algorithm to set the similarity of some vector v to its 100 nearest neighbors as those 100 probabilities, and sets everything else to 0. This would need to be implemented as a matching but separate function from the get_square_matrix_from_vectors thing. And then this would need to be noted in the similarity function that was used for these in the big table of methods. This won't work because the faster (not brute force algorithms) are not for sparse vectors like n-grams, and the non-sparse embeddings aren't really the problem here because those vectors are relatively much short, even when concatenating BERT encoder layers thats only up to around length of ~1000.
 
-# In[27]:
+# In[ ]:
 
 
 # Generate all the pairwise distance matrices (not in parallel).
@@ -851,7 +875,7 @@ durations_df.to_csv(os.path.join(OUTPUT_DIR,"part_4_durations.csv"), index=False
 # ### Merging all of the distance matrices into a single dataframe specifying edges
 # This section also handles replacing IDs from the individual methods that are references individual phenes that are part of a larger phenotype, and replacing those IDs with IDs referencing the full phenotypes (one-to-one relationship between phenotypes and genes). In this case, the minimum distance found between any two phenes from those two phenotypes represents the distance between that pair of phenotypes.
 
-# In[28]:
+# In[ ]:
 
 
 # Merging all the edgelists together.
@@ -884,7 +908,7 @@ df.head(20)
 # ### Combining multiple distances measurements into summarizing distance values
 # The purpose of this section is to iteratively train models on subsections of the dataset using simple regression or machine learning approaches to predict a value from zero to one indicating indicating how likely is it that two genes share atleast one of the specified groups in common. The information input to these models is the distance scores provided by each method in some set of all the methods used in this notebook. The purpose is to see whether or not a function of these similarity scores specifically trained to the task of predicting common groupings is better able to used the distance metric information to report a score for this task.
 
-# In[29]:
+# In[ ]:
 
 
 # Get the average distance percentile as a means of combining multiple scores.
@@ -895,7 +919,7 @@ names.append(name)
 df.head(20)
 
 
-# In[30]:
+# In[ ]:
 
 
 # Normalizing all of the array representations of the graphs so they can be combined. Then this version of the arrays
@@ -944,23 +968,16 @@ if OBJECTIVE == 2:
 
 # <a id="part_6"></a>
 # # Part 5. Supervised Tasks
-# 
-# 
-# # todo, read in all the groupings stuff here, or use it from previous cells, but be sure about which ones are which ie whats actually being re-used here?
 
-# <a id="merging"></a>
-# ### Option 1: Merging in the previously curated similarity values from the Oellrich, Walls et al. (2015) dataset
-# This section reads in a file that contains the previously calculated distance values from the Oellrich, Walls et al. (2015) dataset, and merges it with the values which are obtained here for all of the applicable natural language processing or machine learning methods used, so that the graphs which are specified by these sets of distances values can be evaluated side by side in the subsequent sections.
-
-# In[31]:
+# In[ ]:
 
 
-df.head(30)
+df.head(20)
 
 
 # ## Pathways (both KEGG and PlantCyc)
 
-# In[32]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair mapped to a pathway resource.
@@ -982,11 +999,11 @@ df.head(20)
 
 # ## Phenotype Subsets from the Classification
 
-# In[33]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to a phenotype classification.
-relevant_ids = set(phe_subsets_mapped_ids)
+relevant_ids = set(subsets_mapped_ids)
 df["from_is_valid"] = df["from"].map(lambda x: x in relevant_ids)
 df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
 df["phe"] = df["from_is_valid"]*df["to_is_valid"]
@@ -1000,39 +1017,38 @@ df.loc[(df["phe"]==True),"phe_y"] = df[["from","to"]].apply(lambda x: len(set(id
 df.head(20)
 
 
-# ## PPI
+# ## Protein Associations
 
-# In[34]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to a phenotype classification.
-relevant_ids = set(string_data.ids)
+relevant_ids = set(string_edgelist.ids)
 df["from_is_valid"] = df["from"].map(lambda x: x in relevant_ids)
 df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
 df["ppi"] = df["from_is_valid"]*df["to_is_valid"]
 df.drop(labels=["from_is_valid","to_is_valid"], axis="columns", inplace=True)
 
-
 # Add a column giving the actual target output value for this biological task, with -1 for the irrelevant rows.
 df["ppi_y"] = -1
-df = df.merge(right=string_data.df, how="left", on=["from","to"])
-df["combined_score"].fillna(value=0, inplace=True)
-df.loc[(df["ppi"]==True),"ppi_y"] = df["combined_score"]
+df = df.merge(right=string_edgelist.df, how="left", on=["from","to"])
+df["experimental"].fillna(value=0, inplace=True)
+df.loc[(df["ppi"]==True),"ppi_y"] = df["experimental"]
 
 # Convert all the positive values from string on range 0 to arbitrary n to be equal to 1.
 df.loc[df["ppi_y"] >= 1, "ppi_y"] = 1 
-df.drop(labels=["combined_score"], axis="columns", inplace=True)
+df.drop(labels=["experimental"], axis="columns", inplace=True)
 
 df.head(20)
 
 
 # # orthologs
 
-# In[35]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to a phenotype classification.
-relevant_ids = set(ortholog_edgelist.ids)
+relevant_ids = set(panther_edgelist.ids)
 df["from_is_valid"] = df["from"].map(lambda x: x in relevant_ids)
 df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
 df["ort"] = df["from_is_valid"]*df["to_is_valid"]
@@ -1040,7 +1056,7 @@ df.drop(labels=["from_is_valid","to_is_valid"], axis="columns", inplace=True)
 
 # Add a column giving the actual target output value for this biological task, with -1 for the irrelevant rows.
 df["ort_y"] = -1
-df = df.merge(right=ortholog_edgelist.df, how="left", on=["from","to"])
+df = df.merge(right=panther_edgelist.df, how="left", on=["from","to"])
 df["value"].fillna(value=0, inplace=True)
 df.loc[(df["ort"]==True),"ort_y"] = df["value"]
 df.drop(labels=["value"], axis="columns", inplace=True)
@@ -1050,11 +1066,11 @@ df.head(20)
 
 # # EQs
 
-# In[36]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to all the curation types.
-relevant_ids = set(pppn_edgelist.ids)
+relevant_ids = set(ow_edgelist.ids)
 df["from_is_valid"] = df["from"].map(lambda x: x in relevant_ids)
 df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
 df["eqs"] = df["from_is_valid"]*df["to_is_valid"]
@@ -1062,7 +1078,7 @@ df.drop(labels=["from_is_valid","to_is_valid"], axis="columns", inplace=True)
 
 # Add a column giving the actual target output value for this biological task, with -1 for the irrelevant rows.
 df["eqs_y"] = -1
-df = df.merge(right=pppn_edgelist.df, how="left", on=["from","to"])
+df = df.merge(right=ow_edgelist.df, how="left", on=["from","to"])
 df["value"].fillna(value=0, inplace=True)
 df.loc[(df["eqs"]==True),"eqs_y"] = 1-df["value"]
 df.drop(labels=["value"], axis="columns", inplace=True)
@@ -1072,7 +1088,7 @@ df.head(20)
 
 # # CURATED
 
-# In[37]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to all the curation types.
@@ -1087,24 +1103,12 @@ df.head(20)
 
 # # Species
 
-# In[38]:
-
-
-species_dict = dataset.get_species_dictionary()
-df["same"] = df[["from","to"]].apply(lambda x: species_dict[x["from"]]==species_dict[x["to"]],axis=1)*1
-df.head(10)
-
-
 # In[ ]:
 
 
-
-
-
-# In[39]:
-
-
-df.head(30)
+species_dict = dataset.get_species_dictionary()
+df["same"] = df[["from","to"]].apply(lambda x: species_dict[x["from"]]==species_dict[x["to"]],axis=1)
+df.head(10)
 
 
 # ### Checking to make sure that the number of genes and pairs matches what is expected at this point
@@ -1112,86 +1116,70 @@ df.head(30)
 # In[ ]:
 
 
-# Sanity check for the number of genes and positive and negative pairs that are being used here. Matches table?
-
-# How many genes are being used and how many pairs are being used as instances?
-#num_genes = len(set(df["from"].values).union(set(df["to"].values)))
-#num_pairs_calc = int(((num_genes**2)-num_genes)/2)
-#num_pairs_used = df.shape[0]
-#assert num_pairs_calc == num_pairs_used
-
-# What is the class representation?
-#shared = Counter(df["shared"].values)
-#num_positives = shared[1]
-#num_negatives = shared[0]
-#assert num_pairs_used == num_positives+num_negatives
-
-# Write the values that were tested to a file so they could be read later.
-#tested_values = {"genes":num_genes,
-#                 "pairs_calc":num_pairs_calc,
-#                 "pairs_used":num_pairs_used,
-#                 "pos":num_positives,
-#                 "neg":num_negatives,
-#                }
-#with open(os.path.join(OUTPUT_DIR,"part_6_asserts.txt"), "w") as f:
-#    f.write(str(tested_values))
-
-
-# In[40]:
-
-
-# Defining an output table to use for metrics.
+# Defining a nested dictionary with shape dict[curated][question][species][approach][metric] --> value.
 curated = [True,False]
+species = ["intra","inter","both"]
 question = ["pwy_y","phe_y","ppi_y","ort_y"]
 tables = defaultdict(dict)
-for c,q in itertools.product(curated,question):
-    tables[c][q]=defaultdict(dict)
+for c,q in itertools.product(curated,question): 
+    tables[c][q] = defaultdict(dict)
+for c,q,s in itertools.product(curated,question,species): 
+    tables[c][q][s] = defaultdict(dict)
 
 
-# In[41]:
+# In[ ]:
 
 
 print("Making the tables now")
 
 
-# In[56]:
+# ### What are the value of *n* for each type of iteration through a subset of the dataset?
+
+# In[ ]:
 
 
-df.shape
-
-
-# In[57]:
-
-
+subset_idx_lists = []
+subset_properties = []
 table_lists = defaultdict(list)
-for c,q in itertools.product(curated,question):
+for c,q,s in itertools.product(curated,question,species):
+    
+    # Remembering what the properties for this particular subset are.
+    subset_properties.append((c,q,s))
     
     # Subsetting the dataframe to the rows (gene pairs) that are relevant for this particular biological question.
     subset = df[df[q] != -1]
     if c:
         subset = subset[subset["curated"] == True]
-
+        
+        
+    # Subsetting the dataframe to the rows (gene pairs) where both genes are from the same or different species.
+    if s == "intra":
+        subset = subset[subset["same"] == True]
+    elif s == "inter":
+        subset = subset[subset["same"] == False]
+        
+    subset_idx_lists.append(subset.index.to_list())
+    
     # Adding values to the table that are specific to this biological question.
     counts = Counter(subset[q].values)
     
-    print(subset.shape)
-    
     table_lists["question"].append(q.lower())
     table_lists["curated"].append(str(c).lower())
+    table_lists["species"].append(s.lower())
     table_lists["num_genes"].append(len(set(subset["to"].values).union(set(subset["from"].values))))
     table_lists["positive"].append(counts[1])
     table_lists["negative"].append(counts[0])
-    table_lists["class_ratio"].append("{:0.4f}".format(counts[1]/counts[0]))
+    #table_lists["class_ratio"].append("{:0.4f}".format(counts[1]/counts[0]))
 
 pairs_table = pd.DataFrame(table_lists)  
 pairs_table["num_pairs"] = pairs_table["positive"]+pairs_table["negative"]
 pairs_table["positive_fraction"] = pairs_table["positive"] / pairs_table["num_pairs"]
 pairs_table["negative_fraction"] = pairs_table["negative"] / pairs_table["num_pairs"]
-pairs_table.to_csv(os.path.join(OUTPUT_DIR,"pairs_table.csv"), index=False)
+pairs_table.to_csv(os.path.join(OUTPUT_DIR,"part_5_biological_question_n_values.csv"), index=False)
 pairs_table
 
 
-# In[53]:
+# In[ ]:
 
 
 # Looking more at the distributions of target values for each of the biological questions.
@@ -1210,42 +1198,25 @@ question_overlaps_table = pd.DataFrame(row_tuples)
 question_overlaps_table.columns = ["question_1", "question_2", "num_pairs_1", "num_pairs_2", "num_overlap", "sim_overlap"]
 question_overlaps_table.sort_values(by="sim_overlap", ascending=False, inplace=True)
 question_overlaps_table.reset_index(inplace=True, drop=True)
-question_overlaps_table.to_csv(os.path.join(OUTPUT_DIR,"question_similarity.csv"), index=False)
+question_overlaps_table.to_csv(os.path.join(OUTPUT_DIR,"part_5_biological_question_overlaps.csv"), index=False)
 question_overlaps_table
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
 
 # <a id="ks"></a>
 # ### Do the edges joining genes that share a group, pathway, or interaction come from a different distribution?
 # The purpose of this section is to visualize kernel estimates for the distributions of distance or similarity scores generated by each of the methods tested for measuring semantic similarity or generating vector representations of the phenotype descriptions. Ideally, better methods should show better separation betwene the distributions for distance values between two genes involved in a common specified group or two genes that are not. Additionally, a statistical test is used to check whether these two distributions are significantly different from each other or not, although this is a less informative measure than the other tests used in subsequent sections, because it does not address how useful these differences in the distributions actually are for making predictions about group membership.
 
-# In[59]:
+# In[ ]:
 
 
 print("ks")
 
 
-# Iterate through the different biological questions and whether or not to subset the gene pairs based on curation.
-for c,q in itertools.product(curated,question):
+for properties,idxs in zip(subset_properties, subset_idx_lists):
     
-    print(str(c),q)
-    
-    
-    # Subsetting the dataframe to the rows (gene pairs) that are relevant for this particular biological question.
-    subset = df[df[q] != -1]
-    if c:
-        subset = subset[subset["curated"] == True]
+    # Remember the properties for this subset being looked at, and subset the dataframe accordingly.
+    c,q,s = properties
+    subset = df.loc[idxs]
         
     # Check that this subsetting leaves a valid dataset with both positive and negatives samples.
     class_values = pd.unique(subset[q].values)
@@ -1262,12 +1233,9 @@ for c,q in itertools.product(curated,question):
         pos_n = len(ppi_pos_dict[name])
         neg_n = len(ppi_neg_dict[name])
         
-        tables[c][q][name].update({"mean_1":pos_mean, "mean_0":neg_mean, "n_1":pos_n, "n_0":neg_n})
-        tables[c][q][name].update({"ks":stat, "ks_pval":p})
-        
-        
-        #TABLE[name].update({"mean_1":pos_mean, "mean_0":neg_mean, "n_1":pos_n, "n_0":neg_n})
-        #TABLE[name].update({"ks":stat, "ks_pval":p})
+        tables[c][q][s][name].update({"mean_1":pos_mean, "mean_0":neg_mean, "n_1":pos_n, "n_0":neg_n})
+        tables[c][q][s][name].update({"ks":stat, "ks_pval":p})
+
     
     
     
@@ -1285,54 +1253,6 @@ for c,q in itertools.product(curated,question):
     #fig.savefig(os.path.join(OUTPUT_DIR,"part_6_kernel_density.png"),dpi=400)
     #plt.close()
 print("done with ks")
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
 
 # <a id="within"></a>
@@ -1435,13 +1355,13 @@ def bootstrap_iteration(fraction, y_true, y_prob):
 
 
 
-# Iterate through the different biological questions and whether or not to subset the gene pairs based on curation.
-for c,q in itertools.product(curated,question):
+for properties,idxs in zip(subset_properties, subset_idx_lists):
 
-    # Subsetting the dataframe to the rows (gene pairs) that are relevant for this particular biological question.
-    subset = df[df[q] != -1]
-    if c:
-        subset = subset[subset["curated"] == True]
+    # Remember the properties for this subset being looked at, and subset the dataframe accordingly.
+    c,q,s = properties
+    subset = df.loc[idxs]
+
+
 
     # Check that this subsetting leaves a valid dataset with both positive and negatives samples.
     class_values = pd.unique(subset[q].values)
@@ -1452,8 +1372,8 @@ for c,q in itertools.product(curated,question):
 
     y_true_dict = {name:subset[q].values for name in names}       #just added .values here...
     y_prob_dict = {name:(1 - subset[name].values) for name in names}
-    num_plots, plots_per_row, row_width, row_height = (len(names), 4, 14, 3)
-    fig,axs = plt.subplots(math.ceil(num_plots/plots_per_row), plots_per_row, squeeze=False)
+    #num_plots, plots_per_row, row_width, row_height = (len(names), 4, 14, 3)
+    #fig,axs = plt.subplots(math.ceil(num_plots/plots_per_row), plots_per_row, squeeze=False)
     for name,ax in zip(names, axs.flatten()):
 
         # Obtaining the values and metrics.
@@ -1469,7 +1389,7 @@ for c,q in itertools.product(curated,question):
         baseline_f1_max = (2*baseline_auc*1)/(baseline_auc+1)
 
         #TABLE[name].update({"auc":area,"ratio":auc_to_baseline_auc_ratio, "baseline":baseline_f1_max, })
-        tables[c][q][name].update({"auc":area,"ratio":auc_to_baseline_auc_ratio, "baseline":baseline_f1_max, })
+        tables[c][q][s][name].update({"auc":area,"ratio":auc_to_baseline_auc_ratio, "baseline":baseline_f1_max, })
 
 
         # Find the maximum Fß score for different values of ß.  
@@ -1486,9 +1406,9 @@ for c,q in itertools.product(curated,question):
         bootstrap_iterations = 2
         bootstrapped_std_dict = bootstrap(bootstrap_fraction, bootstrap_iterations, y_true, y_prob)
 
-        tables[c][q][name].update({"f1_max":f_1_max, "f5_max":f_point5_max, "f2_max":f_2_max})
+        tables[c][q][s][name].update({"f1_max":f_1_max, "f5_max":f_point5_max, "f2_max":f_2_max})
         #TABLE[name].update({"f1_std":f_1_std, "f5_std":f_point5_std, "f2_std":f_2_std})
-        tables[c][q][name].update({"f1_std":bootstrapped_std_dict["f_1_max_std"], 
+        tables[c][q][s][name].update({"f1_std":bootstrapped_std_dict["f_1_max_std"], 
                             "f5_std":bootstrapped_std_dict["f_point5_max_std"], 
                             "f2_std":bootstrapped_std_dict["f_2_max_std"]}) 
 
@@ -1508,7 +1428,7 @@ for c,q in itertools.product(curated,question):
     #fig.savefig(os.path.join(OUTPUT_DIR,"part_6_prcurve_shared.png"),dpi=400)
     #plt.close()
 
-print("done")
+    print("done")
 
 
 # <a id="y"></a>
@@ -1615,6 +1535,12 @@ print("done skipping the y thing")
 # ### Predicting biochemical pathway or group membership with KNN classifier
 # This section looks at how well the group(s) or biochemical pathway(s) that a particular gene belongs to can be predicted based on a KNN classifier generated using every other gene. For this section, only the groups or pathways which contain more than one gene, and the genes mapped to those groups or pathways, are of interest. This is because for other genes, if we consider them then it will be true that that gene belongs to that group in the target vector, but the KNN classifier could never predict this because when that gene is held out, nothing could provide a vote for that group, because there are zero genes available to be members of the K nearest neighbors.
 
+# In[ ]:
+
+
+
+
+
 # <a id="output"></a>
 # ### Summarizing the results for this notebook
 # Write a large table of results to an output file. Columns are generally metrics and rows are generally methods.
@@ -1623,13 +1549,14 @@ print("done skipping the y thing")
 
 
 result_dfs = []
-for c,q in itertools.product(curated,question):
-    TABLE = tables[c][q]
+for s,c,q in itertools.product(species,curated,question):
+    TABLE = tables[c][q][s]
     results = pd.DataFrame(TABLE).transpose()
-    columns = flatten(["Objective","Curated","Hyperparameters","Group","Order",results.columns])
+    columns = flatten(["Species", "Objective","Curated","Hyperparameters","Group","Order",results.columns])
     results["Hyperparameters"] = ""
     results["Group"] = "NLP"
     results["Order"] = np.arange(results.shape[0])
+    results["Species"] = s.lower()
     results["Objective"] = q.lower()
     results["Curated"] = str(c).lower()
     results = results[columns]
