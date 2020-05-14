@@ -370,7 +370,7 @@ ids_with_all_annotations = list(set(flatten([
 
 
 dataset.filter_with_ids(ids_with_any_mapping)
-dataset.filter_random_k(300)
+#dataset.filter_random_k(300)
 dataset.describe()
 
 
