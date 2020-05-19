@@ -16,38 +16,21 @@ word_limit <- 500
 
 # Reading in the csv file and converting to long format.
 df <- read.csv(file="~/Desktop/b.csv", header=T, sep=",")
+df$species = factor(df$species, levels=c('ath','zma','osa','sly','mtr','gmx'))
 before <- table(df$species)
 df <- df[df["num_sents"]<sent_limit,]
 df <- df[df["num_words"]<word_limit,]
 after = table(df$species)
-removed <- before-after
-removed 
+number_removed <- before-after
+number_removed 
 
-percent_removed <- (removed/before)*100
+percent_removed <- (number_removed/before)*100
 percent_removed
 
 
-# df_long <- gather(df, data, value, num_words, num_sents, factor_key=TRUE)
-# 
-# # Generate the plot.
-# ggplot(df_long, aes(x=value)) +
-#   geom_density(alpha=0.4) +
-#   #scale_fill_grey(name="Training Set") +
-#   theme_bw() +
-#   facet_wrap(facets=c("data","species"), scale="free") +
-#   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
-#         panel.grid.major = element_blank(), 
-#         panel.grid.minor = element_blank(),
-#         axis.text.y = element_blank(),
-#         axis.ticks.y = element_blank(),
-#         legend.direction = "vertical",
-#         legend.position = "right")+ 
-#   ylab("Density") +
-#   xlab("Number of Words")
-
 
 # Generate the plot.
-ggplot(df, aes(x=num_words,)) +
+ggplot(df, aes(x=num_words)) +
   geom_density(alpha=0.9, color="black", fill="darkgray") +
   theme_bw() +
   facet_grid(rows=vars(species),cols=vars(),scale="free") +
