@@ -7,8 +7,19 @@ library(hashmap)
 library(ggrepel)
 
 
-PATH <- "~/Desktop/a.csv"
-df <- read.csv(file=PATH, header=T, sep=",")
+
+# The input and output files that this script uses and creates.
+input_path <- "../data/scratch/token_frequencies.csv"
+
+
+
+
+
+
+
+
+
+df <- read.csv(file=input_path, header=T, sep=",")
 df$token <- as.character(df$token)
 
 
@@ -23,7 +34,7 @@ df[df$ath_rate>=threshold_ath,]$plotword <- df[df$ath_rate>=threshold_ath,]$toke
 df$exclusive <- "neither"
 df[df$zma_freq == 0,]$exclusive <- "all_ath"
 df[df$ath_freq == 0,]$exclusive <- "all_zma"
-df <- df[order(-df$exclusive),]
+#df <- df[order(df$exclusive),]
 
 
 # Pick from those colors to match the same number of values present in group_names.
@@ -34,7 +45,7 @@ group_mapping <- setNames(group_colors, group_names)
 
 
 ggplot(df, aes(x=zma_rate, y=ath_rate, color=exclusive)) +
-  geom_point(alpha=0.9) +
+  geom_point(alpha=0.6) +
   geom_text_repel(aes(label=plotword),color="black", hjust=-0.1, vjust=0.3) +
   theme_bw() +
   scale_color_manual(name="Only",values=group_mapping) +

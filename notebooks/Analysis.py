@@ -5,7 +5,9 @@
 # 
 # - [Introduction](#introduction)
 # 
+# 
 # - [Links of Interest](#links)
+# 
 # 
 # - [Part 1. Loading and Filtering Data](#part_1)
 #     - [Reading in arguments](#args)
@@ -14,17 +16,19 @@
 #     - [Relating genes in this dataset to other biological datasets](#relating)
 #     - [KEGG](#kegg)
 #     - [PlantCyc](#plantcyc)
-#     - [Lloyd and Meinke phenotype subsets](#subsets)
-#     - [Lloyd and Meinke phenotype classes](#classes)
+#     - [Lloyd and Meinke (2012) phenotype subsets](#subsets)
+#     - [Lloyd and Meinke (2012) phenotype classes](#classes)
 #     - [Oellrich, Walls et al., (2015) EQ statements](#eqs)
 #     - [Protein associations from STRING](#string)
 #     - [Ortholog relationships from PANTHER](#panther)
 #     - [Filtering the dataset to include relevant genes](#filtering)
 #     
+#         
 # - [Part 2. NLP Models](#part_2)
 #     - [Word2Vec and Doc2Vec](#word2vec_doc2vec)
 #     - [BERT and BioBERT](#bert_biobert)
 #     - [Loading models](#load_models)
+# 
 # 
 # - [Part 3. NLP Choices](#part_3)
 #     - [Preprocessing descriptions](#preprocessing)
@@ -33,20 +37,34 @@
 #     - [Annotating with biological ontologies](#annotation)
 #     - [Splitting into phene descriptions](#phenes)
 #     
+#     
 # - [Part 4. Generating Vectors and Distance Matrices](#part_4)
 #     - [Defining methods to use](#methods)
 #     - [Running all methods](#running)
 #     - [Merging distances into an edgelist](#merging)
-#     - [Adding edge information](#merging)
+#     
 #     
 # - [Part 5. Biological Questions](#part_5)
+#     - [Using pathways as the objective](#pathway_objective)
+#     - [Using phenotype subsets as the objective](#subset_objective)
+#     - [Using protein associations as the objective](#association_objective)
+#     - [Using orthology as the objective](#ortholog_objective)
+#     - [Adding EQ similarity values](#eq_sim)
+#     - [Noting whether gene pairs have curated data](#curated)
+#     - [Noting whether gene pairs refer to the same species](#species)
+#     - [Determining the number of genes and pairs involved in each question](#n_values)
+#     - [Determining how similar the biological questions are to one another](#objective_similarities)
+#     
+# 
+# - [Part 6. Results](#part_6)
 #     - [Distributions of distance values](#ks)
 #     - [Within-group distance values](#within)
 #     - [Predictions and AUC for shared pathways or interactions](#auc)
 #     - [Tests for querying to recover related genes](#y)
 #     - [Producing output summary table](#output)
 # 
-# - [Part 6. Clustering Analysis](#part_6)
+# 
+# - [Part 6. Clustering Analysis](#part_7)
 #     - [Topic modeling](#topic_modeling)
 #     - [Agglomerative clustering](#clustering)
 #     - [Phenologs for OMIM disease phenotypes](#phenologs)
@@ -147,10 +165,10 @@ pd.set_option('display.width', 1000)
 # <a id="args"></a>
 # ### Reading in arguments
 
-# In[69]:
+# In[91]:
 
 
-NOTEBOOK = True
+NOTEBOOK = False
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--learning", dest="learning", required=False, action='store_true', help="use the approaches that involve neural networks")
@@ -859,7 +877,7 @@ durations_df.to_csv(os.path.join(OUTPUT_DIR,"part_4_durations.csv"), index=False
 # ### Merging all of the distance matrices into a single dataframe specifying edges
 # This section also handles replacing IDs from the individual methods that are references individual phenes that are part of a larger phenotype, and replacing those IDs with IDs referencing the full phenotypes (one-to-one relationship between phenotypes and genes). In this case, the minimum distance found between any two phenes from those two phenotypes represents the distance between that pair of phenotypes.
 
-# In[41]:
+# In[81]:
 
 
 # Merging all the edgelists together.
@@ -939,7 +957,6 @@ for name in names:
 # In[44]:
 
 
-NOTEBOOK = False
 if NOTEBOOK:
     small_table = defaultdict(dict)
     for name in names:
@@ -1099,6 +1116,7 @@ df.drop(labels=["from_is_valid","to_is_valid","pair_is_valid","value"], axis="co
 df.head(20)    
 
 
+# <a id="eq_sim"></a>
 # ### Curator-derived similarity values from Oellrich, Walls et al., 2015
 
 # In[52]:
@@ -1123,9 +1141,10 @@ names.append("eqs_distance")
 df.head(20)   
 
 
+# <a id="curated"></a>
 # ### Checking whether gene pairs are considered curated or not
 
-# In[53]:
+# In[82]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to all the curation types.
@@ -1134,13 +1153,13 @@ df["from_is_valid"] = df["from"].map(lambda x: x in relevant_ids)
 df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
 df["curated"] = df["from_is_valid"]*df["to_is_valid"]
 df.drop(labels=["from_is_valid","to_is_valid"], axis="columns", inplace=True)
+df.head(10)   
 
-df.head(20)   
 
-
+# <a id="species"></a>
 # ### Checking whether gene pairs are intraspecies or not
 
-# In[54]:
+# In[83]:
 
 
 species_dict = dataset.get_species_dictionary()
@@ -1164,6 +1183,7 @@ for c,q,s in itertools.product(curated,question,species):
     tables[c][q][s] = defaultdict(dict)
 
 
+# <a id="n_values"></a>
 # ### What are the value of *n* for each type of iteration through a subset of the dataset?
 
 # In[56]:
@@ -1210,6 +1230,9 @@ pairs_table.to_csv(os.path.join(OUTPUT_DIR,"part_5_biological_question_n_values.
 pairs_table
 
 
+# <a id="objective_similarities"></a>
+# ### How similar are the different biological objectives to each other?
+
 # In[57]:
 
 
@@ -1232,6 +1255,9 @@ question_overlaps_table.reset_index(inplace=True, drop=True)
 question_overlaps_table.to_csv(os.path.join(OUTPUT_DIR,"part_5_biological_question_overlaps.csv"), index=False)
 question_overlaps_table
 
+
+# <a id="part_6"></a>
+# # Part 6. Results
 
 # <a id="ks"></a>
 # ### Do the edges joining genes that share a group, pathway, or interaction come from a different distribution?
@@ -1474,7 +1500,6 @@ print("done with finding precision and recall values for each approach")
 # In[62]:
 
 
-NOTEBOOK = False
 if NOTEBOOK:
     
     # When the edgelist is generated above, only the lower triangle of the pairwise matrix is retained for edges in the 
@@ -1859,28 +1884,29 @@ ac_df
 
 # ### Approach 3: Agglomerative clustering and sillhouette scores for each NLP method
 
-# In[ ]:
+# In[90]:
 
 
-from sklearn.metrics.cluster import silhouette_score
-# Note that homogeneity scores don't fit for evaluating how close the clustering is to pathway membership, etc.
-# This is because genes can be assigned to more than one pathway, metric would have to be changed to account for this.
-# So all this section does is determines which values of n_clusters provide good clustering results for each matrix.
-n_clusters_silhouette_scores = defaultdict(dict)
-min_n_clusters = 20
-max_n_clusters = 80
-step_size = 4
-number_of_clusters = np.arange(min_n_clusters, max_n_clusters, step_size)
-for n in number_of_clusters:
-    for name in names:
-        distance_matrix = name_to_array[name]
-        ac = AgglomerativeClustering(n_clusters=n, linkage="complete", affinity="precomputed")
-        clustering = ac.fit(distance_matrix)
-        sil_score = silhouette_score(distance_matrix, clustering.labels_, metric="precomputed")
-        n_clusters_silhouette_scores[name][n] = sil_score
-sil_df = pd.DataFrame(n_clusters_silhouette_scores).reset_index(drop=False).rename({"index":"n"},axis="columns")
-sil_df.to_csv(os.path.join(OUTPUT_DIR,"part_6_silhouette_scores_by_n.csv"), index=False)
-sil_df.head(10)
+if NOTEBOOK:
+    from sklearn.metrics.cluster import silhouette_score
+    # Note that homogeneity scores don't fit for evaluating how close the clustering is to pathway membership, etc.
+    # This is because genes can be assigned to more than one pathway, metric would have to be changed to account for this.
+    # So all this section does is determines which values of n_clusters provide good clustering results for each matrix.
+    n_clusters_silhouette_scores = defaultdict(dict)
+    min_n_clusters = 20
+    max_n_clusters = 80
+    step_size = 4
+    number_of_clusters = np.arange(min_n_clusters, max_n_clusters, step_size)
+    for n in number_of_clusters:
+        for name in names:
+            distance_matrix = name_to_array[name]
+            ac = AgglomerativeClustering(n_clusters=n, linkage="complete", affinity="precomputed")
+            clustering = ac.fit(distance_matrix)
+            sil_score = silhouette_score(distance_matrix, clustering.labels_, metric="precomputed")
+            n_clusters_silhouette_scores[name][n] = sil_score
+    sil_df = pd.DataFrame(n_clusters_silhouette_scores).reset_index(drop=False).rename({"index":"n"},axis="columns")
+    sil_df.to_csv(os.path.join(OUTPUT_DIR,"part_6_silhouette_scores_by_n.csv"), index=False)
+    sil_df.head(10)
 
 
 # <a id="phenologs"></a>
