@@ -32,7 +32,7 @@ def save_combined_dataset_to_pickle(pickle_path, input_dir, *input_filenames):
 
 	# Saving the version of the dataset after merging based on gene names.
 	print("merging rows based on gene names...")
-	dataset.collapse_by_all_gene_names()
+	dataset.collapse_by_all_gene_names(case_sensitive=False)
 	save_to_pickle(obj=dataset, path=pickle_path)
 	print("done")
 
