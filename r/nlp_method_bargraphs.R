@@ -9,9 +9,8 @@ library(hashmap)
 
 
 # Reading in the CSV file of results.
-PATH <- "/Users/irbraun/phenologs-with-oats/outputs/03_02_2020_h12m06s11/part_6_full_table.csv"
-PATH <- "/Users/irbraun/Desktop/mgc_plots/s3.csv"
-#PATH <- "/Users/irbraun/Desktop/mgc_plots/pw3.csv"
+PATH <- "/Users/irbraun/Documents/My Presentations/Maize Meeting 2020/mgc_plots_updated/pwy4.csv"
+
 df <- read.csv(file=PATH, header=T, sep=",")
 
 
@@ -98,7 +97,7 @@ ggplot(data=df, aes(x=reorder(Method,Order),y=metric_to_use,fill=group))+geom_ba
 
 
 # Save the image of the plot.
-path <- "~/Desktop/mgc_plots/ps3.png"
+path <- "/Users/irbraun/Documents/My Presentations/Maize Meeting 2020/mgc_plots_updated/pwy4.png"
 ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=7, height=5.5, units=c("cm"), dpi=300, limitsize=TRUE)
 
 
