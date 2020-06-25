@@ -9,15 +9,7 @@ library(ggrepel)
 
 
 # The input and output files that this script uses and creates.
-input_path <- "../data/scratch/token_frequencies.csv"
-
-
-
-
-
-
-
-
+input_path <- "/Users/irbraun/phenologs-with-oats/data/scratch/token_frequencies.csv"
 
 df <- read.csv(file=input_path, header=T, sep=",")
 df$token <- as.character(df$token)
@@ -43,8 +35,8 @@ group_names <-  c("all_ath","all_zma","neither")
 group_mapping <- setNames(group_colors, group_names)
 #label_mapping <- setNames(group_names, c("yesss", "no"))
 
-
-ggplot(df, aes(x=zma_rate, y=ath_rate, color=exclusive)) +
+#ggplot(df, aes(x=zma_rate, y=ath_rate, color=exclusive)) +
+ggplot(df, aes(x=zma_rate, y=ath_rate)) +
   geom_point(alpha=0.6) +
   geom_text_repel(aes(label=plotword),color="black", hjust=-0.1, vjust=0.3) +
   theme_bw() +

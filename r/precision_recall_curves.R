@@ -21,7 +21,9 @@ df <- df[df["precision"] != 1,]
 
 df$t <- str_detect(df$hyperparameters, "tokenization")
 
+
 df <- df[df["t"] == FALSE,]
+#df <- df[(df$method %in% c("go","po","eqs_distance")) | (df["t"] == TRUE) , ]
 
 
 
@@ -142,7 +144,7 @@ ggplot(subset, aes(x=recall, y=precision, group=name, color=method, linetype=lin
 
 # Saving the plot to a file.
 path <- "/Users/irbraun/Desktop/pr.png"
-ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=25, height=13, units=c("cm"), dpi=300, limitsize=FALSE)
+ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=24, height=14, units=c("cm"), dpi=300, limitsize=FALSE)
 
 
 
