@@ -22,9 +22,6 @@ species_dict = {
     "sly":"../data/group_related_files/pmn/tomatocyc_pathways.20180702"}
 
 
-
-
-
 # Create and save the pathways object using PMN. This one uses the filenames in the dictionary.
 pathways = Groupings(species_dict, source="pmn")
 pathways.describe()
@@ -33,11 +30,44 @@ save_to_pickle(obj=pathways, path="../data/pickles/groupings_from_pmn_pathways.p
 
 
 
+
+
+
+
+
+
+
+
+# Mapping between species codes and relevant files, used in searching pathway databases.
+# Also adding homo sapiens as a key here. 
+# Note that the values in this dictionary are not actually when the source used is KEGG.
+species_dict = {
+    "ath":"../data/group_related_files/pmn/aracyc_pathways.20180702", 
+    "zma":"../data/group_related_files/pmn/corncyc_pathways.20180702", 
+    "mtr":"../data/group_related_files/pmn/mtruncatulacyc_pathways.20180702", 
+    "osa":"../data/group_related_files/pmn/oryzacyc_pathways.20180702", 
+    "gmx":"../data/group_related_files/pmn/soycyc_pathways.20180702",
+    "sly":"../data/group_related_files/pmn/tomatocyc_pathways.20180702",
+    "hsa":""}
+
+
 # Create and save a pathways object using KEGG. This one doesn't use the filenames in the dictionary.
 # All the pathways asocations are looked up when the groupings object is created through the KEGG API.
 pathways = Groupings(species_dict, source="kegg")
 pathways.describe()
 save_to_pickle(obj=pathways, path="../data/pickles/groupings_from_kegg_pathways.pickle")
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
