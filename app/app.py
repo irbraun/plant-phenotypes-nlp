@@ -95,16 +95,19 @@ def read_in_dataset(path):
 
 
 def gene_name_search(dataset, gene_name):
-
-
-	# TODO have to make the dataset class support this, it doesn't yet.
-	# TODO add the get_id() thing. make sure the species thing works().
-	# Not currently doing any fuzzy matching, it's got to be in the dataset.
-	# However, case is ignored when looking for a matching gene name or identifier.
-
+	"""Summary
+	
+	Args:
+	    dataset (TYPE): Description
+	    gene_name (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
+	gene_name = gene_name.lower().strip()
 	species_to_gene_id_list = defaultdict(list)
 	for species in dataset.get_species():
-		gene_ids = dataset.get_species_to_name_to_ids_dictionary(include_synonyms=True)[species][gene_name]
+		gene_ids = dataset.get_species_to_name_to_ids_dictionary(include_synonyms=True, lowercase=True)[species][gene_name]
 		for gene_id in gene_ids:
 			species_to_gene_id_list[species].append(gene_id)
 	return(species_to_gene_id_list)
