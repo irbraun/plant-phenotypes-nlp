@@ -2,14 +2,25 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import sys
+import itertools
 from collections import defaultdict
 from string import punctuation
+from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string
 
 
 sys.path.append("../../oats")
 from oats.utils.utils import save_to_pickle, load_from_pickle, merge_list_dicts, flatten, to_hms
 from oats.utils.utils import function_wrapper_with_duration, remove_duplicates_retain_order
 from oats.biology.dataset import Dataset
+from oats.biology.groupings import Groupings
+from oats.biology.relationships import ProteinInteractions, AnyInteractions
+from oats.annotation.ontology import Ontology
+from oats.annotation.annotation import annotate_using_noble_coder
+from oats.distances import pairwise as pw
+from oats.distances.edgelists import merge_edgelists, make_undirected, remove_self_loops, subset_with_ids
+from oats.nlp.vocabulary import get_overrepresented_tokens, get_vocab_from_tokens
+from oats.nlp.vocabulary import reduce_vocab_connected_components, reduce_vocab_linares_pontes
+from oats.nlp.preprocess import concatenate_with_bar_delim
 
 
 
@@ -64,6 +75,31 @@ def read_in_oats_data(path):
 
 
 
+
+# Note that the output object(s) and dictionaries shouldn't actually be modified in this script.
+# But streamlit was detecting a change in the outputs of this function? So the allow output mutation
+# argument is necessary in order for this cached function to not be run again on fresh.
+@st.cache(allow_output_mutation=True)
+def read_big_stuff(approach_names_files_and_mappings, approach_mapping_files):
+	"""Summary
+	
+	Args:
+	    approach_names_files_and_mappings (TYPE): Description
+	    approach_mapping_files (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
+	approach_to_object = {k:load_from_pickle(v[0]) for k,v in approach_names_files_and_mappings.items()}
+	mapping_key_to_mapping_dict = {k:load_from_pickle(v) for k,v in approach_mapping_files.items()}
+	approach_to_mapping = {k:mapping_key_to_mapping_dict[v[1]] for k,v in approach_names_files_and_mappings.items()}
+	return(approach_to_object, approach_to_mapping)
+
+
+	#graph = load_from_pickle("/Users/irbraun/Desktop/testp/w.pickle")
+	#gene_id_to_graph_ids = load_from_pickle("/Users/irbraun/Desktop/testp/gene_id_to_unique_ids_whole_texts.pickle")
+	#return(graph, gene_id_to_graph_ids)
+	#return(1,2)
 
 
 
@@ -196,6 +232,58 @@ def keyword_search(ids_to_texts, keywords):
 
 dataset = read_in_oats_data("/Users/irbraun/Desktop/test.csv")
 
+
+
+
+# TODO THIS SHOULD BE GRAPH IDS NOT GRAPH ID, ITS A SINGLE GENE ID TO A LIST OF GRAPH IDS
+#graph, gene_id_to_graph_ids = read_big_stuff("RUNNING CACHED FUNCTION")
+
+
+
+
+
+
+approach_names_files_and_mappings = {
+	"n-grams":("/Users/irbraun/Desktop/testp/ngrams-whole.pickle","whole_texts"),
+	#"Word2Vec":("/Users/irbraun/Desktop/testp/word_max_tok.pickle","sent_tokens"),
+}
+
+approach_mapping_files = {
+	"whole_texts":"/Users/irbraun/Desktop/testp/gene_id_to_unique_ids_whole_texts.pickle",
+	"sent_tokens":"/Users/irbraun/Desktop/testp/gene_id_to_unique_ids_sent_tokens.pickle",
+}
+
+
+
+
+
+# The first dictionary created here maps the name of an apporach, like "n-grams" to an oats.distances object.
+# The second dictionary created here maps the name of an approach like "n-grams" to another dictionary that
+# maps the IDs that in this dataset to the IDs that are used internally by that corresponding distances object.
+# This is necessary because those internal IDs represent compressed or altered versions of the text and could 
+# refer to more than one text instance in the actual dataset that is seen here.
+approach_to_object, approach_to_mapping = read_big_stuff(approach_names_files_and_mappings, approach_mapping_files)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#st.write(graph.metric_str)
+
+
+
+
+
 # These mappings are necessary if the internal strings used for species and how they should be displayed are different.
 internal_species_strings = ["ath", "zma", "sly", "gmx", "osa", "mtr"]
 display_species_strings = ["Arabidopsis", "Maize", "Tomato", "Soybean", "Rice", "Medicago"]
@@ -280,7 +368,7 @@ if len(species_list) == 0:
 # Present information and search options for finding a particular gene or protein in the sidebar.
 st.sidebar.markdown("### Selecting an Approach")
 st.sidebar.markdown("Use a particular type of NLP approach to find genes that are related to some phenotype description of interest.")
-
+approach = st.sidebar.selectbox(label="Pick one", options=list(approach_to_object.keys()), index=0)
 
 
 
@@ -427,9 +515,112 @@ if search_kws:
 
 
 # Handle what should happen if something was entered in the description search text box.
-if search_string:
+elif search_string:
 
-	a = 1
+
+	# TODO THIS HAS TO BE SPECIFIC TO THE GRAPH BEING USED!!!!!!! CANT JUST DO WHATVER HERE
+	# BEACUSE THE VOCABULARIES HAVE TO MATCH.
+
+
+	graph = approach_to_object[approach]
+	gene_id_to_graph_ids = approach_to_mapping[approach]
+
+
+	search_string_cleaned = search_string # TODO do preprocessing here
+
+
+	search_string_cleaned = " ".join(preprocess_string(search_string))
+
+
+
+
+
+
+
+
+	search_string_vector = graph.get_vector(search_string_cleaned)
+
+	# todo or there could be more than one if we need to split it first.
+
+	search_string_vectors = [search_string_vector]
+
+
+	#st.write(len(graph.vector_dictionary[0]))
+	#st.write(graph.vector_dictionary[0])
+
+
+
+	#st.write(search_string_vector)
+
+
+	# Move all this stuff to the graph object that gets pickled.
+	from scipy.spatial.distance import cdist
+
+	# Get these two things in a fixed order, not a dictionary.
+	ids_in_graph = list(graph.vector_dictionary.keys())
+	vectors_in_graph = [graph.vector_dictionary[i] for i in ids_in_graph]
+	
+	# Do the distance matrix calculation between all the vectors that represent the searched text, and the ones in the graph.
+	one_by_n_matrix = cdist(search_string_vectors, vectors_in_graph, graph.metric_str)
+	graph_id_to_matrix_col_idx = {graph_id:col_idx for col_idx,graph_id in enumerate(ids_in_graph)}
+
+
+
+	# Make a mapping between gene IDs and the list of all distances to them from the provided text.
+	# Have the change the name of that dict to make sure it says graph ids not graph id.
+	gene_id_to_min_distance = {}
+	for gene_id, graph_ids in gene_id_to_graph_ids.items():
+
+		col_indices = [graph_id_to_matrix_col_idx[graph_id] for graph_id in graph_ids]
+		row_indices = [0]
+		distance_values = [one_by_n_matrix[row,col] for row,col in itertools.product(row_indices,col_indices)]
+		gene_id_to_min_distance[gene_id] = min(distance_values)
+
+
+	#st.write(graph.vectorizer_object.vocabulary_)
+	st.write(search_string_cleaned)
+	for token in search_string_cleaned.split():
+		if token in graph.vectorizer_object.vocabulary_:
+			st.write(token)
+
+
+
+
+
+	df["distance"] = df["id"].map(gene_id_to_min_distance)
+	df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
+
+	st.markdown("---")
+	st.markdown("## Search Results (NLP)")
+	st.markdown("### Genes with Matching Phenotype Descriptions")
+	st.markdown("Genes with phenotypes that described most similarity to '{}'".format(search_string))
+
+
+	# Display the sorted and filtered dataset as a table with the relevant columns.
+	df.index = np.arange(1, len(df)+1)
+	if truncate:
+		st.table(data=df[["distance", "Species", "Gene or Protein", "Phenotype Description (Truncated)"]])
+	else:
+		st.table(data=df[["distance", "Species", "Gene or Protein", "Phenotype Description"]])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	# text = preprocess(search_string)
 	# d = get_sim_to_all_ids(text, graph pickle)
 	# df[distance] = df[id].map( d )
