@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import sys
 from collections import defaultdict
+from string import punctuation
 
 
 sys.path.append("../../oats")
@@ -34,13 +35,18 @@ from oats.biology.dataset import Dataset
 # Markdown for introducing the app and linking to other relevant resources like the project Github page.
 
 '''
-# Plant Phenotype Descriptions Dataset
+# Phenotype Description Search
 Some description that goes under this. This web application is for doing x, y, and z. It was developed by Ian Braun
 and also whatever and whover okay the options are shown below. Some description that goes under this. This web 
 application is for doing x, y, and z. It was developed by Ian Braun
 and also whatever and whover okay the options are shown below. [click here](github.com/irbraun/phenologs-with-oats)
 
 '''
+
+
+
+
+
 
 
 
@@ -139,6 +145,22 @@ def old_phenotype_description_search(distances, gene_id):
 
 
 
+def keyword_search(ids_to_texts, keywords):
+
+	# TODO shouldn't be checking if kw is in text string, should be checking if kw is in token list.
+	# TODO that was 'larg' isn't found in a description that contains the word large etc.
+
+	# TODO add the option to do stemming / case normalization prior to doing this matching too.
+	# TODO should be done in the cached function and just returned as dictionaries of IDs --> token lists etc.
+
+
+
+	id_to_found_keywords = {i:[kw for kw in keywords if kw in text] for i,text in ids_to_texts.items()}
+	id_to_num_found_keywords = {i:len(kw_list) for i,kw_list in id_to_found_keywords.items()}
+	return(id_to_found_keywords, id_to_num_found_keywords)
+
+
+
 
 
 
@@ -183,14 +205,27 @@ to_species_display_name = {i:d for i,d in zip(internal_species_strings,display_s
 
 
 
-st.markdown("### Search by Phenotype Description")
-s ="The NLP method selected in the sidebar will be used to find the phenotype descriptions that most closely resemble the provided text."
-search_string = st.text_input(label=s)
+st.markdown("### Search Phenotype Descriptions with NLP")
+st.markdown("Find phenotype descriptions that are most similar to text of any length, using the semantic similarity approach selected in the sidebar.")
+search_string = st.text_input(label="Enter a phenotype description here")
 
 
-st.markdown("### Search by Keywords or Phrases")
-st.markdown("Only phenotype descriptions that contain the provided words or phrases (separated by commas if more than one) will be returned.")
-search_kws = st.text_input(label="Enter text here")
+st.markdown("### Simple Keyword or Phrase Search")
+st.markdown("Find phenotype descriptions that contain specific words or phrases. Separate words or phrases by commas if searching for more than one.")
+search_kws = st.text_input(label="Enter keywords or phrases here")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -311,22 +346,33 @@ df["Phenotype Description"] = df["description"]
 df["Phenotype Description (Truncated)"] = df["description"].map(lambda x: truncate_string(x, 800))
 # Make sure the data is always sorted by the internal IDs, but make the displayed index start at 1.
 df.sort_values(by="id", inplace=True)
-df.index = np.arange(1, len(df)+1)
 
 
 
 
 
-# Check each of the presented buttons for genes that matched the search and if selected, present information for that gene.
+
+
+
+# GENE NAME SEARCH
+
+
+
+
+
+# Handle what should happen if any of the previously presented gene buttons was clicked.
+# Has to be a loop because we need to check all the presented buttons, might be more than one.
 for i,gene_button in gene_buttons_dict.items():
 	if gene_button:
+		
 		selected_gene_primary_name = dataset.get_gene_dictionary()[i].primary_name
 		selected_gene_other_names = dataset.get_gene_dictionary()[i].all_names
 		selected_gene_phenotype_description = dataset.get_description_dictionary()[i]
+		
 		st.markdown("---")
-		st.markdown("## Search Results")
+		st.markdown("## Search Results (Gene)")
 		st.markdown("**Gene Selected:** {}".format(selected_gene_primary_name))
-		st.markdown("**Possible Synonyms:** {}".format(", ".join(selected_gene_other_names)))
+		st.markdown("**Possible Synonym(s):** {}".format(", ".join(selected_gene_other_names)))
 		st.markdown("**Phenotype Description(s):** {}".format(selected_gene_phenotype_description))
 		st.markdown("### Genes with Similar Phenotypes")
 		st.markdown("The dataset of plant genes below is now sorted by similarity to **{}**, as determined by the selected phenotype similarity approach in the sidebar.".format(selected_gene_primary_name))
@@ -336,18 +382,76 @@ for i,gene_button in gene_buttons_dict.items():
 		# TODO sort the dataframe before showing it below.
 
 
+		# Display the sorted and filtered dataset as a table with the relevant columns.
+		df.index = np.arange(1, len(df)+1)
+		if truncate:
+			st.table(data=df[["Species", "Gene or Protein", "Phenotype Description (Truncated)"]])
+		else:
+			st.table(data=df[["Species", "Gene or Protein", "Phenotype Description"]])
 
 
 
 
 
-# Display the rest of the full dataset.
-if truncate:
-	st.table(data=df[["Species", "Gene or Protein", "Phenotype Description (Truncated)"]])
-else:
-	st.table(data=df[["Species", "Gene or Protein", "Phenotype Description"]])
 
 
+# Handle what should happen if something was entered in the keyword search text box.
+if search_kws:
+
+	keywords = search_kws.strip().strip(punctuation).split(",")
+	keywords = [kw.strip() for kw in keywords]
+	id_to_found_keywords, id_to_num_found_keywords = keyword_search(dataset.get_description_dictionary(), keywords)
+	df["num_found"] = df["id"].map(id_to_num_found_keywords)
+	df = df[df["num_found"]>0]
+	df["Keywords"] = df["id"].map(lambda x: ", ".join(id_to_found_keywords[x]))
+	df.sort_values(by=["num_found","id"], ascending=[False,True], inplace=True)
+
+	st.markdown("---")
+	st.markdown("## Search Results (Keyword)")
+	keywords_str = ", ".join([kw for kw in keywords if len(kw.split())==1])
+	phrases_str = ", ".join([kw for kw in keywords if len(kw.split())>1])
+	st.markdown("**Keyword(s)**: {}".format(keywords_str))
+	st.markdown("**Phrase(s)**: {}".format(phrases_str))
+	st.markdown("### Genes with Matching Phenotype Descriptions")
+	st.markdown("The dataset of plant genes below shows only genes with phenotype description that included one or more of the searched keywords or phrases.")
+
+
+	# Display the sorted and filtered dataset as a table with the relevant columns.
+	df.index = np.arange(1, len(df)+1)
+	if truncate:
+		st.table(data=df[["Keywords", "Species", "Gene or Protein", "Phenotype Description (Truncated)"]])
+	else:
+		st.table(data=df[["Keywords", "Species", "Gene or Protein", "Phenotype Description"]])
+
+
+
+
+# Handle what should happen if something was entered in the description search text box.
+if search_string:
+
+	a = 1
+	# text = preprocess(search_string)
+	# d = get_sim_to_all_ids(text, graph pickle)
+	# df[distance] = df[id].map( d )
+	# enforce a threshold so not seeing the whole thing?
+	# display it
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Handle what should happen if the download button is clicked for this dataset.
 if write_button:
 	df.to_csv("data.tsv", index=False, sep="\t")
 
