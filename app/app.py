@@ -67,16 +67,12 @@ and also whatever and whover okay the options are shown below. [click here](gith
 
 
 
+# TODO
+# Adjust the preprocessing notebooks to try a little harder to make the first gene name a good one.
+# Use fuzzy matching to the accepted type of identifer like At3G* or something like that, or regex.
 
 
 
-@st.cache(allow_output_mutation=True)
-def read_in_oats_data(path):
-	dataset = Dataset(path)
-	dataset.filter_has_description()
-
-	# Should eventually also return the loaded paired distances objects and preprocessing stuff, etc.
-	return(dataset)
 
 
 
@@ -88,10 +84,11 @@ def read_in_oats_data(path):
 # But streamlit was detecting a change in the outputs of this function? So the allow output mutation
 # argument is necessary in order for this cached function to not be run again on fresh.
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
-def read_big_stuff(approach_names_and_data, approach_mapping_files):
+def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files):
 	"""Summary
 	
 	Args:
+	    dataset_path (TYPE): Description
 	    approach_names_and_data (TYPE): Description
 	    approach_mapping_files (TYPE): Description
 	
@@ -99,25 +96,14 @@ def read_big_stuff(approach_names_and_data, approach_mapping_files):
 	    TYPE: Description
 	"""
 
-	#approach_to_object = {k:load_from_pickle(v["path"]) for k,v in approach_names_and_data.items()}
-	bar = st.progress(0)
-	num_read = 0
-	num_to_read_total = len(approach_names_and_data)
-	approach_to_object = {}
-	for k,v in approach_names_and_data.items():
-		approach_to_object[k] = load_from_pickle(v["path"])
-		bar.progress(100*(num_read/num_to_read_total))
+	with st.spinner("Reading very large files, this might take a few minutes."):
+		dataset = Dataset(dataset_path)
+		dataset.filter_has_description()
+		approach_to_object = {k:load_from_pickle(v["path"]) for k,v in approach_names_and_data.items()}
+		mapping_key_to_mapping_dict = {k:load_from_pickle(v) for k,v in approach_mapping_files.items()}
+		approach_to_mapping = {k:mapping_key_to_mapping_dict[v["mapping"]] for k,v in approach_names_and_data.items()}
+		return(dataset, approach_to_object, approach_to_mapping)
 
-
-	mapping_key_to_mapping_dict = {k:load_from_pickle(v) for k,v in approach_mapping_files.items()}
-	approach_to_mapping = {k:mapping_key_to_mapping_dict[v["mapping"]] for k,v in approach_names_and_data.items()}
-	return(approach_to_object, approach_to_mapping)
-
-
-	#graph = load_from_pickle("/Users/irbraun/Desktop/testp/w.pickle")
-	#gene_id_to_graph_ids = load_from_pickle("/Users/irbraun/Desktop/testp/gene_id_to_unique_ids_whole_texts.pickle")
-	#return(graph, gene_id_to_graph_ids)
-	#return(1,2)
 
 
 
@@ -137,35 +123,7 @@ def truncate_string(text, char_limit):
 
 
 
-
-@st.cache
-def read_in_dataset(path):
-	
-	# Read in the dataset that was used for this analysis.
-	df = pd.read_csv(path, sep="\t")
-	
-	# Create a set of new columns that are specific to how the information should be displayed in the app.
-	df["Gene or Protein"] = df["gene_names"].map(lambda x: x.split("|")[0])
-	df["Phenotype Description"] = df["description"]
-	df["Phenotype Description (Truncated)"] = df["description"].map(lambda x: truncate_string(x, 500))
-
-	return(df)
-
-
-
-
-
-
 def gene_name_search(dataset, gene_name):
-	"""Summary
-	
-	Args:
-	    dataset (TYPE): Description
-	    gene_name (TYPE): Description
-	
-	Returns:
-	    TYPE: Description
-	"""
 	gene_name = gene_name.lower().strip()
 	species_to_gene_id_list = defaultdict(list)
 	for species in dataset.get_species():
@@ -175,24 +133,6 @@ def gene_name_search(dataset, gene_name):
 	return(species_to_gene_id_list)
 
 
-
-
-
-
-
-def new_phenotype_description_search(distances, text, preprocessing):
-	return(0)
-	# TODO process the text with the provided preprocessing approach? figure out how to do this.
-	# TODO Request the best matches from the distances object for that text.
-	# TODO Return those list of IDs, so that the dataframe can be ordered that way.
-
-
-
-
-def old_phenotype_description_search(distances, gene_id):
-	return(0)
-	# TODO get the IDs that are the closet to that ID bases on descripiton similarity as given
-	# in that distances object. Return them as a list so that the the table can be re-ordered.
 
 
 
@@ -209,9 +149,7 @@ def keyword_search(ids_to_texts, keywords):
 	# TODO add the option to do stemming / case normalization prior to doing this matching too.
 	# TODO should be done in the cached function and just returned as dictionaries of IDs --> token lists etc.
 
-
-
-	id_to_found_keywords = {i:[kw for kw in keywords if kw in text] for i,text in ids_to_texts.items()}
+	id_to_found_keywords = {i:[kw for kw in keywords if kw in word_tokenize(text)] for i,text in ids_to_texts.items()}
 	id_to_num_found_keywords = {i:len(kw_list) for i,kw_list in id_to_found_keywords.items()}
 	return(id_to_found_keywords, id_to_num_found_keywords)
 
@@ -286,25 +224,6 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 
 
 
-
-
-
-
-# TODO.
-# Adjust the preprocessing notebooks to try a little harder to make the first gene name a good one.
-# Use fuzzy matching to the accepted type of identifer like At3G* or something like that, or regex.
-
-
-
-
-
-
-# Reading in the dataset object.
-dataset = read_in_oats_data("/Users/irbraun/Desktop/test.csv")
-
-
-
-
 # LOOK AT THIS.
 # Dangerous part. These have to exactly match how the text is treated within the notebook that generates the pairwise distances.
 # There's no explicit check in the code that makes sure the processing is identical between those two locations.
@@ -314,6 +233,11 @@ as_one_token = lambda text: [text]
 identify_function = lambda text: text
 simple_preprocessing = lambda text: " ".join(simple_preprocess(text))
 full_preprocessing = lambda text: " ".join(preprocess_string(text))
+
+
+
+
+
 
 
 
@@ -363,6 +287,8 @@ approach_mapping_files = {
 
 
 
+dataset_path = "/Users/irbraun/Desktop/test.csv"
+
 
 
 # The first dictionary created here maps the name of an apporach, like "n-grams" to an oats.distances object.
@@ -370,23 +296,13 @@ approach_mapping_files = {
 # maps the IDs that in this dataset to the IDs that are used internally by that corresponding distances object.
 # This is necessary because those internal IDs represent compressed or altered versions of the text and could 
 # refer to more than one text instance in the actual dataset that is seen here.
-approach_to_object, approach_to_mapping = read_big_stuff(approach_names_and_data, approach_mapping_files)
+dataset, approach_to_object, approach_to_mapping = read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-#st.write(graph.metric_str)
 
 
 
