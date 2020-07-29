@@ -7,7 +7,7 @@ from nltk.tokenize import word_tokenize, sent_tokenize
 from collections import defaultdict
 from string import punctuation
 from gensim.utils import simple_preprocess
-from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string
+from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string, strip_tags, strip_punctuation
 
 
 sys.path.append("../../oats")
@@ -48,28 +48,41 @@ from oats.nlp.preprocess import concatenate_with_bar_delim
 # Markdown for introducing the app and linking to other relevant resources like the project Github page.
 
 '''
-# Phenotype Description Search
-Some description that goes under this. This web application is for doing x, y, and z. It was developed by Ian Braun
-and also whatever and whover okay the options are shown below. Some description that goes under this. This web 
-application is for doing x, y, and z. It was developed by Ian Braun
-and also whatever and whover okay the options are shown below. [click here](github.com/irbraun/phenologs-with-oats)
+# Phenologs with OATS
+A tool for querying datasets of genes, phenotype descriptions, and ontology term annotations. 
 
+
+## Instructions
+Type a query into the searchbar and press enter. Use the radio buttons below the search bar to indicate whether the query is
+for a particular gene, or keywords or phrases describing a phenotype, or a free-text entry describing a phenotype. If the 
+gene option is selected, the results will be for genes that match the searched text in terms of gene names, models, proteins,
+or some other identifier that is present in the dataset. If the keyword option is selected, the results will be for gene that
+have phenotype descriptions that contain the searched keywords and phrases. If the free-text option is selected, the similarity
+algorithm selected no the left will find genes with phenotype descriptions that most closely resemble the searched text.
 '''
 
 
 
+# TODO 
+
+# fix the instructions.
+# convert distance values to intuitive similarities (1 to 100?)
+# adding ordering keywords by importance to advanced options.
+# show ontology terms.
+# try to get noble coder running and doing similarity that way.
+# Fix column names.
 
 
 
-# TODO
-# this script doesnt actually use the graph.arry or graph.df objects in the PairwiseDistance objects.
-# hackily set them to = None before saving as a pickle in order to save a ton of space when loading this app.
+# Make the application able to be populated with any text file that is in the right shape and has the right columns.
+# Load it up with the human snpedia dataset and see what happens.
 
 
 
-# TODO
-# Adjust the preprocessing notebooks to try a little harder to make the first gene name a good one.
-# Use fuzzy matching to the accepted type of identifer like At3G* or something like that, or regex.
+
+
+
+
 
 
 
@@ -82,29 +95,41 @@ and also whatever and whover okay the options are shown below. [click here](gith
 
 # Note that the output object(s) and dictionaries shouldn't actually be modified in this script.
 # But streamlit was detecting a change in the outputs of this function? So the allow output mutation
-# argument is necessary in order for this cached function to not be run again on fresh.
+# decorator is necessary in order for this cached function to not be run again on refresh.
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files):
-	"""Summary
+	"""Read in the large files that initialize the application here, which takes a long time.
 	
 	Args:
 	    dataset_path (TYPE): Description
+	
 	    approach_names_and_data (TYPE): Description
+	
 	    approach_mapping_files (TYPE): Description
 	
 	Returns:
 	    TYPE: Description
 	"""
+	
+	# Read in the dataset and create its object.
+	dataset = Dataset(dataset_path)
+	dataset.filter_has_description()
 
-	with st.spinner("Reading very large files, this might take a few minutes."):
-		dataset = Dataset(dataset_path)
-		dataset.filter_has_description()
-		approach_to_object = {k:load_from_pickle(v["path"]) for k,v in approach_names_and_data.items()}
-		mapping_key_to_mapping_dict = {k:load_from_pickle(v) for k,v in approach_mapping_files.items()}
-		approach_to_mapping = {k:mapping_key_to_mapping_dict[v["mapping"]] for k,v in approach_names_and_data.items()}
-		return(dataset, approach_to_object, approach_to_mapping)
+	# Reading in the large files that store objects for vectorizing and comparing texts.
+	approach_to_object = {k:load_from_pickle(v["path"]) for k,v in approach_names_and_data.items()}
+	mapping_key_to_mapping_dict = {k:load_from_pickle(v) for k,v in approach_mapping_files.items()}
+	approach_to_mapping = {k:mapping_key_to_mapping_dict[v["mapping"]] for k,v in approach_names_and_data.items()}
 
 
+	# Other expensive computation here so that it's done inside the cached function.
+	# Get the dataframe for this dataset and add some additional columns that will be useful for displaying information.
+	# Slow additions to the dataframe should go here. Very fast ones can go in the main non-cached part of the script.
+	df = dataset.to_pandas()
+	df["Gene"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].primary_identifier)
+	df["Gene Model"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].gene_models[0] if len(dataset.get_gene_dictionary()[x].gene_models)>0 else "")
+	df["truncated_descriptions"] = df["descriptions"].map(lambda x: truncate_string(x, 800))
+	id_to_descriptions_for_keyword_matching = {i:PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION(s) for i,s in dataset.get_description_dictionary().items()}
+	return(dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching)
 
 
 
@@ -118,6 +143,13 @@ def truncate_string(text, char_limit):
 		truncated_text = text[:char_limit-3]
 		truncated_text = "{}...".format(truncated_text)
 	return(truncated_text)
+
+
+def distance_float_to_similarity_int(distance):
+	# Generate a friendlier value for displaying in search results.
+	similarity_float = 1-distance
+	similarity_int = int(similarity_float*100)
+	return(similarity_int)
 
 
 
@@ -134,22 +166,13 @@ def gene_name_search(dataset, gene_name):
 
 
 
-
-
-
 	
 
-
-
-def keyword_search(ids_to_texts, keywords):
-
-	# TODO shouldn't be checking if kw is in text string, should be checking if kw is in token list.
-	# TODO that was 'larg' isn't found in a description that contains the word large etc.
-
-	# TODO add the option to do stemming / case normalization prior to doing this matching too.
-	# TODO should be done in the cached function and just returned as dictionaries of IDs --> token lists etc.
-
-	id_to_found_keywords = {i:[kw for kw in keywords if kw in word_tokenize(text)] for i,text in ids_to_texts.items()}
+def keyword_search(id_to_text, raw_keywords, modified_keywords):
+	# The raw keywords and modified keywords should be two paired lists where the elements correspond to one another.
+	# The modifications done to the keywords should already match the modifications done to the texts in the input dictionary so they can be directly compared.
+	assert len(raw_keywords) == len(modified_keywords)
+	id_to_found_keywords = {i:[r_kw for r_kw,m_kw in zip(raw_keywords,modified_keywords) if m_kw in text] for i,text in id_to_text.items()}
 	id_to_num_found_keywords = {i:len(kw_list) for i,kw_list in id_to_found_keywords.items()}
 	return(id_to_found_keywords, id_to_num_found_keywords)
 
@@ -157,13 +180,14 @@ def keyword_search(ids_to_texts, keywords):
 
 
 
-def description_search(text, graph, tokenization_function, preprocessing_function):
+def description_search(text, graph, tokenization_function, preprocessing_function, result_column_width, result_column_max_lines):
 
-
-	# TODO Whether or not to split by sentences and then how to preprocess should be based on approach, not the same.
+	# Do tokenization and preprocessing on the searched text to yield a list of strings.
+	# The tokenization and preprocessing have to match the object that will be used, and this decision is informed by
+	# some mapping that is already done, and the choices are passed in to this function.
+	# The tokenization might just yield a single text, but it still goes in a list for consistency.
 	sentence_tokens = tokenization_function(text)
 	preprocessed_sentence_tokens  = [preprocessing_function(s) for s in sentence_tokens]
-
 
 
 	# Get a mapping between gene IDs and their distances to each new text string parsed from the search string.
@@ -178,22 +202,23 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 			gene_id_to_distances[gene_id].append(min_graph_distance)
 
 
-
 	# Making a highly formatted string to show how distances break down by individual sentences tokens.
+	# This is very specific to how the column for that information is presented, change how it looks here.
 	# Some of this formatting is a work-around for not having alot of control over column widths and text-wrapping in the streamlit table.
-	width = 30
-	num_lines_limit = 5
 	gene_id_to_result_string = {}
 	for gene_id, distances in gene_id_to_distances.items():
 		lines_with_dist_list = []
-		for s,d in zip(preprocessed_sentence_tokens,distances):
-			parsed_string_truncated = truncate_string(s, width)
-			parsed_string_truncated = parsed_string_truncated + "."*max(0,width-len(parsed_string_truncated))
-			line = "{}({:.2f})\n\n".format(parsed_string_truncated, d)
+		for s,d in zip(sentence_tokens,distances):
+			parsed_string_truncated = truncate_string(s, result_column_width-5)
+			similarity_string = "({})".format(distance_float_to_similarity_int(d))
+			num_chars_left_to_fill = result_column_width-len(parsed_string_truncated)-len(similarity_string)
+			parsed_string_truncated = parsed_string_truncated + "."*num_chars_left_to_fill
+			#line = "{}({:.2f})\n\n".format(parsed_string_truncated, d)
+			line = "{}{}\n\n".format(parsed_string_truncated, similarity_string)
 			lines_with_dist_list.append((line,d))
 		# Sort that list of lines by distance, because we only want to show the best matches if the description is very long.
 		lines_with_dist_list = sorted(lines_with_dist_list, key=lambda x: x[1])
-		line_string = "".join([x[0] for x in lines_with_dist_list][:num_lines_limit])
+		line_string = "".join([x[0] for x in lines_with_dist_list][:result_column_max_lines])
 		gene_id_to_result_string[gene_id] = line_string
 
 
@@ -204,7 +229,6 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 	gene_id_to_min_distance = {}
 	for gene_id,distances in gene_id_to_distances.items():
 		gene_id_to_min_distance[gene_id] = min(distances)
-
 
 	return(gene_id_to_result_string, gene_id_to_min_distance)
 
@@ -220,11 +244,6 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 
 
 
-
-
-
-
-# LOOK AT THIS.
 # Dangerous part. These have to exactly match how the text is treated within the notebook that generates the pairwise distances.
 # There's no explicit check in the code that makes sure the processing is identical between those two locations.
 # In the future this should probably be changed so both sets of code are calling a resources that knows how to do these things.
@@ -238,56 +257,81 @@ full_preprocessing = lambda text: " ".join(preprocess_string(text))
 
 
 
+# Where is the dataset file that should be loaded for this application?
+DATASET_PATH = "/Users/irbraun/Desktop/test.csv"
 
 
 
 
 
 # What are the different fields for each approach in this nested dictionary?
-# Maybe this should all be moved to separate json file that references something to find those lambdas by key.
 # path: The path to the pickle for loading the oats object associated with this approach.
 # mapping: A key that allows for retrieving the correct mapping between IDs used here and those used internally by each approach.
 # tokenization_function: A function for how text should be tokenized in order to be compatible with this approach.
 # preprocessing_function: A function for how text should be preprocessed in order to be compatible with this approach.
-approach_names_and_data = {
+APPROACH_NAMES_AND_DATA = {
 	"n-grams":{
 		"path":"/Users/irbraun/Desktop/testp/n.pickle", 
 		"mapping":"whole_texts",
 		"tokenization_function":as_one_token,
 		"preprocessing_fucntion":full_preprocessing,
 		},
-	"n-grams-tok":{
+	"n-grams-tokenized":{
 		"path":"/Users/irbraun/Desktop/testp/ntok.pickle", 
 		"mapping":"sent_tokens",
 		"tokenization_function":sentence_tokenize,
 		"preprocessing_fucntion":full_preprocessing,
 		},
-	"word2vec-tok":{
+	"word2vec-tokenized":{
 		"path":"/Users/irbraun/Desktop/testp/wtok.pickle", 
 		"mapping":"sent_tokens",
 		"tokenization_function":sentence_tokenize,
 		"preprocessing_fucntion":identify_function,
 		},
-	# "doc2vec":{
-	# 	"path":"/Users/irbraun/Desktop/testp/d.pickle", 
-	# 	"mapping":"whole_texts",
-	# 	"tokenization_function":as_one_token,
-	# 	"preprocessing_fucntion":identify_function,
-	# 	},
+	"doc2vec":{
+	 	"path":"/Users/irbraun/Desktop/testp/d.pickle", 
+	 	"mapping":"whole_texts",
+	 	"tokenization_function":as_one_token,
+	 	"preprocessing_fucntion":identify_function,
+	 	},
 	}
 
 
+# For testing, be able to subset this nested dictionary without having to uncomment sections of it.
+# Just uncomment these two lines to use the entire set of approaches and load all files.
+names_to_actually_use = ["n-grams","n-grams-tokenized"]
+APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k in names_to_actually_use}
 
 
-approach_mapping_files = {
+
+
+# Mappings between key strings and the files that should be used to load dictionaries for converting between IDs.
+APPROACH_MAPPING_FILES = {
 	"whole_texts":"/Users/irbraun/Desktop/testp/gene_id_to_unique_ids_whole_texts.pickle",
 	"sent_tokens":"/Users/irbraun/Desktop/testp/gene_id_to_unique_ids_sent_tokens.pickle",
 	}
 
 
 
+# How should keywords and phrases be cleaned and handled as far as preprocessing or stemming goes?
+KEYWORD_DELIM = "[DELIM]"
+KEYWORD_PREPROCESSING_FILTERS = [lambda x: x.lower(), strip_non_alphanum, strip_tags, strip_punctuation, stem_text]
+PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DELIM, KEYWORD_DELIM.join([token for token in preprocess_string(x, KEYWORD_PREPROCESSING_FILTERS)]), KEYWORD_DELIM)
 
-dataset_path = "/Users/irbraun/Desktop/test.csv"
+
+
+
+RESULT_COLUMN_STRING = "ClosestMatchingSearchedPhenes......."
+MAX_LINES_IN_RESULT_COLUMN = 6
+
+
+
+
+
+
+
+
+
 
 
 
@@ -296,15 +340,8 @@ dataset_path = "/Users/irbraun/Desktop/test.csv"
 # maps the IDs that in this dataset to the IDs that are used internally by that corresponding distances object.
 # This is necessary because those internal IDs represent compressed or altered versions of the text and could 
 # refer to more than one text instance in the actual dataset that is seen here.
-dataset, approach_to_object, approach_to_mapping = read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
-
-
-
-
-
-
-
-
+with st.spinner("Reading very large files, this might take a few minutes."):
+	dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching= read_in_files(DATASET_PATH, APPROACH_NAMES_AND_DATA, APPROACH_MAPPING_FILES)
 
 
 
@@ -317,23 +354,16 @@ to_species_display_name = {i:d for i,d in zip(internal_species_strings,display_s
 
 
 
-st.markdown("### Search Phenotype Descriptions with NLP")
-st.markdown("Find phenotype descriptions that are most similar to text of any length, using the semantic similarity approach selected in the sidebar.")
-search_string = st.text_input(label="Enter a phenotype description here")
+############# Search Section ###############
 
 
-st.markdown("### Simple Keyword or Phrase Search")
-st.markdown("Find phenotype descriptions that contain specific words or phrases. Separate words or phrases by commas if searching for more than one.")
-search_kws = st.text_input(label="Enter keywords or phrases here")
-
-
-
-
-
-
-
-
-
+# Display the search section of the main page.
+st.markdown("## Search")
+input_text = st.text_input(label="Enter text here")
+search_types = ["gene", "keyword", "phenotype"]
+search_types_labels = ["Gene Identifiers", "Keywords & Keyphrases", "Free Text"]
+search_types_format_func = lambda x: {t:l for t,l in zip(search_types,search_types_labels)}[x]
+search_type = st.radio(label="Select a type of search", options=search_types, index=0, format_func=search_types_format_func)
 
 
 
@@ -345,13 +375,11 @@ search_kws = st.text_input(label="Enter keywords or phrases here")
 ############# The Sidebar ###############
 
 
-
-
-
 # Presenting the general options for how the data is displayed.
 st.sidebar.markdown("### General Options")
 truncate = st.sidebar.checkbox(label="Truncate long phenotypes", value=True)
 synonyms = st.sidebar.checkbox(label="Show possible gene synonyms", value=False)
+
 
 # Presenting the options for filtering by species.
 st.sidebar.markdown("### Filtering by Species")
@@ -360,29 +388,30 @@ species_list = st.sidebar.multiselect(label="Filter to only include certain spec
 if len(species_list) == 0:
 	species_list = species_display_names
 
-
-
-
-
-
 # Present information and search options for finding a particular gene or protein in the sidebar.
-st.sidebar.markdown("### Selecting an Approach")
-st.sidebar.markdown("Use a particular type of NLP approach to find genes that are related to some phenotype description of interest.")
+st.sidebar.markdown("### Pick a Similarity Algorithm")
 approach = st.sidebar.selectbox(label="Pick one", options=list(approach_to_object.keys()), index=0)
 
 # Variables that get set according to which approach was selected.
 graph = approach_to_object[approach]
 gene_id_to_graph_ids = approach_to_mapping[approach]
 
+# Presenting some more advanced options that shouldn't normally need to be changed.
+st.sidebar.markdown("### Advanced Options")
 
 
 
 
 
 
-# Displaying the search results based on which genes or proteins were matching in the dataset.
-st.sidebar.markdown("### Search by Gene Name or Identfier")
-gene_search_string = st.sidebar.text_input(label="Enter a name or identifier for a gene or protein")
+
+
+
+
+
+
+
+
 
 
 
@@ -405,16 +434,24 @@ gene_search_string = st.sidebar.text_input(label="Enter a name or identifier for
 
 
 
+# Subset the dataframe if necessary.
 
 # The dataframe as it should be formatted for displaying in the app, not all data is needed.
-df = dataset.to_pandas()
+#df = dataset.to_pandas()
+#df["Species"] = df["species"].map(to_species_display_name)
 df["Species"] = df["species"].map(to_species_display_name)
 df = df[df["Species"].isin(species_list)]
-df["Gene or Protein"] = df["gene_names"].map(lambda x: x.split("|")[0])
-df["Phenotype Description"] = df["description"]
-df["Phenotype Description (Truncated)"] = df["description"].map(lambda x: truncate_string(x, 800))
+#df["Gene"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].primary_identifier)
+#df["Gene Model"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].gene_models[0] if len(dataset.get_gene_dictionary()[x].gene_models)>0 else "")
+#df["Phenotype Description"] = df["descriptions"]
+#df["Phenotype Description (Truncated)"] = df["descriptions"].map(lambda x: truncate_string(x, 800))
 
 
+
+if truncate:
+	df["Phenotype Description"] = df["truncated_descriptions"]
+else:
+	df["Phenotype Description"] = df["descriptions"]
 
 
 
@@ -426,35 +463,33 @@ df["Phenotype Description (Truncated)"] = df["description"].map(lambda x: trunca
 
 
 
+if search_type == "gene" and input_text != "":
 
-
-
-
-# Handle what should happen if a search for a gene name is performed.
-if gene_search_string:
-
+	# Start the results section of the page.
+	st.markdown("## Results")
+	
 	# Do the actual processing of the search against the full dataset here.
+	gene_search_string = input_text
 	gene_matches = gene_name_search(dataset=dataset, gene_name=gene_search_string)
 
 	# Search text was entered and the search was processed but the list of relevant IDs found is empty.
 	if len(gene_matches)==0:
-		st.sidebar.markdown("No genes were found that match '{}'".format(gene_search_string))
+		st.markdown("No genes were found for '{}'.".format(gene_search_string))
 
 	# Search text was entered and the search was processed and atleast one matching ID was found.
 	gene_buttons_dict = {}
 	if len(gene_matches)>0:
-		st.sidebar.markdown("Click on a gene name below to organize the dataset by that gene.")
+		st.markdown("Genes matching '{}' are shown below. Select one to see other genes with similarly described phenotypes.".format(gene_search_string))
 		for species,id_list in gene_matches.items():
-			st.sidebar.markdown("{} matches".format(to_species_display_name[species]))
 			for i in id_list:
-				primary_gene_name = dataset.get_gene_dictionary()[i].primary_name
-				other_names = dataset.get_gene_dictionary()[i].all_names
-				gene_buttons_dict[i] = st.sidebar.button(label=primary_gene_name)
+				primary_gene_name = dataset.get_gene_dictionary()[i].primary_identifier
+				other_names = dataset.get_gene_dictionary()[i].all_identifiers
+				button_label = "{}: {}".format(to_species_display_name[species], primary_gene_name)
+				gene_buttons_dict[i] = st.button(label=button_label)
 				if synonyms:
-					st.sidebar.markdown("({})".format(", ".join(other_names)))
-
-
-
+					synonyms_field_char_limit = 150
+					synonyms_field_str = truncate_string(", ".join(other_names), synonyms_field_char_limit)
+					st.markdown("(Other synonyms include {})".format(synonyms_field_str))
 
 
 
@@ -471,37 +506,33 @@ if gene_search_string:
 		if gene_button:
 			
 			# Get information about which gene from the dataset was selected.
-			selected_gene_primary_name = dataset.get_gene_dictionary()[i].primary_name
-			selected_gene_other_names = dataset.get_gene_dictionary()[i].all_names
+			selected_gene_primary_name = dataset.get_gene_dictionary()[i].primary_identifier
+			selected_gene_other_names = dataset.get_gene_dictionary()[i].all_identifiers
 			selected_gene_phenotype_description = dataset.get_description_dictionary()[i]
 			
 			# Describe what the results of the search are and what they mean in markdown.
-			st.markdown("---")
-			st.markdown("## Search Results (Gene)")
-			st.markdown("**Gene Selected:** {}".format(selected_gene_primary_name))
+			st.markdown("### Gene Information")
+			st.markdown("**Identifier:** {}".format(selected_gene_primary_name))
 			st.markdown("**Possible Synonym(s):** {}".format(", ".join(selected_gene_other_names)))
 			st.markdown("**Phenotype Description(s):** {}".format(selected_gene_phenotype_description))
 			st.markdown("### Genes with Similar Phenotypes")
-			st.markdown("The dataset of plant genes below is now sorted by similarity to **{}**, as determined by the selected phenotype similarity approach in the sidebar.".format(selected_gene_primary_name))
+			#st.markdown("The genes in the dataset below are sorted by similarity to **{}**, as determined by the selected phenotype similarity approach in the sidebar.".format(selected_gene_primary_name))
 
 			
 			# Perform a secondary search using this gene's phenotype description to organize the rest of the data.
-			search_string = dataset.get_description_dictionary()[i]
-			f_tokenizing = approach_names_and_data[approach]["tokenization_function"]
-			f_preprocessing = approach_names_and_data[approach]["preprocessing_fucntion"]
-			gene_id_to_result_string, gene_id_to_min_distance =  description_search(search_string, graph, f_tokenizing, f_preprocessing)
-
-			df["ResultResultResultResultResultResult"] = df["id"].map(gene_id_to_result_string)
-			df["distance"] = df["id"].map(gene_id_to_min_distance)
-			df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
+			with st.spinner("Searching dataset for other genes with similar phenotype descriptions..."):
+				search_string = dataset.get_description_dictionary()[i]
+				f_tokenizing = APPROACH_NAMES_AND_DATA[approach]["tokenization_function"]
+				f_preprocessing = APPROACH_NAMES_AND_DATA[approach]["preprocessing_fucntion"]
+				gene_id_to_result_string, gene_id_to_min_distance =  description_search(search_string, graph, f_tokenizing, f_preprocessing, len(RESULT_COLUMN_STRING), MAX_LINES_IN_RESULT_COLUMN)
+				df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_result_string)
+				df["distance"] = df["id"].map(gene_id_to_min_distance)
+				df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
 
 
 			# Display the sorted and filtered dataset as a table with the relevant columns.
 			df.index = np.arange(1, len(df)+1)
-			if truncate:
-				st.table(data=df[["ResultResultResultResultResultResult", "Species", "Gene or Protein", "Phenotype Description (Truncated)"]])
-			else:
-				st.table(data=df[["ResultResultResultResultResultResult", "Species", "Gene or Protein", "Phenotype Description"]])
+			st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
 
 
 
@@ -509,37 +540,40 @@ if gene_search_string:
 
 
 
-# A search using the keyword or phrase text box.
-if search_kws:
+elif search_type == "keyword" and input_text != "":
+
+	# Start the results section of the page.
+	st.markdown("## Results")
 
 	# Do the processing of the search and add necessary columns to the dataframe.
-	keywords = search_kws.strip().strip(punctuation).split(",")
-	keywords = [kw.strip() for kw in keywords]
-	id_to_found_keywords, id_to_num_found_keywords = keyword_search(dataset.get_description_dictionary(), keywords)
-	df["num_found"] = df["id"].map(id_to_num_found_keywords)
-	df = df[df["num_found"]>0]
-	df["Keywords"] = df["id"].map(lambda x: ", ".join(id_to_found_keywords[x]))
-	df.sort_values(by=["num_found","id"], ascending=[False,True], inplace=True)
+	with st.spinner("Searching dataset for keywords or phrases..."):	
+		search_kws = input_text
+		keywords = search_kws.strip().strip(punctuation).split(",")
+		raw_keywords = [kw.strip() for kw in keywords]
+		modified_keywords = [PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION(kw) for kw in raw_keywords]
+		id_to_found_keywords, id_to_num_found_keywords = keyword_search(id_to_descriptions_for_keyword_matching, raw_keywords, modified_keywords)
+		df["num_found"] = df["id"].map(id_to_num_found_keywords)
+		subset_df = df[df["num_found"]>0]
+		subset_df["Keywords"] = subset_df["id"].map(lambda x: ", ".join(id_to_found_keywords[x]))
+		subset_df.sort_values(by=["num_found","id"], ascending=[False,True], inplace=True)
+		subset_df.index = np.arange(1, len(subset_df)+1)
 
-
-	# Describe what the results of the search are and what they mean in markdown.
-	st.markdown("---")
-	st.markdown("## Search Results (Keyword)")
-	keywords_str = ", ".join([kw for kw in keywords if len(kw.split())==1])
-	phrases_str = ", ".join([kw for kw in keywords if len(kw.split())>1])
-	st.markdown("**Keyword(s)**: {}".format(keywords_str))
-	st.markdown("**Phrase(s)**: {}".format(phrases_str))
-	st.markdown("### Genes with Matching Phenotype Descriptions")
-	st.markdown("The dataset of plant genes below shows only genes with phenotype description that included one or more of the searched keywords or phrases.")
-
-
-
-	# Display the sorted and filtered dataset as a table with the relevant columns.
-	df.index = np.arange(1, len(df)+1)
-	if truncate:
-		st.table(data=df[["Keywords", "Species", "Gene or Protein", "Phenotype Description (Truncated)"]])
+	if subset_df.shape[0] == 0:
+		st.markdown("No genes were found for '{}'. Make sure the keywords and keyphrases in this search are separated by commas.".format(search_kws))
 	else:
-		st.table(data=df[["Keywords", "Species", "Gene or Protein", "Phenotype Description"]])
+		# Describe what the results of the search are and what they mean in markdown.
+		keywords_str = ", ".join([kw for kw in keywords if len(kw.split())==1])
+		phrases_str = ", ".join([kw for kw in keywords if len(kw.split())>1])
+		st.markdown("**Keyword(s)**: {}".format(keywords_str))
+		st.markdown("**Phrase(s)**: {}".format(phrases_str))
+		st.markdown("### Genes with Matching Phenotype Descriptions")
+		st.markdown("The dataset of plant genes below shows only genes with phenotype description that included one or more of the searched keywords or phrases.")
+
+		# Display the sorted and filtered dataset as a table with the relevant columns.
+		st.table(data=subset_df[["Keywords", "Species", "Gene", "Gene Model", "Phenotype Description"]])
+
+	# No need to keep this subset of the dataframe in memory if another search is performed.
+	subset_df = None
 
 
 
@@ -547,54 +581,38 @@ if search_kws:
 
 
 
-# A search using the phenotype description text box.
-elif search_string:
+
+
+elif search_type == "phenotype" and input_text != "":
+
+	# Start the results section of the page.
+	st.markdown("## Results")
 
 	# Do the processing of the search and add necessary columns to the dataframe to be shown.
-	f_tokenizing = approach_names_and_data[approach]["tokenization_function"]
-	f_preprocessing = approach_names_and_data[approach]["preprocessing_fucntion"]
-	gene_id_to_result_string, gene_id_to_min_distance =  description_search(search_string, graph, f_tokenizing, f_preprocessing)
-	df["ResultResultResultResultResultResult"] = df["id"].map(gene_id_to_result_string)
-	df["distance"] = df["id"].map(gene_id_to_min_distance)
-	df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
-
+	with st.spinner("Searching dataset for similar phenotype descriptions..."):
+		search_string = input_text
+		f_tokenizing = APPROACH_NAMES_AND_DATA[approach]["tokenization_function"]
+		f_preprocessing = APPROACH_NAMES_AND_DATA[approach]["preprocessing_fucntion"]
+		gene_id_to_result_string, gene_id_to_min_distance =  description_search(search_string, graph, f_tokenizing, f_preprocessing, len(RESULT_COLUMN_STRING), MAX_LINES_IN_RESULT_COLUMN)
+		df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_result_string)
+		df["distance"] = df["id"].map(gene_id_to_min_distance)
+		df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
+		df.index = np.arange(1, len(df)+1)
 
 
 	# Describe what the results of the search are and what they mean in markdown.
-	st.markdown("---")
-	st.markdown("## Search Results (NLP)")
 	st.markdown("### Genes with Matching Phenotype Descriptions")
 	st.markdown("Genes with phenotypes that described most similarity to '{}'".format(search_string))
 
-
-
 	# Display the sorted and filtered dataset as a table with the relevant columns.
-	df.index = np.arange(1, len(df)+1)
-	if truncate:
-		st.table(data=df[["ResultResultResultResultResultResult", "Species", "Gene or Protein", "Phenotype Description (Truncated)"]])
-	else:
-		st.table(data=df[["ResultResultResultResultResultResult", "Species", "Gene or Protein", "Phenotype Description"]])
+	st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
 
 
 
-
-# Nothing was selected, default to just showing the whole dataset.
+# Nothing was searched. Default to now showing anything and waiting for a widget value to change.
 else:
+	pass
 
-
-	# Describe what is being shown.
-	st.markdown("---")
-	st.markdown("## Viewing the Entire Dataset")
-	st.markdown("Search for a gene, keyword, phrase, or phenotype within this dataset.".format(search_string))
-
-
-	# Display the full dataframe before any search is performed.
-	df.sort_values(by="id", inplace=True)
-	df.index = np.arange(1, len(df)+1)
-	if truncate:
-		st.table(data=df[["Species", "Gene or Protein", "Phenotype Description (Truncated)"]])
-	else:
-		st.table(data=df[["Species", "Gene or Protein", "Phenotype Description"]])
 
 
 
