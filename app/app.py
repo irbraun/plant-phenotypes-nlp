@@ -45,6 +45,7 @@ from oats.nlp.preprocess import concatenate_with_bar_delim
 
 
 
+
 # Markdown for introducing the app and linking to other relevant resources like the project Github page.
 
 '''
@@ -132,6 +133,13 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	return(dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching)
 
 
+@st.cache(allow_output_mutation=True, suppress_st_warning=True)
+def read_in_ontologies(names, paths):
+	ontologies = {}
+	for name,path, in zip(names,paths):
+		ontologies[name]=Ontology(path)
+	return(ontologies)
+
 
 
 
@@ -175,6 +183,51 @@ def keyword_search(id_to_text, raw_keywords, modified_keywords):
 	id_to_found_keywords = {i:[r_kw for r_kw,m_kw in zip(raw_keywords,modified_keywords) if m_kw in text] for i,text in id_to_text.items()}
 	id_to_num_found_keywords = {i:len(kw_list) for i,kw_list in id_to_found_keywords.items()}
 	return(id_to_found_keywords, id_to_num_found_keywords)
+
+
+
+
+def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, term_ids, result_column_width):
+
+	assert len(id_to_direct_annotations) == len(id_to_indirect_annotations)
+	gene_id_to_direct_match = {i:[(term_id in direct_annotations) for term_id in term_ids] for i,direct_annotations in id_to_direct_annotations.items()}
+	gene_id_to_indirect_match = {i:[(term_id in indirect_annotations) for term_id in term_ids] for i,indirect_annotations in id_to_indirect_annotations.items()}
+	
+	# Map each gene ID to a result string that says which terms matched and how.
+	gene_id_to_result_string = {}
+	gene_id_to_num_direct_matches = {}
+	gene_id_to_num_indirect_matches = {}
+	for gene_id in gene_id_to_direct_match.keys():		
+		gene_id_to_num_direct_matches[gene_id] = sum(gene_id_to_direct_match[gene_id])
+		gene_id_to_num_indirect_matches[gene_id] =  any(gene_id_to_indirect_match[gene_id])
+		lines = []
+		for idx,term_id in enumerate(term_ids):
+			if gene_id_to_direct_match[gene_id][idx]:
+				match_type = "Direct Annotation"
+			elif gene_id_to_indirect_match[gene_id][idx]:
+				match_type = "Inherited Annotation"
+			else:
+				continue
+			# If there was a valid match found, create this formatted string.
+			match_str = "({})".format(match_type)
+			term_id_str = term_id
+			num_chars_left_to_fill = result_column_width-len(term_id_str)-len(match_str)
+			filler_str = "."*num_chars_left_to_fill
+			line = "{}{}{}\n\n".format(term_id_str, filler_str, match_str)
+			lines.append(line)
+		result_str = "".join(lines)
+		gene_id_to_result_string[gene_id] = result_str
+
+	return(gene_id_to_num_direct_matches, gene_id_to_num_indirect_matches, gene_id_to_result_string)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -321,8 +374,20 @@ PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DE
 
 
 
-RESULT_COLUMN_STRING = "ClosestMatchingSearchedPhenes......."
+RESULT_COLUMN_STRING = "Matches..................................."
+
+
+
+# Should these options be shown or not? Useful to show when testing. If they're hidden, the defaults here will be used.
+SHOW_ADVANCED_OPTIONS = True
 MAX_LINES_IN_RESULT_COLUMN = 6
+
+
+
+ONTOLOGY_NAMES = ["PATO","PO"]
+ONTOLOGY_OBO_PATHS = ["../ontologies/pato.obo","../ontologies/po.obo"]
+ontologies = read_in_ontologies(ONTOLOGY_NAMES, ONTOLOGY_OBO_PATHS)
+
 
 
 
@@ -360,8 +425,8 @@ to_species_display_name = {i:d for i,d in zip(internal_species_strings,display_s
 # Display the search section of the main page.
 st.markdown("## Search")
 input_text = st.text_input(label="Enter text here")
-search_types = ["gene", "keyword", "phenotype"]
-search_types_labels = ["Gene Identifiers", "Keywords & Keyphrases", "Free Text"]
+search_types = ["gene", "ontology", "keyword", "phenotype"]
+search_types_labels = ["Gene Identifiers", "Ontology Terms", "Keywords & Keyphrases", "Free Text"]
 search_types_format_func = lambda x: {t:l for t,l in zip(search_types,search_types_labels)}[x]
 search_type = st.radio(label="Select a type of search", options=search_types, index=0, format_func=search_types_format_func)
 
@@ -373,12 +438,6 @@ search_type = st.radio(label="Select a type of search", options=search_types, in
 
 
 ############# The Sidebar ###############
-
-
-# Presenting the general options for how the data is displayed.
-st.sidebar.markdown("### General Options")
-truncate = st.sidebar.checkbox(label="Truncate long phenotypes", value=True)
-synonyms = st.sidebar.checkbox(label="Show possible gene synonyms", value=False)
 
 
 # Presenting the options for filtering by species.
@@ -395,6 +454,17 @@ approach = st.sidebar.selectbox(label="Pick one", options=list(approach_to_objec
 # Variables that get set according to which approach was selected.
 graph = approach_to_object[approach]
 gene_id_to_graph_ids = approach_to_mapping[approach]
+
+
+
+
+# Presenting the general options for how the data is displayed.
+st.sidebar.markdown("### General Options")
+truncate = st.sidebar.checkbox(label="Truncate long phenotypes", value=True)
+synonyms = st.sidebar.checkbox(label="Show possible gene synonyms", value=False)
+
+
+
 
 # Presenting some more advanced options that shouldn't normally need to be changed.
 st.sidebar.markdown("### Advanced Options")
@@ -533,6 +603,72 @@ if search_type == "gene" and input_text != "":
 			# Display the sorted and filtered dataset as a table with the relevant columns.
 			df.index = np.arange(1, len(df)+1)
 			st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+
+
+
+
+
+
+elif search_type == "ontology" and input_text != "":
+
+	st.markdown("## Results")
+
+
+	term_ids = input_text.replace(","," ").split()
+
+
+	# Building the annotations dictionary. This should actually be done outside the search sections.
+	direct_annotations = defaultdict(list)
+	inherited_annotations = defaultdict(list)
+	for ontology_name,ontology_obj in ontologies.items():
+		annotations_with_this_ontology = dataset.get_annotations_dictionary(ontology_name)
+		for i in dataset.get_ids():
+			direct_annotations[i].extend(annotations_with_this_ontology[i])
+			inherited_annotations[i].extend(ontology_obj.inherited(annotations_with_this_ontology[i]))
+
+
+
+	# Linking out to other resources like Ontobee and Planteome.
+	# TODO Verify that the links lead somewhere valid before displaying them in the application.
+	ontobee_url_template = "http://www.ontobee.org/ontology/{}?iri=http://purl.obolibrary.org/obo/{}_{}"
+	planteome_url_template = "http://browser.planteome.org/amigo/term/{}:{}"
+	lines_with_terms_and_links = []
+	for term_id in term_ids:
+		term_id_str = term_id.replace(":","_")
+		ontology_name, term_number = tuple(term_id_str.split("_"))
+		term_label = ontologies[ontology_name.upper()][term_id].name
+
+		ontobee_url = ontobee_url_template.format(ontology_name, ontology_name, term_number)
+		planteome_url = planteome_url_template.format(ontology_name, term_number)
+		line = "{} ({}, [Ontobee]({}), [Planteome]({}))".format(term_id, term_label, ontobee_url, planteome_url)
+		lines_with_terms_and_links.append(line)
+	lines_with_terms_and_links_str = "\n\n".join(lines_with_terms_and_links)
+
+	st.markdown("### Ontology Term Information")
+	st.markdown(lines_with_terms_and_links_str)
+
+
+	gene_id_to_num_direct_matches, gene_id_to_num_indirect_matches, gene_id_to_result_string = ontology_term_search(direct_annotations, inherited_annotations, term_ids, len(RESULT_COLUMN_STRING))
+	df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_result_string)
+	df["num_direct"] = df["id"].map(gene_id_to_num_direct_matches)
+	df["num_indirect"] = df["id"].map(gene_id_to_num_indirect_matches)
+	subset_df = df[(df["num_direct"]>0) | (df["num_indirect"]>0)]
+	subset_df.sort_values(by=["num_direct","num_indirect","id"], ascending=[False,False,True], inplace=True)
+
+
+	subset_df.index = np.arange(1, len(subset_df)+1)
+
+	if subset_df.shape[0] == 0:
+		st.markdown("No genes were found for '{}'. Make sure the keywords and keyphrases in this search are separated by commas.".format(term_id))
+	else:
+		# Describe what the results of the search are and what they mean in markdown.
+		st.markdown("### Genes with Matching Annotations")
+		st.markdown("The dataset of plant genes below shows only genes with annotations that included one or more of the searched ontology terms.")
+
+		# Display the sorted and filtered dataset as a table with the relevant columns.
+		st.table(data=subset_df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+
+
 
 
 
