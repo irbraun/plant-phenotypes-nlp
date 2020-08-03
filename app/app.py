@@ -8,7 +8,7 @@ from collections import defaultdict
 from string import punctuation
 from gensim.utils import simple_preprocess
 from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string, strip_tags, strip_punctuation
-
+from streamlit.ScriptRunner import StopException, RerunException
 
 sys.path.append("../../oats")
 from oats.utils.utils import save_to_pickle, load_from_pickle, merge_list_dicts, flatten, to_hms
@@ -23,6 +23,8 @@ from oats.distances.edgelists import merge_edgelists, make_undirected, remove_se
 from oats.nlp.vocabulary import get_overrepresented_tokens, get_vocab_from_tokens
 from oats.nlp.vocabulary import reduce_vocab_connected_components, reduce_vocab_linares_pontes
 from oats.nlp.preprocess import concatenate_with_bar_delim
+
+
 
 
 
@@ -87,6 +89,16 @@ algorithm selected no the left will find genes with phenotype descriptions that 
 
 
 
+
+
+
+
+
+# def workaround(label, current_value):
+# 	# This is awful, input_field is a streamlit object defined outside of this function.
+# 	# The reason this is necessary is because we're using two different tetx 
+# 	input_text = input_field.text_input(label=label, value=current_value)
+# 	return(input_text)
 
 
 
@@ -230,9 +242,6 @@ def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, t
 
 
 
-
-
-
 def description_search(text, graph, tokenization_function, preprocessing_function, result_column_width, result_column_max_lines):
 
 	# Do tokenization and preprocessing on the searched text to yield a list of strings.
@@ -284,11 +293,6 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 		gene_id_to_min_distance[gene_id] = min(distances)
 
 	return(gene_id_to_result_string, gene_id_to_min_distance)
-
-
-
-
-
 
 
 
@@ -419,18 +423,6 @@ to_species_display_name = {i:d for i,d in zip(internal_species_strings,display_s
 
 
 
-############# Search Section ###############
-
-
-# Display the search section of the main page.
-st.markdown("## Search")
-input_text = st.text_input(label="Enter text here")
-search_types = ["gene", "ontology", "keyword", "phenotype"]
-search_types_labels = ["Gene Identifiers", "Ontology Terms", "Keywords & Keyphrases", "Free Text"]
-search_types_format_func = lambda x: {t:l for t,l in zip(search_types,search_types_labels)}[x]
-search_type = st.radio(label="Select a type of search", options=search_types, index=0, format_func=search_types_format_func)
-
-
 
 
 
@@ -459,15 +451,49 @@ gene_id_to_graph_ids = approach_to_mapping[approach]
 
 
 # Presenting the general options for how the data is displayed.
-st.sidebar.markdown("### General Options")
+st.sidebar.markdown("### General Page Options")
 truncate = st.sidebar.checkbox(label="Truncate long phenotypes", value=True)
 synonyms = st.sidebar.checkbox(label="Show possible gene synonyms", value=False)
-
-
-
+include_examples = st.sidebar.checkbox(label="Include Examples", value=False)
 
 # Presenting some more advanced options that shouldn't normally need to be changed.
-st.sidebar.markdown("### Advanced Options")
+#st.sidebar.markdown("### Advanced Options")
+
+
+
+
+
+
+############# Search Section ###############
+
+
+
+
+
+
+
+
+# Display the search section of the main page.
+st.markdown("## Search")
+
+search_types = ["gene", "ontology", "keyword", "phenotype"]
+search_types_labels = ["Gene Identifiers", "Ontology Terms", "Keywords & Keyphrases", "Free Text"]
+search_type_examples = ["pro", "PATO:0000587, PATO:0000069", "dwarfism, root system, leaves", "Plants are reduced in height. Plants have wide leaves. Smaller than normal. Something else too."]
+
+if include_examples:
+	search_type_label_map = {t:"{} (e.g. '{}')".format(l,e) for t,l,e in zip(search_types, search_types_labels, search_type_examples)}
+else:
+	search_type_label_map = {t:l for t,l in zip(search_types,search_types_labels)}
+
+
+search_types_format_func = lambda x: search_type_label_map[x]
+search_type = st.radio(label="Select a type of search", options=search_types, index=0, format_func=search_types_format_func)
+input_text = st.text_input(label="Enter text here")
+
+
+
+
+
 
 
 
@@ -562,14 +588,6 @@ if search_type == "gene" and input_text != "":
 					st.markdown("(Other synonyms include {})".format(synonyms_field_str))
 
 
-
-
-
-
-
-
-
-
 	# Handle what should happen if any of the previously presented gene buttons was clicked.
 	# Has to be a loop because we need to check all the presented buttons, might be more than one.
 	for i,gene_button in gene_buttons_dict.items():
@@ -603,7 +621,6 @@ if search_type == "gene" and input_text != "":
 			# Display the sorted and filtered dataset as a table with the relevant columns.
 			df.index = np.arange(1, len(df)+1)
 			st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
-
 
 
 
@@ -667,6 +684,7 @@ elif search_type == "ontology" and input_text != "":
 
 		# Display the sorted and filtered dataset as a table with the relevant columns.
 		st.table(data=subset_df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+
 
 
 
@@ -742,13 +760,14 @@ elif search_type == "phenotype" and input_text != "":
 
 	# Display the sorted and filtered dataset as a table with the relevant columns.
 	st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+	
+
 
 
 
 # Nothing was searched. Default to now showing anything and waiting for a widget value to change.
 else:
 	pass
-
 
 
 
