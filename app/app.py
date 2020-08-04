@@ -2,13 +2,14 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import sys
+import re
 import itertools
 from nltk.tokenize import word_tokenize, sent_tokenize
 from collections import defaultdict
 from string import punctuation
 from gensim.utils import simple_preprocess
 from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string, strip_tags, strip_punctuation
-from streamlit.ScriptRunner import StopException, RerunException
+
 
 sys.path.append("../../oats")
 from oats.utils.utils import save_to_pickle, load_from_pickle, merge_list_dicts, flatten, to_hms
@@ -45,6 +46,17 @@ from oats.nlp.preprocess import concatenate_with_bar_delim
 # displaying columns that have a lot of text in them when you don't to remove any of the text.
 
 
+# TODO 
+# Get running with other pickles including computational annotations and BERT.
+# Make sure the application can be loaded with any other set of files and still works with these pickles.
+# Make a separate notebook that just creates the pickles needed to build the application?
+# Load this with the SNPedia dataset and see what happens.
+
+
+
+
+
+
 
 
 
@@ -56,29 +68,16 @@ A tool for querying datasets of genes, phenotype descriptions, and ontology term
 
 
 ## Instructions
-Type a query into the searchbar and press enter. Use the radio buttons below the search bar to indicate whether the query is
-for a particular gene, or keywords or phrases describing a phenotype, or a free-text entry describing a phenotype. If the 
-gene option is selected, the results will be for genes that match the searched text in terms of gene names, models, proteins,
-or some other identifier that is present in the dataset. If the keyword option is selected, the results will be for gene that
-have phenotype descriptions that contain the searched keywords and phrases. If the free-text option is selected, the similarity
-algorithm selected no the left will find genes with phenotype descriptions that most closely resemble the searched text.
+Use the searchbar below to enter a query. Select whether the query refers to a gene identifier, ontology terms, keywords and 
+keyphrases, or free text. Examples of possible queries for each of these options are given. Gene identifiers can be gene names, 
+gene models, protein names, or any other alias or synonym present in the dataset. Ontology terms should be separated by spaces 
+or commas. Keywords and keyphrases should be separated by commas. There are no length or formatting restrictions for a free text 
+query. If a free text query is performed, the selected similarity algorithm is used to quantify similarity to the
+phenotype descriptions of all genes in the dataset.
 '''
 
 
 
-# TODO 
-
-# fix the instructions.
-# convert distance values to intuitive similarities (1 to 100?)
-# adding ordering keywords by importance to advanced options.
-# show ontology terms.
-# try to get noble coder running and doing similarity that way.
-# Fix column names.
-
-
-
-# Make the application able to be populated with any text file that is in the right shape and has the right columns.
-# Load it up with the human snpedia dataset and see what happens.
 
 
 
@@ -87,26 +86,7 @@ algorithm selected no the left will find genes with phenotype descriptions that 
 
 
 
-
-
-
-
-
-
-
-# def workaround(label, current_value):
-# 	# This is awful, input_field is a streamlit object defined outside of this function.
-# 	# The reason this is necessary is because we're using two different tetx 
-# 	input_text = input_field.text_input(label=label, value=current_value)
-# 	return(input_text)
-
-
-
-
-
-
-
-# Note that the output object(s) and dictionaries shouldn't actually be modified in this script.
+# Note that the output object(s) and dictionaries should not actually be modified in this script.
 # But streamlit was detecting a change in the outputs of this function? So the allow output mutation
 # decorator is necessary in order for this cached function to not be run again on refresh.
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
@@ -115,9 +95,7 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	
 	Args:
 	    dataset_path (TYPE): Description
-	
 	    approach_names_and_data (TYPE): Description
-	
 	    approach_mapping_files (TYPE): Description
 	
 	Returns:
@@ -133,7 +111,6 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	mapping_key_to_mapping_dict = {k:load_from_pickle(v) for k,v in approach_mapping_files.items()}
 	approach_to_mapping = {k:mapping_key_to_mapping_dict[v["mapping"]] for k,v in approach_names_and_data.items()}
 
-
 	# Other expensive computation here so that it's done inside the cached function.
 	# Get the dataframe for this dataset and add some additional columns that will be useful for displaying information.
 	# Slow additions to the dataframe should go here. Very fast ones can go in the main non-cached part of the script.
@@ -145,8 +122,18 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	return(dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching)
 
 
+
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def read_in_ontologies(names, paths):
+	"""Read in ontology objects from .obo files and return them, can take a long time.
+	
+	Args:
+	    names (TYPE): Description
+	    paths (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
 	ontologies = {}
 	for name,path, in zip(names,paths):
 		ontologies[name]=Ontology(path)
@@ -156,17 +143,47 @@ def read_in_ontologies(names, paths):
 
 
 
+
+
+
+
+
+
+
+
+
+
 def truncate_string(text, char_limit):
+	"""Helpful formatting function for truncating strings to a certain maximum length.
+	
+	Args:
+	    text (TYPE): Description
+	    char_limit (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
 	truncated_text = text[:char_limit]
 	if len(text)>char_limit:
-		# Make extra room for the ... and then add it.
+		# Make extra room for the "..." string and then add it.
 		truncated_text = text[:char_limit-3]
 		truncated_text = "{}...".format(truncated_text)
 	return(truncated_text)
 
 
+
+
+
+
 def distance_float_to_similarity_int(distance):
-	# Generate a friendlier value for displaying in search results.
+	"""Generates a friendlier (0 to 100) similarity value for displaying in search results.
+	
+	Args:
+	    distance (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
 	similarity_float = 1-distance
 	similarity_int = int(similarity_float*100)
 	return(similarity_int)
@@ -175,7 +192,32 @@ def distance_float_to_similarity_int(distance):
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def gene_name_search(dataset, gene_name):
+	"""Helper function for searching the dataset for a gene identifier.
+	
+	Args:
+	    dataset (TYPE): Description
+	    gene_name (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
 	gene_name = gene_name.lower().strip()
 	species_to_gene_id_list = defaultdict(list)
 	for species in dataset.get_species():
@@ -189,6 +231,16 @@ def gene_name_search(dataset, gene_name):
 	
 
 def keyword_search(id_to_text, raw_keywords, modified_keywords):
+	"""Helper function for searching the dataset for keywords and keyphrases.
+	
+	Args:
+	    id_to_text (TYPE): Description
+	    raw_keywords (TYPE): Description
+	    modified_keywords (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
 	# The raw keywords and modified keywords should be two paired lists where the elements correspond to one another.
 	# The modifications done to the keywords should already match the modifications done to the texts in the input dictionary so they can be directly compared.
 	assert len(raw_keywords) == len(modified_keywords)
@@ -199,8 +251,23 @@ def keyword_search(id_to_text, raw_keywords, modified_keywords):
 
 
 
-def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, term_ids, result_column_width):
 
+
+
+
+
+def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, term_ids, result_column_width):
+	"""Helper function for searching the dataset for ontology term annotations.
+	
+	Args:
+	    id_to_direct_annotations (TYPE): Description
+	    id_to_indirect_annotations (TYPE): Description
+	    term_ids (TYPE): Description
+	    result_column_width (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
 	assert len(id_to_direct_annotations) == len(id_to_indirect_annotations)
 	gene_id_to_direct_match = {i:[(term_id in direct_annotations) for term_id in term_ids] for i,direct_annotations in id_to_direct_annotations.items()}
 	gene_id_to_indirect_match = {i:[(term_id in indirect_annotations) for term_id in term_ids] for i,indirect_annotations in id_to_indirect_annotations.items()}
@@ -243,7 +310,19 @@ def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, t
 
 
 def description_search(text, graph, tokenization_function, preprocessing_function, result_column_width, result_column_max_lines):
-
+	"""Helper function for searching the dataset for similar phenotype descriptions.
+	
+	Args:
+	    text (TYPE): Description
+	    graph (TYPE): Description
+	    tokenization_function (TYPE): Description
+	    preprocessing_function (TYPE): Description
+	    result_column_width (TYPE): Description
+	    result_column_max_lines (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
 	# Do tokenization and preprocessing on the searched text to yield a list of strings.
 	# The tokenization and preprocessing have to match the object that will be used, and this decision is informed by
 	# some mapping that is already done, and the choices are passed in to this function.
@@ -301,6 +380,23 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Dangerous part. These have to exactly match how the text is treated within the notebook that generates the pairwise distances.
 # There's no explicit check in the code that makes sure the processing is identical between those two locations.
 # In the future this should probably be changed so both sets of code are calling a resources that knows how to do these things.
@@ -314,9 +410,10 @@ full_preprocessing = lambda text: " ".join(preprocess_string(text))
 
 
 
-# Where is the dataset file that should be loaded for this application?
+# Where are the dataset and ontology files that should be loaded for this application?
 DATASET_PATH = "/Users/irbraun/Desktop/test.csv"
-
+ONTOLOGY_NAMES = ["PATO","PO"]
+ONTOLOGY_OBO_PATHS = ["../ontologies/pato.obo","../ontologies/po.obo"]
 
 
 
@@ -363,10 +460,14 @@ APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k i
 
 
 # Mappings between key strings and the files that should be used to load dictionaries for converting between IDs.
+# The keys for this dictionary should map the items from the nested dictionay above, so that these mappings from 
+# these dictinoary files can then be associated with each of the approaches from the nested dictionary.
 APPROACH_MAPPING_FILES = {
 	"whole_texts":"/Users/irbraun/Desktop/testp/gene_id_to_unique_ids_whole_texts.pickle",
 	"sent_tokens":"/Users/irbraun/Desktop/testp/gene_id_to_unique_ids_sent_tokens.pickle",
 	}
+
+
 
 
 
@@ -377,20 +478,13 @@ PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DE
 
 
 
-
+# Some options for how aspects of the tables that are presented after each search look.
 RESULT_COLUMN_STRING = "Matches..................................."
+MAX_LINES_IN_RESULT_COLUMN = 10
 
 
 
-# Should these options be shown or not? Useful to show when testing. If they're hidden, the defaults here will be used.
-SHOW_ADVANCED_OPTIONS = True
-MAX_LINES_IN_RESULT_COLUMN = 6
 
-
-
-ONTOLOGY_NAMES = ["PATO","PO"]
-ONTOLOGY_OBO_PATHS = ["../ontologies/pato.obo","../ontologies/po.obo"]
-ontologies = read_in_ontologies(ONTOLOGY_NAMES, ONTOLOGY_OBO_PATHS)
 
 
 
@@ -411,6 +505,7 @@ ontologies = read_in_ontologies(ONTOLOGY_NAMES, ONTOLOGY_OBO_PATHS)
 # refer to more than one text instance in the actual dataset that is seen here.
 with st.spinner("Reading very large files, this might take a few minutes."):
 	dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching= read_in_files(DATASET_PATH, APPROACH_NAMES_AND_DATA, APPROACH_MAPPING_FILES)
+	ontologies = read_in_ontologies(ONTOLOGY_NAMES, ONTOLOGY_OBO_PATHS)
 
 
 
@@ -576,12 +671,14 @@ if search_type == "gene" and input_text != "":
 	gene_buttons_dict = {}
 	if len(gene_matches)>0:
 		st.markdown("Genes matching '{}' are shown below. Select one to see other genes with similarly described phenotypes.".format(gene_search_string))
+		unique_button_key = 0
 		for species,id_list in gene_matches.items():
 			for i in id_list:
 				primary_gene_name = dataset.get_gene_dictionary()[i].primary_identifier
 				other_names = dataset.get_gene_dictionary()[i].all_identifiers
 				button_label = "{}: {}".format(to_species_display_name[species], primary_gene_name)
-				gene_buttons_dict[i] = st.button(label=button_label)
+				gene_buttons_dict[i] = st.button(label=button_label, key=unique_button_key)
+				unique_button_key = unique_button_key+1
 				if synonyms:
 					synonyms_field_char_limit = 150
 					synonyms_field_str = truncate_string(", ".join(other_names), synonyms_field_char_limit)
@@ -633,57 +730,64 @@ elif search_type == "ontology" and input_text != "":
 
 	term_ids = input_text.replace(","," ").split()
 
+	
 
-	# Building the annotations dictionary. This should actually be done outside the search sections.
-	direct_annotations = defaultdict(list)
-	inherited_annotations = defaultdict(list)
-	for ontology_name,ontology_obj in ontologies.items():
-		annotations_with_this_ontology = dataset.get_annotations_dictionary(ontology_name)
-		for i in dataset.get_ids():
-			direct_annotations[i].extend(annotations_with_this_ontology[i])
-			inherited_annotations[i].extend(ontology_obj.inherited(annotations_with_this_ontology[i]))
-
-
-
-	# Linking out to other resources like Ontobee and Planteome.
-	# TODO Verify that the links lead somewhere valid before displaying them in the application.
-	ontobee_url_template = "http://www.ontobee.org/ontology/{}?iri=http://purl.obolibrary.org/obo/{}_{}"
-	planteome_url_template = "http://browser.planteome.org/amigo/term/{}:{}"
-	lines_with_terms_and_links = []
-	for term_id in term_ids:
-		term_id_str = term_id.replace(":","_")
-		ontology_name, term_number = tuple(term_id_str.split("_"))
-		term_label = ontologies[ontology_name.upper()][term_id].name
-
-		ontobee_url = ontobee_url_template.format(ontology_name, ontology_name, term_number)
-		planteome_url = planteome_url_template.format(ontology_name, term_number)
-		line = "{} ({}, [Ontobee]({}), [Planteome]({}))".format(term_id, term_label, ontobee_url, planteome_url)
-		lines_with_terms_and_links.append(line)
-	lines_with_terms_and_links_str = "\n\n".join(lines_with_terms_and_links)
-
-	st.markdown("### Ontology Term Information")
-	st.markdown(lines_with_terms_and_links_str)
-
-
-	gene_id_to_num_direct_matches, gene_id_to_num_indirect_matches, gene_id_to_result_string = ontology_term_search(direct_annotations, inherited_annotations, term_ids, len(RESULT_COLUMN_STRING))
-	df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_result_string)
-	df["num_direct"] = df["id"].map(gene_id_to_num_direct_matches)
-	df["num_indirect"] = df["id"].map(gene_id_to_num_indirect_matches)
-	subset_df = df[(df["num_direct"]>0) | (df["num_indirect"]>0)]
-	subset_df.sort_values(by=["num_direct","num_indirect","id"], ascending=[False,False,True], inplace=True)
-
-
-	subset_df.index = np.arange(1, len(subset_df)+1)
-
-	if subset_df.shape[0] == 0:
-		st.markdown("No genes were found for '{}'. Make sure the keywords and keyphrases in this search are separated by commas.".format(term_id))
+	pattern = re.compile("[A-Z]{2,}[:_][0-9]{7}$")
+	term_ids_are_valid = [bool(pattern.match(term_id)) for term_id in term_ids]
+	if False in term_ids_are_valid:
+		st.markdown("Invalid ontology term identifiers.")
+		
 	else:
-		# Describe what the results of the search are and what they mean in markdown.
-		st.markdown("### Genes with Matching Annotations")
-		st.markdown("The dataset of plant genes below shows only genes with annotations that included one or more of the searched ontology terms.")
+		# Building the annotations dictionary. This should actually be done outside the search sections.
+		direct_annotations = defaultdict(list)
+		inherited_annotations = defaultdict(list)
+		for ontology_name,ontology_obj in ontologies.items():
+			annotations_with_this_ontology = dataset.get_annotations_dictionary(ontology_name)
+			for i in dataset.get_ids():
+				direct_annotations[i].extend(annotations_with_this_ontology[i])
+				inherited_annotations[i].extend(ontology_obj.inherited(annotations_with_this_ontology[i]))
 
-		# Display the sorted and filtered dataset as a table with the relevant columns.
-		st.table(data=subset_df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+
+
+		# Linking out to other resources like Ontobee and Planteome.
+		# TODO Verify that the links lead somewhere valid before displaying them in the application.
+		ontobee_url_template = "http://www.ontobee.org/ontology/{}?iri=http://purl.obolibrary.org/obo/{}_{}"
+		planteome_url_template = "http://browser.planteome.org/amigo/term/{}:{}"
+		lines_with_terms_and_links = []
+		for term_id in term_ids:
+			term_id_str = term_id.replace(":","_")
+			ontology_name, term_number = tuple(term_id_str.split("_"))
+			term_label = ontologies[ontology_name.upper()][term_id].name
+
+			ontobee_url = ontobee_url_template.format(ontology_name, ontology_name, term_number)
+			planteome_url = planteome_url_template.format(ontology_name, term_number)
+			line = "{} ({}, [Ontobee]({}), [Planteome]({}))".format(term_id, term_label, ontobee_url, planteome_url)
+			lines_with_terms_and_links.append(line)
+		lines_with_terms_and_links_str = "\n\n".join(lines_with_terms_and_links)
+
+		st.markdown("### Ontology Term Information")
+		st.markdown(lines_with_terms_and_links_str)
+
+
+		gene_id_to_num_direct_matches, gene_id_to_num_indirect_matches, gene_id_to_result_string = ontology_term_search(direct_annotations, inherited_annotations, term_ids, len(RESULT_COLUMN_STRING))
+		df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_result_string)
+		df["num_direct"] = df["id"].map(gene_id_to_num_direct_matches)
+		df["num_indirect"] = df["id"].map(gene_id_to_num_indirect_matches)
+		subset_df = df[(df["num_direct"]>0) | (df["num_indirect"]>0)]
+		subset_df.sort_values(by=["num_direct","num_indirect","id"], ascending=[False,False,True], inplace=True)
+
+
+		subset_df.index = np.arange(1, len(subset_df)+1)
+
+		if subset_df.shape[0] == 0:
+			st.markdown("No genes were found for '{}'. Make sure the keywords and keyphrases in this search are separated by commas.".format(term_id))
+		else:
+			# Describe what the results of the search are and what they mean in markdown.
+			st.markdown("### Genes with Matching Annotations")
+			st.markdown("The dataset of plant genes below shows only genes with annotations that included one or more of the searched ontology terms.")
+
+			# Display the sorted and filtered dataset as a table with the relevant columns.
+			st.table(data=subset_df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
 
 
 
@@ -756,11 +860,10 @@ elif search_type == "phenotype" and input_text != "":
 
 	# Describe what the results of the search are and what they mean in markdown.
 	st.markdown("### Genes with Matching Phenotype Descriptions")
-	st.markdown("Genes with phenotypes that described most similarity to '{}'".format(search_string))
+	st.markdown("Genes with phenotypes that are described most similarity to '{}'".format(search_string))
 
 	# Display the sorted and filtered dataset as a table with the relevant columns.
 	st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
-	
 
 
 
