@@ -4,6 +4,8 @@ import numpy as np
 import sys
 import re
 import itertools
+import nltk
+from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from collections import defaultdict
 from string import punctuation
@@ -11,7 +13,8 @@ from gensim.utils import simple_preprocess
 from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string, strip_tags, strip_punctuation
 
 
-sys.path.append("../../oats")
+#sys.path.append("../../oats")
+import oats
 from oats.utils.utils import save_to_pickle, load_from_pickle, merge_list_dicts, flatten, to_hms
 from oats.utils.utils import function_wrapper_with_duration, remove_duplicates_retain_order
 from oats.biology.dataset import Dataset
@@ -20,10 +23,14 @@ from oats.biology.relationships import ProteinInteractions, AnyInteractions
 from oats.annotation.ontology import Ontology
 from oats.annotation.annotation import annotate_using_noble_coder
 from oats.distances import pairwise as pw
-from oats.distances.edgelists import merge_edgelists, make_undirected, remove_self_loops, subset_with_ids
-from oats.nlp.vocabulary import get_overrepresented_tokens, get_vocab_from_tokens
-from oats.nlp.vocabulary import reduce_vocab_connected_components, reduce_vocab_linares_pontes
 from oats.nlp.preprocess import concatenate_with_bar_delim
+
+
+
+nltk.download('stopwords', quiet=True)
+nltk.download('wordnet', quiet=True)
+nltk.download('punkt', quiet=True)
+nltk.download('averaged_perceptron_tagger', quiet=True)
 
 
 
@@ -411,9 +418,9 @@ full_preprocessing = lambda text: " ".join(preprocess_string(text))
 
 
 # Where are the dataset and ontology files that should be loaded for this application?
-DATASET_PATH = "/Users/irbraun/Desktop/test.csv"
+DATASET_PATH = "resources/test.csv"
 ONTOLOGY_NAMES = ["PATO","PO"]
-ONTOLOGY_OBO_PATHS = ["../ontologies/pato.obo","../ontologies/po.obo"]
+ONTOLOGY_OBO_PATHS = ["resources/pato.obo","..resources/po.obo"]
 
 
 
@@ -425,25 +432,25 @@ ONTOLOGY_OBO_PATHS = ["../ontologies/pato.obo","../ontologies/po.obo"]
 # preprocessing_function: A function for how text should be preprocessed in order to be compatible with this approach.
 APPROACH_NAMES_AND_DATA = {
 	"n-grams":{
-		"path":"/Users/irbraun/Desktop/testp/n.pickle", 
+		"path":"resources/n.pickle", 
 		"mapping":"whole_texts",
 		"tokenization_function":as_one_token,
 		"preprocessing_fucntion":full_preprocessing,
 		},
 	"n-grams-tokenized":{
-		"path":"/Users/irbraun/Desktop/testp/ntok.pickle", 
+		"path":"resources/ntok.pickle", 
 		"mapping":"sent_tokens",
 		"tokenization_function":sentence_tokenize,
 		"preprocessing_fucntion":full_preprocessing,
 		},
 	"word2vec-tokenized":{
-		"path":"/Users/irbraun/Desktop/testp/wtok.pickle", 
+		"path":"resources/wtok.pickle", 
 		"mapping":"sent_tokens",
 		"tokenization_function":sentence_tokenize,
 		"preprocessing_fucntion":identify_function,
 		},
 	"doc2vec":{
-	 	"path":"/Users/irbraun/Desktop/testp/d.pickle", 
+	 	"path":"resourcesd.pickle", 
 	 	"mapping":"whole_texts",
 	 	"tokenization_function":as_one_token,
 	 	"preprocessing_fucntion":identify_function,
@@ -463,8 +470,8 @@ APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k i
 # The keys for this dictionary should map the items from the nested dictionay above, so that these mappings from 
 # these dictinoary files can then be associated with each of the approaches from the nested dictionary.
 APPROACH_MAPPING_FILES = {
-	"whole_texts":"/Users/irbraun/Desktop/testp/gene_id_to_unique_ids_whole_texts.pickle",
-	"sent_tokens":"/Users/irbraun/Desktop/testp/gene_id_to_unique_ids_sent_tokens.pickle",
+	"whole_texts":"resources/gene_id_to_unique_ids_whole_texts.pickle",
+	"sent_tokens":"resources/gene_id_to_unique_ids_sent_tokens.pickle",
 	}
 
 

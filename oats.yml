@@ -10,7 +10,6 @@ dependencies:
   - jupyter
   - rdflib
   - sparqlwrapper
-  - fuzzywuzzy
   - nltk
   - biopython
   - seaborn

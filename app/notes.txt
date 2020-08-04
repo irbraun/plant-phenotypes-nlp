@@ -1,0 +1,8 @@
+docker build -f Dockerfile -t app:latest .
+docker run -p 8501:8501 app:latest
+
+docker images
+docker container ls
+docker stop [container]
+docker system prune
+
