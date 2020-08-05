@@ -13,7 +13,7 @@ from gensim.utils import simple_preprocess
 from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string, strip_tags, strip_punctuation
 
 
-#sys.path.append("../../oats")
+sys.path.append("../../oats")
 import oats
 from oats.utils.utils import save_to_pickle, load_from_pickle, merge_list_dicts, flatten, to_hms
 from oats.utils.utils import function_wrapper_with_duration, remove_duplicates_retain_order
@@ -418,9 +418,9 @@ full_preprocessing = lambda text: " ".join(preprocess_string(text))
 
 
 # Where are the dataset and ontology files that should be loaded for this application?
-DATASET_PATH = "resources/test.csv"
+DATASET_PATH = "resources/genes_texts_annots.csv"
 ONTOLOGY_NAMES = ["PATO","PO"]
-ONTOLOGY_OBO_PATHS = ["resources/pato.obo","..resources/po.obo"]
+ONTOLOGY_OBO_PATHS = ["resources/pato.obo","resources/po.obo"]
 
 
 
@@ -450,7 +450,7 @@ APPROACH_NAMES_AND_DATA = {
 		"preprocessing_fucntion":identify_function,
 		},
 	"doc2vec":{
-	 	"path":"resourcesd.pickle", 
+	 	"path":"resources/d.pickle", 
 	 	"mapping":"whole_texts",
 	 	"tokenization_function":as_one_token,
 	 	"preprocessing_fucntion":identify_function,
@@ -460,7 +460,7 @@ APPROACH_NAMES_AND_DATA = {
 
 # For testing, be able to subset this nested dictionary without having to uncomment sections of it.
 # Just uncomment these two lines to use the entire set of approaches and load all files.
-names_to_actually_use = ["n-grams","n-grams-tokenized"]
+names_to_actually_use = ["doc2vec","n-grams-tokenized"]
 APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k in names_to_actually_use}
 
 

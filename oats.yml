@@ -4,24 +4,25 @@ channels:
   - bioconda
 dependencies:
   - python=3.6
-  - pandas
-  - numpy
-  - scikit-learn
+  - pip
   - jupyter
   - rdflib
   - sparqlwrapper
-  - nltk
-  - biopython
   - seaborn
-  - networkx
-  - scipy
   - flask
-  - pip 
-  - more-itertools
+  - pandas=1.0.*
+  - numpy=1.18.*
+  - scikit-learn=0.22.*
+  - nltk=3.4.*
+  - biopython=1.76.*
+  - networkx=2.4.*
+  - scipy=1.5.*
+  - more-itertools=8.4.*
   - pip:
-    - pywsd==1.2.4
+    - pywsd==1.2.*
     - gensim==3.8.1
     - fastsemsim==1.0.0
     - pytorch-pretrained-bert==0.6.2
     - rapidfuzz==0.3.0
     - pronto==2.1.0
+    - streamlit==0.63.1
