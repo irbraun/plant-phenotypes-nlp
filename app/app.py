@@ -110,7 +110,7 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	"""
 	
 	# Read in the dataset and create its object.
-	dataset = Dataset(dataset_path)
+	dataset = Dataset(data=dataset_path, keep_ids=True)
 	dataset.filter_has_description()
 
 	# Reading in the large files that store objects for vectorizing and comparing texts.
@@ -432,13 +432,13 @@ ONTOLOGY_OBO_PATHS = ["resources/pato.obo","resources/po.obo"]
 # preprocessing_function: A function for how text should be preprocessed in order to be compatible with this approach.
 APPROACH_NAMES_AND_DATA = {
 	"n-grams":{
-		"path":"resources/n.pickle", 
+		"path":"resources/n_grams_full_words_1_grams_tfidf.pickle", 
 		"mapping":"whole_texts",
 		"tokenization_function":as_one_token,
 		"preprocessing_fucntion":full_preprocessing,
 		},
 	"n-grams-tokenized":{
-		"path":"resources/ntok.pickle", 
+		"path":"resources/n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
 		"mapping":"sent_tokens",
 		"tokenization_function":sentence_tokenize,
 		"preprocessing_fucntion":full_preprocessing,
@@ -460,7 +460,7 @@ APPROACH_NAMES_AND_DATA = {
 
 # For testing, be able to subset this nested dictionary without having to uncomment sections of it.
 # Just uncomment these two lines to use the entire set of approaches and load all files.
-names_to_actually_use = ["doc2vec","n-grams-tokenized"]
+names_to_actually_use = ["n-grams","n-grams-tokenized"]
 APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k in names_to_actually_use}
 
 
@@ -472,6 +472,10 @@ APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k i
 APPROACH_MAPPING_FILES = {
 	"whole_texts":"resources/gene_id_to_unique_ids_whole_texts.pickle",
 	"sent_tokens":"resources/gene_id_to_unique_ids_sent_tokens.pickle",
+	"go_term_sets":"resources/gene_id_to_unique_ids_go_term_sets.pickle",
+	"po_term_sets":"resources/gene_id_to_unique_ids_po_term_sets.pickle",
+	"go_terms":"resources/gene_id_to_unique_ids_go_terms.pickle",
+	"po_terms":"resources/gene_id_to_unique_ids_po_terms.pickle",
 	}
 
 
@@ -878,6 +882,8 @@ elif search_type == "phenotype" and input_text != "":
 # Nothing was searched. Default to now showing anything and waiting for a widget value to change.
 else:
 	pass
+	# TODO Should the whole dataset be displayed here instead?
+	# TODO Keeping the else pass for now to remind me something might need to go here.
 
 
 
