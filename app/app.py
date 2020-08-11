@@ -584,7 +584,7 @@ st.markdown("## Search")
 
 search_types = ["gene", "ontology", "keyword", "phenotype"]
 search_types_labels = ["Gene Identifiers", "Ontology Terms", "Keywords & Keyphrases", "Free Text"]
-search_type_examples = ["pro", "PATO:0000587, PATO:0000069", "dwarfism, root system, leaves", "Plants are reduced in height. Plants have wide leaves. Smaller than normal. Something else too."]
+search_type_examples = ["epc1", "PATO:0000587, PATO:0000069", "dwarfism, root system, leaves", "Plants are reduced in height. Plants have wide leaves. Smaller than normal. Something else too."]
 
 if include_examples:
 	search_type_label_map = {t:"{} (e.g. '{}')".format(l,e) for t,l,e in zip(search_types, search_types_labels, search_type_examples)}
