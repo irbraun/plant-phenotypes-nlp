@@ -13,4 +13,4 @@ Running analysis scripts on the HPC clusters
 - Check that the NOBLE Coder terminologies are present in the ~/.noble/terminologies/ folder, which is not copied over by sync.sh script.
 - Make a symbolic link from ~/.noble/terminologies/ to the working directory if needed because the terminology files are too large.
 - Check the runtime on the submit scripts.
-- Check that the notebooks can been converted to python scripts.
+- Check that the notebooks have been converted to python scripts.

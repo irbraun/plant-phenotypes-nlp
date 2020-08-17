@@ -15,15 +15,10 @@ from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preproce
 
 sys.path.append("../../oats")
 import oats
-from oats.utils.utils import save_to_pickle, load_from_pickle, merge_list_dicts, flatten, to_hms
+from oats.utils.utils import save_to_pickle, load_from_pickle, flatten
 from oats.utils.utils import function_wrapper_with_duration, remove_duplicates_retain_order
 from oats.biology.dataset import Dataset
-from oats.biology.groupings import Groupings
-from oats.biology.relationships import ProteinInteractions, AnyInteractions
 from oats.annotation.ontology import Ontology
-from oats.annotation.annotation import annotate_using_noble_coder
-from oats.distances import pairwise as pw
-from oats.nlp.preprocess import concatenate_with_bar_delim
 
 
 
