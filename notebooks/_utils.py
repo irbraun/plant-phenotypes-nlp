@@ -1,15 +1,18 @@
 import pandas as pd
+import re
 
 
 
 
 class Method:
-	def __init__(self, name, hyperparameters, function=None, kwargs=None, metric=None, tag=""):
+	def __init__(self, name, hyperparameters, group, number, function=None, kwargs=None, metric=None, tag=""):
 		"""Constructor for a Method class to define a single approach for distance measurements.
 		
 		Args:
 		    name (str): A string specifying just the general name of the method, not including hyperparameter choices.
 		    hyperparameters (str): A string specifying what the hyperparameter choices were for this method/model/approach.
+		    group (str): Some additional description of what kind of category this approach belongds to.
+		    number (int): Any integer, can be useful as a rank for sorting these methods when creating plots, because no other order is indicated anywhere.
 		    function (Function): The function to use for obtaining the distance results, will be passed everything in kwargs.
 		    kwargs (dict): A dictionary of all the arguments by keyword that should be passed to the function argument.
 		    metric (scipy.spatial.distance.?): A distance metric form the scipy.spatial package.
@@ -18,9 +21,15 @@ class Method:
 		Deleted Parameters:
 		    data (str): A string that should be either 
 		"""
-		self.name = name.lower()
-		self.hyperparameters = hyperparameters.lower()
-		self.name_with_hyperparameters = "{}:{}".format(name,hyperparameters).lower()
+		#self.name = name.lower()
+		#self.hyperparameters = hyperparameters.lower()
+		#self.name_with_hyperparameters = "{}:{}".format(name,hyperparameters).lower()
+
+		self.name = re.sub('[^0-9a-zA-Z]+', '_', name.lower())
+		self.hyperparameters = re.sub('[^0-9a-zA-Z]+', '_', hyperparameters.lower())
+		self.name_with_hyperparameters = "{}__{}".format(self.name, self.hyperparameters)
+		self.group = re.sub('[^0-9a-zA-Z]+', '_', group.lower())
+		self.number = number
 		self.function = function
 		self.kwargs = kwargs
 		self.metric = metric
