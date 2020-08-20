@@ -1,27 +1,30 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Table of Contents
+# ## Table of Contents
 # 
 # - [Introduction](#introduction)
 # 
 # - [Links of Interest](#links)
 # 
-# - [Part 1. Loading and Filtering Data](#part_1)
+# - [Part 1. Loading and Filtering the Data](#part_1)
 #     - [Reading in arguments](#args)
 #     - [Setting input and output paths](#paths)
 #     - [Reading in genes, annotations, and phenotype descriptions](#read_text_data)
 #     - [Relating genes in this dataset to other biological datasets](#relating)
-#     - [KEGG](#kegg)
-#     - [PlantCyc](#plantcyc)
-#     - [Lloyd and Meinke (2012) phenotype subsets](#subsets)
-#     - [Lloyd and Meinke (2012) phenotype classes](#classes)
-#     - [Oellrich, Walls et al., (2015) EQ statements](#eqs)
-#     - [Protein associations from STRING](#string)
-#     - [Ortholog relationships from PANTHER](#panther)
+#     - [Reading in KEGG data](#kegg)
+#     - [Reading in PlantCyc data](#plantcyc)
+#     - [Reading in Lloyd and Meinke (2012) phenotype subsets](#subsets)
+#     - [Reading in Lloyd and Meinke (2012) phenotype classes](#classes)
+#     - [Relating genes in this dataset to protein-protein associations](#edges)
+#     - [Reading in Oellrich, Walls et al., (2015) EQ statements](#eqs)
+#     - [Reading in protein associations from STRING](#string)
+#     - [Reading in ortholog relationships from PANTHER](#panther)
 #     - [Filtering the dataset to include relevant genes](#filtering)
-#      
-# - [Part 2. NLP Models](#part_2)
+#     - [Reading in dataset of paired phenotype descriptions](#phenotype_pairs)
+#     - [Reading in the BIOSSES dataset](#biosses)
+#     
+# - [Part 2. Language Models](#part_2)
 #     - [Word2Vec and Doc2Vec](#word2vec_doc2vec)
 #     - [BERT and BioBERT](#bert_biobert)
 #     - [Loading models](#load_models)
@@ -56,19 +59,19 @@
 #     - [Tests for querying to recover related genes](#y)
 #     - [Producing output summary table](#output)
 # 
-# - [Part 7. Clustering Analysis](#part_7)
-#     - [Topic modeling](#topic_modeling)
+# - [Part 7. Topic Modeling](#part_7)
+#     - [Comparing topics to existing categorizations](#compare_to_subsets)
+# - [Part 8. Clustering](#part_8)
 #     - [Agglomerative clustering](#clustering)
+# - [Part 9. Human Phenologs](#part_9)
 #     - [Phenologs for OMIM disease phenotypes](#phenologs)
 
 # <a id="introduction"></a>
-# ### Introduction: Text Mining Analysis of Phenotype Descriptions in Plants
-# The purpose of this notebook is to evaluate what can be learned from a natural language processing approach to analyzing free-text descriptions of phenotype descriptions of plants. The approach is to generate pairwise distances matrices between a set of plant phenotype descriptions across different species, sourced from academic papers and online model organism databases. These pairwise distance matrices can be constructed using any vectorization method that can be applied to natural language. In this notebook, we specifically evaluate the use of n-gram and bag-of-words techniques, word and document embedding using Word2Vec and Doc2Vec, context-dependent word-embeddings using BERT and BioBERT, and ontology term annotations with automated annotation tools such as NOBLE Coder.
-# 
-# Loading, manipulation, and filtering of the dataset of phenotype descriptions associated with genes across different plant species is largely handled through a Python package created for this purpose called OATS (Ontology Annotation and Text Similarity) which is available [here](https://github.com/irbraun/oats). Preprocessing of the descriptions, mapping the dataset to additional resources such as protein-protein interaction databases and biochemical pathway databases are handled in this notebook using that package as well. In the evaluation of each of these natural language processing approaches to analyzing this dataset of descriptions, we compare performance against a dataset generated through manual annotation of a similar dataset in Oellrich Walls et al. (2015) and against manual annotations with experimentally determined terms from the Gene Ontology (PO) and the Plant Ontology (PO).
+# ## Introduction: Text Mining Analysis of Phenotype Descriptions in Plants
+# The purpose of this notebook is to evaluate what can be learned from a natural language processing approach to analyzing free-text descriptions of phenotype descriptions of plants. The approach is to generate pairwise distances matrices between a set of plant phenotype descriptions across different species, sourced from academic papers and online model species databases. These pairwise distance matrices can be constructed using any vectorization method that can be applied to natural language. In this notebook, we specifically evaluate the use of n-gram, bag-of-words, and topic modelling techniques, word and document embedding using Word2Vec and Doc2Vec, context-dependent word-embeddings using BERT and BioBERT, and ontology term annotations with automated annotation tools such as NOBLE Coder. We compare the performance of these approaches to using semantic similarity with manually annotated and experimentally validated ontology term annotations. 
 # 
 # <a id="links"></a>
-# ### Relevant links of interest:
+# ## Relevant links of interest:
 # - Paper describing comparison of NLP and ontology annotation approaches to curation: [Braun, Lawrence-Dill (2019)](https://doi.org/10.3389/fpls.2019.01629)
 # - Paper describing results of manual phenotype description curation: [Oellrich, Walls et al. (2015](https://plantmethods.biomedcentral.com/articles/10.1186/s13007-015-0053-y)
 # - Plant databases with phenotype description text data available: [TAIR](https://www.arabidopsis.org/), [SGN](https://solgenomics.net/), [MaizeGDB](https://www.maizegdb.org/)
@@ -78,7 +81,7 @@
 # - Python package for loading pretrained BERT models: [PyTorch Pretrained BERT](https://pypi.org/project/pytorch-pretrained-bert/)
 # - For BERT Models pretrained on PubMed and PMC: [BioBERT Paper](https://arxiv.org/abs/1901.08746), [BioBERT Models](https://github.com/naver/biobert-pretrained)
 
-# In[1]:
+# In[ ]:
 
 
 import datetime
@@ -108,14 +111,14 @@ from sklearn.model_selection import train_test_split, KFold
 from scipy import spatial, stats
 from statsmodels.sandbox.stats.multicomp import multipletests
 from pytorch_pretrained_bert import BertTokenizer, BertModel, BertForMaskedLM
-from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string, remove_stopwords
+from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string
+from gensim.parsing.preprocessing import remove_stopwords, strip_punctuation
 from gensim.utils import simple_preprocess
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.decomposition import NMF
 from sklearn.decomposition import LatentDirichletAllocation as LDA
 from sklearn.cluster import AgglomerativeClustering
-
 from nltk.corpus import brown, stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 nltk.download('stopwords', quiet=True)
@@ -125,7 +128,7 @@ nltk.download('brown', quiet=True)
 nltk.download('averaged_perceptron_tagger', quiet=True)
 
 sys.path.append("../../oats")
-from oats.utils.utils import save_to_pickle, load_from_pickle, merge_list_dicts, flatten, to_hms
+from oats.utils.utils import save_to_pickle, load_from_pickle, flatten, to_hms
 from oats.utils.utils import function_wrapper_with_duration, remove_duplicates_retain_order
 from oats.biology.dataset import Dataset
 from oats.biology.groupings import Groupings
@@ -133,14 +136,14 @@ from oats.biology.relationships import ProteinInteractions, AnyInteractions
 from oats.annotation.ontology import Ontology
 from oats.annotation.annotation import annotate_using_noble_coder
 from oats.distances import pairwise as pw
-from oats.distances.edgelists import merge_edgelists, make_undirected, remove_self_loops, subset_with_ids
 from oats.nlp.vocabulary import get_overrepresented_tokens, get_vocab_from_tokens
 from oats.nlp.vocabulary import reduce_vocab_connected_components, reduce_vocab_linares_pontes
-from oats.nlp.preprocess import concatenate_with_bar_delim
 
 from _utils import Method
 from _utils import IndexedGraph
 
+
+# Some settings for how data is visualized in the notebook.
 mpl.rcParams["figure.dpi"] = 400
 warnings.simplefilter('ignore')
 pd.set_option('display.max_rows', 500)
@@ -148,20 +151,41 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 
+# In[ ]:
+
+
+# Set a tag that specifies whether this is being run as a notebook or a script. Some sections are skipped when 
+# running as a script, as this is intended to be run as a batch process on a cluster or something like that.
+script_name = os.path.basename(sys.argv[0])
+if script_name == "ipykernel_launcher.py":
+    NOTEBOOK = True
+    print("running as a notebook")
+elif script_name == "analysis.py":
+    NOTEBOOK = False
+    print("running as a script")
+else:
+    raise Exception("problem determining if this is being run as a notebook or a script.")
+
+
 # <a id="part_1"></a>
-# # Part 1. Loading and Filtering Data
+# ## Part 1. Loading and Filtering Data
 # This section defines some constants which are used for creating a uniquely named directory to contain all the outputs from running this instance of this notebook. The naming scheme is based on the time that the notebook is run. All the input and output file paths for loading datasets or models are also contained within this cell, so that if anything is moved the directories and file names should only have to be changed at this point and nowhere else further into the notebook. If additional files are added to the notebook cells they should be put here as well.
 
 # <a id="args"></a>
 # ### Reading in arguments
+# Command line arguments are used to define which subset of the approaches that are evaluated in this notebook are used during a given run. Because the pairwise distances matrices become very large when as the number of genes increases, the number of approaches used (which each generated one distance matrix) can be lowered if the script is using too much memory for datasets that contain many genes. Although there are differences in runtime for each approach where ones that generated larger vectors (n-grams) instead of small embeddings (Word2Vec) take longer, this is not significant compared to how long operations take on the resulting distance matrices, which are all the same size for any given approach, so it is the number of approaches used, not which ones, that matters in reducing the time and memory used for each run.
 
-# In[2]:
+# In[ ]:
 
 
-NOTEBOOK = False
-
+# Creating the set of arguments that can be used to determine which approaches are run.
+DATASET_OPTIONS = ["plants","snpedia","biosses","pairs"]
 parser = argparse.ArgumentParser()
+parser.add_argument("--name", dest="name", required=True, help="create a name for this run of the anaylsis, used in naming the output directory")
+parser.add_argument("--dataset", dest="dataset", choices=DATASET_OPTIONS, required=True, help="name of the dataset the analysis pipeline should be run on")
+parser.add_argument("--app", dest="app", required=False, action='store_true', help="use to have the script output objects needed to build the streamlit app")
 parser.add_argument("--learning", dest="learning", required=False, action='store_true', help="use the approaches that involve neural networks")
+parser.add_argument("--bert", dest="bert", required=False, action='store_true', help="use the approaches that invole BERT and BioBERT")
 parser.add_argument("--noblecoder", dest="noblecoder", required=False, action='store_true', help="use the approaches that involve computational annotation")
 parser.add_argument("--lda", dest="lda", required=False, action='store_true', help="use the approaches that involve topic modeling")
 parser.add_argument("--nmf", dest="nmf", required=False, action='store_true', help="use the approaches that involve topic modeling")
@@ -169,8 +193,9 @@ parser.add_argument("--vanilla", dest="vanilla", required=False, action='store_t
 parser.add_argument("--vocab", dest="vocab", required=False, action='store_true', help="using the n-grams approach but with modified vocabularies")
 parser.add_argument("--annotations", dest="annotations", required=False, action='store_true', help="use the curated annotations")
 
+# Specify the command line argument list here if running as a notebook instead.
 if NOTEBOOK:
-    arg_string = "--learning --noblecoder --lda --nmf --vanilla --vocab --annotations"
+    arg_string = "--name something --dataset plants --app --learning --bert --noblecoder --lda --nmf --vanilla --vocab --annotations"
     args = parser.parse_args(shlex.split(arg_string))
 else:
     args = parser.parse_args()
@@ -179,73 +204,124 @@ else:
 # <a id="paths"></a>
 # ### Defining the input file paths and creating output directory
 
-# In[3]:
+# In[ ]:
 
 
 # Create and name an output directory according to when the notebooks or script was run.
-OUTPUT_DIR = os.path.join("../outputs","{}_r{}".format(datetime.datetime.now().strftime('%m_%d_%Y_h%Hm%Ms%S'),random.randrange(1000,9999)))
+OUTPUT_DIR = os.path.join("../outputs","{}_{}_{}".format(args.name,datetime.datetime.now().strftime('%m_%d_%Y_h%Hm%Ms%S'),random.randrange(1000,9999)))
 os.mkdir(OUTPUT_DIR)
 
+# Other subfolders that output files get organized into when this analysis notebook is run.
+STREAMLIT_DIR = "app_resources"
+GROUPINGS_DIR = "gene_mappings"
+APPROACHES_DIR = "approaches_info"
+VOCABULARIES_DIR = "vocabularies"
+METRICS_DIR = "main_metrics"
+QUESTIONS_DIR = "questions_info"
+PLOTS_DIR = "plot_images"
+GROUP_DISTS_DIR = "group_distances"
+TOPICS_DIR = "topic_modeling"
+os.mkdir(os.path.join(OUTPUT_DIR,STREAMLIT_DIR))
+os.mkdir(os.path.join(OUTPUT_DIR,GROUPINGS_DIR))
+os.mkdir(os.path.join(OUTPUT_DIR,APPROACHES_DIR))
+os.mkdir(os.path.join(OUTPUT_DIR,VOCABULARIES_DIR))
+os.mkdir(os.path.join(OUTPUT_DIR,METRICS_DIR))
+os.mkdir(os.path.join(OUTPUT_DIR,QUESTIONS_DIR))
+os.mkdir(os.path.join(OUTPUT_DIR,PLOTS_DIR))
+os.mkdir(os.path.join(OUTPUT_DIR,GROUP_DISTS_DIR))
+os.mkdir(os.path.join(OUTPUT_DIR,TOPICS_DIR))
 
-# In[4]:
+
+# In[ ]:
 
 
-dataset_filename = "../data/pickles/gene_phenotype_dataset_all_text_and_annotations.pickle"          # The full dataset pickle.
-kegg_pathways_filename = "../data/pickles/groupings_from_kegg_pathways.pickle"                       # The pathway groupings from KEGG.
-pmn_pathways_filename = "../data/pickles/groupings_from_pmn_pathways.pickle"                         # The pahway groupings from Plant Metabolic Network.
-lloyd_subsets_filename = "../data/pickles/groupings_from_lloyd_subsets.pickle"                       # The functional subsets defined by Lloyd and Meinke (2012).
-lloyd_classes_filename = "../data/pickles/groupings_from_lloyd_classes.pickle"                       # The functional classes defined by Lloyd and Meinke (2012).
-background_corpus_filename = "../data/corpus_related_files/untagged_text_corpora/background.txt"     # Text file with background content.
-phenotypes_corpus_filename = "../data/corpus_related_files/untagged_text_corpora/phenotypes_all.txt" # Text file with specific content.
-doc2vec_pubmed_filename = "../gensim/pubmed_dbow/doc2vec_2.bin"                                      # File holding saved Doc2Vec model trained on PubMed.
-doc2vec_wikipedia_filename = "../gensim/enwiki_dbow/doc2vec.bin"                                     # File holding saved Doc2Vec model trained on Wikipedia.
-word2vec_model_filename = "../gensim/wiki_sg/word2vec.bin"                                           # File holding saved Word2Vec model trained on Wikipedia.
-go_filename = "../ontologies/go.obo"                                                                 # Gene Ontology file in OBO format.
-po_filename = "../ontologies/po.obo"                                                                 # Plant Ontology file in OBO format.
-pato_filename = "../ontologies/pato.obo"                                                             # Phenotype and Trait Ontology file in OBO format.
-noblecoder_jarfile_path = "../lib/NobleCoder-1.0.jar"                                                # Jar for NOBLE Coder annotation tool.
-biobert_pmc_path = "../gensim/biobert_v1.0_pmc/pytorch_model"                                        # Path for PyTorch BioBERT model.
-biobert_pubmed_path = "../gensim/biobert_v1.0_pubmed/pytorch_model"                                  # Path for PyTorch BioBERT model.
-biobert_pubmed_pmc_path = "../gensim/biobert_v1.0_pubmed_pmc/pytorch_model"                          # Path for PyTorch BioBERT model.
-panther_to_omim_filename = "../data/orthology_related_files/ath_to_hsa/pantherdb_omim_df.csv"        # File with mappings to human orthologs and disease phenotypes.
+# Paths to different datasets containing gene names, text descriptions, and/or ontology term annotations.
+plant_dataset_path = "../../plant-data/genes_texts_annots.csv"
+snpedia_dataset_path = "../data/reshaped_files/hsa_snpedia_page_texts.csv"
+
+# Paths to datasets of sentence or description pairs.
+paired_phenotypes_path = "../data/corpus_related_files/phenotype_pairs/scored.csv"
+biosses_datset_path = "../data/paired_sentences/biosses/cleaned_by_me.csv"
+
+# Paths to files for data about how genes can be grouped into biochemical pathways, etc.
+kegg_pathways_path = "../../plant-data/reshaped_data/kegg_pathways.csv" 
+plantcyc_pathways_path = "../../plant-data/reshaped_data/plantcyc_pathways.csv" 
+lloyd_meinke_subsets_path = "../../plant-data/reshaped_data/lloyd_meinke_subsets.csv" 
+lloyd_meinke_classes_path = "../../plant-data/reshaped_data/lloyd_meinke_classes.csv" 
+
+# Paths files that contain mappings from the identifiers used by those groups to full name strings.
+kegg_pathways_names_path = "../../plant-data/reshaped_data/kegg_pathways_name_map.csv"
+plantcyc_pathways_names_path = "../../plant-data/reshaped_data/plantcyc_pathways_name_map.csv"
+lloyd_meinke_subsets_names_path = "../../plant-data/reshaped_data/lloyd_meinke_subsets_name_map.csv"
+lloyd_meinke_classes_names_path = "../../plant-data/reshaped_data/lloyd_meinke_classes_name_map.csv"
+
+# Pathways to text corpora files that are used in this analysis.
+background_corpus_filename = "../data/corpus_related_files/untagged_text_corpora/background.txt"
+phenotypes_corpus_filename = "../data/corpus_related_files/untagged_text_corpora/phenotypes_all.txt"
+
+# Paths to pretrained or saved language models that are used in this analysis.
+doc2vec_pubmed_filename = "../models/pubmed_dbow/doc2vec_2.bin"                 
+doc2vec_wikipedia_filename = "../models/enwiki_dbow/doc2vec.bin"                             
+word2vec_model_filename = "../models/wiki_sg/word2vec.bin"                              
+biobert_pmc_path = "../models/biobert_v1.0_pmc/pytorch_model"                                  
+biobert_pubmed_path = "../models/biobert_v1.0_pubmed/pytorch_model"                                 
+biobert_pubmed_pmc_path = "../models/biobert_v1.0_pubmed_pmc/pytorch_model"                          
+
+# Path the jar file necessary for running NOBLE Coder.
+noblecoder_jarfile_path = "../lib/NobleCoder-1.0.jar"   
+
+# Paths to obo ontology files are used to create the ontology objects used.
+# If pickling these objects works, that might be bette because building the larger ontology objects takes a long time.
+go_obo_path = "../ontologies/go.obo"                                                                
+po_obo_path = "../ontologies/po.obo"                                                             
+pato_obo_path = "../ontologies/pato.obo"
+go_pickle_path = "../ontologies/go.pickle"                                                                
+po_pickle_path = "../ontologies/po.pickle"                                                             
+pato_pickle_path = "../ontologies/pato.pickle"
+
+# Paths to other files including the ortholog edgelist from Panther, and cleaned files from the two papers.
+panther_to_omim_filename = "../data/orthology_related_files/ath_to_hsa/pantherdb_omim_df.csv"       
 pppn_edgelist_path = "../data/supplemental_files_oellrich_walls/13007_2015_53_MOESM9_ESM.txt"
 ortholog_file_path = "../data/orthology_related_files/pantherdb/PlantGenomeOrthologs_IRB_Modified.txt"
-paired_phenotypes_path = "../data/corpus_related_files/phenotype_pairs/scored.csv"
 lloyd_function_hierarchy_path = "../data/group_related_files/lloyd/lloyd_function_hierarchy_irb_cleaned.csv"
 
 
 # <a id="read_text_data"></a>
 # ### Reading in the dataset of genes and their associated phenotype descriptions and annotations
 
-# In[6]:
+# In[ ]:
 
 
-# Temporarily doing this to use a human dataset instead from SNPedia and see how well it works.
-dataset = Dataset("../data/reshaped_files/hsa_snpedia_page_texts.csv")
-dataset.filter_has_description()
+# Loading the human dataset of concatenated SNP descriptions for genes in SNPedia.
+#snpedia_dataset = Dataset(snpedia_dataset_path)
+#snpedia_dataset.filter_has_description()
+#snpedia_dataset.describe()
+
+# Loading the plant dataset of phenotype descriptions.
+plant_dataset = Dataset(plant_dataset_path)
+plant_dataset.filter_has_description()
+plant_dataset.describe()
+
+# Which dataset should be used for the rest of the analysis? Useful for changing when running as a notebook.
+dataset = plant_dataset
 dataset.describe()
-
-# This is the regular way to do it.
-#dataset = load_from_pickle(dataset_filename)
-#dataset.filter_has_description()
-#dataset.describe()
 
 
 # <a id="relating"></a>
-# ### Relating the dataset of genes to the dataset of groupings or categories
-# This section generates tables that indicate how the genes present in the dataset were mapped to the defined pathways or groups. This includes a summary table that indicates how many genes by species were succcessfully mapped to atleast one pathway or group, as well as a more detailed table describing how many genes from each species were mapped to each particular pathway or group. Additionally, a pairwise group similarity matrix is also generated, where the similarity is given as the Jaccard similarity between two groups based on whether genes are shared by those groups or not. The function defined in this section returns a groupings object that can be re-used, as well as the IDs of the genes in the full dataset that were found to be relevant to those particular groupings.
+# ### Relating the dataset of genes to the dataset of groups or categories
+# This section generates tables that indicate how the genes present in the dataset were mapped to the defined pathways or groups. This includes a summary table that indicates how many genes by species were succcessfully mapped to atleast one pathway or group, as well as a more detailed table describing how many genes from each species were mapped to each particular pathway or group. Additionally, a pairwise group similarity matrix is also generated, where the similarity is given as the Jaccard similarity between two groups based on whether genes are shared by those groups or not. The function defined in this section returns a groupings object that can be used again, as well as the IDs of the genes in the full dataset that were found to be relevant to those particular groupings.
 
-# In[17]:
+# In[ ]:
 
 
-def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filename, name):
+def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filename, group_name_mappings, name):
 
     # Load the groupings object.
-    groups = load_from_pickle(groupings_filename)
+    groups = Groupings(groupings_filename, group_name_mappings)
     id_to_group_ids = groups.get_id_to_group_ids_dict(dataset.get_gene_dictionary())
     group_id_to_ids = groups.get_group_id_to_ids_dict(dataset.get_gene_dictionary())
     group_mapped_ids = [k for (k,v) in id_to_group_ids.items() if len(v)>0]
-    groups.to_csv(os.path.join(OUTPUT_DIR,"part_1_{}_groupings.csv".format(name)))
+    groups.to_pandas().to_csv(os.path.join(OUTPUT_DIR,GROUPINGS_DIR,"{}_groupings.csv".format(name)))
 
     # Generate a table describing how many of the genes input from each species map to atleast one group.
     summary = defaultdict(dict)
@@ -258,7 +334,7 @@ def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filenam
     table["fraction"] = table.apply(lambda row: "{:0.4f}".format(row["mapped"]/row["input"]), axis=1)
     table = table.reset_index(inplace=False)
     table = table.rename({"index":"species"}, axis="columns")
-    table.to_csv(os.path.join(OUTPUT_DIR,"part_1_{}_mappings_summary.csv".format(name)), index=False)
+    table.to_csv(os.path.join(OUTPUT_DIR,GROUPINGS_DIR,"{}_mappings_summary.csv".format(name)), index=False)
 
     
     # Generate a table describing how many genes from each species map to which particular group.
@@ -276,7 +352,7 @@ def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filenam
         table.loc["total","pathway_id"] = "total"
         table.loc["total","pathway_name"] = "total"
         table = table[table.columns.tolist()[-1:] + table.columns.tolist()[:-1]]
-        table.to_csv(os.path.join(OUTPUT_DIR,"part_1_{}_mappings_by_group.csv".format(name)), index=False)
+        table.to_csv(os.path.join(OUTPUT_DIR,GROUPINGS_DIR,"{}_mappings_by_group.csv".format(name)), index=False)
     
     
         # What are the similarites between the groups for the genes present in this dataset?
@@ -299,7 +375,7 @@ def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filenam
         
         # Formatting the column names for this table correctly and outputting to a file.
         table = table.reset_index(drop=False).rename({"index":"group"},axis=1).reset_index(drop=False).rename({"index":"order"},axis=1)
-        table.to_csv(os.path.join(OUTPUT_DIR,"part_1_{}_similarity_matrix.csv".format(name)), index=False)
+        table.to_csv(os.path.join(OUTPUT_DIR,GROUPINGS_DIR,"{}_similarity_matrix.csv".format(name)), index=False)
     
 
     # Returning the groupings object and the list of IDs for genes that were mapped to one or more groups.
@@ -309,54 +385,59 @@ def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filenam
 # <a id="kegg"></a>
 # ### Reading in and relating the pathways from KEGG
 
-# In[18]:
+# In[ ]:
 
 
 # Readin in the dataset of groupings for pathways in KEGG.
-kegg_groups, kegg_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, kegg_pathways_filename, "kegg")
-kegg_groups.to_pandas().head(20)
+kegg_name_mapping = {row.group_id:row.group_name for row in pd.read_csv(kegg_pathways_names_path).itertuples()}
+kegg_groups, kegg_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, kegg_pathways_path, kegg_name_mapping, "kegg_pathways")
+kegg_groups.to_pandas().head(10)
 
 
 # <a id="plantcyc"></a>
 # ### Reading in and relating the pathways from PlantCyc
 
-# In[19]:
+# In[ ]:
 
 
 # Reading in the dataset of groupings for pathways in PlantCyc.
-pmn_groups, pmn_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, pmn_pathways_filename, "pmn")
-pmn_groups.to_pandas().head(20)
+plantcyc_name_mapping = {row.group_id:row.group_name for row in pd.read_csv(plantcyc_pathways_names_path).itertuples()}
+pmn_groups, pmn_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, plantcyc_pathways_path, plantcyc_name_mapping, "plantcyc_pathways")
+pmn_groups.to_pandas().head(10)
 
 
 # <a id="subsets"></a>
 # ###  Reading in and relating the phenotype subsets from Lloyd and Meinke (2012)
 
-# In[20]:
+# In[ ]:
 
 
 # Reading in the datasets of phenotype subset classifications from the Lloyd, Meinke 2012 paper.
-phe_subsets_groups, subsets_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, lloyd_subsets_filename, "subsets")
-phe_subsets_groups.to_pandas().head(20)
+lloyd_meinke_subsets_name_mapping = {row.group_id:row.group_name for row in pd.read_csv(lloyd_meinke_subsets_names_path).itertuples()}
+phe_subsets_groups, subsets_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, lloyd_meinke_subsets_path, lloyd_meinke_subsets_name_mapping, "oellrich_walls_subsets")
+phe_subsets_groups.to_pandas().head(10)
 
 
 # <a id="classes"></a>
-# ### Reading in and relating the phenotype subsets from Lloyd and Meinke (2012)
+# ### Reading in and relating the phenotype classes from Lloyd and Meinke (2012)
 
-# In[21]:
+# In[ ]:
 
 
 # Reading in the datasets of phenotype class classifications from the Lloyd, Meinke 2012 paper.
-phe_classes_groups, classes_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, lloyd_classes_filename, "classes")
-phe_classes_groups.to_pandas().head(20)
+lloyd_meinke_classes_name_mapping = {row.group_id:row.group_name for row in pd.read_csv(lloyd_meinke_classes_names_path).itertuples()}
+phe_classes_groups, classes_mapped_ids = read_in_groupings_object_and_write_summary_tables(dataset, lloyd_meinke_classes_path, lloyd_meinke_classes_name_mapping, "oellrich_walls_classes")
+phe_classes_groups.to_pandas().head(10)
 
 
-# ### Relating pairs of genes to information about network edges from other sources
-# This is done to only include genes (and the corresponding phenotype descriptions and annotations) which are useful for the current analysis. In this case we want to only retain genes that are mentioned atleast one time in the STRING database for a given species. If a gene is not mentioned at all in STRING, there is no information available for whether or not it interacts with any other proteins in the dataset so choose to not include it in the analysis. Only genes that have atleast one true positive are included because these are the only ones for which the missing information (negatives) is meaningful. This should be run instead of the subsequent cell, or the other way around, based on whether or not protein-protein interactions is the prediction goal for the current analysis.
+# <a id="edges"></a>
+# ### Relating pairs of genes to information about network edges
+# This is done to only include genes and their corresponding phenotype descriptions and annotations that are useful for the current analysis. In this case we want to only retain genes that are mentioned atleast one time in the STRING database for a given species. If a gene is not mentioned at all in STRING, there is no information available for whether or not it associates with any other proteins in the dataset so choose to not include it in the analysis. Only genes that have atleast one true positive are included because these are the only ones for which the missing information (negatives) is meaningful. These sections obtain these edgelists and lists of IDs for both the edges specified in Oellrich, Walls et al., (2015) which are similarity values between genes based on semantic similarity between their EQ statement representations, and also from STRING, which are protein-protein association scores with a variety of subscores depending on the type of evidence using in determining that association. We also look at the edgelist and list of gene IDs that can be related to PANTHER, where those edges indicate ortholog relationships.
 
 # <a id="eqs"></a>
 # ### EQ-based similarities from Oellrich, Walls et al., (2015)
 
-# In[22]:
+# In[ ]:
 
 
 ow_edgelist = AnyInteractions(dataset.get_name_to_id_dictionary(), pppn_edgelist_path)
@@ -364,9 +445,9 @@ ow_edgelist.df.head(10)
 
 
 # <a id="string"></a>
-# ### Protein associations from STRING
+# ### Protein-Protein Associations from the STRING database
 
-# In[23]:
+# In[ ]:
 
 
 naming_file = "../data/group_related_files/string/all_organisms.name_2_string.tsv"
@@ -387,7 +468,7 @@ string_edgelist.df.head(10)
 # <a id="panther"></a>
 # ### Orthologous genes from PANTHER
 
-# In[24]:
+# In[ ]:
 
 
 panther_edgelist = AnyInteractions(dataset.get_name_to_id_dictionary(), ortholog_file_path)
@@ -396,9 +477,9 @@ panther_edgelist.df.head(10)
 
 # <a id="filtering"></a>
 # ### Subsetting the dataset to include only genes with relevance to any of the biological questions
-# This is done to only include genes (and the corresponding phenotype descriptions and annotations) which are useful for the current analysis. In this case we want to only retain genes that are mapped to atleast one pathway in whatever the source of pathway membership we are using is (KEGG, Plant Metabolic Network, etc). This is because for these genes, it will be impossible to correctly predict their pathway membership, and we have no evidence that they belong or do not belong in certain pathways so they can not be identified as being true or false negatives in any case. This should not actually be necessary if the dataset used to start the notebook analysis has already be subset for just the genes that either have pathway information of phenotype classification information, this should just be used to double check that the numbers make sense.
+# This is done to only include genes (and the corresponding phenotype descriptions and annotations) which are useful for the current analysis. In this case we want to only retain genes that are mapped to atleast one pathway in whatever the source of pathway membership we are using is (KEGG, Plant Metabolic Network, etc). This is because for genes other than these genes, it will be impossible to correctly predict their pathway membership, and we have no evidence that they belong or do not belong in certain pathways so they can not be identified as being true or false negatives in any case. This step is necessary because the datasets used with this analysis consist of all the genes that we were able to obtain a free text phenotype description for, but this set of genes might include genes that are not mapped to any of the other biological resources we are using the evaluate different NLP approaches with, so they have to be discounted.
 
-# In[25]:
+# In[ ]:
 
 
 # Get the list of all the IDs in this dataset that have any relevant mapping at all to the biological questions.
@@ -412,7 +493,7 @@ ids_with_any_mapping = list(set(flatten([
 ])))
 
 
-# In[26]:
+# In[ ]:
 
 
 # Get the list of all the IDs in this dataset that have all of types of curated values we want to look at. 
@@ -426,12 +507,84 @@ ids_with_all_annotations = list(set(flatten([
 ])))
 
 
-# In[32]:
+# In[ ]:
 
 
 dataset.filter_with_ids(ids_with_any_mapping)
-#dataset.filter_random_k(100)
 dataset.describe()
+
+
+# In[ ]:
+
+
+dataset.filter_random_k(1000)
+dataset.describe()
+
+
+# <a id="phenotype_pairs"></a>
+# ### Reading in the descriptions from hand-picked dataset of plant phenotype pairs
+# See the other notebook for the creation of this dataset. This is included in this notebook instead of a separated notebook because we want the treatment of the individual phenotype text instances to be the same as is done for the descriptions from the real dataset of plant phenotypes. The list of computational approaches being evaluated for this task is the same in both cases so all of the cells between the point where the descriptions are read in and when the distance matrices are found using all those methods are the same for this task as any of the biological questions that this notebook is focused on.
+
+# In[ ]:
+
+
+# Read in the table of similarity scored phenotype pairs that was prepared from random selection.
+num_pairs = 50
+mupdata = pd.read_csv(paired_phenotypes_path)
+assert num_pairs == mupdata.shape[0]
+
+# TODO do this in the dataset preprocessing rather than in this analysis notebook.
+mupdata["Phenotype 1"] = mupdata["Phenotype 1"].map(lambda x: x.replace(";", "."))
+mupdata["Phenotype 2"] = mupdata["Phenotype 2"].map(lambda x: x.replace(";", "."))
+paired_phenotypes = mupdata["Phenotype 1"].values.tolist()
+paired_phenotypes.extend(mupdata["Phenotype 2"].values.tolist())
+first_paired_id = 0
+paired_phenotypes = {i:description for i,description in enumerate(paired_phenotypes, first_paired_id)}
+pair_to_score = {(i,i+num_pairs):s for i,s in enumerate(mupdata["Score"].values, first_paired_id)}
+paired_phenotype_ids = list(paired_phenotypes.keys())
+mupdata.head(10)
+
+
+# <a id="biosses"></a>
+# ### Reading in a dataset of sentence pairs from the BIOSSES dataset
+# The dataset that is loaded here is the set of a hundred sentence pairs that were scored for similarity by annotators, and the scores were averaged, from the BIOSSES paper. See the BIOSSES paper for how this dataset was constructed and what the similarity scores for the pairs of sentences mean. This cell sets the descriptions dictionary to contain these sentences, and creates other dictionaries for mapping each pair to itself and for mapping pairs to the scores that were assigned to them by annotators. This will be overwritten if running the notebook automatically as a script, and only matters if looking at this dataset by running this as an interactive notebook. For the analysis, this dataset was used as a means of comparing different hyperparameters that could be used over the plant (testing) data. This includes things like how many encoder layers of BERT to use for phenotype description embeddings, or how whether token vectors from Word2Vec should be combined using mean or max to yield document vectors.<a id="filtering"></a>
+
+# In[ ]:
+
+
+# Read in the dataset of paired sentences from a dataset like the BIOSSES set of sentences pairs.
+num_pairs = 100
+mupdata = pd.read_csv(biosses_datset_path)
+assert num_pairs == mupdata.shape[0]
+
+biosses_sentences = mupdata["Sentence 1"].values.tolist()
+biosses_sentences.extend(mupdata["Sentence 2"].values.tolist())
+first_paired_id = 0
+biosses_sentences = {i:description for i,description in enumerate(biosses_sentences, first_paired_id)}
+pair_to_score = {(i,i+num_pairs):s for i,s in enumerate(mupdata["Annotator Mean"].values, first_paired_id)}
+biosses_ids = list(biosses_sentences.keys())
+mupdata.head(10)
+
+
+# ### Selecting which dataset should be used to proceed with the analysis
+# The analysis is run over different dastasets using this same notebook to avoid including lots of redundant code in the project. Therefore the dataset to use is set here within the notebook, even though some of the previous sections only apply to the main plant phenotypes dataset. The options here should match the datasets argument that can be specified when running the notebook here or as a scritp.
+
+# In[ ]:
+
+
+# Obtain a mapping between IDs and the raw text descriptions associated with that ID from the dataset.
+# The choice made in this cell determines what the dataset used for building the distance matrices is.
+# These two variables are referenced repeatedly throughout the notebook. If using the small datasets of
+# paired sentences instead, make the descriptions variable equal one of those, and ids to use as well.
+dataset_choice_to_descriptions_and_ids_to_use = {
+    "plants": (dataset.get_description_dictionary(), dataset.get_ids()),
+    "snpedia": (dataset.get_description_dictionary(), dataset.get_ids()),
+    "biosses": (biosses_sentences, biosses_ids),
+    "pairs": (paired_phenotypes, paired_phenotype_ids),
+}
+descriptions, ids_to_use = dataset_choice_to_descriptions_and_ids_to_use[args.dataset]
+print(len(descriptions))
+print(len(ids_to_use))
 
 
 # <a id="part_2"></a>
@@ -451,7 +604,7 @@ dataset.describe()
 # ### Loading trained and saved models
 # Versions of the architectures discussed above which have been saved as trained models are loaded here. Some of these models are loaded as pretrained models from the work of other groups, and some were trained on data specific to this notebook and loaded here.
 
-# In[28]:
+# In[ ]:
 
 
 # Files and models related to the machine learning text embedding methods used here.
@@ -468,67 +621,21 @@ bert_model_pubmed = BertModel.from_pretrained(biobert_pubmed_path)
 bert_model_pubmed_pmc = BertModel.from_pretrained(biobert_pubmed_pmc_path)
 
 
-# ### Reading in the descriptions from hand-picked dataset of phenotype pairs
-# See the other notebook for the creation of this dataset. This is included in this notebook instead of a separated notebook because we want the treatment of the individual phenotype text instances to be the same as is done for the descriptions from the real dataset of plant phenotypes. The list of computational approaches being evaluated for this task is the same in both cases so all of the cells between the point where the descriptions are read in and when the distance matrices are found using all those methods are the same for this task as any of the biological questions that this notebook is focused on.
-
-# In[29]:
-
-
-# Read in the table of similarity scored phenotype pairs that was prepared from random selection.
-num_pairs = 50
-mupdata = pd.read_csv(paired_phenotypes_path)
-assert num_pairs == mupdata.shape[0]
-
-# REMOVE THIS ONCE THE DATASET IS FIXED TO USE PERIODS NOT SEMICOLONS.
-mupdata["Phenotype 1"] = mupdata["Phenotype 1"].map(lambda x: x.replace(";", "."))
-mupdata["Phenotype 2"] = mupdata["Phenotype 2"].map(lambda x: x.replace(";", "."))
-
-
-
-
-paired_descriptions = mupdata["Phenotype 1"].values.tolist()
-paired_descriptions.extend(mupdata["Phenotype 2"].values.tolist())
-first_paired_id = 0
-paired_descriptions = {i:description for i,description in enumerate(paired_descriptions, first_paired_id)}
-pair_to_score = {(i,i+num_pairs):s for i,s in enumerate(mupdata["Score"].values, first_paired_id)}
-paired_ids = list(paired_descriptions.keys())
-
-# Set the descriptions to be used to be these from the paired phenotypes dataset.
-# This will only matter if running this in the context of the notebook and skipping the other steps.
-# Otherwise the descriptions dictionary will be reset to be the descriptions from the full dataset.
-descriptions = paired_descriptions
-
-
 # <a id="part_3"></a>
 # # Part 3. NLP Choices
 
-# In[33]:
+# In[ ]:
 
 
-# Obtain a mapping between IDs and the raw text descriptions associated with that ID from the dataset.
-descriptions = dataset.get_description_dictionary()
-
-
-# In[34]:
-
-
+# We need a mapping between gene IDs and lists of some other type of ID that references a single object that was 
+# somehow extracted from descriptions or annotations associated with that gene.
 gene_id_to_unique_ids_mappings = defaultdict(lambda: defaultdict(list))
 unique_id_to_gene_ids_mappings = defaultdict(lambda: defaultdict(list))
-
-# NOTE THAT FOR THE UNTOKENIZED (WHOLE DOC) ONES, THERE SHOULD ONLY BE ONE ENTRY IN THE LIST
-
-
-
-
-
-# THESE NEED TO BE POPULATED. THESE ARE USED WAY BELOW AFTER THE DISTANCE MATRICES ARE GENERATED AND THROUGHOUT.
-#gene_id_to_whole_unique_id = {}
-#gene_id_to_tokenized_unique_id_list = defaultdict(list)
 
 
 # ### Mapping to unique text strings for whole genes.
 
-# In[35]:
+# In[ ]:
 
 
 # Get a mapping between a new unique identifier and unique description strings that are not sentence tokenized.
@@ -542,7 +649,7 @@ whole_unique_ids = list(unique_id_to_unique_text.keys())
 
 # ### Mapping to unique text strings that have been tokenized by sentence.
 
-# In[36]:
+# In[ ]:
 
 
 sent_tokenized_descriptions = {i:sent_tokenize(d) for i,d in descriptions.items()}
@@ -558,10 +665,13 @@ for i, sent_list in sent_tokenized_descriptions.items():
 
 # ### Establishing which dictionaries will be used for preprocessing text next
 
-# In[37]:
+# In[ ]:
 
 
 # What should 'descriptions' be for the sake of doing batch pre-processing?
+# These are no longer whole phenotype descriptions strings, but rather a collection of strings that are considered
+# unique that can sent to the larger calculation step in order to make the realized pairwise distance matrices as 
+# small as possible.
 descriptions = {}
 descriptions.update(unique_id_to_unique_text)
 descriptions.update(unique_id_to_unique_sent)
@@ -576,7 +686,7 @@ unique_tokenized_ids = list(unique_id_to_unique_sent.keys())
 # ### Preprocessing text descriptions
 # The preprocessing methods applied to the phenotype descriptions are a choice which impacts the subsequent vectorization and similarity methods which construct the pairwise distance matrix from each of these descriptions. The preprocessing methods that make sense are also highly dependent on the vectorization method or embedding method that is to be applied. For example, stemming (which is part of the full proprocessing done below using the Gensim preprocessing function) is useful for the n-grams and bag-of-words methods but not for the document embeddings methods which need each token to be in the vocabulary that was constructed and used when the model was trained. For this reason, embedding methods with pretrained models where the vocabulary is fixed should have a lighter degree of preprocessing not involving stemming or lemmatization but should involve things like removal of non-alphanumerics and normalizing case. 
 
-# In[38]:
+# In[ ]:
 
 
 # Applying canned prepreprocessing approaches to the descriptions.
@@ -593,7 +703,7 @@ stop_words = set(stopwords.words('english'))
 # ### POS tagging the phenotype descriptions for nouns and adjectives
 # Note that preprocessing of the descriptions should be done after part-of-speech tagging, because tokens that are removed during preprocessing before n-gram analysis contain information that the parser needs to accurately call parts-of-speech. This step should be done on the raw descriptions and then the resulting bags of words can be subset using additional preprocesssing steps before input in one of the vectorization methods.
 
-# In[39]:
+# In[ ]:
 
 
 get_pos_tokens = lambda text,pos: " ".join([t[0] for t in nltk.pos_tag(word_tokenize(text)) if t[1].lower()==pos.lower()])
@@ -615,9 +725,13 @@ processed["nouns_adjectives_simple"] = {i:"{} {}".format(processed["nouns_simple
 
 
 # Create ontology objects for all the biological ontologies being used.
-pato = Ontology(pato_filename)
-po = Ontology(po_filename)
-go = Ontology(go_filename)
+# Or skip that step and load them as pickled python objects instead, which is much faster.
+#pato = Ontology(pato_obo_path)
+#po = Ontology(po_obo_path)
+#go = Ontology(go_obo_path)
+pato = load_from_pickle(pato_pickle_path)
+po = load_from_pickle(po_pickle_path)
+go = load_from_pickle(go_pickle_path)
 
 
 # In[ ]:
@@ -628,7 +742,7 @@ bio_ontology_tokens = list(set(po.tokens()).union(set(go.tokens())))
 bio_ontology_tokens = [t for t in bio_ontology_tokens if t not in stop_words]
 bio_ontology_tokens_simple = flatten([simple_preprocess(t) for t in bio_ontology_tokens])
 bio_ontology_tokens_full = flatten([preprocess_string(t) for t in bio_ontology_tokens])
-with open(os.path.join(OUTPUT_DIR,"part_3_bio_ontology_vocab_size_{}.txt".format(len(bio_ontology_tokens))),"w") as f:
+with open(os.path.join(OUTPUT_DIR, VOCABULARIES_DIR, "bio_ontology_vocab_size_{}.txt".format(len(bio_ontology_tokens))),"w") as f:
     f.write(" ".join(bio_ontology_tokens))
 
 
@@ -643,7 +757,7 @@ ppp_overrepresented_tokens = get_overrepresented_tokens(phenotypes_corpus, backg
 ppp_overrepresented_tokens = [t for t in ppp_overrepresented_tokens if t not in stop_words]
 ppp_overrepresented_tokens_simple = flatten([simple_preprocess(t) for t in ppp_overrepresented_tokens])
 ppp_overrepresented_tokens_full = flatten([preprocess_string(t) for t in ppp_overrepresented_tokens])
-with open(os.path.join(OUTPUT_DIR,"part_3_plant_phenotype_vocab_size_{}.txt".format(len(ppp_overrepresented_tokens))), "w") as f:
+with open(os.path.join(OUTPUT_DIR, VOCABULARIES_DIR, "plant_phenotype_vocab_size_{}.txt".format(len(ppp_overrepresented_tokens))), "w") as f:
     f.write(" ".join(ppp_overrepresented_tokens))
 
 
@@ -661,7 +775,7 @@ processed["bio_ontology_tokens"] = {i:" ".join([token for token in word_tokenize
 # ### Reducing the vocabulary size using a word distance matrix
 # These approaches for reducing the vocabulary size of the dataset work by replacing multiple words that occur throughout the dataset of descriptions with an identical word that is representative of this larger group of words. The total number of unique words across all descriptions is therefore reduced, and when observing n-gram overlaps between vector representations of these descriptions, overlaps will now occur between descriptions that included different but similar words. These methods work by actually generating versions of these descriptions that have the word replacements present. The returned objects for these methods are the revised description dictionary, a dictionary mapping tokens in the full vocabulary to tokens in the reduced vocabulary, and a dictionary mapping tokens in the reduced vocabulary to a list of tokens in the full vocabulary.
 
-# In[40]:
+# In[ ]:
 
 
 # Generate a pairwise distance matrix object using the oats subpackage, and create an appropriately shaped matrix,
@@ -670,11 +784,15 @@ processed["bio_ontology_tokens"] = {i:" ".join([token for token in word_tokenize
 # the case so it's not directly assumed here.
 tokens = list(set([w for w in flatten(d.split() for d in processed["simple"].values())]))
 tokens_dict = {i:w for i,w in enumerate(tokens)}
-graph = pw.pairwise_square_word2vec(word2vec_model, tokens_dict, "cosine")
+graph = pw.with_word2vec(word2vec_model, tokens_dict, "cosine")
 distance_matrix = graph.array
 tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
 
-# The other argument that the Linares Pontes algorithm needs is a value for n, see paper or description above.
+# Now we have a list of tokens of length n, and the corresponding n by n distance matrix for looking up distances.
+
+
+# The other argument that the Linares Pontes algorithm needs is a value for n, see paper or description above
+# for an explaination of what that value is in the algorithm, and why values near 3 were a good fit.
 n = 3
 processed["linares_pontes"], reduce_lp, unreduce_lp = reduce_vocab_linares_pontes(processed["simple"], tokens, distance_matrix, n)
 
@@ -807,21 +925,6 @@ unique_id_to_unique_go_annotation_strings = {i:s for i,s in enumerate(unique_go_
 _reverse_mapping = {s:i for i,s in unique_id_to_unique_go_annotation_strings.items()}
 gene_id_to_unique_ids_mappings["go_term_sets"] = {i:[_reverse_mapping[s]] for i,s in curated_go_annotation_strings_sorted.items()}
 
-#unique_id_to_unique_go_annotation_strings
-
-# The goal here is to obtain the set of unique term sets, with a mapping from/back to gene IDs, to avoid redundancy.
-#curated_go_annotations_sorted = {i:sorted(l) for i,l in curated_go_annotations.items()}
-#curated_go_annotations_strings = {i:" ".join(l) for i,l in curated_go_annotations.items()}
-#unique_go_annotation_set_strings = [s for s in list(set(curated_go_annotations_strings.values()))]
-#unique_id_to_unique_go_annotation_strings = {i:s for i,s in enumerate(unique_go_annotation_set_strings)}
-#unique_id_to_unique_go_annotations = {i:s.split() for i,s in unique_id_to_unique_go_annotation_strings.items()}
-#_reverse_mapping = {s:i for i,s in unique_id_to_unique_go_annotation_strings.items()}
-#gene_id_to_unique_ids_mappings["go_term_sets"] = {i:[_reverse_mapping[s]] for i,s in curated_go_annotations_strings.items()}
-
-# Data structures generated here that will be referenced later:
-# unique_id_to_unique_go_annotations: Maps arbitrary unique IDs to unique lists of term IDs and can be passed to oats.
-# gene_id_to_union_of_go_terms_unique_id: Needed for getting from gene IDs in this dataset to those arbitrary IDs.
-
 
 # In[ ]:
 
@@ -833,26 +936,12 @@ unique_id_to_unique_po_annotation_strings = {i:s for i,s in enumerate(unique_po_
 _reverse_mapping = {s:i for i,s in unique_id_to_unique_po_annotation_strings.items()}
 gene_id_to_unique_ids_mappings["po_term_sets"] = {i:[_reverse_mapping[s]] for i,s in curated_po_annotation_strings_sorted.items()}
 
-#unique_id_to_unique_po_annotation_strings
-
-#curated_po_annotations_sorted = {i:sorted(l) for i,l in curated_po_annotations.items()}
-#curated_po_annotations_strings = {i:" ".join(l) for i,l in curated_po_annotations.items()}
-#unique_po_annotation_set_strings = [s for s in list(set(curated_po_annotations_strings.values()))]
-#unique_id_to_unique_po_annotation_strings = {i:s for i,s in enumerate(unique_po_annotation_set_strings)}
-#unique_id_to_unique_po_annotations = {i:s.split() for i,s in unique_id_to_unique_po_annotation_strings.items()}
-#_reverse_mapping = {s:i for i,s in unique_id_to_unique_po_annotation_strings.items()}
-#gene_id_to_unique_ids_mappings["po_term_sets"] = {i:[_reverse_mapping[s]] for i,s in curated_po_annotations_strings.items()}
-
-# Data structures generated here that will be referenced later:
-# unique_id_to_unique_po_annotations: Maps arbitrary unique IDs to unique lists of term IDs and can be passed to oats.
-# gene_id_to_union_of_po_terms_unique_id: Needed for getting from gene IDs in this dataset to those arbitrary IDs.
-
 
 # <a id="todo"></a>
 # ### Splitting dictionaries back into phenotype and phene specific dictionaries
 # As a preprocessing step, split into a new set of descriptions that's larger. Note that phenotypes are split into phenes, and the phenes that are identical are retained as separate entries in the dataset. This makes the distance matrix calculation more needlessly expensive, because vectors need to be found for the same string more than once, but it simplifies converting the edgelist back to having IDs that reference the genes (full phenotypes) instead of the smaller phenes. If anything, that problem should be addressed in the pairwise functions, not here. (The package should handle it, not when creating input data for those methods).
 
-# In[41]:
+# In[ ]:
 
 
 # Retrieve dictionaries that refer just to either unique raw whole texts, or unique raw sentences tokenized out.
@@ -873,7 +962,7 @@ for process in processes:
     assert len(unique_tokenized_ids) == len(processed["{}_phenes".format(process)].keys())
 
 
-# In[42]:
+# In[ ]:
 
 
 # These should be to sets not lists, don't need the duplicate references.
@@ -889,7 +978,7 @@ for dtype,mapping in gene_id_to_unique_ids_mappings.items():
             unique_id_to_gene_ids_mappings[dtype][unique_id].append(gene_id)
 
 
-# In[43]:
+# In[ ]:
 
 
 # Each of the gene IDs should map to a list of exactly one ID referencing to a unique whole text, or set of terms.
@@ -915,7 +1004,7 @@ assert all([len(unique_ids)==len(set(unique_ids)) for gene_id,unique_ids in gene
 # <a id="methods"></a>
 # ### Specifying a list of NLP methods to use
 
-# In[44]:
+# In[ ]:
 
 
 # Returns a list of texts, this is necessary for weighting because inverse document frequency won't make sense
@@ -932,16 +1021,48 @@ test_documents = {1:"something in the dataset three times", 2:"something in the 
 get_raw_texts_for_term_weighting(test_documents, test_unique_id_to_real_ids)
 
 
-# In[45]:
+# In[ ]:
 
 
 doc2vec_and_word2vec_approaches = [    
-    Method("Doc2Vec", "Wikipedia,Size=300", pw.pairwise_square_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec", "Wikipedia,Size=300,Mean", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec", "Wikipedia,Size=300,Max", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Doc2Vec", "Tokenization,Wikipedia,Size=300", pw.pairwise_square_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec", "Tokenization,Wikipedia,Size=300,Mean", pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec", "Tokenization,Wikipedia,Size=300,Max",  pw.pairwise_square_word2vec, {"model":word2vec_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Doc2Vec","Wikipedia,Size=300","NLP",1, pw.with_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Word2Vec","Wikipedia,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Word2Vec","Wikipedia,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Doc2Vec","Tokenization,Wikipedia,Size=300","NLP",4, pw.with_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Word2Vec","Tokenization,Wikipedia,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Word2Vec","Tokenization,Wikipedia,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+]
+
+
+# In[ ]:
+
+
+bert_and_biobert_approaches = [
+    Method("BERT", "Base,Layers=2,Concatenated","NLP",11, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="whole_texts"),
+    Method("BERT", "Base,Layers=3,Concatenated","NLP",12, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="whole_texts"),
+    Method("BERT", "Base,Layers=4,Concatenated","NLP",13, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="whole_texts"),
+    Method("BERT", "Base,Layers=2,Summed","NLP",14, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="whole_texts"),
+    Method("BERT", "Base,Layers=3,Summed","NLP",15, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="whole_texts"),
+    Method("BERT", "Base,Layers=4,Summed","NLP",16, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":4}, spatial.distance.cosine, tag="whole_texts"),
+    Method("BioBERT", "PubMed,PMC,Layers=2,Concatenated","NLP",17, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="whole_texts"),
+    Method("BioBERT", "PubMed,PMC,Layers=3,Concatenated","NLP",18, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="whole_texts"),
+    Method("BioBERT", "PubMed,PMC,Layers=4,Concatenated","NLP",19, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="whole_texts"),
+    Method("BioBERT", "PubMed,PMC,Layers=2,Summed","NLP",20, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="whole_texts"),
+    Method("BioBERT", "PubMed,PMC,Layers=3,Summed","NLP",21, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="whole_texts"),
+    Method("BioBERT", "PubMed,PMC,Layers=4,Summed","NLP",22, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":4}, spatial.distance.cosine, tag="whole_texts"),
+    
+    Method("BERT", "Tokenization,Base:Layers=2,Concatenated","NLP",23, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("BERT", "Tokenization,Base:Layers=3,Concatenated","NLP",24, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("BERT", "Tokenization,Base:Layers=4,Concatenated","NLP",25, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("BERT", "Tokenization,Base:Layers=2,Summed","NLP",26, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("BERT", "Tokenization,Base:Layers=3,Summed","NLP",27, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("BERT", "Tokenization,Base:Layers=4,Summed","NLP",28, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":4}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("BioBERT", "Tokenization,PubMed,PMC,Layers=2,Concatenated","NLP",29, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("BioBERT", "Tokenization,PubMed,PMC,Layers=3,Concatenated","NLP",30, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("BioBERT", "Tokenization,PubMed,PMC,Layers=4,Concatenated","NLP",31, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("BioBERT", "Tokenization,PubMed,PMC,Layers=2,Summed","NLP",32, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("BioBERT", "Tokenization,PubMed,PMC,Layers=3,Summed","NLP",33, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("BioBERT", "Tokenization,PubMed,PMC,Layers=4,Summed","NLP",34, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":4}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
 
@@ -949,43 +1070,43 @@ doc2vec_and_word2vec_approaches = [
 
 
 automated_annotation_approaches = [
-    Method("NOBLE Coder", "Precise,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":processed["precise_annotations"], "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "metric":"cosine", "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["precise_annotations"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("NOBLE Coder", "Partial,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":processed["partial_annotations"], "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "metric":"cosine", "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["partial_annotations"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),    
-    Method("NOBLE Coder", "Tokenization,Precise,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":processed["precise_annotations_phenes"], "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "metric":"cosine", "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["precise_annotations_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("NOBLE Coder", "Tokenization,Partial,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":processed["partial_annotations_phenes"], "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "metric":"cosine", "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["partial_annotations_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),   
+    Method("NOBLE Coder","Precise,TFIDF","NLP",41, pw.with_ngrams, {"ids_to_texts":processed["precise_annotations"], "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "metric":"cosine", "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["precise_annotations"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("NOBLE Coder","Partial,TFIDF","NLP",42, pw.with_ngrams, {"ids_to_texts":processed["partial_annotations"], "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "metric":"cosine", "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["partial_annotations"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),    
+    Method("NOBLE Coder","Tokenization,Precise,TFIDF","NLP",43, pw.with_ngrams, {"ids_to_texts":processed["precise_annotations_phenes"], "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "metric":"cosine", "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["precise_annotations_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("NOBLE Coder","Tokenization,Partial,TFIDF","NLP",44, pw.with_ngrams, {"ids_to_texts":processed["partial_annotations_phenes"], "binary":True, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "metric":"cosine", "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["partial_annotations_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),   
 ]
 
 
-# In[48]:
+# In[ ]:
 
 
 nmf_topic_modeling_approaches = [
-    Method("Topic Modeling", "NMF,Full,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":processed["full"], "metric":"cosine", "num_topics":50, "algorithm":"nmf", "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Topic Modeling", "NMF,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":processed["full"], "metric":"cosine", "num_topics":100, "algorithm":"nmf", "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Topic Modeling", "Tokenization,NMF,Full,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "num_topics":50, "algorithm":"nmf", "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Topic Modeling", "Tokenization,NMF,Full,Topics=100",  pw.pairwise_square_topic_model, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "num_topics":100, "algorithm":"nmf", "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Topic Modeling","NMF,Full,Topics=50","NLP",51, pw.with_topic_model, {"ids_to_texts":processed["full"], "metric":"cosine", "num_topics":50, "algorithm":"nmf", "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Topic Modeling","NMF,Full,Topics=100","NLP",52, pw.with_topic_model, {"ids_to_texts":processed["full"], "metric":"cosine", "num_topics":100, "algorithm":"nmf", "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Topic Modeling","Tokenization,NMF,Full,Topics=50","NLP",53, pw.with_topic_model, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "num_topics":50, "algorithm":"nmf", "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Topic Modeling","Tokenization,NMF,Full,Topics=100","NLP",54,  pw.with_topic_model, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "num_topics":100, "algorithm":"nmf", "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
 
-# In[47]:
+# In[ ]:
 
 
 lda_topic_modeling_approaches = [
-    Method("Topic Modeling", "LDA,Full,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":processed["full"], "metric":"cosine", "num_topics":50, "algorithm":"lda", "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Topic Modeling", "LDA,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":processed["full"], "metric":"cosine", "num_topics":100, "algorithm":"lda", "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Topic Modeling", "Tokenization,LDA,Full,Topics=50", pw.pairwise_square_topic_model, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "num_topics":50, "algorithm":"lda", "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Topic Modeling", "Tokenization,LDA,Full,Topics=100", pw.pairwise_square_topic_model, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "num_topics":100, "algorithm":"lda", "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Topic Modeling", "LDA,Full,Topics=50","NLP",61, pw.with_topic_model, {"ids_to_texts":processed["full"], "metric":"cosine", "num_topics":50, "algorithm":"lda", "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Topic Modeling", "LDA,Full,Topics=100","NLP",62, pw.with_topic_model, {"ids_to_texts":processed["full"], "metric":"cosine", "num_topics":100, "algorithm":"lda", "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Topic Modeling", "Tokenization,LDA,Full,Topics=50","NLP",63, pw.with_topic_model, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "num_topics":50, "algorithm":"lda", "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Topic Modeling", "Tokenization,LDA,Full,Topics=100","NLP",64, pw.with_topic_model, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "num_topics":100, "algorithm":"lda", "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
 
-# In[46]:
+# In[ ]:
 
 
 vanilla_ngrams_approaches = [
-    Method("N-Grams", "Full,Words,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("N-Grams", "Full,Words,1-grams,2-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("N-Grams", "Tokenization,Full,Words,1-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("N-Grams", "Tokenization,Full,Words,1-grams,2-grams,TFIDF", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Full,Words,1-grams,TFIDF","NLP",71,pw.with_ngrams, {"ids_to_texts":processed["full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Full,Words,1-grams,2-grams,TFIDF","NLP",72, pw.with_ngrams, {"ids_to_texts":processed["full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Tokenization,Full,Words,1-grams,TFIDF","NLP",73, pw.with_ngrams, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Tokenization,Full,Words,1-grams,2-grams,TFIDF","NLP",74, pw.with_ngrams, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
 
@@ -994,19 +1115,19 @@ vanilla_ngrams_approaches = [
 
 modified_vocab_approaches = [
     
-    Method("N-Grams", "Full,Nouns,Adjectives,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["nouns_adjectives_full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["nouns_adjectives_full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("N-Grams", "Linares_Pontes,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["linares_pontes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("N-Grams", "Full,Precise_Annotations,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full_plus_precise_annotations"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_plus_precise_annotations"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("N-Grams", "Full,Partial_Annotations,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full_plus_partial_annotations"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_plus_partial_annotations"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("N-Grams", "Full,Plant Overrepresented Tokens,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["plant_overrepresented_tokens"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["plant_overrepresented_tokens"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("N-Grams", "Full,Bio Ontology Tokens,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["bio_ontology_tokens"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["bio_ontology_tokens"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Full,Nouns,Adjectives,1-grams","NLP",81, pw.with_ngrams, {"ids_to_texts":processed["nouns_adjectives_full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["nouns_adjectives_full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Linares_Pontes,Words,1-grams","NLP",82, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Full,Precise_Annotations,Words,1-grams","NLP",83, pw.with_ngrams, {"ids_to_texts":processed["full_plus_precise_annotations"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_plus_precise_annotations"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Full,Partial_Annotations,Words,1-grams","NLP",84, pw.with_ngrams, {"ids_to_texts":processed["full_plus_partial_annotations"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_plus_partial_annotations"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Full,Plant Overrepresented Tokens,1-grams","NLP",85, pw.with_ngrams, {"ids_to_texts":processed["plant_overrepresented_tokens"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["plant_overrepresented_tokens"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Full,Bio Ontology Tokens,1-grams","NLP",86, pw.with_ngrams, {"ids_to_texts":processed["bio_ontology_tokens"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["bio_ontology_tokens"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
     
-    Method("N-Grams", "Tokenization,Full,Nouns,Adjectives,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["nouns_adjectives_full_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True,  "training_texts":get_raw_texts_for_term_weighting(processed["nouns_adjectives_full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("N-Grams", "Tokenization,Linares_Pontes,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["linares_pontes_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("N-Grams", "Tokenization,Full,Precise_Annotations,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full_plus_precise_annotations_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_plus_precise_annotations_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("N-Grams", "Tokenization,Full,Partial_Annotations,Words,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["full_plus_partial_annotations_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_plus_partial_annotations_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("N-Grams", "Tokenization,Full,Plant Overrepresented Tokens,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["plant_overrepresented_tokens_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["plant_overrepresented_tokens_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("N-Grams", "Tokenization,Full,Bio Ontology Tokens,1-grams", pw.pairwise_square_ngrams, {"ids_to_texts":processed["bio_ontology_tokens_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["bio_ontology_tokens_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Tokenization,Full,Nouns,Adjectives,1-grams","NLP",87, pw.with_ngrams, {"ids_to_texts":processed["nouns_adjectives_full_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True,  "training_texts":get_raw_texts_for_term_weighting(processed["nouns_adjectives_full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Tokenization,Linares_Pontes,Words,1-grams","NLP",88, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Tokenization,Full,Precise_Annotations,Words,1-grams","NLP",89, pw.with_ngrams, {"ids_to_texts":processed["full_plus_precise_annotations_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_plus_precise_annotations_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Tokenization,Full,Partial_Annotations,Words,1-grams","NLP",90, pw.with_ngrams, {"ids_to_texts":processed["full_plus_partial_annotations_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_plus_partial_annotations_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Tokenization,Full,Plant Overrepresented Tokens,1-grams","NLP",91, pw.with_ngrams, {"ids_to_texts":processed["plant_overrepresented_tokens_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["plant_overrepresented_tokens_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Tokenization,Full,Bio Ontology Tokens,1-grams","NLP",92, pw.with_ngrams, {"ids_to_texts":processed["bio_ontology_tokens_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["bio_ontology_tokens_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
 
@@ -1014,80 +1135,93 @@ modified_vocab_approaches = [
 
 
 manual_annotation_approaches = [
-    Method("GO", "Union", pw.pairwise_square_ngrams, {"ids_to_texts":unique_id_to_unique_go_annotation_strings,  "metric":"cosine", "max_features":10000, "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(unique_id_to_unique_go_annotation_strings, unique_id_to_gene_ids_mappings["go_term_sets"])}, spatial.distance.cosine, tag="go_term_sets"),
-    Method("PO", "Union", pw.pairwise_square_ngrams, {"ids_to_texts":unique_id_to_unique_po_annotation_strings, "metric":"cosine", "max_features":10000, "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(unique_id_to_unique_po_annotation_strings, unique_id_to_gene_ids_mappings["po_term_sets"])}, spatial.distance.cosine, tag="po_term_sets"),
-    Method("GO", "Minimum", pw.pairwise_square_ngrams, {"ids_to_texts":individual_curated_go_term_strings, "metric":"cosine", "max_features":10000, "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_go_term_strings, unique_id_to_gene_ids_mappings["go_terms"])}, spatial.distance.cosine, tag="go_terms"),
-    Method("PO", "Minimum", pw.pairwise_square_ngrams, {"ids_to_texts":individual_curated_po_term_strings, "metric":"cosine", "max_features":10000, "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_po_term_strings, unique_id_to_gene_ids_mappings["po_terms"])},spatial.distance.cosine, tag="po_terms"),
+    Method("GO","Union","Curated",201, pw.with_ngrams, {"ids_to_texts":unique_id_to_unique_go_annotation_strings,  "metric":"cosine", "max_features":10000, "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(unique_id_to_unique_go_annotation_strings, unique_id_to_gene_ids_mappings["go_term_sets"])}, spatial.distance.cosine, tag="go_term_sets"),
+    Method("PO","Union","Curated",202, pw.with_ngrams, {"ids_to_texts":unique_id_to_unique_po_annotation_strings, "metric":"cosine", "max_features":10000, "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(unique_id_to_unique_po_annotation_strings, unique_id_to_gene_ids_mappings["po_term_sets"])}, spatial.distance.cosine, tag="po_term_sets"),
+    Method("GO","Minimum","Curated",203, pw.with_ngrams, {"ids_to_texts":individual_curated_go_term_strings, "metric":"cosine", "max_features":10000, "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_go_term_strings, unique_id_to_gene_ids_mappings["go_terms"])}, spatial.distance.cosine, tag="go_terms"),
+    Method("PO","Minimum","Curated",204, pw.with_ngrams, {"ids_to_texts":individual_curated_po_term_strings, "metric":"cosine", "max_features":10000, "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_po_term_strings, unique_id_to_gene_ids_mappings["po_terms"])},spatial.distance.cosine, tag="po_terms"),
 ]
 
 
-# In[49]:
+# In[ ]:
 
 
 # Adding lists of approaches to the complete set to be run, this is useful when running the notebook as a script.
 methods = []
-if args.learning: methods.extend(doc2vec_and_word2vec_approaches)
-if args.noblecoder: methods.extend(automated_annotation_approaches)
+#if args.learning: methods.extend(doc2vec_and_word2vec_approaches)
+#if args.bert: methods.extend(bert_and_biobert_approaches)
+#if args.noblecoder: methods.extend(automated_annotation_approaches)
 if args.nmf: methods.extend(nmf_topic_modeling_approaches)
 if args.lda: methods.extend(lda_topic_modeling_approaches)
-if args.vanilla: methods.extend(vanilla_ngrams_approaches)
-if args.vocab: methods.extend(modified_vocab_approaches)
-if args.annotations: methods.extend(manual_annotation_approaches)
+#if args.vanilla: methods.extend(vanilla_ngrams_approaches)
+#if args.vocab: methods.extend(modified_vocab_approaches)
+#if args.annotations: methods.extend(manual_annotation_approaches)
 
 
 # <a id="running"></a>
 # ### Running all of the methods to generate distance matrices
 # Notes- Instead of passing in similarity function like cosine distance that will get evaluated for every possible i,j pair of vetors that are created (this is very big when splitting by phenes), don't use a specific similarity function, but instead let the object use a KNN classifier. pass in some limit for k like 100. then the object uses some more efficient (not brute force) algorithm to set the similarity of some vector v to its 100 nearest neighbors as those 100 probabilities, and sets everything else to 0. This would need to be implemented as a matching but separate function from the get_square_matrix_from_vectors thing. And then this would need to be noted in the similarity function that was used for these in the big table of methods. This won't work because the faster (not brute force algorithms) are not for sparse vectors like n-grams, and the non-sparse embeddings aren't really the problem here because those vectors are relatively much short, even when concatenating BERT encoder layers thats only up to around length of ~1000.
 
-# In[50]:
+# In[ ]:
 
 
-# Generate all the pairwise distance matrices (not in parallel).
+# Generate all the pairwise distance matrices but not in parallel.  
 graphs = {}
-names = []
+method_col_names = []
+method_name_to_method_obj = {}
 durations = []
 vector_lengths = []
 array_lengths = []
 for method in methods:
     graph,duration = function_wrapper_with_duration(function=method.function, args=method.kwargs)
+    graph.edgelist = None
     graphs[method.name_with_hyperparameters] = graph
-    names.append(method.name_with_hyperparameters)
+    method_col_names.append(method.name_with_hyperparameters)
+    method_name_to_method_obj[method.name_with_hyperparameters] = method
     durations.append(to_hms(duration))
     vector_length = len(list(graph.vector_dictionary.values())[0])
     array_length = graph.array.shape[0]
     vector_lengths.append(vector_length)
     array_lengths.append(array_length)
     print("{:70} {:10} {:10} {:10}".format(method.name_with_hyperparameters, to_hms(duration), vector_length, array_length))
-approaches_df = pd.DataFrame({"method":names, "duration":durations, "vector_length":vector_lengths, "arr_length":array_lengths})
-approaches_df.to_csv(os.path.join(OUTPUT_DIR,"part_4_approaches.csv"), index=False)
+
+    # Saving the graph objects to pickes that could be loaded later to access the same vector embeddings.
+    if args.app:
+        filters = [lambda x: x.lower(), strip_punctuation]
+        filename = "_".join(preprocess_string(method.name_with_hyperparameters, filters))
+        path = os.path.join(OUTPUT_DIR, STREAMLIT_DIR, "dists_with_{}.pickle".format(filename))
+        save_to_pickle(path=path, obj=graph)
+    
+# Save a file that details what was constructed with each approach, and how long it took.
+approaches_df = pd.DataFrame({"method":method_col_names, "duration":durations, "vector_length":vector_lengths, "arr_length":array_lengths})
+approaches_df.to_csv(os.path.join(OUTPUT_DIR, APPROACHES_DIR, "approaches.csv"), index=False)
+
+# Save a copy of the dataset that includes just the genes that were looked at here.
+# This way this dataset will correspond exactly to the distance matrices created and saved as well.
+if args.app:
+    path = os.path.join(OUTPUT_DIR, STREAMLIT_DIR, "genes_texts_annots.csv")
+    dataset.to_pandas().to_csv(path, index=False)
 
 
-# In[51]:
+# In[ ]:
 
 
 # Merging all the edgelists together.
-metric_dict = {method.name_with_hyperparameters:method.metric for method in methods}
-tags_dict = {method.name_with_hyperparameters:method.tag for method in methods}
-names = list(graphs.keys())
+#metric_dict = {method.name_with_hyperparameters:method.metric for method in methods}
+#tags_dict = {method.name_with_hyperparameters:method.tag for method in methods}
+#names = list(graphs.keys())
 
 
-# In[52]:
+# In[ ]:
 
 
-ids = dataset.get_ids()
-
-
-# DUMMY THING REMOVE THIS
-#if NOTEBOOK == True:
-#    ids = paired_ids
-#    print("here")
-
-
+# These IDs should either be the IDs picked from the dataset tha represent actual genes, or the paired sentence IDs.
+# This depends on which one was set as the dataset to use previously.
+ids = ids_to_use
 from_to_id_pairs = [(i,j) for (i,j) in itertools.combinations(ids, 2)]
 df = pd.DataFrame(from_to_id_pairs, columns=["from","to"])
 
 
-# In[53]:
+# In[ ]:
 
 
 # When multiple indices within the array could be part of the data for one particular gene (sentence tokenized).
@@ -1109,7 +1243,7 @@ def lookup_distance(gene_id_1, gene_id_2, gene_id_to_uids, uid_to_array_index, a
     return(distance)
 
 
-# In[54]:
+# In[ ]:
 
 
 # Depending on what the IDs in the dictionaries for each approach were referencing, the distance values in the
@@ -1128,10 +1262,21 @@ function_and_mapping_to_use = {
     "po_terms":(get_min_of_distances, gene_id_to_unique_ids_mappings["po_terms"])}
 
 
+
+# Writing those dictionaries to pickles so that we can use them in the app with the distance objects.
+if args.app:
+    save_to_pickle(path=os.path.join(OUTPUT_DIR, STREAMLIT_DIR, "gene_id_to_unique_ids_sent_tokens.pickle"), obj=gene_id_to_unique_ids_mappings["sent_tokens"])
+    save_to_pickle(path=os.path.join(OUTPUT_DIR, STREAMLIT_DIR, "gene_id_to_unique_ids_whole_texts.pickle"), obj=gene_id_to_unique_ids_mappings["whole_texts"])
+    save_to_pickle(path=os.path.join(OUTPUT_DIR, STREAMLIT_DIR, "gene_id_to_unique_ids_go_term_sets.pickle"), obj=gene_id_to_unique_ids_mappings["go_term_sets"])
+    save_to_pickle(path=os.path.join(OUTPUT_DIR, STREAMLIT_DIR, "gene_id_to_unique_ids_po_term_sets.pickle"), obj=gene_id_to_unique_ids_mappings["po_term_sets"])
+    save_to_pickle(path=os.path.join(OUTPUT_DIR, STREAMLIT_DIR, "gene_id_to_unique_ids_go_terms.pickle"), obj=gene_id_to_unique_ids_mappings["go_terms"])
+    save_to_pickle(path=os.path.join(OUTPUT_DIR, STREAMLIT_DIR, "gene_id_to_unique_ids_po_terms.pickle"), obj=gene_id_to_unique_ids_mappings["po_terms"])
+
+
 # Create one new column in the edge list dataframe for each of the approaches that were used.
 for name,graph in graphs.items():
     print(name)
-    function, mapping = function_and_mapping_to_use[tags_dict[name]]
+    function, mapping = function_and_mapping_to_use[method_name_to_method_obj[name].tag]
     df[name] = df.apply(lambda x: function(x["from"], x["to"], mapping, graph.id_to_index, graph.array), axis=1)
         
 
@@ -1160,18 +1305,18 @@ df.head(20)
 # ### Combining multiple distances measurements into summarizing distance values
 # The purpose of this section is to iteratively train models on subsections of the dataset using simple regression or machine learning approaches to predict a value from zero to one indicating indicating how likely is it that two genes share atleast one of the specified groups in common. The information input to these models is the distance scores provided by each method in some set of all the methods used in this notebook. The purpose is to see whether or not a function of these similarity scores specifically trained to the task of predicting common groupings is better able to used the distance metric information to report a score for this task.
 
-# In[55]:
+# In[ ]:
 
 
 # Get the average distance percentile as a means of combining multiple scores.
-name = "mean"
-names_to_use_for_mean = [name for name in names if ("go:" not in name.lower()) and ("po:" not in name.lower())]
-df[name] = df[names_to_use_for_mean].rank(pct=True).mean(axis=1)
-names.append(name)
+mean_method = Method(name="mean", hyperparameters="no hyperparameters", group="nlp", number=300)
+col_names_to_use_for_mean = [method.name_with_hyperparameters for method in methods if ("go:" not in method.name_with_hyperparameters) and ("po:" not in method.name_with_hyperparameters)]
+df[mean_method.name_with_hyperparameters] = df[col_names_to_use_for_mean].rank(pct=True).mean(axis=1)
+methods.append(mean_method)
 df.head(20)
 
 
-# In[57]:
+# In[ ]:
 
 
 # Normalizing all of the array representations of the graphs so they can be combined. Then this version of the arrays
@@ -1182,23 +1327,17 @@ df.head(20)
 # produce a standardized list of arrays which exactly represent the data in the edgelist dataframe. It is redundant,
 # and could be removed later if necessary for memory constraints, but it is useful to be able to reference this
 # information sometimes using numpy instead of pandas only.
-
 name_to_array = {}
-ids = dataset.get_ids()
 
-
-# DUMMY THING REMOVE THIS
-#if NOTEBOOK == True:
-#    ids = paired_ids
-#    print("here")
-
-
-
+# Picked based of what the dataset being looked at is. Theres are either referencing genes or could also be from
+# the files that have paired sentences like BIOSSES or the dataset of score plant-related sentences.
+ids = ids_to_use
 
 n = len(ids)
 id_to_array_index = {i:idx for idx,i in enumerate(ids)}
 array_index_to_id = {idx:i for i,idx in id_to_array_index.items()}
-for name in names:
+for method in methods:
+    name = method.name_with_hyperparameters
     print(name)
     idx = list(df.columns).index(name)+1
     arr = np.ones((n, n))
@@ -1215,7 +1354,7 @@ for name in names:
 # In[ ]:
 
 
-if NOTEBOOK:
+if args.dataset in ("biosses", "pairs"):
     small_table = defaultdict(dict)
     for name in names:
         values = []
@@ -1228,14 +1367,18 @@ if NOTEBOOK:
             scores.append(score)
         rho,pval = spearmanr(values,scores)
         small_table[name] = {"rho":rho,"pval":pval}
-    a = pd.DataFrame(small_table).transpose()
-    a
+    correlations_df = pd.DataFrame(small_table).transpose()
+    correlations_df.reset_index(drop=False, inplace=True)
+    correlations_df.rename({"index":"approach"}, inplace=True, axis="columns")
+    correlations_df.to_csv(os.path.join(OUTPUT_DIR,METRICS_DIR,"correlations.csv"), index=False)
+    print(correlations_df)
+    print(stop_here_gibberish_notavariable)
 
 
 # <a id="part_5"></a>
 # # Part 5. Biological Questions
 
-# In[58]:
+# In[ ]:
 
 
 df.head(20)
@@ -1244,7 +1387,7 @@ df.head(20)
 # <a id="species"></a>
 # ### Checking whether gene pairs are intraspecies or not
 
-# In[59]:
+# In[ ]:
 
 
 species_dict = dataset.get_species_dictionary()
@@ -1255,7 +1398,7 @@ df.head(10)
 # <a id="pathway_objective"></a>
 # ### Using shared pathway membership (PlantCyc and KEGG) as the objective
 
-# In[60]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair mapped to a pathway resource.
@@ -1274,7 +1417,7 @@ df.loc[(df["pair_is_valid"]==True),"pathways"] = df[["from","to"]].apply(lambda 
 df.drop(labels=["from_is_valid","to_is_valid","pair_is_valid"], axis="columns", inplace=True)
 
 
-# In[61]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair mapped to a pathway resource.
@@ -1293,7 +1436,7 @@ df.loc[(df["pair_is_valid"]==True),"kegg_only"] = df[["from","to"]].apply(lambda
 df.drop(labels=["from_is_valid","to_is_valid","pair_is_valid"], axis="columns", inplace=True)
 
 
-# In[62]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair mapped to a pathway resource.
@@ -1317,7 +1460,7 @@ df.head(20)
 # <a id="subset_objective"></a>
 # ### Using shared phenotype classification (Lloyd and Meinke et al., 2012) as the objective
 
-# In[63]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to a phenotype classification.
@@ -1338,7 +1481,7 @@ df.head(20)
 # <a id="association_objective"></a>
 # ### Using protein assocations (STRING) as the objective 
 
-# In[64]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to a phenotype classification.
@@ -1367,7 +1510,7 @@ df.head(20)
 # <a id="ortholog_objective"></a>
 # ### Using orthology between genes (PANTHER) as the objective
 
-# In[65]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to a phenotype classification.
@@ -1389,8 +1532,11 @@ df.head(20)
 # <a id="eq_sim"></a>
 # ### Curator-derived similarity values from Oellrich, Walls et al., 2015
 
-# In[66]:
+# In[ ]:
 
+
+eqs_method = Method(name="eqs", hyperparameters="no hyperparams", group="curated", number=400)
+eqs_method.name_with_hyperparameters
 
 # Add a column that indicates whether or not both genes of the pair are mapped to all the curation types.
 relevant_ids = set(ow_edgelist.ids)
@@ -1399,14 +1545,14 @@ df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
 df["pair_is_valid"] = df["from_is_valid"]*df["to_is_valid"]
 
 # Add a column giving the actual target output value for this biological task, with -1 for the irrelevant rows.
-df["eqs_distance"] = -1
+df[eqs_method.name_with_hyperparameters] = -1
 df = df.merge(right=ow_edgelist.df, how="left", on=["from","to"])
 df["value"].fillna(value=0, inplace=True)
-df.loc[(df["pair_is_valid"]==True),"eqs_distance"] = 1-df["value"]
+df.loc[(df["pair_is_valid"]==True),eqs_method.name_with_hyperparameters] = 1-df["value"]
 df.drop(labels=["from_is_valid","to_is_valid","pair_is_valid","value"], axis="columns", inplace=True)
 
 # Also, add the curated EQ approach to the list of column names that reference approaches to be evaluated.
-names.append("eqs_distance")
+methods.append(eqs_method)
 
 df.head(20)   
 
@@ -1414,10 +1560,12 @@ df.head(20)
 # <a id="curated"></a>
 # ### Checking whether gene pairs are considered curated or not
 
-# In[67]:
+# In[ ]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to all the curation types.
+# This is because to keep things simple for the analysis, we're keeping ones that have all three annotation types as a
+# seperate datasets where we have all the curation information that we want to use as a comparison.
 relevant_ids = set(ids_with_all_annotations)
 df["from_is_valid"] = df["from"].map(lambda x: x in relevant_ids)
 df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
@@ -1428,31 +1576,67 @@ df.head(10)
 
 # ### Checking to make sure that the number of genes and pairs matches what is expected at this point
 
-# In[68]:
+# In[ ]:
 
 
 # Defining a nested dictionary with shape dict[curated][question][species][approach][metric] --> value.
+#curated = [True,False]
+#species = ["intra","inter","both"]
+#question = ["subsets", "known", "predicted", "pathways", "orthologs"]
+#tables = defaultdict(dict)
+#for c,q in itertools.product(curated,question): 
+#    tables[c][q] = defaultdict(dict)
+#for c,q,s in itertools.product(curated,question,species): 
+#    tables[c][q][s] = defaultdict(dict)
+    
+# Given the columns in this dataframe that were generated in the previous cells, what are all the variables 
+# by which we want to be able to split up the data, so that we can calculate metrics on different subsets of it?
 curated = [True,False]
-species = ["intra","inter","both"]
 question = ["subsets", "known", "predicted", "pathways", "orthologs"]
-tables = defaultdict(dict)
-for c,q in itertools.product(curated,question): 
-    tables[c][q] = defaultdict(dict)
-for c,q,s in itertools.product(curated,question,species): 
-    tables[c][q][s] = defaultdict(dict)
+species = ["intra","inter","both"]
+
+
+# Not all possible combinations of these variables makes logical sense or are of interest. 
+# For example, the dataset for interspecies genes pairs and protein associations will have only negatives in it.
+# The dataset for intraspecies gene pairs that are orthologous will also have only negatives in it.
+# Including both intraspecies and interspecies only really applies to looking at biochemical pathways currently.
+# For now, just manually specify which of the combinations make sense. If adding more ways to split up the data in
+# the future, this might have to be done in a better way.
+variable_combinations = [
+    (True,"subsets","intra"),
+    (True,"known","intra"),
+    (True,"predicted","intra"),
+    (True,"pathways","intra"),
+    (True,"pathways","inter"),
+    (True,"pathways","both"),
+    (True,"orthologs","inter"),
+    (False,"subsets","intra"),
+    (False,"known","intra"),
+    (False,"predicted","intra"),
+    (False,"pathways","intra"),
+    (False,"pathways","inter"),
+    (False,"pathways","both"),
+    (False,"orthologs","inter"),
+]
+
+# Create an infinitely nested dictionary to put results in for each of these different subsets of the data.
+# This does not have a limited shape, but it should be used in this case as:
+# dict[curated][question][species][approach][metric] --> value.
+infinite_defaultdict = lambda: defaultdict(infinite_defaultdict)
+tables = infinite_defaultdict()     
 
 
 # <a id="n_values"></a>
-# ### What are the value of *n* for each type of iteration through a subset of the dataset?
+# ### What are the values of *n* for each type of iteration through a subset of the dataset?
 
-# In[69]:
+# In[ ]:
 
 
 subset_idx_lists = []
 subset_properties = []
 table_lists = defaultdict(list)
-for c,q,s in itertools.product(curated,question,species):
-    
+for (c,q,s) in variable_combinations: 
+
     # Remembering what the properties for this particular subset are.
     subset_properties.append((c,q,s))
     
@@ -1468,11 +1652,12 @@ for c,q,s in itertools.product(curated,question,species):
     elif s == "inter":
         subset = subset[subset["same"] == False]
         
+    # Remember which indices in the dataframe correspond to the subset for that combination of variables.
     subset_idx_lists.append(subset.index.to_list())
+    
     
     # Adding values to the table that are specific to this biological question.
     counts = Counter(subset[q].values)
-    
     table_lists["question"].append(q.lower())
     table_lists["curated"].append(str(c).lower())
     table_lists["species"].append(s.lower())
@@ -1485,14 +1670,14 @@ pairs_table = pd.DataFrame(table_lists)
 pairs_table["num_pairs"] = pairs_table["positive"]+pairs_table["negative"]
 pairs_table["positive_fraction"] = pairs_table["positive"] / pairs_table["num_pairs"]
 pairs_table["negative_fraction"] = pairs_table["negative"] / pairs_table["num_pairs"]
-pairs_table.to_csv(os.path.join(OUTPUT_DIR,"part_5_biological_question_n_values.csv"), index=False)
+pairs_table.to_csv(os.path.join(OUTPUT_DIR, QUESTIONS_DIR, "value_of_n_for_each_question.csv"), index=False)
 pairs_table
 
 
 # <a id="objective_similarities"></a>
 # ### How similar are the different biological objectives to each other?
 
-# In[70]:
+# In[ ]:
 
 
 # Looking more at the distributions of target values for each of the biological questions.
@@ -1511,7 +1696,7 @@ question_overlaps_table = pd.DataFrame(row_tuples)
 question_overlaps_table.columns = ["question_1", "question_2", "num_pairs_1", "num_pairs_2", "num_overlap", "sim_overlap"]
 question_overlaps_table.sort_values(by="sim_overlap", ascending=False, inplace=True)
 question_overlaps_table.reset_index(inplace=True, drop=True)
-question_overlaps_table.to_csv(os.path.join(OUTPUT_DIR,"part_5_biological_question_overlaps.csv"), index=False)
+question_overlaps_table.to_csv(os.path.join(OUTPUT_DIR, QUESTIONS_DIR, "sizes_of_overlaps_between_questions.csv"), index=False)
 question_overlaps_table
 
 
@@ -1522,7 +1707,7 @@ question_overlaps_table
 # ### Do the edges joining genes that share a group, pathway, or interaction come from a different distribution?
 # The purpose of this section is to visualize kernel estimates for the distributions of distance or similarity scores generated by each of the methods tested for measuring semantic similarity or generating vector representations of the phenotype descriptions. Ideally, better methods should show better separation betwene the distributions for distance values between two genes involved in a common specified group or two genes that are not. Additionally, a statistical test is used to check whether these two distributions are significantly different from each other or not, although this is a less informative measure than the other tests used in subsequent sections, because it does not address how useful these differences in the distributions actually are for making predictions about group membership.
 
-# In[71]:
+# In[ ]:
 
 
 for properties,idxs in zip(subset_properties, subset_idx_lists):
@@ -1530,9 +1715,9 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
     # Remember the properties for this subset being looked at, and subset the dataframe accordingly.
     c,q,s = properties
     
-    # Don't look at the inter-species and intra-species edges except for pathways, otherwise irrelevant.
-    if (s != "both") and (q != "pathways"):
-        continue
+    # Don't look at the inter-species and intra-species edges except for pathways, otherwise that's irrelevant.
+    #if (s != "both") and (q != "pathways"):
+    #    continue
     
     # Only look at gene pairs where both are relevant to the given biological question.
     subset = df.loc[idxs]
@@ -1543,9 +1728,10 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
         continue
     
     # Use Kolmogorov-Smirnov test to see if edges between genes that share a group come from a distinct distribution.
-    ppi_pos_dict = {name:(subset[subset[q] > 0.00][name].values) for name in names}
-    ppi_neg_dict = {name:(subset[subset[q] == 0.00][name].values) for name in names}
-    for name in names:
+    ppi_pos_dict = {method.name_with_hyperparameters:(subset[subset[q] > 0.00][method.name_with_hyperparameters].values) for method in methods}
+    ppi_neg_dict = {method.name_with_hyperparameters:(subset[subset[q] == 0.00][method.name_with_hyperparameters].values) for method in methods}
+    for method in methods:
+        name = method.name_with_hyperparameters
         stat,p = ks_2samp(ppi_pos_dict[name],ppi_neg_dict[name])
         pos_mean = np.average(ppi_pos_dict[name])
         neg_mean = np.average(ppi_neg_dict[name])
@@ -1556,32 +1742,39 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
         tables[c][q][s][name].update({"ks":stat, "ks_pval":p})
 
     # Show the kernel estimates for each distribution of weights for each method.
-    #num_plots, plots_per_row, row_width, row_height = (len(names), 4, 14, 3)
-    #fig,axs = plt.subplots(math.ceil(num_plots/plots_per_row), plots_per_row, squeeze=False)
-    #for name,ax in zip(names,axs.flatten()):
-    #    ax.set_title(name)
-    #    ax.set_xlabel("value")
-    #    ax.set_ylabel("density")
-    #    sns.kdeplot(ppi_pos_dict[name], color="black", shade=False, alpha=1.0, ax=ax)
-    #    sns.kdeplot(ppi_neg_dict[name], color="black", shade=True, alpha=0.1, ax=ax) 
-    #fig.set_size_inches(row_width, row_height*math.ceil(num_plots/plots_per_row))
-    #fig.tight_layout()
-    #fig.savefig(os.path.join(OUTPUT_DIR,"part_6_kernel_density.png"),dpi=400)
-    #plt.close()
+    num_plots, plots_per_row, row_width, row_height = (len(methods), 4, 14, 3)
+    fig,axs = plt.subplots(math.ceil(num_plots/plots_per_row), plots_per_row, squeeze=False)
+    for method,ax in zip(methods,axs.flatten()):
+        name = method.name_with_hyperparameters
+        ax.set_title(name)
+        ax.set_xlabel("value")
+        ax.set_ylabel("density")
+        sns.kdeplot(ppi_pos_dict[name], color="black", shade=False, alpha=1.0, ax=ax)
+        sns.kdeplot(ppi_neg_dict[name], color="black", shade=True, alpha=0.1, ax=ax) 
+    fig.set_size_inches(row_width, row_height*math.ceil(num_plots/plots_per_row))
+    fig.tight_layout()
+    
+    # Need to name the files depending on the variables being looked at.
+    curated_str = "curated_{}".format(str(c).lower())
+    question_str = "question_{}".format(str(q).lower())
+    species_str = "species_{}".format(str(s).lower())
+    variables_strs = [curated_str, question_str, species_str]
+    
+    # Save those plots in a new image file.
+    fig.savefig(os.path.join(OUTPUT_DIR, PLOTS_DIR, "kernel_densities_{}_{}_{}.png".format(*variables_strs)),dpi=400)
+    plt.close()
 
 
 # <a id="within"></a>
 # ### Looking at within-group or within-pathway distances in each graph
 # The purpose of this section is to determine which methods generated graphs which tightly group genes which share common pathways or group membership with one another. In order to compare across different methods where the distance value distributions are different, the mean distance values for each group for each method are convereted to percentile scores. Lower percentile scores indicate that the average distance value between any two genes that belong to that group is lower than most of the distance values in the entire distribution for that method.
 
-# In[73]:
+# In[ ]:
 
 
 # What are the different groupings we are interested in for these mean within-group distance tables?
 grouping_objects = [kegg_groups, pmn_groups, phe_subsets_groups]
 grouping_names = ["kegg_only","pmn_only","subsets"]
-
-
 
 
 
@@ -1597,7 +1790,6 @@ for (groups,q) in zip(grouping_objects,grouping_names):
         continue
     
     
-    
     # The grouping dictionaries for this particular biological question.    
     id_to_group_ids, group_id_to_ids = groups.get_groupings_for_dataset(dataset)
 
@@ -1606,12 +1798,18 @@ for (groups,q) in zip(grouping_objects,grouping_names):
     graph = IndexedGraph(subset)
     within_percentiles_dict = defaultdict(lambda: defaultdict(list))
     all_weights_dict = {}
-    for name in names:
+    for method in methods:
+        name = method.name_with_hyperparameters
         for group in group_ids:
             within_ids = group_id_to_ids[group]
             within_pairs = [(i,j) for i,j in itertools.permutations(within_ids,2)]
             mean_weight = np.mean((graph.get_values(within_pairs, kind=name)))
-            within_percentiles_dict[name][group] = stats.percentileofscore(subset[name].values, mean_weight, kind="rank")
+            # https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.percentileofscore.html
+            # Check this for documentation and specifically what the kind argument is for.
+            # With kind="mean", the value of the weak and strict perctiles are averaged.
+            # Question for this part, is the percentile of the mean the same as the mean of the percentiles?
+            # I think we want mean of the percentiles, but we're calculating the other one here...
+            within_percentiles_dict[name][group] = stats.percentileofscore(subset[name].values, mean_weight, kind="mean")
 
     # Generating a dataframe of percentiles of the mean in-group distance scores.
     within_dist_data = pd.DataFrame(within_percentiles_dict)
@@ -1628,8 +1826,9 @@ for (groups,q) in zip(grouping_objects,grouping_names):
     within_dist_data["group_id"] = within_dist_data["index"]
     within_dist_data["full_name"] = within_dist_data["group_id"].apply(lambda x: groups.get_long_name(x))
     within_dist_data["n"] = within_dist_data["group_id"].apply(lambda x: len(group_id_to_ids[x]))
-    within_dist_data = within_dist_data[flatten(["group_id","full_name","n","mean_avg_pair_percentile","mean_group_rank",names])]
-    within_dist_data.to_csv(os.path.join(OUTPUT_DIR,"part_5_{}_within_distances.csv".format(q)), index=False)
+    method_col_names = [method.name_with_hyperparameters for method in methods]
+    within_dist_data = within_dist_data[flatten(["group_id","full_name","n","mean_avg_pair_percentile","mean_group_rank",method_col_names])]
+    within_dist_data.to_csv(os.path.join(OUTPUT_DIR, GROUP_DISTS_DIR, "{}_within_distances.csv".format(q)), index=False)
     within_dist_data.head(5)
 
 
@@ -1637,48 +1836,48 @@ for (groups,q) in zip(grouping_objects,grouping_names):
 # ### Predicting whether two genes belong to the same group, pathway, or share an interaction
 # The purpose of this section is to see if whether or not two genes share atleast one common pathway can be predicted from the distance scores assigned using analysis of text similarity. The evaluation of predictability is done by reporting a precision and recall curve for each method, as well as remembering the area under the curve, and ratio between the area under the curve and the baseline (expected area when guessing randomly) for each method.
 
-# In[74]:
+# In[ ]:
 
 
-def bootstrap(fraction, num_iterations, y_true, y_prob):
-    # Run the desired number of bootstrap iterations over the full population of predictions and return st devs.
-    scores = pd.DataFrame([bootstrap_iteration(fraction, y_true, y_prob) for i in range(num_iterations)])
-    standard_deviations = {
-        "f_1_max_std": np.std(scores["f_1_max"].values),
-        "f_2_max_std": np.std(scores["f_2_max"].values),
-        "f_point5_max_std": np.std(scores["f_point5_max"].values)}
-    return(standard_deviations)
+# def bootstrap(fraction, num_iterations, y_true, y_prob):
+#     # Run the desired number of bootstrap iterations over the full population of predictions and return st devs.
+#     scores = pd.DataFrame([bootstrap_iteration(fraction, y_true, y_prob) for i in range(num_iterations)])
+#     standard_deviations = {
+#         "f_1_max_std": np.std(scores["f_1_max"].values),
+#         "f_2_max_std": np.std(scores["f_2_max"].values),
+#         "f_point5_max_std": np.std(scores["f_point5_max"].values)}
+#     return(standard_deviations)
 
 
-def bootstrap_iteration(fraction, y_true, y_prob):
-    assert len(y_true) == len(y_prob)
-    # Subset the total population of predictions using the provided fraction.
-    num_predictions = len(y_true)
-    bootstrapping_fraction = fraction
-    num_to_retain = int(np.ceil(num_predictions*bootstrapping_fraction))
-    idx = np.random.choice(np.arange(num_predictions), num_to_retain, replace=False)
-    y_true_sample = y_true[idx]
-    y_prob_sample = y_prob[idx]
+# def bootstrap_iteration(fraction, y_true, y_prob):
+#     assert len(y_true) == len(y_prob)
+#     # Subset the total population of predictions using the provided fraction.
+#     num_predictions = len(y_true)
+#     bootstrapping_fraction = fraction
+#     num_to_retain = int(np.ceil(num_predictions*bootstrapping_fraction))
+#     idx = np.random.choice(np.arange(num_predictions), num_to_retain, replace=False)
+#     y_true_sample = y_true[idx]
+#     y_prob_sample = y_prob[idx]
     
-    # Calculate any desired metrics using just that subset.
-    n_pos, n_neg = Counter(y_true_sample)[1], Counter(y_true_sample)[0]
-    precision, recall, thresholds = precision_recall_curve(y_true_sample, y_prob_sample)
-    baseline = Counter(y_true_sample)[1]/len(y_true_sample) 
-    area = auc(recall, precision)
-    auc_to_baseline_auc_ratio = area/baseline
+#     # Calculate any desired metrics using just that subset.
+#     n_pos, n_neg = Counter(y_true_sample)[1], Counter(y_true_sample)[0]
+#     precision, recall, thresholds = precision_recall_curve(y_true_sample, y_prob_sample)
+#     baseline = Counter(y_true_sample)[1]/len(y_true_sample) 
+#     area = auc(recall, precision)
+#     auc_to_baseline_auc_ratio = area/baseline
     
-    # Find the maximum Fß score for different values of ß.  
-    f_beta = lambda pr,re,beta: [((1+beta**2)*p*r)/((((beta**2)*p)+r)) for p,r in zip(pr,re)]
-    f_1_scores = f_beta(precision,recall,beta=1)
-    f_2_scores = f_beta(precision,recall,beta=2)
-    f_point5_scores = f_beta(precision,recall,beta=0.5)
+#     # Find the maximum Fß score for different values of ß.  
+#     f_beta = lambda pr,re,beta: [((1+beta**2)*p*r)/((((beta**2)*p)+r)) for p,r in zip(pr,re)]
+#     f_1_scores = f_beta(precision,recall,beta=1)
+#     f_2_scores = f_beta(precision,recall,beta=2)
+#     f_point5_scores = f_beta(precision,recall,beta=0.5)
     
-    # Create a dictionary of those metric values to return.
-    scores={"f_1_max":np.nanmax(f_1_scores),"f_2_max":np.nanmax(f_2_scores),"f_point5_max":np.nanmax(f_point5_scores)}
-    return(scores)
+#     # Create a dictionary of those metric values to return.
+#     scores={"f_1_max":np.nanmax(f_1_scores),"f_2_max":np.nanmax(f_2_scores),"f_point5_max":np.nanmax(f_point5_scores)}
+#     return(scores)
 
 
-# In[75]:
+# In[ ]:
 
 
 pr_df_rows = []
@@ -1688,8 +1887,8 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
     c,q,s = properties
     
     # Don't look at the inter-species and intra-species edges except for pathways, otherwise irrelevant.
-    if (s != "both") and (q != "pathways"):
-        continue
+    #if (s != "both") and (q != "pathways"):
+    #    continue
     
     # Create a subset of the dataframe that contains only the gene pairs for this question.
     subset = df.loc[idxs]
@@ -1700,12 +1899,15 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
         continue
 
 
-
-    y_true_dict = {name:subset[q].values for name in names}       #just added .values here...
-    y_prob_dict = {name:(1 - subset[name].values) for name in names}
-    num_plots, plots_per_row, row_width, row_height = (len(names), 4, 14, 3)
+    # Get all the probabilities and all the ones for positives samples in this case.
+    y_true_dict = {method.name_with_hyperparameters:subset[q].values for method in methods} 
+    y_prob_dict = {method.name_with_hyperparameters:(1 - subset[method.name_with_hyperparameters].values) for method in methods}
+    num_plots, plots_per_row, row_width, row_height = (len(methods), 4, 14, 3)
     fig,axs = plt.subplots(math.ceil(num_plots/plots_per_row), plots_per_row, squeeze=False)
-    for name,ax in zip(names, axs.flatten()):
+    for method,ax in zip(methods, axs.flatten()):
+        
+        # What is the name to use for this method, which represents a column in the dataframe.
+        name = method.name_with_hyperparameters
 
         # Obtaining the values and metrics.
         y_true, y_prob = y_true_dict[name], y_prob_dict[name]
@@ -1726,11 +1928,11 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
         
         
         # Add a row to the dataframe that specifically keeps track of the precision and recall distributions.
-        # We don't want to remember all the precision and recall values that sklearn generates, file would
+        # We don't want to remember all the precision and recall values that sklearn generates, that file would
         # get enormous. Instead, round the thresholds to 3 decimal places and then just remember the indices
         # where we jumpt to the next thresholds (subsets to <= 1000 precision and recall value pairs). 
         # Note this only works when the threshold values are sorted in increasing order, which they currently are
-        # for this sklearn function. 
+        # for this sklearn function. If that changes this will section will break.
         pr_indices_to_use = []
         last_threshold = -0.001 # A value smaller than any real threshold in this case.
         for idx,threshold in enumerate(thresholds):
@@ -1738,7 +1940,7 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
             if this_threshold != last_threshold:
                 pr_indices_to_use.append(idx)
                 last_threshold = this_threshold
-        pr_indices_to_use.append(len(thresholds)) # This is the index of the '1' and '0' that cap the P and R arrays.    
+        pr_indices_to_use.append(len(thresholds)) # Add the index of the '1' and '0' that cap the P and R arrays.    
         p_values_to_use = precision[pr_indices_to_use]
         r_values_to_use = recall[pr_indices_to_use]
 
@@ -1782,8 +1984,6 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
         #ax.set_title("PR {0} (Baseline={1:0.3f})".format(name, baseline_auc))
         
         
-
-        
     #fig.set_size_inches(row_width, row_height*math.ceil(num_plots/plots_per_row))
     #fig.tight_layout()
     #fig.savefig(os.path.join(OUTPUT_DIR,"part_5_prcurve_shared.png"),dpi=400)
@@ -1792,7 +1992,7 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
 
 # Create a CSV file for the precision recall curves for each different approach. 
 precision_recall_curves_df = pd.DataFrame(pr_df_rows, columns=["method", "hyperparameters", "task", "curated", "species", "precision", "recall", "basline_auc"])
-precision_recall_curves_df.to_csv(os.path.join(OUTPUT_DIR,"part_5_precision_recall_curves.csv"), index=False) 
+precision_recall_curves_df.to_csv(os.path.join(OUTPUT_DIR, METRICS_DIR, "precision_recall_curves.csv"), index=False) 
 precision_recall_curves_df.head(20)
 
 
@@ -1803,7 +2003,8 @@ precision_recall_curves_df.head(20)
 # In[ ]:
 
 
-if NOTEBOOK:
+SKIPPED = True
+if not SKIPPED:
     
     # When the edgelist is generated above, only the lower triangle of the pairwise matrix is retained for edges in the 
     # graph. This means that in terms of the indices of each node, only the (i,j) node is listed in the edge list where
@@ -1900,69 +2101,82 @@ if NOTEBOOK:
 # ### Summarizing the results for this notebook
 # Write a large table of results to an output file. Columns are generally metrics and rows are generally methods.
 
-# In[76]:
+# In[ ]:
 
 
+method_name_to_method_obj = {method.name_with_hyperparameters:method for method in methods}
 result_dfs = []
-for s,c,q in itertools.product(species,curated,question):
-    if (s != "both") and (q != "pathways"):
-        continue
+for (c,q,s) in variable_combinations:
+    #if (s != "both") and (q != "pathways"):
+    #    continue
     TABLE = tables[c][q][s]
     results = pd.DataFrame(TABLE).transpose()
     columns = flatten(["species", "objective","curated","hyperparameters","group","order",results.columns])
     results["hyperparameters"] = ""
-    results["group"] = "nlp"
-    results["order"] = np.arange(results.shape[0])
+    results["group"] = ""
+    results["order"] = ""
     results["species"] = s.lower()
     results["objective"] = q.lower()
     results["curated"] = str(c).lower()
     results = results[columns]
     results.reset_index(inplace=True)
     results = results.rename({"index":"method"}, axis="columns")
-    hyperparam_sep = ":"
-    results["hyperparameters"] = results["method"].map(lambda x: x.split(hyperparam_sep)[1] if hyperparam_sep in x else "none")
-    results["method"] = results["method"].map(lambda x: x.split(hyperparam_sep)[0])
+    results["order"] = results["method"].map(lambda x: method_name_to_method_obj[x].number)
+    results["group"] = results["method"].map(lambda x: method_name_to_method_obj[x].group)
+    results["hyperparameters"] = results["method"].map(lambda x: method_name_to_method_obj[x].hyperparameters)
+    results["method"] = results["method"].map(lambda x: method_name_to_method_obj[x].name)
     result_dfs.append(results)
 
 results = pd.concat(result_dfs)
 results.reset_index(inplace=True, drop=True)
-results.to_csv(os.path.join(OUTPUT_DIR,"part_5_full_table.csv"), index=False)
+results.to_csv(os.path.join(OUTPUT_DIR, METRICS_DIR, "full_table_with_all_metrics.csv"), index=False)
 results.head(20)
 
 
-# In[77]:
+# In[ ]:
 
 
 # Make another version of the table that is more useful for looking at one particular metric or value.
-metric_of_interest = "f1_max"
-reshaped_results = results[["method","hyperparameters","order"]].drop_duplicates()
-for c,q,s in itertools.product(curated,question,species):
-    if (s != "both") and (q != "pathways"):
-        continue
-    c_label = {True:"curated",False:"all"}[c]
-    col_name = "{}_{}_{}".format(s,c_label,q)
-    reshaped_results[col_name] = reshaped_results["order"].map(lambda x: results.loc[(results["order"]==x) & (results["curated"]==str(c).lower()) & (results["objective"]==q.lower()) & (results["species"]==s.lower()), metric_of_interest])
-    reshaped_results[col_name] = reshaped_results[col_name].map(lambda x: None if len(x)==0 else x.values[0])
-reshaped_results.to_csv(os.path.join(OUTPUT_DIR,"part_5_f_scores_table.csv"), index=False)
+metrics_of_interest = ["f1_max", "auc"]
+for metric_of_interest in metrics_of_interest:
+    reshaped_results = results[["method","hyperparameters","order","group"]].drop_duplicates()
+    for (c,q,s) in variable_combinations:
+
+        # Construct a column name that corresponds to a particular subset.
+        c_str = {True:"curated",False:"all"}[c]
+        q_str = str(q).lower()
+        s_str = str(s).lower()
+        col_name =  "{}_{}_{}".format(s_str, c_str, q_str)
+
+        # Pull data out of the the full metrics dataframe.
+        reshaped_results[col_name] = reshaped_results["order"].map(lambda x: results.loc[(results["order"]==x) & (results["curated"]==str(c).lower()) & (results["objective"]==q.lower()) & (results["species"]==s.lower()), metric_of_interest])
+        reshaped_results[col_name] = reshaped_results[col_name].map(lambda x: None if len(x)==0 else x.values[0])
+    reshaped_results.to_csv(os.path.join(OUTPUT_DIR, METRICS_DIR, "{}.csv").format(metric_of_interest), index=False)
 reshaped_results
 
 
+# In[ ]:
+
+
+print(stophere)
+
+
 # <a id="part_7"></a>
-# # Part 7. Clustering Analysis
+# # Part 7. Topic Modeling
 # The purpose of this section is to look at different ways that the embeddings obtained for the dataset of phenotype descriptions can be used to cluster or organize the genes to which those phenotypes are mapped into subgroups or representations. These approaches include generating topic models from the data, and doing agglomerative clustering to find clusters to which each gene belongs.
 
 # In[ ]:
 
 
 # Rereading in the datasets used by this section so that it can be run independently of other notebook sections.
-dataset = load_from_pickle(dataset_filename)
+dataset = Dataset(plant_dataset_path)
 dataset.filter_has_description()
 groups = phe_subsets_groups
 id_to_group_ids, group_id_to_ids = groups.get_groupings_for_dataset(dataset)
 
 
-# <a id="topic_modeling"></a>
-# ### Approach 1: Topic modeling based on n-grams with a reduced vocabulary
+# <a id="compare_to_subsets"></a>
+# ### Comparing topics learned by topic modeling to existing categorizations
 # Topic modelling learns a set of word probability distributions from the dataset of text descriptions, which represent distinct topics which are present in the dataset. Each text description can then be represented as a discrete probability distribution over the learned topics based on the probability that a given piece of text belongs to each particular topics. This is a form of data reduction because a high dimensionsal bag-of-words can be represented as a vector of *k* probabilities where *k* is the number of topics. The main advantages of topic modelling over clustering is that topic modelling provides soft classifications that can be additionally interpreted, rather than hard classifications into a single cluster. Topic models are also explainable, because the word probability distributions for that topic can be used to determine which words are most representative of any given topic. One problem with topic modelling is that is uses the n-grams embeddings to semantic similarity between different words is not accounted for. To help alleviate this, this section uses implementations of some existing algorithms to compress the vocabulary as a preprocessing step based on word distance matrices generated using word embeddings.
 # 
 # Topic models define topics present in a dataset of texts as word or n-gram probability distributions. These models represent each instance of text then as being composed of or generated as as mixture of these topics. The vector for each text that indicates which fraction of that text is generated by a each topic is of length *n* where *n* is the number of topics, and can be used as a reduced dimensionality of the text, with a much smaller vector length than the n-grams embedding itself. Therefore we can build a topic model of the data with 100 topics for example in order to then represent each description in the dataset as a a vector of length 100. This section constructs topic models from the n-gram representations of the dataset and selects different values for the number of topics in order to find a value that works well during the grid search over the training dataset.
@@ -2076,7 +2290,7 @@ topic_order_map = {t:i for t,i in zip(tm_df["topic"].values, tm_df["order"].valu
 topic_renumbered_map = {t:i for t,i in zip(tm_df["topic"].values, tm_df["topic_renumbered"].values)}
 
 # Saving this version of the subset and topic similarity data to a file.
-tm_df.to_csv(os.path.join(OUTPUT_DIR,"part_6_topic_modeling_matrix.csv"), index=False)
+tm_df.to_csv(os.path.join(OUTPUT_DIR, TOPICS_DIR, "topic_subset_matrix.csv"), index=False)
 tm_df.head(10)
 
 
@@ -2125,13 +2339,144 @@ for subset_abbrev, topic_int in itertools.product(topic_int_list,subset_str_list
     line_number = line_number+1
     
 tm_lines_df = pd.DataFrame(tm_lines_dict)
-tm_lines_df.to_csv(os.path.join(OUTPUT_DIR,"part_6_topic_modeling_lines.csv"), index=False)
+tm_lines_df.to_csv(os.path.join(OUTPUT_DIR, TOPICS_DIR, "topic_subset_lines.csv"), index=False)
 tm_lines_df.head(50)
 
+
+# <a id="part_8"></a>
+# # Part 8. Clustering
+# The purpose of this section is to look at different ways that the embeddings obtained for the dataset of phenotype descriptions can be used to cluster or organize the genes to which those phenotypes are mapped into subgroups or representations. These approaches include generating topic models from the data, and doing agglomerative clustering to find clusters to which each gene belongs.
 
 # <a id="clustering"></a>
 # ### Approach 2: Agglomerative clustering and comparison to predefined groups
 # This clustering approach uses agglomerative clustering to cluster the genes into a fixed number of clusters based off the distances between their embedding representations using all of the above methods. Clustering into a fixed number of clusters allows for clustering into a similar number of groups as a present in some existing grouping of the data, such as phenotype categories or biochemical pathways, and then determining if the clusters obtained are at all similar to the groupings that already exist. Agglomerative clustering is used here in order to use an arbitrary predefined distance matrix, in this case the matrix being used is the mean distance percentiles from each of the different approaches.
+
+# In[ ]:
+
+
+# Trying something new here.
+texts = dataset.get_description_dictionary()
+texts = list(texts.values())
+dm = gensim.models.Doc2Vec.load(doc2vec_wikipedia_filename)
+vecs = [dm.infer_vector(t.lower().split()) for t in texts]
+
+
+# In[ ]:
+
+
+sents = flatten([sent_tokenize(t) for t in texts])
+svecs = [dm.infer_vector(t.lower().split()) for t in sents]
+print(len(svecs))
+print(len(vecs))
+
+
+# In[ ]:
+
+
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
+
+
+# In[ ]:
+
+
+kmeans = KMeans(n_clusters=8, random_state=0).fit(vecs)
+kmeans.labels_
+
+
+# In[ ]:
+
+
+KMeans(n_clusters=8, random_state=0).fit_predict(vecs)
+
+
+# In[ ]:
+
+
+KMeans(n_clusters=8, random_state=0).fit_transform(vecs)
+
+
+# In[ ]:
+
+
+kmeans.score(vecs)
+
+
+# In[ ]:
+
+
+pca = PCA(n_components=2).fit(vecs)
+datapoint = pca.transform(vecs)
+len(datapoint)
+
+
+# In[ ]:
+
+
+pca.explained_variance_ratio_
+
+
+# In[ ]:
+
+
+a = pd.DataFrame(datapoint, columns=["component_1","component_2"])
+a["cluster"] = kmeans.labels_
+a
+a.to_csv("/Users/irbraun/Desktop/a.csv", index=False)
+
+
+# In[ ]:
+
+
+# repeat with sentencesi nstead.
+kmeans = KMeans(n_clusters=8, random_state=0).fit(svecs)
+pca = PCA(n_components=2).fit(svecs)
+datapoint = pca.transform(svecs)
+b = pd.DataFrame(datapoint, columns=["component_1","component_2"])
+b["cluster"] = kmeans.labels_
+b.to_csv("/Users/irbraun/Desktop/a.csv", index=False)
+b.head()
+
+
+# In[ ]:
+
+
+sys.path.append("../lib/gsdmm-master/gsdmm")
+from mgp import MovieGroupProcess
+m = MovieGroupProcess(K=8, alpha=0.1, beta=0.1, n_iters=30)
+y = m.fit(sents)
+print(y)
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
 
 # In[ ]:
 
@@ -2217,8 +2562,11 @@ if NOTEBOOK:
     sil_df.head(10)
 
 
+# <a id="part_9"></a>
+# # Part 9. Human Phenologs
+
 # <a id="phenologs"></a>
-# ### Approach 4: Looking for phenolog relationships between clusters and OMIM disease phenotypes
+# ### Looking for phenolog relationships between clusters and OMIM disease phenotypes
 # This section produces a table of values that provides a score for the a particular pair of a cluster found for this dataset of plant genes and a disease phenotype. Currently the value indicates the fraction of the plant genes in that cluster that have orthologs associated with that disease phenotype. This should be replaced or supplemented with a p-value for evaluating the significance of this value given the distribution of genes and their mappings to all of the disease phenotypes. All the rows from the input dataframe containing the PantherDB and OMIM information where the ID from this dataset is not known or the mapping to a phenotype was unsuccessful are removed at this step, fix this if the metric for evaluating cluster to phenotype phenolog mappings need this information.
 
 # In[ ]:
