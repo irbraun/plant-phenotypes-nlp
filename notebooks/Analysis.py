@@ -1356,7 +1356,8 @@ for method in methods:
 
 if args.dataset in ("biosses", "pairs"):
     small_table = defaultdict(dict)
-    for name in names:
+    for method in methods:
+        name = method.name_with_hyperparameters
         values = []
         scores = []
         for tup,score in pair_to_score.items():
