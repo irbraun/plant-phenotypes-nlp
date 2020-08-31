@@ -69,20 +69,16 @@ lloyd_meinke_subsets_names_path = "../../plant-data/reshaped_data/lloyd_meinke_s
 lloyd_meinke_classes_names_path = "../../plant-data/reshaped_data/lloyd_meinke_classes_name_map.csv"
 
 # Path to file with plant ortholog mappings.
-ortholog_file_path = "../data/orthology_related_files/pantherdb/PlantGenomeOrthologs_IRB_Modified.txt"
+ortholog_file_path = "../../plant-data/databases/panther/PlantGenomeOrthologs_IRB_Modified.txt"
 
 
-
+# In[ ]:
 
 
 # Create and name an output directory according to when the notebooks was run.
 OUTPUT_NAME = "composition"
 OUTPUT_DIR = os.path.join("../outputs","{}_{}_{}".format(OUTPUT_NAME,datetime.datetime.now().strftime('%m_%d_%Y_h%Hm%Ms%S'),random.randrange(1000,9999)))
 os.mkdir(OUTPUT_DIR)
-
-
-
-
 
 
 # In[7]:
@@ -247,14 +243,15 @@ df
 
 
 # STRING DB for protein-protein interactions.
-naming_file = "../data/group_related_files/string/all_organisms.name_2_string.tsv"
+naming_file = "../../plant-data/databases/string/all_organisms.name_2_string.tsv"
 interaction_files = [
-    "../data/group_related_files/string/3702.protein.links.detailed.v11.0.txt", # Arabidopsis thaliana
-    "../data/group_related_files/string/4577.protein.links.detailed.v11.0.txt", # maize
-    "../data/group_related_files/string/4530.protein.links.detailed.v11.0.txt", # tomato 
-    "../data/group_related_files/string/4081.protein.links.detailed.v11.0.txt", # medicago
-    "../data/group_related_files/string/3880.protein.links.detailed.v11.0.txt", # rice 
-    "../data/group_related_files/string/3847.protein.links.detailed.v11.0.txt", # soybean
+    "../../plant-data/databases/string/3702.protein.links.detailed.v11.0.txt", # Arabidopsis
+    "../../plant-data/databases/string/4577.protein.links.detailed.v11.0.txt", # Maize
+    "../../plant-data/databases/string/4530.protein.links.detailed.v11.0.txt", # Tomato 
+    "../../plant-data/databases/string/4081.protein.links.detailed.v11.0.txt", # Medicago
+    "../../plant-data/databases/string/3880.protein.links.detailed.v11.0.txt", # Rice 
+    "../../plant-data/databases/string/3847.protein.links.detailed.v11.0.txt", # Soybean
+    "../../plant-data/databases/string/9606.protein.links.detailed.v11.0.txt", # Human
 ]
 genes = data.get_gene_dictionary()
 string_data = ProteinInteractions(genes, naming_file, *interaction_files)
@@ -379,14 +376,14 @@ po = load_from_pickle(po_pickle_path)
 go = load_from_pickle(go_pickle_path)
 
 
-# In[ ]:
+# In[27]:
 
 
 curated_go_annotations = data.get_annotations_dictionary("GO")
 curated_po_annotations = data.get_annotations_dictionary("PO")
 
 
-# In[ ]:
+# In[28]:
 
 
 # Load the mappings from this dataset to PlantCyc information.
@@ -409,7 +406,7 @@ pathways_df = pathways_df[["pathway_name","pathway_id","num_genes"]]
 pathways_df.head(15)
 
 
-# In[ ]:
+# In[30]:
 
 
 # For some example pathway to use.
@@ -417,20 +414,14 @@ pathway_id = "PWY-6733"
 gene_ids_in_this_pathway = group_id_to_ids[pathway_id]
 
 
-# In[ ]:
+# In[31]:
 
 
 results = term_enrichment(curated_po_annotations, gene_ids_in_this_pathway, po).head(20)
-
-
-from statsmodels.sandbox.stats.multicomp import multipletests
 threshold = 0.05
 results["p_value_adj"] = multipletests(results["p_value"].values, method='bonferroni')[1]
 results["significant"] = results["p_value_adj"] < threshold
 results = results.loc[results["significant"]==True]
-
-
-
 results["info_content"] = results["term_id"].map(lambda x: po.ic(x))
 results.sort_values(by="info_content", ascending=False, inplace=True)
 
@@ -449,7 +440,7 @@ results["significance"] = results["p_value_adj"].map(get_level)
 results
 
 
-# In[ ]:
+# In[32]:
 
 
 results = term_enrichment(curated_go_annotations, gene_ids_in_this_pathway, go).head(20)
@@ -474,7 +465,7 @@ results["significance"] = results["p_value_adj"].map(get_level)
 results
 
 
-# In[ ]:
+# In[33]:
 
 
 results = token_enrichment(texts, gene_ids_in_this_pathway).head(20)
@@ -491,34 +482,4 @@ significance_levels = {0.05:"*", 0.01:"**", 0.001:"***", 0.0001:"****"}
 get_level = lambda x: significance_levels[min([level for level in significance_levels.keys() if x <= level])]
 results["significance"] = results["p_value_adj"].map(get_level)
 results
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
