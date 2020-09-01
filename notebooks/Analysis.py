@@ -516,8 +516,8 @@ dataset.describe()
 # In[ ]:
 
 
-#dataset.filter_random_k(1000)
-#dataset.describe()
+dataset.filter_random_k(1000)
+dataset.describe()
 
 
 # <a id="phenotype_pairs"></a>
@@ -1917,6 +1917,7 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
         
         # What is the name to use for this method, which represents a column in the dataframe.
         name = method.name_with_hyperparameters
+        
 
         # Obtaining the values and metrics.
         y_true, y_prob = y_true_dict[name], y_prob_dict[name]
@@ -1956,12 +1957,7 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
         
         # Use those 1000 or fewer precision and recall pairs to build a file from which curves can be plotted. 
         for p,r in zip(p_values_to_use,r_values_to_use):
-            method = name.split(":")[0]
-            if len(name.split(":"))>1:
-                hyperparameters = name.split(":")[1]
-            else:
-                hyperparameters = "none"
-            pr_df_rows.append((method, hyperparameters, q.lower(), str(c).lower(), s.lower(), p, r, baseline_auc))
+            pr_df_rows.append((method.name, method.hyperparameters, method.group, q.lower(), str(c).lower(), s.lower(), p, r, baseline_auc))
         
         
         # Find the maximum Fß score for different values of ß.  
@@ -2000,7 +1996,7 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
 
 
 # Create a CSV file for the precision recall curves for each different approach. 
-precision_recall_curves_df = pd.DataFrame(pr_df_rows, columns=["method", "hyperparameters", "task", "curated", "species", "precision", "recall", "basline_auc"])
+precision_recall_curves_df = pd.DataFrame(pr_df_rows, columns=["approach", "hyperparameters", "group", "task", "curated", "species", "precision", "recall", "basline_auc"])
 precision_recall_curves_df.to_csv(os.path.join(OUTPUT_DIR, METRICS_DIR, "precision_recall_curves.csv"), index=False) 
 precision_recall_curves_df.head(20)
 
