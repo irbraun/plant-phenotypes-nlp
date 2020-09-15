@@ -261,9 +261,10 @@ background_corpus_filename = "../data/corpus_related_files/untagged_text_corpora
 phenotypes_corpus_filename = "../data/corpus_related_files/untagged_text_corpora/phenotypes_all.txt"
 
 # Paths to pretrained or saved language models that are used in this analysis.
-doc2vec_pubmed_filename = "../models/pubmed_dbow/doc2vec_2.bin"                 
-doc2vec_wikipedia_filename = "../models/enwiki_dbow/doc2vec.bin"                             
-word2vec_model_filename = "../models/wiki_sg/word2vec.bin"                              
+doc2vec_pubmed_filename = "../models/plants_dbow/doc2vec.model"
+doc2vec_wikipedia_filename = "../models/enwiki_dbow/doc2vec.bin"
+word2vec_pubmed_model_filename = "../models/plants_sg/word2vec.model"
+word2vec_wikipedia_model_filename = "../models/wiki_sg/word2vec.bin"
 biobert_pmc_path = "../models/biobert_v1.0_pmc/pytorch_model"                                  
 biobert_pubmed_path = "../models/biobert_v1.0_pubmed/pytorch_model"                                 
 biobert_pubmed_pmc_path = "../models/biobert_v1.0_pubmed_pmc/pytorch_model"                          
@@ -609,7 +610,8 @@ print(len(ids_to_use))
 # Files and models related to the machine learning text embedding methods used here.
 doc2vec_wiki_model = gensim.models.Doc2Vec.load(doc2vec_wikipedia_filename)
 doc2vec_pubmed_model = gensim.models.Doc2Vec.load(doc2vec_pubmed_filename)
-word2vec_model = gensim.models.Word2Vec.load(word2vec_model_filename)
+word2vec_wiki_model = gensim.models.Word2Vec.load(word2vec_wikipedia_model_filename)
+word2vec_pubmed_model = gensim.models.Word2Vec.load(word2vec_pubmed_model_filename)
 bert_tokenizer_base = BertTokenizer.from_pretrained('bert-base-uncased')
 bert_tokenizer_pmc = BertTokenizer.from_pretrained(biobert_pmc_path)
 bert_tokenizer_pubmed = BertTokenizer.from_pretrained(biobert_pubmed_path)
@@ -783,7 +785,7 @@ processed["bio_ontology_tokens"] = {i:" ".join([token for token in word_tokenize
 # the case so it's not directly assumed here.
 tokens = list(set([w for w in flatten(d.split() for d in processed["simple"].values())]))
 tokens_dict = {i:w for i,w in enumerate(tokens)}
-graph = pw.with_word2vec(word2vec_model, tokens_dict, "cosine")
+graph = pw.with_word2vec(word2vec_wiki_model, tokens_dict, "cosine")
 distance_matrix = graph.array
 tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
 
@@ -1025,11 +1027,18 @@ get_raw_texts_for_term_weighting(test_documents, test_unique_id_to_real_ids)
 
 doc2vec_and_word2vec_approaches = [    
     Method("Doc2Vec","Wikipedia,Size=300","NLP",1, pw.with_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Wikipedia,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
-    #Method("Word2Vec","Wikipedia,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Word2Vec","Wikipedia,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","Wikipedia,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
     Method("Doc2Vec","Tokenization,Wikipedia,Size=300","NLP",4, pw.with_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,Wikipedia,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
-    #Method("Word2Vec","Tokenization,Wikipedia,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Word2Vec","Tokenization,Wikipedia,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","Tokenization,Wikipedia,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    
+    Method("Doc2Vec","PubMed,Size=300","NLP",1, pw.with_doc2vec, {"model":doc2vec_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Word2Vec","PubMed,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Word2Vec","PubMed,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Doc2Vec","Tokenization,PubMed,Size=300","NLP",4, pw.with_doc2vec, {"model":doc2vec_pubmed_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Word2Vec","Tokenization,PubMed,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_pubmed_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Word2Vec","Tokenization,PubMed,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_pubmed_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
 

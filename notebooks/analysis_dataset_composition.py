@@ -4,7 +4,7 @@
 # # Looking at the Dataset
 # The purpose of this notebook is to look closer at the dataset of genes, natural language descriptions, and ontology term annotations that are used in this work. As included in the preprocessing notebooks, these data are drawn from files from either publications supplements like Oellrich, Walls et al. (2015) or model species databases such as TAIR, MaizeGDB, and SGN. The datasets are already loaded and merged using classes available through the oats package.
 
-# In[5]:
+# In[1]:
 
 
 import datetime
@@ -50,7 +50,7 @@ nltk.download('brown', quiet=True)
 nltk.download('averaged_perceptron_tagger', quiet=True)
 
 
-# In[14]:
+# In[2]:
 
 
 # Paths to the files that are used for this notebook.
@@ -72,7 +72,7 @@ lloyd_meinke_classes_names_path = "../../plant-data/reshaped_data/lloyd_meinke_c
 ortholog_file_path = "../../plant-data/databases/panther/PlantGenomeOrthologs_IRB_Modified.txt"
 
 
-# In[ ]:
+# In[3]:
 
 
 # Create and name an output directory according to when the notebooks was run.
@@ -81,7 +81,7 @@ OUTPUT_DIR = os.path.join("../outputs","{}_{}_{}".format(OUTPUT_NAME,datetime.da
 os.mkdir(OUTPUT_DIR)
 
 
-# In[7]:
+# In[4]:
 
 
 # Reading in and describing the dataset of plant genes.
@@ -93,7 +93,7 @@ plant_dataset.describe()
 # ### What's there for each species?
 # The previously loaded dataset contains all of the genes that across six plant species that have natural language description data for phenotype(s) related to that gene. Each gene can have multiple descriptions annotated to it, which were combined or concatenated when the datasets from multiple sources were merged in creating the pickled datasets. Arabidopsis has the highest number of genes that satisfy this criteria, followed by maize, and then followed by the other four species which have a relatively low number of genes that satisfy this criteria, atleast given the sources used for this work. Note that the number of unique descriptions is lower than the number of genes in call cases, because multiple genes can have the same phenotype description associated with them.
 
-# In[8]:
+# In[5]:
 
 
 data = plant_dataset
@@ -169,7 +169,7 @@ df["unique_lemmas_to_species"] = df["species"].map(lambda x: len(lemma_sets_uniq
 df
 
 
-# In[10]:
+# In[6]:
 
 
 text_distributions = pd.DataFrame(dists)
@@ -179,7 +179,7 @@ text_distributions.head(20)
 
 # ### What about the ontology term annotations for each species?
 
-# In[11]:
+# In[7]:
 
 
 # How many of the genes in this dataset for each species are mapped to atleast one term from a given ontology?
@@ -199,7 +199,7 @@ df
 
 # ### What about the biologically relevant groups like biochemical pathways and phenotypes?
 
-# In[12]:
+# In[8]:
 
 
 # What are the groupings that we're interested in mapping to? Uses the paths defined at the top of the notebook.
@@ -225,7 +225,7 @@ df
 
 # ### What about the other biologically relevant information like orthologous genes and protein interactions?
 
-# In[15]:
+# In[9]:
 
 
 # PantherDB for plant orthologs.
@@ -239,7 +239,7 @@ df["panther"] = df["species"].map(lambda x: num_mapped[x])
 df
 
 
-# In[ ]:
+# In[10]:
 
 
 # STRING DB for protein-protein interactions.
@@ -264,7 +264,7 @@ df["stringdb"] = df["species"].map(lambda x: num_mapped[x])
 df
 
 
-# In[17]:
+# In[11]:
 
 
 # Write that dataframe with all the information about datast to a file.
@@ -274,7 +274,7 @@ df.to_csv(os.path.join(OUTPUT_DIR,"full_dataset_composition.csv"),index=False)
 # ### How do the vocabularies used for different species compare?
 # One of the things we are interested in is discovering or recovering phenotype similarity between different species in order to identify phenologs (phenotypes between species that share some underlying genetic cause). For this reason, we are interested in how the vocabularies used to describe phenotypes between different species vary, because this will impact how feasible it is to use a dataset like this to identify phenologs. Because the Arabidopsis and maize datasets are the largest in this case, we will compare the vocabularies used in describing the phenotypes associated with the genes from these species in this dataset.
 
-# In[20]:
+# In[12]:
 
 
 # Using lemmas as the vocabulary components.
@@ -306,7 +306,7 @@ table.to_csv(os.path.join(OUTPUT_DIR,"token_frequencies.csv"), index=False)
 table.head(10)
 
 
-# In[21]:
+# In[13]:
 
 
 # What are the tokens more frequently used for Arabidopsis than maize descriptions in this dataset?
@@ -314,7 +314,7 @@ table.sort_values(by="diff", ascending=False, inplace=True)
 table.head(30)
 
 
-# In[22]:
+# In[14]:
 
 
 # What are the tokens more frequently used for maize than Arabidopsis descriptions in this dataset?
@@ -322,7 +322,7 @@ table.sort_values(by="diff", ascending=True, inplace=True)
 table.head(30)
 
 
-# In[23]:
+# In[15]:
 
 
 # Is the mean absolute value of the rate differences different between the different parts of speech?
@@ -333,7 +333,7 @@ pos_table = pos_table[["abs_diff"]]
 pos_table.reset_index()
 
 
-# In[24]:
+# In[16]:
 
 
 # Working on the Venn Diagram for this part, unused currently.
@@ -351,20 +351,21 @@ pos_table.reset_index()
 
 # ### Looking at Term and Word Enrichment for Groups of Genes
 
-# In[25]:
+# In[84]:
 
 
 # Loading the dataset of phenotype descriptions and ontology annotations.
+plant_dataset = Dataset(plant_dataset_path)
 data = plant_dataset
 data.filter_has_description()
-data.filter_has_annotation("GO")
+#data.filter_has_annotation("GO")
 data.filter_has_annotation("PO")
 d = data.get_description_dictionary()
 texts = {i:" ".join(simple_preprocess(t)) for i,t in d.items()}
 len(texts)                              
 
 
-# In[26]:
+# In[62]:
 
 
 # Create ontology objects for all the biological ontologies being used.
@@ -376,14 +377,57 @@ po = load_from_pickle(po_pickle_path)
 go = load_from_pickle(go_pickle_path)
 
 
-# In[27]:
+# In[85]:
 
 
 curated_go_annotations = data.get_annotations_dictionary("GO")
 curated_po_annotations = data.get_annotations_dictionary("PO")
+print("done")
 
 
-# In[28]:
+# In[77]:
+
+
+# Which GO terms are used to annotate the most genes in this dataset?
+term_id_to_ids = defaultdict(list)
+for i,term_id_list in curated_go_annotations.items():
+    for term_id in term_id_list:
+        term_id_to_ids[term_id].append(i)
+term_id_to_num_ids = {k:len(v) for k,v in term_id_to_ids.items()}
+terms_df = pd.DataFrame(term_id_to_num_ids.items(), columns=["term_id", "freq"])
+
+def get_term_name(ont,i):
+    try:
+        return(ont[i].name)
+    except:
+        return("")
+
+terms_df["term_name"] = terms_df["term_id"].map(lambda x: get_term_name(go,x))
+terms_df.sort_values(by="freq", ascending=False, inplace=True)
+terms_df.head(20)
+
+
+# In[78]:
+
+
+# Make the group be ones that have that GO term anntation.
+#go_term_id_of_interest = "GO:0009640"
+#gene_ids_in_this_pathway = [k for k,v in curated_go_annotations.items() if go_term_id_of_interest in v]
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[86]:
 
 
 # Load the mappings from this dataset to PlantCyc information.
@@ -406,15 +450,25 @@ pathways_df = pathways_df[["pathway_name","pathway_id","num_genes"]]
 pathways_df.head(15)
 
 
-# In[30]:
+# In[107]:
 
 
 # For some example pathway to use.
-pathway_id = "PWY-6733"
+#pathway_id = "PWY-361"
+pathway_id = "PWY-581"
+#pathway_id = "PWY-1121"
+pathway_id = "PWY-695"
 gene_ids_in_this_pathway = group_id_to_ids[pathway_id]
+gene_ids_in_this_pathway
 
 
-# In[31]:
+# In[98]:
+
+
+wordcloud = defaultdict(list)
+
+
+# In[108]:
 
 
 results = term_enrichment(curated_po_annotations, gene_ids_in_this_pathway, po).head(20)
@@ -440,7 +494,15 @@ results["significance"] = results["p_value_adj"].map(get_level)
 results
 
 
-# In[32]:
+# In[109]:
+
+
+for row in results.itertuples():
+    wordcloud["Weight"].append(int(1/row.p_value_adj))
+    wordcloud["Word"].append("{} ({})".format(row.term_id,row.term_label))
+
+
+# In[102]:
 
 
 results = term_enrichment(curated_go_annotations, gene_ids_in_this_pathway, go).head(20)
@@ -465,7 +527,7 @@ results["significance"] = results["p_value_adj"].map(get_level)
 results
 
 
-# In[33]:
+# In[110]:
 
 
 results = token_enrichment(texts, gene_ids_in_this_pathway).head(20)
@@ -482,4 +544,19 @@ significance_levels = {0.05:"*", 0.01:"**", 0.001:"***", 0.0001:"****"}
 get_level = lambda x: significance_levels[min([level for level in significance_levels.keys() if x <= level])]
 results["significance"] = results["p_value_adj"].map(get_level)
 results
+
+
+# In[111]:
+
+
+for row in results.itertuples():
+    wordcloud["Weight"].append(int(1/row.p_value_adj))
+    wordcloud["Word"].append(row.token)
+
+
+# In[112]:
+
+
+pd.DataFrame(wordcloud).to_csv(os.path.join(OUTPUT_DIR, "{}_word_cloud.csv".format(pathway_id)), index=False)
+pd.DataFrame(wordcloud)
 

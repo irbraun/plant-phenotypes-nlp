@@ -6,9 +6,9 @@ from nltk.tokenize import sent_tokenize
 
 
 # Things that are the most likely to change.
-input_text_path = "../data/corpus_related_files/phenotypes.txt"
-output_model_path = "./doc2vec_pubmed.model"
-vector_size = 100
+input_text_path = "../data/corpus_related_files/untagged_text_corpora/phenotypes_all.txt"
+output_model_path = "../models/plants_dbow/doc2vec.model"
+vector_size = 300
 epochs = 100
 
 
@@ -23,13 +23,13 @@ print(len(sentences))
 print(sentences[0])
 
 
-# Defining the parameters of the neural network architecture.
+# Defining the size of the hidden layer and output layers as well as training parameters.
 model = gensim.models.Doc2Vec(
 	vector_size=vector_size, 
 	window=10, 
 	min_count=5,
 	dm=0, 
-	workers=5, 
+	workers=16, 
 	alpha=0.025, 
 	min_alpha=0.025, 
 	dbow_words=1)

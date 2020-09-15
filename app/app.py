@@ -427,13 +427,13 @@ ONTOLOGY_OBO_PATHS = ["resources/pato.obo","resources/po.obo"]
 # preprocessing_function: A function for how text should be preprocessed in order to be compatible with this approach.
 APPROACH_NAMES_AND_DATA = {
 	"n-grams":{
-		"path":"resources/n_grams_full_words_1_grams_tfidf.pickle", 
+		"path":"resources/dists_with_n_grams_full_words_1_grams_tfidf.pickle", 
 		"mapping":"whole_texts",
 		"tokenization_function":as_one_token,
 		"preprocessing_fucntion":full_preprocessing,
 		},
 	"n-grams-tokenized":{
-		"path":"resources/n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
+		"path":"resources/dists_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
 		"mapping":"sent_tokens",
 		"tokenization_function":sentence_tokenize,
 		"preprocessing_fucntion":full_preprocessing,
