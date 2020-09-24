@@ -1,8 +1,19 @@
+# Reminders of how to build build images from dockerfiles and run containers.
 docker build -f Dockerfile -t app:latest .
 docker run -p 8501:8501 app:latest
 
+
+# Checking existing images and running containers, and cleaning up.
 docker images
 docker container ls
 docker stop [container]
 docker system prune
 
+
+# Things that currently need to be in the resources folder for the image to build correctly.
+1. The oats package wheel, referenced in the dockerfile. This can be changed when it's installable with pip.
+2. All pickled dictioanaries mapping gene IDs to unique IDs for x, where x is a type of representation for the gene.
+3. All pickles distance objects built using the oats package.
+(Paths to 2 and 3 are explicitly present in the app.py script, they need to match to be loaded and used correctly).
+4. The datset csv file. This has to be exactly the same file that was used when running the scripts that built the files for 2 and 3 above.
+5. The ontology obo files. These are also explicitly reference by path in the app.py script, and they need to match. Make sure to include all used ontologies.
