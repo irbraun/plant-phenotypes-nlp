@@ -18,22 +18,20 @@ df$others = factor(df$others, levels=c(5,4,3,2,1,0), labels=c("5","4","3","2","1
 
 
 df$species = factor(df$species, 
-                    levels=c("ath",
-                             "zma",
-                             "osa",
+                    levels=c("gmx",
                              "mtr",
-                             "gmx",
-                             "sly"), 
-                    labels=c("Arabidopsis",
-                             "Maize",
-                             "Rice",
+                             "sly",
+                             "osa",
+                             "zma",
+                             "ath"), 
+                    labels=c("Soybean",
                              "Medicago",
-                             "Soybean",
-                             "Tomato"))
+                             "Tomato",
+                             "Rice",
+                             "Maize",
+                             "Arabidopsis"))
 
-
-
-# Pick from those colors to match the same number of values present in group_names.
+# Pick colors to represent the number of additional species this word stem is shared with.
 method_colors <- c(
   "#581845",
   "#900C3F",
@@ -63,7 +61,9 @@ ggplot(df, aes(y=quantity, x=species, fill=others)) +
       legend.direction = "vertical",
       legend.position = "right")
 
-
+# Saving the plot to a file.
+path <- "/Users/irbraun/Desktop/a.png"
+ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=17, height=6, units=c("cm"), dpi=300, limitsize=FALSE)
 
 
 

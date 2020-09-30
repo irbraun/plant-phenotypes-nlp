@@ -177,9 +177,42 @@ text_distributions.to_csv(os.path.join(OUTPUT_DIR, "word_sent_distributions.csv"
 text_distributions.head(20)
 
 
+# In[7]:
+
+
+from collections import Counter
+species_to_num_to_quantity = {}
+for species in data.get_species():
+    how_many_species = lambda token: sum([(token in stems_lists[s]) for s in data.get_species()])
+    this_vocab = [token for token in stems_lists[species]]
+    distribution = [how_many_species(token) for token in this_vocab]
+    species_to_num_to_quantity[species] = dict(Counter(distribution))
+table = pd.DataFrame(species_to_num_to_quantity).transpose()
+table
+
+
+# In[45]:
+
+
+table = pd.DataFrame(species_to_num_to_quantity).transpose().reset_index()
+table.rename({"index":"species"}, axis="columns", inplace=True)
+table.to_csv(os.path.join(OUTPUT_DIR, "words_shared_by_species.csv"), index=False)
+table
+
+
+# In[46]:
+
+
+uniqueness_df = table.melt(id_vars=["species"], var_name="others", value_name="quantity")
+uniqueness_df["others"] = uniqueness_df["others"]-1
+uniqueness_df.sort_values(by="others", inplace=True, ascending=False)
+uniqueness_df.to_csv(os.path.join(OUTPUT_DIR, "words_shared_by_species_melted.csv"), index=False)
+uniqueness_df
+
+
 # ### What about the ontology term annotations for each species?
 
-# In[7]:
+# In[8]:
 
 
 # How many of the genes in this dataset for each species are mapped to atleast one term from a given ontology?
@@ -199,7 +232,7 @@ df
 
 # ### What about the biologically relevant groups like biochemical pathways and phenotypes?
 
-# In[8]:
+# In[9]:
 
 
 # What are the groupings that we're interested in mapping to? Uses the paths defined at the top of the notebook.
@@ -225,7 +258,7 @@ df
 
 # ### What about the other biologically relevant information like orthologous genes and protein interactions?
 
-# In[9]:
+# In[10]:
 
 
 # PantherDB for plant orthologs.
@@ -239,7 +272,7 @@ df["panther"] = df["species"].map(lambda x: num_mapped[x])
 df
 
 
-# In[10]:
+# In[11]:
 
 
 # STRING DB for protein-protein interactions.
@@ -264,7 +297,7 @@ df["stringdb"] = df["species"].map(lambda x: num_mapped[x])
 df
 
 
-# In[11]:
+# In[ ]:
 
 
 # Write that dataframe with all the information about datast to a file.
@@ -274,7 +307,7 @@ df.to_csv(os.path.join(OUTPUT_DIR,"full_dataset_composition.csv"),index=False)
 # ### How do the vocabularies used for different species compare?
 # One of the things we are interested in is discovering or recovering phenotype similarity between different species in order to identify phenologs (phenotypes between species that share some underlying genetic cause). For this reason, we are interested in how the vocabularies used to describe phenotypes between different species vary, because this will impact how feasible it is to use a dataset like this to identify phenologs. Because the Arabidopsis and maize datasets are the largest in this case, we will compare the vocabularies used in describing the phenotypes associated with the genes from these species in this dataset.
 
-# In[12]:
+# In[ ]:
 
 
 # Using lemmas as the vocabulary components.
@@ -306,7 +339,7 @@ table.to_csv(os.path.join(OUTPUT_DIR,"token_frequencies.csv"), index=False)
 table.head(10)
 
 
-# In[13]:
+# In[ ]:
 
 
 # What are the tokens more frequently used for Arabidopsis than maize descriptions in this dataset?
@@ -314,7 +347,7 @@ table.sort_values(by="diff", ascending=False, inplace=True)
 table.head(30)
 
 
-# In[14]:
+# In[ ]:
 
 
 # What are the tokens more frequently used for maize than Arabidopsis descriptions in this dataset?
@@ -322,7 +355,7 @@ table.sort_values(by="diff", ascending=True, inplace=True)
 table.head(30)
 
 
-# In[15]:
+# In[ ]:
 
 
 # Is the mean absolute value of the rate differences different between the different parts of speech?
@@ -333,7 +366,7 @@ pos_table = pos_table[["abs_diff"]]
 pos_table.reset_index()
 
 
-# In[16]:
+# In[ ]:
 
 
 # Working on the Venn Diagram for this part, unused currently.
@@ -351,7 +384,7 @@ pos_table.reset_index()
 
 # ### Looking at Term and Word Enrichment for Groups of Genes
 
-# In[84]:
+# In[ ]:
 
 
 # Loading the dataset of phenotype descriptions and ontology annotations.
@@ -365,7 +398,7 @@ texts = {i:" ".join(simple_preprocess(t)) for i,t in d.items()}
 len(texts)                              
 
 
-# In[62]:
+# In[ ]:
 
 
 # Create ontology objects for all the biological ontologies being used.
@@ -377,7 +410,7 @@ po = load_from_pickle(po_pickle_path)
 go = load_from_pickle(go_pickle_path)
 
 
-# In[85]:
+# In[ ]:
 
 
 curated_go_annotations = data.get_annotations_dictionary("GO")
@@ -385,7 +418,7 @@ curated_po_annotations = data.get_annotations_dictionary("PO")
 print("done")
 
 
-# In[77]:
+# In[ ]:
 
 
 # Which GO terms are used to annotate the most genes in this dataset?
@@ -407,7 +440,7 @@ terms_df.sort_values(by="freq", ascending=False, inplace=True)
 terms_df.head(20)
 
 
-# In[78]:
+# In[ ]:
 
 
 # Make the group be ones that have that GO term anntation.
@@ -427,7 +460,7 @@ terms_df.head(20)
 
 
 
-# In[86]:
+# In[ ]:
 
 
 # Load the mappings from this dataset to PlantCyc information.
@@ -450,7 +483,7 @@ pathways_df = pathways_df[["pathway_name","pathway_id","num_genes"]]
 pathways_df.head(15)
 
 
-# In[107]:
+# In[ ]:
 
 
 # For some example pathway to use.
@@ -462,13 +495,13 @@ gene_ids_in_this_pathway = group_id_to_ids[pathway_id]
 gene_ids_in_this_pathway
 
 
-# In[98]:
+# In[ ]:
 
 
 wordcloud = defaultdict(list)
 
 
-# In[108]:
+# In[ ]:
 
 
 results = term_enrichment(curated_po_annotations, gene_ids_in_this_pathway, po).head(20)
@@ -494,7 +527,7 @@ results["significance"] = results["p_value_adj"].map(get_level)
 results
 
 
-# In[109]:
+# In[ ]:
 
 
 for row in results.itertuples():
@@ -502,7 +535,7 @@ for row in results.itertuples():
     wordcloud["Word"].append("{} ({})".format(row.term_id,row.term_label))
 
 
-# In[102]:
+# In[ ]:
 
 
 results = term_enrichment(curated_go_annotations, gene_ids_in_this_pathway, go).head(20)
@@ -527,7 +560,7 @@ results["significance"] = results["p_value_adj"].map(get_level)
 results
 
 
-# In[110]:
+# In[ ]:
 
 
 results = token_enrichment(texts, gene_ids_in_this_pathway).head(20)
@@ -546,7 +579,7 @@ results["significance"] = results["p_value_adj"].map(get_level)
 results
 
 
-# In[111]:
+# In[ ]:
 
 
 for row in results.itertuples():
@@ -554,7 +587,7 @@ for row in results.itertuples():
     wordcloud["Word"].append(row.token)
 
 
-# In[112]:
+# In[ ]:
 
 
 pd.DataFrame(wordcloud).to_csv(os.path.join(OUTPUT_DIR, "{}_word_cloud.csv".format(pathway_id)), index=False)

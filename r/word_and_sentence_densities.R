@@ -9,9 +9,9 @@ library(ggrepel)
 
 
 # The input and output files that this script uses and creates.
-input_path <- "../data/scratch/word_sent_distributions.csv"
-word_plot_output_path <-"../data/scratch/words.png"
-sent_plot_output_path <- "../data/scratch/sents.png"
+input_path <- "/Users/irbraun/phenologs-with-oats/data/scratch/word_sent_distributions.csv"
+word_plot_output_path <-"/Users/irbraun/phenologs-with-oats/data/scratch/words.png"
+sent_plot_output_path <- "/Users/irbraun/Desktop/sents.png"
 
 
 
@@ -50,7 +50,7 @@ percent_removed
 
 # Generate the plot of word number distribution and save to a file.
 ggplot(df, aes(x=num_words)) +
-  geom_density(alpha=0.9, color="black", fill="lightgray") +
+  geom_histogram(alpha=0.9, color="black", fill="lightgray", bins=30) +
   theme_bw() +
   facet_grid(rows=vars(species),cols=vars(),scale="free") +
   scale_x_continuous(breaks=seq(0,word_limit,100), limits=c(0,word_limit+30), expand = c(0.01, 0)) +
@@ -60,7 +60,7 @@ ggplot(df, aes(x=num_words)) +
         axis.ticks.y = element_blank(),
         legend.direction = "vertical",
         legend.position = "right")+ 
-  ylab("Density") +
+  ylab("Frequency") +
   xlab("Number of Words")
 
 ggsave(word_plot_output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=width_cm, height=height_cm, units=c("cm"), dpi=dpi, limitsize=FALSE)
@@ -69,17 +69,18 @@ ggsave(word_plot_output_path, plot=last_plot(), device="png", path=NULL, scale=1
 
 # Generate the plot of sentence number distribution and save to a file.
 ggplot(df, aes(x=num_sents)) +
-  geom_density(alpha=1.0, fill="lightgray") +
+  geom_histogram(alpha=0.9, col="black", fill="lightgray", bins=30) +
   theme_bw() +
   facet_grid(rows=vars(species),cols=vars(),scale="free") +
   scale_x_continuous(breaks=seq(0,sent_limit,10), limits=c(0,sent_limit+2), expand = c(0.01, 0)) +
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
         panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
         axis.text.y = element_blank(),
         axis.ticks.y = element_blank(),
         legend.direction = "vertical",
         legend.position = "right")+ 
-  ylab("Density") +
+  ylab("Frequency") +
   xlab("Number of Sentences")
 
 ggsave(sent_plot_output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=width_cm, height=height_cm, units=c("cm"), dpi=dpi, limitsize=FALSE)

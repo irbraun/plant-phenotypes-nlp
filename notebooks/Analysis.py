@@ -185,6 +185,7 @@ DATASET_OPTIONS = ["plants","diseases","snippets","contexts","biosses","pairs"]
 parser = argparse.ArgumentParser()
 parser.add_argument("--name", dest="name", required=True, help="create a name for this run of the anaylsis, used in naming the output directory")
 parser.add_argument("--dataset", dest="dataset", choices=DATASET_OPTIONS, required=True, help="name of the dataset the analysis pipeline should be run on")
+parser.add_argument("--subset", dest="subset", type=int, required=False, help="randomly subset the data to only include this number of genes, used for testing")
 parser.add_argument("--app", dest="app", required=False, action='store_true', help="use to have the script output objects needed to build the streamlit app")
 parser.add_argument("--learning", dest="learning", required=False, action='store_true', help="use the approaches that involve neural networks")
 parser.add_argument("--bert", dest="bert", required=False, action='store_true', help="use the approaches that involve BERT")
@@ -569,8 +570,9 @@ dataset.describe()
 # In[ ]:
 
 
-#dataset.filter_random_k(1000)
-#dataset.describe()
+if args.subset:
+    dataset.filter_random_k(args.subset)
+    dataset.describe()
 
 
 # <a id="phenotype_pairs"></a>
@@ -668,23 +670,26 @@ doc2vec_plants_model= gensim.models.Doc2Vec.load(doc2vec_plants_path)
 word2vec_wiki_model = gensim.models.Word2Vec.load(word2vec_wikipedia_path)
 word2vec_plants_model = gensim.models.Word2Vec.load(word2vec_plants_path)
 
-# Word2Vec models that were trained on a combination of PMC, PubMed, and/or wikipedia_datasets.
-word2vec_bio_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pmc_path, binary=True)
-word2vec_bio_pubmed_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pubmed_path, binary=True)
-word2vec_bio_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pubmed_and_pmc_path, binary=True)
-word2vec_bio_wikipedia_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_wikipedia_pubmed_and_pmc_path, binary=True)
 
-# Reading in BERT tokenizers that correspond to paritcular models.
-bert_tokenizer_base = BertTokenizer.from_pretrained('bert-base-uncased')
-bert_tokenizer_pmc = BertTokenizer.from_pretrained(biobert_pmc_path)
-bert_tokenizer_pubmed = BertTokenizer.from_pretrained(biobert_pubmed_path)
-bert_tokenizer_pubmed_pmc = BertTokenizer.from_pretrained(biobert_pubmed_pmc_path)
+if args.bio_small or args.bio_large:
+    # Word2Vec models that were trained on a combination of PMC, PubMed, and/or wikipedia_datasets.
+    word2vec_bio_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pmc_path, binary=True)
+    word2vec_bio_pubmed_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pubmed_path, binary=True)
+    word2vec_bio_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pubmed_and_pmc_path, binary=True)
+    word2vec_bio_wikipedia_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_wikipedia_pubmed_and_pmc_path, binary=True)
 
-# Reading in the BERT models themselves.
-bert_model_base = BertModel.from_pretrained('bert-base-uncased')
-bert_model_pmc = BertModel.from_pretrained(biobert_pmc_path)
-bert_model_pubmed = BertModel.from_pretrained(biobert_pubmed_path)
-bert_model_pubmed_pmc = BertModel.from_pretrained(biobert_pubmed_pmc_path)
+if args.bert or args.biobert:
+    # Reading in BERT tokenizers that correspond to paritcular models.
+    bert_tokenizer_base = BertTokenizer.from_pretrained('bert-base-uncased')
+    bert_tokenizer_pmc = BertTokenizer.from_pretrained(biobert_pmc_path)
+    bert_tokenizer_pubmed = BertTokenizer.from_pretrained(biobert_pubmed_path)
+    bert_tokenizer_pubmed_pmc = BertTokenizer.from_pretrained(biobert_pubmed_pmc_path)
+
+    # Reading in the BERT models themselves.
+    bert_model_base = BertModel.from_pretrained('bert-base-uncased')
+    bert_model_pmc = BertModel.from_pretrained(biobert_pmc_path)
+    bert_model_pubmed = BertModel.from_pretrained(biobert_pubmed_path)
+    bert_model_pubmed_pmc = BertModel.from_pretrained(biobert_pubmed_pmc_path)
 
 
 # <a id="part_3"></a>
@@ -855,7 +860,6 @@ distance_matrix = graph.array
 tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
 
 # Now we have a list of tokens of length n, and the corresponding n by n distance matrix for looking up distances.
-
 
 # The other argument that the Linares Pontes algorithm needs is a value for n, see paper or description above
 # for an explaination of what that value is in the algorithm, and why values near 3 were a good fit.
@@ -1101,11 +1105,11 @@ doc2vec_and_word2vec_approaches = [
     
     # Another set of six approaches that all use the Word2Vec or Doc2Vec models trained on a plant phenotype corpus.
     Method("Doc2Vec","Plants,Size=300","NLP",1, pw.with_doc2vec, {"model":doc2vec_plants_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Plants,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_plants__model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Plants,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_plants__model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Word2Vec","Plants,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Word2Vec","Plants,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
     Method("Doc2Vec","Tokenization,Plants,Size=300","NLP",4, pw.with_doc2vec, {"model":doc2vec_plants_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,Plants,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_plants__model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,Plants,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_plants__model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Word2Vec","Tokenization,Plants,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Word2Vec","Tokenization,Plants,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
 
@@ -1843,6 +1847,10 @@ question_overlaps_table
 # In[ ]:
 
 
+dist_rows = []
+
+
+
 for properties,idxs in zip(subset_properties, subset_idx_lists):
     
     # Remember the properties for this subset being looked at, and subset the dataframe accordingly.
@@ -1874,6 +1882,41 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
         tables[c][q][s][name].update({"mean_1":pos_mean, "mean_0":neg_mean, "n_1":pos_n, "n_0":neg_n})
         tables[c][q][s][name].update({"ks":stat, "ks_pval":p})
 
+        
+        
+        # Adding the histogram creation part.
+        num_bins = 100
+        range_ = (0,1)
+        bin_width = (range_[1]-range_[0])/num_bins
+        positive_dist = ppi_pos_dict[name]
+        negative_dist = ppi_neg_dict[name]
+        positive_hist_frequency = np.histogram(positive_dist, bins=num_bins, range=range_, density=False)
+        negative_hist_frequency = np.histogram(negative_dist, bins=num_bins, range=range_, density=False)
+        positive_hist_density = np.histogram(positive_dist, bins=num_bins, range=range_, density=True)
+        negative_hist_density = np.histogram(negative_dist, bins=num_bins, range=range_, density=True)
+        
+        # All those should have identical sets of bin edges.
+        assert positive_hist_frequency[1] == negative_hist_frequency[1]
+        assert positive_hist_frequency[1] == positive_hist_density[1]
+        assert positive_hist_frequency[1] == negative_hist_density[1]
+        
+        bin_centers = [x+(bin_width/2) for x in positive_hist_frequency[1][:num_bins]]
+
+        for i,bin_center in enumerate(bin_centers):
+            p_freq = positive_hist_frequency[0][i]
+            n_freq = negative_hist_frequency[0][i]
+            p_dens = positive_dens_frequency[0][i]
+            n_dens = negative_dens_frequency[0][i]
+            dist_rows.append((str(c).lower(),str(q).lower(),str(s).lower(),"positive",p_freq,p_dens))
+            dist_rows.append((str(c).lower(),str(q).lower(),str(s).lower(),"negative",n_freq,n_dens))
+            
+        
+        
+        
+        
+        
+        
+        
     # Show the kernel estimates for each distribution of weights for each method.
     num_plots, plots_per_row, row_width, row_height = (len(methods), 4, 14, 3)
     fig,axs = plt.subplots(math.ceil(num_plots/plots_per_row), plots_per_row, squeeze=False)
@@ -1896,6 +1939,11 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
     # Save those plots in a new image file.
     fig.savefig(os.path.join(OUTPUT_DIR, PLOTS_DIR, "kernel_densities_{}_{}_{}.png".format(*variables_strs)),dpi=400)
     plt.close()
+    
+    
+    
+a = pd.DataFrame(dist_rows, columns=["c","q","s","kind","frequency","density"])
+a.to_csv(os.path.join(OUTPUT_DIR, "the_new_plot.csv"), index=False)
 
 
 # <a id="within"></a>
