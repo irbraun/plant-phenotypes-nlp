@@ -1,63 +1,74 @@
-library(rjson)
+library(ggplot2)
+library(tidyr)
 library(dplyr)
-
+library(hashmap)
+library(operators)
+library(stringr)
 
 
 
 
 
 # Read in the file that contains the all the precision and recall values for each method.
-df <- read.csv(file="/Users/irbraun/Desktop/test.csv")
+df <- read.csv(file="/Users/irbraun/Desktop/histograms.csv")
 head(df)
 
 
-ggplot(df, aes(x=bin_center, y=frequency, fill=approach)) +
+# Using just a few particular examples to build the figure.
+df <- df %>% filter((num_bins==50)) %>% filter((curated=="true")) %>% filter((approach=="doc2vec__wikipedia_size_300"))
+head(df)
+
+
+df <- df %>% filter(!((objective=="pathways") & (species!="both")))
+head(df)
+
+
+
+
+
+
+# Converting these variables to factors so that we can control the order in the plots.
+positive_string <- "Gene pairs considered positive"
+negative_string <- "All other gene pairs"
+df$distribution <- factor(df$distribution, levels=c("positive","negative"), labels=c(positive_string,negative_string))
+df$objective <- factor(df$objective, levels=c("orthologs","predicted","known","pathways","subsets"), labels=c("Orthologs","Predicted","Known","Pathways","Phenotypes"))
+
+
+
+# Pick colors to represent the positive and negative distributions.
+dist_colors <- c(NA,"#0000007D")
+dist_names <-  c(positive_string,negative_string)
+color_mapping <- setNames(dist_colors, dist_names)
+
+
+dist_colors <- c("#000000",NA)
+dist_names <-  c(positive_string,negative_string)
+color_mapping_2 <- setNames(dist_colors, dist_names)
+
+
+ggplot(df, aes(x=bin_center, y=density, fill=distribution, color=distribution)) +
+  geom_bar(stat="identity", position="identity", width=0.02, size=0.12) +
   theme_bw() +
-  #geom_smooth()
-  #geom_line()
-  geom_bar(stat="identity", position="identity", width=0.01, alpha=0.4)
-
-
-
-
-
-df_p = data.frame(result$positives)
-df_n = data.frame(result$negatives,)
-
-
-
-df <- dplyr::bind_rows(data.frame(result$positives), data.frame(result$negatives), .id = "source")
-
-
-
-
-
-
-df <- data.frame(result)
-head(df)
-
-df <- gather(df, kind, value, positives, negatives)
-head(df)
-
-
-
-# Generate the plot of sentence number distribution and save to a file.
-ggplot(df, aes(x=num_sents)) +
-  geom_histogram(alpha=0.9, col="black", fill="lightgray", bins=30) +
-  theme_bw() +
-  facet_grid(rows=vars(species),cols=vars(),scale="free") +
-  scale_x_continuous(breaks=seq(0,sent_limit,10), limits=c(0,sent_limit+2), expand = c(0.01, 0)) +
+  scale_fill_manual(name="Distribution", values=color_mapping) +
+  scale_color_manual(name="Distribution", values=color_mapping_2) +
+  scale_y_continuous(expand=c(0.00, 0.00)) +
+  scale_x_continuous(expand=c(0.01, 0.00)) +
+  facet_wrap(facets=vars(objective), nrow=1, scales="free") +
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
         panel.grid.major = element_blank(), 
         panel.grid.minor = element_blank(),
         axis.text.y = element_blank(),
         axis.ticks.y = element_blank(),
-        legend.direction = "vertical",
-        legend.position = "right")+ 
-  ylab("Frequency") +
-  xlab("Number of Sentences")
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        legend.direction = "horizontal",
+        legend.position = "bottom")+ 
+  ylab("Density") +
+  xlab("Gene Pair Similarity")
 
 
 
+# Saving the plot to a file.
+path <- "/Users/irbraun/Desktop/b.png"
+ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=18, height=6, units=c("cm"), dpi=500, limitsize=FALSE)
 
-ggplot(a, aes(x=values)) + geom_density()

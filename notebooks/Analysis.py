@@ -226,7 +226,7 @@ APPROACHES_DIR = "approaches_info"
 VOCABULARIES_DIR = "vocabularies"
 METRICS_DIR = "main_metrics"
 QUESTIONS_DIR = "questions_info"
-PLOTS_DIR = "plot_images"
+PLOTS_DIR = "distributions"
 GROUP_DISTS_DIR = "group_distances"
 TOPICS_DIR = "topic_modeling"
 os.mkdir(os.path.join(OUTPUT_DIR,STREAMLIT_DIR))
@@ -678,18 +678,18 @@ if args.bio_small or args.bio_large:
     word2vec_bio_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pubmed_and_pmc_path, binary=True)
     word2vec_bio_wikipedia_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_wikipedia_pubmed_and_pmc_path, binary=True)
 
-if args.bert or args.biobert:
-    # Reading in BERT tokenizers that correspond to paritcular models.
-    bert_tokenizer_base = BertTokenizer.from_pretrained('bert-base-uncased')
-    bert_tokenizer_pmc = BertTokenizer.from_pretrained(biobert_pmc_path)
-    bert_tokenizer_pubmed = BertTokenizer.from_pretrained(biobert_pubmed_path)
-    bert_tokenizer_pubmed_pmc = BertTokenizer.from_pretrained(biobert_pubmed_pmc_path)
+#if args.bert or args.biobert:
+# Reading in BERT tokenizers that correspond to paritcular models.
+bert_tokenizer_base = BertTokenizer.from_pretrained('bert-base-uncased')
+bert_tokenizer_pmc = BertTokenizer.from_pretrained(biobert_pmc_path)
+bert_tokenizer_pubmed = BertTokenizer.from_pretrained(biobert_pubmed_path)
+bert_tokenizer_pubmed_pmc = BertTokenizer.from_pretrained(biobert_pubmed_pmc_path)
 
-    # Reading in the BERT models themselves.
-    bert_model_base = BertModel.from_pretrained('bert-base-uncased')
-    bert_model_pmc = BertModel.from_pretrained(biobert_pmc_path)
-    bert_model_pubmed = BertModel.from_pretrained(biobert_pubmed_path)
-    bert_model_pubmed_pmc = BertModel.from_pretrained(biobert_pubmed_pmc_path)
+# Reading in the BERT models themselves.
+bert_model_base = BertModel.from_pretrained('bert-base-uncased')
+bert_model_pmc = BertModel.from_pretrained(biobert_pmc_path)
+bert_model_pubmed = BertModel.from_pretrained(biobert_pubmed_path)
+bert_model_pubmed_pmc = BertModel.from_pretrained(biobert_pubmed_pmc_path)
 
 
 # <a id="part_3"></a>
@@ -1118,16 +1118,16 @@ doc2vec_and_word2vec_approaches = [
 
 bio_nlp_approaches_small = [
     # Set of six approaches that all use the Word2Vec or Doc2Vec models trained on English Wikipedia.
-    Method("Word2Vec","PMC,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","PMC,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Tokenization,PMC,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,PMC,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","PMC,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","PMC,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","Tokenization,PMC,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","Tokenization,PMC,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
     
     # Another set of six approaches that all use the Word2Vec or Doc2Vec models trained on a plant phenotype corpus.
-    Method("Word2Vec","PubMed,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","PubMed,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Tokenization,PubMed,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,PubMed,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","PubMed,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","PubMed,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","Tokenization,PubMed,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","Tokenization,PubMed,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
 
@@ -1136,16 +1136,16 @@ bio_nlp_approaches_small = [
 
 bio_nlp_approaches_large = [
     # Set of six approaches that all use the Word2Vec or Doc2Vec models trained on English Wikipedia.
-    Method("Word2Vec","PubMed_PMC,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","PubMed_PMC,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Tokenization,PubMed_PMC,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,PubMed_PMC,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","PubMed_PMC,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","PubMed_PMC,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","Tokenization,PubMed_PMC,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","Tokenization,PubMed_PMC,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
     
     # Another set of six approaches that all use the Word2Vec or Doc2Vec models trained on a plant phenotype corpus.
-    Method("Word2Vec","Wiki_PubMed_PMC,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Wiki_PubMed_PMC,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Tokenization,Wiki_PubMed_PMC,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,Wiki_PubMed_PMC,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","Wiki_PubMed_PMC,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","Wiki_PubMed_PMC,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","Tokenization,Wiki_PubMed_PMC,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","Tokenization,Wiki_PubMed_PMC,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
 
@@ -1847,6 +1847,7 @@ question_overlaps_table
 # In[ ]:
 
 
+# For creating the frequency and density dataframe.
 dist_rows = []
 
 
@@ -1885,34 +1886,33 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
         
         
         # Adding the histogram creation part.
-        num_bins = 100
-        range_ = (0,1)
-        bin_width = (range_[1]-range_[0])/num_bins
-        positive_dist = ppi_pos_dict[name]
-        negative_dist = ppi_neg_dict[name]
-        positive_hist_frequency = np.histogram(positive_dist, bins=num_bins, range=range_, density=False)
-        negative_hist_frequency = np.histogram(negative_dist, bins=num_bins, range=range_, density=False)
-        positive_hist_density = np.histogram(positive_dist, bins=num_bins, range=range_, density=True)
-        negative_hist_density = np.histogram(negative_dist, bins=num_bins, range=range_, density=True)
+        num_bins_to_try = [20, 50, 100]
+        for num_bins in num_bins_to_try:
         
-        # All those should have identical sets of bin edges.
-        assert positive_hist_frequency[1] == negative_hist_frequency[1]
-        assert positive_hist_frequency[1] == positive_hist_density[1]
-        assert positive_hist_frequency[1] == negative_hist_density[1]
-        
-        bin_centers = [x+(bin_width/2) for x in positive_hist_frequency[1][:num_bins]]
+            range_ = (0,1)
+            bin_width = (range_[1]-range_[0])/num_bins
+            positive_dist = ppi_pos_dict[name]
+            negative_dist = ppi_neg_dict[name]
+            positive_hist_frequency = np.histogram(positive_dist, bins=num_bins, range=range_, density=False)
+            negative_hist_frequency = np.histogram(negative_dist, bins=num_bins, range=range_, density=False)
+            positive_hist_density = np.histogram(positive_dist, bins=num_bins, range=range_, density=True)
+            negative_hist_density = np.histogram(negative_dist, bins=num_bins, range=range_, density=True)
 
-        for i,bin_center in enumerate(bin_centers):
-            p_freq = positive_hist_frequency[0][i]
-            n_freq = negative_hist_frequency[0][i]
-            p_dens = positive_dens_frequency[0][i]
-            n_dens = negative_dens_frequency[0][i]
-            dist_rows.append((str(c).lower(),str(q).lower(),str(s).lower(),"positive",p_freq,p_dens))
-            dist_rows.append((str(c).lower(),str(q).lower(),str(s).lower(),"negative",n_freq,n_dens))
-            
-        
-        
-        
+            # All those should have identical sets of bin edges.
+            #assert positive_hist_frequency[1] == negative_hist_frequency[1]
+            #assert positive_hist_frequency[1] == positive_hist_density[1]
+            #assert positive_hist_frequency[1] == negative_hist_density[1]
+            bin_centers = [x+(bin_width/2) for x in positive_hist_frequency[1][:num_bins]]
+
+            for i,bin_center in enumerate(bin_centers):
+                p_freq = positive_hist_frequency[0][i]
+                n_freq = negative_hist_frequency[0][i]
+                p_dens = positive_hist_density[0][i]
+                n_dens = negative_hist_density[0][i]
+                dist_rows.append((name, str(c).lower(),str(q).lower(),str(s).lower(),"positive",bin_center,p_freq,p_dens,num_bins))
+                dist_rows.append((name, str(c).lower(),str(q).lower(),str(s).lower(),"negative",bin_center,n_freq,n_dens,num_bins))
+
+
         
         
         
@@ -1941,9 +1941,9 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
     plt.close()
     
     
-    
-a = pd.DataFrame(dist_rows, columns=["c","q","s","kind","frequency","density"])
-a.to_csv(os.path.join(OUTPUT_DIR, "the_new_plot.csv"), index=False)
+
+dists_df = pd.DataFrame(dist_rows, columns=["approach","curated","objective","species","distribution","bin_center","frequency","density","num_bins"])
+dists_df.to_csv(os.path.join(OUTPUT_DIR, PLOTS_DIR, "histograms.csv"), index=False)
 
 
 # <a id="within"></a>
