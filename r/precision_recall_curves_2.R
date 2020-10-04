@@ -8,7 +8,7 @@ library(stringr)
 
 
 # Read in the file that contains the all the precision and recall values for each method.
-df <- read.csv(file="/Users/irbraun/phenologs-with-oats/outputs/quick_09_01_2020_h12m14s19_1412/main_metrics/precision_recall_curves.csv")
+df <- read.csv(file="/Users/irbraun/phenologs-with-oats/outputs/stacked_10_01_2020_h10m47s36_5471/stacked_precision_recall_curves.csv")
 head(df)
 
 

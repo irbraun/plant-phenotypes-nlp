@@ -6,6 +6,7 @@ from pathlib import Path
 import pandas as pd
 import random
 import os
+import sys
 import datetime
 
 
@@ -14,26 +15,39 @@ import datetime
 
 
 
-def recursive_rowstack_dataframes(basedir, filename):
+def recursive_rowstack_dataframes(basedir, filename, path_keyword=None):
     """Combine all files found under this directory or its subdirectories that match this file name and return the stacked dataframe.
     
     Args:
         basedir (str): The base directory to recursively search under.
-        
+    
         filename (str): The final path component to use to look for compatible files.
+    
+        path_keyword (str): A string that has to be presented in the full path or that file is not used, optional.
+    
     
     Returns:
         pandas.DataFrame: A dataframe resulting from stacking all files under that directory with the provided name.
     """
     dfs = []
     for path in Path(basedir).rglob(filename):
-        dfs.append(pd.read_csv(path))
+    	if (path_keyword == None) or (path_keyword in str(path)):
+        	dfs.append(pd.read_csv(path))
     df = pd.concat(dfs)
     df.reset_index(drop=True, inplace=True)
     return(df)
         
     
     
+
+
+
+# Should we check paths for a keyword?
+if len(sys.argv)>1:
+	path_keyword = sys.argv[1]
+else:
+	path_keyword = None
+
 
 
 
@@ -51,7 +65,6 @@ BASEDIR = "../outputs"
 
 
 
-
 # The names of the final path components for files that should be stacked.
 FILES_TO_BE_STACKED = [
     "approaches.csv",
@@ -59,6 +72,7 @@ FILES_TO_BE_STACKED = [
     "f1_max.csv",
     "full_table_with_all_metrics.csv",
     "precision_recall_curves.csv",
+    "histograms.csv"
 ]
     
     
@@ -66,14 +80,10 @@ FILES_TO_BE_STACKED = [
 
 
 
-
-
-
-
 # For each of those files, stack them and write to a new file. Sort them if there is a column named "order".
 for filename in FILES_TO_BE_STACKED:
     new_filename = "stacked_{}".format(filename)
-    df = recursive_rowstack_dataframes(BASEDIR, filename)
+    df = recursive_rowstack_dataframes(BASEDIR, filename, path_keyword)
     if "order" in df.columns:
         df.sort_values(by=["order"], inplace=True)
     df.to_csv(os.path.join(OUTPUT_DIR,new_filename), index=False)
