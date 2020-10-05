@@ -49,7 +49,7 @@ color_mapping <- setNames(method_colors, method_names)
 
 ggplot(df, aes(y=quantity, x=species, fill=others)) + 
   geom_bar(position="fill", stat="identity") +
-  scale_fill_manual(name="Additional", values=color_mapping) +
+  scale_fill_manual(name="Shared", values=color_mapping) +
   scale_y_continuous(expand=c(0.01, 0.01)) +
   coord_flip() +
   theme_bw() +  

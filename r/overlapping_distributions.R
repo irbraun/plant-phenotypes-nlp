@@ -130,17 +130,16 @@ make_and_save_figure <- function(df, output_path){
   
   # Saving the plot to a file.
   ggsave(output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=18, height=6, units=c("cm"), dpi=500, limitsize=FALSE)
-  #ggsave(output_path, plot=plot, device="png", path=NULL, scale=1, width=18, height=6, units=c("cm"), dpi=500, limitsize=FALSE)
 }
 
 full_df <- read.csv(file="/Users/irbraun/phenologs-with-oats/outputs/stacked_10_01_2020_h10m47s36_5471/stacked_histograms.csv")
-output_dir <- "/Users/irbraun/Desktop/test_folder/"
+output_dir <- "/Users/irbraun/Desktop/test_folder_2/"
 for (a in unique(full_df$approach)){
   for (c in unique(full_df$curated)){
     # Using just a few particular examples to build the figure.
     df <- (full_df %>% filter((num_bins==50)) %>% filter((curated==c)) %>% filter((approach==a)))
     df <- df %>% filter(!((objective=="pathways") & (species!="both")))
-    output_path = paste(output_dir,a,"_curated_",c,".png")
+    output_path = paste(output_dir,a,"_curated_",c,".png", sep="")
     make_and_save_figure(df, output_path)
   }
 }
