@@ -133,6 +133,7 @@ make_and_save_figure <- function(df, output_path){
 }
 
 full_df <- read.csv(file="/Users/irbraun/phenologs-with-oats/outputs/stacked_10_01_2020_h10m47s36_5471/stacked_histograms.csv")
+#full_df <- read.csv(file="/Users/irbraun/phenologs-with-oats/outputs/something_10_05_2020_h10m24s54_1468/distributions/histograms.csv")
 output_dir <- "/Users/irbraun/Desktop/test_folder_2/"
 for (a in unique(full_df$approach)){
   for (c in unique(full_df$curated)){

@@ -1,0 +1,67 @@
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(hashmap)
+library(operators)
+library(stringr)
+
+
+
+
+
+
+# What about generating for a bunch of different combinations and saving them for a supplemental file?
+# Function is just copied and pasted from the example above, with the fixed output path parameterized instead.
+make_and_save_figure <- function(df, baselines, output_path){
+  
+  
+  # Don't keep the automatically added precision=1 datapoint (upper-left corner), because it adds a meaningless straight line to that point.
+  df <- df %>% filter(precision != 1)
+  
+  
+  # Reformatting to be a factor to specify spelling and re-ordering.
+  df$task <- factor(df$task, levels=c("orthologs","predicted","known","pathways","subsets"), labels=c("Orthologs","Predicted","Known","Pathways","Phenotypes"))
+  baselines$task <- factor(baselines$task, levels=c("orthologs","predicted","known","pathways","subsets"), labels=c("Orthologs","Predicted","Known","Pathways","Phenotypes"))
+  
+  # Make the plot.
+  ggplot(df, aes(x=recall, y=precision)) + geom_line() +
+    facet_wrap(facets=vars(task), nrow=1) +
+    geom_hline(data=baselines, aes(yintercept=basline_auc), linetype="dashed", color="gray", size=0.5) +
+    scale_y_continuous(breaks=c(0,0.25,0.5,0.75,1), limits=c(0,1), expand=c(0.00, 0.00)) +
+    scale_x_continuous(breaks=c(0,0.25,0.5,0.75,1), limits=c(0,1), expand=c(0.00, 0.00)) +
+    theme_bw() +
+    xlab("Recall") +
+    ylab("Precision") +
+    theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
+          panel.spacing = unit(1.5, "lines"))
+  
+  # Saving the plot to a file.
+  dim_for_one_plot <- 4
+  height <- dim_for_one_plot+1
+  width <- dim_for_one_plot*(length(unique(df$task)))
+  
+  ggsave(output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=width, height=height, units=c("cm"), dpi=500, limitsize=FALSE)
+}
+
+
+
+
+
+
+full_df <- read.csv(file="/Users/irbraun/phenologs-with-oats/outputs/figtest_10_05_2020_h11m43s38_4419/main_metrics/precision_recall_curves.csv")
+
+output_dir <- "/Users/irbraun/Desktop/tf3/"
+
+for (n in unique(full_df$name)){
+  for (c in unique(full_df$curated)){
+    # Using just a few particular examples to build the figure. Create a baselines dataframe as well.
+    df <- (full_df %>% filter((curated==c)) %>% filter((name==n)))
+    df <- df %>% filter(!((task=="pathways") & (species!="both")))
+    baselines <- df[!duplicated(df[,c("task","curated")]),]
+    output_path = paste(output_dir,n,"_curated_",c,".png", sep="")
+    make_and_save_figure(df, baselines, output_path)
+  }
+}
+
+
+

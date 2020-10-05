@@ -151,7 +151,7 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 
-# In[ ]:
+# In[2]:
 
 
 # Set a tag that specifies whether this is being run as a notebook or a script. Some sections are skipped when 
@@ -177,7 +177,7 @@ else:
 # ### Reading in arguments
 # Command line arguments are used to define which subset of the approaches that are evaluated in this notebook are used during a given run. Because the pairwise distances matrices become very large when as the number of genes increases, the number of approaches used (which each generated one distance matrix) can be lowered if the script is using too much memory for datasets that contain many genes. Although there are differences in runtime for each approach where ones that generated larger vectors (n-grams) instead of small embeddings (Word2Vec) take longer, this is not significant compared to how long operations take on the resulting distance matrices, which are all the same size for any given approach, so it is the number of approaches used, not which ones, that matters in reducing the time and memory used for each run. In addition, arguments are also used here to pick which dataset should be used later in the notebook, and whether files should be created for using the results later for the dockerized app (those files are large, they shouldn't be created unless they'll be used).
 
-# In[ ]:
+# In[29]:
 
 
 # Creating the set of arguments that can be used to determine which approaches are run.
@@ -204,7 +204,7 @@ parser.add_argument("--baseline", dest="baseline", required=False, action='store
 # Specify the command line argument list here if running as a notebook instead.
 if NOTEBOOK:
     arg_string = "--name something --dataset plants --app --learning --bert --noblecoder --lda --nmf --vanilla --vocab --annotations"
-    arg_string = "--name something --dataset plants --learning"
+    arg_string = "--name something --dataset diseases --subset 300 --baseline"
     args = parser.parse_args(shlex.split(arg_string))
 else:
     args = parser.parse_args()
@@ -214,7 +214,7 @@ else:
 # ### Defining the input file paths and creating output directory
 # This section specifies the path to the base output directory, and creates all the subfolders inside of it that contain results that pertain to different parts of the analysis. Paths to all the files that are used by this notebook are specified in the subsequent cell.
 
-# In[ ]:
+# In[6]:
 
 
 # Create and name an output directory according to when the notebooks or script was run.
@@ -244,7 +244,7 @@ os.mkdir(os.path.join(OUTPUT_DIR,TOPICS_DIR))
 
 # ### Data paths
 
-# In[ ]:
+# In[7]:
 
 
 # Paths to different datasets containing gene names, text descriptions, and/or ontology term annotations.
@@ -277,7 +277,7 @@ lloyd_function_hierarchy_path = "../../plant-data/papers/lloyd_meinke_2012/versi
 
 # ### Text corpora paths
 
-# In[ ]:
+# In[8]:
 
 
 # Pathways to text corpora files that are used in this analysis.
@@ -287,7 +287,7 @@ phenotypes_corpus_filename = "../data/corpus_related_files/untagged_text_corpora
 
 # ### Machine learning model paths
 
-# In[ ]:
+# In[9]:
 
 
 # Paths to pretrained or saved models used for embeddings with Word2Vec or Doc2vec.
@@ -312,7 +312,7 @@ word2vec_bio_wikipedia_pubmed_and_pmc_path = "../models/bio_nlp_lab/wikipedia-pu
 
 # ### Ontology related paths
 
-# In[ ]:
+# In[10]:
 
 
 # Path the jar file necessary for running NOBLE Coder.
@@ -332,7 +332,7 @@ pato_pickle_path = "../ontologies/pato.pickle"
 # ### Reading in the dataset of genes and their associated phenotype descriptions and annotations
 # Every dataset that is relevant to this analysis or could be used is read in here and described. This is done even if additional arguments specified that the analysis should just focus on one of them. This is set up this way so that the analysis script will immediately fail if any of these datasets are missing, or if any of the paths are incorrect, this was useful when running locally before moving to a cluster.
 
-# In[ ]:
+# In[12]:
 
 
 # Loading the human dataset of concatenated disease names from ClinVar annotations.
@@ -355,8 +355,20 @@ plant_dataset = Dataset(plant_dataset_path)
 plant_dataset.filter_has_description()
 plant_dataset.describe()
 
+
+# In[15]:
+
+
 # Which dataset should be used for the rest of the analysis? Useful for changing when running as a notebook.
-dataset = plant_dataset
+# This picks the dataset based on the dataset argument, if it's not one of the paired sentence ones. If it is,
+# then the plant dataset is used by default for this section just so that the notebook doesn't need to be changed
+# and all parts of the analysis still apply.
+dataset_arg_to_dataset_obj = {
+    "plants":plant_dataset,
+    "diseases":clinvar_dataset,
+    "snippets":snpedia_snippets_dataset,
+    "contexts":snpedia_contexts_dataset}
+dataset = dataset_arg_to_dataset_obj.get(args.dataset, plant_dataset)
 dataset.describe()
 
 
@@ -364,7 +376,7 @@ dataset.describe()
 # ### Relating the dataset of genes to the dataset of groups or categories
 # This section generates tables that indicate how the genes present in the dataset were mapped to the defined pathways or groups. This includes a summary table that indicates how many genes by species were succcessfully mapped to atleast one pathway or group, as well as a more detailed table describing how many genes from each species were mapped to each particular pathway or group. Additionally, a pairwise group similarity matrix is also generated, where the similarity is given as the Jaccard similarity between two groups based on whether genes are shared by those groups or not. The function defined in this section returns a groupings object that can be used again, as well as the IDs of the genes in the full dataset that were found to be relevant to those particular groupings.
 
-# In[ ]:
+# In[16]:
 
 
 def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filename, group_name_mappings, name):
@@ -438,7 +450,7 @@ def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filenam
 # ### Reading in and relating the pathways from KEGG
 # See dataset description for what files were used to construct these mappings.
 
-# In[ ]:
+# In[17]:
 
 
 # Readin in the dataset of groupings for pathways in KEGG.
@@ -451,7 +463,7 @@ kegg_groups.to_pandas().head(10)
 # ### Reading in and relating the pathways from PlantCyc
 # See dataset description for what files were used to construct these mappings.
 
-# In[ ]:
+# In[18]:
 
 
 # Reading in the dataset of groupings for pathways in PlantCyc.
@@ -464,7 +476,7 @@ pmn_groups.to_pandas().head(10)
 # ###  Reading in and relating the phenotype classes and subsets from Lloyd and Meinke (2012)
 # See dataset description for what files were used to construct these mappings, and links there and above to the related paper.
 
-# In[ ]:
+# In[19]:
 
 
 # Reading in the datasets of phenotype subset classifications from the Lloyd, Meinke 2012 paper.
@@ -473,7 +485,7 @@ phe_subsets_groups, subsets_mapped_ids = read_in_groupings_object_and_write_summ
 phe_subsets_groups.to_pandas().head(10)
 
 
-# In[ ]:
+# In[20]:
 
 
 # Reading in the datasets of phenotype class classifications from the Lloyd, Meinke 2012 paper.
@@ -490,7 +502,7 @@ phe_classes_groups.to_pandas().head(10)
 # ### EQ-based similarities from Oellrich, Walls et al., (2015)
 # See dataset description for what files were used to construct these mappings, and links there and above to the related paper.
 
-# In[ ]:
+# In[21]:
 
 
 ow_edgelist = AnyInteractions(dataset.get_name_to_id_dictionary(), pppn_edgelist_path)
@@ -501,7 +513,7 @@ ow_edgelist.df.head(10)
 # ### Protein-Protein Associations from the STRING database
 # See dataset description for what files were used to construct these mappings.
 
-# In[ ]:
+# In[22]:
 
 
 naming_file = "../../plant-data/databases/string/all_organisms.name_2_string.tsv"
@@ -523,7 +535,7 @@ string_edgelist.df.head(10)
 # ### Orthologous genes from PANTHER
 # See dataset description for what files were used to construct these mappings.
 
-# In[ ]:
+# In[23]:
 
 
 panther_edgelist = AnyInteractions(dataset.get_name_to_id_dictionary(), ortholog_file_path)
@@ -534,7 +546,7 @@ panther_edgelist.df.head(10)
 # ### Subsetting the dataset to include only genes with relevance to any of the biological questions
 # This is done to only include genes (and the corresponding phenotype descriptions and annotations) which are useful for the current analysis. In this case we want to only retain genes that are mapped to atleast one pathway in whatever the source of pathway membership we are using is (KEGG, Plant Metabolic Network, etc). This is because for genes other than these genes, it will be impossible to correctly predict their pathway membership, and we have no evidence that they belong or do not belong in certain pathways so they can not be identified as being true or false negatives in any case. This step is necessary because the datasets used with this analysis consist of all the genes that we were able to obtain a free text phenotype description for, but this set of genes might include genes that are not mapped to any of the other biological resources we are using the evaluate different NLP approaches with, so they have to be discounted.
 
-# In[ ]:
+# In[24]:
 
 
 # Get the list of all the IDs in this dataset that have any relevant mapping at all to the biological questions.
@@ -548,7 +560,7 @@ ids_with_any_mapping = list(set(flatten([
 ])))
 
 
-# In[ ]:
+# In[25]:
 
 
 # Get the list of all the IDs in this dataset that have all of types of curated values we want to look at. 
@@ -562,26 +574,26 @@ ids_with_all_annotations = list(set(flatten([
 ])))
 
 
-# In[ ]:
+# In[26]:
 
 
 dataset.filter_with_ids(ids_with_any_mapping)
 dataset.describe()
 
 
-# In[ ]:
+# In[31]:
 
 
 if args.subset:
     dataset.filter_random_k(args.subset)
-    dataset.describe()
+dataset.describe()
 
 
 # <a id="phenotype_pairs"></a>
 # ### Reading in the descriptions from hand-picked dataset of plant phenotype pairs
 # See the other notebook for the creation of this dataset. This is included in this notebook instead of a separated notebook because we want the treatment of the individual phenotype text instances to be the same as is done for the descriptions from the real dataset of plant phenotypes. The list of computational approaches being evaluated for this task is the same in both cases so all of the cells between the point where the descriptions are read in and when the distance matrices are found using all those methods are the same for this task as any of the biological questions that this notebook is focused on.
 
-# In[ ]:
+# In[32]:
 
 
 # Read in the table of similarity scored phenotype pairs that was prepared from random selection.
@@ -605,7 +617,7 @@ mupdata.head(10)
 # ### Reading in a dataset of sentence pairs from the BIOSSES dataset
 # The dataset that is loaded here is the set of a hundred sentence pairs that were scored for similarity by annotators, and the scores were averaged, from the BIOSSES paper. See the BIOSSES paper for how this dataset was constructed and what the similarity scores for the pairs of sentences mean. This cell sets the descriptions dictionary to contain these sentences, and creates other dictionaries for mapping each pair to itself and for mapping pairs to the scores that were assigned to them by annotators. This will be overwritten if running the notebook automatically as a script, and only matters if looking at this dataset by running this as an interactive notebook. For the analysis, this dataset was used as a means of comparing different hyperparameters that could be used over the plant (testing) data. This includes things like how many encoder layers of BERT to use for phenotype description embeddings, or how whether token vectors from Word2Vec should be combined using mean or max to yield document vectors.<a id="filtering"></a>
 
-# In[ ]:
+# In[33]:
 
 
 # Read in the dataset of paired sentences from a dataset like the BIOSSES set of sentences pairs.
@@ -624,9 +636,9 @@ mupdata.head(10)
 
 # <a id="selecting_a_dataset"></a>
 # ### Selecting which dataset should be used to proceed with the analysis
-# The analysis is run over different dastasets using this same notebook to avoid including lots of redundant code in the project. Therefore the dataset to use is set here within the notebook, even though some of the previous sections only apply to the main plant phenotypes dataset. The options here should match the datasets argument that can be specified when running the notebook here or as a scritp.
+# The analysis is run over different dastasets using this same notebook to avoid including lots of redundant code in the project. Therefore the dataset to use is set here within the notebook, even though some of the previous sections only apply to the main phenotypes dataset, which are the ones that aren't sentence pairs. The options here should match the datasets argument that can be specified when running the notebook here or as a script.
 
-# In[ ]:
+# In[34]:
 
 
 # Obtain a mapping between IDs and the raw text descriptions associated with that ID from the dataset.
@@ -663,7 +675,7 @@ print(len(ids_to_use))
 # ### Loading trained and saved models
 # Versions of the architectures discussed above which have been saved as trained models are loaded here. Some of these models are loaded as pretrained models from the work of other groups, and some were trained on data specific to this notebook and loaded here.
 
-# In[ ]:
+# In[35]:
 
 
 # Word2Vec and Doc2Vec models that were trained on English Wikipedia or from out plant phenotypes corpus.
@@ -697,7 +709,7 @@ bert_model_pubmed_pmc = BertModel.from_pretrained(biobert_pubmed_pmc_path)
 # <a id="part_3"></a>
 # # Part 3. NLP Choices
 
-# In[ ]:
+# In[36]:
 
 
 # We need a mapping between gene IDs and lists of some other type of ID that references a single object that was 
@@ -708,7 +720,7 @@ unique_id_to_gene_ids_mappings = defaultdict(lambda: defaultdict(list))
 
 # ### Mapping to unique text strings for whole genes.
 
-# In[ ]:
+# In[37]:
 
 
 # Get a mapping between a new unique identifier and unique description strings that are not sentence tokenized.
@@ -722,7 +734,7 @@ whole_unique_ids = list(unique_id_to_unique_text.keys())
 
 # ### Mapping to unique text strings that have been tokenized by sentence.
 
-# In[ ]:
+# In[38]:
 
 
 sent_tokenized_descriptions = {i:sent_tokenize(d) for i,d in descriptions.items()}
@@ -738,7 +750,7 @@ for i, sent_list in sent_tokenized_descriptions.items():
 
 # ### Establishing which dictionaries will be used for preprocessing text next
 
-# In[ ]:
+# In[39]:
 
 
 # What should 'descriptions' be for the sake of doing batch pre-processing?
@@ -759,7 +771,7 @@ unique_tokenized_ids = list(unique_id_to_unique_sent.keys())
 # ### Preprocessing text descriptions
 # The preprocessing methods applied to the phenotype descriptions are a choice which impacts the subsequent vectorization and similarity methods which construct the pairwise distance matrix from each of these descriptions. The preprocessing methods that make sense are also highly dependent on the vectorization method or embedding method that is to be applied. For example, stemming (which is part of the full proprocessing done below using the Gensim preprocessing function) is useful for the n-grams and bag-of-words methods but not for the document embeddings methods which need each token to be in the vocabulary that was constructed and used when the model was trained. For this reason, embedding methods with pretrained models where the vocabulary is fixed should have a lighter degree of preprocessing not involving stemming or lemmatization but should involve things like removal of non-alphanumerics and normalizing case. 
 
-# In[ ]:
+# In[40]:
 
 
 # Applying canned prepreprocessing approaches to the descriptions.
@@ -776,7 +788,7 @@ stop_words = set(stopwords.words('english'))
 # ### POS tagging the phenotype descriptions for nouns and adjectives
 # Note that preprocessing of the descriptions should be done after part-of-speech tagging, because tokens that are removed during preprocessing before n-gram analysis contain information that the parser needs to accurately call parts-of-speech. This step should be done on the raw descriptions and then the resulting bags of words can be subset using additional preprocesssing steps before input in one of the vectorization methods.
 
-# In[ ]:
+# In[41]:
 
 
 get_pos_tokens = lambda text,pos: " ".join([t[0] for t in nltk.pos_tag(word_tokenize(text)) if t[1].lower()==pos.lower()])
@@ -794,7 +806,7 @@ processed["nouns_adjectives_simple"] = {i:"{} {}".format(processed["nouns_simple
 # ### Reducing vocabulary size based on identifying important words
 # These approcahes for reducing the vocabulary size of the dataset work by identifying which words in the descriptions are likely to be the most important for identifying differences between the phenotypes and meaning of the descriptions. One approach is to determine which words occur at a higher rate in text of interest such as articles about plant phenotypes as compared to their rates in more general texts such as a corpus of news articles. These approaches do not create modified versions of the descriptions but rather provide vocabulary objects that can be passed to the sklearn vectorizer or constructors.
 
-# In[ ]:
+# In[42]:
 
 
 # Create ontology objects for all the biological ontologies being used.
@@ -807,7 +819,7 @@ po = load_from_pickle(po_pickle_path)
 go = load_from_pickle(go_pickle_path)
 
 
-# In[ ]:
+# In[43]:
 
 
 # Getting sets of tokens that are part of bio ontology term labels or synonyms.
@@ -819,7 +831,7 @@ with open(os.path.join(OUTPUT_DIR, VOCABULARIES_DIR, "bio_ontology_vocab_size_{}
     f.write(" ".join(bio_ontology_tokens))
 
 
-# In[ ]:
+# In[44]:
 
 
 # Getting sets of tokens that are overprepresented in plant phenotype papers as compared to some background corpus.
@@ -834,7 +846,7 @@ with open(os.path.join(OUTPUT_DIR, VOCABULARIES_DIR, "plant_phenotype_vocab_size
     f.write(" ".join(ppp_overrepresented_tokens))
 
 
-# In[ ]:
+# In[45]:
 
 
 # Generating processed description entries by subsetting tokens to only include ones from these vocabularies.
@@ -848,7 +860,7 @@ processed["bio_ontology_tokens"] = {i:" ".join([token for token in word_tokenize
 # ### Reducing the vocabulary size using a word distance matrix
 # These approaches for reducing the vocabulary size of the dataset work by replacing multiple words that occur throughout the dataset of descriptions with an identical word that is representative of this larger group of words. The total number of unique words across all descriptions is therefore reduced, and when observing n-gram overlaps between vector representations of these descriptions, overlaps will now occur between descriptions that included different but similar words. These methods work by actually generating versions of these descriptions that have the word replacements present. The returned objects for these methods are the revised description dictionary, a dictionary mapping tokens in the full vocabulary to tokens in the reduced vocabulary, and a dictionary mapping tokens in the reduced vocabulary to a list of tokens in the full vocabulary.
 
-# In[ ]:
+# In[46]:
 
 
 # Generate a pairwise distance matrix object using the oats subpackage, and create an appropriately shaped matrix,
@@ -875,7 +887,7 @@ processed["linares_pontes"], reduce_lp, unreduce_lp = reduce_vocab_linares_ponte
 
 
 
-# In[ ]:
+# In[47]:
 
 
 # Preparing the larger set of similarity matrices for the combined methods.
@@ -900,7 +912,7 @@ for_combined_tokens = [tokens_dict[graph.index_to_id[index]] for index in np.ara
 # ### Annotating descriptions with ontology terms
 # This section generates dictionaries that map gene IDs from the dataset to lists of strings, where those strings are ontology term IDs. How the term IDs are found for each gene entry with its corresponding phenotype description depends on the cell below. Firstly, the terms are found by using the NOBLE Coder annotation tool through these wrapper functions to identify the terms by looking for instances of the term's label or synonyms in the actual text of the phenotype descriptions. Secondly, the next cell just draws the terms directly from the dataset itself. In this case, these are high-confidence annotations done by curators for a comparison against what can be accomplished through computational analysis of the text.
 
-# In[ ]:
+# In[48]:
 
 
 # Run the NOBLE Coder annotator over the raw input text descriptions, which handles things like case normalization.
@@ -924,7 +936,7 @@ all_precise_annotations = {i:flatten([inherited_annots_nc_go_precise[i],inherite
 all_partial_annotations = {i:flatten([inherited_annots_nc_go_partial[i],inherited_annots_nc_po_partial[i],inherited_annots_nc_pato_partial[i]]) for i in descriptions.keys()}
 
 
-# In[ ]:
+# In[49]:
 
 
 # Treating these sets of inherited ontology terms as tokens so that they can be used as n-grams.
@@ -932,7 +944,7 @@ processed["precise_annotations"] = {i:" ".join(annots) for i,annots in all_preci
 processed["partial_annotations"] = {i:" ".join(annots) for i,annots in all_partial_annotations.items()}
 
 
-# In[ ]:
+# In[50]:
 
 
 # Create description strings with all ontology term anntotations concatenated to the end of the descriptions.
@@ -942,7 +954,7 @@ processed["full_plus_precise_annotations"] = {i:" ".join(flatten([text,all_preci
 processed["full_plus_partial_annotations"] = {i:" ".join(flatten([text,all_partial_annotations[i]])) for i,text in processed["full"].items()}
 
 
-# In[ ]:
+# In[51]:
 
 
 # Create ontology term annotations dictionaries for all the high confidence annotations present in the dataset.
@@ -952,7 +964,7 @@ curated_po_annotations = dataset.get_annotations_dictionary("PO")
 
 # ### Tokenize GO and PO curator annotated ontology terms and map from those to gene identifiers.
 
-# In[ ]:
+# In[52]:
 
 
 # Get a mapping between GO term IDs (like GO:0001234) and the list of gene IDs in this dataset they were annotated to.
@@ -982,7 +994,7 @@ for gene_id,uid_list in gene_id_to_unique_ids_mappings["go_terms"].items():
 individual_curated_go_term_strings = {i:" ".join(go.inherited(terms)) for i,terms in individual_curated_go_terms.items()}
 
 
-# In[ ]:
+# In[53]:
 
 
 # Get a mapping between PO term IDs (like PO:0001234) and the list of gene IDs in this dataset they were annotated to.
@@ -1014,7 +1026,7 @@ individual_curated_po_term_strings = {i:" ".join(po.inherited(terms)) for i,term
 
 # ### What about for the union set of GO and PO terms that were annotated by curators?
 
-# In[ ]:
+# In[54]:
 
 
 # The goal here is obtain the set of unique term sets, with a mapping from/back to gene IDs, to avoid reduncancy.
@@ -1025,7 +1037,7 @@ _reverse_mapping = {s:i for i,s in unique_id_to_unique_go_annotation_strings.ite
 gene_id_to_unique_ids_mappings["go_term_sets"] = {i:[_reverse_mapping[s]] for i,s in curated_go_annotation_strings_sorted.items()}
 
 
-# In[ ]:
+# In[55]:
 
 
 # The goal here is to obtain the set of unique term sets, with a mapping from/back to gene IDs, to avoid redundancy.
@@ -1040,7 +1052,7 @@ gene_id_to_unique_ids_mappings["po_term_sets"] = {i:[_reverse_mapping[s]] for i,
 # ### Splitting dictionaries back into phenotype and phene specific dictionaries
 # As a preprocessing step, split into a new set of descriptions that's larger. Note that phenotypes are split into phenes, and the phenes that are identical are retained as separate entries in the dataset. This makes the distance matrix calculation more needlessly expensive, because vectors need to be found for the same string more than once, but it simplifies converting the edgelist back to having IDs that reference the genes (full phenotypes) instead of the smaller phenes. If anything, that problem should be addressed in the pairwise functions, not here. (The package should handle it, not when creating input data for those methods).
 
-# In[ ]:
+# In[56]:
 
 
 # Retrieve dictionaries that refer just to either unique raw whole texts, or unique raw sentences tokenized out.
@@ -1061,7 +1073,7 @@ for process in processes:
     assert len(unique_tokenized_ids) == len(processed["{}_phenes".format(process)].keys())
 
 
-# In[ ]:
+# In[57]:
 
 
 # These should be to sets not lists, don't need the duplicate references.
@@ -1077,7 +1089,7 @@ for dtype,mapping in gene_id_to_unique_ids_mappings.items():
             unique_id_to_gene_ids_mappings[dtype][unique_id].append(gene_id)
 
 
-# In[ ]:
+# In[58]:
 
 
 # Each of the gene IDs should map to a list of exactly one ID referencing to a unique whole text, or set of terms.
@@ -1103,7 +1115,7 @@ assert all([len(unique_ids)==len(set(unique_ids)) for gene_id,unique_ids in gene
 # <a id="methods"></a>
 # ### Specifying a list of NLP methods to use
 
-# In[ ]:
+# In[59]:
 
 
 # Returns a list of texts, this is necessary for weighting because inverse document frequency won't make sense
@@ -1120,7 +1132,7 @@ test_documents = {1:"something in the dataset three times", 2:"something in the 
 get_raw_texts_for_term_weighting(test_documents, test_unique_id_to_real_ids)
 
 
-# In[ ]:
+# In[60]:
 
 
 doc2vec_and_word2vec_approaches = [
@@ -1142,7 +1154,7 @@ doc2vec_and_word2vec_approaches = [
 ]
 
 
-# In[ ]:
+# In[61]:
 
 
 bio_nlp_approaches_small = [
@@ -1160,7 +1172,7 @@ bio_nlp_approaches_small = [
 ]
 
 
-# In[ ]:
+# In[62]:
 
 
 bio_nlp_approaches_large = [
@@ -1178,7 +1190,7 @@ bio_nlp_approaches_large = [
 ]
 
 
-# In[ ]:
+# In[65]:
 
 
 combined_approaches = [
@@ -1187,7 +1199,7 @@ combined_approaches = [
 ]
 
 
-# In[ ]:
+# In[66]:
 
 
 baseline_approaches = [
@@ -1196,7 +1208,7 @@ baseline_approaches = [
 ]
 
 
-# In[ ]:
+# In[67]:
 
 
 bert_approaches = [
@@ -1216,7 +1228,7 @@ bert_approaches = [
 ]
 
 
-# In[ ]:
+# In[68]:
 
 
 biobert_approaches = [
@@ -1236,7 +1248,7 @@ biobert_approaches = [
 ]
 
 
-# In[ ]:
+# In[69]:
 
 
 automated_annotation_approaches = [
@@ -1247,7 +1259,7 @@ automated_annotation_approaches = [
 ]
 
 
-# In[ ]:
+# In[70]:
 
 
 nmf_topic_modeling_approaches = [
@@ -1258,7 +1270,7 @@ nmf_topic_modeling_approaches = [
 ]
 
 
-# In[ ]:
+# In[71]:
 
 
 lda_topic_modeling_approaches = [
@@ -1269,7 +1281,7 @@ lda_topic_modeling_approaches = [
 ]
 
 
-# In[ ]:
+# In[72]:
 
 
 vanilla_ngrams_approaches = [
@@ -1280,7 +1292,7 @@ vanilla_ngrams_approaches = [
 ]
 
 
-# In[ ]:
+# In[73]:
 
 
 modified_vocab_approaches = [
@@ -1301,7 +1313,7 @@ modified_vocab_approaches = [
 ]
 
 
-# In[ ]:
+# In[74]:
 
 
 manual_annotation_approaches = [
@@ -1312,7 +1324,7 @@ manual_annotation_approaches = [
 ]
 
 
-# In[ ]:
+# In[127]:
 
 
 # Adding lists of approaches to the complete set to be run, this is useful when running the notebook as a script.
@@ -1336,7 +1348,7 @@ if args.annotations: methods.extend(manual_annotation_approaches)
 # ### Running all of the methods to generate distance matrices
 # Notes- Instead of passing in similarity function like cosine distance that will get evaluated for every possible i,j pair of vetors that are created (this is very big when splitting by phenes), don't use a specific similarity function, but instead let the object use a KNN classifier. pass in some limit for k like 100. then the object uses some more efficient (not brute force) algorithm to set the similarity of some vector v to its 100 nearest neighbors as those 100 probabilities, and sets everything else to 0. This would need to be implemented as a matching but separate function from the get_square_matrix_from_vectors thing. And then this would need to be noted in the similarity function that was used for these in the big table of methods. This won't work because the faster (not brute force algorithms) are not for sparse vectors like n-grams, and the non-sparse embeddings aren't really the problem here because those vectors are relatively much short, even when concatenating BERT encoder layers thats only up to around length of ~1000.
 
-# In[ ]:
+# In[128]:
 
 
 # Generate all the pairwise distance matrices but not in parallel.  
@@ -1377,7 +1389,7 @@ if args.app:
     dataset.to_pandas().to_csv(path, index=False)
 
 
-# In[ ]:
+# In[83]:
 
 
 # Merging all the edgelists together.
@@ -1386,7 +1398,7 @@ if args.app:
 #names = list(graphs.keys())
 
 
-# In[ ]:
+# In[129]:
 
 
 # These IDs should either be the IDs picked from the dataset tha represent actual genes, or the paired sentence IDs.
@@ -1396,7 +1408,7 @@ from_to_id_pairs = [(i,j) for (i,j) in itertools.combinations(ids, 2)]
 df = pd.DataFrame(from_to_id_pairs, columns=["from","to"])
 
 
-# In[ ]:
+# In[130]:
 
 
 # When multiple indices within the array could be part of the data for one particular gene (sentence tokenized).
@@ -1418,7 +1430,7 @@ def lookup_distance(gene_id_1, gene_id_2, gene_id_to_uids, uid_to_array_index, a
     return(distance)
 
 
-# In[ ]:
+# In[131]:
 
 
 # Depending on what the IDs in the dictionaries for each approach were referencing, the distance values in the
@@ -1480,18 +1492,18 @@ df.head(20)
 # ### Combining multiple distances measurements into summarizing distance values
 # The purpose of this section is to iteratively train models on subsections of the dataset using simple regression or machine learning approaches to predict a value from zero to one indicating indicating how likely is it that two genes share atleast one of the specified groups in common. The information input to these models is the distance scores provided by each method in some set of all the methods used in this notebook. The purpose is to see whether or not a function of these similarity scores specifically trained to the task of predicting common groupings is better able to used the distance metric information to report a score for this task.
 
-# In[ ]:
+# In[132]:
 
 
 # Get the average distance percentile as a means of combining multiple scores.
-mean_method = Method(name="mean", hyperparameters="no hyperparameters", group="nlp", number=300)
-col_names_to_use_for_mean = [method.name_with_hyperparameters for method in methods if ("go:" not in method.name_with_hyperparameters) and ("po:" not in method.name_with_hyperparameters)]
-df[mean_method.name_with_hyperparameters] = df[col_names_to_use_for_mean].rank(pct=True).mean(axis=1)
-methods.append(mean_method)
-df.head(20)
+#mean_method = Method(name="mean", hyperparameters="no hyperparameters", group="nlp", number=300)
+#col_names_to_use_for_mean = [method.name_with_hyperparameters for method in methods if ("go:" not in method.name_with_hyperparameters) and ("po:" not in method.name_with_hyperparameters)]
+#df[mean_method.name_with_hyperparameters] = df[col_names_to_use_for_mean].rank(pct=True).mean(axis=1)
+#methods.append(mean_method)
+#df.head(20)
 
 
-# In[ ]:
+# In[133]:
 
 
 # Normalizing all of the array representations of the graphs so they can be combined. Then this version of the arrays
@@ -1526,7 +1538,7 @@ for method in methods:
 # ### Finding correlations between human and computational approaches for hand-picked phenotype pairs
 # This is only meant to be run in the context of the notebook, and should never be run automatically in the script. 
 
-# In[ ]:
+# In[134]:
 
 
 if args.dataset in ("biosses", "pairs"):
@@ -1554,7 +1566,7 @@ if args.dataset in ("biosses", "pairs"):
 # <a id="part_5"></a>
 # # Part 5. Biological Questions
 
-# In[ ]:
+# In[135]:
 
 
 df.head(20)
@@ -1563,7 +1575,7 @@ df.head(20)
 # <a id="species"></a>
 # ### Checking whether gene pairs are intraspecies or not
 
-# In[ ]:
+# In[136]:
 
 
 species_dict = dataset.get_species_dictionary()
@@ -1574,7 +1586,7 @@ df.head(10)
 # <a id="pathway_objective"></a>
 # ### Using shared pathway membership (PlantCyc and KEGG) as the objective
 
-# In[ ]:
+# In[137]:
 
 
 # Add a column that indicates whether or not both genes of the pair mapped to a pathway resource.
@@ -1593,7 +1605,7 @@ df.loc[(df["pair_is_valid"]==True),"pathways"] = df[["from","to"]].apply(lambda 
 df.drop(labels=["from_is_valid","to_is_valid","pair_is_valid"], axis="columns", inplace=True)
 
 
-# In[ ]:
+# In[138]:
 
 
 # Add a column that indicates whether or not both genes of the pair mapped to a pathway resource.
@@ -1612,7 +1624,7 @@ df.loc[(df["pair_is_valid"]==True),"kegg_only"] = df[["from","to"]].apply(lambda
 df.drop(labels=["from_is_valid","to_is_valid","pair_is_valid"], axis="columns", inplace=True)
 
 
-# In[ ]:
+# In[139]:
 
 
 # Add a column that indicates whether or not both genes of the pair mapped to a pathway resource.
@@ -1636,7 +1648,7 @@ df.head(20)
 # <a id="subset_objective"></a>
 # ### Using shared phenotype classification (Lloyd and Meinke et al., 2012) as the objective
 
-# In[ ]:
+# In[140]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to a phenotype classification.
@@ -1657,7 +1669,7 @@ df.head(20)
 # <a id="association_objective"></a>
 # ### Using protein assocations (STRING) as the objective 
 
-# In[ ]:
+# In[141]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to a phenotype classification.
@@ -1686,7 +1698,7 @@ df.head(20)
 # <a id="ortholog_objective"></a>
 # ### Using orthology between genes (PANTHER) as the objective
 
-# In[ ]:
+# In[142]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to a phenotype classification.
@@ -1708,27 +1720,28 @@ df.head(20)
 # <a id="eq_sim"></a>
 # ### Curator-derived similarity values from Oellrich, Walls et al., 2015
 
-# In[ ]:
+# In[143]:
 
 
-eqs_method = Method(name="eqs", hyperparameters="no hyperparams", group="curated", number=400)
-eqs_method.name_with_hyperparameters
+if args.dataset == "plants":
+    eqs_method = Method(name="eqs", hyperparameters="no hyperparams", group="curated", number=400)
+    eqs_method.name_with_hyperparameters
 
-# Add a column that indicates whether or not both genes of the pair are mapped to all the curation types.
-relevant_ids = set(ow_edgelist.ids)
-df["from_is_valid"] = df["from"].map(lambda x: x in relevant_ids)
-df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
-df["pair_is_valid"] = df["from_is_valid"]*df["to_is_valid"]
+    # Add a column that indicates whether or not both genes of the pair are mapped to all the curation types.
+    relevant_ids = set(ow_edgelist.ids)
+    df["from_is_valid"] = df["from"].map(lambda x: x in relevant_ids)
+    df["to_is_valid"] = df["to"].map(lambda x: x in relevant_ids)
+    df["pair_is_valid"] = df["from_is_valid"]*df["to_is_valid"]
 
-# Add a column giving the actual target output value for this biological task, with -1 for the irrelevant rows.
-df[eqs_method.name_with_hyperparameters] = -1
-df = df.merge(right=ow_edgelist.df, how="left", on=["from","to"])
-df["value"].fillna(value=0, inplace=True)
-df.loc[(df["pair_is_valid"]==True),eqs_method.name_with_hyperparameters] = 1-df["value"]
-df.drop(labels=["from_is_valid","to_is_valid","pair_is_valid","value"], axis="columns", inplace=True)
+    # Add a column giving the actual target output value for this biological task, with -1 for the irrelevant rows.
+    df[eqs_method.name_with_hyperparameters] = -1
+    df = df.merge(right=ow_edgelist.df, how="left", on=["from","to"])
+    df["value"].fillna(value=0, inplace=True)
+    df.loc[(df["pair_is_valid"]==True),eqs_method.name_with_hyperparameters] = 1-df["value"]
+    df.drop(labels=["from_is_valid","to_is_valid","pair_is_valid","value"], axis="columns", inplace=True)
 
-# Also, add the curated EQ approach to the list of column names that reference approaches to be evaluated.
-methods.append(eqs_method)
+    # Also, add the curated EQ approach to the list of column names that reference approaches to be evaluated.
+    methods.append(eqs_method)
 
 df.head(20)   
 
@@ -1736,7 +1749,7 @@ df.head(20)
 # <a id="curated"></a>
 # ### Checking whether gene pairs are considered curated or not
 
-# In[ ]:
+# In[144]:
 
 
 # Add a column that indicates whether or not both genes of the pair are mapped to all the curation types.
@@ -1752,7 +1765,7 @@ df.head(10)
 
 # ### Checking to make sure that the number of genes and pairs matches what is expected at this point
 
-# In[ ]:
+# In[145]:
 
 
 # Defining a nested dictionary with shape dict[curated][question][species][approach][metric] --> value.
@@ -1805,7 +1818,7 @@ tables = infinite_defaultdict()
 # <a id="n_values"></a>
 # ### What are the values of *n* for each type of iteration through a subset of the dataset?
 
-# In[ ]:
+# In[146]:
 
 
 subset_idx_lists = []
@@ -1853,7 +1866,7 @@ pairs_table
 # <a id="objective_similarities"></a>
 # ### How similar are the different biological objectives to each other?
 
-# In[ ]:
+# In[147]:
 
 
 # Looking more at the distributions of target values for each of the biological questions.
@@ -1866,7 +1879,10 @@ for q1,q2 in itertools.combinations(question, 2):
     q2_subset = df[df[q2] != -1]
     overlap_subset  = q1_subset[q1_subset[q2] != -1]
     union_subset = df[(df[q1] != -1) | (df[q2] != -1)]
-    overlaps_sim = len(overlap_subset)/len(union_subset)
+    if len(union_subset) != 0:
+        overlaps_sim = len(overlap_subset)/len(union_subset)
+    else:
+        overlaps_sim = -1
     
     # How big is that overlap in gene pairs that apply to both questions?
     q1_num_pairs = q1_subset.shape[0]
@@ -1874,13 +1890,17 @@ for q1,q2 in itertools.combinations(question, 2):
     overlap_size = overlap_subset.shape[0]
     
     # How similar are the truth values between those two questions for the gene pairs that apply to both?
-    overlap_sim = 1-jaccard(overlap_subset[q1].values, overlap_subset[q2].values)
+    assert len(overlap_subset[q1].values) == len(overlap_subset[q2].values)
+    if len(overlap_subset[q1].values) == 0:
+        overlap_sim = -1
+    else:
+        overlap_sim = 1-jaccard(overlap_subset[q1].values, overlap_subset[q2].values)
     row_tuples.append((q1, q2, q1_num_pairs, q2_num_pairs, overlaps_sim, overlap_size, overlap_sim))
     
 # Putting together the dataframe for all possible pairs of questions.
 question_overlaps_table = pd.DataFrame(row_tuples)
-question_overlaps_table.columns = ["question_1", "question_2", "num_pairs_1", "num_pairs_2", "sim_overlaps", "num_overlap", "sim_overlap"]
-question_overlaps_table.sort_values(by="sim_overlap", ascending=False, inplace=True)
+question_overlaps_table.columns = ["question_1", "question_2", "num_pairs_1", "num_pairs_2", "jacsim_genes", "num_overlap", "jacsim_truths"]
+question_overlaps_table.sort_values(by="jacsim_truths", ascending=False, inplace=True)
 question_overlaps_table.reset_index(inplace=True, drop=True)
 question_overlaps_table.to_csv(os.path.join(OUTPUT_DIR, QUESTIONS_DIR, "sizes_of_overlaps_between_questions.csv"), index=False)
 question_overlaps_table
@@ -1893,7 +1913,7 @@ question_overlaps_table
 # ### Do the edges joining genes that share a group, pathway, or interaction come from a different distribution?
 # The purpose of this section is to visualize kernel estimates for the distributions of distance or similarity scores generated by each of the methods tested for measuring semantic similarity or generating vector representations of the phenotype descriptions. Ideally, better methods should show better separation betwene the distributions for distance values between two genes involved in a common specified group or two genes that are not. Additionally, a statistical test is used to check whether these two distributions are significantly different from each other or not, although this is a less informative measure than the other tests used in subsequent sections, because it does not address how useful these differences in the distributions actually are for making predictions about group membership.
 
-# In[ ]:
+# In[148]:
 
 
 # For creating the frequency and density dataframe.
@@ -1906,9 +1926,6 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
     # Remember the properties for this subset being looked at, and subset the dataframe accordingly.
     c,q,s = properties
     
-    # Don't look at the inter-species and intra-species edges except for pathways, otherwise that's irrelevant.
-    #if (s != "both") and (q != "pathways"):
-    #    continue
     
     # Only look at gene pairs where both are relevant to the given biological question.
     subset = df.loc[idxs]
@@ -1999,7 +2016,7 @@ dists_df.to_csv(os.path.join(OUTPUT_DIR, PLOTS_DIR, "histograms.csv"), index=Fal
 # ### Looking at within-group or within-pathway distances in each graph
 # The purpose of this section is to determine which methods generated graphs which tightly group genes which share common pathways or group membership with one another. In order to compare across different methods where the distance value distributions are different, the mean distance values for each group for each method are convereted to percentile scores. Lower percentile scores indicate that the average distance value between any two genes that belong to that group is lower than most of the distance values in the entire distribution for that method.
 
-# In[ ]:
+# In[149]:
 
 
 # What are the different groupings we are interested in for these mean within-group distance tables?
@@ -2066,7 +2083,7 @@ for (groups,q) in zip(grouping_objects,grouping_names):
 # ### Predicting whether two genes belong to the same group, pathway, or share an interaction
 # The purpose of this section is to see if whether or not two genes share atleast one common pathway can be predicted from the distance scores assigned using analysis of text similarity. The evaluation of predictability is done by reporting a precision and recall curve for each method, as well as remembering the area under the curve, and ratio between the area under the curve and the baseline (expected area when guessing randomly) for each method.
 
-# In[ ]:
+# In[150]:
 
 
 # def bootstrap(fraction, num_iterations, y_true, y_prob):
@@ -2107,7 +2124,7 @@ for (groups,q) in zip(grouping_objects,grouping_names):
 #     return(scores)
 
 
-# In[ ]:
+# In[160]:
 
 
 pr_df_rows = []
@@ -2178,7 +2195,7 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
         
         # Use those 1000 or fewer precision and recall pairs to build a file from which curves can be plotted. 
         for p,r in zip(p_values_to_use,r_values_to_use):
-            pr_df_rows.append((method.name, method.hyperparameters, method.group, q.lower(), str(c).lower(), s.lower(), p, r, baseline_auc))
+            pr_df_rows.append((name, method.name, method.hyperparameters, method.group, q.lower(), str(c).lower(), s.lower(), p, r, baseline_auc))
         
         
         # Find the maximum Fß score for different values of ß.  
@@ -2217,7 +2234,7 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
 
 
 # Create a CSV file for the precision recall curves for each different approach. 
-precision_recall_curves_df = pd.DataFrame(pr_df_rows, columns=["approach", "hyperparameters", "group", "task", "curated", "species", "precision", "recall", "basline_auc"])
+precision_recall_curves_df = pd.DataFrame(pr_df_rows, columns=["name", "approach", "hyperparameters", "group", "task", "curated", "species", "precision", "recall", "basline_auc"])
 precision_recall_curves_df.to_csv(os.path.join(OUTPUT_DIR, METRICS_DIR, "precision_recall_curves.csv"), index=False) 
 precision_recall_curves_df.head(20)
 
@@ -2226,7 +2243,7 @@ precision_recall_curves_df.head(20)
 # ### Are genes in the same group or pathway ranked higher with respect to individual nodes?
 # This is a way of statistically seeing if for some value k, the graph ranks more edges from some particular gene to any other gene that it has a true protein-protein interaction with higher or equal to rank k, than we would expect due to random chance. This way of looking at the problem helps to be less ambiguous than the previous methods, because it gets at the core of how this would actually be used. In other words, we don't really care how much true information we're missing as long as we're still able to pick up some new useful information by building these networks, so even though we could be missing a lot, what's going on at the very top of the results? These results should be comparable to very strictly thresholding the network and saying that the remaining edges are our guesses at interactions. This is comparable to just looking at the far left-hand side of the precision recall curves, but just quantifies it slightly differently.
 
-# In[ ]:
+# In[152]:
 
 
 SKIPPED = True
@@ -2327,7 +2344,7 @@ if not SKIPPED:
 # ### Summarizing the results for this notebook
 # Write a large table of results to an output file. Columns are generally metrics and rows are generally methods.
 
-# In[ ]:
+# In[158]:
 
 
 method_name_to_method_obj = {method.name_with_hyperparameters:method for method in methods}
@@ -2359,7 +2376,7 @@ results.to_csv(os.path.join(OUTPUT_DIR, METRICS_DIR, "full_table_with_all_metric
 results.head(20)
 
 
-# In[ ]:
+# In[157]:
 
 
 # Make another version of the table that is more useful for looking at one particular metric or value.
@@ -2377,6 +2394,9 @@ for metric_of_interest in metrics_of_interest:
         # Pull data out of the the full metrics dataframe.
         reshaped_results[col_name] = reshaped_results["order"].map(lambda x: results.loc[(results["order"]==x) & (results["curated"]==str(c).lower()) & (results["objective"]==q.lower()) & (results["species"]==s.lower()), metric_of_interest])
         reshaped_results[col_name] = reshaped_results[col_name].map(lambda x: None if len(x)==0 else x.values[0])
+    
+    # Remove columns that have all NA values, these are for questions that weren't applicable to these metrics.
+    reshaped_results.dropna(axis="columns", how="all", inplace=True)
     reshaped_results.to_csv(os.path.join(OUTPUT_DIR, METRICS_DIR, "{}.csv").format(metric_of_interest), index=False)
 reshaped_results
 
