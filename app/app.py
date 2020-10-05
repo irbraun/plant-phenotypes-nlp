@@ -125,6 +125,9 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 
 
 
+
+
+
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
 def read_in_ontologies(names, paths):
 	"""Read in ontology objects from .obo files and return them, can take a long time.
@@ -138,7 +141,8 @@ def read_in_ontologies(names, paths):
 	"""
 	ontologies = {}
 	for name,path, in zip(names,paths):
-		ontologies[name]=Ontology(path)
+		#ontologies[name]=Ontology(path)
+		ontologies[name] = load_from_pickle(path)
 	return(ontologies)
 
 
@@ -401,7 +405,7 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 
 # Dangerous part. These have to exactly match how the text is treated within the notebook that generates the pairwise distances.
 # There's no explicit check in the code that makes sure the processing is identical between those two locations.
-# In the future this should probably be changed so both sets of code are calling a resources that knows how to do these things.
+# In the future this should probably be changed so both sets of code are calling one resources that knows how to do these things.
 sentence_tokenize = lambda text: sent_tokenize(text)
 as_one_token = lambda text: [text]
 identify_function = lambda text: text
@@ -414,8 +418,9 @@ full_preprocessing = lambda text: " ".join(preprocess_string(text))
 
 # Where are the dataset and ontology files that should be loaded for this application?
 DATASET_PATH = "resources/genes_texts_annots.csv"
-ONTOLOGY_NAMES = ["PATO","PO"]
-ONTOLOGY_OBO_PATHS = ["resources/pato.obo","resources/po.obo"]
+ONTOLOGY_NAMES = ["PATO","PO","GO"]
+ONTOLOGY_OBO_PATHS = ["resources/pato.obo", "resources/po.obo", "resources/go.obo"]
+ONTOLOGY_PICKLE_PATHS = ["resources/pato.pickle", "resources/po.pickle", "resources/go.pickle"]
 
 
 
@@ -504,14 +509,14 @@ MAX_LINES_IN_RESULT_COLUMN = 10
 
 
 
-# The first dictionary created here maps the name of an apporach, like "n-grams" to an oats.distances object.
+# The first dictionary created here maps the name of an approach, like "n-grams" to an oats.distances object.
 # The second dictionary created here maps the name of an approach like "n-grams" to another dictionary that
 # maps the IDs that in this dataset to the IDs that are used internally by that corresponding distances object.
 # This is necessary because those internal IDs represent compressed or altered versions of the text and could 
 # refer to more than one text instance in the actual dataset that is seen here.
 with st.spinner("Reading very large files, this might take a few minutes."):
 	dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching= read_in_files(DATASET_PATH, APPROACH_NAMES_AND_DATA, APPROACH_MAPPING_FILES)
-	ontologies = read_in_ontologies(ONTOLOGY_NAMES, ONTOLOGY_OBO_PATHS)
+	ontologies = read_in_ontologies(ONTOLOGY_NAMES, ONTOLOGY_PICKLE_PATHS)
 
 
 
@@ -742,6 +747,10 @@ elif search_type == "ontology" and input_text != "":
 	term_ids_are_valid = [bool(pattern.match(term_id)) for term_id in term_ids]
 	if False in term_ids_are_valid:
 		st.markdown("Invalid ontology term identifiers.")
+
+
+
+
 		
 	else:
 		# Building the annotations dictionary. This should actually be done outside the search sections.
@@ -763,12 +772,14 @@ elif search_type == "ontology" and input_text != "":
 		for term_id in term_ids:
 			term_id_str = term_id.replace(":","_")
 			ontology_name, term_number = tuple(term_id_str.split("_"))
-			term_label = ontologies[ontology_name.upper()][term_id].name
-
-			ontobee_url = ontobee_url_template.format(ontology_name, ontology_name, term_number)
-			planteome_url = planteome_url_template.format(ontology_name, term_number)
-			line = "{} ({}, [Ontobee]({}), [Planteome]({}))".format(term_id, term_label, ontobee_url, planteome_url)
-			lines_with_terms_and_links.append(line)
+			try:
+				term_label = ontologies[ontology_name.upper()][term_id].name
+				ontobee_url = ontobee_url_template.format(ontology_name, ontology_name, term_number)
+				planteome_url = planteome_url_template.format(ontology_name, term_number)
+				line = "{} ({}, [Ontobee]({}), [Planteome]({}))".format(term_id, term_label, ontobee_url, planteome_url)
+				lines_with_terms_and_links.append(line)
+			except:
+				pass
 		lines_with_terms_and_links_str = "\n\n".join(lines_with_terms_and_links)
 
 		st.markdown("### Ontology Term Information")
@@ -786,7 +797,7 @@ elif search_type == "ontology" and input_text != "":
 		subset_df.index = np.arange(1, len(subset_df)+1)
 
 		if subset_df.shape[0] == 0:
-			st.markdown("No genes were found for '{}'. Make sure the keywords and keyphrases in this search are separated by commas.".format(term_id))
+			st.markdown("No genes were found for '{}'. Make sure the ontology term IDs are separated by commas or spaces and formatted like the examples.".format(term_id))
 		else:
 			# Describe what the results of the search are and what they mean in markdown.
 			st.markdown("### Genes with Matching Annotations")

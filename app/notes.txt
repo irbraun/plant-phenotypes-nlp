@@ -16,4 +16,5 @@ docker system prune
 3. All pickles distance objects built using the oats package.
 (Paths to 2 and 3 are explicitly present in the app.py script, they need to match to be loaded and used correctly).
 4. The datset csv file. This has to be exactly the same file that was used when running the scripts that built the files for 2 and 3 above.
-5. The ontology obo files. These are also explicitly reference by path in the app.py script, and they need to match. Make sure to include all used ontologies.
+5.1 The ontology obo files. These are also explicitly reference by path in the app.py script, and they need to match. Make sure to include all used ontologies.
+5.2 The ontology pickle files, the app script has been udpated (10/5) to read in the pickled ontology objects instead because its much faster than running the constructor.
