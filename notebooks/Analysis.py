@@ -81,7 +81,7 @@
 # - Python package for loading pretrained BERT models: [PyTorch Pretrained BERT](https://pypi.org/project/pytorch-pretrained-bert/)
 # - For BERT Models pretrained on PubMed and PMC: [BioBERT Paper](https://arxiv.org/abs/1901.08746), [BioBERT Models](https://github.com/naver/biobert-pretrained)
 
-# In[ ]:
+# In[1]:
 
 
 import datetime
@@ -198,6 +198,8 @@ parser.add_argument("--nmf", dest="nmf", required=False, action='store_true', he
 parser.add_argument("--vanilla", dest="vanilla", required=False, action='store_true', help="use the n-grams (bag-of-words) approach")
 parser.add_argument("--vocab", dest="vocab", required=False, action='store_true', help="using the n-grams approach but with modified vocabularies")
 parser.add_argument("--annotations", dest="annotations", required=False, action='store_true', help="use the curated annotations")
+parser.add_argument("--combined", dest="combined", required=False, action='store_true', help="use the methods that combine n-grams and embedding approaches")
+parser.add_argument("--baseline", dest="baseline", required=False, action='store_true', help="use the methods that only check identity as a baseline approach")
 
 # Specify the command line argument list here if running as a notebook instead.
 if NOTEBOOK:
@@ -867,6 +869,33 @@ n = 3
 processed["linares_pontes"], reduce_lp, unreduce_lp = reduce_vocab_linares_pontes(processed["simple"], tokens, distance_matrix, n)
 
 
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+# Preparing the larger set of similarity matrices for the combined methods.
+tokens = list(set([w for w in flatten(d.split() for d in processed["simple"].values())]))
+tokens_dict = {i:w for i,w in enumerate(tokens)}
+for_combined_distance_matrix_wikipedia = pw.with_word2vec(word2vec_wiki_model, tokens_dict, "cosine").array
+for_combined_tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
+# Now we have a list of tokens of length n, and the corresponding n by n distance matrix for looking up distances.
+
+# Add the other distance matrices that you want there.
+
+# Use the processed["simple"] descriptions for those methods.
+
+
+# In[ ]:
+
+
+
+
+
 # <a id="annotation"></a>
 # ### Annotating descriptions with ontology terms
 # This section generates dictionaries that map gene IDs from the dataset to lists of strings, where those strings are ontology term IDs. How the term IDs are found for each gene entry with its corresponding phenotype description depends on the cell below. Firstly, the terms are found by using the NOBLE Coder annotation tool through these wrapper functions to identify the terms by looking for instances of the term's label or synonyms in the actual text of the phenotype descriptions. Secondly, the next cell just draws the terms directly from the dataset itself. In this case, these are high-confidence annotations done by curators for a comparison against what can be accomplished through computational analysis of the text.
@@ -1152,6 +1181,24 @@ bio_nlp_approaches_large = [
 # In[ ]:
 
 
+combined_approaches = [
+    Method("Combined","Wikipedia","NLP",500, pw.with_similarities, {"ids_to_texts":processed["simple"],"vocab_tokens":for_combined_tokens,"vocab_matrix":for_combined_distance_matrix_wikipedia,"model":word2vec_wiki_model,"metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Combined","Tokenization,Wikipedia","NLP",501, pw.with_similarities, {"ids_to_texts":processed["simple_phenes"],"vocab_tokens":for_combined_tokens,"vocab_matrix":for_combined_distance_matrix_wikipedia,"model":word2vec_wiki_model,"metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
+]
+
+
+# In[ ]:
+
+
+baseline_approaches = [
+    Method("Baseline","Identity","NLP",600, pw.with_identity, {"ids_to_texts":descriptions}, None, tag="whole_texts"),
+    Method("Baseline","Tokenization,Identity","NLP",601, pw.with_identity, {"ids_to_texts":phenes}, None, tag="sent_tokens"),
+]
+
+
+# In[ ]:
+
+
 bert_approaches = [
     Method("BERT", "Base,Layers=2,Concatenated","NLP",11, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="whole_texts"),
     Method("BERT", "Base,Layers=3,Concatenated","NLP",12, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="whole_texts"),
@@ -1270,6 +1317,8 @@ manual_annotation_approaches = [
 
 # Adding lists of approaches to the complete set to be run, this is useful when running the notebook as a script.
 methods = []
+if args.combined: methods.extend(combined_approaches)
+if args.baseline: methods.extend(baseline_approaches)
 if args.learning: methods.extend(doc2vec_and_word2vec_approaches)
 if args.bert: methods.extend(bert_approaches)
 if args.biobert: methods.extend(biobert_approaches)
@@ -1304,7 +1353,7 @@ for method in methods:
     method_col_names.append(method.name_with_hyperparameters)
     method_name_to_method_obj[method.name_with_hyperparameters] = method
     durations.append(to_hms(duration))
-    vector_length = len(list(graph.vector_dictionary.values())[0])
+    vector_length = len(list(graph.vector_dictionary.values())[0])    
     array_length = graph.array.shape[0]
     vector_lengths.append(vector_length)
     array_lengths.append(array_length)
