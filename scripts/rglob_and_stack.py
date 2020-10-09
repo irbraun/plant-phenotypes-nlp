@@ -53,7 +53,10 @@ else:
 
 
 # Create a new output folder to hold the stacked tables.
-OUTPUT_DIR = os.path.join("../outputs","{}_{}_{}".format("stacked",datetime.datetime.now().strftime('%m_%d_%Y_h%Hm%Ms%S'),random.randrange(1000,9999)))
+if path_keyword == None:
+    OUTPUT_DIR = os.path.join("../outputs","{}_{}_{}".format("stacked",datetime.datetime.now().strftime('%m_%d_%Y_h%Hm%Ms%S'),random.randrange(1000,9999)))
+else:
+    OUTPUT_DIR = os.path.join("../outputs","{}_{}_{}_{}".format("stacked",datetime.datetime.now().strftime('%m_%d_%Y_h%Hm%Ms%S'),random.randrange(1000,9999),path_keyword))
 os.mkdir(OUTPUT_DIR)
     
     
