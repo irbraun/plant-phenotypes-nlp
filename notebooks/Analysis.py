@@ -81,7 +81,7 @@
 # - Python package for loading pretrained BERT models: [PyTorch Pretrained BERT](https://pypi.org/project/pytorch-pretrained-bert/)
 # - For BERT Models pretrained on PubMed and PMC: [BioBERT Paper](https://arxiv.org/abs/1901.08746), [BioBERT Models](https://github.com/naver/biobert-pretrained)
 
-# In[ ]:
+# In[2]:
 
 
 import datetime
@@ -151,7 +151,7 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 
-# In[ ]:
+# In[3]:
 
 
 # Set a tag that specifies whether this is being run as a notebook or a script. Some sections are skipped when 
@@ -177,7 +177,7 @@ else:
 # ### Reading in arguments
 # Command line arguments are used to define which subset of the approaches that are evaluated in this notebook are used during a given run. Because the pairwise distances matrices become very large when as the number of genes increases, the number of approaches used (which each generated one distance matrix) can be lowered if the script is using too much memory for datasets that contain many genes. Although there are differences in runtime for each approach where ones that generated larger vectors (n-grams) instead of small embeddings (Word2Vec) take longer, this is not significant compared to how long operations take on the resulting distance matrices, which are all the same size for any given approach, so it is the number of approaches used, not which ones, that matters in reducing the time and memory used for each run. In addition, arguments are also used here to pick which dataset should be used later in the notebook, and whether files should be created for using the results later for the dockerized app (those files are large, they shouldn't be created unless they'll be used).
 
-# In[ ]:
+# In[4]:
 
 
 # Creating the set of arguments that can be used to determine which approaches are run.
@@ -214,7 +214,7 @@ else:
 # ### Defining the input file paths and creating output directory
 # This section specifies the path to the base output directory, and creates all the subfolders inside of it that contain results that pertain to different parts of the analysis. Paths to all the files that are used by this notebook are specified in the subsequent cell.
 
-# In[ ]:
+# In[5]:
 
 
 # Create and name an output directory according to when the notebooks or script was run.
@@ -244,7 +244,7 @@ os.mkdir(os.path.join(OUTPUT_DIR,TOPICS_DIR))
 
 # ### Data paths
 
-# In[ ]:
+# In[6]:
 
 
 # Paths to different datasets containing gene names, text descriptions, and/or ontology term annotations.
@@ -277,7 +277,7 @@ lloyd_function_hierarchy_path = "../../plant-data/papers/lloyd_meinke_2012/versi
 
 # ### Text corpora paths
 
-# In[ ]:
+# In[7]:
 
 
 # Pathways to text corpora files that are used in this analysis.
@@ -287,7 +287,7 @@ phenotypes_corpus_filename = "../data/corpus_related_files/untagged_text_corpora
 
 # ### Machine learning model paths
 
-# In[ ]:
+# In[8]:
 
 
 # Paths to pretrained or saved models used for embeddings with Word2Vec or Doc2vec.
@@ -312,7 +312,7 @@ word2vec_bio_wikipedia_pubmed_and_pmc_path = "../models/bio_nlp_lab/wikipedia-pu
 
 # ### Ontology related paths
 
-# In[ ]:
+# In[9]:
 
 
 # Path the jar file necessary for running NOBLE Coder.
@@ -770,7 +770,7 @@ unique_tokenized_ids = list(unique_id_to_unique_sent.keys())
 # ### Preprocessing text descriptions
 # The preprocessing methods applied to the phenotype descriptions are a choice which impacts the subsequent vectorization and similarity methods which construct the pairwise distance matrix from each of these descriptions. The preprocessing methods that make sense are also highly dependent on the vectorization method or embedding method that is to be applied. For example, stemming (which is part of the full proprocessing done below using the Gensim preprocessing function) is useful for the n-grams and bag-of-words methods but not for the document embeddings methods which need each token to be in the vocabulary that was constructed and used when the model was trained. For this reason, embedding methods with pretrained models where the vocabulary is fixed should have a lighter degree of preprocessing not involving stemming or lemmatization but should involve things like removal of non-alphanumerics and normalizing case. 
 
-# In[ ]:
+# In[12]:
 
 
 # Applying canned prepreprocessing approaches to the descriptions.
@@ -778,6 +778,10 @@ processed = defaultdict(dict)
 processed["simple"] = {i:" ".join(simple_preprocess(d)) for i,d in descriptions.items()}
 processed["simple_no_stops"] = {i:remove_stopwords(" ".join(simple_preprocess(d))) for i,d in descriptions.items()}
 processed["full"] = {i:" ".join(preprocess_string(d)) for i,d in descriptions.items()}
+
+
+# In[13]:
+
 
 # Set of stopwords, used later for checking it tokens in a list are stopwords or not.
 stop_words = set(stopwords.words('english')) 
@@ -805,7 +809,7 @@ processed["nouns_adjectives_simple"] = {i:"{} {}".format(processed["nouns_simple
 # ### Reducing vocabulary size based on identifying important words
 # These approcahes for reducing the vocabulary size of the dataset work by identifying which words in the descriptions are likely to be the most important for identifying differences between the phenotypes and meaning of the descriptions. One approach is to determine which words occur at a higher rate in text of interest such as articles about plant phenotypes as compared to their rates in more general texts such as a corpus of news articles. These approaches do not create modified versions of the descriptions but rather provide vocabulary objects that can be passed to the sklearn vectorizer or constructors.
 
-# In[ ]:
+# In[10]:
 
 
 # Create ontology objects for all the biological ontologies being used.
@@ -818,11 +822,11 @@ po = load_from_pickle(po_pickle_path)
 go = load_from_pickle(go_pickle_path)
 
 
-# In[ ]:
+# In[15]:
 
 
 # Getting sets of tokens that are part of bio ontology term labels or synonyms.
-bio_ontology_tokens = list(set(po.tokens()).union(set(go.tokens())))
+bio_ontology_tokens = list(set(po.tokens()).union(set(go.tokens())).union(set(pato.tokens())))
 bio_ontology_tokens = [t for t in bio_ontology_tokens if t not in stop_words]
 bio_ontology_tokens_simple = flatten([simple_preprocess(t) for t in bio_ontology_tokens])
 bio_ontology_tokens_full = flatten([preprocess_string(t) for t in bio_ontology_tokens])
@@ -1129,10 +1133,10 @@ doc2vec_and_word2vec_approaches = [
     # Set of six approaches that all use the Word2Vec or Doc2Vec models trained on English Wikipedia.
     Method("Doc2Vec","Wikipedia,Size=300","NLP",11, pw.with_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
     Method("Word2Vec","Wikipedia,Size=300,Mean","NLP",12, pw.with_word2vec, {"model":word2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Wikipedia,Size=300,Max","NLP",33 ,pw.with_word2vec, {"model":word2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","Wikipedia,Size=300,Max","NLP",33 ,pw.with_word2vec, {"model":word2vec_wiki_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
     Method("Doc2Vec","Tokenization,Wikipedia,Size=300","NLP",1011, pw.with_doc2vec, {"model":doc2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
     Method("Word2Vec","Tokenization,Wikipedia,Size=300,Mean","NLP",1012, pw.with_word2vec, {"model":word2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,Wikipedia,Size=300,Max","NLP",1013, pw.with_word2vec, {"model":word2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","Tokenization,Wikipedia,Size=300,Max","NLP",1013, pw.with_word2vec, {"model":word2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
     
     # Another set of six approaches that all use the Word2Vec or Doc2Vec models trained on a plant phenotype corpus.
     #Method("Doc2Vec","Plants,Size=300","NLP",1, pw.with_doc2vec, {"model":doc2vec_plants_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
@@ -1150,15 +1154,15 @@ doc2vec_and_word2vec_approaches = [
 bio_nlp_approaches_small = [
     # Set of six approaches that all use the Word2Vec or Doc2Vec models trained on English Wikipedia.
     Method("Word2Vec","PMC,Size=200,Mean","NLP",14, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","PMC,Size=200,Max","NLP",15 ,pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","PMC,Size=200,Max","NLP",15 ,pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
     Method("Word2Vec","Tokenization,PMC,Size=200,Mean","NLP",1014, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,PMC,Size=200,Max","NLP",1015, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","Tokenization,PMC,Size=200,Max","NLP",1015, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
     
     # Another set of six approaches that all use the Word2Vec or Doc2Vec models trained on a plant phenotype corpus.
     Method("Word2Vec","PubMed,Size=200,Mean","NLP",16, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","PubMed,Size=200,Max","NLP",17 ,pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","PubMed,Size=200,Max","NLP",17 ,pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
     Method("Word2Vec","Tokenization,PubMed,Size=200,Mean","NLP",1016, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,PubMed,Size=200,Max","NLP",1017, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","Tokenization,PubMed,Size=200,Max","NLP",1017, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
 
@@ -1168,15 +1172,15 @@ bio_nlp_approaches_small = [
 bio_nlp_approaches_large = [
     # Set of six approaches that all use the Word2Vec or Doc2Vec models trained on English Wikipedia.
     Method("Word2Vec","PubMed_PMC,Size=300,Mean","NLP",18, pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","PubMed_PMC,Size=300,Max","NLP",19 ,pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","PubMed_PMC,Size=300,Max","NLP",19 ,pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
     Method("Word2Vec","Tokenization,PubMed_PMC,Size=200,Mean","NLP",1018, pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,PubMed_PMC,Size=200,Max","NLP",1019, pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","Tokenization,PubMed_PMC,Size=200,Max","NLP",1019, pw.with_word2vec, {"model":word2vec_bio_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
     
     # Another set of six approaches that all use the Word2Vec or Doc2Vec models trained on a plant phenotype corpus.
     Method("Word2Vec","Wiki_PubMed_PMC,Size=200,Mean","NLP",20, pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Wiki_PubMed_PMC,Size=200,Max","NLP",21 ,pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","Wiki_PubMed_PMC,Size=200,Max","NLP",21 ,pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
     Method("Word2Vec","Tokenization,Wiki_PubMed_PMC,Size=200,Mean","NLP",2020, pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,Wiki_PubMed_PMC,Size=200,Max","NLP",2021, pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","Tokenization,Wiki_PubMed_PMC,Size=200,Max","NLP",2021, pw.with_word2vec, {"model":word2vec_bio_wikipedia_pubmed_and_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
 
@@ -1195,8 +1199,8 @@ combined_approaches = [
 
 
 baseline_approaches = [
-    Method("Baseline","Identity","NLP",600, pw.with_identity, {"ids_to_texts":descriptions}, None, tag="whole_texts"),
-    Method("Baseline","Tokenization,Identity","NLP",601, pw.with_identity, {"ids_to_texts":phenes}, None, tag="sent_tokens"),
+    Method("Baseline","Identity","NLP",0, pw.with_identity, {"ids_to_texts":descriptions}, None, tag="whole_texts"),
+    Method("Baseline","Tokenization,Identity","NLP",1000, pw.with_identity, {"ids_to_texts":phenes}, None, tag="sent_tokens"),
 ]
 
 
@@ -1204,18 +1208,18 @@ baseline_approaches = [
 
 
 bert_approaches = [
-    Method("BERT", "Base,Layers=2,Concatenated","NLP",22, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("BERT", "Base,Layers=2,Concatenated","NLP",22, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="whole_texts"),
     Method("BERT", "Base,Layers=3,Concatenated","NLP",23, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="whole_texts"),
-    Method("BERT", "Base,Layers=4,Concatenated","NLP",24, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="whole_texts"),
-    Method("BERT", "Base,Layers=2,Summed","NLP",25, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="whole_texts"),
-    Method("BERT", "Base,Layers=3,Summed","NLP",26, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="whole_texts"),
-    Method("BERT", "Base,Layers=4,Summed","NLP",27, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":4}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("BERT", "Base,Layers=4,Concatenated","NLP",24, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("BERT", "Base,Layers=2,Summed","NLP",25, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("BERT", "Base,Layers=3,Summed","NLP",26, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("BERT", "Base,Layers=4,Summed","NLP",27, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":4}, spatial.distance.cosine, tag="whole_texts"),
 
-    Method("BERT", "Tokenization,Base:Layers=2,Concatenated","NLP",2022, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("BERT", "Tokenization,Base:Layers=3,Concatenated","NLP",2023, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("BERT", "Tokenization,Base:Layers=4,Concatenated","NLP",2024, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("BERT", "Tokenization,Base:Layers=2,Summed","NLP",2025, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("BERT", "Tokenization,Base:Layers=3,Summed","NLP",2026, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("BERT", "Tokenization,Base:Layers=2,Concatenated","NLP",2022, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("BERT", "Tokenization,Base:Layers=3,Concatenated","NLP",2023, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("BERT", "Tokenization,Base:Layers=4,Concatenated","NLP",2024, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("BERT", "Tokenization,Base:Layers=2,Summed","NLP",2025, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("BERT", "Tokenization,Base:Layers=3,Summed","NLP",2026, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="sent_tokens"),
     Method("BERT", "Tokenization,Base:Layers=4,Summed","NLP",2027, pw.with_bert, {"model":bert_model_base, "tokenizer":bert_tokenizer_base, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":4}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
@@ -1225,17 +1229,17 @@ bert_approaches = [
 
 biobert_approaches = [
     Method("BioBERT", "PubMed,PMC,Layers=2,Concatenated","NLP",28, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="whole_texts"),
-    Method("BioBERT", "PubMed,PMC,Layers=3,Concatenated","NLP",29, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="whole_texts"),
-    Method("BioBERT", "PubMed,PMC,Layers=4,Concatenated","NLP",30, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="whole_texts"),
-    Method("BioBERT", "PubMed,PMC,Layers=2,Summed","NLP",31, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="whole_texts"),
-    Method("BioBERT", "PubMed,PMC,Layers=3,Summed","NLP",32, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="whole_texts"),
-    Method("BioBERT", "PubMed,PMC,Layers=4,Summed","NLP",33, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":4}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("BioBERT", "PubMed,PMC,Layers=3,Concatenated","NLP",29, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("BioBERT", "PubMed,PMC,Layers=4,Concatenated","NLP",30, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("BioBERT", "PubMed,PMC,Layers=2,Summed","NLP",31, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("BioBERT", "PubMed,PMC,Layers=3,Summed","NLP",32, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("BioBERT", "PubMed,PMC,Layers=4,Summed","NLP",33, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":descriptions, "metric":"cosine", "method":"sum", "layers":4}, spatial.distance.cosine, tag="whole_texts"),
  
-    Method("BioBERT", "Tokenization,PubMed,PMC,Layers=2,Concatenated","NLP",2028, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("BioBERT", "Tokenization,PubMed,PMC,Layers=3,Concatenated","NLP",2029, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("BioBERT", "Tokenization,PubMed,PMC,Layers=4,Concatenated","NLP",2030, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("BioBERT", "Tokenization,PubMed,PMC,Layers=2,Summed","NLP",2031, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("BioBERT", "Tokenization,PubMed,PMC,Layers=3,Summed","NLP",2032, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("BioBERT", "Tokenization,PubMed,PMC,Layers=2,Concatenated","NLP",2028, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":2}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("BioBERT", "Tokenization,PubMed,PMC,Layers=3,Concatenated","NLP",2029, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":3}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("BioBERT", "Tokenization,PubMed,PMC,Layers=4,Concatenated","NLP",2030, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"concat", "layers":4}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("BioBERT", "Tokenization,PubMed,PMC,Layers=2,Summed","NLP",2031, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":2}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("BioBERT", "Tokenization,PubMed,PMC,Layers=3,Summed","NLP",2032, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":3}, spatial.distance.cosine, tag="sent_tokens"),
     Method("BioBERT", "Tokenization,PubMed,PMC,Layers=4,Summed","NLP",2033, pw.with_bert, {"model":bert_model_pubmed_pmc, "tokenizer":bert_tokenizer_pubmed_pmc, "ids_to_texts":phenes, "metric":"cosine", "method":"sum", "layers":4}, spatial.distance.cosine, tag="sent_tokens"),
 ]
 
