@@ -7,8 +7,16 @@ library(stringr)
 
 
 
+input_path <- "/Users/irbraun/phenologs-with-oats/outputs/composition_10_12_2020_h09m49s25_5701/words_shared_by_species_melted.csv"
+output_path <- "/Users/irbraun/phenologs-with-oats/figs/shared_words.png"
+
+
+
+
+
+
 # Read in the file that contains the all the precision and recall values for each method.
-df <- read.csv(file="/Users/irbraun/phenologs-with-oats/outputs/composition_09_29_2020_h12m25s57_6271/words_shared_by_species_melted.csv")
+df <- read.csv(file=input_path)
 head(df)
 
 
@@ -45,8 +53,6 @@ color_mapping <- setNames(method_colors, method_names)
 
 
 
-
-
 ggplot(df, aes(y=quantity, x=species, fill=others)) + 
   geom_bar(position="fill", stat="identity") +
   scale_fill_manual(name="Shared", values=color_mapping) +
@@ -61,9 +67,10 @@ ggplot(df, aes(y=quantity, x=species, fill=others)) +
       legend.direction = "vertical",
       legend.position = "right")
 
+
+
 # Saving the plot to a file.
-path <- "/Users/irbraun/Desktop/a.png"
-ggsave(path, plot=last_plot(), device="png", path=NULL, scale=1, width=17, height=6, units=c("cm"), dpi=300, limitsize=FALSE)
+ggsave(output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=17, height=6, units=c("cm"), dpi=300, limitsize=FALSE)
 
 
 

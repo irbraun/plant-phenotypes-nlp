@@ -37,5 +37,5 @@ python analysis.py --name plant6 --dataset plants --bio_small
 python analysis.py --name plant7 --dataset plants --bio_large --app
 python analysis.py --name plant8 --dataset plants --baseline --combined
 cd ../scripts
-python rglob_and_stack.py diseases
+python rglob_and_stack.py plants
 cd ../notebooks

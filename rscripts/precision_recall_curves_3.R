@@ -10,6 +10,17 @@ library(stringr)
 
 
 
+
+# The input and output files that this script uses and creates.
+input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_12_2020_h08m36s56_4218_plant/stacked_precision_recall_curves.csv"
+output_dir <- "/Users/irbraun/phenologs-with-oats/figs/precision_recall_curves/"
+
+
+# The output in this case is a folder that lots of dynamically named image files will be added to.
+dir.create(file.path(output_dir))
+
+
+
 # What about generating for a bunch of different combinations and saving them for a supplemental file?
 # Function is just copied and pasted from the example above, with the fixed output path parameterized instead.
 make_and_save_figure <- function(df, baselines, output_path){
@@ -32,7 +43,9 @@ make_and_save_figure <- function(df, baselines, output_path){
     theme_bw() +
     xlab("Recall") +
     ylab("Precision") +
-    theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
+    theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5),
+          panel.grid.major = element_blank(), 
+          #panel.grid.minor = element_blank(),
           panel.spacing = unit(1.5, "lines"))
   
   # Saving the plot to a file.
@@ -47,21 +60,33 @@ make_and_save_figure <- function(df, baselines, output_path){
 
 
 
+# Read in the full dataframe.
+full_df <- read.csv(file=input_path)
 
-full_df <- read.csv(file="/Users/irbraun/phenologs-with-oats/outputs/figtest_10_05_2020_h11m43s38_4419/main_metrics/precision_recall_curves.csv")
 
-output_dir <- "/Users/irbraun/Desktop/tf3/"
+# Create one output file for each possible combination.
+approaches_to_use <- unique(full_df$name)
+curation_subsets_to_use <- unique(full_df$curated)
 
-for (n in unique(full_df$name)){
-  for (c in unique(full_df$curated)){
+# Or for testing purposes, just create one.
+#approaches_to_use <- "n_grams__tokenization_full_nouns_adjectives_1_grams"
+#curation_subsets_to_use <- "True"
+
+
+# Create one set of plots faceted by task for each approach and subset of genes in the dataset.
+for (a in approaches_to_use){
+  for (c in curation_subsets_to_use){
     # Using just a few particular examples to build the figure. Create a baselines dataframe as well.
-    df <- (full_df %>% filter((curated==c)) %>% filter((name==n)))
+    df <- (full_df %>% filter((curated==c)) %>% filter((name==a)))
     df <- df %>% filter(!((task=="pathways") & (species!="both")))
     baselines <- df[!duplicated(df[,c("task","curated")]),]
-    output_path = paste(output_dir,n,"_curated_",c,".png", sep="")
+    output_path = paste(output_dir,a,"_curated_",c,".png", sep="")
     make_and_save_figure(df, baselines, output_path)
   }
 }
+
+
+
 
 
 
