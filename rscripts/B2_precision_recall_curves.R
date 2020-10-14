@@ -12,7 +12,7 @@ library(stringr)
 
 
 # The input and output files that this script uses and creates.
-input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_12_2020_h08m36s56_4218_plant/stacked_precision_recall_curves.csv"
+input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_14_2020_h08m41s58_6879_rev/stacked_precision_recall_curves.csv"
 output_dir <- "/Users/irbraun/phenologs-with-oats/figs/precision_recall_curves/"
 
 
