@@ -27,15 +27,15 @@ cd notebooks
 
 
 
-# Split the analysis of the large plant dataset into multiple runs, takes about 16 hours total.
-python analysis.py --name plant1 --dataset plants --learning --annotations
-python analysis.py --name plant2 --dataset plants --noblecoder --lda
-python analysis.py --name plant3 --dataset plants --nmf --vanilla --app
-python analysis.py --name plant4 --dataset plants --vocab
-python analysis.py --name plant5 --dataset plants --bert --biobert
-python analysis.py --name plant6 --dataset plants --bio_small
-python analysis.py --name plant7 --dataset plants --bio_large --app
-python analysis.py --name plant8 --dataset plants --baseline --combined
+# Split the analysis of the large plant dataset into multiple runs, takes about 24 hours total.
+python analysis.py --name plants1 --dataset plants --learning --annotations
+python analysis.py --name plants2 --dataset plants --noblecoder --lda
+python analysis.py --name plants3 --dataset plants --nmf --vanilla --app
+python analysis.py --name plants4 --dataset plants --vocab
+python analysis.py --name plants5 --dataset plants --bert --biobert
+python analysis.py --name plants6 --dataset plants --bio_small
+python analysis.py --name plants7 --dataset plants --collapsed
+python analysis.py --name plants8 --dataset plants --baseline --combined
 cd ../scripts
 python rglob_and_stack.py plants
 cd ../notebooks

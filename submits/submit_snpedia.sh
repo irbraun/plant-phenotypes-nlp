@@ -34,7 +34,7 @@ python analysis.py --name diseases3 --dataset diseases --nmf --vanilla
 python analysis.py --name diseases4 --dataset diseases --vocab
 python analysis.py --name diseases5 --dataset diseases --bert --biobert
 python analysis.py --name diseases6 --dataset diseases --bio_small
-python analysis.py --name diseases7 --dataset diseases --bio_large
+python analysis.py --name diseases7 --dataset diseases --collapsed
 python analysis.py --name diseases8 --dataset diseases --baseline --combined
 cd ../scripts
 python rglob_and_stack.py diseases
@@ -48,7 +48,7 @@ python analysis.py --name snippets3 --dataset snippets --nmf --vanilla
 python analysis.py --name snippets4 --dataset snippets --vocab
 python analysis.py --name snippets5 --dataset snippets --bert --biobert
 python analysis.py --name snippets6 --dataset snippets --bio_small
-python analysis.py --name snippets7 --dataset snippets --bio_large
+python analysis.py --name snippets7 --dataset snippets --collapsed
 python analysis.py --name snippets8 --dataset snippets --baseline --combined
 cd ../scripts
 python rglob_and_stack.py snippets
@@ -62,7 +62,7 @@ python analysis.py --name contexts3 --dataset contexts --nmf --vanilla
 python analysis.py --name contexts4 --dataset contexts --vocab
 python analysis.py --name contexts5 --dataset contexts --bert --biobert
 python analysis.py --name contexts6 --dataset contexts --bio_small
-python analysis.py --name contexts7 --dataset contexts --bio_large
+python analysis.py --name contexts7 --dataset contexts --collapsed
 python analysis.py --name contexts8 --dataset contexts --baseline --combined
 cd ../scripts
 python rglob_and_stack.py contexts
