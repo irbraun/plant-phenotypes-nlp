@@ -65,9 +65,8 @@ nltk.download('averaged_perceptron_tagger', quiet=True)
 # Markdown for introducing the app and linking to other relevant resources like the project Github page.
 
 '''
-# Phenologs with OATS
-A tool for querying datasets of genes, phenotype descriptions, and ontology term annotations. 
-
+# QuOATS
+A tool for Querying genes and phenotypes with Ontology Annoations and Text Similarity.
 
 ## Instructions
 Use the searchbar below to enter a query. Select whether the query refers to a gene identifier, ontology terms, keywords and 
@@ -77,9 +76,6 @@ or commas. Keywords and keyphrases should be separated by commas. There are no l
 query. If a free text query is performed, the selected similarity algorithm is used to quantify similarity to the
 phenotype descriptions of all genes in the dataset.
 '''
-
-
-
 
 
 
@@ -193,17 +189,6 @@ def distance_float_to_similarity_int(distance):
 	similarity_float = 1-distance
 	similarity_int = int(similarity_float*100)
 	return(similarity_int)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -431,13 +416,13 @@ ONTOLOGY_PICKLE_PATHS = ["resources/pato.pickle", "resources/po.pickle", "resour
 # tokenization_function: A function for how text should be tokenized in order to be compatible with this approach.
 # preprocessing_function: A function for how text should be preprocessed in order to be compatible with this approach.
 APPROACH_NAMES_AND_DATA = {
-	"n-grams":{
+	"N-Grams (Whole Phenotype)":{
 		"path":"resources/dists_with_n_grams_full_words_1_grams_tfidf.pickle", 
 		"mapping":"whole_texts",
 		"tokenization_function":as_one_token,
 		"preprocessing_fucntion":full_preprocessing,
 		},
-	"n-grams-tokenized":{
+	"N-Grams (Sentence Tokenized)":{
 		"path":"resources/dists_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
 		"mapping":"sent_tokens",
 		"tokenization_function":sentence_tokenize,
@@ -460,7 +445,7 @@ APPROACH_NAMES_AND_DATA = {
 
 # For testing, be able to subset this nested dictionary without having to uncomment sections of it.
 # Just uncomment these two lines to use the entire set of approaches and load all files.
-names_to_actually_use = ["n-grams","n-grams-tokenized"]
+names_to_actually_use = ["N-Grams (Whole Phenotype)","N-Grams (Sentence Tokenized)"]
 APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k in names_to_actually_use}
 
 
@@ -490,7 +475,7 @@ PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DE
 
 
 # Some options for how aspects of the tables that are presented after each search look.
-RESULT_COLUMN_STRING = "Matches..................................."
+RESULT_COLUMN_STRING = "___________________________________Matches"
 MAX_LINES_IN_RESULT_COLUMN = 10
 
 
@@ -546,8 +531,8 @@ if len(species_list) == 0:
 	species_list = species_display_names
 
 # Present information and search options for finding a particular gene or protein in the sidebar.
-st.sidebar.markdown("### Pick a Similarity Algorithm")
-approach = st.sidebar.selectbox(label="Pick one", options=list(approach_to_object.keys()), index=0)
+st.sidebar.markdown("### Select a Similarity Algorithm")
+approach = st.sidebar.selectbox(label="Select one", options=list(approach_to_object.keys()), index=0)
 
 # Variables that get set according to which approach was selected.
 graph = approach_to_object[approach]
@@ -570,11 +555,12 @@ include_examples = st.sidebar.checkbox(label="Include Examples", value=False)
 
 
 
-############# Search Section ###############
 
 
 
 
+
+############# The Searchbar Section ###############
 
 
 
@@ -661,9 +647,21 @@ else:
 
 
 
+
+
+
+
+
+
+
 ############### Listening for something to typed and entered into any of the search boxes #############
 
 
+
+
+
+
+################ Searching by GENE IDENTIFIER ################ 
 
 if search_type == "gene" and input_text != "":
 
@@ -696,8 +694,9 @@ if search_type == "gene" and input_text != "":
 					st.markdown("(Other synonyms include {})".format(synonyms_field_str))
 
 
+
 	# Handle what should happen if any of the previously presented gene buttons was clicked.
-	# Has to be a loop because we need to check all the presented buttons, might be more than one.
+	# Has to be a loop because we need to check all the presented buttons, and there might be more than one.
 	for i,gene_button in gene_buttons_dict.items():
 		if gene_button:
 			
@@ -733,6 +732,12 @@ if search_type == "gene" and input_text != "":
 
 
 
+
+
+
+
+
+################ Searching by ONTOLOGY TERMS ################ 
 
 elif search_type == "ontology" and input_text != "":
 
@@ -813,7 +818,7 @@ elif search_type == "ontology" and input_text != "":
 
 
 
-
+################ Searching by KEYWORDS AND KEYPHRASES ################ 
 
 elif search_type == "keyword" and input_text != "":
 
@@ -858,6 +863,10 @@ elif search_type == "keyword" and input_text != "":
 
 
 
+
+
+################ Searching by PHENOTYPE DESCRIPTION ################ 
+
 elif search_type == "phenotype" and input_text != "":
 
 	# Start the results section of the page.
@@ -881,6 +890,11 @@ elif search_type == "phenotype" and input_text != "":
 
 	# Display the sorted and filtered dataset as a table with the relevant columns.
 	st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+
+
+
+
+
 
 
 
