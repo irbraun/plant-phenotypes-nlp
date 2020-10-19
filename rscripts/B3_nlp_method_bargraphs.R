@@ -13,7 +13,7 @@ library(stringr)
 # The input and output files that this script uses and creates.
 input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_14_2020_h08m41s58_6879_rev/stacked_f1_max.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/bargraphs.png"
-
+names_path <- "/Users/irbraun/phenologs-with-oats/names.tsv"
 
 
 
@@ -30,11 +30,28 @@ head(df_long)
 
 
 
+# THESE CHANGES SHOULD BE DONE IN TEH NOTEBOOK, GET RID OF UNUSED COLUMN, JUST NEED THE ONE NAME ONE.
+# NEW THING CHECK THIS AND MOVE TO OTHER FIGURE SCRIPTS AS WELL.
+# This should be done in the notebook!!!!! just have it write the full name with hyperparams instead.
+df_long$old <- paste(df_long$method, df$hyperparameters, sep="__")
+df_long <- subset(df_long, select = -c(order, method, hyperparameters, group) )
+
+
+
+names_df <- read.csv(file=names_path, header=T, sep="\t")
+
+df_long <- merge(x=df_long, y=names_df, by.x=c("old"), by.y=c("name_in_notebook"), all.x=TRUE)
+
+df_long[rowSums(is.na(df_long)) > 0,]
+head(df_long)
+
+
+
 
 # Some weird special cases here. We want to facet on tokenization, but also show curated approaches in both.
 # But also exclude curated approaches for the entire dataset not subset by curation.
-df_long$tokenized <- str_detect(df_long$hyperparameters, "tokenization")
-extra_lines <- df_long[df_long$group=="Curation",]
+df_long$tokenized <- str_detect(df_long$tokenized, "yes")
+extra_lines <- df_long[df_long$class=="Curation",]
 extra_lines$tokenized <- TRUE
 df_long <- rbind(df_long,extra_lines)
 
@@ -43,7 +60,7 @@ df_long <- rbind(df_long,extra_lines)
 
 
 # Whatever data goes in the methods column will be used to define the bars in the plot.
-df_long$method <- df_long$group
+df_long$method <- df_long$class
 
 
 # Transform the dataframe by collapsing to method type, and remembering the average, min, and max metrics obtained by each class of method.
@@ -82,7 +99,7 @@ num_colors_needed <- length(unique(df_long_t$method))
 
 method_names <- c("Baseline",
                   "N-Grams",
-                  "Topic Modelling",
+                  "Topic Modeling",
                   "ML",
                   "N-Grams/ML",
                   "Annotation",
@@ -129,7 +146,7 @@ ggplot(data=df_long_t, aes(x=reorder(method,-order), y=avg_value, fill=method)) 
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
         axis.text.y = element_text(hjust=0),
         #axis.text.x = element_text(angle=60, vjust=1.0, hjust=1),
-        axis.title.x = element_blank(),
+        #axis.title.x = element_blank(),
         legend.direction = "vertical", 
         #legend.position = "right", 
         legend.position = "none",
@@ -139,7 +156,7 @@ ggplot(data=df_long_t, aes(x=reorder(method,-order), y=avg_value, fill=method)) 
         axis.line=element_blank(),
         panel.spacing.x = unit(1.0, "lines"),
         panel.spacing.y = unit(0.1, "lines")) +
-  ylab("Maximum F2 Value") +
+  ylab("Maximum F1 Value") +
   xlab("Similarity Approach")
 
 

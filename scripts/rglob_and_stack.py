@@ -8,6 +8,7 @@ import random
 import os
 import sys
 import datetime
+from functools import reduce
 
 
 
@@ -41,6 +42,42 @@ def recursive_rowstack_dataframes(basedir, filename, path_keyword=None):
 		return(None)
 		
 	
+
+
+
+
+def columnstack_distances_dataframes(basedir, filename, path_keyword=None):
+	"""Combine all files found under this directory or its subdirectories that match this file name and return the stacked dataframe.
+	
+	Args:
+		basedir (str): The base directory to recursively search under.
+	
+		filename (str): The final path component to use to look for compatible files.
+	
+		path_keyword (str): A string that has to be presented in the full path or that file is not used, optional.
+	
+	
+	Returns:
+		pandas.DataFrame: A dataframe resulting from stacking all files under that directory with the provided name.
+	"""
+	dfs = []
+	for path in Path(basedir).rglob(filename):
+		if (path_keyword == None) or (path_keyword in str(path)):
+			dfs.append(pd.read_csv(path))
+	if len(dfs)>1:
+		shared_columns = ["group_id", "full_name", "n"]
+		df_final = reduce(lambda left,right: pd.merge(left,right,on=shared_columns, how="inner"), dfs)
+		for df in dfs:
+			assert df_final.shape[0] == df.shape[0]
+		return(df_final)
+	else:
+		return(None)
+		
+
+
+
+
+
 	
 
 
@@ -76,6 +113,7 @@ FILES_TO_BE_STACKED = [
 	"approaches.csv",
 	"auc.csv",
 	"f1_max.csv",
+	"f2_max.csv",
 	"full_table_with_all_metrics.csv",
 	"precision_recall_curves.csv",
 	"histograms.csv",
@@ -96,8 +134,50 @@ for filename in FILES_TO_BE_STACKED:
 			df.sort_values(by=["order"], inplace=True)
 		df.to_csv(os.path.join(OUTPUT_DIR,new_filename), index=False)
 
+print("finished vertically stacking output files")
+
+
+
+
+
+
+
+
+
+
+# Ones that are stacked horizontally and require re-organization that's different than the above files.
+FILES_TO_BE_STACKED = [
+	"pmn_only_within_distances.csv",
+	"kegg_only_within_distances.csv",
+	"subsets_within_distances.csv",
+]
 	
-print("finished stacking output files")
+for filename in FILES_TO_BE_STACKED:
+	new_filename = "stacked_{}".format(filename)
+	df = columnstack_distances_dataframes(BASEDIR, filename, path_keyword)
+	if isinstance(df, pd.DataFrame):
+		if "order" in df.columns:
+			df.sort_values(by=["order"], inplace=True)
+		df.to_csv(os.path.join(OUTPUT_DIR,new_filename), index=False)
+
+print("finished horizontally stacking output files")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
