@@ -131,9 +131,9 @@ df_long_t
 
 
 # Make a plot faceted by task that shows the general performance for each of the 
-ggplot(data=df_long_t, aes(x=reorder(method,-order), y=avg_value, fill=method)) +
+ggplot(data=df_long_t, aes(x=reorder(method,-order), y=avg_value, fill=method, alpha=0.6)) +
   coord_flip() +
-  scale_fill_manual(name="Shared", values=color_mapping) +
+  scale_fill_manual(name="Approach", values=color_mapping) +
   geom_bar(stat="identity") + geom_bar(stat="identity", color="black") + 
   geom_errorbar(aes(ymin=min_value, ymax=max_value), width=.3) +
   facet_grid(rows=vars(tokenized), cols=vars(task)) +

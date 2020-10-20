@@ -8,9 +8,6 @@ library(stringr)
 
 
 
-
-
-
 # The input and output files that this script uses and creates.
 input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_14_2020_h08m41s58_6879_rev/stacked_precision_recall_curves.csv"
 output_dir <- "/Users/irbraun/phenologs-with-oats/figs/precision_recall_curves/"
@@ -31,8 +28,12 @@ make_and_save_figure <- function(df, baselines, output_path){
   
   
   # Reformatting to be a factor to specify spelling and re-ordering.
-  df$task <- factor(df$task, levels=c("orthologs","predicted","known","pathways","subsets"), labels=c("Orthologs","Predicted","Known","Pathways","Phenotypes"))
-  baselines$task <- factor(baselines$task, levels=c("orthologs","predicted","known","pathways","subsets"), labels=c("Orthologs","Predicted","Known","Pathways","Phenotypes"))
+  df$task <- factor(df$task, levels=c("orthologs","known","pathways","subsets"), labels=c("Orthologs","Assocations","Pathways","Phenotypes"))
+  baselines$task <- factor(baselines$task, levels=c("orthologs","known","pathways","subsets"), labels=c("Orthologs","Assocations","Pathways","Phenotypes"))
+  df <- df %>% drop_na()
+  baselines <- baselines %>% drop_na()
+  
+  
   
   # Make the plot.
   ggplot(df, aes(x=recall, y=precision)) + geom_line() +
@@ -80,7 +81,7 @@ for (a in approaches_to_use){
     df <- (full_df %>% filter((curated==c)) %>% filter((name==a)))
     df <- df %>% filter(!((task=="pathways") & (species!="both")))
     baselines <- df[!duplicated(df[,c("task","curated")]),]
-    output_path = paste(output_dir,a,"_curated_",c,".png", sep="")
+    output_path = paste(output_dir,a,"_curated_",tolower(as.character(c)),".png", sep="")
     make_and_save_figure(df, baselines, output_path)
   }
 }

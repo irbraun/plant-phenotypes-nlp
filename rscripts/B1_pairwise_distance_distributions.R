@@ -28,7 +28,9 @@ make_and_save_figure <- function(df, output_path){
   positive_string <- "Gene pairs considered positive"
   negative_string <- "All other gene pairs"
   df$distribution <- factor(df$distribution, levels=c("positive","negative"), labels=c(positive_string,negative_string))
-  df$objective <- factor(df$objective, levels=c("orthologs","predicted","known","pathways","subsets"), labels=c("Orthologs","Predicted","Known","Pathways","Phenotypes"))
+  df$objective <- factor(df$objective, levels=c("orthologs","known","pathways","subsets"), labels=c("Orthologs","Associations","Pathways","Phenotypes"))
+  df <- df %>% drop_na()
+  
   
   
   
@@ -69,8 +71,11 @@ make_and_save_figure <- function(df, output_path){
     ylab("Density") +
     xlab("Gene Pair Similarity")
   
+  
+  
+  
   # Saving the plot to a file.
-  ggsave(output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=18, height=6, units=c("cm"), dpi=500, limitsize=FALSE)
+  ggsave(output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=15, height=6, units=c("cm"), dpi=500, limitsize=FALSE)
 }
 
 
@@ -89,25 +94,16 @@ curation_subsets_to_use <- unique(full_df$curated)
 #approaches_to_use <- "n_grams__tokenization_full_nouns_adjectives_1_grams"
 #curation_subsets_to_use <- "True"
 
-
 # Create one set of plots faceted by task for each approach and subset of genes in the dataset.
 for (a in approaches_to_use){
   for (c in curation_subsets_to_use){
     # Using just a few particular examples to build the figure.
-    df <- (full_df %>% filter((num_bins==50)) %>% filter((curated==c)) %>% filter((approach==a)))
+    df <- full_df %>% filter(num_bins==50) %>% filter(curated==c) %>% filter(approach==a)
     df <- df %>% filter(!((objective=="pathways") & (species!="both")))
-    output_path = paste(output_dir,a,"_curated_",c,".png", sep="")
+    output_path = paste(output_dir,a,"_curated_",tolower(as.character(c)),".png", sep="")
     make_and_save_figure(df, output_path)
   }
 }
-
-
-
-
-
-
-
-
 
 
 
