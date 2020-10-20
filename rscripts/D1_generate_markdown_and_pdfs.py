@@ -19,7 +19,7 @@ import math
 
 
 
-def create_markdown_and_pdfs_with_captions(dir_with_png_files, output_markdown_path, name_to_display_name, name_to_order)
+def create_markdown_and_pdfs_with_captions(dir_with_png_files, output_markdown_path, name_to_display_name, name_to_order):
 
 	lines = []
 	for filepath in glob.glob(os.path.join(dir_with_png_files,"*.png")):
