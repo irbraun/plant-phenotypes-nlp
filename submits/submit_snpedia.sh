@@ -2,7 +2,7 @@
 
 #Submit this script with: sbatch thefilename
 
-#SBATCH -t 24:00:00   # walltime
+#SBATCH -t 12:00:00   # walltime
 #SBATCH -N 1   # number of nodes in this job
 #SBATCH -n 16   # total number of processor cores in this job
 #SBATCH -J "nlp-snpedia"   # job name
@@ -28,17 +28,17 @@ cd notebooks
 
 
 # Split the analysis of the large diseases dataset into multiple runs, takes about 4 hours total.
-python analysis.py --name diseases1 --dataset diseases --learning
-python analysis.py --name diseases2 --dataset diseases --noblecoder --lda
-python analysis.py --name diseases3 --dataset diseases --nmf --vanilla
-python analysis.py --name diseases4 --dataset diseases --vocab
-python analysis.py --name diseases5 --dataset diseases --bert --biobert
-python analysis.py --name diseases6 --dataset diseases --bio_small
-python analysis.py --name diseases7 --dataset diseases --collapsed
-python analysis.py --name diseases8 --dataset diseases --baseline --combined
-cd ../scripts
-python rglob_and_stack.py diseases
-cd ../notebooks
+#python analysis.py --name diseases1 --dataset diseases --learning
+#python analysis.py --name diseases2 --dataset diseases --noblecoder --lda
+#python analysis.py --name diseases3 --dataset diseases --nmf --vanilla
+#python analysis.py --name diseases4 --dataset diseases --vocab
+#python analysis.py --name diseases5 --dataset diseases --bert --biobert
+#python analysis.py --name diseases6 --dataset diseases --bio_small
+#python analysis.py --name diseases7 --dataset diseases --collapsed
+#python analysis.py --name diseases8 --dataset diseases --baseline --combined
+#cd ../scripts
+#python rglob_and_stack.py diseases
+#cd ../notebooks
 
 
 # Split the analysis of the large snippets dataset into multiple runs, takes about 4 hours total.

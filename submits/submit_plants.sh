@@ -2,7 +2,7 @@
 
 #Submit this script with: sbatch thefilename
 
-#SBATCH -t 36:00:00   # walltime
+#SBATCH -t 30:00:00   # walltime
 #SBATCH -N 1   # number of nodes in this job
 #SBATCH -n 16   # total number of processor cores in this job
 #SBATCH -J "nlp-plants"   # job name
@@ -28,14 +28,15 @@ cd notebooks
 
 
 # Split the analysis of the large plant dataset into multiple runs, takes about 24 hours total.
-python analysis.py --name plants1 --dataset plants --learning --annotations
-python analysis.py --name plants2 --dataset plants --noblecoder --lda
-python analysis.py --name plants3 --dataset plants --nmf --vanilla --app
-python analysis.py --name plants4 --dataset plants --vocab
-python analysis.py --name plants5 --dataset plants --bert --biobert
-python analysis.py --name plants6 --dataset plants --bio_small
-python analysis.py --name plants7 --dataset plants --collapsed
-python analysis.py --name plants8 --dataset plants --baseline --combined
+python analysis.py --name plants1 --dataset plants --bio_small --app
+python analysis.py --name plants2 --dataset plants --collapsed
+python analysis.py --name plants3 --dataset plants --vanilla --app
+python analysis.py --name plants4 --dataset plants --learning --annotations
+python analysis.py --name plants5 --dataset plants --noblecoder
+python analysis.py --name plants6 --dataset plants --nmf --lda
+python analysis.py --name plants7 --dataset plants --vocab
+python analysis.py --name plants8 --dataset plants --bert --biobert
+python analysis.py --name plants9 --dataset plants --baseline --combined
 cd ../scripts
 python rglob_and_stack.py plants
 cd ../notebooks
