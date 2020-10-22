@@ -3,6 +3,21 @@ docker build -f Dockerfile -t app:latest .
 docker run -p 8501:8501 app:latest
 
 
+
+
+
+# How to do it so that the image is compatible with dockerhub account.
+docker build -f Dockerfile -t irbraun/qu-oats:latest .
+docker run -p 8501:8501 irbraun/qu-oats:latest
+
+#Then
+docker push irbraun/qu-oats:latest
+
+
+
+
+
+
 # Checking existing images and running containers, and cleaning up.
 docker images
 docker container ls
