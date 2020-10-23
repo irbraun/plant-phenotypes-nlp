@@ -65,8 +65,8 @@ nltk.download('averaged_perceptron_tagger', quiet=True)
 # Markdown for introducing the app and linking to other relevant resources like the project Github page.
 
 '''
-# QuOATS
-A tool for Querying genes and phenotypes with Ontology Annoations and Text Similarity.
+# qu-oats
+A tool for querying genes and phenotypes with ontology annoations and text similarity.
 
 ## Instructions
 Use the searchbar below to enter a query. Select whether the query refers to a gene identifier, ontology terms, keywords and 
@@ -75,6 +75,8 @@ gene models, protein names, or any other alias or synonym present in the dataset
 or commas. Keywords and keyphrases should be separated by commas. There are no length or formatting restrictions for a free text 
 query. If a free text query is performed, the selected similarity algorithm is used to quantify similarity to the
 phenotype descriptions of all genes in the dataset.
+
+Note: The tables on this page are best formatted when viewing in wide mode (Select '≡', then 'Settings', then 'Show app in wide mode)'.
 '''
 
 
