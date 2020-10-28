@@ -64,7 +64,7 @@ nltk.download('averaged_perceptron_tagger', quiet=True)
 # Markdown for introducing the app and linking to other relevant resources like the project Github page.
 
 '''
-# qu-oats
+# QuOATS
 A tool for querying genes and phenotypes with ontology annoations and text similarity.
 
 ## Instructions
@@ -93,12 +93,12 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	"""Read in the large files that initialize the application here, which takes a long time.
 	
 	Args:
-	    dataset_path (TYPE): Description
-	    approach_names_and_data (TYPE): Description
-	    approach_mapping_files (TYPE): Description
+		dataset_path (TYPE): Description
+		approach_names_and_data (TYPE): Description
+		approach_mapping_files (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	
 	# Read in the dataset and create its object.
@@ -106,7 +106,17 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	dataset.filter_has_description()
 
 	# Reading in the large files that store objects for vectorizing and comparing texts.
-	approach_to_object = {k:load_from_pickle(v["path"]) for k,v in approach_names_and_data.items()}
+	approach_to_object = {}
+	for k,v in approach_names_and_data.items():
+		obj = load_from_pickle(v["path_dists"])
+		vectors = load_from_pickle(v["path_vectors"])
+		obj.vector_dictionary = vectors
+		approach_to_object[k] = obj
+
+	#approach_to_object = {k:load_from_pickle(v["path_dists"]) for k,v in approach_names_and_data.items()}
+	#for k,obj in approach_to_object.items():
+	#	approach_to_object[k].vector_dictionary = load_from_approach_names_and_data[k]["path_vectors"]
+
 	mapping_key_to_mapping_dict = {k:load_from_pickle(v) for k,v in approach_mapping_files.items()}
 	approach_to_mapping = {k:mapping_key_to_mapping_dict[v["mapping"]] for k,v in approach_names_and_data.items()}
 
@@ -116,7 +126,7 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	df = dataset.to_pandas()
 	df["Gene"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].primary_identifier)
 	df["Gene Model"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].gene_models[0] if len(dataset.get_gene_dictionary()[x].gene_models)>0 else "")
-	df["truncated_descriptions"] = df["descriptions"].map(lambda x: truncate_string(x, 800))
+	df["truncated_descriptions"] = df["descriptions"].map(lambda x: truncate_string(x, 80))
 	id_to_descriptions_for_keyword_matching = {i:PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION(s) for i,s in dataset.get_description_dictionary().items()}
 	return(dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching)
 
@@ -130,11 +140,11 @@ def read_in_ontologies(names, paths):
 	"""Read in ontology objects from .obo files and return them, can take a long time.
 	
 	Args:
-	    names (TYPE): Description
-	    paths (TYPE): Description
+		names (TYPE): Description
+		paths (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	ontologies = {}
 	for name,path, in zip(names,paths):
@@ -160,11 +170,11 @@ def truncate_string(text, char_limit):
 	"""Helpful formatting function for truncating strings to a certain maximum length.
 	
 	Args:
-	    text (TYPE): Description
-	    char_limit (TYPE): Description
+		text (TYPE): Description
+		char_limit (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	truncated_text = text[:char_limit]
 	if len(text)>char_limit:
@@ -182,10 +192,10 @@ def distance_float_to_similarity_int(distance):
 	"""Generates a friendlier (0 to 100) similarity value for displaying in search results.
 	
 	Args:
-	    distance (TYPE): Description
+		distance (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	similarity_float = 1-distance
 	similarity_int = int(similarity_float*100)
@@ -204,11 +214,11 @@ def gene_name_search(dataset, gene_name):
 	"""Helper function for searching the dataset for a gene identifier.
 	
 	Args:
-	    dataset (TYPE): Description
-	    gene_name (TYPE): Description
+		dataset (TYPE): Description
+		gene_name (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	gene_name = gene_name.lower().strip()
 	species_to_gene_id_list = defaultdict(list)
@@ -226,12 +236,12 @@ def keyword_search(id_to_text, raw_keywords, modified_keywords):
 	"""Helper function for searching the dataset for keywords and keyphrases.
 	
 	Args:
-	    id_to_text (TYPE): Description
-	    raw_keywords (TYPE): Description
-	    modified_keywords (TYPE): Description
+		id_to_text (TYPE): Description
+		raw_keywords (TYPE): Description
+		modified_keywords (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	# The raw keywords and modified keywords should be two paired lists where the elements correspond to one another.
 	# The modifications done to the keywords should already match the modifications done to the texts in the input dictionary so they can be directly compared.
@@ -252,13 +262,13 @@ def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, t
 	"""Helper function for searching the dataset for ontology term annotations.
 	
 	Args:
-	    id_to_direct_annotations (TYPE): Description
-	    id_to_indirect_annotations (TYPE): Description
-	    term_ids (TYPE): Description
-	    result_column_width (TYPE): Description
+		id_to_direct_annotations (TYPE): Description
+		id_to_indirect_annotations (TYPE): Description
+		term_ids (TYPE): Description
+		result_column_width (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	assert len(id_to_direct_annotations) == len(id_to_indirect_annotations)
 	gene_id_to_direct_match = {i:[(term_id in direct_annotations) for term_id in term_ids] for i,direct_annotations in id_to_direct_annotations.items()}
@@ -305,15 +315,15 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 	"""Helper function for searching the dataset for similar phenotype descriptions.
 	
 	Args:
-	    text (TYPE): Description
-	    graph (TYPE): Description
-	    tokenization_function (TYPE): Description
-	    preprocessing_function (TYPE): Description
-	    result_column_width (TYPE): Description
-	    result_column_max_lines (TYPE): Description
+		text (TYPE): Description
+		graph (TYPE): Description
+		tokenization_function (TYPE): Description
+		preprocessing_function (TYPE): Description
+		result_column_width (TYPE): Description
+		result_column_max_lines (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	# Do tokenization and preprocessing on the searched text to yield a list of strings.
 	# The tokenization and preprocessing have to match the object that will be used, and this decision is informed by
@@ -347,7 +357,11 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 			num_chars_left_to_fill = result_column_width-len(parsed_string_truncated)-len(similarity_string)
 			parsed_string_truncated = parsed_string_truncated + "."*num_chars_left_to_fill
 			#line = "{}({:.2f})\n\n".format(parsed_string_truncated, d)
-			line = "{}{}\n\n".format(parsed_string_truncated, similarity_string)
+
+			#newline_string = "<br>"
+			newline_string = r"\n\n"
+
+			line = "{}{}{}".format(parsed_string_truncated, similarity_string, newline_string)
 			lines_with_dist_list.append((line,d))
 		# Sort that list of lines by distance, because we only want to show the best matches if the description is very long.
 		lines_with_dist_list = sorted(lines_with_dist_list, key=lambda x: x[1])
@@ -417,36 +431,54 @@ ONTOLOGY_PICKLE_PATHS = ["resources/pato.pickle", "resources/po.pickle", "resour
 # tokenization_function: A function for how text should be tokenized in order to be compatible with this approach.
 # preprocessing_function: A function for how text should be preprocessed in order to be compatible with this approach.
 APPROACH_NAMES_AND_DATA = {
-	"N-Grams (Whole Phenotype)":{
-		"path":"resources/dists_with_n_grams_full_words_1_grams_tfidf.pickle", 
-		"mapping":"whole_texts",
-		"tokenization_function":as_one_token,
-		"preprocessing_fucntion":full_preprocessing,
-		},
-	"N-Grams (Sentence Tokenized)":{
-		"path":"resources/dists_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
-		"mapping":"sent_tokens",
+	# "N-Grams (Whole Phenotype)":{
+	# 	"path":"resources/dists_with_n_grams_full_words_1_grams_tfidf.pickle", 
+	# 	"mapping":"whole_texts",
+	# 	"tokenization_function":as_one_token,
+	# 	"preprocessing_fucntion":full_preprocessing,
+	# 	},
+	# "N-Grams (Sentence Tokenized)":{
+	# 	"path":"resources/dists_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
+	# 	"mapping":"sent_tokens",
+	# 	"tokenization_function":sentence_tokenize,
+	# 	"preprocessing_fucntion":full_preprocessing,
+	# 	},
+	# "word2vec-tokenized":{
+	# 	"path":"resources/wtok.pickle", 
+	# 	"mapping":"sent_tokens",
+	# 	"tokenization_function":sentence_tokenize,
+	# 	"preprocessing_fucntion":identify_function,
+	# 	},
+	# "doc2vec":{
+	#  	"path":"resources/d.pickle", 
+	#  	"mapping":"whole_texts",
+	#  	"tokenization_function":as_one_token,
+	#  	"preprocessing_fucntion":identify_function,
+	#  	},
+
+
+	"n-grams":{
+		"path_dists":"resources/dists_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
+		"path_vectors":"resources/vectors_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle",
+		"mapping":"sent_tokens_N",
 		"tokenization_function":sentence_tokenize,
 		"preprocessing_fucntion":full_preprocessing,
 		},
-	"word2vec-tokenized":{
-		"path":"resources/wtok.pickle", 
-		"mapping":"sent_tokens",
+	"fuzzy":{
+		"path_dists":"resources/dists_with_word2vec_tokenization_pubmed_size_200_mean.pickle", 
+		"path_vectors":"resources/vectors_with_word2vec_tokenization_pubmed_size_200_mean.pickle",
+		"mapping":"sent_tokens_W",
 		"tokenization_function":sentence_tokenize,
 		"preprocessing_fucntion":identify_function,
 		},
-	"doc2vec":{
-	 	"path":"resources/d.pickle", 
-	 	"mapping":"whole_texts",
-	 	"tokenization_function":as_one_token,
-	 	"preprocessing_fucntion":identify_function,
-	 	},
+
+
 	}
 
 
 # For testing, be able to subset this nested dictionary without having to uncomment sections of it.
 # Just uncomment these two lines to use the entire set of approaches and load all files.
-names_to_actually_use = ["N-Grams (Whole Phenotype)","N-Grams (Sentence Tokenized)"]
+names_to_actually_use = ["fuzzy", "n-grams"]
 APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k in names_to_actually_use}
 
 
@@ -457,7 +489,11 @@ APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k i
 # these dictinoary files can then be associated with each of the approaches from the nested dictionary.
 APPROACH_MAPPING_FILES = {
 	"whole_texts":"resources/gene_id_to_unique_ids_whole_texts.pickle",
-	"sent_tokens":"resources/gene_id_to_unique_ids_sent_tokens.pickle",
+	"sent_tokens_N":"resources/N_gene_id_to_unique_ids_sent_tokens.pickle",
+	"sent_tokens_W":"resources/W_gene_id_to_unique_ids_sent_tokens.pickle",
+
+
+
 	"go_term_sets":"resources/gene_id_to_unique_ids_go_term_sets.pickle",
 	"po_term_sets":"resources/gene_id_to_unique_ids_po_term_sets.pickle",
 	"go_terms":"resources/gene_id_to_unique_ids_go_terms.pickle",
@@ -477,6 +513,7 @@ PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DE
 
 # Some options for how aspects of the tables that are presented after each search look.
 RESULT_COLUMN_STRING = "___________________________________Matches"
+RESULT_COLUMN_STRING = "                                   Matches"
 MAX_LINES_IN_RESULT_COLUMN = 10
 
 
@@ -547,6 +584,11 @@ st.sidebar.markdown("### General Page Options")
 truncate = st.sidebar.checkbox(label="Truncate long phenotypes", value=True)
 synonyms = st.sidebar.checkbox(label="Show possible gene synonyms", value=False)
 include_examples = st.sidebar.checkbox(label="Include Examples", value=False)
+
+
+
+table_width = st.sidebar.slider(label="Table Width", min_value=100, max_value=8000, value=1000, step=100, format=None, key=None)
+
 
 # Presenting some more advanced options that shouldn't normally need to be changed.
 #st.sidebar.markdown("### Advanced Options")
@@ -879,7 +921,19 @@ elif search_type == "phenotype" and input_text != "":
 		f_tokenizing = APPROACH_NAMES_AND_DATA[approach]["tokenization_function"]
 		f_preprocessing = APPROACH_NAMES_AND_DATA[approach]["preprocessing_fucntion"]
 		gene_id_to_result_string, gene_id_to_min_distance =  description_search(search_string, graph, f_tokenizing, f_preprocessing, len(RESULT_COLUMN_STRING), MAX_LINES_IN_RESULT_COLUMN)
+		
+
+		gene_id_to_result_string = {k:str(v) for k,v in gene_id_to_result_string.items()}
+
+
+
 		df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_result_string)
+
+		#df[RESULT_COLUMN_STRING] = df[RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n","<br>"))
+
+
+
+
 		df["distance"] = df["id"].map(gene_id_to_min_distance)
 		df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
 		df.index = np.arange(1, len(df)+1)
@@ -890,10 +944,124 @@ elif search_type == "phenotype" and input_text != "":
 	st.markdown("Genes with phenotypes that are described most similarity to '{}'".format(search_string))
 
 	# Display the sorted and filtered dataset as a table with the relevant columns.
-	st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+	#st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+	#st.dataframe(df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
 
 
 
+
+	# NO MODULE NAME PLOTLY, ADD THIS THE CONDA ENVIRONMENT IF USING.
+	import plotly
+	import plotly.graph_objects as go
+
+
+
+
+
+
+
+	def set_styles(results):
+		table_styles = [
+			dict(
+				selector="table",
+				props=[("font-size", "150%"), ("text-align", "center"), ("color", "red")],
+			),
+			dict(selector="caption", props=[("caption-side", "bottom")]),
+		]
+		#results.style.set_table_styles(table_styles).set_properties(**{"background-color": "blue", "color": "white"}).set_caption("This is a caption")
+		results.style.set_table_styles(table_styles)
+		return(results)
+
+
+
+
+
+
+	my_df = df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]]
+
+
+
+	my_df = set_styles(my_df)
+
+
+	#my_df = set_styles(my_df)
+
+
+
+	header_values = my_df.columns
+
+	#header_values = ["something with a <br> line <mark> break </mark>", "b", "c", "d", "e"]
+
+
+	cell_values = []
+	for index in range(0, len(my_df.columns)):
+		cell_values.append(my_df.iloc[:,index:index+1])
+
+
+
+
+	# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
+	# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
+	cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
+	descriptions = list(cell_values[0][RESULT_COLUMN_STRING].values)
+	descriptions = [x.replace(r"\n\n","<br>") for x in descriptions]
+	descriptions = [x.replace("all","<b>all</b>") for x in descriptions]
+	cell_values[0] = descriptions
+
+
+	#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].astype(str)
+
+	#cell_values[0] = ["aoiuser <br> waasdfs","dsdef"]
+
+
+
+
+
+
+
+
+
+
+	style = True
+
+	if not style:
+		fig = go.Figure(
+		   style_cell={
+				'whiteSpace': 'normal',
+				'height': 'auto',
+			},
+			data=[
+				go.Table(
+					header=dict(values=header_values), cells=dict(values=cell_values)
+				)
+			]
+		)
+
+	else:
+		fig = go.Figure(
+			#style_cell={
+			#    'whiteSpace':'normal',
+			#    'height': 'auto',
+			#},
+			data=[
+				go.Table(
+
+					columnorder = [1,2,3,4,5],
+					columnwidth = [2,1,1,1,7],
+					header=dict(values=header_values, fill_color="paleturquoise", align="left", font=dict(color='white', size=16), height=60),
+					#cells=dict(values=cell_values, fill_color="lavender", align="left", font_size=14, height=40, line=dict(width=3)),
+					cells=dict(values=cell_values, fill_color="lavender", align="left", font_size=14),
+				)
+			]
+		)
+
+
+
+
+	fig.update_layout(width=table_width, height=4000)
+
+	st.plotly_chart(fig)
+	
 
 
 
