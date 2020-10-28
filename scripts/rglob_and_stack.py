@@ -117,7 +117,10 @@ FILES_TO_BE_STACKED = [
 	"full_table_with_all_metrics.csv",
 	"precision_recall_curves.csv",
 	"histograms.csv",
-	"correlations.csv"
+	"correlations.csv",
+	"pmn_only_within_distances_melted.csv",
+	"kegg_only_within_distances_melted.csv",
+	"subsets_within_distances_melted.csv"
 ]
 	
 	

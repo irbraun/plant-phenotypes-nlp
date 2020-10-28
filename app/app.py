@@ -15,8 +15,7 @@ from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preproce
 
 sys.path.append("../../oats")
 import oats
-from oats.utils.utils import save_to_pickle, load_from_pickle, flatten
-from oats.utils.utils import function_wrapper_with_duration, remove_duplicates_retain_order
+from oats.utils.utils import load_from_pickle
 from oats.biology.dataset import Dataset
 from oats.annotation.ontology import Ontology
 
