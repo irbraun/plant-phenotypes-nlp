@@ -50,8 +50,14 @@ TABLE_ROWS_COLOR = "#F1F2F6"
 RESULT_COLUMN_WIDTH = 40
 ROW_LIMIT = 100
 MAX_LINES_IN_RESULT_COLUMN = 10
-DESCRIPTION_COLUMN_WIDTH = 150
-TRUNCATED_CHAR_LIMIT = 1000
+DESCRIPTION_COLUMN_WIDTH = 130
+TRUNCATED_CHAR_LIMIT = 110
+NEWLINE_TOKEN = "[NEWLINE]"
+
+
+# Some options for how aspects of the tables that are presented after each search look.
+RESULT_COLUMN_STRING = "Searched Sentences"
+SCORE_COLUMN_STRING = "Scores"
 
 
 
@@ -117,34 +123,23 @@ phenotype descriptions of all genes in the dataset.
 '''
 
 
-# Some color codes
+# Some color codes.
 # 581845
 # FF5733
 # C0C0C0
 # E4E4F9
-
-
 # B31334
-
 # E8D04C
-
-
-st.markdown("""
-	<style>
-	body {
-	    color: #111;
-	    background-color: #fff;
-	}
-	</style>
-	    """, unsafe_allow_html=True
-)
-
 
 
 # Setting some of the color scheme of the page.
 st.markdown(
 	"""
 	<style>
+	body {
+	    color: #111;
+	    background-color: #fff;
+	}
 	.reportview-container .markdown-text-container {
 		font-family: arial;
 	}
@@ -230,11 +225,8 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	df = dataset.to_pandas()
 	df["Gene"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].primary_identifier)
 	df["Gene Model"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].gene_models[0] if len(dataset.get_gene_dictionary()[x].gene_models)>0 else "")
-	df["truncated_descriptions"] = df["descriptions"].map(lambda x: truncate_string(x, TRUNCATED_CHAR_LIMIT))
-	df["truncated_descriptions"] = df["truncated_descriptions"].map(lambda x: wrap_string(x, DESCRIPTION_COLUMN_WIDTH, "[NEWLINE]"))
-
-
-
+	df["descriptions_one_line_truncated"] = df["descriptions"].map(lambda x: truncate_string(x, DESCRIPTION_COLUMN_WIDTH-20))
+	df["descriptions_with_newline_tokens"] = df["descriptions"].map(lambda x: NEWLINE_TOKEN.join(wrap(x, DESCRIPTION_COLUMN_WIDTH)))
 
 
 	id_to_descriptions_for_keyword_matching = {i:PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION(s) for i,s in dataset.get_description_dictionary().items()}
@@ -275,28 +267,8 @@ def read_in_ontologies(names, paths):
 
 
 
-
-
-def wrap_string(text, char_limit, newline_character):
-	lines = wrap(text, char_limit)
-	return(newline_character.join(lines))
-
-
-
-
-
-
-
-
 def truncate_string(text, char_limit):
-	"""Helpful formatting function for truncating strings to a certain maximum length.
-	
-	Args:
-		text (TYPE): Description
-		char_limit (TYPE): Description
-	
-	Returns:
-		TYPE: Description
+	"""Return a truncated version of the text and adding elipses if it's longer than the character limit.
 	"""
 	truncated_text = text[:char_limit]
 	if len(text)>char_limit:
@@ -304,30 +276,6 @@ def truncate_string(text, char_limit):
 		truncated_text = text[:char_limit-3]
 		truncated_text = "{}...".format(truncated_text)
 	return(truncated_text)
-
-
-
-
-
-
-# def distance_to_similarity(distance):
-# 	"""Generates a friendlier (0 to 100) similarity value for displaying in search results.
-	
-# 	Args:
-# 		distance (TYPE): Description
-	
-# 	Returns:
-# 		TYPE: Description
-# 	"""
-# 	similarity_float = 1-distance
-# 	#similarity_int = int(similarity_float*100)
-# 	return(similarity_int)
-
-
-
-
-# 	"{:.2f}".format(1-distance))
-
 
 
 
@@ -373,10 +321,6 @@ def keyword_search(id_to_text, raw_keywords, modified_keywords):
 	id_to_found_keywords = {i:[r_kw for r_kw,m_kw in zip(raw_keywords,modified_keywords) if m_kw in text] for i,text in id_to_text.items()}
 	id_to_num_found_keywords = {i:len(kw_list) for i,kw_list in id_to_found_keywords.items()}
 	return(id_to_found_keywords, id_to_num_found_keywords)
-
-
-
-
 
 
 
@@ -431,11 +375,6 @@ def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, t
 
 
 
-
-
-
-
-
 def description_search(text, graph, tokenization_function, preprocessing_function):
 	"""Helper function for searching the dataset for similar phenotype descriptions.
 	
@@ -463,9 +402,6 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 	# Now the preprocessed sentence tokens are in the right format, and ready to be embedded and compared to the existing data.
 
 
-
-
-
 	# Get a mapping between gene IDs and their distances to each new text string parsed from the search string.
 	# The key is the gene ID from the existing dataset and the values are a list in the same order as the preprocessed query sentences.
 	gene_id_to_distances = defaultdict(list)
@@ -480,49 +416,10 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 
 
 
-	# # Making a highly formatted string to show how distances break down by individual sentences tokens.
-	# # This is very specific to how the column for that information is presented, change how it looks here.
-	# # Some of this formatting is a work-around for not having alot of control over column widths and text-wrapping in the streamlit table.
-	# gene_id_to_result_string = {}
-	# gene_id_to_distances_string = {}
-	# for gene_id, distances in gene_id_to_distances.items():
-	# 	lines_with_dist_list = []
-	# 	for s,d in zip(sentence_tokens,distances):
-	# 		parsed_string_truncated = truncate_string(s, result_column_width-5)
-	# 		similarity_string = "({})".format(distance_float_to_similarity_int(d))
-	# 		num_chars_left_to_fill = result_column_width-len(parsed_string_truncated)-len(similarity_string)
-	# 		parsed_string_truncated = parsed_string_truncated + "."*num_chars_left_to_fill
-	# 		#line = "{}({:.2f})\n\n".format(parsed_string_truncated, d)
-
-	# 		#newline_string = "<br>"
-	# 		newline_string = "[NEWLINE]"
-
-	# 		line = "{}{}{}".format(parsed_string_truncated, similarity_string, newline_string)
-	# 		lines_with_dist_list.append((line,d))
-
-	# 		score_line = "{}{}".format(similarity_string, newline_string)
-
-
-
-
-	# 	# Sort that list of lines by distance, because we only want to show the best matches if the description is very long.
-	# 	lines_with_dist_list = sorted(lines_with_dist_list, key=lambda x: x[1])
-	# 	line_string = "".join([x[0] for x in lines_with_dist_list][:result_column_max_lines])
-	# 	gene_id_to_result_string[gene_id] = line_string
-
-
-
-
 	# For now, just get a mapping between gene IDs and their minimum distance to any of those parsed strings.
 	# Maybe this should take more than just the minimum of them into account for this application?
-
 	gene_id_to_min_distance = {gene_id:min(distances) for gene_id,distances in gene_id_to_distances.items()}
 	gene_id_to_mean_distance = {gene_id:np.mean(distances) for gene_id,distances in gene_id_to_distances.items()}
-
-
-	#gene_id_to_min_distance = {}
-	#for gene_id,distances in gene_id_to_distances.items():
-	#	gene_id_to_min_distance[gene_id] = min(distances)
 
 	return(sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance)
 
@@ -543,39 +440,22 @@ def format_result_strings(query_sentences, gene_ids, gene_id_to_distances, resul
 	gene_id_to_distances = {gene_id:gene_id_to_distances[gene_id] for gene_id in gene_ids}
 
 
-
-	# Making the formatted strings.
+	# Making the formatted strings for the sentence tokens from the query and the similarity scores of each of them.
 	gene_id_to_formatted_queries  = {}
 	gene_id_to_formatted_similarities = {}
 	truncated_query_sents = [truncate_string(s, result_column_width) for s in query_sentences]
 	for gene_id, distances in gene_id_to_distances.items():
 
-
 		sorted_queries_and_distances = sorted(zip(truncated_query_sents, distances), key=lambda x:x[1])[0:result_column_max_lines]
 		sorted_queries = [x[0] for x in sorted_queries_and_distances]
 		sorted_distances = [x[1] for x in sorted_queries_and_distances]
 		sorted_similarities = ["{:.2f}".format(1-x) for x in sorted_distances]
-		newline_string = "[NEWLINE]"
-		formatted_query_string = newline_string.join(sorted_queries)
-		formatted_similarities_string = newline_string.join(sorted_similarities)
-
+		formatted_query_string = NEWLINE_TOKEN.join(sorted_queries)
+		formatted_similarities_string = NEWLINE_TOKEN.join(sorted_similarities)
 		gene_id_to_formatted_queries[gene_id] = formatted_query_string
 		gene_id_to_formatted_similarities[gene_id] = formatted_similarities_string
 
-
 	return(gene_id_to_formatted_queries, gene_id_to_formatted_similarities)
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -596,6 +476,8 @@ as_one_token = lambda text: [text]
 identify_function = lambda text: text
 simple_preprocessing = lambda text: " ".join(simple_preprocess(text))
 full_preprocessing = lambda text: " ".join(preprocess_string(text))
+
+
 
 
 
@@ -696,10 +578,7 @@ PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DE
 
 
 
-# Some options for how aspects of the tables that are presented after each search look.
-RESULT_COLUMN_STRING = "___________________________________Matches"
-RESULT_COLUMN_STRING = "                                   Matches"
-RESULT_COLUMN_STRING = "Searched Sentences"
+
 
 
 
@@ -729,6 +608,10 @@ with st.spinner("Reading very large files, this might take a few minutes."):
 
 
 
+
+
+
+
 # These mappings are necessary if the internal strings used for species and how they should be displayed are different.
 internal_species_strings = ["ath", "zma", "sly", "gmx", "osa", "mtr"]
 display_species_strings = ["Arabidopsis", "Maize", "Tomato", "Soybean", "Rice", "Medicago"]
@@ -745,7 +628,6 @@ to_species_display_name = {i:d for i,d in zip(internal_species_strings,display_s
 
 
 ############# The Sidebar ###############
-
 
 # Presenting the options for filtering by species.
 st.sidebar.markdown("### Filtering by Species")
@@ -796,8 +678,6 @@ st.sidebar.markdown("""This is a tool for querying datasets of phenotype descrip
 ############# The Searchbar Section ###############
 
 
-
-
 # Display the search section of the main page.
 st.markdown("## Search")
 
@@ -814,16 +694,6 @@ else:
 search_types_format_func = lambda x: search_type_label_map[x]
 search_type = st.radio(label="Select a type of search", options=search_types, index=0, format_func=search_types_format_func)
 input_text = st.text_input(label="Enter text here")
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -869,10 +739,14 @@ df = df[df["Species"].isin(species_list)]
 
 
 
-if truncate:
-	df["Phenotype Description"] = df["truncated_descriptions"]
-else:
-	df["Phenotype Description"] = df["descriptions"]
+
+
+
+
+#if truncate:
+#	df["Phenotype Description"] = df["truncated_descriptions"]
+#else:
+#	df["Phenotype Description"] = df["descriptions"]
 
 
 
@@ -894,9 +768,28 @@ else:
 
 
 
+
+
+
+
+
 ################ Searching by GENE IDENTIFIER ################ 
 
 if search_type == "gene" and input_text != "":
+
+
+
+
+	if truncate:
+		df["Phenotype Description"] = df["descriptions_with_newline_tokens"]
+	else:
+		df["Phenotype Description"] = df["descriptions"]
+
+
+
+
+
+
 
 	# Start the results section of the page.
 	st.markdown("## Results")
@@ -980,11 +873,11 @@ if search_type == "gene" and input_text != "":
 			# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
 			#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
 			descriptions = list(cell_values[2][RESULT_COLUMN_STRING].values)
-			descriptions = [x.replace("[NEWLINE]","<br>") for x in descriptions]
+			descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
 			cell_values[2] = descriptions
 
 			descriptions = list(cell_values[1]["Score"].values)
-			descriptions = [x.replace("[NEWLINE]","<br>") for x in descriptions]
+			descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
 			cell_values[1] = descriptions
 
 
@@ -992,18 +885,19 @@ if search_type == "gene" and input_text != "":
 
 
 			descriptions = list(cell_values[6]["Phenotype Description"].values)
+			descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
+
+
+
+			HAVE TO ADD THE THING ABOUT TAKING ONLY THE FIRST X LINES THING HERE.
 
 			modified_descriptions = []
 			pattern = "{}?".format("."*50)
 			for d in descriptions:
 				lines = re.findall(pattern, d)
-				wrapped_lines = "AJSDFASD".join(lines)
+				wrapped_lines = "AJSDFASD".join(lines[:len(raw_sentence_tokens)])
 				modified_descriptions.append(wrapped_lines)
 			cell_values[6] = modified_descriptions
-
-
-
-
 
 
 
@@ -1050,6 +944,12 @@ if search_type == "gene" and input_text != "":
 ################ Searching by ONTOLOGY TERMS ################ 
 
 elif search_type == "ontology" and input_text != "":
+
+
+	if truncate:
+		df["Phenotype Description"] = df["descriptions_one_line_truncated"]
+	else:
+		df["Phenotype Description"] = df["descriptions"]
 
 	st.markdown("## Results")
 
@@ -1162,6 +1062,16 @@ elif search_type == "ontology" and input_text != "":
 
 elif search_type == "keyword" and input_text != "":
 
+
+	if truncate:
+		df["Phenotype Description"] = df["descriptions_one_line_truncated"]
+	else:
+		df["Phenotype Description"] = df["descriptions"]
+
+
+
+
+
 	# Start the results section of the page.
 	st.markdown("## Results")
 
@@ -1189,11 +1099,6 @@ elif search_type == "keyword" and input_text != "":
 		st.markdown("### Genes with Matching Phenotype Descriptions")
 		st.markdown("The dataset of plant genes below shows only genes with phenotype description that included one or more of the searched keywords or phrases.")
 
-		# Display the sorted and filtered dataset as a table with the relevant columns.
-		#st.table(data=subset_df[["Keywords", "Species", "Gene", "Gene Model", "Phenotype Description"]])
-
-
-
 
 		my_df = subset_df[["Keywords", "Species", "Gene", "Gene Model", "Phenotype Description"]]
 		header_values = my_df.columns
@@ -1202,27 +1107,12 @@ elif search_type == "keyword" and input_text != "":
 			cell_values.append(my_df.iloc[:,index:index+1])
 
 
-		# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
-		# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
-		#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
-		#descriptions = list(cell_values[0][RESULT_COLUMN_STRING].values)
-		#descriptions = [x.replace(r"\n\n","<br>") for x in descriptions]
-		#descriptions = [x.replace("all","<b>all</b>") for x in descriptions]
-		#cell_values[0] = descriptions
-
-
-
-
 		descriptions = list(cell_values[4]["Phenotype Description"].values)
 		descriptions = [x.replace("[NEWLINE]", "<br>") for x in descriptions]
 		cell_values[4] = descriptions
 
-
-
-
-
 		fig = go.Figure(data=[go.Table(
-			#columnorder = [1,2,3,4,5],
+			columnorder = [1,2,3,4,5],
 			columnwidth = [3,1,2,1,7],
 			header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
 			cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14))
@@ -1231,14 +1121,6 @@ elif search_type == "keyword" and input_text != "":
 		fig.update_layout(width=table_width, height=4000)
 		st.plotly_chart(fig)
 		
-
-
-
-
-
-
-
-
 
 
 
@@ -1260,6 +1142,12 @@ elif search_type == "keyword" and input_text != "":
 
 elif search_type == "phenotype" and input_text != "":
 
+
+	if truncate:
+		df["Phenotype Description"] = df["descriptions_one_line_truncated"]
+	else:
+		df["Phenotype Description"] = df["descriptions"]
+
 	# Start the results section of the page.
 	st.markdown("## Results")
 
@@ -1269,50 +1157,25 @@ elif search_type == "phenotype" and input_text != "":
 		f_tokenizing = APPROACH_NAMES_AND_DATA[approach]["tokenization_function"]
 		f_preprocessing = APPROACH_NAMES_AND_DATA[approach]["preprocessing_fucntion"]
 
-		#gene_id_to_result_string, gene_id_to_min_distance, gene_id_to_dist_list =  description_search(search_string, graph, f_tokenizing, f_preprocessing, result_column_width, MAX_LINES_IN_RESULT_COLUMN)
-		
-
 		raw_sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance = description_search(search_string, graph, f_tokenizing, f_preprocessing)
-
-
-
-
-
-
-		#gene_id_to_result_string = {k:str(v) for k,v in gene_id_to_result_string.items()}
-
-
-
-		#df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_result_string)
-
-		#df[RESULT_COLUMN_STRING] = df[RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n","<br>"))
 
 
 
 
 		df["distance"] = df["id"].map(gene_id_to_min_distance)
 		df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
-		#df.index = np.arange(1, len(df)+1)
 		df["Rank"] = np.arange(1, len(df)+1)
 
 
 
 
 		df = df.head(ROW_LIMIT)
+		
 
 		gene_ids = df["id"].values
-
 		gene_id_to_formatted_queries, gene_id_to_formatted_similarities = format_result_strings(raw_sentence_tokens, gene_ids, gene_id_to_distances, RESULT_COLUMN_WIDTH, MAX_LINES_IN_RESULT_COLUMN)
-
-
-
 		df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_formatted_queries)
-		df["Score"] = df["id"].map(gene_id_to_formatted_similarities)
-
-
-
-
-
+		df[SCORE_COLUMN_STRING] = df["id"].map(gene_id_to_formatted_similarities)
 
 
 
@@ -1331,7 +1194,7 @@ elif search_type == "phenotype" and input_text != "":
 
 
 
-	my_df = df[["Rank", "Score", RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]].head(ROW_LIMIT)
+	my_df = df[["Rank", SCORE_COLUMN_STRING, RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]].head(ROW_LIMIT)
 
 	header_values = my_df.columns
 	cell_values = []
@@ -1346,7 +1209,7 @@ elif search_type == "phenotype" and input_text != "":
 	descriptions = [x.replace("[NEWLINE]","<br>") for x in descriptions]
 	cell_values[2] = descriptions
 
-	descriptions = list(cell_values[1]["Score"].values)
+	descriptions = list(cell_values[1][SCORE_COLUMN_STRING].values)
 	descriptions = [x.replace("[NEWLINE]","<br>") for x in descriptions]
 	cell_values[1] = descriptions
 
