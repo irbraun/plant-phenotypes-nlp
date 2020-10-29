@@ -5,6 +5,7 @@ import sys
 import re
 import itertools
 import nltk
+import re
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from collections import defaultdict
@@ -15,7 +16,7 @@ from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preproce
 
 
 from PIL import Image
-
+from textwrap import wrap
 
 
 
@@ -38,6 +39,19 @@ nltk.download('stopwords', quiet=True)
 nltk.download('wordnet', quiet=True)
 nltk.download('punkt', quiet=True)
 nltk.download('averaged_perceptron_tagger', quiet=True)
+
+
+
+
+
+
+TABLE_HEADER_COLOR = "#808080"
+TABLE_ROWS_COLOR = "#F1F2F6"
+RESULT_COLUMN_WIDTH = 40
+ROW_LIMIT = 100
+MAX_LINES_IN_RESULT_COLUMN = 10
+DESCRIPTION_COLUMN_WIDTH = 150
+TRUNCATED_CHAR_LIMIT = 1000
 
 
 
@@ -100,8 +114,6 @@ gene models, protein names, or any other alias or synonym present in the dataset
 or commas. Keywords and keyphrases should be separated by commas. There are no length or formatting restrictions for a free text 
 query. If a free text query is performed, the selected similarity algorithm is used to quantify similarity to the
 phenotype descriptions of all genes in the dataset.
-
-Note: The tables on this page are best formatted when viewing in wide mode (Select '≡', then 'Settings', then 'Show app in wide mode)'.
 '''
 
 
@@ -111,6 +123,24 @@ Note: The tables on this page are best formatted when viewing in wide mode (Sele
 # C0C0C0
 # E4E4F9
 
+
+# B31334
+
+# E8D04C
+
+
+st.markdown("""
+	<style>
+	body {
+	    color: #111;
+	    background-color: #fff;
+	}
+	</style>
+	    """, unsafe_allow_html=True
+)
+
+
+
 # Setting some of the color scheme of the page.
 st.markdown(
 	"""
@@ -119,7 +149,7 @@ st.markdown(
 		font-family: arial;
 	}
 	.sidebar .sidebar-content {
-		background-image: linear-gradient(#E4E4F9,#E4E4F9);
+		background-image: linear-gradient(#B31334,#B31334);
 		color: black;
 	}
 	.Widget>label {
@@ -134,18 +164,17 @@ st.markdown(
 		background-color: transparent;
 	}
 	.st-at {
-		background-color: #FFFFFF;
+		background-color: transparent;
 	}
 	footer {
 		font-family: times;
 	}
 	.reportview-container .main footer, .reportview-container .main footer a {
-		color: #FFFFFF;
+		color: #B31334;
 	}
 	header .decoration {
 		background-image: none;
 	}
-	</style>
 	""",
 	unsafe_allow_html=True,
 )
@@ -201,7 +230,13 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	df = dataset.to_pandas()
 	df["Gene"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].primary_identifier)
 	df["Gene Model"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].gene_models[0] if len(dataset.get_gene_dictionary()[x].gene_models)>0 else "")
-	df["truncated_descriptions"] = df["descriptions"].map(lambda x: truncate_string(x, 80))
+	df["truncated_descriptions"] = df["descriptions"].map(lambda x: truncate_string(x, TRUNCATED_CHAR_LIMIT))
+	df["truncated_descriptions"] = df["truncated_descriptions"].map(lambda x: wrap_string(x, DESCRIPTION_COLUMN_WIDTH, "[NEWLINE]"))
+
+
+
+
+
 	id_to_descriptions_for_keyword_matching = {i:PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION(s) for i,s in dataset.get_description_dictionary().items()}
 	return(dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching)
 
@@ -242,6 +277,14 @@ def read_in_ontologies(names, paths):
 
 
 
+def wrap_string(text, char_limit, newline_character):
+	lines = wrap(text, char_limit)
+	return(newline_character.join(lines))
+
+
+
+
+
 
 
 
@@ -267,21 +310,23 @@ def truncate_string(text, char_limit):
 
 
 
-def distance_float_to_similarity_int(distance):
-	"""Generates a friendlier (0 to 100) similarity value for displaying in search results.
+# def distance_to_similarity(distance):
+# 	"""Generates a friendlier (0 to 100) similarity value for displaying in search results.
 	
-	Args:
-		distance (TYPE): Description
+# 	Args:
+# 		distance (TYPE): Description
 	
-	Returns:
-		TYPE: Description
-	"""
-	similarity_float = 1-distance
-	similarity_int = int(similarity_float*100)
-	return(similarity_int)
+# 	Returns:
+# 		TYPE: Description
+# 	"""
+# 	similarity_float = 1-distance
+# 	#similarity_int = int(similarity_float*100)
+# 	return(similarity_int)
 
 
 
+
+# 	"{:.2f}".format(1-distance))
 
 
 
@@ -391,7 +436,7 @@ def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, t
 
 
 
-def description_search(text, graph, tokenization_function, preprocessing_function, result_column_width, result_column_max_lines):
+def description_search(text, graph, tokenization_function, preprocessing_function):
 	"""Helper function for searching the dataset for similar phenotype descriptions.
 	
 	Args:
@@ -413,7 +458,16 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 	preprocessed_sentence_tokens  = [preprocessing_function(s) for s in sentence_tokens]
 
 
+
+
+	# Now the preprocessed sentence tokens are in the right format, and ready to be embedded and compared to the existing data.
+
+
+
+
+
 	# Get a mapping between gene IDs and their distances to each new text string parsed from the search string.
+	# The key is the gene ID from the existing dataset and the values are a list in the same order as the preprocessed query sentences.
 	gene_id_to_distances = defaultdict(list)
 	for s in preprocessed_sentence_tokens:
 		internal_id_to_distance_from_new_text = graph.get_distances(s)
@@ -425,47 +479,91 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 			gene_id_to_distances[gene_id].append(min_graph_distance)
 
 
-	# Making a highly formatted string to show how distances break down by individual sentences tokens.
-	# This is very specific to how the column for that information is presented, change how it looks here.
-	# Some of this formatting is a work-around for not having alot of control over column widths and text-wrapping in the streamlit table.
-	gene_id_to_result_string = {}
-	gene_id_to_distances_string = {}
-	for gene_id, distances in gene_id_to_distances.items():
-		lines_with_dist_list = []
-		for s,d in zip(sentence_tokens,distances):
-			parsed_string_truncated = truncate_string(s, result_column_width-5)
-			similarity_string = "({})".format(distance_float_to_similarity_int(d))
-			num_chars_left_to_fill = result_column_width-len(parsed_string_truncated)-len(similarity_string)
-			parsed_string_truncated = parsed_string_truncated + "."*num_chars_left_to_fill
-			#line = "{}({:.2f})\n\n".format(parsed_string_truncated, d)
 
-			#newline_string = "<br>"
-			newline_string = "[NEWLINE]"
+	# # Making a highly formatted string to show how distances break down by individual sentences tokens.
+	# # This is very specific to how the column for that information is presented, change how it looks here.
+	# # Some of this formatting is a work-around for not having alot of control over column widths and text-wrapping in the streamlit table.
+	# gene_id_to_result_string = {}
+	# gene_id_to_distances_string = {}
+	# for gene_id, distances in gene_id_to_distances.items():
+	# 	lines_with_dist_list = []
+	# 	for s,d in zip(sentence_tokens,distances):
+	# 		parsed_string_truncated = truncate_string(s, result_column_width-5)
+	# 		similarity_string = "({})".format(distance_float_to_similarity_int(d))
+	# 		num_chars_left_to_fill = result_column_width-len(parsed_string_truncated)-len(similarity_string)
+	# 		parsed_string_truncated = parsed_string_truncated + "."*num_chars_left_to_fill
+	# 		#line = "{}({:.2f})\n\n".format(parsed_string_truncated, d)
 
-			line = "{}{}{}".format(parsed_string_truncated, similarity_string, newline_string)
-			lines_with_dist_list.append((line,d))
+	# 		#newline_string = "<br>"
+	# 		newline_string = "[NEWLINE]"
 
-			score_line = "{}{}".format(similarity_string, newline_string)
+	# 		line = "{}{}{}".format(parsed_string_truncated, similarity_string, newline_string)
+	# 		lines_with_dist_list.append((line,d))
+
+	# 		score_line = "{}{}".format(similarity_string, newline_string)
 
 
 
 
-		# Sort that list of lines by distance, because we only want to show the best matches if the description is very long.
-		lines_with_dist_list = sorted(lines_with_dist_list, key=lambda x: x[1])
-		line_string = "".join([x[0] for x in lines_with_dist_list][:result_column_max_lines])
-		gene_id_to_result_string[gene_id] = line_string
+	# 	# Sort that list of lines by distance, because we only want to show the best matches if the description is very long.
+	# 	lines_with_dist_list = sorted(lines_with_dist_list, key=lambda x: x[1])
+	# 	line_string = "".join([x[0] for x in lines_with_dist_list][:result_column_max_lines])
+	# 	gene_id_to_result_string[gene_id] = line_string
 
 
 
 
 	# For now, just get a mapping between gene IDs and their minimum distance to any of those parsed strings.
 	# Maybe this should take more than just the minimum of them into account for this application?
-	gene_id_to_min_distance = {}
-	for gene_id,distances in gene_id_to_distances.items():
-		gene_id_to_min_distance[gene_id] = min(distances)
 
-	return(gene_id_to_result_string, gene_id_to_min_distance, gene_id_to_distances_string)
+	gene_id_to_min_distance = {gene_id:min(distances) for gene_id,distances in gene_id_to_distances.items()}
+	gene_id_to_mean_distance = {gene_id:np.mean(distances) for gene_id,distances in gene_id_to_distances.items()}
 
+
+	#gene_id_to_min_distance = {}
+	#for gene_id,distances in gene_id_to_distances.items():
+	#	gene_id_to_min_distance[gene_id] = min(distances)
+
+	return(sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance)
+
+
+
+
+
+
+
+def format_result_strings(query_sentences, gene_ids, gene_id_to_distances, result_column_width, result_column_max_lines):
+
+
+	# The list of query sentences should correspond to the list of distances that each gene ID is mapped to.
+	# Have to trust that these are in corresponding order, that happens in another section.
+	assert len(query_sentences) == len(list(gene_id_to_distances.values())[0])
+
+	# Subsetting the gene ID to distances dictionary in case we don't need to format everything, speed things up.
+	gene_id_to_distances = {gene_id:gene_id_to_distances[gene_id] for gene_id in gene_ids}
+
+
+
+	# Making the formatted strings.
+	gene_id_to_formatted_queries  = {}
+	gene_id_to_formatted_similarities = {}
+	truncated_query_sents = [truncate_string(s, result_column_width) for s in query_sentences]
+	for gene_id, distances in gene_id_to_distances.items():
+
+
+		sorted_queries_and_distances = sorted(zip(truncated_query_sents, distances), key=lambda x:x[1])[0:result_column_max_lines]
+		sorted_queries = [x[0] for x in sorted_queries_and_distances]
+		sorted_distances = [x[1] for x in sorted_queries_and_distances]
+		sorted_similarities = ["{:.2f}".format(1-x) for x in sorted_distances]
+		newline_string = "[NEWLINE]"
+		formatted_query_string = newline_string.join(sorted_queries)
+		formatted_similarities_string = newline_string.join(sorted_similarities)
+
+		gene_id_to_formatted_queries[gene_id] = formatted_query_string
+		gene_id_to_formatted_similarities[gene_id] = formatted_similarities_string
+
+
+	return(gene_id_to_formatted_queries, gene_id_to_formatted_similarities)
 
 
 
@@ -602,7 +700,7 @@ PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DE
 RESULT_COLUMN_STRING = "___________________________________Matches"
 RESULT_COLUMN_STRING = "                                   Matches"
 RESULT_COLUMN_STRING = "Searched Sentences"
-MAX_LINES_IN_RESULT_COLUMN = 10
+
 
 
 
@@ -854,15 +952,92 @@ if search_type == "gene" and input_text != "":
 				search_string = dataset.get_description_dictionary()[i]
 				f_tokenizing = APPROACH_NAMES_AND_DATA[approach]["tokenization_function"]
 				f_preprocessing = APPROACH_NAMES_AND_DATA[approach]["preprocessing_fucntion"]
-				gene_id_to_result_string, gene_id_to_min_distance =  description_search(search_string, graph, f_tokenizing, f_preprocessing, len(RESULT_COLUMN_STRING), MAX_LINES_IN_RESULT_COLUMN)
-				df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_result_string)
+				
+
+				# Modifying this part from here down.
+				raw_sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance = description_search(search_string, graph, f_tokenizing, f_preprocessing)
 				df["distance"] = df["id"].map(gene_id_to_min_distance)
 				df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
+				df["Rank"] = np.arange(1, len(df)+1)
+				df = df.head(ROW_LIMIT)
+				gene_ids = df["id"].values
+				gene_id_to_formatted_queries, gene_id_to_formatted_similarities = format_result_strings(raw_sentence_tokens, gene_ids, gene_id_to_distances, RESULT_COLUMN_WIDTH, MAX_LINES_IN_RESULT_COLUMN)
 
+
+				df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_formatted_queries)
+				df["Score"] = df["id"].map(gene_id_to_formatted_similarities)
+
+
+			my_df = df[["Rank", "Score", RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]].head(ROW_LIMIT)
+
+			header_values = my_df.columns
+			cell_values = []
+			for index in range(0, len(my_df.columns)):
+				cell_values.append(my_df.iloc[:,index:index+1])
+
+
+			# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
+			# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
+			#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
+			descriptions = list(cell_values[2][RESULT_COLUMN_STRING].values)
+			descriptions = [x.replace("[NEWLINE]","<br>") for x in descriptions]
+			cell_values[2] = descriptions
+
+			descriptions = list(cell_values[1]["Score"].values)
+			descriptions = [x.replace("[NEWLINE]","<br>") for x in descriptions]
+			cell_values[1] = descriptions
+
+
+
+
+
+			descriptions = list(cell_values[6]["Phenotype Description"].values)
+
+			modified_descriptions = []
+			pattern = "{}?".format("."*50)
+			for d in descriptions:
+				lines = re.findall(pattern, d)
+				wrapped_lines = "AJSDFASD".join(lines)
+				modified_descriptions.append(wrapped_lines)
+			cell_values[6] = modified_descriptions
+
+
+
+
+
+
+
+
+
+
+
+
+			fig = go.Figure(data=[go.Table(
+				columnorder = [1,2,3,4,5,6,7],
+				columnwidth = [1,2,8,3,3,3,20],
+				header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
+				cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14)),
+				)])
+
+			fig.update_layout(width=table_width, height=4000)
+			st.plotly_chart(fig)
+	
 
 			# Display the sorted and filtered dataset as a table with the relevant columns.
-			df.index = np.arange(1, len(df)+1)
-			st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+			# df.index = np.arange(1, len(df)+1)
+			#st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -968,8 +1143,8 @@ elif search_type == "ontology" and input_text != "":
 			fig = go.Figure(data=[go.Table(
 				columnorder = [1,2,3,4,5],
 				columnwidth = [3,1,2,1,7],
-				header=dict(values=header_values, fill_color="paleturquoise", align="left", font=dict(color='black', size=14), height=30),
-				cells=dict(values=cell_values, fill_color="lavender", align="left", font=dict(color='black', size=14))
+				header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
+				cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14))
 				)])
 
 			fig.update_layout(width=table_width, height=4000)
@@ -1036,11 +1211,21 @@ elif search_type == "keyword" and input_text != "":
 		#cell_values[0] = descriptions
 
 
+
+
+		descriptions = list(cell_values[4]["Phenotype Description"].values)
+		descriptions = [x.replace("[NEWLINE]", "<br>") for x in descriptions]
+		cell_values[4] = descriptions
+
+
+
+
+
 		fig = go.Figure(data=[go.Table(
-			columnorder = [1,2,3,4,5],
+			#columnorder = [1,2,3,4,5],
 			columnwidth = [3,1,2,1,7],
-			header=dict(values=header_values, fill_color="paleturquoise", align="left", font=dict(color='black', size=14), height=30),
-			cells=dict(values=cell_values, fill_color="lavender", align="left", font=dict(color='black', size=14))
+			header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
+			cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14))
 			)])
 
 		fig.update_layout(width=table_width, height=4000)
@@ -1084,17 +1269,21 @@ elif search_type == "phenotype" and input_text != "":
 		f_tokenizing = APPROACH_NAMES_AND_DATA[approach]["tokenization_function"]
 		f_preprocessing = APPROACH_NAMES_AND_DATA[approach]["preprocessing_fucntion"]
 
-		#result_column_width = len(RESULT_COLUMN_STRING)
-		result_column_width = 50 # now in chars
-
-		gene_id_to_result_string, gene_id_to_min_distance, gene_id_to_dist_list =  description_search(search_string, graph, f_tokenizing, f_preprocessing, result_column_width, MAX_LINES_IN_RESULT_COLUMN)
+		#gene_id_to_result_string, gene_id_to_min_distance, gene_id_to_dist_list =  description_search(search_string, graph, f_tokenizing, f_preprocessing, result_column_width, MAX_LINES_IN_RESULT_COLUMN)
 		
 
-		gene_id_to_result_string = {k:str(v) for k,v in gene_id_to_result_string.items()}
+		raw_sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance = description_search(search_string, graph, f_tokenizing, f_preprocessing)
 
 
 
-		df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_result_string)
+
+
+
+		#gene_id_to_result_string = {k:str(v) for k,v in gene_id_to_result_string.items()}
+
+
+
+		#df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_result_string)
 
 		#df[RESULT_COLUMN_STRING] = df[RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n","<br>"))
 
@@ -1105,6 +1294,31 @@ elif search_type == "phenotype" and input_text != "":
 		df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
 		#df.index = np.arange(1, len(df)+1)
 		df["Rank"] = np.arange(1, len(df)+1)
+
+
+
+
+		df = df.head(ROW_LIMIT)
+
+		gene_ids = df["id"].values
+
+		gene_id_to_formatted_queries, gene_id_to_formatted_similarities = format_result_strings(raw_sentence_tokens, gene_ids, gene_id_to_distances, RESULT_COLUMN_WIDTH, MAX_LINES_IN_RESULT_COLUMN)
+
+
+
+		df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_formatted_queries)
+		df["Score"] = df["id"].map(gene_id_to_formatted_similarities)
+
+
+
+
+
+
+
+
+
+
+
 
 	# Describe what the results of the search are and what they mean in markdown.
 	st.markdown("### Genes with Matching Phenotype Descriptions")
@@ -1117,13 +1331,7 @@ elif search_type == "phenotype" and input_text != "":
 
 
 
-
-
-
-
-
-
-	my_df = df[["Rank", RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]]
+	my_df = df[["Rank", "Score", RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]].head(ROW_LIMIT)
 
 	header_values = my_df.columns
 	cell_values = []
@@ -1134,17 +1342,20 @@ elif search_type == "phenotype" and input_text != "":
 	# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
 	# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
 	#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
-	descriptions = list(cell_values[1][RESULT_COLUMN_STRING].values)
+	descriptions = list(cell_values[2][RESULT_COLUMN_STRING].values)
 	descriptions = [x.replace("[NEWLINE]","<br>") for x in descriptions]
-	#descriptions = [x.replace("all","<b>all</b>") for x in descriptions]
+	cell_values[2] = descriptions
+
+	descriptions = list(cell_values[1]["Score"].values)
+	descriptions = [x.replace("[NEWLINE]","<br>") for x in descriptions]
 	cell_values[1] = descriptions
 
 
 	fig = go.Figure(data=[go.Table(
-		columnorder = [1,2,3,4,5,6],
-		columnwidth = [1,5,2,2,2,16],
-		header=dict(values=header_values, fill_color="paleturquoise", align="left", font=dict(color='black', size=14), height=30),
-		cells=dict(values=cell_values, fill_color="lavender", align="left", font=dict(color='black', size=14)),
+		columnorder = [1,2,3,4,5,6,7],
+		columnwidth = [1,2,8,3,3,3,20],
+		header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
+		cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14)),
 		)])
 
 	fig.update_layout(width=table_width, height=4000)
