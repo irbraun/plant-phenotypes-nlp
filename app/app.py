@@ -13,6 +13,19 @@ from gensim.utils import simple_preprocess
 from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string, strip_tags, strip_punctuation
 
 
+
+from PIL import Image
+
+
+
+
+# NO MODULE NAME PLOTLY, ADD THIS THE CONDA ENVIRONMENT IF USING.
+import plotly
+import plotly.graph_objects as go
+
+
+
+
 sys.path.append("../../oats")
 import oats
 from oats.utils.utils import load_from_pickle
@@ -61,10 +74,23 @@ nltk.download('averaged_perceptron_tagger', quiet=True)
 
 
 
+
+
+# Initial configuration and the logo image at the top of the page.
+st.set_page_config(page_title="QuOATS", layout="wide", initial_sidebar_state="expanded")
+PATH_TO_LOGO_PNG = "resources/logo.png"
+st.image(Image.open(PATH_TO_LOGO_PNG), caption=None, width=800, output_format="png")
+
+
+
+
+
+
+
+
 # Markdown for introducing the app and linking to other relevant resources like the project Github page.
 
 '''
-# QuOATS
 A tool for querying genes and phenotypes with ontology annoations and text similarity.
 
 ## Instructions
@@ -77,6 +103,55 @@ phenotype descriptions of all genes in the dataset.
 
 Note: The tables on this page are best formatted when viewing in wide mode (Select '≡', then 'Settings', then 'Show app in wide mode)'.
 '''
+
+
+# Some color codes
+# 581845
+# FF5733
+# C0C0C0
+# E4E4F9
+
+# Setting some of the color scheme of the page.
+st.markdown(
+	"""
+	<style>
+	.reportview-container .markdown-text-container {
+		font-family: arial;
+	}
+	.sidebar .sidebar-content {
+		background-image: linear-gradient(#E4E4F9,#E4E4F9);
+		color: black;
+	}
+	.Widget>label {
+		color: black;
+		font-family: arial;
+	}
+	[class^="st-b"]  {
+		color: black;
+		font-family: arial;
+	}
+	.st-bb {
+		background-color: transparent;
+	}
+	.st-at {
+		background-color: #FFFFFF;
+	}
+	footer {
+		font-family: times;
+	}
+	.reportview-container .main footer, .reportview-container .main footer a {
+		color: #FFFFFF;
+	}
+	header .decoration {
+		background-image: none;
+	}
+	</style>
+	""",
+	unsafe_allow_html=True,
+)
+
+
+
 
 
 
@@ -129,6 +204,10 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	df["truncated_descriptions"] = df["descriptions"].map(lambda x: truncate_string(x, 80))
 	id_to_descriptions_for_keyword_matching = {i:PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION(s) for i,s in dataset.get_description_dictionary().items()}
 	return(dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching)
+
+
+
+
 
 
 
@@ -293,8 +372,9 @@ def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, t
 			match_str = "({})".format(match_type)
 			term_id_str = term_id
 			num_chars_left_to_fill = result_column_width-len(term_id_str)-len(match_str)
-			filler_str = "."*num_chars_left_to_fill
-			line = "{}{}{}\n\n".format(term_id_str, filler_str, match_str)
+			#filler_str = "."*num_chars_left_to_fill
+			#line = "{}{}{}[NEWLINE]".format(term_id_str, filler_str, match_str)
+			line = "{} {}[NEWLINE]".format(term_id_str, match_str)
 			lines.append(line)
 		result_str = "".join(lines)
 		gene_id_to_result_string[gene_id] = result_str
@@ -349,6 +429,7 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 	# This is very specific to how the column for that information is presented, change how it looks here.
 	# Some of this formatting is a work-around for not having alot of control over column widths and text-wrapping in the streamlit table.
 	gene_id_to_result_string = {}
+	gene_id_to_distances_string = {}
 	for gene_id, distances in gene_id_to_distances.items():
 		lines_with_dist_list = []
 		for s,d in zip(sentence_tokens,distances):
@@ -359,10 +440,16 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 			#line = "{}({:.2f})\n\n".format(parsed_string_truncated, d)
 
 			#newline_string = "<br>"
-			newline_string = r"\n\n"
+			newline_string = "[NEWLINE]"
 
 			line = "{}{}{}".format(parsed_string_truncated, similarity_string, newline_string)
 			lines_with_dist_list.append((line,d))
+
+			score_line = "{}{}".format(similarity_string, newline_string)
+
+
+
+
 		# Sort that list of lines by distance, because we only want to show the best matches if the description is very long.
 		lines_with_dist_list = sorted(lines_with_dist_list, key=lambda x: x[1])
 		line_string = "".join([x[0] for x in lines_with_dist_list][:result_column_max_lines])
@@ -377,7 +464,7 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 	for gene_id,distances in gene_id_to_distances.items():
 		gene_id_to_min_distance[gene_id] = min(distances)
 
-	return(gene_id_to_result_string, gene_id_to_min_distance)
+	return(gene_id_to_result_string, gene_id_to_min_distance, gene_id_to_distances_string)
 
 
 
@@ -514,6 +601,7 @@ PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DE
 # Some options for how aspects of the tables that are presented after each search look.
 RESULT_COLUMN_STRING = "___________________________________Matches"
 RESULT_COLUMN_STRING = "                                   Matches"
+RESULT_COLUMN_STRING = "Searched Sentences"
 MAX_LINES_IN_RESULT_COLUMN = 10
 
 
@@ -586,8 +674,7 @@ synonyms = st.sidebar.checkbox(label="Show possible gene synonyms", value=False)
 include_examples = st.sidebar.checkbox(label="Include Examples", value=False)
 
 
-
-table_width = st.sidebar.slider(label="Table Width", min_value=100, max_value=8000, value=1000, step=100, format=None, key=None)
+table_width = st.sidebar.slider(label="Table Width (Pixels)", min_value=400, max_value=8000, value=2000, step=100, format=None, key=None)
 
 
 # Presenting some more advanced options that shouldn't normally need to be changed.
@@ -595,8 +682,13 @@ table_width = st.sidebar.slider(label="Table Width", min_value=100, max_value=80
 
 
 
+st.sidebar.markdown("### More Information")
+st.sidebar.markdown("Adding a bunch of text here for things that should be said here. And add the email addresses to, etc.")
 
 
+st.sidebar.markdown("### Contact Us")
+st.sidebar.markdown("""This is a tool for querying datasets of phenotype descriptions, and is described in Braun and Lawrence-Dill (publication in preparation). 
+	For more information, see list webpages here. To contact us about problems with this page, or questions about the functionality, reach us at email addresses here.""")
 
 
 
@@ -852,7 +944,37 @@ elif search_type == "ontology" and input_text != "":
 			st.markdown("The dataset of plant genes below shows only genes with annotations that included one or more of the searched ontology terms.")
 
 			# Display the sorted and filtered dataset as a table with the relevant columns.
-			st.table(data=subset_df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+			#st.table(data=subset_df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+
+
+
+
+
+			my_df = subset_df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]]
+			header_values = my_df.columns
+			cell_values = []
+			for index in range(0, len(my_df.columns)):
+				cell_values.append(my_df.iloc[:,index:index+1])
+
+
+			# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
+			# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
+			#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
+			descriptions = list(cell_values[0][RESULT_COLUMN_STRING].values)
+			descriptions = [x.replace(r"[NEWLINE]","<br>") for x in descriptions]
+			cell_values[0] = descriptions
+
+
+			fig = go.Figure(data=[go.Table(
+				columnorder = [1,2,3,4,5],
+				columnwidth = [3,1,2,1,7],
+				header=dict(values=header_values, fill_color="paleturquoise", align="left", font=dict(color='black', size=14), height=30),
+				cells=dict(values=cell_values, fill_color="lavender", align="left", font=dict(color='black', size=14))
+				)])
+
+			fig.update_layout(width=table_width, height=4000)
+			st.plotly_chart(fig)
+			
 
 
 
@@ -893,7 +1015,48 @@ elif search_type == "keyword" and input_text != "":
 		st.markdown("The dataset of plant genes below shows only genes with phenotype description that included one or more of the searched keywords or phrases.")
 
 		# Display the sorted and filtered dataset as a table with the relevant columns.
-		st.table(data=subset_df[["Keywords", "Species", "Gene", "Gene Model", "Phenotype Description"]])
+		#st.table(data=subset_df[["Keywords", "Species", "Gene", "Gene Model", "Phenotype Description"]])
+
+
+
+
+		my_df = subset_df[["Keywords", "Species", "Gene", "Gene Model", "Phenotype Description"]]
+		header_values = my_df.columns
+		cell_values = []
+		for index in range(0, len(my_df.columns)):
+			cell_values.append(my_df.iloc[:,index:index+1])
+
+
+		# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
+		# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
+		#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
+		#descriptions = list(cell_values[0][RESULT_COLUMN_STRING].values)
+		#descriptions = [x.replace(r"\n\n","<br>") for x in descriptions]
+		#descriptions = [x.replace("all","<b>all</b>") for x in descriptions]
+		#cell_values[0] = descriptions
+
+
+		fig = go.Figure(data=[go.Table(
+			columnorder = [1,2,3,4,5],
+			columnwidth = [3,1,2,1,7],
+			header=dict(values=header_values, fill_color="paleturquoise", align="left", font=dict(color='black', size=14), height=30),
+			cells=dict(values=cell_values, fill_color="lavender", align="left", font=dict(color='black', size=14))
+			)])
+
+		fig.update_layout(width=table_width, height=4000)
+		st.plotly_chart(fig)
+		
+
+
+
+
+
+
+
+
+
+
+
 
 	# No need to keep this subset of the dataframe in memory if another search is performed.
 	subset_df = None
@@ -920,7 +1083,11 @@ elif search_type == "phenotype" and input_text != "":
 		search_string = input_text
 		f_tokenizing = APPROACH_NAMES_AND_DATA[approach]["tokenization_function"]
 		f_preprocessing = APPROACH_NAMES_AND_DATA[approach]["preprocessing_fucntion"]
-		gene_id_to_result_string, gene_id_to_min_distance =  description_search(search_string, graph, f_tokenizing, f_preprocessing, len(RESULT_COLUMN_STRING), MAX_LINES_IN_RESULT_COLUMN)
+
+		#result_column_width = len(RESULT_COLUMN_STRING)
+		result_column_width = 50 # now in chars
+
+		gene_id_to_result_string, gene_id_to_min_distance, gene_id_to_dist_list =  description_search(search_string, graph, f_tokenizing, f_preprocessing, result_column_width, MAX_LINES_IN_RESULT_COLUMN)
 		
 
 		gene_id_to_result_string = {k:str(v) for k,v in gene_id_to_result_string.items()}
@@ -936,8 +1103,8 @@ elif search_type == "phenotype" and input_text != "":
 
 		df["distance"] = df["id"].map(gene_id_to_min_distance)
 		df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
-		df.index = np.arange(1, len(df)+1)
-
+		#df.index = np.arange(1, len(df)+1)
+		df["Rank"] = np.arange(1, len(df)+1)
 
 	# Describe what the results of the search are and what they mean in markdown.
 	st.markdown("### Genes with Matching Phenotype Descriptions")
@@ -950,116 +1117,37 @@ elif search_type == "phenotype" and input_text != "":
 
 
 
-	# NO MODULE NAME PLOTLY, ADD THIS THE CONDA ENVIRONMENT IF USING.
-	import plotly
-	import plotly.graph_objects as go
 
 
 
 
 
 
-
-	def set_styles(results):
-		table_styles = [
-			dict(
-				selector="table",
-				props=[("font-size", "150%"), ("text-align", "center"), ("color", "red")],
-			),
-			dict(selector="caption", props=[("caption-side", "bottom")]),
-		]
-		#results.style.set_table_styles(table_styles).set_properties(**{"background-color": "blue", "color": "white"}).set_caption("This is a caption")
-		results.style.set_table_styles(table_styles)
-		return(results)
-
-
-
-
-
-
-	my_df = df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]]
-
-
-
-	my_df = set_styles(my_df)
-
-
-	#my_df = set_styles(my_df)
-
-
+	my_df = df[["Rank", RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]]
 
 	header_values = my_df.columns
-
-	#header_values = ["something with a <br> line <mark> break </mark>", "b", "c", "d", "e"]
-
-
 	cell_values = []
 	for index in range(0, len(my_df.columns)):
 		cell_values.append(my_df.iloc[:,index:index+1])
 
 
-
-
 	# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
 	# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
-	cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
-	descriptions = list(cell_values[0][RESULT_COLUMN_STRING].values)
-	descriptions = [x.replace(r"\n\n","<br>") for x in descriptions]
-	descriptions = [x.replace("all","<b>all</b>") for x in descriptions]
-	cell_values[0] = descriptions
+	#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
+	descriptions = list(cell_values[1][RESULT_COLUMN_STRING].values)
+	descriptions = [x.replace("[NEWLINE]","<br>") for x in descriptions]
+	#descriptions = [x.replace("all","<b>all</b>") for x in descriptions]
+	cell_values[1] = descriptions
 
 
-	#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].astype(str)
-
-	#cell_values[0] = ["aoiuser <br> waasdfs","dsdef"]
-
-
-
-
-
-
-
-
-
-
-	style = True
-
-	if not style:
-		fig = go.Figure(
-		   style_cell={
-				'whiteSpace': 'normal',
-				'height': 'auto',
-			},
-			data=[
-				go.Table(
-					header=dict(values=header_values), cells=dict(values=cell_values)
-				)
-			]
-		)
-
-	else:
-		fig = go.Figure(
-			#style_cell={
-			#    'whiteSpace':'normal',
-			#    'height': 'auto',
-			#},
-			data=[
-				go.Table(
-
-					columnorder = [1,2,3,4,5],
-					columnwidth = [2,1,1,1,7],
-					header=dict(values=header_values, fill_color="paleturquoise", align="left", font=dict(color='white', size=16), height=60),
-					#cells=dict(values=cell_values, fill_color="lavender", align="left", font_size=14, height=40, line=dict(width=3)),
-					cells=dict(values=cell_values, fill_color="lavender", align="left", font_size=14),
-				)
-			]
-		)
-
-
-
+	fig = go.Figure(data=[go.Table(
+		columnorder = [1,2,3,4,5,6],
+		columnwidth = [1,5,2,2,2,16],
+		header=dict(values=header_values, fill_color="paleturquoise", align="left", font=dict(color='black', size=14), height=30),
+		cells=dict(values=cell_values, fill_color="lavender", align="left", font=dict(color='black', size=14)),
+		)])
 
 	fig.update_layout(width=table_width, height=4000)
-
 	st.plotly_chart(fig)
 	
 
