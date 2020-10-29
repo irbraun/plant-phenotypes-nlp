@@ -48,16 +48,48 @@ nltk.download('averaged_perceptron_tagger', quiet=True)
 TABLE_HEADER_COLOR = "#808080"
 TABLE_ROWS_COLOR = "#F1F2F6"
 RESULT_COLUMN_WIDTH = 40
-ROW_LIMIT = 100
+ROW_LIMIT = 40
 MAX_LINES_IN_RESULT_COLUMN = 10
-DESCRIPTION_COLUMN_WIDTH = 130
-TRUNCATED_CHAR_LIMIT = 110
+DESCRIPTION_COLUMN_WIDTH = 85
 NEWLINE_TOKEN = "[NEWLINE]"
 
 
-# Some options for how aspects of the tables that are presented after each search look.
-RESULT_COLUMN_STRING = "Searched Sentences"
-SCORE_COLUMN_STRING = "Scores"
+
+
+
+
+
+
+
+column_info = [
+	("rank", "Rank", 1),
+	("score", "Score", 1),
+	("result", "Result", 1),
+	("keywords", "Query Keywords", 8),
+	("sentences", "Query Sentences", 8),
+	("terms", "Ontology Terms", 6),
+	("species", "Species", 2),
+	("gene", "Gene", 3),
+	("model", "Gene Model", 3),
+	("phenotype", "Phenotype Description", 12)
+]
+COLUMN_NAMES = {x[0]:x[1] for x in column_info}
+COLUMN_WIDTHS = {x[0]:x[2] for x in column_info}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -99,7 +131,7 @@ SCORE_COLUMN_STRING = "Scores"
 # Initial configuration and the logo image at the top of the page.
 st.set_page_config(page_title="QuOATS", layout="wide", initial_sidebar_state="expanded")
 PATH_TO_LOGO_PNG = "resources/logo.png"
-st.image(Image.open(PATH_TO_LOGO_PNG), caption=None, width=800, output_format="png")
+#st.image(Image.open(PATH_TO_LOGO_PNG), caption=None, width=800, output_format="png")
 
 
 
@@ -162,6 +194,7 @@ st.markdown(
 		background-color: transparent;
 	}
 	footer {
+		color: black;
 		font-family: times;
 	}
 	.reportview-container .main footer, .reportview-container .main footer a {
@@ -223,9 +256,9 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	# Get the dataframe for this dataset and add some additional columns that will be useful for displaying information.
 	# Slow additions to the dataframe should go here. Very fast ones can go in the main non-cached part of the script.
 	df = dataset.to_pandas()
-	df["Gene"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].primary_identifier)
-	df["Gene Model"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].gene_models[0] if len(dataset.get_gene_dictionary()[x].gene_models)>0 else "")
-	df["descriptions_one_line_truncated"] = df["descriptions"].map(lambda x: truncate_string(x, DESCRIPTION_COLUMN_WIDTH-20))
+	df[COLUMN_NAMES["gene"]] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].primary_identifier)
+	df[COLUMN_NAMES["model"]] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].gene_models[0] if len(dataset.get_gene_dictionary()[x].gene_models)>0 else "")
+	df["descriptions_one_line_truncated"] = df["descriptions"].map(lambda x: truncate_string(x, DESCRIPTION_COLUMN_WIDTH))
 	df["descriptions_with_newline_tokens"] = df["descriptions"].map(lambda x: NEWLINE_TOKEN.join(wrap(x, DESCRIPTION_COLUMN_WIDTH)))
 
 
@@ -326,14 +359,13 @@ def keyword_search(id_to_text, raw_keywords, modified_keywords):
 
 
 
-def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, term_ids, result_column_width):
+def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, term_ids):
 	"""Helper function for searching the dataset for ontology term annotations.
 	
 	Args:
 		id_to_direct_annotations (TYPE): Description
 		id_to_indirect_annotations (TYPE): Description
 		term_ids (TYPE): Description
-		result_column_width (TYPE): Description
 	
 	Returns:
 		TYPE: Description
@@ -360,9 +392,7 @@ def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, t
 			# If there was a valid match found, create this formatted string.
 			match_str = "({})".format(match_type)
 			term_id_str = term_id
-			num_chars_left_to_fill = result_column_width-len(term_id_str)-len(match_str)
-			#filler_str = "."*num_chars_left_to_fill
-			#line = "{}{}{}[NEWLINE]".format(term_id_str, filler_str, match_str)
+
 			line = "{} {}[NEWLINE]".format(term_id_str, match_str)
 			lines.append(line)
 		result_str = "".join(lines)
@@ -778,19 +808,6 @@ df = df[df["Species"].isin(species_list)]
 if search_type == "gene" and input_text != "":
 
 
-
-
-	if truncate:
-		df["Phenotype Description"] = df["descriptions_with_newline_tokens"]
-	else:
-		df["Phenotype Description"] = df["descriptions"]
-
-
-
-
-
-
-
 	# Start the results section of the page.
 	st.markdown("## Results")
 	
@@ -857,11 +874,36 @@ if search_type == "gene" and input_text != "":
 				gene_id_to_formatted_queries, gene_id_to_formatted_similarities = format_result_strings(raw_sentence_tokens, gene_ids, gene_id_to_distances, RESULT_COLUMN_WIDTH, MAX_LINES_IN_RESULT_COLUMN)
 
 
-				df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_formatted_queries)
-				df["Score"] = df["id"].map(gene_id_to_formatted_similarities)
+				df[COLUMN_NAMES["sentences"]] = df["id"].map(gene_id_to_formatted_queries)
+				df[COLUMN_NAMES["score"]] = df["id"].map(gene_id_to_formatted_similarities)
+
+				def truncate_description_cell(s, num_lines_to_keep):
+					lines = s.split(NEWLINE_TOKEN)
+					if len(lines) > num_lines_to_keep:
+						index_of_last_line = num_lines_to_keep-1
+						lines[num_lines_to_keep-1] = "{}...".format(lines[num_lines_to_keep-1])
+						modified_s = NEWLINE_TOKEN.join(lines[:index_of_last_line+1])
+						return(modified_s)
+					else:
+						return(s)
+
+				if truncate:
+					df["Phenotype Description"] = df["descriptions_with_newline_tokens"]
+					df["Phenotype Description"] = df["Phenotype Description"].map(lambda x: truncate_description_cell(x, min(len(raw_sentence_tokens),MAX_LINES_IN_RESULT_COLUMN)))
+
+				else:
+					df["Phenotype Description"] = df["descriptions_with_newline_tokens"]
 
 
-			my_df = df[["Rank", "Score", RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]].head(ROW_LIMIT)
+
+
+
+
+			columns_to_include_keys = ["rank", "score", "sentences", "species", "gene", "model", "phenotype"]
+			my_df = df[[COLUMN_NAMES[x] for x in columns_to_include_keys]].head(ROW_LIMIT)
+
+
+
 
 			header_values = my_df.columns
 			cell_values = []
@@ -872,54 +914,29 @@ if search_type == "gene" and input_text != "":
 			# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
 			# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
 			#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
-			descriptions = list(cell_values[2][RESULT_COLUMN_STRING].values)
+			descriptions = list(cell_values[2][COLUMN_NAMES["sentences"]].values)
 			descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
 			cell_values[2] = descriptions
 
-			descriptions = list(cell_values[1]["Score"].values)
+			descriptions = list(cell_values[1][COLUMN_NAMES["score"]].values)
 			descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
 			cell_values[1] = descriptions
 
 
-
-
-
-			descriptions = list(cell_values[6]["Phenotype Description"].values)
+			descriptions = list(cell_values[6][COLUMN_NAMES["phenotype"]].values)
 			descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
-
-
-
-			HAVE TO ADD THE THING ABOUT TAKING ONLY THE FIRST X LINES THING HERE.
-
-			modified_descriptions = []
-			pattern = "{}?".format("."*50)
-			for d in descriptions:
-				lines = re.findall(pattern, d)
-				wrapped_lines = "AJSDFASD".join(lines[:len(raw_sentence_tokens)])
-				modified_descriptions.append(wrapped_lines)
-			cell_values[6] = modified_descriptions
-
-
-
-
-
-
+			cell_values[6] = descriptions
 
 
 			fig = go.Figure(data=[go.Table(
-				columnorder = [1,2,3,4,5,6,7],
-				columnwidth = [1,2,8,3,3,3,20],
+				columnorder = list(range(len(columns_to_include_keys))),
+				columnwidth = [COLUMN_WIDTHS[x] for x in columns_to_include_keys],
 				header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
 				cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14)),
 				)])
 
 			fig.update_layout(width=table_width, height=4000)
 			st.plotly_chart(fig)
-	
-
-			# Display the sorted and filtered dataset as a table with the relevant columns.
-			# df.index = np.arange(1, len(df)+1)
-			#st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
 
 
 
@@ -944,12 +961,6 @@ if search_type == "gene" and input_text != "":
 ################ Searching by ONTOLOGY TERMS ################ 
 
 elif search_type == "ontology" and input_text != "":
-
-
-	if truncate:
-		df["Phenotype Description"] = df["descriptions_one_line_truncated"]
-	else:
-		df["Phenotype Description"] = df["descriptions"]
 
 	st.markdown("## Results")
 
@@ -1001,12 +1012,14 @@ elif search_type == "ontology" and input_text != "":
 		st.markdown(lines_with_terms_and_links_str)
 
 
-		gene_id_to_num_direct_matches, gene_id_to_num_indirect_matches, gene_id_to_result_string = ontology_term_search(direct_annotations, inherited_annotations, term_ids, len(RESULT_COLUMN_STRING))
-		df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_result_string)
+		gene_id_to_num_direct_matches, gene_id_to_num_indirect_matches, gene_id_to_result_string = ontology_term_search(direct_annotations, inherited_annotations, term_ids)
+		df[COLUMN_NAMES["terms"]] = df["id"].map(gene_id_to_result_string)
 		df["num_direct"] = df["id"].map(gene_id_to_num_direct_matches)
 		df["num_indirect"] = df["id"].map(gene_id_to_num_indirect_matches)
 		subset_df = df[(df["num_direct"]>0) | (df["num_indirect"]>0)]
+		subset_df["num_either"] = subset_df["num_direct"]+subset_df["num_indirect"]
 		subset_df.sort_values(by=["num_direct","num_indirect","id"], ascending=[False,False,True], inplace=True)
+		subset_df[COLUMN_NAMES["result"]] = np.arange(1, len(subset_df)+1)
 
 
 		subset_df.index = np.arange(1, len(subset_df)+1)
@@ -1019,13 +1032,30 @@ elif search_type == "ontology" and input_text != "":
 			st.markdown("The dataset of plant genes below shows only genes with annotations that included one or more of the searched ontology terms.")
 
 			# Display the sorted and filtered dataset as a table with the relevant columns.
-			#st.table(data=subset_df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+			def truncate_description_cell_2(s, num_lines_to_keep):
+				lines = s.split(NEWLINE_TOKEN)
+				if len(lines) > num_lines_to_keep:
+					index_of_last_line = num_lines_to_keep-1
+					lines[num_lines_to_keep-1] = "{}...".format(lines[num_lines_to_keep-1])
+					modified_s = NEWLINE_TOKEN.join(lines[:index_of_last_line+1])
+					return(modified_s)
+				else:
+					return(s)
+
+			if truncate:
+				subset_df["Phenotype Description"] = subset_df["descriptions_with_newline_tokens"]
+				subset_df["Phenotype Description"] = subset_df.apply(lambda row: truncate_description_cell_2(row["descriptions_with_newline_tokens"], min(row["num_either"],MAX_LINES_IN_RESULT_COLUMN)),axis=1)
+
+			else:
+				subset_df["Phenotype Description"] = subset_df["descriptions_with_newline_tokens"]
 
 
 
+			columns_to_include_keys = ["result", "terms", "species", "gene", "model", "phenotype"]
+			my_df = subset_df[[COLUMN_NAMES[x] for x in columns_to_include_keys]].head(ROW_LIMIT)
+			#my_df = subset_df[[COLUMN_NAMES["terms"], "Species", "Gene", "Gene Model", "Phenotype Description"]]
+			
 
-
-			my_df = subset_df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]]
 			header_values = my_df.columns
 			cell_values = []
 			for index in range(0, len(my_df.columns)):
@@ -1035,14 +1065,19 @@ elif search_type == "ontology" and input_text != "":
 			# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
 			# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
 			#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
-			descriptions = list(cell_values[0][RESULT_COLUMN_STRING].values)
+			descriptions = list(cell_values[1][COLUMN_NAMES["terms"]].values)
 			descriptions = [x.replace(r"[NEWLINE]","<br>") for x in descriptions]
-			cell_values[0] = descriptions
+			cell_values[1] = descriptions
+
+
+			descriptions = list(cell_values[5][COLUMN_NAMES["phenotype"]].values)
+			descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
+			cell_values[5] = descriptions
 
 
 			fig = go.Figure(data=[go.Table(
-				columnorder = [1,2,3,4,5],
-				columnwidth = [3,1,2,1,7],
+				columnorder = list(range(len(columns_to_include_keys))),
+				columnwidth = [COLUMN_WIDTHS[x] for x in columns_to_include_keys],
 				header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
 				cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14))
 				)])
@@ -1063,15 +1098,6 @@ elif search_type == "ontology" and input_text != "":
 elif search_type == "keyword" and input_text != "":
 
 
-	if truncate:
-		df["Phenotype Description"] = df["descriptions_one_line_truncated"]
-	else:
-		df["Phenotype Description"] = df["descriptions"]
-
-
-
-
-
 	# Start the results section of the page.
 	st.markdown("## Results")
 
@@ -1084,9 +1110,9 @@ elif search_type == "keyword" and input_text != "":
 		id_to_found_keywords, id_to_num_found_keywords = keyword_search(id_to_descriptions_for_keyword_matching, raw_keywords, modified_keywords)
 		df["num_found"] = df["id"].map(id_to_num_found_keywords)
 		subset_df = df[df["num_found"]>0]
-		subset_df["Keywords"] = subset_df["id"].map(lambda x: ", ".join(id_to_found_keywords[x]))
+		subset_df[COLUMN_NAMES["keywords"]] = subset_df["id"].map(lambda x: ", ".join(id_to_found_keywords[x]))
 		subset_df.sort_values(by=["num_found","id"], ascending=[False,True], inplace=True)
-		subset_df.index = np.arange(1, len(subset_df)+1)
+		subset_df[COLUMN_NAMES["result"]] = np.arange(1, len(subset_df)+1)
 
 	if subset_df.shape[0] == 0:
 		st.markdown("No genes were found for '{}'. Make sure the keywords and keyphrases in this search are separated by commas.".format(search_kws))
@@ -1100,20 +1126,28 @@ elif search_type == "keyword" and input_text != "":
 		st.markdown("The dataset of plant genes below shows only genes with phenotype description that included one or more of the searched keywords or phrases.")
 
 
-		my_df = subset_df[["Keywords", "Species", "Gene", "Gene Model", "Phenotype Description"]]
+		if truncate:
+			subset_df[COLUMN_NAMES["phenotype"]] = subset_df["descriptions_one_line_truncated"]
+		else:
+			subset_df[COLUMN_NAMES["phenotype"]] = subset_df["descriptions_with_newline_tokens"]
+
+
+
+		columns_to_include_keys = ["result", "keywords", "species", "gene", "model", "phenotype"]
+		my_df = subset_df[[COLUMN_NAMES[x] for x in columns_to_include_keys]].head(ROW_LIMIT)
 		header_values = my_df.columns
 		cell_values = []
 		for index in range(0, len(my_df.columns)):
 			cell_values.append(my_df.iloc[:,index:index+1])
 
 
-		descriptions = list(cell_values[4]["Phenotype Description"].values)
-		descriptions = [x.replace("[NEWLINE]", "<br>") for x in descriptions]
-		cell_values[4] = descriptions
+		descriptions = list(cell_values[5][COLUMN_NAMES["phenotype"]].values)
+		descriptions = [x.replace(NEWLINE_TOKEN, "<br>") for x in descriptions]
+		cell_values[5] = descriptions
 
 		fig = go.Figure(data=[go.Table(
-			columnorder = [1,2,3,4,5],
-			columnwidth = [3,1,2,1,7],
+			columnorder = list(range(len(columns_to_include_keys))),
+			columnwidth = [COLUMN_WIDTHS[x] for x in columns_to_include_keys],
 			header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
 			cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14))
 			)])
@@ -1121,9 +1155,6 @@ elif search_type == "keyword" and input_text != "":
 		fig.update_layout(width=table_width, height=4000)
 		st.plotly_chart(fig)
 		
-
-
-
 
 	# No need to keep this subset of the dataframe in memory if another search is performed.
 	subset_df = None
@@ -1143,10 +1174,10 @@ elif search_type == "keyword" and input_text != "":
 elif search_type == "phenotype" and input_text != "":
 
 
-	if truncate:
-		df["Phenotype Description"] = df["descriptions_one_line_truncated"]
-	else:
-		df["Phenotype Description"] = df["descriptions"]
+	#if truncate:
+	#	df["Phenotype Description"] = df["descriptions_one_line_truncated"]
+	#else:
+	#	df["Phenotype Description"] = df["descriptions"]
 
 	# Start the results section of the page.
 	st.markdown("## Results")
@@ -1159,26 +1190,17 @@ elif search_type == "phenotype" and input_text != "":
 
 		raw_sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance = description_search(search_string, graph, f_tokenizing, f_preprocessing)
 
-
-
-
 		df["distance"] = df["id"].map(gene_id_to_min_distance)
 		df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
-		df["Rank"] = np.arange(1, len(df)+1)
-
-
+		df[COLUMN_NAMES["rank"]] = np.arange(1, len(df)+1)
 
 
 		df = df.head(ROW_LIMIT)
 		
-
 		gene_ids = df["id"].values
 		gene_id_to_formatted_queries, gene_id_to_formatted_similarities = format_result_strings(raw_sentence_tokens, gene_ids, gene_id_to_distances, RESULT_COLUMN_WIDTH, MAX_LINES_IN_RESULT_COLUMN)
-		df[RESULT_COLUMN_STRING] = df["id"].map(gene_id_to_formatted_queries)
-		df[SCORE_COLUMN_STRING] = df["id"].map(gene_id_to_formatted_similarities)
-
-
-
+		df[COLUMN_NAMES["sentences"]] = df["id"].map(gene_id_to_formatted_queries)
+		df[COLUMN_NAMES["score"]] = df["id"].map(gene_id_to_formatted_similarities)
 
 
 
@@ -1187,15 +1209,29 @@ elif search_type == "phenotype" and input_text != "":
 	st.markdown("### Genes with Matching Phenotype Descriptions")
 	st.markdown("Genes with phenotypes that are described most similarity to '{}'".format(search_string))
 
-	# Display the sorted and filtered dataset as a table with the relevant columns.
-	#st.table(data=df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
-	#st.dataframe(df[[RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]])
+
+	def truncate_description_cell_3(s, num_lines_to_keep):
+		lines = s.split(NEWLINE_TOKEN)
+		if len(lines) > num_lines_to_keep:
+			index_of_last_line = num_lines_to_keep-1
+			lines[num_lines_to_keep-1] = "{}...".format(lines[num_lines_to_keep-1])
+			modified_s = NEWLINE_TOKEN.join(lines[:index_of_last_line+1])
+			return(modified_s)
+		else:
+			return(s)
+
+	if truncate:
+		df[COLUMN_NAMES["phenotype"]] = df["descriptions_with_newline_tokens"]
+		df[COLUMN_NAMES["phenotype"]] = df["Phenotype Description"].map(lambda x: truncate_description_cell_3(x, min(len(raw_sentence_tokens),MAX_LINES_IN_RESULT_COLUMN)))
+
+	else:
+		df[COLUMN_NAMES["phenotype"]] = df["descriptions_with_newline_tokens"]
 
 
 
-
-	my_df = df[["Rank", SCORE_COLUMN_STRING, RESULT_COLUMN_STRING, "Species", "Gene", "Gene Model", "Phenotype Description"]].head(ROW_LIMIT)
-
+	columns_to_include_keys = ["rank", "score", "sentences", "species", "gene", "model", "phenotype"]
+	my_df = df[[COLUMN_NAMES[x] for x in columns_to_include_keys]].head(ROW_LIMIT)
+	
 	header_values = my_df.columns
 	cell_values = []
 	for index in range(0, len(my_df.columns)):
@@ -1205,18 +1241,23 @@ elif search_type == "phenotype" and input_text != "":
 	# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
 	# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
 	#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
-	descriptions = list(cell_values[2][RESULT_COLUMN_STRING].values)
-	descriptions = [x.replace("[NEWLINE]","<br>") for x in descriptions]
+	descriptions = list(cell_values[2][COLUMN_NAMES["sentences"]].values)
+	descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
 	cell_values[2] = descriptions
 
-	descriptions = list(cell_values[1][SCORE_COLUMN_STRING].values)
-	descriptions = [x.replace("[NEWLINE]","<br>") for x in descriptions]
+	descriptions = list(cell_values[1][COLUMN_NAMES["score"]].values)
+	descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
 	cell_values[1] = descriptions
+
+	descriptions = list(cell_values[6][COLUMN_NAMES["phenotype"]].values)
+	descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
+	cell_values[6] = descriptions
+
 
 
 	fig = go.Figure(data=[go.Table(
-		columnorder = [1,2,3,4,5,6,7],
-		columnwidth = [1,2,8,3,3,3,20],
+		columnorder = list(range(len(columns_to_include_keys))),
+		columnwidth = [COLUMN_WIDTHS[x] for x in columns_to_include_keys],
 		header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
 		cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14)),
 		)])
