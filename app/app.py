@@ -25,71 +25,16 @@ import plotly
 import plotly.graph_objects as go
 
 
-
-
 sys.path.append("../../oats")
 import oats
 from oats.utils.utils import load_from_pickle
 from oats.biology.dataset import Dataset
 from oats.annotation.ontology import Ontology
 
-
-
 nltk.download('stopwords', quiet=True)
 nltk.download('wordnet', quiet=True)
 nltk.download('punkt', quiet=True)
 nltk.download('averaged_perceptron_tagger', quiet=True)
-
-
-
-
-
-
-TABLE_HEADER_COLOR = "#808080"
-TABLE_ROWS_COLOR = "#F1F2F6"
-RESULT_COLUMN_WIDTH = 40
-ROW_LIMIT = 40
-MAX_LINES_IN_RESULT_COLUMN = 10
-DESCRIPTION_COLUMN_WIDTH = 85
-NEWLINE_TOKEN = "[NEWLINE]"
-
-
-
-
-
-
-
-
-
-column_info = [
-	("rank", "Rank", 1),
-	("score", "Score", 1),
-	("result", "Result", 1),
-	("keywords", "Query Keywords", 8),
-	("sentences", "Query Sentences", 8),
-	("terms", "Ontology Terms", 6),
-	("species", "Species", 2),
-	("gene", "Gene", 3),
-	("model", "Gene Model", 3),
-	("phenotype", "Phenotype Description", 12)
-]
-COLUMN_NAMES = {x[0]:x[1] for x in column_info}
-COLUMN_WIDTHS = {x[0]:x[2] for x in column_info}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -112,14 +57,123 @@ COLUMN_WIDTHS = {x[0]:x[2] for x in column_info}
 # displaying columns that have a lot of text in them when you don't to remove any of the text.
 
 
-# TODO 
-# Get running with other pickles including computational annotations and BERT.
-# Make sure the application can be loaded with any other set of files and still works with these pickles.
-# Make a separate notebook that just creates the pickles needed to build the application?
-# Load this with the SNPedia dataset and see what happens.
 
 
 
+
+
+
+# Constants that help define how the tables look and how the text wraps within the table cells.
+TABLE_HEADER_COLOR = "#808080"
+TABLE_ROWS_COLOR = "#F1F2F6"
+TABLE_HEIGHT = 4000
+HEADER_HEIGHT = 30
+RESULT_COLUMN_WIDTH = 55
+ROW_LIMIT = 40
+MAX_LINES_IN_RESULT_COLUMN = 10
+DESCRIPTION_COLUMN_WIDTH = 90
+NEWLINE_TOKEN = "[NEWLINE]"
+DIRECT_ANNOTATION_TAG = "Direct Annotation"
+INHERITED_ANNOTATION_TAG = "Indirect Annotation"
+
+
+
+
+
+# Constants that help define how the columns appear in the plottly tables. 
+# The first value is the universal string key used throughout the script, so leave that alone.
+# The second is how the column is titled in the presented tables so that can be changed just here and the change will take effect throughout.
+# The third is the relative width of the column to all the other columns. Leave the rank column as 1 (the smallest), and change all othere
+# with respect to that column.
+column_info = [
+	("rank", "Rank", 1),
+	("score", "Score", 1),
+	("result", "Result", 1),
+	("keywords", "Query Keywords", 8),
+	("sentences", "Query Sentences", 8),
+	("terms", "Ontology Terms", 6),
+	("species", "Species", 2),
+	("gene", "Gene", 3),
+	("model", "Gene Model", 3),
+	("phenotype", "Phenotype Description", 12)
+]
+COLUMN_NAMES = {x[0]:x[1] for x in column_info}
+COLUMN_WIDTHS = {x[0]:x[2] for x in column_info}
+
+
+
+
+
+
+# Dangerous part. These have to exactly match how the text is treated within the notebook that generates the pairwise distances.
+# There's no explicit check in the code that makes sure the processing is identical between those two locations.
+# In the future this should probably be changed so both sets of code are calling one resources that knows how to do these things.
+sentence_tokenize = lambda text: sent_tokenize(text)
+as_one_token = lambda text: [text]
+identify_function = lambda text: text
+simple_preprocessing = lambda text: " ".join(simple_preprocess(text))
+full_preprocessing = lambda text: " ".join(preprocess_string(text))
+
+
+
+
+# Where are the dataset and ontology files that should be loaded for this application?
+# The order of how the ontology names are given should exactly match the order of the ontology files.
+DATASET_PATH = "resources/genes_texts_annots.csv"
+ONTOLOGY_NAMES = ["PATO","PO","GO"]
+ONTOLOGY_OBO_PATHS = ["resources/pato.obo", "resources/po.obo", "resources/go.obo"]
+ONTOLOGY_PICKLE_PATHS = ["resources/pato.pickle", "resources/po.pickle", "resources/go.pickle"]
+
+
+
+
+
+# These mappings are necessary if the internal strings used for species and how they should be displayed are different.
+internal_species_strings = ["ath", "zma", "sly", "gmx", "osa", "mtr"]
+display_species_strings = ["Arabidopsis", "Maize", "Tomato", "Soybean", "Rice", "Medicago"]
+TO_SPECIES_DISPLAY_NAME = {i:d for i,d in zip(internal_species_strings,display_species_strings)}
+
+
+
+
+
+
+# What are the different fields for each approach in this nested dictionary?
+# path: The path to the pickle for loading the oats object associated with this approach.
+# mapping_file: The paths to the pickle that is a dictionary that is needed to convert from the IDs for the saved vectors back to the gene IDs in this dataset.
+# tokenization_function: A function for how text should be tokenized in order to be compatible with this approach.
+# preprocessing_function: A function for how text should be preprocessed in order to be compatible with this approach.
+APPROACH_NAMES_AND_DATA = {
+	"n-grams":{
+		"path_dists":"resources/dists_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
+		"path_vectors":"resources/vectors_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle",
+		"mapping_file":"resources/N_gene_id_to_unique_ids_sent_tokens.pickle",
+		"tokenization_function":sentence_tokenize,
+		"preprocessing_fucntion":full_preprocessing,
+		},
+	"fuzzy":{
+		"path_dists":"resources/dists_with_word2vec_tokenization_pubmed_size_200_mean.pickle", 
+		"path_vectors":"resources/vectors_with_word2vec_tokenization_pubmed_size_200_mean.pickle",
+		"mapping_file":"resources/W_gene_id_to_unique_ids_sent_tokens.pickle",
+		"tokenization_function":sentence_tokenize,
+		"preprocessing_fucntion":identify_function,
+		},
+	}
+
+
+
+
+# For testing, be able to subset this nested dictionary without having to uncomment sections of it.
+# Just uncomment these two lines to use the entire set of approaches and load all files.
+names_to_actually_use = ["fuzzy", "n-grams"]
+APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k in names_to_actually_use}
+
+
+
+# How should keywords and phrases be cleaned and handled as far as preprocessing or stemming goes?
+KEYWORD_DELIM = "[DELIM]"
+KEYWORD_PREPROCESSING_FILTERS = [lambda x: x.lower(), strip_non_alphanum, strip_tags, strip_punctuation, stem_text]
+PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DELIM, KEYWORD_DELIM.join([token for token in preprocess_string(x, KEYWORD_PREPROCESSING_FILTERS)]), KEYWORD_DELIM)
 
 
 
@@ -133,44 +187,44 @@ st.set_page_config(page_title="QuOATS", layout="wide", initial_sidebar_state="ex
 PATH_TO_LOGO_PNG = "resources/logo.png"
 #st.image(Image.open(PATH_TO_LOGO_PNG), caption=None, width=800, output_format="png")
 
-
-
-
-
-
-
-
 # Markdown for introducing the app and linking to other relevant resources like the project Github page.
 
 '''
-A tool for querying genes and phenotypes with ontology annoations and text similarity.
+# QuOATS
+
+## About
+This tool can be used to query a dataset of plant genes, ontology term annotations, and natural language phenotype descriptions using a variety of methods. 
+For a discussion of the underlying methodology used to query the dataset, see the full description in the Braun and Lawrence-Dill (2020) preprint available
+here [here](https://www.biorxiv.org/).
 
 ## Instructions
-Use the searchbar below to enter a query. Select whether the query refers to a gene identifier, ontology terms, keywords and 
-keyphrases, or free text. Examples of possible queries for each of these options are given. Gene identifiers can be gene names, 
-gene models, protein names, or any other alias or synonym present in the dataset. Ontology terms should be separated by spaces 
-or commas. Keywords and keyphrases should be separated by commas. There are no length or formatting restrictions for a free text 
-query. If a free text query is performed, the selected similarity algorithm is used to quantify similarity to the
-phenotype descriptions of all genes in the dataset.
+Select a query type from the list below, and then enter a query into the searchbar.
+- For **Gene Identifiers** query, enter in any gene identifier that might be present in the dataset, such as gene names, protein names, gene models, or any other type of gene alias or synonym. 
+- For **Ontology Terms**, enter any number of ontology term IDs separated by either spaces or commas. The results returned will be genes either directly or indirectly annotated with these terms.
+- For **Keywords & Keyphrases**, enter any number of words or phrases separated by commas. The results returned will be genes mapped to phenotypes that contain these words or phrases.
+- For **Free Text**, enter any number of arbitrary strings, separated by periods. Each string will be compared to each sentence or 
+fragment in the phenotype descriptions in this dataset, and genes with the most similar phenotypes will be returned.
 '''
 
 
-# Some color codes.
-# 581845
-# FF5733
-# C0C0C0
-# E4E4F9
-# B31334
-# E8D04C
 
 
-# Setting some of the color scheme of the page.
+#Use the searchbar below to enter a query. Select whether the query refers to a gene identifier, ontology terms, keywords and 
+#keyphrases, or free text. Examples of possible queries for each of these options are given. Gene identifiers can be gene names, 
+#gene models, protein names, or any other alias or synonym present in the dataset. Ontology terms should be separated by spaces 
+#or commas. Keywords and keyphrases should be separated by commas. There are no length or formatting restrictions for a free text 
+#query. If a free text query is performed, the selected similarity algorithm is used to quantify similarity to the
+#phenotype descriptions of all genes in the dataset.
+
+
+
+# Setting some of the color schemes and formatting of the page.
 st.markdown(
 	"""
 	<style>
 	body {
-	    color: #111;
-	    background-color: #fff;
+		color: #111;
+		background-color: #fff;
 	}
 	.reportview-container .markdown-text-container {
 		font-family: arial;
@@ -217,20 +271,22 @@ st.markdown(
 
 
 
+
+
+
 # Note that the output object(s) and dictionaries should not actually be modified in this script.
 # But streamlit was detecting a change in the outputs of this function? So the allow output mutation
 # decorator is necessary in order for this cached function to not be run again on refresh.
 @st.cache(allow_output_mutation=True, suppress_st_warning=True)
-def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files):
+def read_in_files(dataset_path, approach_names_and_data):
 	"""Read in the large files that initialize the application here, which takes a long time.
 	
 	Args:
-		dataset_path (TYPE): Description
-		approach_names_and_data (TYPE): Description
-		approach_mapping_files (TYPE): Description
+	    dataset_path (TYPE): Description
+	    approach_names_and_data (TYPE): Description
 	
 	Returns:
-		TYPE: Description
+	    TYPE: Description
 	"""
 	
 	# Read in the dataset and create its object.
@@ -239,18 +295,14 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 
 	# Reading in the large files that store objects for vectorizing and comparing texts.
 	approach_to_object = {}
+	approach_to_mapping = {}
 	for k,v in approach_names_and_data.items():
 		obj = load_from_pickle(v["path_dists"])
 		vectors = load_from_pickle(v["path_vectors"])
 		obj.vector_dictionary = vectors
+		mapping = load_from_pickle(v["mapping_file"])
+		approach_to_mapping[k] = mapping
 		approach_to_object[k] = obj
-
-	#approach_to_object = {k:load_from_pickle(v["path_dists"]) for k,v in approach_names_and_data.items()}
-	#for k,obj in approach_to_object.items():
-	#	approach_to_object[k].vector_dictionary = load_from_approach_names_and_data[k]["path_vectors"]
-
-	mapping_key_to_mapping_dict = {k:load_from_pickle(v) for k,v in approach_mapping_files.items()}
-	approach_to_mapping = {k:mapping_key_to_mapping_dict[v["mapping"]] for k,v in approach_names_and_data.items()}
 
 	# Other expensive computation here so that it's done inside the cached function.
 	# Get the dataframe for this dataset and add some additional columns that will be useful for displaying information.
@@ -261,13 +313,8 @@ def read_in_files(dataset_path, approach_names_and_data, approach_mapping_files)
 	df["descriptions_one_line_truncated"] = df["descriptions"].map(lambda x: truncate_string(x, DESCRIPTION_COLUMN_WIDTH))
 	df["descriptions_with_newline_tokens"] = df["descriptions"].map(lambda x: NEWLINE_TOKEN.join(wrap(x, DESCRIPTION_COLUMN_WIDTH)))
 
-
 	id_to_descriptions_for_keyword_matching = {i:PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION(s) for i,s in dataset.get_description_dictionary().items()}
 	return(dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching)
-
-
-
-
 
 
 
@@ -279,11 +326,11 @@ def read_in_ontologies(names, paths):
 	"""Read in ontology objects from .obo files and return them, can take a long time.
 	
 	Args:
-		names (TYPE): Description
-		paths (TYPE): Description
+	    names (TYPE): Description
+	    paths (TYPE): Description
 	
 	Returns:
-		TYPE: Description
+	    TYPE: Description
 	"""
 	ontologies = {}
 	for name,path, in zip(names,paths):
@@ -296,12 +343,15 @@ def read_in_ontologies(names, paths):
 
 
 
-
-
-
-
 def truncate_string(text, char_limit):
 	"""Return a truncated version of the text and adding elipses if it's longer than the character limit.
+	
+	Args:
+	    text (TYPE): Description
+	    char_limit (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
 	"""
 	truncated_text = text[:char_limit]
 	if len(text)>char_limit:
@@ -315,153 +365,20 @@ def truncate_string(text, char_limit):
 
 
 
-def gene_name_search(dataset, gene_name):
-	"""Helper function for searching the dataset for a gene identifier.
-	
-	Args:
-		dataset (TYPE): Description
-		gene_name (TYPE): Description
-	
-	Returns:
-		TYPE: Description
-	"""
-	gene_name = gene_name.lower().strip()
-	species_to_gene_id_list = defaultdict(list)
-	for species in dataset.get_species():
-		gene_ids = dataset.get_species_to_name_to_ids_dictionary(include_synonyms=True, lowercase=True)[species][gene_name]
-		for gene_id in gene_ids:
-			species_to_gene_id_list[species].append(gene_id)
-	return(species_to_gene_id_list)
-
-
-
-	
-
-def keyword_search(id_to_text, raw_keywords, modified_keywords):
-	"""Helper function for searching the dataset for keywords and keyphrases.
-	
-	Args:
-		id_to_text (TYPE): Description
-		raw_keywords (TYPE): Description
-		modified_keywords (TYPE): Description
-	
-	Returns:
-		TYPE: Description
-	"""
-	# The raw keywords and modified keywords should be two paired lists where the elements correspond to one another.
-	# The modifications done to the keywords should already match the modifications done to the texts in the input dictionary so they can be directly compared.
-	assert len(raw_keywords) == len(modified_keywords)
-	id_to_found_keywords = {i:[r_kw for r_kw,m_kw in zip(raw_keywords,modified_keywords) if m_kw in text] for i,text in id_to_text.items()}
-	id_to_num_found_keywords = {i:len(kw_list) for i,kw_list in id_to_found_keywords.items()}
-	return(id_to_found_keywords, id_to_num_found_keywords)
-
-
-
-
-
-def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, term_ids):
-	"""Helper function for searching the dataset for ontology term annotations.
-	
-	Args:
-		id_to_direct_annotations (TYPE): Description
-		id_to_indirect_annotations (TYPE): Description
-		term_ids (TYPE): Description
-	
-	Returns:
-		TYPE: Description
-	"""
-	assert len(id_to_direct_annotations) == len(id_to_indirect_annotations)
-	gene_id_to_direct_match = {i:[(term_id in direct_annotations) for term_id in term_ids] for i,direct_annotations in id_to_direct_annotations.items()}
-	gene_id_to_indirect_match = {i:[(term_id in indirect_annotations) for term_id in term_ids] for i,indirect_annotations in id_to_indirect_annotations.items()}
-	
-	# Map each gene ID to a result string that says which terms matched and how.
-	gene_id_to_result_string = {}
-	gene_id_to_num_direct_matches = {}
-	gene_id_to_num_indirect_matches = {}
-	for gene_id in gene_id_to_direct_match.keys():		
-		gene_id_to_num_direct_matches[gene_id] = sum(gene_id_to_direct_match[gene_id])
-		gene_id_to_num_indirect_matches[gene_id] =  any(gene_id_to_indirect_match[gene_id])
-		lines = []
-		for idx,term_id in enumerate(term_ids):
-			if gene_id_to_direct_match[gene_id][idx]:
-				match_type = "Direct Annotation"
-			elif gene_id_to_indirect_match[gene_id][idx]:
-				match_type = "Inherited Annotation"
-			else:
-				continue
-			# If there was a valid match found, create this formatted string.
-			match_str = "({})".format(match_type)
-			term_id_str = term_id
-
-			line = "{} {}[NEWLINE]".format(term_id_str, match_str)
-			lines.append(line)
-		result_str = "".join(lines)
-		gene_id_to_result_string[gene_id] = result_str
-
-	return(gene_id_to_num_direct_matches, gene_id_to_num_indirect_matches, gene_id_to_result_string)
-
-
-
-
-
-
-def description_search(text, graph, tokenization_function, preprocessing_function):
-	"""Helper function for searching the dataset for similar phenotype descriptions.
-	
-	Args:
-		text (TYPE): Description
-		graph (TYPE): Description
-		tokenization_function (TYPE): Description
-		preprocessing_function (TYPE): Description
-		result_column_width (TYPE): Description
-		result_column_max_lines (TYPE): Description
-	
-	Returns:
-		TYPE: Description
-	"""
-	# Do tokenization and preprocessing on the searched text to yield a list of strings.
-	# The tokenization and preprocessing have to match the object that will be used, and this decision is informed by
-	# some mapping that is already done, and the choices are passed in to this function.
-	# The tokenization might just yield a single text, but it still goes in a list for consistency.
-	sentence_tokens = tokenization_function(text)
-	preprocessed_sentence_tokens  = [preprocessing_function(s) for s in sentence_tokens]
-
-
-
-
-	# Now the preprocessed sentence tokens are in the right format, and ready to be embedded and compared to the existing data.
-
-
-	# Get a mapping between gene IDs and their distances to each new text string parsed from the search string.
-	# The key is the gene ID from the existing dataset and the values are a list in the same order as the preprocessed query sentences.
-	gene_id_to_distances = defaultdict(list)
-	for s in preprocessed_sentence_tokens:
-		internal_id_to_distance_from_new_text = graph.get_distances(s)
-		for gene_id,graph_ids in gene_id_to_graph_ids.items():
-			# What's the smallest distances between this new graph and one of the texts for the internal graph nodes.
-			graph_distances = [internal_id_to_distance_from_new_text[graph_id] for graph_id in graph_ids]
-			min_graph_distance = min(graph_distances)
-			# Remember that value as the distance from this one parsed text string from the search to this particular gene.
-			gene_id_to_distances[gene_id].append(min_graph_distance)
-
-
-
-	# For now, just get a mapping between gene IDs and their minimum distance to any of those parsed strings.
-	# Maybe this should take more than just the minimum of them into account for this application?
-	gene_id_to_min_distance = {gene_id:min(distances) for gene_id,distances in gene_id_to_distances.items()}
-	gene_id_to_mean_distance = {gene_id:np.mean(distances) for gene_id,distances in gene_id_to_distances.items()}
-
-	return(sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance)
-
-
-
-
-
-
 
 def format_result_strings(query_sentences, gene_ids, gene_id_to_distances, result_column_width, result_column_max_lines):
-
-
+	"""This takes the lists of query sentences score against the existing data and formats wrapped strings for the table.
+	
+	Args:
+	    query_sentences (TYPE): Description
+	    gene_ids (TYPE): Description
+	    gene_id_to_distances (TYPE): Description
+	    result_column_width (TYPE): Description
+	    result_column_max_lines (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
 	# The list of query sentences should correspond to the list of distances that each gene ID is mapped to.
 	# Have to trust that these are in corresponding order, that happens in another section.
 	assert len(query_sentences) == len(list(gene_id_to_distances.values())[0])
@@ -493,118 +410,154 @@ def format_result_strings(query_sentences, gene_ids, gene_id_to_distances, resul
 
 
 
+def gene_name_search(dataset, gene_name):
+	"""Helper function for searching the dataset for a gene identifier.
+	
+	Args:
+	    dataset (TYPE): Description
+	    gene_name (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
+	gene_name = gene_name.lower().strip()
+	species_to_gene_id_list = defaultdict(list)
+	for species in dataset.get_species():
+		gene_ids = dataset.get_species_to_name_to_ids_dictionary(include_synonyms=True, lowercase=True)[species][gene_name]
+		for gene_id in gene_ids:
+			species_to_gene_id_list[species].append(gene_id)
+	species_to_gene_id_list = {s:list(set(l)) for s,l in species_to_gene_id_list.items()}
+	return(species_to_gene_id_list)
+
+
+
+	
+
+def keyword_search(id_to_text, raw_keywords, modified_keywords):
+	"""Helper function for searching the dataset for keywords and keyphrases.
+	
+	Args:
+	    id_to_text (TYPE): Description
+	    raw_keywords (TYPE): Description
+	    modified_keywords (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
+	# The raw keywords and modified keywords should be two paired lists where the elements correspond to one another.
+	# The modifications done to the keywords should already match the modifications done to the texts in the input dictionary so they can be directly compared.
+	assert len(raw_keywords) == len(modified_keywords)
+	id_to_found_keywords = {i:[r_kw for r_kw,m_kw in zip(raw_keywords,modified_keywords) if m_kw in text] for i,text in id_to_text.items()}
+	id_to_num_found_keywords = {i:len(kw_list) for i,kw_list in id_to_found_keywords.items()}
+	return(id_to_found_keywords, id_to_num_found_keywords)
 
 
 
 
 
-# Dangerous part. These have to exactly match how the text is treated within the notebook that generates the pairwise distances.
-# There's no explicit check in the code that makes sure the processing is identical between those two locations.
-# In the future this should probably be changed so both sets of code are calling one resources that knows how to do these things.
-sentence_tokenize = lambda text: sent_tokenize(text)
-as_one_token = lambda text: [text]
-identify_function = lambda text: text
-simple_preprocessing = lambda text: " ".join(simple_preprocess(text))
-full_preprocessing = lambda text: " ".join(preprocess_string(text))
+def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, term_ids):
+	"""Helper function for searching the dataset for ontology term annotations.
+	
+	Args:
+	    id_to_direct_annotations (TYPE): Description
+	    id_to_indirect_annotations (TYPE): Description
+	    term_ids (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
+	"""
+	assert len(id_to_direct_annotations) == len(id_to_indirect_annotations)
+	gene_id_to_direct_match = {i:[(term_id in direct_annotations) for term_id in term_ids] for i,direct_annotations in id_to_direct_annotations.items()}
+	gene_id_to_indirect_match = {i:[(term_id in indirect_annotations) for term_id in term_ids] for i,indirect_annotations in id_to_indirect_annotations.items()}
+	
+	# Map each gene ID to a result string that says which terms matched and how.
+	gene_id_to_result_string = {}
+	gene_id_to_num_direct_matches = {}
+	gene_id_to_num_indirect_matches = {}
+	for gene_id in gene_id_to_direct_match.keys():		
+		num_direct = 0
+		num_indirect = 0
+		lines = []
+		for idx,term_id in enumerate(term_ids):
+			if gene_id_to_direct_match[gene_id][idx]:
+				match_type = DIRECT_ANNOTATION_TAG
+				num_direct = num_direct+1
+				match_str = "({})".format(match_type)
+				term_id_str = term_id
+				line = "{} {}".format(term_id_str, match_str)
+				lines.append(line)
+			elif gene_id_to_indirect_match[gene_id][idx]:
+				match_type = INHERITED_ANNOTATION_TAG
+				num_indirect = num_indirect+1
+				match_str = "({})".format(match_type)
+				term_id_str = term_id
+				line = "{} {}".format(term_id_str, match_str)
+				lines.append(line)
+			else:
+				continue
+
+		gene_id_to_num_direct_matches[gene_id] = num_direct
+		gene_id_to_num_indirect_matches[gene_id] = num_indirect
+		result_str = NEWLINE_TOKEN.join(lines)
+		gene_id_to_result_string[gene_id] = result_str
+		assert len(lines) == gene_id_to_num_direct_matches[gene_id]+gene_id_to_num_indirect_matches[gene_id]
+
+	return(gene_id_to_num_direct_matches, gene_id_to_num_indirect_matches, gene_id_to_result_string)
 
 
 
 
 
 
+def description_search(text, graph, tokenization_function, preprocessing_function):
+	"""Helper function for searching the dataset for similar phenotype descriptions.
+	
+	Args:
+	    text (TYPE): Description
+	    graph (TYPE): Description
+	    tokenization_function (TYPE): Description
+	    preprocessing_function (TYPE): Description
+	
+	Returns:
+	    TYPE: Description
 
-# Where are the dataset and ontology files that should be loaded for this application?
-DATASET_PATH = "resources/genes_texts_annots.csv"
-ONTOLOGY_NAMES = ["PATO","PO","GO"]
-ONTOLOGY_OBO_PATHS = ["resources/pato.obo", "resources/po.obo", "resources/go.obo"]
-ONTOLOGY_PICKLE_PATHS = ["resources/pato.pickle", "resources/po.pickle", "resources/go.pickle"]
-
-
-
-
-# What are the different fields for each approach in this nested dictionary?
-# path: The path to the pickle for loading the oats object associated with this approach.
-# mapping: A key that allows for retrieving the correct mapping between IDs used here and those used internally by each approach.
-# tokenization_function: A function for how text should be tokenized in order to be compatible with this approach.
-# preprocessing_function: A function for how text should be preprocessed in order to be compatible with this approach.
-APPROACH_NAMES_AND_DATA = {
-	# "N-Grams (Whole Phenotype)":{
-	# 	"path":"resources/dists_with_n_grams_full_words_1_grams_tfidf.pickle", 
-	# 	"mapping":"whole_texts",
-	# 	"tokenization_function":as_one_token,
-	# 	"preprocessing_fucntion":full_preprocessing,
-	# 	},
-	# "N-Grams (Sentence Tokenized)":{
-	# 	"path":"resources/dists_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
-	# 	"mapping":"sent_tokens",
-	# 	"tokenization_function":sentence_tokenize,
-	# 	"preprocessing_fucntion":full_preprocessing,
-	# 	},
-	# "word2vec-tokenized":{
-	# 	"path":"resources/wtok.pickle", 
-	# 	"mapping":"sent_tokens",
-	# 	"tokenization_function":sentence_tokenize,
-	# 	"preprocessing_fucntion":identify_function,
-	# 	},
-	# "doc2vec":{
-	#  	"path":"resources/d.pickle", 
-	#  	"mapping":"whole_texts",
-	#  	"tokenization_function":as_one_token,
-	#  	"preprocessing_fucntion":identify_function,
-	#  	},
-
-
-	"n-grams":{
-		"path_dists":"resources/dists_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
-		"path_vectors":"resources/vectors_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle",
-		"mapping":"sent_tokens_N",
-		"tokenization_function":sentence_tokenize,
-		"preprocessing_fucntion":full_preprocessing,
-		},
-	"fuzzy":{
-		"path_dists":"resources/dists_with_word2vec_tokenization_pubmed_size_200_mean.pickle", 
-		"path_vectors":"resources/vectors_with_word2vec_tokenization_pubmed_size_200_mean.pickle",
-		"mapping":"sent_tokens_W",
-		"tokenization_function":sentence_tokenize,
-		"preprocessing_fucntion":identify_function,
-		},
-
-
-	}
-
-
-# For testing, be able to subset this nested dictionary without having to uncomment sections of it.
-# Just uncomment these two lines to use the entire set of approaches and load all files.
-names_to_actually_use = ["fuzzy", "n-grams"]
-APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k in names_to_actually_use}
+	"""
+	# Do tokenization and preprocessing on the searched text to yield a list of strings.
+	# The tokenization and preprocessing have to match the object that will be used, and this decision is informed by
+	# some mapping that is already done, and the choices are passed in to this function.
+	# The tokenization might just yield a single text, but it still goes in a list for consistency.
+	sentence_tokens = tokenization_function(text)
+	preprocessed_sentence_tokens  = [preprocessing_function(s) for s in sentence_tokens]
 
 
 
 
-# Mappings between key strings and the files that should be used to load dictionaries for converting between IDs.
-# The keys for this dictionary should map the items from the nested dictionay above, so that these mappings from 
-# these dictinoary files can then be associated with each of the approaches from the nested dictionary.
-APPROACH_MAPPING_FILES = {
-	"whole_texts":"resources/gene_id_to_unique_ids_whole_texts.pickle",
-	"sent_tokens_N":"resources/N_gene_id_to_unique_ids_sent_tokens.pickle",
-	"sent_tokens_W":"resources/W_gene_id_to_unique_ids_sent_tokens.pickle",
+	# Now the preprocessed sentence tokens are in the right format, and ready to be embedded and compared to the existing data.
 
 
+	# Get a mapping between gene IDs and their distances to each new text string parsed from the search string.
+	# The key is the gene ID from the existing dataset and the values are a list in the same order as the preprocessed query sentences.
+	gene_id_to_distances = defaultdict(list)
+	for s in preprocessed_sentence_tokens:
+		internal_id_to_distance_from_new_text = graph.get_distances(s)
+		for gene_id,graph_ids in gene_id_to_graph_ids.items():
+			# What's the smallest distances between this new graph and one of the texts for the internal graph nodes.
+			graph_distances = [internal_id_to_distance_from_new_text[graph_id] for graph_id in graph_ids]
+			min_graph_distance = min(graph_distances)
+			# Remember that value as the distance from this one parsed text string from the search to this particular gene.
+			gene_id_to_distances[gene_id].append(min_graph_distance)
 
-	"go_term_sets":"resources/gene_id_to_unique_ids_go_term_sets.pickle",
-	"po_term_sets":"resources/gene_id_to_unique_ids_po_term_sets.pickle",
-	"go_terms":"resources/gene_id_to_unique_ids_go_terms.pickle",
-	"po_terms":"resources/gene_id_to_unique_ids_po_terms.pickle",
-	}
+
+	# For now, just get a mapping between gene IDs and their minimum distance to any of those parsed strings.
+	# Maybe this should take more than just the minimum of them into account for this application?
+	gene_id_to_min_distance = {gene_id:min(distances) for gene_id,distances in gene_id_to_distances.items()}
+	gene_id_to_mean_distance = {gene_id:np.mean(distances) for gene_id,distances in gene_id_to_distances.items()}
+	return(sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance)
 
 
 
 
 
-# How should keywords and phrases be cleaned and handled as far as preprocessing or stemming goes?
-KEYWORD_DELIM = "[DELIM]"
-KEYWORD_PREPROCESSING_FILTERS = [lambda x: x.lower(), strip_non_alphanum, strip_tags, strip_punctuation, stem_text]
-PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DELIM, KEYWORD_DELIM.join([token for token in preprocess_string(x, KEYWORD_PREPROCESSING_FILTERS)]), KEYWORD_DELIM)
 
 
 
@@ -633,7 +586,7 @@ PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DE
 # This is necessary because those internal IDs represent compressed or altered versions of the text and could 
 # refer to more than one text instance in the actual dataset that is seen here.
 with st.spinner("Reading very large files, this might take a few minutes."):
-	dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching= read_in_files(DATASET_PATH, APPROACH_NAMES_AND_DATA, APPROACH_MAPPING_FILES)
+	dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching= read_in_files(DATASET_PATH, APPROACH_NAMES_AND_DATA)
 	ontologies = read_in_ontologies(ONTOLOGY_NAMES, ONTOLOGY_PICKLE_PATHS)
 
 
@@ -642,10 +595,14 @@ with st.spinner("Reading very large files, this might take a few minutes."):
 
 
 
-# These mappings are necessary if the internal strings used for species and how they should be displayed are different.
-internal_species_strings = ["ath", "zma", "sly", "gmx", "osa", "mtr"]
-display_species_strings = ["Arabidopsis", "Maize", "Tomato", "Soybean", "Rice", "Medicago"]
-to_species_display_name = {i:d for i,d in zip(internal_species_strings,display_species_strings)}
+
+
+
+
+
+
+
+
 
 
 
@@ -661,7 +618,7 @@ to_species_display_name = {i:d for i,d in zip(internal_species_strings,display_s
 
 # Presenting the options for filtering by species.
 st.sidebar.markdown("### Filtering by Species")
-species_display_names = [to_species_display_name[x] for x in dataset.get_species()]
+species_display_names = [TO_SPECIES_DISPLAY_NAME[x] for x in dataset.get_species()]
 species_list = st.sidebar.multiselect(label="Filter to only include certain species", options=species_display_names)
 if len(species_list) == 0:
 	species_list = species_display_names
@@ -685,6 +642,7 @@ include_examples = st.sidebar.checkbox(label="Include Examples", value=False)
 
 
 table_width = st.sidebar.slider(label="Table Width (Pixels)", min_value=400, max_value=8000, value=2000, step=100, format=None, key=None)
+TABLE_WIDTH = table_width
 
 
 # Presenting some more advanced options that shouldn't normally need to be changed.
@@ -692,13 +650,31 @@ table_width = st.sidebar.slider(label="Table Width (Pixels)", min_value=400, max
 
 
 
-st.sidebar.markdown("### More Information")
-st.sidebar.markdown("Adding a bunch of text here for things that should be said here. And add the email addresses to, etc.")
+ref_text = """
+	If you find this tool useful in your own research, please cite the following paper [reference here].
+	"""
+
+contact_text = """
+	If you have feedback about the tool or experience issues while using it, please contact irbraun@iastate.edu or szarecor@iastate.edu.
+	"""
+
+st.sidebar.markdown("### Citation")
+st.sidebar.markdown(ref_text)
+st.sidebar.markdown("### Contact")
+st.sidebar.markdown(contact_text)
 
 
-st.sidebar.markdown("### Contact Us")
-st.sidebar.markdown("""This is a tool for querying datasets of phenotype descriptions, and is described in Braun and Lawrence-Dill (publication in preparation). 
-	For more information, see list webpages here. To contact us about problems with this page, or questions about the functionality, reach us at email addresses here.""")
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -758,14 +734,43 @@ input_text = st.text_input(label="Enter text here")
 # Subset the dataframe if necessary.
 
 # The dataframe as it should be formatted for displaying in the app, not all data is needed.
-#df = dataset.to_pandas()
-#df["Species"] = df["species"].map(to_species_display_name)
-df["Species"] = df["species"].map(to_species_display_name)
+df["Species"] = df["species"].map(TO_SPECIES_DISPLAY_NAME)
 df = df[df["Species"].isin(species_list)]
-#df["Gene"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].primary_identifier)
-#df["Gene Model"] = df["id"].map(lambda x: dataset.get_gene_dictionary()[x].gene_models[0] if len(dataset.get_gene_dictionary()[x].gene_models)>0 else "")
-#df["Phenotype Description"] = df["descriptions"]
-#df["Phenotype Description (Truncated)"] = df["descriptions"].map(lambda x: truncate_string(x, 800))
+
+
+
+
+
+
+def display_plottly_dataframe(df, column_keys, column_keys_to_wrap, num_rows):
+
+	my_df = df[[COLUMN_NAMES[x] for x in column_keys]].head(num_rows)
+
+
+	header_values = my_df.columns
+	cell_values = []
+	for index in range(0, len(my_df.columns)):
+		cell_values.append(my_df.iloc[:,index:index+1])
+
+
+	# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
+	# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
+	indices_of_columns_to_wrap = [column_keys.index(x) for x in column_keys_to_wrap]
+	for col_idx,col_key in zip(indices_of_columns_to_wrap,column_keys_to_wrap):
+		contents = list(cell_values[col_idx][COLUMN_NAMES[col_key]].values)
+		contents = [x.replace(NEWLINE_TOKEN,"<br>") for x in contents]
+		cell_values[col_idx] = contents
+
+
+	fig = go.Figure(data=[go.Table(
+		columnorder = list(range(len(column_keys))),
+		columnwidth = [COLUMN_WIDTHS[x] for x in column_keys],
+		header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=HEADER_HEIGHT),
+		cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14)),
+		)])
+
+	fig.update_layout(width=TABLE_WIDTH, height=TABLE_HEIGHT)
+	st.plotly_chart(fig)
 
 
 
@@ -773,15 +778,17 @@ df = df[df["Species"].isin(species_list)]
 
 
 
-#if truncate:
-#	df["Phenotype Description"] = df["truncated_descriptions"]
-#else:
-#	df["Phenotype Description"] = df["descriptions"]
 
 
-
-
-
+def truncate_description_cell(s, num_lines_to_keep):
+	lines = s.split(NEWLINE_TOKEN)
+	if len(lines) > num_lines_to_keep:
+		index_of_last_line = num_lines_to_keep-1
+		lines[num_lines_to_keep-1] = "{}...".format(lines[num_lines_to_keep-1])
+		modified_s = NEWLINE_TOKEN.join(lines[:index_of_last_line+1])
+		return(modified_s)
+	else:
+		return(s)
 
 
 
@@ -803,7 +810,16 @@ df = df[df["Species"].isin(species_list)]
 
 
 
-################ Searching by GENE IDENTIFIER ################ 
+#    ********  ******** ****     ** ********   ** *******   ******** ****     ** ********** ** ******** ** ******** *******  
+#   **//////**/**///// /**/**   /**/**/////   /**/**////** /**///// /**/**   /**/////**/// /**/**///// /**/**///// /**////** 
+#  **      // /**      /**//**  /**/**        /**/**    /**/**      /**//**  /**    /**    /**/**      /**/**      /**   /** 
+# /**         /******* /** //** /**/*******   /**/**    /**/******* /** //** /**    /**    /**/******* /**/******* /*******  
+# /**    *****/**////  /**  //**/**/**////    /**/**    /**/**////  /**  //**/**    /**    /**/**////  /**/**////  /**///**  
+# //**  ////**/**      /**   //****/**        /**/**    ** /**      /**   //****    /**    /**/**      /**/**      /**  //** 
+#  //******** /********/**    //***/********  /**/*******  /********/**    //***    /**    /**/**      /**/********/**   //**
+#   ////////  //////// //      /// ////////   // ///////   //////// //      ///     //     // //       // //////// //     // 
+
+
 
 if search_type == "gene" and input_text != "":
 
@@ -823,12 +839,12 @@ if search_type == "gene" and input_text != "":
 	gene_buttons_dict = {}
 	if len(gene_matches)>0:
 		st.markdown("Genes matching '{}' are shown below. Select one to see other genes with similarly described phenotypes.".format(gene_search_string))
-		unique_button_key = 0
+		unique_button_key = 1
 		for species,id_list in gene_matches.items():
 			for i in id_list:
 				primary_gene_name = dataset.get_gene_dictionary()[i].primary_identifier
 				other_names = dataset.get_gene_dictionary()[i].all_identifiers
-				button_label = "{}: {}".format(to_species_display_name[species], primary_gene_name)
+				button_label = "{}: {}".format(TO_SPECIES_DISPLAY_NAME[species], primary_gene_name)
 				gene_buttons_dict[i] = st.button(label=button_label, key=unique_button_key)
 				unique_button_key = unique_button_key+1
 				if synonyms:
@@ -877,15 +893,6 @@ if search_type == "gene" and input_text != "":
 				df[COLUMN_NAMES["sentences"]] = df["id"].map(gene_id_to_formatted_queries)
 				df[COLUMN_NAMES["score"]] = df["id"].map(gene_id_to_formatted_similarities)
 
-				def truncate_description_cell(s, num_lines_to_keep):
-					lines = s.split(NEWLINE_TOKEN)
-					if len(lines) > num_lines_to_keep:
-						index_of_last_line = num_lines_to_keep-1
-						lines[num_lines_to_keep-1] = "{}...".format(lines[num_lines_to_keep-1])
-						modified_s = NEWLINE_TOKEN.join(lines[:index_of_last_line+1])
-						return(modified_s)
-					else:
-						return(s)
 
 				if truncate:
 					df["Phenotype Description"] = df["descriptions_with_newline_tokens"]
@@ -895,48 +902,9 @@ if search_type == "gene" and input_text != "":
 					df["Phenotype Description"] = df["descriptions_with_newline_tokens"]
 
 
-
-
-
-
 			columns_to_include_keys = ["rank", "score", "sentences", "species", "gene", "model", "phenotype"]
-			my_df = df[[COLUMN_NAMES[x] for x in columns_to_include_keys]].head(ROW_LIMIT)
-
-
-
-
-			header_values = my_df.columns
-			cell_values = []
-			for index in range(0, len(my_df.columns)):
-				cell_values.append(my_df.iloc[:,index:index+1])
-
-
-			# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
-			# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
-			#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
-			descriptions = list(cell_values[2][COLUMN_NAMES["sentences"]].values)
-			descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
-			cell_values[2] = descriptions
-
-			descriptions = list(cell_values[1][COLUMN_NAMES["score"]].values)
-			descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
-			cell_values[1] = descriptions
-
-
-			descriptions = list(cell_values[6][COLUMN_NAMES["phenotype"]].values)
-			descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
-			cell_values[6] = descriptions
-
-
-			fig = go.Figure(data=[go.Table(
-				columnorder = list(range(len(columns_to_include_keys))),
-				columnwidth = [COLUMN_WIDTHS[x] for x in columns_to_include_keys],
-				header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
-				cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14)),
-				)])
-
-			fig.update_layout(width=table_width, height=4000)
-			st.plotly_chart(fig)
+			columns_to_include_keys_and_wrap = ["score", "sentences", "phenotype"]
+			display_plottly_dataframe(df, columns_to_include_keys, columns_to_include_keys_and_wrap, ROW_LIMIT)
 
 
 
@@ -957,8 +925,15 @@ if search_type == "gene" and input_text != "":
 
 
 
+#  ********** ******** *******   ****     ****  ********
+# /////**/// /**///// /**////** /**/**   **/** **////// 
+#     /**    /**      /**   /** /**//** ** /**/**       
+#     /**    /******* /*******  /** //***  /**/*********
+#     /**    /**////  /**///**  /**  //*   /**////////**
+#     /**    /**      /**  //** /**   /    /**       /**
+#     /**    /********/**   //**/**        /** ******** 
+#     //     //////// //     // //         // ////////  
 
-################ Searching by ONTOLOGY TERMS ################ 
 
 elif search_type == "ontology" and input_text != "":
 
@@ -973,9 +948,6 @@ elif search_type == "ontology" and input_text != "":
 	term_ids_are_valid = [bool(pattern.match(term_id)) for term_id in term_ids]
 	if False in term_ids_are_valid:
 		st.markdown("Invalid ontology term identifiers.")
-
-
-
 
 		
 	else:
@@ -1022,8 +994,6 @@ elif search_type == "ontology" and input_text != "":
 		subset_df[COLUMN_NAMES["result"]] = np.arange(1, len(subset_df)+1)
 
 
-		subset_df.index = np.arange(1, len(subset_df)+1)
-
 		if subset_df.shape[0] == 0:
 			st.markdown("No genes were found for '{}'. Make sure the ontology term IDs are separated by commas or spaces and formatted like the examples.".format(term_id))
 		else:
@@ -1031,60 +1001,15 @@ elif search_type == "ontology" and input_text != "":
 			st.markdown("### Genes with Matching Annotations")
 			st.markdown("The dataset of plant genes below shows only genes with annotations that included one or more of the searched ontology terms.")
 
-			# Display the sorted and filtered dataset as a table with the relevant columns.
-			def truncate_description_cell_2(s, num_lines_to_keep):
-				lines = s.split(NEWLINE_TOKEN)
-				if len(lines) > num_lines_to_keep:
-					index_of_last_line = num_lines_to_keep-1
-					lines[num_lines_to_keep-1] = "{}...".format(lines[num_lines_to_keep-1])
-					modified_s = NEWLINE_TOKEN.join(lines[:index_of_last_line+1])
-					return(modified_s)
-				else:
-					return(s)
 
+			subset_df[COLUMN_NAMES["phenotype"]] = subset_df["descriptions_with_newline_tokens"]
 			if truncate:
-				subset_df["Phenotype Description"] = subset_df["descriptions_with_newline_tokens"]
-				subset_df["Phenotype Description"] = subset_df.apply(lambda row: truncate_description_cell_2(row["descriptions_with_newline_tokens"], min(row["num_either"],MAX_LINES_IN_RESULT_COLUMN)),axis=1)
-
-			else:
-				subset_df["Phenotype Description"] = subset_df["descriptions_with_newline_tokens"]
-
+				subset_df[COLUMN_NAMES["phenotype"]] = subset_df[["descriptions_with_newline_tokens","num_either"]].apply(lambda row: truncate_description_cell(row["descriptions_with_newline_tokens"], min(row["num_either"],MAX_LINES_IN_RESULT_COLUMN)),axis=1)
 
 
 			columns_to_include_keys = ["result", "terms", "species", "gene", "model", "phenotype"]
-			my_df = subset_df[[COLUMN_NAMES[x] for x in columns_to_include_keys]].head(ROW_LIMIT)
-			#my_df = subset_df[[COLUMN_NAMES["terms"], "Species", "Gene", "Gene Model", "Phenotype Description"]]
-			
-
-			header_values = my_df.columns
-			cell_values = []
-			for index in range(0, len(my_df.columns)):
-				cell_values.append(my_df.iloc[:,index:index+1])
-
-
-			# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
-			# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
-			#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
-			descriptions = list(cell_values[1][COLUMN_NAMES["terms"]].values)
-			descriptions = [x.replace(r"[NEWLINE]","<br>") for x in descriptions]
-			cell_values[1] = descriptions
-
-
-			descriptions = list(cell_values[5][COLUMN_NAMES["phenotype"]].values)
-			descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
-			cell_values[5] = descriptions
-
-
-			fig = go.Figure(data=[go.Table(
-				columnorder = list(range(len(columns_to_include_keys))),
-				columnwidth = [COLUMN_WIDTHS[x] for x in columns_to_include_keys],
-				header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
-				cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14))
-				)])
-
-			fig.update_layout(width=table_width, height=4000)
-			st.plotly_chart(fig)
-			
+			columns_to_include_keys_and_wrap = ["terms", "phenotype"]
+			display_plottly_dataframe(subset_df, columns_to_include_keys, columns_to_include_keys_and_wrap, ROW_LIMIT)
 
 
 
@@ -1093,7 +1018,21 @@ elif search_type == "ontology" and input_text != "":
 
 
 
-################ Searching by KEYWORDS AND KEYPHRASES ################ 
+
+
+
+
+
+
+
+#  **   ** ******** **    ** **       **   *******   *******   *******    ********
+# /**  ** /**///// //**  ** /**      /**  **/////** /**////** /**////**  **////// 
+# /** **  /**       //****  /**   *  /** **     //**/**   /** /**    /**/**       
+# /****   /*******   //**   /**  *** /**/**      /**/*******  /**    /**/*********
+# /**/**  /**////     /**   /** **/**/**/**      /**/**///**  /**    /**////////**
+# /**//** /**         /**   /**** //****//**     ** /**  //** /**    **        /**
+# /** //**/********   /**   /**/   ///** //*******  /**   //**/*******   ******** 
+# //   // ////////    //    //       //   ///////   //     // ///////   ////////  
 
 elif search_type == "keyword" and input_text != "":
 
@@ -1125,36 +1064,17 @@ elif search_type == "keyword" and input_text != "":
 		st.markdown("### Genes with Matching Phenotype Descriptions")
 		st.markdown("The dataset of plant genes below shows only genes with phenotype description that included one or more of the searched keywords or phrases.")
 
-
+		# Formatting the columns correctly and truncating ones that wrap on multiple lines if the table is compressed.
 		if truncate:
 			subset_df[COLUMN_NAMES["phenotype"]] = subset_df["descriptions_one_line_truncated"]
 		else:
 			subset_df[COLUMN_NAMES["phenotype"]] = subset_df["descriptions_with_newline_tokens"]
 
 
-
+		# Show the subset of columns that is relevant to this search.
 		columns_to_include_keys = ["result", "keywords", "species", "gene", "model", "phenotype"]
-		my_df = subset_df[[COLUMN_NAMES[x] for x in columns_to_include_keys]].head(ROW_LIMIT)
-		header_values = my_df.columns
-		cell_values = []
-		for index in range(0, len(my_df.columns)):
-			cell_values.append(my_df.iloc[:,index:index+1])
-
-
-		descriptions = list(cell_values[5][COLUMN_NAMES["phenotype"]].values)
-		descriptions = [x.replace(NEWLINE_TOKEN, "<br>") for x in descriptions]
-		cell_values[5] = descriptions
-
-		fig = go.Figure(data=[go.Table(
-			columnorder = list(range(len(columns_to_include_keys))),
-			columnwidth = [COLUMN_WIDTHS[x] for x in columns_to_include_keys],
-			header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
-			cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14))
-			)])
-
-		fig.update_layout(width=table_width, height=4000)
-		st.plotly_chart(fig)
-		
+		columns_to_include_keys_and_wrap = []
+		display_plottly_dataframe(subset_df, columns_to_include_keys, columns_to_include_keys_and_wrap, ROW_LIMIT)
 
 	# No need to keep this subset of the dataframe in memory if another search is performed.
 	subset_df = None
@@ -1169,102 +1089,67 @@ elif search_type == "keyword" and input_text != "":
 
 
 
-################ Searching by PHENOTYPE DESCRIPTION ################ 
+#  ******** *******   ******** ********   ********** ******** **     ** **********
+# /**///// /**////** /**///// /**/////   /////**/// /**///// //**   ** /////**/// 
+# /**      /**   /** /**      /**            /**    /**       //** **      /**    
+# /******* /*******  /******* /*******       /**    /*******   //***       /**    
+# /**////  /**///**  /**////  /**////        /**    /**////     **/**      /**    
+# /**      /**  //** /**      /**            /**    /**        ** //**     /**    
+# /**      /**   //**/********/********      /**    /******** **   //**    /**    
+# //       //     // //////// ////////       //     //////// //     //     //     
 
 elif search_type == "phenotype" and input_text != "":
 
-
-	#if truncate:
-	#	df["Phenotype Description"] = df["descriptions_one_line_truncated"]
-	#else:
-	#	df["Phenotype Description"] = df["descriptions"]
 
 	# Start the results section of the page.
 	st.markdown("## Results")
 
 	# Do the processing of the search and add necessary columns to the dataframe to be shown.
 	with st.spinner("Searching dataset for similar phenotype descriptions..."):
+		
 		search_string = input_text
 		f_tokenizing = APPROACH_NAMES_AND_DATA[approach]["tokenization_function"]
 		f_preprocessing = APPROACH_NAMES_AND_DATA[approach]["preprocessing_fucntion"]
-
 		raw_sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance = description_search(search_string, graph, f_tokenizing, f_preprocessing)
 
+		# Generate a column that will be used as the sorting metric, and sort the dataframe.
 		df["distance"] = df["id"].map(gene_id_to_min_distance)
 		df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
-		df[COLUMN_NAMES["rank"]] = np.arange(1, len(df)+1)
-
-
-		df = df.head(ROW_LIMIT)
 		
+		# Subset it frmo this point forward after sorting to not waste formatting time on something that won't be shown.
+		df = df.head(ROW_LIMIT)
+
+		# Create all the formatted columns that will need to be displayed.
+		df[COLUMN_NAMES["rank"]] = np.arange(1, len(df)+1)
 		gene_ids = df["id"].values
 		gene_id_to_formatted_queries, gene_id_to_formatted_similarities = format_result_strings(raw_sentence_tokens, gene_ids, gene_id_to_distances, RESULT_COLUMN_WIDTH, MAX_LINES_IN_RESULT_COLUMN)
 		df[COLUMN_NAMES["sentences"]] = df["id"].map(gene_id_to_formatted_queries)
 		df[COLUMN_NAMES["score"]] = df["id"].map(gene_id_to_formatted_similarities)
 
-
-
-
 	# Describe what the results of the search are and what they mean in markdown.
 	st.markdown("### Genes with Matching Phenotype Descriptions")
-	st.markdown("Genes with phenotypes that are described most similarity to '{}'".format(search_string))
+	st.markdown("Genes with phenotypes that are described most similarly to '{}'".format(search_string))
 
 
-	def truncate_description_cell_3(s, num_lines_to_keep):
-		lines = s.split(NEWLINE_TOKEN)
-		if len(lines) > num_lines_to_keep:
-			index_of_last_line = num_lines_to_keep-1
-			lines[num_lines_to_keep-1] = "{}...".format(lines[num_lines_to_keep-1])
-			modified_s = NEWLINE_TOKEN.join(lines[:index_of_last_line+1])
-			return(modified_s)
-		else:
-			return(s)
-
+	# Formatting the columns correctly and truncating ones that wrap on multiple lines if the table is compressed.
+	df[COLUMN_NAMES["phenotype"]] = df["descriptions_with_newline_tokens"]
 	if truncate:
-		df[COLUMN_NAMES["phenotype"]] = df["descriptions_with_newline_tokens"]
-		df[COLUMN_NAMES["phenotype"]] = df["Phenotype Description"].map(lambda x: truncate_description_cell_3(x, min(len(raw_sentence_tokens),MAX_LINES_IN_RESULT_COLUMN)))
-
-	else:
-		df[COLUMN_NAMES["phenotype"]] = df["descriptions_with_newline_tokens"]
+		df[COLUMN_NAMES["phenotype"]] = df["Phenotype Description"].map(lambda x: truncate_description_cell(x, min(len(raw_sentence_tokens),MAX_LINES_IN_RESULT_COLUMN)))
 
 
-
+	# Show the subset of columns that is relevant to this search.
 	columns_to_include_keys = ["rank", "score", "sentences", "species", "gene", "model", "phenotype"]
-	my_df = df[[COLUMN_NAMES[x] for x in columns_to_include_keys]].head(ROW_LIMIT)
-	
-	header_values = my_df.columns
-	cell_values = []
-	for index in range(0, len(my_df.columns)):
-		cell_values.append(my_df.iloc[:,index:index+1])
-
-
-	# Shouldn't have to do it this way, but we do. There is a bug with inserting the <br> tags any other way than in strings specified in this way.
-	# For some reason, HTML tags present before this point are not recognized, I haven't figured out why.
-	#cell_values[0][RESULT_COLUMN_STRING] = cell_values[0][RESULT_COLUMN_STRING].map(lambda x: x.replace(r"\n\n",r"<br>"))
-	descriptions = list(cell_values[2][COLUMN_NAMES["sentences"]].values)
-	descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
-	cell_values[2] = descriptions
-
-	descriptions = list(cell_values[1][COLUMN_NAMES["score"]].values)
-	descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
-	cell_values[1] = descriptions
-
-	descriptions = list(cell_values[6][COLUMN_NAMES["phenotype"]].values)
-	descriptions = [x.replace(NEWLINE_TOKEN,"<br>") for x in descriptions]
-	cell_values[6] = descriptions
+	columns_to_include_keys_and_wrap = ["score", "sentences", "phenotype"]
+	display_plottly_dataframe(df, columns_to_include_keys, columns_to_include_keys_and_wrap, ROW_LIMIT)
 
 
 
-	fig = go.Figure(data=[go.Table(
-		columnorder = list(range(len(columns_to_include_keys))),
-		columnwidth = [COLUMN_WIDTHS[x] for x in columns_to_include_keys],
-		header=dict(values=header_values, fill_color=TABLE_HEADER_COLOR, align="left", font=dict(color='black', size=14), height=30),
-		cells=dict(values=cell_values, fill_color=TABLE_ROWS_COLOR, align="left", font=dict(color='black', size=14)),
-		)])
 
-	fig.update_layout(width=table_width, height=4000)
-	st.plotly_chart(fig)
-	
+
+
+
+
+
 
 
 
