@@ -6,6 +6,7 @@ import re
 import itertools
 import nltk
 import re
+import base64
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 from collections import defaultdict
@@ -80,6 +81,10 @@ INHERITED_ANNOTATION_TAG = "Indirect Annotation"
 
 
 
+
+
+
+
 # Constants that help define how the columns appear in the plottly tables. 
 # The first value is the universal string key used throughout the script, so leave that alone.
 # The second is how the column is titled in the presented tables so that can be changed just here and the change will take effect throughout.
@@ -99,6 +104,9 @@ column_info = [
 ]
 COLUMN_NAMES = {x[0]:x[1] for x in column_info}
 COLUMN_WIDTHS = {x[0]:x[2] for x in column_info}
+
+
+
 
 
 
@@ -145,16 +153,23 @@ TO_SPECIES_DISPLAY_NAME = {i:d for i,d in zip(internal_species_strings,display_s
 # preprocessing_function: A function for how text should be preprocessed in order to be compatible with this approach.
 APPROACH_NAMES_AND_DATA = {
 	"n-grams":{
-		"path_dists":"resources/dists_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
-		"path_vectors":"resources/vectors_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle",
-		"mapping_file":"resources/N_gene_id_to_unique_ids_sent_tokens.pickle",
+		"path_dists":"resources/A_dists_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
+		"path_vectors":"resources/A_vectors_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle",
+		"mapping_file":"resources/A_gene_id_to_unique_ids_sent_tokens.pickle",
 		"tokenization_function":sentence_tokenize,
 		"preprocessing_fucntion":full_preprocessing,
 		},
-	"fuzzy":{
-		"path_dists":"resources/dists_with_word2vec_tokenization_pubmed_size_200_mean.pickle", 
-		"path_vectors":"resources/vectors_with_word2vec_tokenization_pubmed_size_200_mean.pickle",
-		"mapping_file":"resources/W_gene_id_to_unique_ids_sent_tokens.pickle",
+	"pubmed":{
+		"path_dists":"resources/B_dists_with_word2vec_tokenization_pubmed_size_200_mean.pickle", 
+		"path_vectors":"resources/B_vectors_with_word2vec_tokenization_pubmed_size_200_mean.pickle",
+		"mapping_file":"resources/B_gene_id_to_unique_ids_sent_tokens.pickle",
+		"tokenization_function":sentence_tokenize,
+		"preprocessing_fucntion":identify_function,
+		},
+	"pmc":{
+		"path_dists":"resources/C_dists_with_word2vec_tokenization_pmc_size_200_mean.pickle", 
+		"path_vectors":"resources/C_vectors_with_word2vec_tokenization_pmc_size_200_mean.pickle",
+		"mapping_file":"resources/C_gene_id_to_unique_ids_sent_tokens.pickle",
 		"tokenization_function":sentence_tokenize,
 		"preprocessing_fucntion":identify_function,
 		},
@@ -165,7 +180,7 @@ APPROACH_NAMES_AND_DATA = {
 
 # For testing, be able to subset this nested dictionary without having to uncomment sections of it.
 # Just uncomment these two lines to use the entire set of approaches and load all files.
-names_to_actually_use = ["fuzzy", "n-grams"]
+names_to_actually_use = ["n-grams", "pubmed", "pmc"]
 APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k in names_to_actually_use}
 
 
@@ -586,7 +601,7 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 # This is necessary because those internal IDs represent compressed or altered versions of the text and could 
 # refer to more than one text instance in the actual dataset that is seen here.
 with st.spinner("Reading very large files, this might take a few minutes."):
-	dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching= read_in_files(DATASET_PATH, APPROACH_NAMES_AND_DATA)
+	dataset, approach_to_object, approach_to_mapping, df, id_to_descriptions_for_keyword_matching = read_in_files(DATASET_PATH, APPROACH_NAMES_AND_DATA)
 	ontologies = read_in_ontologies(ONTOLOGY_NAMES, ONTOLOGY_PICKLE_PATHS)
 
 
@@ -651,7 +666,7 @@ TABLE_WIDTH = table_width
 
 
 ref_text = """
-	If you find this tool useful in your own research, please cite the following paper [reference here].
+	If you find this tool useful in your own research, please cite [add link to preprint here].
 	"""
 
 contact_text = """
@@ -709,9 +724,6 @@ input_text = st.text_input(label="Enter text here")
 
 
 
-
-
-
 # TODO add download buttons.
 
 
@@ -736,6 +748,22 @@ input_text = st.text_input(label="Enter text here")
 # The dataframe as it should be formatted for displaying in the app, not all data is needed.
 df["Species"] = df["species"].map(TO_SPECIES_DISPLAY_NAME)
 df = df[df["Species"].isin(species_list)]
+
+
+
+
+
+def display_download_link(df, column_keys, num_rows):
+
+	# Subsetting the dataframe.
+	my_df = df[[COLUMN_NAMES[x] for x in column_keys]].head(num_rows)
+
+	# Presenting a download link.
+	csv = my_df.to_csv(index=False)
+	b64 = base64.b64encode(csv.encode()).decode()  # some strings
+	link = f'<a href="data:file/csv;base64,{b64}" download="query_results.csv">Download (CSV)</a>'
+	st.markdown(link, unsafe_allow_html=True)
+
 
 
 
@@ -904,6 +932,7 @@ if search_type == "gene" and input_text != "":
 
 			columns_to_include_keys = ["rank", "score", "sentences", "species", "gene", "model", "phenotype"]
 			columns_to_include_keys_and_wrap = ["score", "sentences", "phenotype"]
+			display_download_link(df, columns_to_include_keys, ROW_LIMIT)
 			display_plottly_dataframe(df, columns_to_include_keys, columns_to_include_keys_and_wrap, ROW_LIMIT)
 
 
@@ -1009,6 +1038,7 @@ elif search_type == "ontology" and input_text != "":
 
 			columns_to_include_keys = ["result", "terms", "species", "gene", "model", "phenotype"]
 			columns_to_include_keys_and_wrap = ["terms", "phenotype"]
+			display_download_link(subset_df, columns_to_include_keys, ROW_LIMIT)
 			display_plottly_dataframe(subset_df, columns_to_include_keys, columns_to_include_keys_and_wrap, ROW_LIMIT)
 
 
@@ -1074,6 +1104,8 @@ elif search_type == "keyword" and input_text != "":
 		# Show the subset of columns that is relevant to this search.
 		columns_to_include_keys = ["result", "keywords", "species", "gene", "model", "phenotype"]
 		columns_to_include_keys_and_wrap = []
+
+		display_download_link(subset_df, columns_to_include_keys, ROW_LIMIT)
 		display_plottly_dataframe(subset_df, columns_to_include_keys, columns_to_include_keys_and_wrap, ROW_LIMIT)
 
 	# No need to keep this subset of the dataframe in memory if another search is performed.
@@ -1140,15 +1172,11 @@ elif search_type == "phenotype" and input_text != "":
 	# Show the subset of columns that is relevant to this search.
 	columns_to_include_keys = ["rank", "score", "sentences", "species", "gene", "model", "phenotype"]
 	columns_to_include_keys_and_wrap = ["score", "sentences", "phenotype"]
+
+
+	# Displaying the dataframe.
+	display_download_link(df, columns_to_include_keys, ROW_LIMIT)
 	display_plottly_dataframe(df, columns_to_include_keys, columns_to_include_keys_and_wrap, ROW_LIMIT)
-
-
-
-
-
-
-
-
 
 
 
@@ -1161,10 +1189,6 @@ else:
 	pass
 	# TODO Should the whole dataset be displayed here instead?
 	# TODO Keeping the else pass for now to remind me something might need to go here.
-
-
-
-
 
 
 
