@@ -70,7 +70,7 @@ MAX_LINES_IN_RESULT_COLUMN = 100
 DESCRIPTION_COLUMN_WIDTH = 90
 NEWLINE_TOKEN = "[NEWLINE]"
 DIRECT_ANNOTATION_TAG = "Direct Annotation"
-INHERITED_ANNOTATION_TAG = "Indirect Annotation"
+INHERITED_ANNOTATION_TAG = "Inherited Annotation"
 
 
 
@@ -192,6 +192,17 @@ PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DE
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 # Initial configuration and the logo image at the top of the page.
 st.set_page_config(page_title="QuOATS", layout="wide", initial_sidebar_state="expanded")
 PATH_TO_LOGO_PNG = "resources/logo.png"
@@ -199,23 +210,116 @@ PATH_TO_LOGO_PNG = "resources/logo.png"
 
 # Markdown for introducing the app and linking to other relevant resources like the project Github page.
 
-'''
-# QuOATS
 
-## About
-This tool is associated with a preprint available [here](https://www.biorxiv.org/), describing the utility of natural language processing 
-approaches for comparing phenotype descriptions in plants. Please see that paper for a discussion of the dataset of genes included here,
-and the methods used to generate the text similarity values presented in results of queries using this tool. 
+st.markdown("# QuOATS")
+
+st.markdown("## Documentation")
+
+show_documentation = st.checkbox(label="Show", value=True)
 
 
-## Instructions
-Select a query type from the list below, and then enter a query into the searchbar.
-- For **Gene Identifiers** query, enter in any gene identifier that might be present in the dataset, such as gene names, protein names, gene models, or any other type of gene alias or synonym. 
-- For **Ontology Terms**, enter any number of ontology term IDs separated by either spaces or commas. The results returned will be genes either directly or indirectly annotated with these terms.
-- For **Keywords & Keyphrases**, enter any number of words or phrases separated by commas. The results returned will be genes mapped to phenotypes that contain these words or phrases.
-- For **Free Text**, enter any number of arbitrary strings, separated by periods. Each string will be compared to each sentence or 
-fragment in the phenotype descriptions in this dataset, and genes with the most similar phenotypes will be returned.
-'''
+
+
+documentation_string = """
+
+This tool enables querying a dataset of plant genes using annotations with ontology terms and natural language. The dataset and the
+motivation behind this tool are described in detail in the preprint that is available here [add link to the preprint here]. The tool
+provides four different methods querying the dataset, and the result in each case is a table of genes sorted by relevance to the query.
+The actions behind each methods and the nature of the returned results are described in detail in the next sections. The results of any 
+query can be downloaded as a CSV file using the provided link.
+
+
+### Gene Identifiers
+The genes in this dataset are associated with several types of identifying strings. These include gene names, gene
+symbols, protein names, gene models (e.g., AT3G17980, GRMZM2G422750), and other aliases and synonyms. To use this 
+search method, enter a string into the searchbar, and if there are any matches in the dataset, a list of one or more 
+matching genes will be brought up. Check the 'show possible gene synonyms' option to the left to show other gene identifiers
+associated with each gene returned by a search. Selecting one of the returned genes will execute a free text query using
+the phenotype description associated with that gene to identify other genes that are associated with similarly described
+phenotypes. For details on that query, see the 'Free Text' section below. The number of genes that are in the returned
+table can be adjusted to the left. Uncheck the 'compress phenotypes in table' option to display the entirety of the 
+phenotype descriptions associated with each gene.
+
+### Ontology Terms
+Genes in this dataset have been annotated by curators with ontology terms from the Gene Ontology (GO), the Plant Ontology (PO), 
+and the Phenotype and Trait Ontology (PATO). This search option can be used to identify which genes in the dataset are associated
+with which ontology terms. Enter any number of ontology term IDs, separated by either commas or spaces. The term IDs should be in
+standard format with the ontology name and the term number (e.g., PATO:0000587). The table of returned genes contains the genes
+that were either directly annotated with the searched terms, or inherited this annotation through the ontology hierarchy, which is
+indicated in the results. The genes are sorted based on how many of the searched terms were direct annotations, and then how many 
+of the searched terms were inherited annotations. Uncheck the 'compress phenotypes in table' option to display the entirety of the 
+phenotype descriptions associated with each gene.
+
+### Keywords & Keyphrases
+This search option identifies genes in the dataset that have phenotype descriptions that contain particular words or phrases.
+Enter any number of search strings separated by commas. The results of this search indicate which words or phrases are present
+in the phenotype description of each returned gene. The genes are ordered based on the quantity of searched words or phrases 
+present in their phenotype descriptions. Although this search option is for exact matching, preprocessing and normalization 
+of the search text is done to ensure that words with the same stem or that differ only by case still match (e.g., plants, plant, and Plant). 
+Uncheck the 'compress phenotypes in table' option to display the entirety of the phenotype descriptions associated with each gene.
+
+### Free Text
+This search option allows for querying with a phenotype descriptions or set of phenotype descriptions (separated by periods), in
+order to recover genes that are associated with phenotypes that have been similarly described. Rather than using exact matching
+only, this search type combines text embedding models that are capable of making associations between related words or concepts.
+Each string separated by periods in the query is compared to each sentence or fragment in the phenotype descriptions of genes in
+the dataset using three different NLP methods (n-grams, word embedding models trained on Wikipedia, and word embedding models
+trained on PubMed). The similarities are average across methods, and for each gene, the greatest similarity between text in that 
+gene's phenotype description and the queried text is returned. The returned genes are ranked based on the greatest individual 
+similarity and then the average similarity across all descriptions provided in the query. Uncheck the 'compress phenotypes in table' 
+option to display the entirety of the phenotype descriptions associated with each gene.
+
+
+"""
+
+
+
+
+
+
+
+
+
+if show_documentation:
+	st.markdown(documentation_string)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -641,12 +745,8 @@ if len(species_list) == 0:
 st.sidebar.markdown("### General Page Options")
 truncate = st.sidebar.checkbox(label="Compress phenotypes in table", value=True)
 synonyms = st.sidebar.checkbox(label="Show possible gene synonyms", value=False)
-include_examples = st.sidebar.checkbox(label="Show examples", value=False)
+include_examples = st.sidebar.checkbox(label="Show example queries", value=False)
 ROW_LIMIT = st.sidebar.number_input("Number of genes to display in results", min_value=1, max_value=None, value=50, step=50)
-
-
-# Presenting some more advanced options that shouldn't normally need to be changed.
-st.sidebar.markdown("### Display Options")
 TABLE_WIDTH = st.sidebar.slider(label="Table Width (Pixels)", min_value=400, max_value=8000, value=2000, step=100, format=None, key=None)
 
 
@@ -741,15 +841,31 @@ df = df[df["Species"].isin(species_list)]
 
 
 
-def display_download_link(df, column_keys, num_rows):
+def display_download_link(df, column_keys, column_keys_to_unwrap, column_keys_to_list, num_rows):
 
 	# Subsetting the dataframe.
 	my_df = df[[COLUMN_NAMES[x] for x in column_keys]].head(num_rows)
 
-	# Presenting a download link.
-	csv = my_df.to_csv(index=False)
-	b64 = base64.b64encode(csv.encode()).decode() 
-	link = f'<a href="data:file/csv;base64,{b64}" download="query_results.csv">Download (CSV)</a>'
+
+	# Anything that had newline characters that were being used just to wrap to the next line.
+	for key in column_keys_to_unwrap:
+		my_df[COLUMN_NAMES[key]] = my_df[COLUMN_NAMES[key]].map(lambda x: x.replace(NEWLINE_TOKEN,""))
+
+	# Anything where the newline character was being used to separate a list of items like scores of terms.
+	for key in column_keys_to_list:
+		my_df[COLUMN_NAMES[key]] = my_df[COLUMN_NAMES[key]].map(lambda x: "{}".format("; ".join(x.split(NEWLINE_TOKEN))))
+
+
+	# Presenting a download link for a csv file.
+	#csv = my_df.to_csv(index=False)
+	#b64 = base64.b64encode(csv.encode()).decode() 
+	#link = f'<a href="data:file/csv;base64,{b64}" download="query_results.csv">Download (CSV)</a>'
+	#st.markdown(link, unsafe_allow_html=True)
+
+	# Presenting a download link for a tsv file.
+	tsv = my_df.to_csv(index=False, sep="\t")
+	b64 = base64.b64encode(tsv.encode()).decode() 
+	link = f'<a href="data:file/tsv;base64,{b64}" download="query_results.tsv">Download tsv file</a>'
 	st.markdown(link, unsafe_allow_html=True)
 
 
@@ -922,7 +1038,9 @@ if search_type == "gene" and input_text != "":
 
 			columns_to_include_keys = ["rank", "score", "sentences", "species", "gene", "model", "phenotype"]
 			columns_to_include_keys_and_wrap = ["score", "sentences", "phenotype"]
-			display_download_link(df, columns_to_include_keys, ROW_LIMIT)
+			column_keys_to_unwrap = ["phenotype"]
+			column_keys_to_list = ["score", "sentences"]
+			display_download_link(df, columns_to_include_keys, column_keys_to_unwrap, column_keys_to_list, ROW_LIMIT)
 			display_plottly_dataframe(df, columns_to_include_keys, columns_to_include_keys_and_wrap, ROW_LIMIT)
 
 
@@ -1024,7 +1142,9 @@ elif search_type == "ontology" and input_text != "":
 
 			columns_to_include_keys = ["result", "terms", "species", "gene", "model", "phenotype"]
 			columns_to_include_keys_and_wrap = ["terms", "phenotype"]
-			display_download_link(subset_df, columns_to_include_keys, ROW_LIMIT)
+			column_keys_to_unwrap = ["phenotype"]
+			column_keys_to_list = ["terms"]
+			display_download_link(subset_df, columns_to_include_keys, column_keys_to_unwrap, column_keys_to_list, ROW_LIMIT)
 			display_plottly_dataframe(subset_df, columns_to_include_keys, columns_to_include_keys_and_wrap, ROW_LIMIT)
 
 
@@ -1089,9 +1209,10 @@ elif search_type == "keyword" and input_text != "":
 
 		# Show the subset of columns that is relevant to this search.
 		columns_to_include_keys = ["result", "keywords", "species", "gene", "model", "phenotype"]
-		columns_to_include_keys_and_wrap = []
-
-		display_download_link(subset_df, columns_to_include_keys, ROW_LIMIT)
+		columns_to_include_keys_and_wrap = ["phenotype"]
+		column_keys_to_unwrap = ["phenotype"]
+		column_keys_to_list = []
+		display_download_link(subset_df, columns_to_include_keys, column_keys_to_unwrap, column_keys_to_list, ROW_LIMIT)
 		display_plottly_dataframe(subset_df, columns_to_include_keys, columns_to_include_keys_and_wrap, ROW_LIMIT)
 
 	# No need to keep this subset of the dataframe in memory if another search is performed.
@@ -1137,7 +1258,7 @@ elif search_type == "phenotype" and input_text != "":
 		df["distance"] = df["id"].map(gene_id_to_min_distance)
 		df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
 		
-		# Subset it frmo this point forward after sorting to not waste formatting time on something that won't be shown.
+		# Subset it from this point forward after sorting to not waste formatting time on something that won't be shown.
 		df = df.head(ROW_LIMIT)
 
 		# Create all the formatted columns that will need to be displayed.
@@ -1161,10 +1282,9 @@ elif search_type == "phenotype" and input_text != "":
 	# Show the subset of columns that is relevant to this search.
 	columns_to_include_keys = ["rank", "score", "sentences", "species", "gene", "model", "phenotype"]
 	columns_to_include_keys_and_wrap = ["score", "sentences", "phenotype"]
-
-
-	# Displaying the dataframe.
-	display_download_link(df, columns_to_include_keys, ROW_LIMIT)
+	column_keys_to_unwrap = ["phenotype"]
+	column_keys_to_list = ["score","sentences"]
+	display_download_link(df, columns_to_include_keys, column_keys_to_unwrap, column_keys_to_list, ROW_LIMIT)
 	display_plottly_dataframe(df, columns_to_include_keys, columns_to_include_keys_and_wrap, ROW_LIMIT)
 
 
