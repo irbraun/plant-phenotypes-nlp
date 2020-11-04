@@ -175,7 +175,7 @@ APPROACH_NAMES_AND_DATA = {
 
 # For testing, be able to subset this nested dictionary without having to uncomment sections of it.
 # Just uncomment these two lines to use the entire set of approaches and load all files.
-names_to_actually_use = ["n-grams", "pubmed", "pmc"]
+names_to_actually_use = ["n-grams", "pubmed"]
 APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k in names_to_actually_use}
 
 
