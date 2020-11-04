@@ -15,13 +15,9 @@ from gensim.utils import simple_preprocess
 from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string, strip_tags, strip_punctuation
 
 
-
+# TODO modules that need to be added to the dockerfile.
 from PIL import Image
 from textwrap import wrap
-
-
-
-# NO MODULE NAME PLOTLY, ADD THIS THE CONDA ENVIRONMENT IF USING.
 import plotly
 import plotly.graph_objects as go
 
@@ -67,11 +63,10 @@ nltk.download('averaged_perceptron_tagger', quiet=True)
 # Constants that help define how the tables look and how the text wraps within the table cells.
 TABLE_HEADER_COLOR = "#808080"
 TABLE_ROWS_COLOR = "#F1F2F6"
-TABLE_HEIGHT = 4000
+TABLE_HEIGHT = 1500
 HEADER_HEIGHT = 30
 RESULT_COLUMN_WIDTH = 55
-ROW_LIMIT = 40
-MAX_LINES_IN_RESULT_COLUMN = 10
+MAX_LINES_IN_RESULT_COLUMN = 100
 DESCRIPTION_COLUMN_WIDTH = 90
 NEWLINE_TOKEN = "[NEWLINE]"
 DIRECT_ANNOTATION_TAG = "Direct Annotation"
@@ -208,9 +203,10 @@ PATH_TO_LOGO_PNG = "resources/logo.png"
 # QuOATS
 
 ## About
-This tool can be used to query a dataset of plant genes, ontology term annotations, and natural language phenotype descriptions using a variety of methods. 
-For a discussion of the underlying methodology used to query the dataset, see the full description in the Braun and Lawrence-Dill (2020) preprint available
-here [here](https://www.biorxiv.org/).
+This tool is associated with a preprint available [here](https://www.biorxiv.org/), describing the utility of natural language processing 
+approaches for comparing phenotype descriptions in plants. Please see that paper for a discussion of the dataset of genes included here,
+and the methods used to generate the text similarity values presented in results of queries using this tool. 
+
 
 ## Instructions
 Select a query type from the list below, and then enter a query into the searchbar.
@@ -220,16 +216,6 @@ Select a query type from the list below, and then enter a query into the searchb
 - For **Free Text**, enter any number of arbitrary strings, separated by periods. Each string will be compared to each sentence or 
 fragment in the phenotype descriptions in this dataset, and genes with the most similar phenotypes will be returned.
 '''
-
-
-
-
-#Use the searchbar below to enter a query. Select whether the query refers to a gene identifier, ontology terms, keywords and 
-#keyphrases, or free text. Examples of possible queries for each of these options are given. Gene identifiers can be gene names, 
-#gene models, protein names, or any other alias or synonym present in the dataset. Ontology terms should be separated by spaces 
-#or commas. Keywords and keyphrases should be separated by commas. There are no length or formatting restrictions for a free text 
-#query. If a free text query is performed, the selected similarity algorithm is used to quantify similarity to the
-#phenotype descriptions of all genes in the dataset.
 
 
 
@@ -524,7 +510,7 @@ def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, t
 
 
 
-def description_search(text, graph, tokenization_function, preprocessing_function):
+def description_search(text, tokenization_function):
 	"""Helper function for searching the dataset for similar phenotype descriptions.
 	
 	Args:
@@ -536,49 +522,63 @@ def description_search(text, graph, tokenization_function, preprocessing_functio
 	Returns:
 	    TYPE: Description
 
+	
 	"""
 	# Do tokenization and preprocessing on the searched text to yield a list of strings.
 	# The tokenization and preprocessing have to match the object that will be used, and this decision is informed by
 	# some mapping that is already done, and the choices are passed in to this function.
 	# The tokenization might just yield a single text, but it still goes in a list for consistency.
 	sentence_tokens = tokenization_function(text)
-	preprocessed_sentence_tokens  = [preprocessing_function(s) for s in sentence_tokens]
+	
 
 
 
-
-	# Now the preprocessed sentence tokens are in the right format, and ready to be embedded and compared to the existing data.
-
-
-	# Get a mapping between gene IDs and their distances to each new text string parsed from the search string.
-	# The key is the gene ID from the existing dataset and the values are a list in the same order as the preprocessed query sentences.
-	gene_id_to_distances = defaultdict(list)
-	for s in preprocessed_sentence_tokens:
-		internal_id_to_distance_from_new_text = graph.get_distances(s)
-		for gene_id,graph_ids in gene_id_to_graph_ids.items():
-			# What's the smallest distances between this new graph and one of the texts for the internal graph nodes.
-			graph_distances = [internal_id_to_distance_from_new_text[graph_id] for graph_id in graph_ids]
-			min_graph_distance = min(graph_distances)
-			# Remember that value as the distance from this one parsed text string from the search to this particular gene.
-			gene_id_to_distances[gene_id].append(min_graph_distance)
+	min_dicts = []
+	mean_dicts = []
+	for approach in APPROACHES:
 
 
-	# For now, just get a mapping between gene IDs and their minimum distance to any of those parsed strings.
-	# Maybe this should take more than just the minimum of them into account for this application?
-	gene_id_to_min_distance = {gene_id:min(distances) for gene_id,distances in gene_id_to_distances.items()}
-	gene_id_to_mean_distance = {gene_id:np.mean(distances) for gene_id,distances in gene_id_to_distances.items()}
+		preprocessing_function = APPROACH_NAMES_AND_DATA[approach]["preprocessing_fucntion"]
+		preprocessed_sentence_tokens  = [preprocessing_function(s) for s in sentence_tokens]
+
+
+		graph = APPROACH_TO_OBJECT[approach]
+		gene_id_to_graph_ids = APPROACH_TO_MAPPING[approach]
+
+		# Now the preprocessed sentence tokens are in the right format, and ready to be embedded and compared to the existing data.
+
+
+		# Get a mapping between gene IDs and their distances to each new text string parsed from the search string.
+		# The key is the gene ID from the existing dataset and the values are a list in the same order as the preprocessed query sentences.
+		gene_id_to_distances = defaultdict(list)
+		for s in preprocessed_sentence_tokens:
+			
+			internal_id_to_distance_from_new_text = graph.get_distances(s)
+
+
+			for gene_id,graph_ids in gene_id_to_graph_ids.items():
+				# What's the smallest distances between this new graph and one of the texts for the internal graph nodes.
+				graph_distances = [internal_id_to_distance_from_new_text[graph_id] for graph_id in graph_ids]
+				min_graph_distance = min(graph_distances)
+				# Remember that value as the distance from this one parsed text string from the search to this particular gene.
+				gene_id_to_distances[gene_id].append(min_graph_distance)
+
+
+		# For now, just get a mapping between gene IDs and their minimum distance to any of those parsed strings.
+		# Maybe this should take more than just the minimum of them into account for this application?
+		gene_id_to_min_distance = {gene_id:min(distances) for gene_id,distances in gene_id_to_distances.items()}
+		gene_id_to_mean_distance = {gene_id:np.mean(distances) for gene_id,distances in gene_id_to_distances.items()}
+	
+
+		min_dicts.append(gene_id_to_min_distance)
+		mean_dicts.append(gene_id_to_mean_distance)
+
+	gene_id_to_min_distance = {k:np.mean([d[k] for d in min_dicts]) for k in min_dicts[0].keys()}
+	gene_id_to_mean_distance = {k:np.mean([d[k] for d in mean_dicts]) for k in mean_dicts[0].keys()}
+
+
+
 	return(sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance)
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -606,15 +606,9 @@ with st.spinner("Reading very large files, this might take a few minutes."):
 
 
 
-
-
-
-
-
-
-
-
-
+APPROACHES = list(approach_to_object.keys())
+APPROACH_TO_MAPPING = approach_to_mapping
+APPROACH_TO_OBJECT = approach_to_object
 
 
 
@@ -639,34 +633,36 @@ if len(species_list) == 0:
 	species_list = species_display_names
 
 # Present information and search options for finding a particular gene or protein in the sidebar.
-st.sidebar.markdown("### Select a Similarity Algorithm")
-approach = st.sidebar.selectbox(label="Select one", options=list(approach_to_object.keys()), index=0)
-
-# Variables that get set according to which approach was selected.
-graph = approach_to_object[approach]
-gene_id_to_graph_ids = approach_to_mapping[approach]
-
-
+#st.sidebar.markdown("### Select a Similarity Algorithm")
+#approach = st.sidebar.selectbox(label="Select one", options=list(approach_to_object.keys()), index=0)
 
 
 # Presenting the general options for how the data is displayed.
 st.sidebar.markdown("### General Page Options")
-truncate = st.sidebar.checkbox(label="Truncate long phenotypes", value=True)
+truncate = st.sidebar.checkbox(label="Compress phenotypes in table", value=True)
 synonyms = st.sidebar.checkbox(label="Show possible gene synonyms", value=False)
-include_examples = st.sidebar.checkbox(label="Include Examples", value=False)
-
-
-table_width = st.sidebar.slider(label="Table Width (Pixels)", min_value=400, max_value=8000, value=2000, step=100, format=None, key=None)
-TABLE_WIDTH = table_width
+include_examples = st.sidebar.checkbox(label="Show examples", value=False)
+ROW_LIMIT = st.sidebar.number_input("Number of genes to display in results", min_value=1, max_value=None, value=50, step=50)
 
 
 # Presenting some more advanced options that shouldn't normally need to be changed.
-#st.sidebar.markdown("### Advanced Options")
+st.sidebar.markdown("### Display Options")
+TABLE_WIDTH = st.sidebar.slider(label="Table Width (Pixels)", min_value=400, max_value=8000, value=2000, step=100, format=None, key=None)
+
+
+
+
+
+
+
+
+
+
 
 
 
 ref_text = """
-	If you find this tool useful in your own research, please cite [add link to preprint here].
+	If you find this tool useful in your own research, please cite [add reference to preprint here].
 	"""
 
 contact_text = """
@@ -704,7 +700,7 @@ st.markdown("## Search")
 
 search_types = ["gene", "ontology", "keyword", "phenotype"]
 search_types_labels = ["Gene Identifiers", "Ontology Terms", "Keywords & Keyphrases", "Free Text"]
-search_type_examples = ["epc1", "PATO:0000587, PATO:0000069", "dwarfism, root system, leaves", "Plants are reduced in height. Plants have wide leaves. Smaller than normal. Something else too."]
+search_type_examples = ["epc1", "PATO:0000587, GO:0010029, PO:0020127", "dwarfism, root system, leaves, auxin", "Plants are reduced in height. Plants have wide leaves. Smaller than normal. Something else too."]
 
 if include_examples:
 	search_type_label_map = {t:"{} (e.g. '{}')".format(l,e) for t,l,e in zip(search_types, search_types_labels, search_type_examples)}
@@ -717,14 +713,6 @@ search_type = st.radio(label="Select a type of search", options=search_types, in
 input_text = st.text_input(label="Enter text here")
 
 
-
-
-
-
-
-
-
-# TODO add download buttons.
 
 
 
@@ -760,7 +748,7 @@ def display_download_link(df, column_keys, num_rows):
 
 	# Presenting a download link.
 	csv = my_df.to_csv(index=False)
-	b64 = base64.b64encode(csv.encode()).decode()  # some strings
+	b64 = base64.b64encode(csv.encode()).decode() 
 	link = f'<a href="data:file/csv;base64,{b64}" download="query_results.csv">Download (CSV)</a>'
 	st.markdown(link, unsafe_allow_html=True)
 
@@ -773,7 +761,6 @@ def display_download_link(df, column_keys, num_rows):
 def display_plottly_dataframe(df, column_keys, column_keys_to_wrap, num_rows):
 
 	my_df = df[[COLUMN_NAMES[x] for x in column_keys]].head(num_rows)
-
 
 	header_values = my_df.columns
 	cell_values = []
@@ -903,13 +890,16 @@ if search_type == "gene" and input_text != "":
 			
 			# Perform a secondary search using this gene's phenotype description to organize the rest of the data.
 			with st.spinner("Searching dataset for other genes with similar phenotype descriptions..."):
-				search_string = dataset.get_description_dictionary()[i]
-				f_tokenizing = APPROACH_NAMES_AND_DATA[approach]["tokenization_function"]
-				f_preprocessing = APPROACH_NAMES_AND_DATA[approach]["preprocessing_fucntion"]
 				
 
-				# Modifying this part from here down.
-				raw_sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance = description_search(search_string, graph, f_tokenizing, f_preprocessing)
+				search_string = dataset.get_description_dictionary()[i]
+
+
+
+				# The tokenization has to be the same for all the methods used, which in this case is just sentence tokenization. So just take one of them.
+				# TODO make this more organized, don't specifyc tokenization function in the dictionary if it needs to be identical across used methods.
+				f_tokenizing = APPROACH_NAMES_AND_DATA[APPROACHES[0]]["tokenization_function"]
+				raw_sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance = description_search(search_string, f_tokenizing)
 				df["distance"] = df["id"].map(gene_id_to_min_distance)
 				df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
 				df["Rank"] = np.arange(1, len(df)+1)
@@ -970,15 +960,12 @@ elif search_type == "ontology" and input_text != "":
 
 
 	term_ids = input_text.replace(","," ").split()
-
-	
-
 	pattern = re.compile("[A-Z]{2,}[:_][0-9]{7}$")
 	term_ids_are_valid = [bool(pattern.match(term_id)) for term_id in term_ids]
+	
 	if False in term_ids_are_valid:
 		st.markdown("Invalid ontology term identifiers.")
 
-		
 	else:
 		# Building the annotations dictionary. This should actually be done outside the search sections.
 		direct_annotations = defaultdict(list)
@@ -988,7 +975,6 @@ elif search_type == "ontology" and input_text != "":
 			for i in dataset.get_ids():
 				direct_annotations[i].extend(annotations_with_this_ontology[i])
 				inherited_annotations[i].extend(ontology_obj.inherited(annotations_with_this_ontology[i]))
-
 
 
 		# Linking out to other resources like Ontobee and Planteome.
@@ -1140,9 +1126,12 @@ elif search_type == "phenotype" and input_text != "":
 	with st.spinner("Searching dataset for similar phenotype descriptions..."):
 		
 		search_string = input_text
-		f_tokenizing = APPROACH_NAMES_AND_DATA[approach]["tokenization_function"]
-		f_preprocessing = APPROACH_NAMES_AND_DATA[approach]["preprocessing_fucntion"]
-		raw_sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance = description_search(search_string, graph, f_tokenizing, f_preprocessing)
+
+
+		# The tokenization has to be the same for all the methods used, which in this case is just sentence tokenization. So just take one of them.
+		# TODO make this more organized, don't specify tokenization function in the dictionary if it needs to be identical across used methods.
+		f_tokenizing = APPROACH_NAMES_AND_DATA[APPROACHES[0]]["tokenization_function"]
+		raw_sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance = description_search(search_string, f_tokenizing)
 
 		# Generate a column that will be used as the sorting metric, and sort the dataframe.
 		df["distance"] = df["id"].map(gene_id_to_min_distance)

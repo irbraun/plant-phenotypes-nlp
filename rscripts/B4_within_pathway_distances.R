@@ -13,7 +13,15 @@ prepare_dataframe <- function(input_path, num_shown, num_gene_threshold, y_axis_
   # Read in the input file with distances between all groups, and subset based on those parameters.
   df <- read.csv(file=input_path)
   df <- df %>% filter(n>=num_gene_threshold)
-  df <- df[1:min(num_shown,nrow(df)),]
+  
+  
+  
+  
+  
+  ####### df <- df[1:min(num_shown,nrow(df)),]
+  
+  
+  
   
   
   
@@ -24,9 +32,11 @@ prepare_dataframe <- function(input_path, num_shown, num_gene_threshold, y_axis_
   
   
   # Gather the dataframe into the long format, one value per row.
-  df_long <- gather(df, approach, avg_percentile, -group_id, -full_name, -name_for_plot, -n)
-  head(df_long)
+  #####   df_long <- gather(df, approach, avg_percentile, -group_id, -full_name, -name_for_plot, -n)
+  ######head(df_long)
   
+  
+  df_long <- df
   
   # Merge with the naming file to add in the correct name and group for including in the figure.
   names_df <- read.csv(file=names_path, header=T, sep="\t")
@@ -44,15 +54,30 @@ prepare_dataframe <- function(input_path, num_shown, num_gene_threshold, y_axis_
   # The baseline and curation methods are not applicable for this figure.
   df_long <- df_long %>% filter(!class %in% c("Curation","Baseline"))
   
-  head(df_long)
+
+    groups_to_show <- df_long %>% 
+    select(group_id,percentile) %>% 
+    group_by(group_id) %>% 
+    summarize(avg_percentile=mean(percentile)) %>% 
+    top_n(n=num_shown,wt=desc(avg_percentile)) %>% 
+    pull(group_id)
+  
+  df_long <- df_long %>% filter(group_id %in% groups_to_show)
+  
+  
+  
+  
+  df_long_t <- data.frame(df_long %>% group_by(group_id,class) %>% mutate(avg=min(percentile)))
+  head(df_long_t)
+  
   
   
   
   
   
   # Transform the dataframe by collapsing to method type, and remembering the average, min, and max metrics obtained by each class of method.
-  df_long_t <- data.frame(df_long %>% group_by(group_id,full_name,n,name_for_plot,class) %>% summarize(avg=min(avg_percentile)))
-  head(df_long_t)
+  #df_long_t <- data.frame(df_long %>% group_by(group_id,full_name,n,name_for_plot,class) %>% summarize(avg=min(percentile)))
+  #head(df_long_t)
   
   df_long_t$facet <- y_axis_name
   
@@ -71,9 +96,9 @@ prepare_dataframe <- function(input_path, num_shown, num_gene_threshold, y_axis_
 
 
 
-input_path_subsets <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_14_2020_h08m41s58_6879_rev/stacked_subsets_within_distances.csv"
-input_path_kegg <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_14_2020_h08m41s58_6879_rev/stacked_kegg_only_within_distances.csv"
-input_path_plantcyc <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_14_2020_h08m41s58_6879_rev/stacked_pmn_only_within_distances.csv"
+input_path_subsets <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_31_2020_h23m05s45_6169_plants/stacked_subsets_within_distances_melted.csv"
+input_path_kegg <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_31_2020_h23m05s45_6169_plants/stacked_kegg_only_within_distances_melted.csv"
+input_path_plantcyc <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_31_2020_h23m05s45_6169_plants/stacked_pmn_only_within_distances_melted.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/intragroup_distances.png"
 names_path <- "/Users/irbraun/phenologs-with-oats/names.tsv"
 
@@ -93,7 +118,7 @@ df_top <- prepare_dataframe(input_path, num_shown, num_gene_threshold, y_axis_na
 
 # Parameters for what to include in the figure.
 input_path <- input_path_plantcyc
-num_shown = 60
+num_shown = 50
 num_gene_threshold = 3
 width = 30
 height_per_group = 0.35
@@ -134,11 +159,26 @@ color_mapping <- setNames(method_colors, method_names)
 
 
 
+
+
+df_long_t$significant <- df_long_t$p_adjusted<=0.05
+
+
+df_long_t$significant = factor(df_long_t$significant, levels=c(TRUE,FALSE), labels= c("*","NS"))
+outline_names <- c("*","NS")
+outline_colors <- c("#000000", "#FFFFFF00")
+outline_mapping <- setNames(outline_colors, outline_names)
+
+
+
+
+
 # Make the plot.
-ggplot(df_long_t, aes(x=avg, y=reorder(name_for_plot,-avg), fill=class)) + 
+ggplot(df_long_t, aes(x=avg, y=reorder(name_for_plot,-avg), fill=class, colour=significant)) + 
   facet_grid(rows = vars(facet), scale="free", space="free") +
   scale_fill_manual(name="Approach Used", values=color_mapping) +
-  geom_point(colour="black", pch=21, size=3, alpha=0.8) +
+  scale_color_manual(name="Significance",values=outline_mapping) +
+  geom_point(pch=21, size=3, alpha=0.8) +
   theme_bw() +
   xlab("Intragroup Distance Percentile")  +
   ylab("")
