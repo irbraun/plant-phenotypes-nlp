@@ -25,6 +25,203 @@ from oats.distances import pairwise as pw
 from oats.utils.utils import flatten
 
 
+# In[7]:
+
+
+class LossLogger(CallbackAny2Vec):
+    def __init__(self):
+        self.epochs = []
+        self.epoch = 1
+        self.losses = []
+        self.deltas = []
+    def on_epoch_end(self, model):
+        loss = model.get_latest_training_loss()
+        if self.epoch == 1:
+            delta = loss
+        else:
+            delta = loss- self.loss_previous_step
+        self.loss_previous_step=loss
+        self.losses.append(loss)
+        self.epochs.append(self.epoch)
+        self.epoch += 1
+        self.deltas.append(delta)
+
+
+# In[ ]:
+
+
+
+
+
+# In[57]:
+
+
+# Checking to make sure the model can be loaded and used for looking up embeddings.
+path = "../models/wiki_sg/word2vec.bin"
+model = gensim.models.Word2Vec.load(path)
+a_word_in_vocab = list(model.wv.vocab.keys())[0]
+vector = model[a_word_in_vocab]
+print(len(vector))
+
+
+# In[ ]:
+
+
+
+
+
+# In[11]:
+
+
+# Checking to make sure the model can be loaded and used for looking up embeddings.
+path = "../models/plants_sg/word2vec_ep500_dim150.model"
+model = gensim.models.Word2Vec.load(path)
+a_word_in_vocab = list(model.wv.vocab.keys())[0]
+vector = model[a_word_in_vocab]
+print(len(vector))
+model[["small"]]
+
+
+# In[62]:
+
+
+list(model.wv.vocab)[10]
+
+set_of_interest = ["auxin","root","shoot","growth","ear","kernel","maiz","length","wide","dwarf","maize","arabidopsis","species"]
+a = list(np.random.choice(list(model.wv.vocab), replace=False, size=1000))
+a = []
+a.extend(set_of_interest)
+
+
+
+
+arr = np.empty((0,300), dtype='f')
+word_labels = []
+
+colors = []
+for w in a:
+    if w in set_of_interest:
+        colors.append(1)
+    else:
+        colors.append(0)
+
+for w in a:
+    wrd_vector = model[w]
+    word_labels.append(w)
+    arr = np.append(arr, np.array([wrd_vector]), axis=0)
+        
+        
+# find tsne coords for 2 dimensions
+tsne = TSNE(n_components=2, random_state=0)
+np.set_printoptions(suppress=True)
+Y = tsne.fit_transform(arr)
+
+x_coords = Y[:, 0]
+y_coords = Y[:, 1]
+# display scatter plot
+plt.scatter(x_coords, y_coords, c=colors)
+
+for label, x, y in zip(word_labels, x_coords, y_coords):
+    plt.annotate(label, xy=(x, y), xytext=(0, 0), textcoords='offset points')
+plt.xlim(x_coords.min()+0.00005, x_coords.max()+0.00005)
+plt.ylim(y_coords.min()+0.00005, y_coords.max()+0.00005)
+plt.show()
+
+
+# In[28]:
+
+
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+mpl.rcParams["figure.dpi"] = 400
+ 
+from sklearn.manifold import TSNE
+
+
+def display_closestwords_tsnescatterplot(model, word):
+    
+    arr = np.empty((0,150), dtype='f')
+    word_labels = [word]
+
+    # get close words
+    close_words = model.similar_by_word(word, 30)
+    
+    # add the vector for each of the closest words to the array
+    
+    colors = []
+    colors.append(1)
+    for w in close_words:
+        if w[0] == "zone":
+            colors.append(1)
+        else:
+            colors.append(0)
+    
+    
+    arr = np.append(arr, np.array([model[word]]), axis=0)
+    for wrd_score in close_words:
+        wrd_vector = model[wrd_score[0]]
+        word_labels.append(wrd_score[0])
+        arr = np.append(arr, np.array([wrd_vector]), axis=0)
+        
+    
+        
+    # find tsne coords for 2 dimensions
+    tsne = TSNE(n_components=2, random_state=0)
+    np.set_printoptions(suppress=True)
+    Y = tsne.fit_transform(arr)
+
+    x_coords = Y[:, 0]
+    y_coords = Y[:, 1]
+    # display scatter plot
+    plt.scatter(x_coords, y_coords, c=colors)
+
+    for label, x, y in zip(word_labels, x_coords, y_coords):
+        plt.annotate(label, xy=(x, y), xytext=(0, 0), textcoords='offset points')
+    plt.xlim(x_coords.min()+0.00005, x_coords.max()+0.00005)
+    plt.ylim(y_coords.min()+0.00005, y_coords.max()+0.00005)
+    plt.show()
+    
+display_closestwords_tsnescatterplot(model, "root")
+
+
+# 
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
 # In[ ]:
 
 
@@ -407,23 +604,7 @@ print("starting training")
 # In[ ]:
 
 
-class LossLogger(CallbackAny2Vec):
-    def __init__(self):
-        self.epochs = []
-        self.epoch = 1
-        self.losses = []
-        self.deltas = []
-    def on_epoch_end(self, model):
-        loss = model.get_latest_training_loss()
-        if self.epoch == 1:
-            delta = loss
-        else:
-            delta = loss- self.loss_previous_step
-        self.loss_previous_step=loss
-        self.losses.append(loss)
-        self.epochs.append(self.epoch)
-        self.epoch += 1
-        self.deltas.append(delta)
+
 
 
 # In[ ]:

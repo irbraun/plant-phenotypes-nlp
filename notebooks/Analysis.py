@@ -74,7 +74,7 @@
 # - Python package for loading pretrained BERT models: [PyTorch Pretrained BERT](https://pypi.org/project/pytorch-pretrained-bert/)
 # - For BERT Models pretrained on PubMed and PMC: [BioBERT Paper](https://arxiv.org/abs/1901.08746), [BioBERT Models](https://github.com/naver/biobert-pretrained)
 
-# In[1]:
+# In[3]:
 
 
 import datetime
@@ -144,7 +144,7 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 
-# In[2]:
+# In[4]:
 
 
 # Set a tag that specifies whether this is being run as a notebook or a script. Some sections are skipped when 
@@ -170,7 +170,7 @@ else:
 # ### Reading in arguments
 # Command line arguments are used to define which subset of the approaches that are evaluated in this notebook are used during a given run. Because the pairwise distances matrices become very large when as the number of genes increases, the number of approaches used (which each generated one distance matrix) can be lowered if the script is using too much memory for datasets that contain many genes. Although there are differences in runtime for each approach where ones that generated larger vectors (n-grams) instead of small embeddings (Word2Vec) take longer, this is not significant compared to how long operations take on the resulting distance matrices, which are all the same size for any given approach, so it is the number of approaches used, not which ones, that matters in reducing the time and memory used for each run. In addition, arguments are also used here to pick which dataset should be used later in the notebook, and whether files should be created for using the results later for the dockerized app (those files are large, they shouldn't be created unless they'll be used).
 
-# In[3]:
+# In[5]:
 
 
 # Creating the set of arguments that can be used to determine which approaches are run.
@@ -214,7 +214,7 @@ else:
 # ### Defining the input file paths and creating output directory
 # This section specifies the path to the base output directory, and creates all the subfolders inside of it that contain results that pertain to different parts of the analysis. Paths to all the files that are used by this notebook are specified in the subsequent cell.
 
-# In[4]:
+# In[6]:
 
 
 # Create and name an output directory according to when the notebooks or script was run.
@@ -242,7 +242,7 @@ os.mkdir(os.path.join(OUTPUT_DIR,GROUP_DISTS_DIR))
 
 # ### Data paths
 
-# In[5]:
+# In[7]:
 
 
 # Paths to different datasets containing gene names, text descriptions, and/or ontology term annotations.
@@ -275,7 +275,7 @@ lloyd_function_hierarchy_path = "../../plant-data/papers/lloyd_meinke_2012/versi
 
 # ### Text corpora paths
 
-# In[6]:
+# In[8]:
 
 
 # Pathways to text corpora files that are used in this analysis.
@@ -285,7 +285,7 @@ phenotypes_corpus_filename = "../data/corpus_related_files/untagged_text_corpora
 
 # ### Machine learning model paths
 
-# In[7]:
+# In[9]:
 
 
 # Paths to pretrained or saved models used for embeddings with Word2Vec or Doc2vec.
@@ -310,7 +310,7 @@ word2vec_bio_wikipedia_pubmed_and_pmc_path = "../models/bio_nlp_lab/wikipedia-pu
 
 # ### Ontology related paths
 
-# In[8]:
+# In[10]:
 
 
 # Path the jar file necessary for running NOBLE Coder.
@@ -330,7 +330,7 @@ pato_pickle_path = "../ontologies/pato.pickle"
 # ### Reading in the dataset of genes and their associated phenotype descriptions and annotations
 # Every dataset that is relevant to this analysis or could be used is read in here and described. This is done even if additional arguments specified that the analysis should just focus on one of them. This is set up this way so that the analysis script will immediately fail if any of these datasets are missing, or if any of the paths are incorrect, this was useful when running locally before moving to a cluster.
 
-# In[9]:
+# In[11]:
 
 
 # Loading the human dataset of concatenated disease names from ClinVar annotations.
@@ -354,7 +354,7 @@ plant_dataset.filter_has_description()
 plant_dataset.describe()
 
 
-# In[10]:
+# In[12]:
 
 
 # Which dataset should be used for the rest of the analysis? Useful for changing when running as a notebook.
@@ -374,7 +374,7 @@ dataset.describe()
 # ### Relating the dataset of genes to the dataset of groups or categories
 # This section generates tables that indicate how the genes present in the dataset were mapped to the defined pathways or groups. This includes a summary table that indicates how many genes by species were succcessfully mapped to atleast one pathway or group, as well as a more detailed table describing how many genes from each species were mapped to each particular pathway or group. Additionally, a pairwise group similarity matrix is also generated, where the similarity is given as the Jaccard similarity between two groups based on whether genes are shared by those groups or not. The function defined in this section returns a groupings object that can be used again, as well as the IDs of the genes in the full dataset that were found to be relevant to those particular groupings.
 
-# In[11]:
+# In[14]:
 
 
 def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filename, group_name_mappings, name):
@@ -448,7 +448,7 @@ def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filenam
 # ### Reading in and relating the pathways from KEGG
 # See dataset description for what files were used to construct these mappings.
 
-# In[12]:
+# In[15]:
 
 
 # Readin in the dataset of groupings for pathways in KEGG.
@@ -461,7 +461,7 @@ kegg_groups.to_pandas().head(10)
 # ### Reading in and relating the pathways from PlantCyc
 # See dataset description for what files were used to construct these mappings.
 
-# In[13]:
+# In[16]:
 
 
 # Reading in the dataset of groupings for pathways in PlantCyc.
@@ -474,7 +474,7 @@ pmn_groups.to_pandas().head(10)
 # ###  Reading in and relating the phenotype classes and subsets from Lloyd and Meinke (2012)
 # See dataset description for what files were used to construct these mappings, and links there and above to the related paper.
 
-# In[14]:
+# In[17]:
 
 
 # Reading in the datasets of phenotype subset classifications from the Lloyd, Meinke 2012 paper.
@@ -483,7 +483,7 @@ phe_subsets_groups, subsets_mapped_ids = read_in_groupings_object_and_write_summ
 phe_subsets_groups.to_pandas().head(10)
 
 
-# In[15]:
+# In[18]:
 
 
 # Reading in the datasets of phenotype class classifications from the Lloyd, Meinke 2012 paper.
@@ -500,14 +500,14 @@ phe_classes_groups.to_pandas().head(10)
 # ### EQ-based similarities from Oellrich, Walls et al., (2015)
 # See dataset description for what files were used to construct these mappings, and links there and above to the related paper.
 
-# In[16]:
+# In[19]:
 
 
 ow_edgelist = AnyInteractions(dataset.get_name_to_id_dictionary(), pppn_edgelist_path)
 ow_edgelist.df.head(10)
 
 
-# In[17]:
+# In[20]:
 
 
 # The edgelist that is returned has some duplicate lines with respect a single gene pair in this dataset.
@@ -582,18 +582,18 @@ ids_with_any_mapping = list(set(flatten([
 ])))
 
 
-# In[ ]:
+# In[27]:
 
 
 # Get the list of all the IDs in this dataset that have all of types of curated values we want to look at. 
-annots = dataset.get_annotations_dictionary()
-go_mapped_ids = [i for i in dataset.get_ids() if "GO" in annots[i]]
-po_mapped_ids = [i for i in dataset.get_ids() if "PO" in annots[i]]
-ids_with_all_annotations = list(set(flatten([
-    go_mapped_ids,
-    po_mapped_ids,
-    ow_edgelist.ids
-])))
+#annots = dataset.get_annotations_dictionary()
+#go_mapped_ids = [i for i in dataset.get_ids() if "GO" in annots[i]]
+#po_mapped_ids = [i for i in dataset.get_ids() if "PO" in annots[i]]
+go_mapped_ids = list(dataset.get_annotations_dictionary(ontology_name="GO").keys())
+po_mapped_ids = list(dataset.get_annotations_dictionary(ontology_name="PO").keys())
+ids_with_all_annotations = set(go_mapped_ids).intersection(set(po_mapped_ids)).intersection(set(ow_edgelist.ids))
+ids_with_all_annotations = list(ids_with_all_annotations)
+print(len(ids_with_all_annotations))
 
 
 # In[18]:
@@ -708,6 +708,7 @@ word2vec_plants_model = gensim.models.Word2Vec.load(word2vec_plants_path)
 
 # Word2Vec models that were trained on a combination of PMC, PubMed, and/or wikipedia_datasets.
 word2vec_bio_pubmed_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pubmed_path, binary=True)
+word2vec_bio_wikipedia_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_wikipedia_pubmed_and_pmc_path, binary=True)
 
 
 # In[ ]:
@@ -716,7 +717,6 @@ word2vec_bio_pubmed_model = gensim.models.KeyedVectors.load_word2vec_format(word
 if args.bio_small or args.combined:
     word2vec_bio_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pmc_path, binary=True)
 if args.bio_large or args.combined:
-    word2vec_bio_wikipedia_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_wikipedia_pubmed_and_pmc_path, binary=True)
     word2vec_bio_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pubmed_and_pmc_path, binary=True)
 
 
@@ -2192,145 +2192,151 @@ grouping_names = ["kegg_only","pmn_only","subsets"]
 
 
 for (groups,q) in zip(grouping_objects,grouping_names):
+    for curated_genes_only in [True,False]:
 
-    # Only look at gene pairs where both are relevant to the given biological question.
-    subset = df[df[q] != -1]
-    
-    
-    # Check that this subsetting leaves a valid dataset with both positive and negatives samples.
-    class_values = pd.unique(subset[q].values)
-    if not (len(class_values)==2 and 0 in class_values and 1 in class_values):
-        continue
-    
-    # The grouping dictionaries for this particular biological question.    
-    id_to_group_ids, group_id_to_ids = groups.get_groupings_for_dataset(dataset)
+        # Only look at gene pairs where both are relevant to the given biological question.
+        subset = df[df[q] != -1]
+        if curated_genes_only:
+            subset = subset[subset["curated"]==True]
+            
+        # Check that this subsetting leaves a valid dataset with both positive and negatives samples.
+        class_values = pd.unique(subset[q].values)
+        if not (len(class_values)==2 and 0 in class_values and 1 in class_values):
+            continue
 
-    # Get all the average within-group distance values for each approach.
-    group_ids = list(group_id_to_ids.keys())
-    within_percentiles_dict = defaultdict(lambda: defaultdict(list))
-    within_weights_dict = defaultdict(lambda: defaultdict(list))
-    all_weights_dict = {}
-    for method in methods:
-        name = method.name_with_hyperparameters
-        for group in group_ids:
-            within_ids = group_id_to_ids[group]            
-            mean_weight = np.mean([name_to_array[name][id_to_array_index[i],id_to_array_index[j]] for i,j in combinations(within_ids,2)])
-            # https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.percentileofscore.html
-            # Check this for documentation and specifically what the kind argument is for.
-            # With kind="mean", the value of the weak and strict perctiles are averaged.
-            # Question for this part, is the percentile of the mean the same as the mean of the percentiles?
-            # I think we want mean of the percentiles, but we're calculating the other one here...
-            within_percentiles_dict[name][group] = stats.percentileofscore(subset[name].values, mean_weight, kind="mean")
-            within_weights_dict[name][group] = mean_weight
- 
-    # Generating a dataframe of percentiles of the mean in-group distance scores.
-    within_dist_data = pd.DataFrame(within_percentiles_dict)
-    within_dist_data = within_dist_data.dropna(axis=0, inplace=False)
-    within_dist_data = within_dist_data.round(4)
+        # The grouping dictionaries for this particular biological question.    
+        id_to_group_ids, group_id_to_ids = groups.get_groupings_for_dataset(dataset)
 
-    # Adding relevant information to this dataframe and saving.
-    # Defining mean_group_rank: the average of the individual rank given to this pathway by each approach.
-    # Defining mean_avg_pair_percentile: the average across all approaches of the average distance percentile for each gene pair.
-    within_dist_data["mean_group_rank"] = within_dist_data.rank().mean(axis=1)
-    within_dist_data["mean_avg_pair_percentile"] = within_dist_data.mean(axis=1)
-    within_dist_data.sort_values(by="mean_avg_pair_percentile", inplace=True)
-    within_dist_data.reset_index(inplace=True)
-    within_dist_data["group_id"] = within_dist_data["index"]
-    within_dist_data["full_name"] = within_dist_data["group_id"].apply(lambda x: groups.get_long_name(x))
-    within_dist_data["n"] = within_dist_data["group_id"].apply(lambda x: len(group_id_to_ids[x]))
-    method_col_names = [method.name_with_hyperparameters for method in methods]
-    within_dist_data = within_dist_data[flatten(["group_id","full_name","n","mean_avg_pair_percentile","mean_group_rank",method_col_names])]
-    within_dist_data.to_csv(os.path.join(OUTPUT_DIR, GROUP_DISTS_DIR, "{}_within_distances.csv".format(q)), index=False)
-    num_groups = within_dist_data.shape[0]
-    
+        # Get all the average within-group distance values for each approach.
+        group_ids = list(group_id_to_ids.keys())
+        within_percentiles_dict = defaultdict(lambda: defaultdict(list))
+        within_weights_dict = defaultdict(lambda: defaultdict(list))
+        all_weights_dict = {}
+        for method in methods:
+            name = method.name_with_hyperparameters
+            for group in group_ids:
+                within_ids = group_id_to_ids[group]    
+                if curated_genes_only:
+                    within_ids = [i for i in within_ids if i in ids_with_all_annotations]
+                
+                mean_weight = np.mean([name_to_array[name][id_to_array_index[i],id_to_array_index[j]] for i,j in combinations(within_ids,2)])
+                # https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.percentileofscore.html
+                # Check this for documentation and specifically what the kind argument is for.
+                # With kind="mean", the value of the weak and strict perctiles are averaged.
+                # Question for this part, is the percentile of the mean the same as the mean of the percentiles?
+                # I think we want mean of the percentiles, but we're calculating the other one here...
+                within_percentiles_dict[name][group] = stats.percentileofscore(subset[name].values, mean_weight, kind="mean")
+                within_weights_dict[name][group] = mean_weight
 
-    
-    # Making a melted version that calculates p-values for each row.
-    within_dist_data = pd.DataFrame(within_percentiles_dict)
-    within_dist_data = within_dist_data.dropna(axis=0, inplace=False)
-    within_dist_data = within_dist_data.round(4)
-    within_dist_data.reset_index(inplace=True)
-    within_dist_data["group_id"] = within_dist_data["index"]
-    method_col_names = [method.name_with_hyperparameters for method in methods]
-    within_dist_data = pd.melt(within_dist_data, id_vars=["group_id"], value_vars=method_col_names, var_name="approach", value_name="percentile")
-    within_dist_data["full_name"] = within_dist_data["group_id"].apply(lambda x: groups.get_long_name(x))
-    within_dist_data["n"] = within_dist_data["group_id"].apply(lambda x: len(group_id_to_ids[x]))
-    within_dist_data = within_dist_data[["group_id","full_name", "approach", "n", "percentile"]]
-    within_dist_data["mean_value"] = within_dist_data.apply(lambda row: within_weights_dict[row["approach"]][row["group_id"]], axis=1)
+        # Generating a dataframe of percentiles of the mean in-group distance scores.
+        within_dist_data = pd.DataFrame(within_percentiles_dict)
+        within_dist_data = within_dist_data.dropna(axis=0, inplace=False)
+        within_dist_data = within_dist_data.round(4)
 
-    
-    
-    # Some setup for random sampling for finding p-values.
-    num_sampling_iterations = 10000
-    n_max = within_dist_data["n"].max()
-    n_to_n_choose_two = {}
-    n = 2
-    while n <= n_max:
-        n_to_n_choose_two[n] = comb(n, k=2, exact=True)
-        n = n+1
+        # Adding relevant information to this dataframe and saving.
+        # Defining mean_group_rank: the average of the individual rank given to this pathway by each approach.
+        # Defining mean_avg_pair_percentile: the average across all approaches of the average distance percentile for each gene pair.
+        within_dist_data["mean_group_rank"] = within_dist_data.rank().mean(axis=1)
+        within_dist_data["mean_avg_pair_percentile"] = within_dist_data.mean(axis=1)
+        within_dist_data.sort_values(by="mean_avg_pair_percentile", inplace=True)
+        within_dist_data.reset_index(inplace=True)
+        within_dist_data["group_id"] = within_dist_data["index"]
+        within_dist_data["full_name"] = within_dist_data["group_id"].apply(lambda x: groups.get_long_name(x))
+        within_dist_data["n"] = within_dist_data["group_id"].apply(lambda x: len(group_id_to_ids[x]))
+        method_col_names = [method.name_with_hyperparameters for method in methods]
+        within_dist_data = within_dist_data[flatten(["group_id","full_name","n","mean_avg_pair_percentile","mean_group_rank",method_col_names])]
+        curated_string = {True:"curated",False:"all"}[curated_genes_only]
+        within_dist_data.to_csv(os.path.join(OUTPUT_DIR, GROUP_DISTS_DIR, "{}_{}_within_distances.csv".format(curated_string,q)), index=False)
+        num_groups = within_dist_data.shape[0]
 
-    
-    # Which IDs should be considered for random sampling?
-    id_set_1 = pd.unique(subset["to"].values)
-    id_set_2 = pd.unique(subset["from"].values)
-    ids_that_are_relevant = list(set(id_set_1).union(id_set_2))
-    
-    # Given that subset of IDs that are relevant to this task, create a 3D array as (iteration, pairs, IDs)
-    sampled_ids = np.array([np.random.choice(a=ids_that_are_relevant, size=n_max, replace=False) for i in range(num_sampling_iterations)])
-    sampled_id_pairs = np.array([list(combinations(id_list,2)) for id_list in sampled_ids])
-    
-    
-    # Create a mapping between method names, value of n, and a list of the means generated with each random sampling.
-    name_to_n_to_means = defaultdict(dict)
-    for method in methods:
 
-        # Build an array where the rows are sampling iterations and the columns have edge values.
-        name = method.name_with_hyperparameters
-        sampled_values = []
-        for pairs_of_ids in sampled_id_pairs:
-            sampled_values.append([name_to_array[name][id_to_array_index[i],id_to_array_index[j]] for (i,j) in pairs_of_ids])
-        sampled_values = np.array(sampled_values)
 
-        # Retain just the random means information we need. 
-        n_to_means = {}
-        length = sampled_values.shape[1]
-        for n,n_choose_two in n_to_n_choose_two.items():
-            num_values_to_take = n_choose_two
-            means = np.mean(sampled_values[:, length-num_values_to_take:length], axis=1)
-            name_to_n_to_means[name][n] = means
+        # Making a melted version that calculates p-values for each row.
+        within_dist_data = pd.DataFrame(within_percentiles_dict)
+        within_dist_data = within_dist_data.dropna(axis=0, inplace=False)
+        within_dist_data = within_dist_data.round(4)
+        within_dist_data.reset_index(inplace=True)
+        within_dist_data["group_id"] = within_dist_data["index"]
+        method_col_names = [method.name_with_hyperparameters for method in methods]
+        within_dist_data = pd.melt(within_dist_data, id_vars=["group_id"], value_vars=method_col_names, var_name="approach", value_name="percentile")
+        within_dist_data["full_name"] = within_dist_data["group_id"].apply(lambda x: groups.get_long_name(x))
+        within_dist_data["n"] = within_dist_data["group_id"].apply(lambda x: len(group_id_to_ids[x]))
+        within_dist_data = within_dist_data[["group_id","full_name", "approach", "n", "percentile"]]
+        within_dist_data["mean_value"] = within_dist_data.apply(lambda row: within_weights_dict[row["approach"]][row["group_id"]], axis=1)
 
-    # The length of all the arrays of means in that dictionary should be the same as the number of samplings.
-    # Values of n between 2 and the maximum value of n should be suppported as keys in the dictionary.
-    assert name_to_n_to_means[methods[0].name_with_hyperparameters][2].shape[0] == num_sampling_iterations
-    assert name_to_n_to_means[methods[0].name_with_hyperparameters][n_max].shape[0] == num_sampling_iterations
-    print("finished finding sample means for this type of grouping")
-    
-    
-    
-    # Assigning p-values to each mean value assigned to each group by each algorithm, using the random sampled.
-    def calculate_p_value(sampled_means, actual_value):
-        atleast_as_small_as_actual_value = actual_value>=sampled_means
-        p_value = atleast_as_small_as_actual_value.sum()/len(sampled_means)
-        return(p_value)
-    
-    
-    within_dist_data["p_value"] = within_dist_data.apply(lambda row: calculate_p_value(name_to_n_to_means[row["approach"]][row["n"]], row["mean_value"]), axis=1)
-    within_dist_data["p_adjusted"] =  multipletests(within_dist_data["p_value"].values, method='bonferroni')[1] 
-    
-    # Figuring out what proportion of the groups were assigned cohesive values that are considered significant.
-    significance_threshold = 0.05
-    tdf = pd.DataFrame(within_dist_data.groupby("approach")["p_value","p_adjusted"].agg(lambda x: sum(x<=significance_threshold)))
-    tdf = tdf.reset_index(drop=False)
-    tdf.columns = ["approach","num_significant","num_adjusted"]
-    tdf["total_groups"] = num_groups
-    tdf["fraction_significant"] = tdf["num_significant"]/tdf["total_groups"]
-    tdf["fraction_adjusted"] = tdf["num_adjusted"]/tdf["total_groups"]
-    num_rows_before_merge = within_dist_data.shape[0]
-    within_dist_data = within_dist_data.merge(right=tdf, how="left", on=["approach"])
-    assert within_dist_data.shape[0] == num_rows_before_merge
-    within_dist_data[["mean_value","fraction_significant","fraction_adjusted"]] = within_dist_data[["mean_value","fraction_significant","fraction_adjusted"]].round(4)
-    within_dist_data.to_csv(os.path.join(OUTPUT_DIR, GROUP_DISTS_DIR, "{}_within_distances_melted.csv".format(q)), index=False)
-    
+
+
+        # Some setup for random sampling for finding p-values.
+        num_sampling_iterations = 10000
+        n_max = within_dist_data["n"].max()
+        n_to_n_choose_two = {}
+        n = 2
+        while n <= n_max:
+            n_to_n_choose_two[n] = comb(n, k=2, exact=True)
+            n = n+1
+
+
+        # Which IDs should be considered for random sampling?
+        id_set_1 = pd.unique(subset["to"].values)
+        id_set_2 = pd.unique(subset["from"].values)
+        ids_that_are_relevant = list(set(id_set_1).union(id_set_2))
+
+        # Given that subset of IDs that are relevant to this task, create a 3D array as (iteration, pairs, IDs)
+        sampled_ids = np.array([np.random.choice(a=ids_that_are_relevant, size=n_max, replace=False) for i in range(num_sampling_iterations)])
+        sampled_id_pairs = np.array([list(combinations(id_list,2)) for id_list in sampled_ids])
+
+
+        # Create a mapping between method names, value of n, and a list of the means generated with each random sampling.
+        name_to_n_to_means = defaultdict(dict)
+        for method in methods:
+
+            # Build an array where the rows are sampling iterations and the columns have edge values.
+            name = method.name_with_hyperparameters
+            sampled_values = []
+            for pairs_of_ids in sampled_id_pairs:
+                sampled_values.append([name_to_array[name][id_to_array_index[i],id_to_array_index[j]] for (i,j) in pairs_of_ids])
+            sampled_values = np.array(sampled_values)
+
+            # Retain just the random means information we need. 
+            n_to_means = {}
+            length = sampled_values.shape[1]
+            for n,n_choose_two in n_to_n_choose_two.items():
+                num_values_to_take = n_choose_two
+                means = np.mean(sampled_values[:, length-num_values_to_take:length], axis=1)
+                name_to_n_to_means[name][n] = means
+
+        # The length of all the arrays of means in that dictionary should be the same as the number of samplings.
+        # Values of n between 2 and the maximum value of n should be suppported as keys in the dictionary.
+        assert name_to_n_to_means[methods[0].name_with_hyperparameters][2].shape[0] == num_sampling_iterations
+        assert name_to_n_to_means[methods[0].name_with_hyperparameters][n_max].shape[0] == num_sampling_iterations
+        print("finished finding sample means for this type of grouping")
+
+
+
+        # Assigning p-values to each mean value assigned to each group by each algorithm, using the random sampled.
+        def calculate_p_value(sampled_means, actual_value):
+            atleast_as_small_as_actual_value = actual_value>=sampled_means
+            p_value = atleast_as_small_as_actual_value.sum()/len(sampled_means)
+            return(p_value)
+
+
+        within_dist_data["p_value"] = within_dist_data.apply(lambda row: calculate_p_value(name_to_n_to_means[row["approach"]][row["n"]], row["mean_value"]), axis=1)
+        within_dist_data["p_adjusted"] =  multipletests(within_dist_data["p_value"].values, method='bonferroni')[1] 
+
+        # Figuring out what proportion of the groups were assigned cohesive values that are considered significant.
+        significance_threshold = 0.05
+        tdf = pd.DataFrame(within_dist_data.groupby("approach")["p_value","p_adjusted"].agg(lambda x: sum(x<=significance_threshold)))
+        tdf = tdf.reset_index(drop=False)
+        tdf.columns = ["approach","num_significant","num_adjusted"]
+        tdf["total_groups"] = num_groups
+        tdf["fraction_significant"] = tdf["num_significant"]/tdf["total_groups"]
+        tdf["fraction_adjusted"] = tdf["num_adjusted"]/tdf["total_groups"]
+        num_rows_before_merge = within_dist_data.shape[0]
+        within_dist_data = within_dist_data.merge(right=tdf, how="left", on=["approach"])
+        assert within_dist_data.shape[0] == num_rows_before_merge
+        within_dist_data[["mean_value","fraction_significant","fraction_adjusted"]] = within_dist_data[["mean_value","fraction_significant","fraction_adjusted"]].round(4)
+        curated_string = {True:"curated",False:"all"}[curated_genes_only]
+        within_dist_data.to_csv(os.path.join(OUTPUT_DIR, GROUP_DISTS_DIR, "{}_{}_within_distances_melted.csv".format(curated_string,q)), index=False)
 
 
 # <a id="auc"></a>
