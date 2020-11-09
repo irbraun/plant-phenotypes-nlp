@@ -12,43 +12,45 @@ topic_modeling__nmf_full_topics_100	no	10	Topic Modeling	NMF (100 Topics)
 doc2vec__wikipedia_size_300	no	11	ML	Doc2Vec (Wikipedia)
 word2vec__wikipedia_size_300_mean	no	12	ML	Word2Vec (Wikipedia)
 word2vec__pmc_size_200_mean	no	13	ML	Word2Vec (PMC)
-word2vec__pubmed_size_200_mean	no	13	ML	Word2Vec (PubMed)
-bert__base_layers_3_concatenated	no	14	ML	BERT
-biobert__pubmed_pmc_layers_2_concatenated	no	15	ML	BioBERT
-noble_coder__precise_tfidf	no	16	Annotation	NOBLE Coder (Precise)
-noble_coder__partial_tfidf	no	17	Annotation	NOBLE Coder (Partial)
-n_grams__full_precise_annotations_words_1_grams	no	18	N-Grams/Annotation	N-Grams/NOBLE Coder (Precise)
-n_grams__full_partial_annotations_words_1_grams	no	19	N-Grams/Annotation	N-Grams/NOBLE Coder (Partial)
-n_grams__linares_pontes_wikipedia_words_1_grams	no	20	N-Grams/ML	"N-Grams/Word2Vec (Wikipedia, Collapsed Vocab)"
-n_grams__linares_pontes_pubmed_words_1_grams	no	21	N-Grams/ML	"N-Grams/Word2Vec (PubMed, Collapsed Vocab)"
-combined__wikipedia	no	22	N-Grams/ML	"N-Grams/Word2Vec (Wikipedia, Semantic Vectors)"
-combined__wikipedia_pubmed_pmc	no	23	N-Grams/ML	"N-Grams/Word2Vec (PubMed, Semantic Vectors)"
-baseline__tokenization_identity	yes	24	Baseline	Baseline
-n_grams__tokenization_full_words_1_grams_tfidf	yes	25	N-Grams	N-Grams (Monograms)
-n_grams__tokenization_full_words_1_grams_2_grams_tfidf	yes	26	N-Grams	N-Grams (Monograms & Bigrams)
-n_grams__tokenization_full_nouns_adjectives_1_grams	yes	27	N-Grams	N-Grams (Adjectives and Nouns)
-n_grams__tokenization_full_plant_overrepresented_tokens_1_grams	yes	28	N-Grams	N-Grams (Plant Article Monograms)
-n_grams__tokenization_full_bio_ontology_tokens_1_grams	yes	29	N-Grams	N-Grams (Bio-Ontology Monograms)
-topic_modeling__tokenization_lda_full_topics_50	yes	30	Topic Modeling	NMF (50 Topics)
-topic_modeling__tokenization_lda_full_topics_100	yes	31	Topic Modeling	NMF (100 Topics)
-topic_modeling__tokenization_nmf_full_topics_50	yes	32	Topic Modeling	LDA (50 Topics)
-topic_modeling__tokenization_nmf_full_topics_100	yes	33	Topic Modeling	LDA (100 Topics)
-doc2vec__tokenization_wikipedia_size_300	yes	34	ML	Doc2Vec (Wikipedia)
-word2vec__tokenization_wikipedia_size_300_mean	yes	35	ML	Word2Vec (Wikipedia)
-word2vec__tokenization_pmc_size_200_mean	yes	36	ML	Word2Vec (PMC)
-word2vec__tokenization_pubmed_size_200_mean	yes	36	ML	Word2Vec (PubMed)
-bert__tokenization_base_layers_4_summed	yes	37	ML	BERT
-biobert__tokenization_pubmed_pmc_layers_4_summed	yes	38	ML	BioBERT
-noble_coder__tokenization_precise_tfidf	yes	39	Annotation	NOBLE Coder (Precise)
-noble_coder__tokenization_partial_tfidf	yes	40	Annotation	NOBLE Coder (Partial)
-n_grams__tokenization_full_precise_annotations_words_1_grams	yes	41	N-Grams/Annotation	N-Grams/NOBLE Coder (Precise)
-n_grams__tokenization_full_partial_annotations_words_1_grams	yes	42	N-Grams/Annotation	N-Grams/NOBLE Coder (Partial)
-n_grams__tokenization_linares_pontes_wikipedia_words_1_grams	yes	43	N-Grams/ML	"N-Grams/Word2Vec (Wikipedia, Collapsed Vocab)"
-n_grams__tokenization_linares_pontes_pubmed_words_1_grams	yes	44	N-Grams/ML	"N-Grams/Word2Vec (PubMed, Collapsed Vocab)"
-combined__tokenization_wikipedia	yes	45	N-Grams/ML	"N-Grams/Word2Vec (Wikipedia, Semantic Vectors)"
-combined__tokenization_wikipedia_pubmed_pmc	yes	46	N-Grams/ML	"N-Grams/Word2Vec (PubMed, Semantic Vectors)"
-go__union	no	47	Curation	GO (Union)
-po__union	no	48	Curation	PO (Union)
-go__minimum	no	49	Curation	GO (Pairwise Maximum)
-po__minimum	no	50	Curation	PO (Pairwise Maximum)
-eqs__no_hyperparams	no	51	Curation	EQs
+word2vec__pubmed_size_200_mean	no	14	ML	Word2Vec (PubMed)
+bert__base_layers_3_concatenated	no	15	ML	BERT
+biobert__pubmed_pmc_layers_2_concatenated	no	16	ML	BioBERT
+noble_coder__precise_tfidf	no	17	Annotation	NOBLE Coder (Precise)
+noble_coder__partial_tfidf	no	18	Annotation	NOBLE Coder (Partial)
+n_grams__full_precise_annotations_words_1_grams	no	19	N-Grams/Annotation	N-Grams/NOBLE Coder (Precise)
+n_grams__full_partial_annotations_words_1_grams	no	20	N-Grams/Annotation	N-Grams/NOBLE Coder (Partial)
+n_grams__linares_pontes_wikipedia_words_1_grams	no	21	N-Grams/ML	"N-Grams/Word2Vec (Wikipedia, Collapsed Vocab)"
+n_grams__linares_pontes_pubmed_words_1_grams	no	22	N-Grams/ML	"N-Grams/Word2Vec (PubMed, Collapsed Vocab)"
+n_grams__linares_pontes_plants_words_1_grams	no	23	N-Grams/ML	"N-Grams/Word2Vec (Plants, Collapsed Vocab)"
+combined__wikipedia	no	24	N-Grams/ML	"N-Grams/Word2Vec (Wikipedia, Semantic Vectors)"
+combined__wikipedia_pubmed_pmc	no	25	N-Grams/ML	"N-Grams/Word2Vec (PubMed, Semantic Vectors)"
+baseline__tokenization_identity	yes	26	Baseline	Baseline
+n_grams__tokenization_full_words_1_grams_tfidf	yes	27	N-Grams	N-Grams (Monograms)
+n_grams__tokenization_full_words_1_grams_2_grams_tfidf	yes	28	N-Grams	N-Grams (Monograms & Bigrams)
+n_grams__tokenization_full_nouns_adjectives_1_grams	yes	29	N-Grams	N-Grams (Adjectives and Nouns)
+n_grams__tokenization_full_plant_overrepresented_tokens_1_grams	yes	30	N-Grams	N-Grams (Plant Article Monograms)
+n_grams__tokenization_full_bio_ontology_tokens_1_grams	yes	31	N-Grams	N-Grams (Bio-Ontology Monograms)
+topic_modeling__tokenization_lda_full_topics_50	yes	32	Topic Modeling	NMF (50 Topics)
+topic_modeling__tokenization_lda_full_topics_100	yes	33	Topic Modeling	NMF (100 Topics)
+topic_modeling__tokenization_nmf_full_topics_50	yes	34	Topic Modeling	LDA (50 Topics)
+topic_modeling__tokenization_nmf_full_topics_100	yes	35	Topic Modeling	LDA (100 Topics)
+doc2vec__tokenization_wikipedia_size_300	yes	36	ML	Doc2Vec (Wikipedia)
+word2vec__tokenization_wikipedia_size_300_mean	yes	37	ML	Word2Vec (Wikipedia)
+word2vec__tokenization_pmc_size_200_mean	yes	38	ML	Word2Vec (PMC)
+word2vec__tokenization_pubmed_size_200_mean	yes	39	ML	Word2Vec (PubMed)
+bert__tokenization_base_layers_4_summed	yes	40	ML	BERT
+biobert__tokenization_pubmed_pmc_layers_4_summed	yes	41	ML	BioBERT
+noble_coder__tokenization_precise_tfidf	yes	42	Annotation	NOBLE Coder (Precise)
+noble_coder__tokenization_partial_tfidf	yes	43	Annotation	NOBLE Coder (Partial)
+n_grams__tokenization_full_precise_annotations_words_1_grams	yes	44	N-Grams/Annotation	N-Grams/NOBLE Coder (Precise)
+n_grams__tokenization_full_partial_annotations_words_1_grams	yes	45	N-Grams/Annotation	N-Grams/NOBLE Coder (Partial)
+n_grams__tokenization_linares_pontes_wikipedia_words_1_grams	yes	46	N-Grams/ML	"N-Grams/Word2Vec (Wikipedia, Collapsed Vocab)"
+n_grams__tokenization_linares_pontes_pubmed_words_1_grams	yes	47	N-Grams/ML	"N-Grams/Word2Vec (PubMed, Collapsed Vocab)"
+n_grams__tokenization_linares_pontes_plants_words_1_grams	yes	48	N-Grams/ML	"N-Grams/Word2Vec (Plants, Collapsed Vocab)"
+combined__tokenization_wikipedia	yes	49	N-Grams/ML	"N-Grams/Word2Vec (Wikipedia, Semantic Vectors)"
+combined__tokenization_wikipedia_pubmed_pmc	yes	50	N-Grams/ML	"N-Grams/Word2Vec (PubMed, Semantic Vectors)"
+go__union	no	51	Curation	GO (Union)
+po__union	no	52	Curation	PO (Union)
+go__minimum	no	53	Curation	GO (Pairwise Maximum)
+po__minimum	no	54	Curation	PO (Pairwise Maximum)
+eqs__no_hyperparams	no	55	Curation	EQs

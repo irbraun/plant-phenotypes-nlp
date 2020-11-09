@@ -13,9 +13,6 @@ from collections import defaultdict
 from string import punctuation
 from gensim.utils import simple_preprocess
 from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string, strip_tags, strip_punctuation
-
-
-# TODO modules that need to be added to the dockerfile.
 from PIL import Image
 from textwrap import wrap
 import plotly
@@ -205,7 +202,7 @@ PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DE
 
 # Initial configuration and the logo image at the top of the page.
 st.set_page_config(page_title="QuOATS", layout="wide", initial_sidebar_state="expanded")
-PATH_TO_LOGO_PNG = "resources/logo.png"
+PATH_TO_LOGO_PNG = "resources/logo_4.png"
 #st.image(Image.open(PATH_TO_LOGO_PNG), caption=None, width=800, output_format="png")
 
 # Markdown for introducing the app and linking to other relevant resources like the project Github page.
@@ -314,8 +311,9 @@ if show_documentation:
 
 
 
-
-
+#B31334
+#E7FD8E
+#87F1CC
 
 
 
@@ -335,7 +333,7 @@ st.markdown(
 		font-family: arial;
 	}
 	.sidebar .sidebar-content {
-		background-image: linear-gradient(#B31334,#B31334);
+		background-image: linear-gradient(#87F1CC,#87F1CC);
 		color: black;
 	}
 	.Widget>label {
@@ -1016,8 +1014,9 @@ if search_type == "gene" and input_text != "":
 				# TODO make this more organized, don't specifyc tokenization function in the dictionary if it needs to be identical across used methods.
 				f_tokenizing = APPROACH_NAMES_AND_DATA[APPROACHES[0]]["tokenization_function"]
 				raw_sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance = description_search(search_string, f_tokenizing)
-				df["distance"] = df["id"].map(gene_id_to_min_distance)
-				df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
+				df["min_distance"] = df["id"].map(gene_id_to_min_distance)
+				df["mean_distance"] = df["id"].map(gene_id_to_mean_distance)
+				df.sort_values(by=["min_distance","mean_distance","id"], ascending=[True,True,True], inplace=True)
 				df["Rank"] = np.arange(1, len(df)+1)
 				df = df.head(ROW_LIMIT)
 				gene_ids = df["id"].values
@@ -1255,8 +1254,9 @@ elif search_type == "phenotype" and input_text != "":
 		raw_sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance = description_search(search_string, f_tokenizing)
 
 		# Generate a column that will be used as the sorting metric, and sort the dataframe.
-		df["distance"] = df["id"].map(gene_id_to_min_distance)
-		df.sort_values(by=["distance","id"], ascending=[True,True], inplace=True)
+		df["min_distance"] = df["id"].map(gene_id_to_min_distance)
+		df["mean_distance"] = df["id"].map(gene_id_to_mean_distance)
+		df.sort_values(by=["min_distance","mean_distance","id"], ascending=[True,True,True], inplace=True)
 		
 		# Subset it from this point forward after sorting to not waste formatting time on something that won't be shown.
 		df = df.head(ROW_LIMIT)

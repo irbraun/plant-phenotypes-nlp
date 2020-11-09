@@ -97,6 +97,7 @@ import shlex
 import random
 import multiprocessing as mp
 from collections import Counter, defaultdict
+from gensim.models.callbacks import CallbackAny2Vec
 from itertools import combinations
 from scipy.special import comb
 from inspect import signature
@@ -183,6 +184,7 @@ parser.add_argument("--name", dest="name", required=True, help="create a name fo
 parser.add_argument("--dataset", dest="dataset", choices=DATASET_OPTIONS, required=True, help="name of the dataset the analysis pipeline should be run on")
 parser.add_argument("--subset", dest="subset", type=int, required=False, help="randomly subset the data to only include this number of genes, used for testing")
 parser.add_argument("--app", dest="app", required=False, action='store_true', help="use to have the script output objects needed to build the streamlit app")
+parser.add_argument("--filter", dest="filter", required=False, action='store_true', help="remove genes that aren't mapped to any of the outside resources")
 parser.add_argument("--ratio", dest="ratio", type=float, required=False, help="what should be the ratio be between the positive and negative classes")
 
 # Arguments about which approaches to use.
@@ -291,7 +293,7 @@ phenotypes_corpus_filename = "../data/corpus_related_files/untagged_text_corpora
 # Paths to pretrained or saved models used for embeddings with Word2Vec or Doc2vec.
 doc2vec_plants_path = "../models/plants_dbow/doc2vec.model"
 doc2vec_wikipedia_path = "../models/enwiki_dbow/doc2vec.bin"
-word2vec_plants_path = "../models/plants_sg/word2vec.model"
+word2vec_plants_path = "../models/plants_sg/word2vec_both_dim200_500_a_s_min3_window8.model"
 word2vec_wikipedia_path = "../models/wiki_sg/word2vec.bin"
 
 # Paths to BioBERT models.
@@ -599,7 +601,8 @@ print(len(ids_with_all_annotations))
 # In[18]:
 
 
-dataset.filter_with_ids(ids_with_any_mapping)
+if args.filter:
+    dataset.filter_with_ids(ids_with_any_mapping)
 dataset.describe()
 
 
@@ -697,18 +700,36 @@ print(len(ids_to_use))
 # ### Loading trained and saved models
 # Versions of the architectures discussed above which have been saved as trained models are loaded here. Some of these models are loaded as pretrained models from the work of other groups, and some were trained on data specific to this notebook and loaded here.
 
+# In[1]:
+
+
+class LossLogger(CallbackAny2Vec):
+    def __init__(self):
+        self.epochs = []
+        self.epoch = 1
+        self.losses = []
+        self.deltas = []
+    def on_epoch_end(self, model):
+        loss = model.get_latest_training_loss()
+        if self.epoch == 1:
+            delta = loss
+        else:
+            delta = loss- self.loss_previous_step
+        self.loss_previous_step=loss
+        self.losses.append(loss)
+        self.epochs.append(self.epoch)
+        self.epoch += 1
+        self.deltas.append(delta)
+
+
 # In[ ]:
 
 
 # Always load these Word2Vec models because they're needed for a bunch of different approaches.
-
-# Word2Vec models that were trained on English Wikipedia or from out plant phenotypes corpus.
+# Word2Vec models that were trained on corpora that range from most general to most domain specific.
 word2vec_wiki_model = gensim.models.Word2Vec.load(word2vec_wikipedia_path)
+word2vec_pubmed_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pubmed_path, binary=True)
 word2vec_plants_model = gensim.models.Word2Vec.load(word2vec_plants_path)
-
-# Word2Vec models that were trained on a combination of PMC, PubMed, and/or wikipedia_datasets.
-word2vec_bio_pubmed_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pubmed_path, binary=True)
-word2vec_bio_wikipedia_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_wikipedia_pubmed_and_pmc_path, binary=True)
 
 
 # In[ ]:
@@ -716,8 +737,8 @@ word2vec_bio_wikipedia_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_wo
 
 if args.bio_small or args.combined:
     word2vec_bio_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pmc_path, binary=True)
-if args.bio_large or args.combined:
-    word2vec_bio_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pubmed_and_pmc_path, binary=True)
+#if args.bio_large or args.combined:
+#    word2vec_bio_pubmed_and_pmc_model = gensim.models.KeyedVectors.load_word2vec_format(word2vec_bio_pubmed_and_pmc_path, binary=True)
 
 
 # In[ ]:
@@ -918,32 +939,48 @@ distance_matrix = graph.array
 tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
 
 # Now we have a list of tokens of length n, and the corresponding n by n distance matrix for looking up distances.
-
 # The other argument that the Linares Pontes algorithm needs is a value for n, see paper or description above
 # for an explaination of what that value is in the algorithm, and why values near 3 were a good fit.
 n = 3
 processed["linares_pontes_wikipedia"], reduce_lp, unreduce_lp = reduce_vocab_linares_pontes(processed["simple"], tokens, distance_matrix, n)
 
 
+# For the combined approach that yields semantic vectors.
+for_combined_distance_matrix_wiki = distance_matrix
+for_combined_tokens_wiki = tokens
+
+
 # In[ ]:
 
 
-# Generate a pairwise distance matrix object using the oats subpackage, and create an appropriately shaped matrix,
-# making sure that the tokens list is in the same order as the indices representing each word in the distance matrix.
-# This is currently triviala because the IDs that are used are ordered integers 0 to n, but this might not always be
-# the case so it's not directly assumed here.
+# Repeating to create the descriptions for collapsed vocabulary but using the embeddings trained on PubMed.
 tokens = list(set([w for w in flatten(d.split() for d in processed["simple"].values())]))
 tokens_dict = {i:w for i,w in enumerate(tokens)}
-graph = pw.with_word2vec(word2vec_bio_pubmed_model, tokens_dict, "cosine")
+graph = pw.with_word2vec(word2vec_pubmed_model, tokens_dict, "cosine")
 distance_matrix = graph.array
 tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
-
-# Now we have a list of tokens of length n, and the corresponding n by n distance matrix for looking up distances.
-
-# The other argument that the Linares Pontes algorithm needs is a value for n, see paper or description above
-# for an explaination of what that value is in the algorithm, and why values near 3 were a good fit.
 n = 3
 processed["linares_pontes_pubmed"], reduce_lp, unreduce_lp = reduce_vocab_linares_pontes(processed["simple"], tokens, distance_matrix, n)
+# For the combined approach that yields semantic vectors.
+for_combined_distance_matrix_pubmed = distance_matrix
+for_combined_tokens_pubmed = tokens
+
+
+# In[ ]:
+
+
+# Repeating to create the descriptions for collapsed vocabulary but using the embeddings trained on our plant data.
+# NOTE that these use the the fully preprocessed tokens not the simply preprocessed ones.
+tokens = list(set([w for w in flatten(d.split() for d in processed["full"].values())]))
+tokens_dict = {i:w for i,w in enumerate(tokens)}
+graph = pw.with_word2vec(word2vec_plants_model, tokens_dict, "cosine")
+distance_matrix = graph.array
+tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
+n = 3
+processed["linares_pontes_plants"], reduce_lp, unreduce_lp = reduce_vocab_linares_pontes(processed["full"], tokens, distance_matrix, n)
+# For the combined approach that yields semantic vectors.
+for_combined_distance_matrix_plants = distance_matrix
+for_combined_tokens_plants = tokens
 
 
 # ### Preparing the pairwise distance matrices for tokens for the combined approaches
@@ -951,13 +988,21 @@ processed["linares_pontes_pubmed"], reduce_lp, unreduce_lp = reduce_vocab_linare
 # In[ ]:
 
 
-# Preparing the larger set of similarity matrices for the combined methods.
-tokens = list(set([w for w in flatten(d.split() for d in processed["simple"].values())]))
-tokens_dict = {i:w for i,w in enumerate(tokens)}
+# Preparing the larger set of similarity matrices for the combined methods that use the simply preprocessed tokens.
+#tokens = list(set([w for w in flatten(d.split() for d in processed["simple"].values())]))
+#tokens_dict = {i:w for i,w in enumerate(tokens)}
+#for_combined_distance_matrix_wiki = pw.with_word2vec(word2vec_wiki_model, tokens_dict, "cosine").array
+#for_combined_distance_matrix_pubmed = pw.with_word2vec(word2vec_pubmed_model, tokens_dict, "cosine").array
+#for_combined_simple_tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
 
-for_combined_distance_matrix_wikipedia = pw.with_word2vec(word2vec_wiki_model, tokens_dict, "cosine").array
-for_combined_distance_matrix_wikipedia_pubmed_pmc = pw.with_word2vec(word2vec_bio_wikipedia_pubmed_and_pmc_model, tokens_dict, "cosine").array
-for_combined_tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
+
+# Preparing the larger set of similarity matrices for the combined methods that use the fully preprocessed tokens.
+#tokens = list(set([w for w in flatten(d.split() for d in processed["full"].values())]))
+#tokens_dict = {i:w for i,w in enumerate(tokens)}
+#for_combined_distance_matrix_wiki = pw.with_word2vec(word2vec_wiki_model, tokens_dict, "cosine").array
+#for_combined_distance_matrix_pubmed = pw.with_word2vec(word2vec_pubmed_model, tokens_dict, "cosine").array
+#for_combined_simple_tokens = [tokens_dict[graph.index_to_id[index]] for index in np.arange(distance_matrix.shape[0])]
+
 
 # Now we have a list of tokens of length n, and the corresponding n by n distance matrix for looking up distances.
 # Add the other distance matrices that you want there.
@@ -1203,10 +1248,10 @@ if args.learning: doc2vec_and_word2vec_approaches.extend([
     
     # Another set of six approaches that all use the Word2Vec or Doc2Vec models trained on a plant phenotype corpus.
     #Method("Doc2Vec","Plants,Size=300","NLP",1, pw.with_doc2vec, {"model":doc2vec_plants_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
-    #Method("Word2Vec","Plants,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Word2Vec","Plants,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":processed["linares_pontes_plants"], "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
     #Method("Word2Vec","Plants,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
     #Method("Doc2Vec","Tokenization,Plants,Size=300","NLP",4, pw.with_doc2vec, {"model":doc2vec_plants_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
-    #Method("Word2Vec","Tokenization,Plants,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Word2Vec","Tokenization,Plants,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":processed["linares_pontes_plants_phenes"], "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
     #Method("Word2Vec","Tokenization,Plants,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
 ])
 
@@ -1217,15 +1262,15 @@ if args.learning: doc2vec_and_word2vec_approaches.extend([
 bio_nlp_approaches_small = []
 if args.bio_small: bio_nlp_approaches_small.extend([
     # Set of six approaches that all use the Word2Vec or Doc2Vec models trained on English Wikipedia.
-    Method("Word2Vec","PMC,Size=200,Mean","NLP",14, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
+    #Method("Word2Vec","PMC,Size=200,Mean","NLP",14, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
     #Method("Word2Vec","PMC,Size=200,Max","NLP",15 ,pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Tokenization,PMC,Size=200,Mean","NLP",1014, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
+    #Method("Word2Vec","Tokenization,PMC,Size=200,Mean","NLP",1014, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
     #Method("Word2Vec","Tokenization,PMC,Size=200,Max","NLP",1015, pw.with_word2vec, {"model":word2vec_bio_pmc_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
     
     # Another set of six approaches that all use the Word2Vec or Doc2Vec models trained on a plant phenotype corpus.
-    Method("Word2Vec","PubMed,Size=200,Mean","NLP",16, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Word2Vec","PubMed,Size=200,Mean","NLP",16, pw.with_word2vec, {"model":word2vec_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
     #Method("Word2Vec","PubMed,Size=200,Max","NLP",17 ,pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Tokenization,PubMed,Size=200,Mean","NLP",1016, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Word2Vec","Tokenization,PubMed,Size=200,Mean","NLP",1016, pw.with_word2vec, {"model":word2vec_pubmed_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
     #Method("Word2Vec","Tokenization,PubMed,Size=200,Max","NLP",1017, pw.with_word2vec, {"model":word2vec_bio_pubmed_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
 ])
 
@@ -1254,10 +1299,14 @@ if args.bio_large: bio_nlp_approaches_large.extend([
 
 combined_approaches = []
 if args.combined: combined_approaches.extend([ 
-    Method("Combined","Wikipedia","NLP",42, pw.with_similarities, {"ids_to_texts":processed["simple"],"vocab_tokens":for_combined_tokens,"vocab_matrix":for_combined_distance_matrix_wikipedia,"model":word2vec_wiki_model,"metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Combined","Wikipedia,PubMed,PMC","NLP",43, pw.with_similarities, {"ids_to_texts":processed["simple"],"vocab_tokens":for_combined_tokens,"vocab_matrix":for_combined_distance_matrix_wikipedia_pubmed_pmc,"model":word2vec_bio_wikipedia_pubmed_and_pmc_model,"metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Combined","Tokenization,Wikipedia","NLP",1042, pw.with_similarities, {"ids_to_texts":processed["simple_phenes"],"vocab_tokens":for_combined_tokens,"vocab_matrix":for_combined_distance_matrix_wikipedia,"model":word2vec_wiki_model,"metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Combined","Tokenization,Wikipedia,PubMed,PMC","NLP",1043, pw.with_similarities, {"ids_to_texts":processed["simple_phenes"],"vocab_tokens":for_combined_tokens,"vocab_matrix":for_combined_distance_matrix_wikipedia_pubmed_pmc,"model":word2vec_bio_wikipedia_pubmed_and_pmc_model,"metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Combined","Wikipedia","NLP",42, pw.with_similarities, {"ids_to_texts":processed["simple"],"vocab_tokens":for_combined_tokens_wiki,"vocab_matrix":for_combined_distance_matrix_wiki,"model":word2vec_wiki_model,"metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Combined","PubMed","NLP",43, pw.with_similarities, {"ids_to_texts":processed["simple"],"vocab_tokens":for_combined_tokens_pubmed,"vocab_matrix":for_combined_distance_matrix_pubmed,"model":word2vec_pubmed_model,"metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Combined","Tokenization,Wikipedia","NLP",1042, pw.with_similarities, {"ids_to_texts":processed["simple_phenes"],"vocab_tokens":for_combined_tokens_wiki,"vocab_matrix":for_combined_distance_matrix_wiki,"model":word2vec_wiki_model,"metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Combined","Tokenization,PubMed","NLP",1043, pw.with_similarities, {"ids_to_texts":processed["simple_phenes"],"vocab_tokens":for_combined_tokens_pubmed,"vocab_matrix":for_combined_distance_matrix_pubmed,"model":word2vec_pubmed_model,"metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
+    
+    Method("Combined","Plants","NLP",42, pw.with_similarities, {"ids_to_texts":processed["full"],"vocab_tokens":for_combined_tokens_plants,"vocab_matrix":for_combined_distance_matrix_plants,"model":word2vec_plants_model,"metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Combined","Tokenization,Plants","NLP",1042, pw.with_similarities, {"ids_to_texts":processed["full_phenes"],"vocab_tokens":for_combined_tokens_plants,"vocab_matrix":for_combined_distance_matrix_plants,"model":word2vec_plants_model,"metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
+    
 ])
 
 
@@ -1370,6 +1419,9 @@ if args.collapsed: collapsed_approaches.extend([
     Method("N-Grams","Linares_Pontes,PubMed,Words,1-grams","NLP",41, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_pubmed"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_pubmed"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
     Method("N-Grams","Tokenization,Linares_Pontes,Wikipedia,Words,1-grams","NLP",1040, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_wikipedia_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_wikipedia_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
     Method("N-Grams","Tokenization,Linares_Pontes,PubMed,Words,1-grams","NLP",1041, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_pubmed_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_pubmed_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    
+    Method("N-Grams","Linares_Pontes,Plants,Words,1-grams","NLP",40, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_plants"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_plants"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Tokenization,Linares_Pontes,Plants,Words,1-grams","NLP",1040, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_plants_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_plants_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
 ])
 
 
@@ -1493,6 +1545,7 @@ for method in methods:
     
 # Save a file that details what was constructed with each approach, and how long it took.
 approaches_df = pd.DataFrame({"method":method_col_names, "duration":durations, "vector_length":vector_lengths, "arr_length":array_lengths})
+approaches_df["name_key"] = approaches_df["method"]
 approaches_df.to_csv(os.path.join(OUTPUT_DIR, APPROACHES_DIR, "approaches.csv"), index=False)
 
 # Save a copy of the dataset that includes just the genes that were looked at here.
@@ -1697,6 +1750,7 @@ if args.dataset in ("biosses", "pairs"):
     correlations_df = pd.DataFrame(small_table).transpose()
     correlations_df.reset_index(drop=False, inplace=True)
     correlations_df.rename({"index":"approach"}, inplace=True, axis="columns")
+    correlations_df["name_key"] = correlations_df["approach"]
     correlations_df.to_csv(os.path.join(OUTPUT_DIR,METRICS_DIR,"correlations.csv"), index=False)
     print(correlations_df)
     print(stop_here_gibberish_notavariable)
@@ -2165,6 +2219,7 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
     
 
 dists_df = pd.DataFrame(dist_rows, columns=["approach","curated","objective","species","distribution","bin_center","frequency","density","num_bins"])
+dists_df["name_key"] = dists_df["approach"]
 dists_df.to_csv(os.path.join(OUTPUT_DIR, PLOTS_DIR, "histograms.csv"), index=False)
 
 
@@ -2321,21 +2376,40 @@ for (groups,q) in zip(grouping_objects,grouping_names):
 
 
         within_dist_data["p_value"] = within_dist_data.apply(lambda row: calculate_p_value(name_to_n_to_means[row["approach"]][row["n"]], row["mean_value"]), axis=1)
-        within_dist_data["p_adjusted"] =  multipletests(within_dist_data["p_value"].values, method='bonferroni')[1] 
-
+        
+        
+        
+        def benjamini_hochberg(unadjusted_p_values, alpha):
+            m = len(unadjusted_p_values)
+            bhdf = pd.DataFrame({"p_value":unadjusted_p_values})
+            bhdf["rank"] = bhdf.rank(axis="rows", method="first", ascending=True)
+            assert bhdf["rank"].min() == 1
+            assert bhdf["rank"].max() == m
+            assert len(pd.unique(bhdf["rank"])) == m
+            bhdf["total"] = m
+            bhdf["fraction"] = bhdf["rank"]/bhdf["total"]
+            bhdf["threshold"] = alpha*bhdf["fraction"]
+            bhdf["significant"] = (bhdf["p_value"]<=bhdf["threshold"])
+            return(bhdf["significant"].values)
+        
         # Figuring out what proportion of the groups were assigned cohesive values that are considered significant.
-        significance_threshold = 0.05
-        tdf = pd.DataFrame(within_dist_data.groupby("approach")["p_value","p_adjusted"].agg(lambda x: sum(x<=significance_threshold)))
-        tdf = tdf.reset_index(drop=False)
-        tdf.columns = ["approach","num_significant","num_adjusted"]
-        tdf["total_groups"] = num_groups
-        tdf["fraction_significant"] = tdf["num_significant"]/tdf["total_groups"]
-        tdf["fraction_adjusted"] = tdf["num_adjusted"]/tdf["total_groups"]
-        num_rows_before_merge = within_dist_data.shape[0]
-        within_dist_data = within_dist_data.merge(right=tdf, how="left", on=["approach"])
-        assert within_dist_data.shape[0] == num_rows_before_merge
-        within_dist_data[["mean_value","fraction_significant","fraction_adjusted"]] = within_dist_data[["mean_value","fraction_significant","fraction_adjusted"]].round(4)
+        within_dist_data["benjamini_hochberg"] = within_dist_data.groupby("approach")["p_value"].transform(benjamini_hochberg, alpha=0.05)
+        within_dist_data["fraction_significant"] = within_dist_data.groupby("approach")["benjamini_hochberg"].transform(lambda x: int(x.sum())/x.count())
+        within_dist_data["number_of_groups"] = within_dist_data.groupby("approach")["benjamini_hochberg"].transform(lambda x: x.count())
+        
+        
+        #tdf = pd.DataFrame(within_dist_data.groupby("approach")["p_value","p_adjusted"].agg(lambda x: sum(x<=significance_threshold)))
+        #tdf = tdf.reset_index(drop=False)
+        #tdf.columns = ["approach","num_significant","num_adjusted"]
+        #tdf["total_groups"] = num_groups
+        #tdf["fraction_significant"] = tdf["num_significant"]/tdf["total_groups"]
+        #tdf["fraction_adjusted"] = tdf["num_adjusted"]/tdf["total_groups"]
+        #num_rows_before_merge = within_dist_data.shape[0]
+        #within_dist_data = within_dist_data.merge(right=tdf, how="left", on=["approach"])
+        #assert within_dist_data.shape[0] == num_rows_before_merge
+        #within_dist_data[["mean_value","fraction_significant","fraction_adjusted"]] = within_dist_data[["mean_value","fraction_significant","fraction_adjusted"]].round(4)
         curated_string = {True:"curated",False:"all"}[curated_genes_only]
+        within_dist_data["name_key"] = within_dist_data["approach"]
         within_dist_data.to_csv(os.path.join(OUTPUT_DIR, GROUP_DISTS_DIR, "{}_{}_within_distances_melted.csv".format(curated_string,q)), index=False)
 
 
@@ -2495,6 +2569,7 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
 
 # Create a CSV file for the precision recall curves for each different approach. 
 precision_recall_curves_df = pd.DataFrame(pr_df_rows, columns=["name", "approach", "hyperparameters", "group", "task", "curated", "species", "precision", "recall", "basline_auc"])
+precision_recall_curves_df["name_key"] = precision_recall_curves_df["name"]
 precision_recall_curves_df.to_csv(os.path.join(OUTPUT_DIR, METRICS_DIR, "precision_recall_curves.csv"), index=False) 
 precision_recall_curves_df.head(20)
 
@@ -2612,8 +2687,9 @@ result_dfs = []
 for (c,q,s) in variable_combinations:
     TABLE = tables[c][q][s]
     results = pd.DataFrame(TABLE).transpose()
-    columns = flatten(["species", "objective","curated","hyperparameters","group","order",results.columns])
+    columns = flatten(["species", "objective","curated","hyperparameters","name_key","group","order",results.columns])
     results["hyperparameters"] = ""
+    results["name_key"] = ""
     results["group"] = ""
     results["order"] = ""
     results["species"] = s.lower()
@@ -2626,6 +2702,7 @@ for (c,q,s) in variable_combinations:
     results["group"] = results["method"].map(lambda x: method_name_to_method_obj[x].group)
     results["hyperparameters"] = results["method"].map(lambda x: method_name_to_method_obj[x].hyperparameters)
     results["method"] = results["method"].map(lambda x: method_name_to_method_obj[x].name)
+    results["name_key"] = results["method"].map(lambda x: method_name_to_method_obj[x].name_with_hyperparameters)
     result_dfs.append(results)
 
 results = pd.concat(result_dfs)
@@ -2655,6 +2732,7 @@ for metric_of_interest in metrics_of_interest:
     
     # Remove columns that have all NA values, these are for questions that weren't applicable to these metrics.
     reshaped_results.dropna(axis="columns", how="all", inplace=True)
+    reshaped_results["name_key"] = reshaped_results["method"]
     reshaped_results.to_csv(os.path.join(OUTPUT_DIR, METRICS_DIR, "{}.csv").format(metric_of_interest), index=False)
 reshaped_results
 

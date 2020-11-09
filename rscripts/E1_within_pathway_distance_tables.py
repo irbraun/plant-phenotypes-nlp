@@ -22,14 +22,38 @@ name_to_order = dict(zip(name_df["name_in_notebook"].values, name_df["order"]))
 
 
 
+
+
+
+
+
+
 # Input paths from a specific output directory from running the analysis pipeline.
-plantcyc_pathways_cohesion_path = "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_31_2020_h23m05s45_6169_plants/stacked_pmn_only_within_distances_melted.csv"
-phenotype_subsets_cohesion_path = "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_31_2020_h23m05s45_6169_plants/stacked_subsets_within_distances_melted.csv"
+input_paths = [
+	"/Users/irbraun/phenologs-with-oats/outputs/deletethis_11_09_2020_h14m36s03_8781/all_pmn_only_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/deletethis_11_09_2020_h14m36s03_8781/all_kegg_only_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/deletethis_11_09_2020_h14m36s03_8781/all_subsets_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/deletethis_11_09_2020_h14m36s03_8781/curated_pmn_only_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/deletethis_11_09_2020_h14m36s03_8781/curated_kegg_only_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/deletethis_11_09_2020_h14m36s03_8781/curated_subsets_within_distances_melted.csv",
+]
+
+
+
+
+
+
+
+
+
+# Input paths from a specific output directory from running the analysis pipeline.
+#plantcyc_pathways_cohesion_path = "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_31_2020_h23m05s45_6169_plants/stacked_pmn_only_within_distances_melted.csv"
+#phenotype_subsets_cohesion_path = "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_31_2020_h23m05s45_6169_plants/stacked_subsets_within_distances_melted.csv"
 
 
 # Output paths, figure out where to put these.
-output_path_plantcyc_pathways = "/Users/irbraun/phenologs-with-oats/outputs/plantcyc_pathways_cohesion_info.csv"
-output_path_phenotype_subsets = "/Users/irbraun/phenologs-with-oats/outputs/phenotype_subsets_cohesion_info.csv"
+#output_path_plantcyc_pathways = "/Users/irbraun/phenologs-with-oats/outputs/plantcyc_pathways_cohesion_info.csv"
+#output_path_phenotype_subsets = "/Users/irbraun/phenologs-with-oats/outputs/phenotype_subsets_cohesion_info.csv"
 
 
 # Create and name an output directory according to when the notebooks was run and then create the paths for output files to put there.
@@ -43,32 +67,23 @@ output_path_phenotype_subsets = os.path.join(OUTPUT_DIR,"phenotype_subsets_cohes
 
 
 
+for input_path in input_paths:
+	# Produce a table indicating how many of the biochemical pathways had significant cohesion values.
+	# Working with the path.
+	basename_without_extension = os.path.basename(input_path).split(".")[0]
+	dirname = os.path.dirname(input_path)
+	output_path = os.path.join(dirname, "{}_renamed.csv".format(basename_without_extension))
+	# Working with the column subsets.
+	df = pd.read_csv(input_path)
+	df["name"] = df["approach"].map(name_to_display_name)
+	df["order"] = df["approach"].map(name_to_order)
+	df.drop_duplicates(subset=["order"], keep="first", inplace=True)
+	df = df[["order","name","number_of_groups","fraction_significant"]]
+	df["fraction_significant"] = df["fraction_significant"].map(lambda x:round(x,3))
+	df.sort_values(by="order", inplace=True)
+	df.to_csv(output_path, index=False)
 
 
 
-
-# Produce a table indicating how many of the biochemical pathways had significant cohesion values.
-df = pd.read_csv(plantcyc_pathways_cohesion_path)
-df["name"] = df["approach"].map(name_to_display_name)
-df["order"] = df["approach"].map(name_to_order)
-df.drop_duplicates(subset=["order"], keep="first", inplace=True)
-df = df[["order","name","total_groups","num_significant","num_adjusted","fraction_significant","fraction_adjusted"]]
-df["fraction_adjusted"] = df["fraction_adjusted"].map(lambda x:round(x,3))
-df["fraction_significant"] = df["fraction_significant"].map(lambda x:round(x,3))
-df.sort_values(by="order", inplace=True)
-df.to_csv(output_path_plantcyc_pathways, index=False)
-
-
-
-# Produce a table indicating how many of the phenotype subsets had significant cohesion values.
-df = pd.read_csv(phenotype_subsets_cohesion_path)
-df["name"] = df["approach"].map(name_to_display_name)
-df["order"] = df["approach"].map(name_to_order)
-df.drop_duplicates(subset=["order"], keep="first", inplace=True)
-df = df[["order","name","total_groups","num_significant","num_adjusted","fraction_significant","fraction_adjusted"]]
-df["fraction_adjusted"] = df["fraction_adjusted"].map(lambda x:round(x,3))
-df["fraction_significant"] = df["fraction_significant"].map(lambda x:round(x,3))
-df.sort_values(by="order", inplace=True)
-df.to_csv(output_path_phenotype_subsets, index=False)
 
 print("done")

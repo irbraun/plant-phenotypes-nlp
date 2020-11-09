@@ -82,6 +82,19 @@ def columnstack_distances_dataframes(basedir, filename, path_keyword=None):
 
 
 
+
+
+
+# Read in the file that maps names used internally to names used in figures.
+naming_dataframe_path = "/Users/irbraun/phenologs-with-oats/names.tsv"
+name_df = pd.read_csv(naming_dataframe_path, sep="\t")
+name_to_display_name = dict(zip(name_df["name_in_notebook"].values, name_df["name"]))
+name_to_order = dict(zip(name_df["name_in_notebook"].values, name_df["order"]))
+
+
+
+
+
 # Should we check paths for a keyword?
 if len(sys.argv)>1:
 	path_keyword = sys.argv[1]
@@ -118,14 +131,15 @@ FILES_TO_BE_STACKED = [
 	"precision_recall_curves.csv",
 	"histograms.csv",
 	"correlations.csv",
-	"pmn_only_within_distances_melted.csv",
-	"kegg_only_within_distances_melted.csv",
-	"subsets_within_distances_melted.csv"
+	"all_pmn_only_within_distances_melted.csv",
+	"all_kegg_only_within_distances_melted.csv",
+	"all_subsets_within_distances_melted.csv",
+	"curated_pmn_only_within_distances_melted.csv",
+	"curated_kegg_only_within_distances_melted.csv",
+	"curated_subsets_within_distances_melted.csv"
 ]
 	
 	
-
-
 
 
 # For each of those files, stack them and write to a new file. Sort them if there is a column named "order".
@@ -133,9 +147,21 @@ for filename in FILES_TO_BE_STACKED:
 	new_filename = "stacked_{}".format(filename)
 	df = recursive_rowstack_dataframes(BASEDIR, filename, path_keyword)
 	if isinstance(df, pd.DataFrame):
+
+		if "name_key" in df.columns:
+			all_old_columns = df.columns
+			df["name_value"] = df["name_key"].map(name_to_display_name)
+			df["order"] = df["name_key"].map(name_to_order)
+			new_columns = ["name_value","order"]
+			new_columns.extend([x for x in all_old_columns if x != "order"])
+			df = df[new_columns]
+
 		if "order" in df.columns:
 			df.sort_values(by=["order"], inplace=True)
 		df.to_csv(os.path.join(OUTPUT_DIR,new_filename), index=False)
+
+
+
 
 print("finished vertically stacking output files")
 
@@ -150,9 +176,12 @@ print("finished vertically stacking output files")
 
 # Ones that are stacked horizontally and require re-organization that's different than the above files.
 FILES_TO_BE_STACKED = [
-	"pmn_only_within_distances.csv",
-	"kegg_only_within_distances.csv",
-	"subsets_within_distances.csv",
+	"all_pmn_only_within_distances.csv",
+	"all_kegg_only_within_distances.csv",
+	"all_subsets_within_distances.csv",
+	"curated_pmn_only_within_distances.csv",
+	"curated_kegg_only_within_distances.csv",
+	"curated_subsets_within_distances.csv",
 ]
 	
 for filename in FILES_TO_BE_STACKED:
