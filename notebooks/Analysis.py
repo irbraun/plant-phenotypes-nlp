@@ -2266,6 +2266,7 @@ for (groups,q) in zip(grouping_objects,grouping_names):
         group_ids = list(group_id_to_ids.keys())
         within_percentiles_dict = defaultdict(lambda: defaultdict(list))
         within_weights_dict = defaultdict(lambda: defaultdict(list))
+        group_id_to_n = {}
         all_weights_dict = {}
         for method in methods:
             name = method.name_with_hyperparameters
@@ -2273,6 +2274,7 @@ for (groups,q) in zip(grouping_objects,grouping_names):
                 within_ids = group_id_to_ids[group]    
                 if curated_genes_only:
                     within_ids = [i for i in within_ids if i in ids_with_all_annotations]
+                group_id_to_n[group] = len(within_ids)
                 
                 mean_weight = np.mean([name_to_array[name][id_to_array_index[i],id_to_array_index[j]] for i,j in combinations(within_ids,2)])
                 # https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.percentileofscore.html
@@ -2297,7 +2299,8 @@ for (groups,q) in zip(grouping_objects,grouping_names):
         within_dist_data.reset_index(inplace=True)
         within_dist_data["group_id"] = within_dist_data["index"]
         within_dist_data["full_name"] = within_dist_data["group_id"].apply(lambda x: groups.get_long_name(x))
-        within_dist_data["n"] = within_dist_data["group_id"].apply(lambda x: len(group_id_to_ids[x]))
+        #within_dist_data["n"] = within_dist_data["group_id"].apply(lambda x: len(group_id_to_ids[x]))
+        within_dist_data["n"] = within_dist_data["group_id"].map(group_id_to_n)
         method_col_names = [method.name_with_hyperparameters for method in methods]
         within_dist_data = within_dist_data[flatten(["group_id","full_name","n","mean_avg_pair_percentile","mean_group_rank",method_col_names])]
         curated_string = {True:"curated",False:"all"}[curated_genes_only]
@@ -2701,8 +2704,8 @@ for (c,q,s) in variable_combinations:
     results["order"] = results["method"].map(lambda x: method_name_to_method_obj[x].number)
     results["group"] = results["method"].map(lambda x: method_name_to_method_obj[x].group)
     results["hyperparameters"] = results["method"].map(lambda x: method_name_to_method_obj[x].hyperparameters)
-    results["method"] = results["method"].map(lambda x: method_name_to_method_obj[x].name)
     results["name_key"] = results["method"].map(lambda x: method_name_to_method_obj[x].name_with_hyperparameters)
+    results["method"] = results["method"].map(lambda x: method_name_to_method_obj[x].name)
     result_dfs.append(results)
 
 results = pd.concat(result_dfs)
@@ -2732,7 +2735,7 @@ for metric_of_interest in metrics_of_interest:
     
     # Remove columns that have all NA values, these are for questions that weren't applicable to these metrics.
     reshaped_results.dropna(axis="columns", how="all", inplace=True)
-    reshaped_results["name_key"] = reshaped_results["method"]
+    reshaped_results["name_key"] = reshaped_results.apply(lambda x: "{}__{}".format(x["method"],x["hyperparameters"]),axis=1)
     reshaped_results.to_csv(os.path.join(OUTPUT_DIR, METRICS_DIR, "{}.csv").format(metric_of_interest), index=False)
 reshaped_results
 

@@ -161,14 +161,13 @@ color_mapping <- setNames(method_colors, method_names)
 
 
 
-df_long_t$significant <- df_long_t$p_adjusted<=0.05
 
-
-df_long_t$significant = factor(df_long_t$significant, levels=c(TRUE,FALSE), labels= c("*","NS"))
-outline_names <- c("*","NS")
+outline_names <- c("Yes","No")
 outline_colors <- c("#000000", "#FFFFFF00")
 outline_mapping <- setNames(outline_colors, outline_names)
 
+df_long_t$significant <- df_long_t$p_adjusted<=0.05
+df_long_t$significant = factor(df_long_t$significant, levels=c(TRUE,FALSE), labels=outline_names)
 
 
 
