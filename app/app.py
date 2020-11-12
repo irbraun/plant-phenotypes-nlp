@@ -192,6 +192,7 @@ class LossLogger(CallbackAny2Vec):
 # Just uncomment these two lines to use the entire set of approaches and load all files.
 names_to_actually_use = ["plants","n-grams"]
 APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k in names_to_actually_use}
+SCORE_SIMILARITY_THRESHOLDS = {"plants":0.50, "n-grams":0.00}
 
 
 
@@ -220,17 +221,17 @@ PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION = lambda x: "{}{}{}".format(KEYWORD_DE
 
 # Initial configuration and the logo image at the top of the page.
 st.set_page_config(page_title="QuOATS", layout="wide", initial_sidebar_state="expanded")
-PATH_TO_LOGO_PNG = "resources/logo_4.png"
-#st.image(Image.open(PATH_TO_LOGO_PNG), caption=None, width=800, output_format="png")
+PATH_TO_LOGO_PNG = "resources/logo_without_box.png"
+st.image(Image.open(PATH_TO_LOGO_PNG), caption=None, width=800, output_format="png")
 
 # Markdown for introducing the app and linking to other relevant resources like the project Github page.
 
 
-st.markdown("# QuOATS")
+#st.markdown("# QuOATS")
 
 st.markdown("## Documentation")
 
-show_documentation = st.checkbox(label="Show", value=True)
+show_documentation = st.checkbox(label="Show", value=False)
 
 
 
@@ -241,7 +242,7 @@ This tool enables querying a dataset of plant genes using annotations with ontol
 motivation behind this tool are described in detail in the preprint that is available here [add link to the preprint here]. The tool
 provides four different methods querying the dataset, and the result in each case is a table of genes sorted by relevance to the query.
 The actions behind each methods and the nature of the returned results are described in detail in the next sections. The results of any 
-query can be downloaded as a CSV file using the provided link.
+query can be downloaded as a tsv file using the provided link.
 
 
 ### Gene Identifiers
@@ -278,11 +279,12 @@ This search option allows for querying with a phenotype descriptions or set of p
 order to recover genes that are associated with phenotypes that have been similarly described. Rather than using exact matching
 only, this search type combines text embedding models that are capable of making associations between related words or concepts.
 Each string separated by periods in the query is compared to each sentence or fragment in the phenotype descriptions of genes in
-the dataset using three different NLP methods (n-grams, word embedding models trained on Wikipedia, and word embedding models
-trained on PubMed). The similarities are average across methods, and for each gene, the greatest similarity between text in that 
+the dataset using two different NLP methods (n-grams, and word embedding models trained on phenotype descriptions and plant-related
+abstracts). The similarities are average across methods, and for each gene, the greatest similarity between text in that 
 gene's phenotype description and the queried text is returned. The returned genes are ranked based on the greatest individual 
-similarity and then the average similarity across all descriptions provided in the query. Uncheck the 'compress phenotypes in table' 
-option to display the entirety of the phenotype descriptions associated with each gene.
+similarity and then the average similarity across all descriptions provided in the query. Place square brackets around any word
+or set of words in the queried sentences in order to only consider matches where the bracketed text is present, similar to the 
+keyword search described above. Uncheck the 'compress phenotypes in table' option to display the entirety of the phenotype descriptions associated with each gene.
 
 
 """
@@ -305,6 +307,22 @@ if show_documentation:
 
 
 
+
+st.markdown("## Quick Overview")
+
+
+overview_string = """
+ - Search using **gene identifiers** by entering in a gene name, protein name, gene model, or other identifer. For example, 'ATG7'.
+ - Search using **ontology terms** by entering ontology term IDs separeted by commas or spaces. For example, 'PATO:0000587, GO:0010029, PO:0020127'.
+ - Search using **keywords or keyphrases** by entering any strings separated by commas, e.g., "height, root system, auxin". Only phenotypes containing those concepts are returned.
+ - Search using **free text** by entering any words or phenotype descriptions separated by periods, e.g., "leaves are wider than normal. "resistant to 
+ infection." Returned phenotypes are scored with respect to each query component and may be related in meaning but not identically described. Place square brackets around a particular word to only return phenotypes that explicity contain it, e.g., "resistant to [bacterial] infection."
+
+
+"""
+
+
+st.markdown(overview_string)
 
 
 
@@ -685,15 +703,15 @@ def description_search(text, tokenization_function):
 			internal_id_to_distance_from_new_text = graph.get_distances(s)
 
 
-			# Check for the keywords, and force those distances to one where they don't appear.
+			# Check for the keywords, and force those distances for sentences in the dataset where a part of that keyword doesn't appear.
 			if len(keyword_list)>0:
 				keyword_list = [preprocessing_function(s) for s in keyword_list]
-				internal_id_to_distance_from_keyword_1 = APPROACH_TO_OBJECT["n-grams"].get_distances(keyword_list[0])
-				internal_ids_where_the_keyword_score_is_zero = [i for i,dist in internal_id_to_distance_from_keyword_1.items() if dist==1.00]
-				#st.write(internal_ids_where_the_keyword_score_is_zero)
-				for i in internal_ids_where_the_keyword_score_is_zero:
-					internal_id_to_distance_from_new_text[i] = 1.00
 
+				for keyword in keyword_list:
+					internal_id_to_distance_from_keyword = APPROACH_TO_OBJECT["n-grams"].get_distances(keyword)
+					internal_ids_where_the_keyword_score_is_zero = [i for i,dist in internal_id_to_distance_from_keyword.items() if dist==1.00]
+					for i in internal_ids_where_the_keyword_score_is_zero:
+						internal_id_to_distance_from_new_text[i] = 1.00
 
 
 
@@ -703,23 +721,19 @@ def description_search(text, tokenization_function):
 				graph_distances = [internal_id_to_distance_from_new_text[graph_id] for graph_id in graph_ids]
 				min_graph_distance = min(graph_distances)
 
-
-
-				if approach == "plants":
-					x = min_graph_distance
-					x = 1-x
-					x = (max(x,0.5)-0.5)/0.5
-					x = 1-x
-					min_graph_distance = x
-
+				# Tranforming distances scores if necessary to discount similarities below a certain threshold depending on the method.
+				# Makes results displayed more intuitive and limites the output tables from being unreasonably large.
+				x = min_graph_distance
+				x = 1-x
+				spread_after_thresholding = 1-SCORE_SIMILARITY_THRESHOLDS[approach]
+				x = (max(x,SCORE_SIMILARITY_THRESHOLDS[approach])-SCORE_SIMILARITY_THRESHOLDS[approach])/spread_after_thresholding
+				x = 1-x
+				min_graph_distance = x
 
 
 				# Remember that value as the distance from this one parsed text string from the search to this particular gene.
 				#gene_id_to_distances[gene_id].append(min_graph_distance)
 				gene_id_to_approach_to_distances[gene_id][approach].append(min_graph_distance)
-
-
-
 
 
 
@@ -1335,19 +1349,6 @@ elif search_type == "phenotype" and input_text != "":
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 		# The tokenization has to be the same for all the methods used, which in this case is just sentence tokenization. So just take one of them.
 		# TODO make this more organized, don't specify tokenization function in the dictionary if it needs to be identical across used methods.
 		f_tokenizing = APPROACH_NAMES_AND_DATA[APPROACHES[0]]["tokenization_function"]
@@ -1390,8 +1391,6 @@ elif search_type == "phenotype" and input_text != "":
 		df[COLUMN_NAMES["phenotype"]] = df["Phenotype Description"].map(lambda x: truncate_description_cell(x, min(len(raw_sentence_tokens),MAX_LINES_IN_RESULT_COLUMN)))
 
 
-
-	#st.write(df.head())
 
 
 
