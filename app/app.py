@@ -145,34 +145,52 @@ TO_SPECIES_DISPLAY_NAME = {i:d for i,d in zip(internal_species_strings,display_s
 # preprocessing_function: A function for how text should be preprocessed in order to be compatible with this approach.
 APPROACH_NAMES_AND_DATA = {
 	"n-grams":{
-		"path_dists":"resources/A_dists_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
-		"path_vectors":"resources/A_vectors_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle",
-		"mapping_file":"resources/A_gene_id_to_unique_ids_sent_tokens.pickle",
+		"path_dists":"resources/dists_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle", 
+		"path_vectors":"resources/vectors_with_n_grams_tokenization_full_words_1_grams_tfidf.pickle",
+		"mapping_file":"resources/gene_id_to_unique_ids_sent_tokens.pickle",
 		"tokenization_function":sentence_tokenize,
-		"preprocessing_fucntion":full_preprocessing,
+		"preprocessing_function":full_preprocessing,
 		},
-	"pubmed":{
-		"path_dists":"resources/B_dists_with_word2vec_tokenization_pubmed_size_200_mean.pickle", 
-		"path_vectors":"resources/B_vectors_with_word2vec_tokenization_pubmed_size_200_mean.pickle",
-		"mapping_file":"resources/B_gene_id_to_unique_ids_sent_tokens.pickle",
+	"plants":{
+		"path_dists":"resources/dists_with_word2vec_tokenization_plants_size_300_mean.pickle", 
+		"path_vectors":"resources/vectors_with_word2vec_tokenization_plants_size_300_mean.pickle",
+		"mapping_file":"resources/gene_id_to_unique_ids_sent_tokens.pickle",
 		"tokenization_function":sentence_tokenize,
-		"preprocessing_fucntion":identify_function,
+		"preprocessing_function":full_preprocessing,
 		},
-	"pmc":{
-		"path_dists":"resources/C_dists_with_word2vec_tokenization_pmc_size_200_mean.pickle", 
-		"path_vectors":"resources/C_vectors_with_word2vec_tokenization_pmc_size_200_mean.pickle",
-		"mapping_file":"resources/C_gene_id_to_unique_ids_sent_tokens.pickle",
+	"wikipedia":{
+		"path_dists":"resources/dists_with_word2vec_tokenization_wikipedia_size_300_mean.pickle", 
+		"path_vectors":"resources/vectors_with_word2vec_tokenization_wikipedia_size_300_mean.pickle",
+		"mapping_file":"resources/gene_id_to_unique_ids_sent_tokens.pickle",
 		"tokenization_function":sentence_tokenize,
 		"preprocessing_fucntion":identify_function,
 		},
 	}
 
+from gensim.models.callbacks import CallbackAny2Vec
+class LossLogger(CallbackAny2Vec):
+    def __init__(self):
+        self.epochs = []
+        self.epoch = 1
+        self.losses = []
+        self.deltas = []
+    def on_epoch_end(self, model):
+        loss = model.get_latest_training_loss()
+        if self.epoch == 1:
+            delta = loss
+        else:
+            delta = loss- self.loss_previous_step
+        self.loss_previous_step=loss
+        self.losses.append(loss)
+        self.epochs.append(self.epoch)
+        self.epoch += 1
+        self.deltas.append(delta)
 
 
 
 # For testing, be able to subset this nested dictionary without having to uncomment sections of it.
 # Just uncomment these two lines to use the entire set of approaches and load all files.
-names_to_actually_use = ["n-grams", "pubmed"]
+names_to_actually_use = ["plants","n-grams"]
 APPROACH_NAMES_AND_DATA = {k:v for k,v in APPROACH_NAMES_AND_DATA.items() if k in names_to_actually_use}
 
 
@@ -333,7 +351,7 @@ st.markdown(
 		font-family: arial;
 	}
 	.sidebar .sidebar-content {
-		background-image: linear-gradient(#87F1CC,#87F1CC);
+		background-image: linear-gradient(#E7FD8E,#E7FD8E);
 		color: black;
 	}
 	.Widget>label {
@@ -355,7 +373,7 @@ st.markdown(
 		font-family: times;
 	}
 	.reportview-container .main footer, .reportview-container .main footer a {
-		color: #B31334;
+		color: #fff;
 	}
 	header .decoration {
 		background-image: none;
@@ -631,56 +649,96 @@ def description_search(text, tokenization_function):
 	# some mapping that is already done, and the choices are passed in to this function.
 	# The tokenization might just yield a single text, but it still goes in a list for consistency.
 	sentence_tokens = tokenization_function(text)
-	
 
 
 
-	min_dicts = []
-	mean_dicts = []
+
+
+	# Adding something here.
+	list_of_keywords_for_each_sentence = []
+	pattern = re.compile(r"\[(.*?)\]")
+	for s in sentence_tokens:
+		keywords = pattern.findall(s)
+		list_of_keywords_for_each_sentence.append(keywords)
+	sentence_tokens = [s.replace("[","").replace("]","") for s in sentence_tokens]
+
+
+
+
+
+	gene_id_to_approach_to_distances = defaultdict(lambda: defaultdict(list))
 	for approach in APPROACHES:
 
 
-		preprocessing_function = APPROACH_NAMES_AND_DATA[approach]["preprocessing_fucntion"]
+		preprocessing_function = APPROACH_NAMES_AND_DATA[approach]["preprocessing_function"]
 		preprocessed_sentence_tokens  = [preprocessing_function(s) for s in sentence_tokens]
-
-
 		graph = APPROACH_TO_OBJECT[approach]
 		gene_id_to_graph_ids = APPROACH_TO_MAPPING[approach]
 
+
 		# Now the preprocessed sentence tokens are in the right format, and ready to be embedded and compared to the existing data.
-
-
 		# Get a mapping between gene IDs and their distances to each new text string parsed from the search string.
 		# The key is the gene ID from the existing dataset and the values are a list in the same order as the preprocessed query sentences.
-		gene_id_to_distances = defaultdict(list)
-		for s in preprocessed_sentence_tokens:
+		#gene_id_to_distances = defaultdict(list)
+		for s,keyword_list in zip(preprocessed_sentence_tokens, list_of_keywords_for_each_sentence):
 			
 			internal_id_to_distance_from_new_text = graph.get_distances(s)
+
+
+			# Check for the keywords, and force those distances to one where they don't appear.
+			if len(keyword_list)>0:
+				keyword_list = [preprocessing_function(s) for s in keyword_list]
+				internal_id_to_distance_from_keyword_1 = APPROACH_TO_OBJECT["n-grams"].get_distances(keyword_list[0])
+				internal_ids_where_the_keyword_score_is_zero = [i for i,dist in internal_id_to_distance_from_keyword_1.items() if dist==1.00]
+				#st.write(internal_ids_where_the_keyword_score_is_zero)
+				for i in internal_ids_where_the_keyword_score_is_zero:
+					internal_id_to_distance_from_new_text[i] = 1.00
+
+
+
 
 
 			for gene_id,graph_ids in gene_id_to_graph_ids.items():
 				# What's the smallest distances between this new graph and one of the texts for the internal graph nodes.
 				graph_distances = [internal_id_to_distance_from_new_text[graph_id] for graph_id in graph_ids]
 				min_graph_distance = min(graph_distances)
+
+
+
+				if approach == "plants":
+					x = min_graph_distance
+					x = 1-x
+					x = (max(x,0.5)-0.5)/0.5
+					x = 1-x
+					min_graph_distance = x
+
+
+
 				# Remember that value as the distance from this one parsed text string from the search to this particular gene.
-				gene_id_to_distances[gene_id].append(min_graph_distance)
-
-
-		# For now, just get a mapping between gene IDs and their minimum distance to any of those parsed strings.
-		# Maybe this should take more than just the minimum of them into account for this application?
-		gene_id_to_min_distance = {gene_id:min(distances) for gene_id,distances in gene_id_to_distances.items()}
-		gene_id_to_mean_distance = {gene_id:np.mean(distances) for gene_id,distances in gene_id_to_distances.items()}
-	
-
-		min_dicts.append(gene_id_to_min_distance)
-		mean_dicts.append(gene_id_to_mean_distance)
-
-	gene_id_to_min_distance = {k:np.mean([d[k] for d in min_dicts]) for k in min_dicts[0].keys()}
-	gene_id_to_mean_distance = {k:np.mean([d[k] for d in mean_dicts]) for k in mean_dicts[0].keys()}
+				#gene_id_to_distances[gene_id].append(min_graph_distance)
+				gene_id_to_approach_to_distances[gene_id][approach].append(min_graph_distance)
 
 
 
-	return(sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance)
+
+
+
+
+	# Where the distances from multiple methods get combined. Should be either min() or mean() here. These are used for sorting.
+	gene_id_to_combined_distances = defaultdict(list)
+	for gene_id in gene_id_to_approach_to_distances.keys():
+		distance_lists = []
+		for approach in APPROACHES:
+			distance_lists.append(gene_id_to_approach_to_distances[gene_id][approach])
+		distance_lists = np.array(distance_lists)
+		combined_distances = np.min(distance_lists, axis=0)
+		gene_id_to_combined_distances[gene_id] = list(combined_distances)
+
+	gene_id_to_min_distance = {gene_id:min(distances) for gene_id,distances in gene_id_to_combined_distances.items()}
+	gene_id_to_mean_distance = {gene_id:np.mean(distances) for gene_id,distances in gene_id_to_combined_distances.items()}
+
+
+	return(sentence_tokens, gene_id_to_combined_distances, gene_id_to_min_distance, gene_id_to_mean_distance)
 
 
 
@@ -1245,7 +1303,49 @@ elif search_type == "phenotype" and input_text != "":
 	# Do the processing of the search and add necessary columns to the dataframe to be shown.
 	with st.spinner("Searching dataset for similar phenotype descriptions..."):
 		
+
+
+
 		search_string = input_text
+
+
+
+
+
+
+
+
+		# First check if want to carry out a keyword search first.
+		pattern = re.compile(r"\[(.*?)\]")
+		keywords = pattern.findall(search_string)
+		if len(keywords)>0:
+			raw_keywords = [kw.strip() for kw in keywords]
+			modified_keywords = [PREPROCESSING_FOR_KEYWORD_SEARCH_FUNCTION(kw) for kw in raw_keywords]
+			id_to_found_keywords, id_to_num_found_keywords = keyword_search(id_to_descriptions_for_keyword_matching, raw_keywords, modified_keywords)
+			df["num_found"] = df["id"].map(id_to_num_found_keywords)
+			subset_df = df[df["num_found"]>0]
+			subset_df[COLUMN_NAMES["keywords"]] = subset_df["id"].map(lambda x: ", ".join(id_to_found_keywords[x]))
+			subset_df.sort_values(by=["num_found","id"], ascending=[False,True], inplace=True)
+			subset_df[COLUMN_NAMES["result"]] = np.arange(1, len(subset_df)+1)
+			df = subset_df
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 		# The tokenization has to be the same for all the methods used, which in this case is just sentence tokenization. So just take one of them.
@@ -1253,13 +1353,24 @@ elif search_type == "phenotype" and input_text != "":
 		f_tokenizing = APPROACH_NAMES_AND_DATA[APPROACHES[0]]["tokenization_function"]
 		raw_sentence_tokens, gene_id_to_distances, gene_id_to_min_distance, gene_id_to_mean_distance = description_search(search_string, f_tokenizing)
 
+
+
+
+		# Added this part to account for allowing brackets for keywords.
+		#raw_sentence_tokens = [s.replace("[","").replace("]","") for s in raw_sentence_tokens]
+
+
+
 		# Generate a column that will be used as the sorting metric, and sort the dataframe.
 		df["min_distance"] = df["id"].map(gene_id_to_min_distance)
 		df["mean_distance"] = df["id"].map(gene_id_to_mean_distance)
 		df.sort_values(by=["min_distance","mean_distance","id"], ascending=[True,True,True], inplace=True)
 		
 		# Subset it from this point forward after sorting to not waste formatting time on something that won't be shown.
+		min_distance_threshold = 0.99
+		df = df[df["min_distance"]<min_distance_threshold]
 		df = df.head(ROW_LIMIT)
+
 
 		# Create all the formatted columns that will need to be displayed.
 		df[COLUMN_NAMES["rank"]] = np.arange(1, len(df)+1)
@@ -1277,6 +1388,12 @@ elif search_type == "phenotype" and input_text != "":
 	df[COLUMN_NAMES["phenotype"]] = df["descriptions_with_newline_tokens"]
 	if truncate:
 		df[COLUMN_NAMES["phenotype"]] = df["Phenotype Description"].map(lambda x: truncate_description_cell(x, min(len(raw_sentence_tokens),MAX_LINES_IN_RESULT_COLUMN)))
+
+
+
+	#st.write(df.head())
+
+
 
 
 	# Show the subset of columns that is relevant to this search.
