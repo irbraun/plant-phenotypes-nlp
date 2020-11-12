@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[98]:
+# In[ ]:
 
 
 import pandas as pd
@@ -32,7 +32,7 @@ from oats.utils.utils import flatten
 
 # ### 1. Creating datasets of sentences to traing word embedding models
 
-# In[4]:
+# In[ ]:
 
 
 # Input paths to text datasets.
@@ -65,7 +65,7 @@ print(len(sentences_from_descriptions))
 
 # ### 2. Training and saving models with hyperparameter grid search
 
-# In[46]:
+# In[ ]:
 
 
 # Defining grid search parameters for training word embedding models.
@@ -88,7 +88,7 @@ hyperparameter_sets = list(product(
 print(len(hyperparameter_sets))
 
 
-# In[58]:
+# In[ ]:
 
 
 class LossLogger(CallbackAny2Vec):
@@ -110,7 +110,7 @@ class LossLogger(CallbackAny2Vec):
         self.deltas.append(delta)
 
 
-# In[61]:
+# In[ ]:
 
 
 def train_and_save_word_embedding_model(output_dir, hyperparameters):
@@ -144,7 +144,7 @@ for h in hyperparameter_sets:
 
 # ### 3. Using ontologies to generate datasets of closely related domain concepts
 
-# In[103]:
+# In[ ]:
 
 
 def build_validation_df_from_ontology(path):
@@ -193,7 +193,7 @@ def build_validation_df_from_ontology(path):
     return(validation_df, key_to_preprocessed_text_string)
 
 
-# In[104]:
+# In[ ]:
 
 
 pato_validation_df, pato_key_to_preprocessed_text_string = build_validation_df_from_ontology("../ontologies/pato.obo")
@@ -201,7 +201,7 @@ po_validation_df, po_key_to_preprocessed_text_string = build_validation_df_from_
 print("done")
 
 
-# In[105]:
+# In[ ]:
 
 
 test_words = ["auxin","leaves","dwarfism","roots","tip","anatomy","abnormal","hair","late","flowering"]
@@ -209,9 +209,27 @@ test_words = [preprocess_string(word)[0] for word in test_words]
 test_words
 
 
+# ### 3.5 Validation dataset of paraphrased phenotype sentences
+
+# In[ ]:
+
+
+from pathlib import Path
+paraphrase_output_path = "/Users/irbraun/phenologs-with-oats/data/corpus_related_files/paraphrasing/from_corpus.txt"
+f = Path(paraphrase_output_path)
+if not f.exists():
+    corpus = open(plant_abstracts_corpus_path, 'r').read()
+    sentences_from_corpus = sent_tokenize(corpus)
+    random.shuffle(sentences_from_corpus)
+    sentences_from_corpus = [s for s in sentences_from_corpus if len(s.split())<=20]
+    with open(paraphrase_output_path, "w") as f:
+        for s in sentences_from_corpus[:100]:
+            f.write(s+"\n")
+
+
 # ### 4. Evaluating word embedding models on the validation dataset of related concepts
 
-# In[117]:
+# In[ ]:
 
 
 models_dir = "../models/plants_sg"
