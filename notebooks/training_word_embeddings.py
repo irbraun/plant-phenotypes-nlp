@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import pandas as pd
@@ -32,7 +32,7 @@ from oats.utils.utils import flatten
 
 # ### 1. Creating datasets of sentences to traing word embedding models
 
-# In[ ]:
+# In[2]:
 
 
 # Input paths to text datasets.
@@ -144,13 +144,92 @@ for h in hyperparameter_sets:
 
 # ### 3. Using ontologies to generate datasets of closely related domain concepts
 
+# In[49]:
+
+
+# Add in the section here for creating the small validation set.
+# This creates a dataframe that has all the parent child term pairs in it including synonyms, and excluding
+# the term pairs that have an explicit overlap in a token because that's not useful for embedding validation.
+
+# Load the ontology and term information.
+path = "../ontologies/pato.obo"
+ont = Ontology(path)
+term_ids_and_names = [(t.id,t.name) for t in ont.terms() if "obsolete" not in t.name]
+
+# Also including all the synonym information here.
+term_ids_and_names_with_synonyms = []
+for i,name in term_ids_and_names:
+    term_ids_and_names_with_synonyms.append((i," ".join(ont.term_to_tokens[i])))
+
+key_to_annotations = {i:[x[0]] for i,x in enumerate(term_ids_and_names)}
+key_to_term_id = {i:x[0] for i,x in enumerate(term_ids_and_names)}
+key_to_text_string = {i:x[1] for i,x in enumerate(term_ids_and_names_with_synonyms)}
+key_to_preprocessed_text_string = {i:" ".join(preprocess_string(s)) for i,s in key_to_text_string.items()}
+
+# Get mappings that define which terms are very close to which others ones in the ontology structure.
+parents = {}
+children = {}
+for term in ont.terms():
+    parents[term.id] = [t.id for t in term.superclasses(with_self=False, distance=1)]
+    children[term.id] = [t.id for t in term.subclasses(with_self=False, distance=1)]
+siblings = {}
+for term in ont.terms():
+    siblings[term.id] = flatten([[t for t in children[parent_id] if t!=term.id] for parent_id in parents[term.id]])
+assert len(parents) == len(children)
+assert len(parents) == len(siblings)
+any_close = {}
+for key in parents.keys():
+    any_close[key] = flatten([parents[key],children[key],siblings[key]])
+    any_close[key] = flatten([parents[key],children[key]])
+
+df = pw.with_annotations(key_to_annotations, ont, "jaccard", tfidf=False).edgelist
+df = df[df["from"]!=df["to"]]
+df["from_id"] = df["from"].map(lambda x: key_to_term_id[x])
+df["to_id"] = df["to"].map(lambda x: key_to_term_id[x])
+df["from_text"] = df["from"].map(lambda x: key_to_text_string[x])
+df["to_text"] = df["to"].map(lambda x: key_to_text_string[x])
+df["close"] = df.apply(lambda x: x["to_id"] in any_close[x["from_id"]], axis=1)
+df["token_overlap"] = df.apply(lambda x: len(set(x["from_text"].split()).intersection(set(x["to_text"].split())))>0, axis=1)
+df = df[(df["token_overlap"]==False) & (df["close"]==True)]
+df.head(20)
+
+
+# In[50]:
+
+
+df.sample(10)
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
 # In[ ]:
 
 
 def build_validation_df_from_ontology(path):
     
     # Load the ontology and term information.
-    path = "../ontologies/po.obo"
     ont = Ontology(path)
     term_ids_and_names = [(t.id,t.name) for t in ont.terms() if "obsolete" not in t.name]
     key_to_annotations = {i:[x[0]] for i,x in enumerate(term_ids_and_names)}

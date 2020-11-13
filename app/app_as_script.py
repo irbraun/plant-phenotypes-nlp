@@ -60,6 +60,8 @@ nltk.download('averaged_perceptron_tagger', quiet=True)
 
 
 
+
+
 # Constants that help define how the tables look and how the text wraps within the table cells.
 TABLE_HEADER_COLOR = "#808080"
 TABLE_ROWS_COLOR = "#F1F2F6"
@@ -172,22 +174,22 @@ APPROACH_NAMES_AND_DATA = {
 
 from gensim.models.callbacks import CallbackAny2Vec
 class LossLogger(CallbackAny2Vec):
-    def __init__(self):
-        self.epochs = []
-        self.epoch = 1
-        self.losses = []
-        self.deltas = []
-    def on_epoch_end(self, model):
-        loss = model.get_latest_training_loss()
-        if self.epoch == 1:
-            delta = loss
-        else:
-            delta = loss- self.loss_previous_step
-        self.loss_previous_step=loss
-        self.losses.append(loss)
-        self.epochs.append(self.epoch)
-        self.epoch += 1
-        self.deltas.append(delta)
+	def __init__(self):
+		self.epochs = []
+		self.epoch = 1
+		self.losses = []
+		self.deltas = []
+	def on_epoch_end(self, model):
+		loss = model.get_latest_training_loss()
+		if self.epoch == 1:
+			delta = loss
+		else:
+			delta = loss- self.loss_previous_step
+		self.loss_previous_step=loss
+		self.losses.append(loss)
+		self.epochs.append(self.epoch)
+		self.epoch += 1
+		self.deltas.append(delta)
 
 
 
@@ -424,11 +426,11 @@ def read_in_files(dataset_path, approach_names_and_data):
 	"""Read in the large files that initialize the application here, which takes a long time.
 	
 	Args:
-	    dataset_path (TYPE): Description
-	    approach_names_and_data (TYPE): Description
+		dataset_path (TYPE): Description
+		approach_names_and_data (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	
 	# Read in the dataset and create its object.
@@ -468,11 +470,11 @@ def read_in_ontologies(names, paths):
 	"""Read in ontology objects from .obo files and return them, can take a long time.
 	
 	Args:
-	    names (TYPE): Description
-	    paths (TYPE): Description
+		names (TYPE): Description
+		paths (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	ontologies = {}
 	for name,path, in zip(names,paths):
@@ -489,11 +491,11 @@ def truncate_string(text, char_limit):
 	"""Return a truncated version of the text and adding elipses if it's longer than the character limit.
 	
 	Args:
-	    text (TYPE): Description
-	    char_limit (TYPE): Description
+		text (TYPE): Description
+		char_limit (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	truncated_text = text[:char_limit]
 	if len(text)>char_limit:
@@ -512,14 +514,14 @@ def format_result_strings(query_sentences, gene_ids, gene_id_to_distances, resul
 	"""This takes the lists of query sentences score against the existing data and formats wrapped strings for the table.
 	
 	Args:
-	    query_sentences (TYPE): Description
-	    gene_ids (TYPE): Description
-	    gene_id_to_distances (TYPE): Description
-	    result_column_width (TYPE): Description
-	    result_column_max_lines (TYPE): Description
+		query_sentences (TYPE): Description
+		gene_ids (TYPE): Description
+		gene_id_to_distances (TYPE): Description
+		result_column_width (TYPE): Description
+		result_column_max_lines (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	# The list of query sentences should correspond to the list of distances that each gene ID is mapped to.
 	# Have to trust that these are in corresponding order, that happens in another section.
@@ -556,11 +558,11 @@ def gene_name_search(dataset, gene_name):
 	"""Helper function for searching the dataset for a gene identifier.
 	
 	Args:
-	    dataset (TYPE): Description
-	    gene_name (TYPE): Description
+		dataset (TYPE): Description
+		gene_name (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	gene_name = gene_name.lower().strip()
 	species_to_gene_id_list = defaultdict(list)
@@ -579,12 +581,12 @@ def keyword_search(id_to_text, raw_keywords, modified_keywords):
 	"""Helper function for searching the dataset for keywords and keyphrases.
 	
 	Args:
-	    id_to_text (TYPE): Description
-	    raw_keywords (TYPE): Description
-	    modified_keywords (TYPE): Description
+		id_to_text (TYPE): Description
+		raw_keywords (TYPE): Description
+		modified_keywords (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	# The raw keywords and modified keywords should be two paired lists where the elements correspond to one another.
 	# The modifications done to the keywords should already match the modifications done to the texts in the input dictionary so they can be directly compared.
@@ -601,12 +603,12 @@ def ontology_term_search(id_to_direct_annotations, id_to_indirect_annotations, t
 	"""Helper function for searching the dataset for ontology term annotations.
 	
 	Args:
-	    id_to_direct_annotations (TYPE): Description
-	    id_to_indirect_annotations (TYPE): Description
-	    term_ids (TYPE): Description
+		id_to_direct_annotations (TYPE): Description
+		id_to_indirect_annotations (TYPE): Description
+		term_ids (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 	"""
 	assert len(id_to_direct_annotations) == len(id_to_indirect_annotations)
 	gene_id_to_direct_match = {i:[(term_id in direct_annotations) for term_id in term_ids] for i,direct_annotations in id_to_direct_annotations.items()}
@@ -655,13 +657,13 @@ def description_search(text, tokenization_function):
 	"""Helper function for searching the dataset for similar phenotype descriptions.
 	
 	Args:
-	    text (TYPE): Description
-	    graph (TYPE): Description
-	    tokenization_function (TYPE): Description
-	    preprocessing_function (TYPE): Description
+		text (TYPE): Description
+		graph (TYPE): Description
+		tokenization_function (TYPE): Description
+		preprocessing_function (TYPE): Description
 	
 	Returns:
-	    TYPE: Description
+		TYPE: Description
 
 	
 	"""
@@ -900,6 +902,41 @@ input_text = st.text_input(label="Enter text here")
 
 
 
+
+
+
+
+running_as_script = False
+if __name__ == "__main__": 
+	import argparse
+	parser = argparse.ArgumentParser()
+	parser.add_argument("--type", "-t", dest="type", required=True, choices=["text"])
+	parser.add_argument("--query", "-q", dest="query", required=True)
+	parser.add_argument("--limit", "-l", dest="limit", required=True, type=int)
+	parser.add_argument("--output", "-o", dest="output", required=True)
+	parser.add_argument("--species", "-s", dest="species", required=False)
+
+	args = parser.parse_args()
+	running_as_script=True
+	search_type = {"text":"phenotype"}[args.type]
+	input_text = args.query
+	output_path = args.output
+	ROW_LIMIT = args.limit
+	species_list = [args.species]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ############## Default view, presenting the entire dataset ################
 
 
@@ -916,32 +953,32 @@ df = df[df["Species"].isin(species_list)]
 
 def display_download_link(df, column_keys, column_keys_to_unwrap, column_keys_to_list, num_rows):
 
-	# Subsetting the dataframe.
-	my_df = df[[COLUMN_NAMES[x] for x in column_keys]].head(num_rows)
+	# # Subsetting the dataframe.
+	# my_df = df[[COLUMN_NAMES[x] for x in column_keys]].head(num_rows)
 
 
-	# Anything that had newline characters that were being used just to wrap to the next line.
-	for key in column_keys_to_unwrap:
-		my_df[COLUMN_NAMES[key]] = my_df[COLUMN_NAMES[key]].map(lambda x: x.replace(NEWLINE_TOKEN,""))
+	# # Anything that had newline characters that were being used just to wrap to the next line.
+	# for key in column_keys_to_unwrap:
+	# 	my_df[COLUMN_NAMES[key]] = my_df[COLUMN_NAMES[key]].map(lambda x: x.replace(NEWLINE_TOKEN,""))
 
-	# Anything where the newline character was being used to separate a list of items like scores of terms.
-	for key in column_keys_to_list:
-		my_df[COLUMN_NAMES[key]] = my_df[COLUMN_NAMES[key]].map(lambda x: "{}".format("; ".join(x.split(NEWLINE_TOKEN))))
-
-
-	# Presenting a download link for a csv file.
-	#csv = my_df.to_csv(index=False)
-	#b64 = base64.b64encode(csv.encode()).decode() 
-	#link = f'<a href="data:file/csv;base64,{b64}" download="query_results.csv">Download (CSV)</a>'
-	#st.markdown(link, unsafe_allow_html=True)
-
-	# Presenting a download link for a tsv file.
-	tsv = my_df.to_csv(index=False, sep="\t")
-	b64 = base64.b64encode(tsv.encode()).decode() 
-	link = f'<a href="data:file/tsv;base64,{b64}" download="query_results.tsv">Download tsv file</a>'
-	st.markdown(link, unsafe_allow_html=True)
+	# # Anything where the newline character was being used to separate a list of items like scores of terms.
+	# for key in column_keys_to_list:
+	# 	my_df[COLUMN_NAMES[key]] = my_df[COLUMN_NAMES[key]].map(lambda x: "{}".format("; ".join(x.split(NEWLINE_TOKEN))))
 
 
+	# # Presenting a download link for a csv file.
+	# #csv = my_df.to_csv(index=False)
+	# #b64 = base64.b64encode(csv.encode()).decode() 
+	# #link = f'<a href="data:file/csv;base64,{b64}" download="query_results.csv">Download (CSV)</a>'
+	# #st.markdown(link, unsafe_allow_html=True)
+
+	# # Presenting a download link for a tsv file.
+	# tsv = my_df.to_csv(index=False, sep="\t")
+	# b64 = base64.b64encode(tsv.encode()).decode() 
+	# link = f'<a href="data:file/tsv;base64,{b64}" download="query_results.tsv">Download tsv file</a>'
+	# st.markdown(link, unsafe_allow_html=True)
+
+	return
 
 
 
@@ -993,6 +1030,10 @@ def truncate_description_cell(s, num_lines_to_keep):
 		return(modified_s)
 	else:
 		return(s)
+
+
+
+
 
 
 
@@ -1419,6 +1460,12 @@ else:
 	# TODO Keeping the else pass for now to remind me something might need to go here.
 
 
+
+
+
+
+if running_as_script:
+	df[["id",COLUMN_NAMES["rank"],COLUMN_NAMES["gene"]]].to_csv(output_path, index=False)
 
 
 
