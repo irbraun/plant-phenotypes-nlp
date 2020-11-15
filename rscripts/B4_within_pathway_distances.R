@@ -96,9 +96,9 @@ prepare_dataframe <- function(input_path, num_shown, num_gene_threshold, y_axis_
 
 
 
-input_path_subsets <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_31_2020_h23m05s45_6169_plants/stacked_subsets_within_distances_melted.csv"
-input_path_kegg <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_31_2020_h23m05s45_6169_plants/stacked_kegg_only_within_distances_melted.csv"
-input_path_plantcyc <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_10_31_2020_h23m05s45_6169_plants/stacked_pmn_only_within_distances_melted.csv"
+input_path_subsets <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_all_subsets_within_distances_melted.csv"
+input_path_kegg <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_all_kegg_only_within_distances_melted.csv"
+input_path_plantcyc <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_all_pmn_only_within_distances_melted.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/intragroup_distances.png"
 names_path <- "/Users/irbraun/phenologs-with-oats/names.tsv"
 
@@ -141,18 +141,42 @@ df_long_t$facet = factor(df_long_t$facet, levels=c("Phenotype Category","Biochem
 
 
 
-# Specifying the colors to represent each approach.
+# Pick colors for each bar.
+num_colors_needed <- length(unique(df_long_t$method))
+
 method_names <- c("Baseline",
                   "N-Grams",
-                  "Topic Modeling",
-                  "ML",
-                  "N-Grams/ML",
                   "Annotation",
                   "N-Grams/Annotation",
+                  "Topic Modeling",
+                  "ML (Embeddings)",
+                  "ML (Word Replacement)",
+                  "ML (Max Similarity)",
                   "Curation")
 
-method_colors <- c("#333333", "#F09250", "#fdf49c", "#a4db89", "#f5ac0f", "#f5cd1f", "#dbf859", "#DDDDDD")
+
+method_colors <- c("#333333",   # black
+                   "#F09250",   # reddish
+                   "#f5cd1f",   # yellow
+                   "#a4db89",    # green
+                   "#a4db89",   # green
+                   "#f5ac0f",   # orange
+                   "#fdf49c",   # yellow orange
+                   "#dbf859",   # neon green
+                   "#DDDDDD")   #gray
+
+
+method_colors <- c("#333333", 
+                   "#a4db89", 
+                   "#fdf49c", 
+                   "#dbf859",
+                   "#f5cd1f", 
+                   "#f5ac0f", 
+                   "#F09250", 
+                   "#F09250", 
+                   "#DDDDDD")
 color_mapping <- setNames(method_colors, method_names)
+
 
 
 
@@ -166,17 +190,18 @@ outline_names <- c("Yes","No")
 outline_colors <- c("#000000", "#FFFFFF00")
 outline_mapping <- setNames(outline_colors, outline_names)
 
-df_long_t$significant <- df_long_t$p_adjusted<=0.05
-df_long_t$significant = factor(df_long_t$significant, levels=c(TRUE,FALSE), labels=outline_names)
+df_long_t$significant <- df_long_t$benjamini_hochberg
+df_long_t$significant = factor(df_long_t$significant, levels=c("True","False"), labels=outline_names)
 
 
 
 
 # Make the plot.
-ggplot(df_long_t, aes(x=avg, y=reorder(name_for_plot,-avg), fill=class, colour=significant)) + 
+#ggplot(df_long_t, aes(x=avg, y=reorder(name_for_plot,-avg), fill=class, colour=significant)) + 
+ggplot(df_long_t, aes(x=avg, y=reorder(name_for_plot,-avg), fill=class)) + 
   facet_grid(rows = vars(facet), scale="free", space="free") +
   scale_fill_manual(name="Approach Used", values=color_mapping) +
-  scale_color_manual(name="Significance",values=outline_mapping) +
+  #scale_color_manual(name="Significance",values=outline_mapping) +
   geom_point(pch=21, size=3, alpha=0.8) +
   theme_bw() +
   xlab("Intragroup Distance Percentile")  +

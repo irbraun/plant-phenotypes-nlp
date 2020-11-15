@@ -81,7 +81,8 @@ print(len(sentences_from_descriptions))
 
 
 # Preprocess the sentences to be stemmed tokens separated by whitespace and show the first few of them.
-sentences = [" ".join(s) for s in sentences_from_corpus_and_descriptions]
+#sentences = [" ".join(s) for s in sentences_from_corpus_and_descriptions]
+sentences = [" ".join(s) for s in sentences_from_descriptions]
 #sentences = sentences[:50]
 sentences[:5]
 
@@ -191,7 +192,7 @@ train_dataloader = DataLoader(dataset, sampler=RandomSampler(dataset), batch_siz
 
 
 # Creating and parameterizing the necessary objects for the optimizer and learning rate scheduler.
-epochs = 5
+epochs = 2
 optimizer = AdamW(model.parameters(), lr = 2e-5, eps = 1e-8)
 total_steps = len(train_dataloader)*epochs
 scheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps = 0, num_training_steps=total_steps)

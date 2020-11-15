@@ -30,12 +30,12 @@ name_to_order = dict(zip(name_df["name_in_notebook"].values, name_df["order"]))
 
 # Input paths from a specific output directory from running the analysis pipeline.
 input_paths = [
-	"/Users/irbraun/phenologs-with-oats/outputs/deletethis_11_09_2020_h14m36s03_8781/all_pmn_only_within_distances_melted.csv",
-	"/Users/irbraun/phenologs-with-oats/outputs/deletethis_11_09_2020_h14m36s03_8781/all_kegg_only_within_distances_melted.csv",
-	"/Users/irbraun/phenologs-with-oats/outputs/deletethis_11_09_2020_h14m36s03_8781/all_subsets_within_distances_melted.csv",
-	"/Users/irbraun/phenologs-with-oats/outputs/deletethis_11_09_2020_h14m36s03_8781/curated_pmn_only_within_distances_melted.csv",
-	"/Users/irbraun/phenologs-with-oats/outputs/deletethis_11_09_2020_h14m36s03_8781/curated_kegg_only_within_distances_melted.csv",
-	"/Users/irbraun/phenologs-with-oats/outputs/deletethis_11_09_2020_h14m36s03_8781/curated_subsets_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_all_pmn_only_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_all_kegg_only_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_all_subsets_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_curated_pmn_only_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_curated_kegg_only_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_curated_subsets_within_distances_melted.csv",
 ]
 
 
@@ -57,11 +57,11 @@ input_paths = [
 
 
 # Create and name an output directory according to when the notebooks was run and then create the paths for output files to put there.
-OUTPUT_NAME = "within"
-OUTPUT_DIR = os.path.join("../outputs","{}_{}_{}".format(OUTPUT_NAME,datetime.datetime.now().strftime('%m_%d_%Y_h%Hm%Ms%S'),random.randrange(1000,9999)))
-os.mkdir(OUTPUT_DIR)
-output_path_plantcyc_pathways = os.path.join(OUTPUT_DIR,"plantcyc_pathways_cohesion_info.csv")
-output_path_phenotype_subsets = os.path.join(OUTPUT_DIR,"phenotype_subsets_cohesion_info.csv")
+#OUTPUT_NAME = "within"
+#OUTPUT_DIR = os.path.join("../outputs","{}_{}_{}".format(OUTPUT_NAME,datetime.datetime.now().strftime('%m_%d_%Y_h%Hm%Ms%S'),random.randrange(1000,9999)))
+#os.mkdir(OUTPUT_DIR)
+#output_path_plantcyc_pathways = os.path.join(OUTPUT_DIR,"plantcyc_pathways_cohesion_info.csv")
+#output_path_phenotype_subsets = os.path.join(OUTPUT_DIR,"phenotype_subsets_cohesion_info.csv")
 
 
 
