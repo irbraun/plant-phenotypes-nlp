@@ -13,7 +13,7 @@
 #SBATCH --mail-type=BEGIN
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
-#SBATCH --output="bert_output.txt" # job standard output file (%j replaced by job id)
+#SBATCH --output="bert_gpu_output.txt" # job standard output file (%j replaced by job id)
 
 
 
@@ -24,8 +24,6 @@
 
 module load miniconda3/4.3.30-qdauveb
 module load r-rjava/0.9-8-py2-r3.4-wadatwr
-conda env create -f tra.yml
-#conda env udpate -f tra.yml
 source activate tra
 cd notebooks
 
