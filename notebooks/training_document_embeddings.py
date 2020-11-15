@@ -19,6 +19,7 @@ import warnings
 from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string
 from gensim.utils import simple_preprocess
 from gensim.models.callbacks import CallbackAny2Vec
+from gensim.models.doc2vec import TaggedDocument
 from itertools import product
 from sklearn.metrics import precision_recall_curve
 
@@ -97,7 +98,7 @@ def train_and_save_document_embedding_model(output_dir, hyperparameters):
     
     # Get the hyperparamter values.
     epochs, sentences, vector_size, min_a, a, min_count = [x[0] for x in hyperparameters]  
-    print(epochs, sentences[0], vector_size, min_a, a, min_cont)
+    print(epochs, sentences[0], vector_size, min_a, a, min_count)
     
     # Fitting a vocabulary and training the model.
     tagged_sentences = [TaggedDocument(words=s,tags=[i]) for i,s in enumerate(sentences)]
