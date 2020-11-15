@@ -1,0 +1,19 @@
+name: tra
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.6
+  - pip
+  - jupyter
+  - pandas
+  - numpy
+  - scikit-learn
+  - nltk
+  - scipy
+  - more-itertools
+  - pip:
+    - gensim
+    - transformers
+    - torch
+    - sklearn

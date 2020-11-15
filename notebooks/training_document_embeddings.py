@@ -73,7 +73,7 @@ print(len(sentences_from_descriptions))
 training_sentence_sets =  [(sentences_from_corpus_and_descriptions,"both"), (sentences_from_corpus,"abstracts"), (sentences_from_descriptions,"dataset")]
 training_sentence_sets =  [(sentences_from_corpus_and_descriptions,"both")]
 dimensions = [(x,"dim{}".format(str(x))) for x in [200, 300]]
-num_epochs = [(x,"ep{}".format(str(x))) for x in [1]]
+num_epochs = [(x,"ep{}".format(str(x))) for x in [100]]
 min_alpha = [(0.0001,"a")]
 alpha = [(0.025,"s")]
 min_count = [(x,"min{}".format(str(x))) for x in [3]]

@@ -82,7 +82,7 @@ print(len(sentences_from_descriptions))
 
 # Preprocess the sentences to be stemmed tokens separated by whitespace and show the first few of them.
 sentences = [" ".join(s) for s in sentences_from_corpus_and_descriptions]
-sentences = [:50]
+sentences = sentences[:50]
 sentences[:5]
 
 
