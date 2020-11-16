@@ -144,7 +144,7 @@ ggplot(data=NULL) +
   coord_flip() +
   scale_fill_manual(name="Approach", values=color_mapping) +
   geom_bar(data=other, aes(x=reorder(method,-order), y=max_value, fill=method), stat="identity", alpha=1.0) +
-  geom_point(data=df_long_t, aes(x=reorder(method,-order), y=value), color="black", alpha=0.9, size=2, shape=4) + 
+  geom_point(data=df_long_t, aes(x=reorder(method,-order), y=value), color="black", alpha=0.9, size=2, shape=0) + 
   facet_grid(rows=vars(tokenized), cols=vars(task)) +
   scale_y_continuous(breaks=seq(0,0.6,0.1), limits=c(0,0.6), expand=c(0.00, 0.00)) +
   theme_bw() +

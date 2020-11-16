@@ -19,6 +19,7 @@ naming_dataframe_path = "/Users/irbraun/phenologs-with-oats/names.tsv"
 name_df = pd.read_csv(naming_dataframe_path, sep="\t")
 name_to_display_name = dict(zip(name_df["name_in_notebook"].values, name_df["name"]))
 name_to_order = dict(zip(name_df["name_in_notebook"].values, name_df["order"]))
+name_to_class = dict(zip(name_df["name_in_notebook"].values, name_df["class"]))
 
 
 
@@ -77,8 +78,9 @@ for input_path in input_paths:
 	df = pd.read_csv(input_path)
 	df["name"] = df["approach"].map(name_to_display_name)
 	df["order"] = df["approach"].map(name_to_order)
+	df["class"] = df["approach"].map(name_to_class)
 	df.drop_duplicates(subset=["order"], keep="first", inplace=True)
-	df = df[["order","name","number_of_groups","fraction_significant"]]
+	df = df[["order","name","class","number_of_groups","fraction_significant"]]
 	df["fraction_significant"] = df["fraction_significant"].map(lambda x:round(x,3))
 	df.sort_values(by="order", inplace=True)
 	df.to_csv(output_path, index=False)
