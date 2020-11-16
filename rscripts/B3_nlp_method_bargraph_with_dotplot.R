@@ -165,7 +165,7 @@ ggplot(data=NULL) +
 
 
 # Saving the plot to a file.
-ggsave(output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=15, height=8, units=c("cm"), dpi=350, limitsize=FALSE)
+ggsave(output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=30, height=10, units=c("cm"), dpi=350, limitsize=FALSE)
 
 
 
