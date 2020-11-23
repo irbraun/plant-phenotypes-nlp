@@ -11,7 +11,7 @@ library(stringr)
 
 
 # The input and output files that this script uses and creates.
-input_path <- "/Users/irbraun/phenologs-with-oats/app/plots/anthocyanin_plot_data.csv"
+input_path <- "/Users/irbraun/phenologs-with-oats/app/plots/combined_plot_data.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/tool_query_bargraphs.png"
 
 # Reading in the data.
@@ -30,13 +30,27 @@ df$header <- factor(df$header,
 
 
 
+df$facet <- factor(df$facet, 
+                    levels=c("Autophagy (Arabidopsis)",
+                             "Anthocyanin (Arabidopsis)",
+                             "Anthocyanin (Maize)",
+                             "Anthocyanin (Arabidopsis to Maize)",
+                             "Anthocyanin (Maize to Arabidopsis)"),
+                   labels=c("Autophagy Core (Arabidopsis)",
+                            "Anthocyanin (Arabidopsis)",
+                            "Anthocyanin (Maize)",
+                            "Anthocyanin (Arabidopsis to Maize)",
+                            "Anthocyanin (Maize to Arabidopsis)"))
+
+
+
 # Make a plot.
 ggplot(data=df, aes(x=bin, y=mean)) +
   geom_bar(stat="identity") + 
   geom_bar(stat="identity", color="black") +
   geom_errorbar(aes(ymin=mean, ymax=mean+sd), width=.3) +
   #facet_grid(rows=vars(to), cols=vars(from), scales="free") +
-  facet_wrap(vars(header), nrow=2, scales="free") +
+  facet_wrap(vars(facet), nrow=1, scales="free") +
   theme_bw() +
   
   theme(plot.title = element_text(lineheight=1.0, face="bold", hjust=0.5), 
@@ -53,7 +67,7 @@ ggplot(data=df, aes(x=bin, y=mean)) +
 
 
 # Saving the plot to a file.
-ggsave(output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=11, height=8, units=c("cm"), dpi=350, limitsize=FALSE)
+ggsave(output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=33, height=7, units=c("cm"), dpi=350, limitsize=FALSE)
 
 
 

@@ -293,7 +293,7 @@ phenotypes_corpus_filename = "../data/corpus_related_files/untagged_text_corpora
 
 
 # Paths to pretrained or saved models used for embeddings with Word2Vec or Doc2vec.
-doc2vec_plants_path = "../models/plants_dbow/doc2vec.model"
+doc2vec_plants_path = "../models/plants_dbow/doc2vec_ep100_both_dim200_a_s_min3.model"
 doc2vec_wikipedia_path = "../models/enwiki_dbow/doc2vec.bin"
 word2vec_plants_path = "../models/plants_sg/word2vec_both_dim200_500_a_s_min3_window8.model"
 word2vec_wikipedia_path = "../models/wiki_sg/word2vec.bin"
@@ -1249,11 +1249,11 @@ if args.learning: doc2vec_and_word2vec_approaches.extend([
     #Method("Word2Vec","Tokenization,Wikipedia,Size=300,Max","NLP",1013, pw.with_word2vec, {"model":word2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
     
     # Another set of six approaches that all use the Word2Vec or Doc2Vec models trained on a plant phenotype corpus.
-    #Method("Doc2Vec","Plants,Size=300","NLP",1, pw.with_doc2vec, {"model":doc2vec_plants_model, "ids_to_texts":descriptions, "metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
-    Method("Word2Vec","Plants,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":processed["linares_pontes_plants"], "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Doc2Vec","Plants,Size=300","NLP",1, pw.with_doc2vec, {"model":doc2vec_plants_model, "ids_to_texts":processed["full"], "metric":"cosine"}, spatial.distance.cosine, tag="whole_texts"),
+    Method("Word2Vec","Plants,Size=300,Mean","NLP",2, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":processed["full"], "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="whole_texts"),
     #Method("Word2Vec","Plants,Size=300,Max","NLP",3 ,pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":descriptions, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="whole_texts"),
-    #Method("Doc2Vec","Tokenization,Plants,Size=300","NLP",4, pw.with_doc2vec, {"model":doc2vec_plants_model, "ids_to_texts":phenes, "metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("Word2Vec","Tokenization,Plants,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":processed["linares_pontes_plants_phenes"], "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Doc2Vec","Tokenization,Plants,Size=300","NLP",4, pw.with_doc2vec, {"model":doc2vec_plants_model, "ids_to_texts":processed["full_phenes"], "metric":"cosine"}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("Word2Vec","Tokenization,Plants,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":processed["full_phenes"], "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
     #Method("Word2Vec","Tokenization,Plants,Size=300,Max","NLP",6, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":phenes, "metric":"cosine", "method":"max"}, spatial.distance.cosine, tag="sent_tokens"),
 ])
 
@@ -1453,10 +1453,10 @@ if args.vocab: modified_vocab_approaches.extend([
 
 manual_annotation_approaches = []
 if args.annotations: manual_annotation_approaches.extend([
-    Method("GO","Union","Curated",2001, pw.with_ngrams, {"ids_to_texts":unique_id_to_unique_go_annotation_strings,  "metric":"cosine", "max_features":10000, "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(unique_id_to_unique_go_annotation_strings, unique_id_to_gene_ids_mappings["go_term_sets"])}, spatial.distance.cosine, tag="go_term_sets"),
-    Method("PO","Union","Curated",2002, pw.with_ngrams, {"ids_to_texts":unique_id_to_unique_po_annotation_strings, "metric":"cosine", "max_features":10000, "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(unique_id_to_unique_po_annotation_strings, unique_id_to_gene_ids_mappings["po_term_sets"])}, spatial.distance.cosine, tag="po_term_sets"),
-    Method("GO","Minimum","Curated",2003, pw.with_ngrams, {"ids_to_texts":individual_curated_go_term_strings, "metric":"cosine", "max_features":10000, "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_go_term_strings, unique_id_to_gene_ids_mappings["go_terms"])}, spatial.distance.cosine, tag="go_terms"),
-    Method("PO","Minimum","Curated",2004, pw.with_ngrams, {"ids_to_texts":individual_curated_po_term_strings, "metric":"cosine", "max_features":10000, "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_po_term_strings, unique_id_to_gene_ids_mappings["po_terms"])},spatial.distance.cosine, tag="po_terms"),
+    Method("GO","Union","Curated",2001, pw.with_ngrams, {"ids_to_texts":unique_id_to_unique_go_annotation_strings,  "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(unique_id_to_unique_go_annotation_strings, unique_id_to_gene_ids_mappings["go_term_sets"])}, spatial.distance.cosine, tag="go_term_sets"),
+    Method("PO","Union","Curated",2002, pw.with_ngrams, {"ids_to_texts":unique_id_to_unique_po_annotation_strings, "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(unique_id_to_unique_po_annotation_strings, unique_id_to_gene_ids_mappings["po_term_sets"])}, spatial.distance.cosine, tag="po_term_sets"),
+    Method("GO","Minimum","Curated",2003, pw.with_ngrams, {"ids_to_texts":individual_curated_go_term_strings, "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_go_term_strings, unique_id_to_gene_ids_mappings["go_terms"])}, spatial.distance.cosine, tag="go_terms"),
+    Method("PO","Minimum","Curated",2004, pw.with_ngrams, {"ids_to_texts":individual_curated_po_term_strings, "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_po_term_strings, unique_id_to_gene_ids_mappings["po_terms"])},spatial.distance.cosine, tag="po_terms"),
 ])
 
 
@@ -1466,7 +1466,6 @@ if args.annotations: manual_annotation_approaches.extend([
 for_app_approaches = []
 if args.app_only: for_app_approaches.extend([
     Method("N-Grams","Tokenization,Full,Words,1-grams,TFIDF","NLP",1001, pw.with_ngrams, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
-    #Method("Word2Vec","Tokenization,Wikipedia,Size=300,Mean","NLP",1012, pw.with_word2vec, {"model":word2vec_wiki_model, "ids_to_texts":phenes, "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
     Method("Word2Vec","Tokenization,Plants,Size=300,Mean","NLP",5, pw.with_word2vec, {"model":word2vec_plants_model, "ids_to_texts":processed["linares_pontes_plants_phenes"], "metric":"cosine", "method":"mean"}, spatial.distance.cosine, tag="sent_tokens"),
 ]) 
 

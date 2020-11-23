@@ -86,7 +86,7 @@ def columnstack_distances_dataframes(basedir, filename, path_keyword=None):
 
 
 # Read in the file that maps names used internally to names used in figures.
-naming_dataframe_path = "/Users/irbraun/phenologs-with-oats/names.tsv"
+naming_dataframe_path = "../names.tsv"
 name_df = pd.read_csv(naming_dataframe_path, sep="\t")
 name_to_display_name = dict(zip(name_df["name_in_notebook"].values, name_df["name"]))
 name_to_order = dict(zip(name_df["name_in_notebook"].values, name_df["order"]))
