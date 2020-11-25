@@ -11,7 +11,7 @@ library(stringr)
 
 
 # The input and output files that this script uses and creates.
-input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_f1_max.csv"
+input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_f1_max.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/bargraph_with_points.png"
 names_path <- "/Users/irbraun/phenologs-with-oats/names.tsv"
 
@@ -70,12 +70,12 @@ df_long_t <- df_long
 
 # Convert the task column to a factor so that we can control the order and formattin and get rid of ones we don't want to plot.
 df_long_t$task <- factor(df_long_t$task, 
-                         #levels=c("inter_all_orthologs","intra_all_predicted","intra_all_known","both_all_pathways","intra_all_subsets"), 
-                         #labels=c("Orthologs","Predicted","Known","Pathways","Phenotypes"))
+                         levels=c("inter_all_orthologs","intra_all_predicted","intra_all_known","both_all_pathways","intra_all_subsets"), 
+                         labels=c("Orthologs","Predicted","Known","Pathways","Phenotypes"))
                          #levels=c("both_all_pathways","intra_all_subsets","both_curated_pathways","intra_curated_subsets"), 
                          #labels=c("Pathways (All Genes)","Phenotypes (All Genes)","Pathways (Curated)","Phenotypes (Curated)"))
-                          levels=c("intra_all_subsets","intra_curated_subsets"), 
-                          labels=c("Phenotypes (All Genes)","Phenotypes (Curated)"))
+                          #levels=c("intra_all_subsets","intra_curated_subsets"), 
+                          #labels=c("Phenotypes (All Genes)","Phenotypes (Curated)"))
 df_long_t <- df_long_t %>% drop_na(task)
 
 
@@ -125,7 +125,7 @@ color_mapping <- setNames(method_colors, method_names)
 
 
 
-df_long_t <- df_long_t %>% filter(!(method=="Curation" & task %in% c("Pathways (All Genes)","Phenotypes (All Genes)")))
+#df_long_t <- df_long_t %>% filter(!(method=="Curation" & task %in% c("Pathways (All Genes)","Phenotypes (All Genes)")))
 df_long_t
 
 
@@ -144,7 +144,7 @@ ggplot(data=NULL) +
   coord_flip() +
   scale_fill_manual(name="Approach", values=color_mapping) +
   geom_bar(data=other, aes(x=reorder(method,-order), y=max_value, fill=method), stat="identity", alpha=1.0) +
-  geom_point(data=df_long_t, aes(x=reorder(method,-order), y=value), color="black", alpha=0.9, size=2, shape=0) + 
+  #geom_point(data=df_long_t, aes(x=reorder(method,-order), y=value), color="black", alpha=0.9, size=2, shape=0) + 
   facet_grid(rows=vars(tokenized), cols=vars(task)) +
   scale_y_continuous(breaks=seq(0,0.6,0.1), limits=c(0,0.6), expand=c(0.00, 0.00)) +
   theme_bw() +

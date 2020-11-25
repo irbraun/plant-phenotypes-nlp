@@ -74,7 +74,7 @@
 # - Python package for loading pretrained BERT models: [PyTorch Pretrained BERT](https://pypi.org/project/pytorch-pretrained-bert/)
 # - For BERT Models pretrained on PubMed and PMC: [BioBERT Paper](https://arxiv.org/abs/1901.08746), [BioBERT Models](https://github.com/naver/biobert-pretrained)
 
-# In[3]:
+# In[1]:
 
 
 import datetime
@@ -145,7 +145,7 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 
-# In[4]:
+# In[2]:
 
 
 # Set a tag that specifies whether this is being run as a notebook or a script. Some sections are skipped when 
@@ -171,7 +171,7 @@ else:
 # ### Reading in arguments
 # Command line arguments are used to define which subset of the approaches that are evaluated in this notebook are used during a given run. Because the pairwise distances matrices become very large when as the number of genes increases, the number of approaches used (which each generated one distance matrix) can be lowered if the script is using too much memory for datasets that contain many genes. Although there are differences in runtime for each approach where ones that generated larger vectors (n-grams) instead of small embeddings (Word2Vec) take longer, this is not significant compared to how long operations take on the resulting distance matrices, which are all the same size for any given approach, so it is the number of approaches used, not which ones, that matters in reducing the time and memory used for each run. In addition, arguments are also used here to pick which dataset should be used later in the notebook, and whether files should be created for using the results later for the dockerized app (those files are large, they shouldn't be created unless they'll be used).
 
-# In[5]:
+# In[3]:
 
 
 # Creating the set of arguments that can be used to determine which approaches are run.
@@ -208,7 +208,7 @@ parser.add_argument("--apponly", dest="app_only", required=False, action='store_
 # Specify the command line argument list here if running as a notebook instead.
 if NOTEBOOK:
     arg_string = "--name notebook --dataset plants --app --learning --bert --noblecoder --lda --nmf --vanilla --vocab --annotations"
-    arg_string = "--name notebook --dataset plants --app --subset 100 --baseline --vanilla --annotations"
+    arg_string = "--name notebook --dataset plants --app --filter --subset 300 --annotations"
     args = parser.parse_args(shlex.split(arg_string))
 else:
     args = parser.parse_args()
@@ -218,7 +218,7 @@ else:
 # ### Defining the input file paths and creating output directory
 # This section specifies the path to the base output directory, and creates all the subfolders inside of it that contain results that pertain to different parts of the analysis. Paths to all the files that are used by this notebook are specified in the subsequent cell.
 
-# In[6]:
+# In[4]:
 
 
 # Create and name an output directory according to when the notebooks or script was run.
@@ -246,7 +246,7 @@ os.mkdir(os.path.join(OUTPUT_DIR,GROUP_DISTS_DIR))
 
 # ### Data paths
 
-# In[7]:
+# In[5]:
 
 
 # Paths to different datasets containing gene names, text descriptions, and/or ontology term annotations.
@@ -279,7 +279,7 @@ lloyd_function_hierarchy_path = "../../plant-data/papers/lloyd_meinke_2012/versi
 
 # ### Text corpora paths
 
-# In[8]:
+# In[6]:
 
 
 # Pathways to text corpora files that are used in this analysis.
@@ -289,7 +289,7 @@ phenotypes_corpus_filename = "../data/corpus_related_files/untagged_text_corpora
 
 # ### Machine learning model paths
 
-# In[9]:
+# In[7]:
 
 
 # Paths to pretrained or saved models used for embeddings with Word2Vec or Doc2vec.
@@ -314,7 +314,7 @@ word2vec_bio_wikipedia_pubmed_and_pmc_path = "../models/bio_nlp_lab/wikipedia-pu
 
 # ### Ontology related paths
 
-# In[10]:
+# In[8]:
 
 
 # Path the jar file necessary for running NOBLE Coder.
@@ -334,7 +334,7 @@ pato_pickle_path = "../ontologies/pato.pickle"
 # ### Reading in the dataset of genes and their associated phenotype descriptions and annotations
 # Every dataset that is relevant to this analysis or could be used is read in here and described. This is done even if additional arguments specified that the analysis should just focus on one of them. This is set up this way so that the analysis script will immediately fail if any of these datasets are missing, or if any of the paths are incorrect, this was useful when running locally before moving to a cluster.
 
-# In[11]:
+# In[9]:
 
 
 # Loading the human dataset of concatenated disease names from ClinVar annotations.
@@ -358,7 +358,7 @@ plant_dataset.filter_has_description()
 plant_dataset.describe()
 
 
-# In[12]:
+# In[10]:
 
 
 # Which dataset should be used for the rest of the analysis? Useful for changing when running as a notebook.
@@ -378,7 +378,7 @@ dataset.describe()
 # ### Relating the dataset of genes to the dataset of groups or categories
 # This section generates tables that indicate how the genes present in the dataset were mapped to the defined pathways or groups. This includes a summary table that indicates how many genes by species were succcessfully mapped to atleast one pathway or group, as well as a more detailed table describing how many genes from each species were mapped to each particular pathway or group. Additionally, a pairwise group similarity matrix is also generated, where the similarity is given as the Jaccard similarity between two groups based on whether genes are shared by those groups or not. The function defined in this section returns a groupings object that can be used again, as well as the IDs of the genes in the full dataset that were found to be relevant to those particular groupings.
 
-# In[14]:
+# In[11]:
 
 
 def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filename, group_name_mappings, name):
@@ -452,7 +452,7 @@ def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filenam
 # ### Reading in and relating the pathways from KEGG
 # See dataset description for what files were used to construct these mappings.
 
-# In[15]:
+# In[12]:
 
 
 # Readin in the dataset of groupings for pathways in KEGG.
@@ -465,7 +465,7 @@ kegg_groups.to_pandas().head(10)
 # ### Reading in and relating the pathways from PlantCyc
 # See dataset description for what files were used to construct these mappings.
 
-# In[16]:
+# In[13]:
 
 
 # Reading in the dataset of groupings for pathways in PlantCyc.
@@ -478,7 +478,7 @@ pmn_groups.to_pandas().head(10)
 # ###  Reading in and relating the phenotype classes and subsets from Lloyd and Meinke (2012)
 # See dataset description for what files were used to construct these mappings, and links there and above to the related paper.
 
-# In[17]:
+# In[14]:
 
 
 # Reading in the datasets of phenotype subset classifications from the Lloyd, Meinke 2012 paper.
@@ -487,7 +487,7 @@ phe_subsets_groups, subsets_mapped_ids = read_in_groupings_object_and_write_summ
 phe_subsets_groups.to_pandas().head(10)
 
 
-# In[18]:
+# In[15]:
 
 
 # Reading in the datasets of phenotype class classifications from the Lloyd, Meinke 2012 paper.
@@ -504,14 +504,14 @@ phe_classes_groups.to_pandas().head(10)
 # ### EQ-based similarities from Oellrich, Walls et al., (2015)
 # See dataset description for what files were used to construct these mappings, and links there and above to the related paper.
 
-# In[19]:
+# In[16]:
 
 
 ow_edgelist = AnyInteractions(dataset.get_name_to_id_dictionary(), pppn_edgelist_path)
 ow_edgelist.df.head(10)
 
 
-# In[20]:
+# In[17]:
 
 
 # The edgelist that is returned has some duplicate lines with respect a single gene pair in this dataset.
@@ -586,7 +586,7 @@ ids_with_any_mapping = list(set(flatten([
 ])))
 
 
-# In[27]:
+# In[ ]:
 
 
 # Get the list of all the IDs in this dataset that have all of types of curated values we want to look at. 
@@ -608,7 +608,7 @@ if args.filter:
 dataset.describe()
 
 
-# In[19]:
+# In[34]:
 
 
 if args.subset:
@@ -665,7 +665,7 @@ mupdata.head(10)
 # ### Selecting which dataset should be used to proceed with the analysis
 # The analysis is run over different dastasets using this same notebook to avoid including lots of redundant code in the project. Therefore the dataset to use is set here within the notebook, even though some of the previous sections only apply to the main phenotypes dataset, which are the ones that aren't sentence pairs. The options here should match the datasets argument that can be specified when running the notebook here or as a script.
 
-# In[22]:
+# In[38]:
 
 
 # Obtain a mapping between IDs and the raw text descriptions associated with that ID from the dataset.
@@ -702,7 +702,7 @@ print(len(ids_to_use))
 # ### Loading trained and saved models
 # Versions of the architectures discussed above which have been saved as trained models are loaded here. Some of these models are loaded as pretrained models from the work of other groups, and some were trained on data specific to this notebook and loaded here.
 
-# In[1]:
+# In[23]:
 
 
 class LossLogger(CallbackAny2Vec):
@@ -724,7 +724,7 @@ class LossLogger(CallbackAny2Vec):
         self.deltas.append(delta)
 
 
-# In[ ]:
+# In[24]:
 
 
 # Always load these Word2Vec models because they're needed for a bunch of different approaches.
@@ -772,7 +772,7 @@ if args.bert or args.biobert:
 # <a id="part_3"></a>
 # # Part 3. NLP Choices
 
-# In[23]:
+# In[40]:
 
 
 # We need a mapping between gene IDs and lists of some other type of ID that references a single object that was 
@@ -783,7 +783,7 @@ unique_id_to_gene_ids_mappings = defaultdict(lambda: defaultdict(list))
 
 # ### Mapping to unique text strings for whole genes.
 
-# In[24]:
+# In[41]:
 
 
 # Get a mapping between a new unique identifier and unique description strings that are not sentence tokenized.
@@ -797,7 +797,7 @@ whole_unique_ids = list(unique_id_to_unique_text.keys())
 
 # ### Mapping to unique text strings that have been tokenized by sentence.
 
-# In[25]:
+# In[42]:
 
 
 sent_tokenized_descriptions = {i:sent_tokenize(d) for i,d in descriptions.items()}
@@ -813,7 +813,7 @@ for i, sent_list in sent_tokenized_descriptions.items():
 
 # ### Establishing which dictionaries will be used for preprocessing text next
 
-# In[26]:
+# In[43]:
 
 
 # What should 'descriptions' be for the sake of doing batch pre-processing?
@@ -834,7 +834,7 @@ unique_tokenized_ids = list(unique_id_to_unique_sent.keys())
 # ### Preprocessing text descriptions
 # The preprocessing methods applied to the phenotype descriptions are a choice which impacts the subsequent vectorization and similarity methods which construct the pairwise distance matrix from each of these descriptions. The preprocessing methods that make sense are also highly dependent on the vectorization method or embedding method that is to be applied. For example, stemming (which is part of the full proprocessing done below using the Gensim preprocessing function) is useful for the n-grams and bag-of-words methods but not for the document embeddings methods which need each token to be in the vocabulary that was constructed and used when the model was trained. For this reason, embedding methods with pretrained models where the vocabulary is fixed should have a lighter degree of preprocessing not involving stemming or lemmatization but should involve things like removal of non-alphanumerics and normalizing case. 
 
-# In[28]:
+# In[44]:
 
 
 # Applying canned prepreprocessing approaches to the descriptions.
@@ -844,7 +844,7 @@ processed["simple_no_stops"] = {i:remove_stopwords(" ".join(simple_preprocess(d)
 processed["full"] = {i:" ".join(preprocess_string(d)) for i,d in descriptions.items()}
 
 
-# In[27]:
+# In[45]:
 
 
 # Set of stopwords, used later for checking it tokens in a list are stopwords or not.
@@ -855,7 +855,7 @@ stop_words = set(stopwords.words('english'))
 # ### POS tagging the phenotype descriptions for nouns and adjectives
 # Note that preprocessing of the descriptions should be done after part-of-speech tagging, because tokens that are removed during preprocessing before n-gram analysis contain information that the parser needs to accurately call parts-of-speech. This step should be done on the raw descriptions and then the resulting bags of words can be subset using additional preprocesssing steps before input in one of the vectorization methods.
 
-# In[29]:
+# In[46]:
 
 
 get_pos_tokens = lambda text,pos: " ".join([t[0] for t in nltk.pos_tag(word_tokenize(text)) if t[1].lower()==pos.lower()])
@@ -873,7 +873,7 @@ processed["nouns_adjectives_simple"] = {i:"{} {}".format(processed["nouns_simple
 # ### Reducing vocabulary size based on identifying important words
 # These approcahes for reducing the vocabulary size of the dataset work by identifying which words in the descriptions are likely to be the most important for identifying differences between the phenotypes and meaning of the descriptions. One approach is to determine which words occur at a higher rate in text of interest such as articles about plant phenotypes as compared to their rates in more general texts such as a corpus of news articles. These approaches do not create modified versions of the descriptions but rather provide vocabulary objects that can be passed to the sklearn vectorizer or constructors.
 
-# In[ ]:
+# In[47]:
 
 
 # Create ontology objects for all the biological ontologies being used.
@@ -1057,7 +1057,7 @@ processed["full_plus_precise_annotations"] = {i:" ".join(flatten([text,all_preci
 processed["full_plus_partial_annotations"] = {i:" ".join(flatten([text,all_partial_annotations[i]])) for i,text in processed["full"].items()}
 
 
-# In[ ]:
+# In[48]:
 
 
 # Create ontology term annotations dictionaries for all the high confidence annotations present in the dataset.
@@ -1067,7 +1067,7 @@ curated_po_annotations = dataset.get_annotations_dictionary("PO")
 
 # ### Tokenize GO and PO curator annotated ontology terms and map from those to gene identifiers.
 
-# In[ ]:
+# In[49]:
 
 
 # Get a mapping between GO term IDs (like GO:0001234) and the list of gene IDs in this dataset they were annotated to.
@@ -1097,7 +1097,7 @@ for gene_id,uid_list in gene_id_to_unique_ids_mappings["go_terms"].items():
 individual_curated_go_term_strings = {i:" ".join(go.inherited(terms)) for i,terms in individual_curated_go_terms.items()}
 
 
-# In[ ]:
+# In[50]:
 
 
 # Get a mapping between PO term IDs (like PO:0001234) and the list of gene IDs in this dataset they were annotated to.
@@ -1129,7 +1129,7 @@ individual_curated_po_term_strings = {i:" ".join(po.inherited(terms)) for i,term
 
 # ### What about for the union set of GO and PO terms that were annotated by curators?
 
-# In[ ]:
+# In[51]:
 
 
 # The goal here is obtain the set of unique term sets, with a mapping from/back to gene IDs, to avoid reduncancy.
@@ -1140,7 +1140,7 @@ _reverse_mapping = {s:i for i,s in unique_id_to_unique_go_annotation_strings.ite
 gene_id_to_unique_ids_mappings["go_term_sets"] = {i:[_reverse_mapping[s]] for i,s in curated_go_annotation_strings_sorted.items()}
 
 
-# In[ ]:
+# In[52]:
 
 
 # The goal here is to obtain the set of unique term sets, with a mapping from/back to gene IDs, to avoid redundancy.
@@ -1155,7 +1155,7 @@ gene_id_to_unique_ids_mappings["po_term_sets"] = {i:[_reverse_mapping[s]] for i,
 # ### Splitting dictionaries back into phenotype and phene specific dictionaries
 # As a preprocessing step, split into a new set of descriptions that's larger. Note that phenotypes are split into phenes, and the phenes that are identical are retained as separate entries in the dataset. This makes the distance matrix calculation more needlessly expensive, because vectors need to be found for the same string more than once, but it simplifies converting the edgelist back to having IDs that reference the genes (full phenotypes) instead of the smaller phenes. If anything, that problem should be addressed in the pairwise functions, not here. (The package should handle it, not when creating input data for those methods).
 
-# In[30]:
+# In[53]:
 
 
 # Retrieve dictionaries that refer just to either unique raw whole texts, or unique raw sentences tokenized out.
@@ -1176,7 +1176,7 @@ for process in processes:
     assert len(unique_tokenized_ids) == len(processed["{}_phenes".format(process)].keys())
 
 
-# In[31]:
+# In[54]:
 
 
 # These should be to sets not lists, don't need the duplicate references.
@@ -1192,7 +1192,7 @@ for dtype,mapping in gene_id_to_unique_ids_mappings.items():
             unique_id_to_gene_ids_mappings[dtype][unique_id].append(gene_id)
 
 
-# In[32]:
+# In[55]:
 
 
 # Each of the gene IDs should map to a list of exactly one ID referencing to a unique whole text, or set of terms.
@@ -1218,7 +1218,7 @@ assert all([len(unique_ids)==len(set(unique_ids)) for gene_id,unique_ids in gene
 # <a id="methods"></a>
 # ### Specifying a list of NLP methods to use
 
-# In[33]:
+# In[56]:
 
 
 # Returns a list of texts, this is necessary for weighting because inverse document frequency won't make sense
@@ -1235,7 +1235,7 @@ test_documents = {1:"something in the dataset three times", 2:"something in the 
 get_raw_texts_for_term_weighting(test_documents, test_unique_id_to_real_ids)
 
 
-# In[46]:
+# In[ ]:
 
 
 doc2vec_and_word2vec_approaches = []
@@ -1258,7 +1258,7 @@ if args.learning: doc2vec_and_word2vec_approaches.extend([
 ])
 
 
-# In[49]:
+# In[ ]:
 
 
 bio_nlp_approaches_small = []
@@ -1277,7 +1277,7 @@ if args.bio_small: bio_nlp_approaches_small.extend([
 ])
 
 
-# In[50]:
+# In[ ]:
 
 
 bio_nlp_approaches_large = []
@@ -1296,7 +1296,7 @@ if args.bio_large: bio_nlp_approaches_large.extend([
 ])
 
 
-# In[67]:
+# In[ ]:
 
 
 combined_approaches = []
@@ -1312,7 +1312,7 @@ if args.combined: combined_approaches.extend([
 ])
 
 
-# In[52]:
+# In[ ]:
 
 
 baseline_approaches = []
@@ -1322,7 +1322,7 @@ if args.baseline: baseline_approaches.extend([
 ])
 
 
-# In[53]:
+# In[ ]:
 
 
 bert_approaches = []
@@ -1343,7 +1343,7 @@ if args.bert: bert_approaches.extend([
 ])
 
 
-# In[55]:
+# In[ ]:
 
 
 biobert_approaches = []
@@ -1364,7 +1364,7 @@ if args.biobert: biobert_approaches.extend([
 ])
 
 
-# In[59]:
+# In[ ]:
 
 
 automated_annotation_approaches = []
@@ -1376,7 +1376,7 @@ if args.noblecoder: automated_annotation_approaches.extend([
 ])
 
 
-# In[61]:
+# In[ ]:
 
 
 nmf_topic_modeling_approaches = []
@@ -1388,7 +1388,7 @@ if args.nmf: nmf_topic_modeling_approaches.extend([
 ])
 
 
-# In[62]:
+# In[ ]:
 
 
 lda_topic_modeling_approaches = []
@@ -1400,34 +1400,34 @@ if args.lda: lda_topic_modeling_approaches.extend([
 ])
 
 
-# In[63]:
+# In[ ]:
 
 
 vanilla_ngrams_approaches = []
 if args.vanilla: vanilla_ngrams_approaches.extend([
-    Method("N-Grams","Full,Words,1-grams,TFIDF","NLP",1,pw.with_ngrams, {"ids_to_texts":processed["full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("N-Grams","Full,Words,1-grams,2-grams,TFIDF","NLP",2, pw.with_ngrams, {"ids_to_texts":processed["full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("N-Grams","Tokenization,Full,Words,1-grams,TFIDF","NLP",1001, pw.with_ngrams, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("N-Grams","Tokenization,Full,Words,1-grams,2-grams,TFIDF","NLP",1002, pw.with_ngrams, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Full,Words,1-grams,TFIDF","NLP",1,pw.with_ngrams, {"ids_to_texts":processed["full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Full,Words,1-grams,2-grams,TFIDF","NLP",2, pw.with_ngrams, {"ids_to_texts":processed["full"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2), "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Tokenization,Full,Words,1-grams,TFIDF","NLP",1001, pw.with_ngrams, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Tokenization,Full,Words,1-grams,2-grams,TFIDF","NLP",1002, pw.with_ngrams, {"ids_to_texts":processed["full_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,2), "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["full_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
 ])
 
 
-# In[64]:
+# In[ ]:
 
 
 collapsed_approaches = []
 if args.collapsed: collapsed_approaches.extend([
-    Method("N-Grams","Linares_Pontes,Wikipedia,Words,1-grams","NLP",40, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_wikipedia"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_wikipedia"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("N-Grams","Linares_Pontes,PubMed,Words,1-grams","NLP",41, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_pubmed"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_pubmed"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("N-Grams","Tokenization,Linares_Pontes,Wikipedia,Words,1-grams","NLP",1040, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_wikipedia_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_wikipedia_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
-    Method("N-Grams","Tokenization,Linares_Pontes,PubMed,Words,1-grams","NLP",1041, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_pubmed_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_pubmed_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Linares_Pontes,Wikipedia,Words,1-grams","NLP",40, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_wikipedia"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_wikipedia"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Linares_Pontes,PubMed,Words,1-grams","NLP",41, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_pubmed"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1),"min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_pubmed"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Tokenization,Linares_Pontes,Wikipedia,Words,1-grams","NLP",1040, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_wikipedia_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1),  "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_wikipedia_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Tokenization,Linares_Pontes,PubMed,Words,1-grams","NLP",1041, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_pubmed_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_pubmed_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
     
-    Method("N-Grams","Linares_Pontes,Plants,Words,1-grams","NLP",42, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_plants"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_plants"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
-    Method("N-Grams","Tokenization,Linares_Pontes,Plants,Words,1-grams","NLP",1042, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_plants_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "max_features":10000, "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_plants_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
+    Method("N-Grams","Linares_Pontes,Plants,Words,1-grams","NLP",42, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_plants"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1), "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_plants"], unique_id_to_gene_ids_mappings["whole_texts"])}, spatial.distance.cosine, tag="whole_texts"),
+    Method("N-Grams","Tokenization,Linares_Pontes,Plants,Words,1-grams","NLP",1042, pw.with_ngrams, {"ids_to_texts":processed["linares_pontes_plants_phenes"], "metric":"cosine", "binary":False, "analyzer":"word", "ngram_range":(1,1),  "min_df":2, "max_df":0.9, "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(processed["linares_pontes_plants_phenes"], unique_id_to_gene_ids_mappings["sent_tokens"])}, spatial.distance.cosine, tag="sent_tokens"),
 ])
 
 
-# In[65]:
+# In[ ]:
 
 
 modified_vocab_approaches = []
@@ -1448,7 +1448,32 @@ if args.vocab: modified_vocab_approaches.extend([
 ])
 
 
-# In[66]:
+# In[74]:
+
+
+# Subsetting annotations to get aspect specific scores.
+cc_id = "GO:0005575"
+bp_id = "GO:0008150"
+mf_id = "GO:0003674"
+individual_curated_go_term_strings_cc = {}
+individual_curated_go_term_strings_bp = {}
+individual_curated_go_term_strings_mf = {}
+for k,v in individual_curated_go_term_strings.items():
+    individual_curated_go_term_strings_cc[k] = "".join([x for x in v.split() if cc_id in go.inherited(x)])
+    individual_curated_go_term_strings_bp[k] = "".join([x for x in v.split() if bp_id in go.inherited(x)])
+    individual_curated_go_term_strings_mf[k] = "".join([x for x in v.split() if mf_id in go.inherited(x)])
+     
+unique_id_to_unique_go_annotation_strings_cc = {}
+unique_id_to_unique_go_annotation_strings_bp = {}
+unique_id_to_unique_go_annotation_strings_mf = {}
+for k,v in individual_curated_go_term_strings.items():
+    unique_id_to_unique_go_annotation_strings_cc[k] = "".join([x for x in v.split() if cc_id in go.inherited(x)])
+    unique_id_to_unique_go_annotation_strings_bp[k] = "".join([x for x in v.split() if bp_id in go.inherited(x)])
+    unique_id_to_unique_go_annotation_strings_mf[k] = "".join([x for x in v.split() if mf_id in go.inherited(x)])
+print("done splitting by aspect")
+
+
+# In[ ]:
 
 
 manual_annotation_approaches = []
@@ -1457,10 +1482,20 @@ if args.annotations: manual_annotation_approaches.extend([
     Method("PO","Union","Curated",2002, pw.with_ngrams, {"ids_to_texts":unique_id_to_unique_po_annotation_strings, "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(unique_id_to_unique_po_annotation_strings, unique_id_to_gene_ids_mappings["po_term_sets"])}, spatial.distance.cosine, tag="po_term_sets"),
     Method("GO","Minimum","Curated",2003, pw.with_ngrams, {"ids_to_texts":individual_curated_go_term_strings, "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_go_term_strings, unique_id_to_gene_ids_mappings["go_terms"])}, spatial.distance.cosine, tag="go_terms"),
     Method("PO","Minimum","Curated",2004, pw.with_ngrams, {"ids_to_texts":individual_curated_po_term_strings, "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_po_term_strings, unique_id_to_gene_ids_mappings["po_terms"])},spatial.distance.cosine, tag="po_terms"),
+    
+    Method("GO CC","Union","Curated",5001, pw.with_ngrams, {"ids_to_texts":unique_id_to_unique_go_annotation_strings_cc,  "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(unique_id_to_unique_go_annotation_strings, unique_id_to_gene_ids_mappings["go_term_sets"])}, spatial.distance.cosine, tag="go_term_sets"),
+    Method("GO BP","Union","Curated",5002, pw.with_ngrams, {"ids_to_texts":unique_id_to_unique_go_annotation_strings_bp,  "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(unique_id_to_unique_go_annotation_strings, unique_id_to_gene_ids_mappings["go_term_sets"])}, spatial.distance.cosine, tag="go_term_sets"),
+    Method("GO MF","Union","Curated",5003, pw.with_ngrams, {"ids_to_texts":unique_id_to_unique_go_annotation_strings_mf,  "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(unique_id_to_unique_go_annotation_strings, unique_id_to_gene_ids_mappings["go_term_sets"])}, spatial.distance.cosine, tag="go_term_sets"),
+    
+    
+    Method("GO CC","Minimum","Curated",6001, pw.with_ngrams, {"ids_to_texts":individual_curated_go_term_strings_cc, "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_go_term_strings, unique_id_to_gene_ids_mappings["go_terms"])}, spatial.distance.cosine, tag="go_terms"),
+    Method("GO BP","Minimum","Curated",6002, pw.with_ngrams, {"ids_to_texts":individual_curated_go_term_strings_bp, "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_go_term_strings, unique_id_to_gene_ids_mappings["go_terms"])}, spatial.distance.cosine, tag="go_terms"),
+    Method("GO MF","Minimum","Curated",6003, pw.with_ngrams, {"ids_to_texts":individual_curated_go_term_strings_mf, "metric":"cosine", "min_df":2, "max_df":0.9, "binary":False, "analyzer":"word", "ngram_range":(1,1), "tfidf":True, "training_texts":get_raw_texts_for_term_weighting(individual_curated_go_term_strings, unique_id_to_gene_ids_mappings["go_terms"])}, spatial.distance.cosine, tag="go_terms"),
+    
 ])
 
 
-# In[2]:
+# In[ ]:
 
 
 for_app_approaches = []
@@ -1487,7 +1522,7 @@ if args.app_only: for_app_approaches.extend([
 # if args.collapsed: methods.extend(collapsed_approaches) 
 # if args.annotations: methods.extend(manual_annotation_approaches)
 
-# In[69]:
+# In[ ]:
 
 
 # Adding lists of approaches to the complete set to be run, this is useful when running the notebook as a script.
@@ -1513,7 +1548,7 @@ methods.extend(for_app_approaches)
 # ### Running all of the methods to generate distance matrices
 # Notes- Instead of passing in similarity function like cosine distance that will get evaluated for every possible i,j pair of vetors that are created (this is very big when splitting by phenes), don't use a specific similarity function, but instead let the object use a KNN classifier. pass in some limit for k like 100. then the object uses some more efficient (not brute force) algorithm to set the similarity of some vector v to its 100 nearest neighbors as those 100 probabilities, and sets everything else to 0. This would need to be implemented as a matching but separate function from the get_square_matrix_from_vectors thing. And then this would need to be noted in the similarity function that was used for these in the big table of methods. This won't work because the faster (not brute force algorithms) are not for sparse vectors like n-grams, and the non-sparse embeddings aren't really the problem here because those vectors are relatively much short, even when concatenating BERT encoder layers thats only up to around length of ~1000.
 
-# In[71]:
+# In[ ]:
 
 
 # Generate all the pairwise distance matrices but not in parallel.  
@@ -1568,7 +1603,7 @@ if args.app:
     dataset.to_pandas().to_csv(path, index=False)
 
 
-# In[41]:
+# In[ ]:
 
 
 # These IDs should either be the IDs picked from the dataset tha represent actual genes, or the paired sentence IDs.
@@ -1583,7 +1618,7 @@ expected_number_of_rows = ((len(ids)**2)-len(ids))/2
 assert df.shape[0] == expected_number_of_rows
 
 
-# In[42]:
+# In[ ]:
 
 
 # When multiple indices within the array could be part of the data for one particular gene (sentence tokenized).
@@ -1605,7 +1640,7 @@ def lookup_distance(gene_id_1, gene_id_2, gene_id_to_uids, uid_to_array_index, a
     return(distance)
 
 
-# In[43]:
+# In[ ]:
 
 
 # Depending on what the IDs in the dictionaries for each approach were referencing, the distance values in the
@@ -1660,14 +1695,14 @@ assert df.shape[0] == expected_number_of_rows
 df.head(20)
 
 
-# In[1]:
+# In[ ]:
 
 
 if args.app:
     print(stophere_because_we_only_need_file_for_the_app_not_anything_else)
 
 
-# In[44]:
+# In[ ]:
 
 
 # Add a column for the EQ statement similarity at this point. This way, it will be present when the dataframe that is
@@ -1715,7 +1750,7 @@ df.head(20)
 #df.head(20)
 
 
-# In[45]:
+# In[ ]:
 
 
 # Normalizing all of the array representations of the graphs so they can be combined. Then this version of the arrays
@@ -2573,20 +2608,27 @@ for properties,idxs in zip(subset_properties, subset_idx_lists):
         #tables[c][q][s][name].update({"f1_std":bootstrapped_std_dict["f_1_max_std"], "f5_std":bootstrapped_std_dict["f_point5_max_std"], "f2_std":bootstrapped_std_dict["f_2_max_std"]}) 
 
         # Producing the precision recall curve.
-        #step_kwargs = ({'step': 'post'} if 'step' in signature(plt.fill_between).parameters else {})
-        #ax.step(recall, precision, color='black', alpha=0.2, where='post')
-        #ax.fill_between(recall, precision, alpha=0.7, color='black', **step_kwargs)
-        #ax.axhline(baseline_auc, linestyle="--", color="lightgray")
-        #ax.set_xlabel('Recall')
-        #ax.set_ylabel('Precision')
-        #ax.set_ylim([0.0, 1.05])
-        #ax.set_xlim([0.0, 1.0])
-        #ax.set_title("PR {0} (Baseline={1:0.3f})".format(name, baseline_auc))
+        step_kwargs = ({'step': 'post'} if 'step' in signature(plt.fill_between).parameters else {})
+        ax.step(recall, precision, color='black', alpha=0.2, where='post')
+        ax.fill_between(recall, precision, alpha=0.7, color='black', **step_kwargs)
+        ax.axhline(baseline_auc, linestyle="--", color="lightgray")
+        ax.set_xlabel('Recall')
+        ax.set_ylabel('Precision')
+        ax.set_ylim([0.0, 1.05])
+        ax.set_xlim([0.0, 1.0])
+        ax.set_title("PR {0} (Baseline={1:0.3f})".format(name, baseline_auc))
         
-        
-    #fig.set_size_inches(row_width, row_height*math.ceil(num_plots/plots_per_row))
-    #fig.tight_layout()
-    #fig.savefig(os.path.join(OUTPUT_DIR,"part_5_prcurve_shared.png"),dpi=400)
+    
+    # Creating the image file name.
+    curated_str = "curated_{}".format(str(c).lower())
+    question_str = "question_{}".format(str(q).lower())
+    species_str = "species_{}".format(str(s).lower())
+    variables_strs = [curated_str, question_str, species_str]
+    image_filename = "{}_{}_{}.png".format(curated_str, question_str, species_str)
+    
+    fig.set_size_inches(row_width, row_height*math.ceil(num_plots/plots_per_row))
+    fig.tight_layout()
+    fig.savefig(os.path.join(OUTPUT_DIR,PLOTS_DIR,image_filename),dpi=400)
     plt.close()
 
 

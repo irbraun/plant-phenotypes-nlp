@@ -96,9 +96,9 @@ prepare_dataframe <- function(input_path, num_shown, num_gene_threshold, y_axis_
 
 
 
-input_path_subsets <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_all_subsets_within_distances_melted.csv"
-input_path_kegg <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_all_kegg_only_within_distances_melted.csv"
-input_path_plantcyc <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_all_pmn_only_within_distances_melted.csv"
+input_path_subsets <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_all_subsets_within_distances_melted.csv"
+input_path_kegg <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_all_kegg_only_within_distances_melted.csv"
+input_path_plantcyc <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_all_pmn_only_within_distances_melted.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/intragroup_distances.png"
 names_path <- "/Users/irbraun/phenologs-with-oats/names.tsv"
 

@@ -7,7 +7,7 @@ library(stringr)
 
 
 
-input_path <- "/Users/irbraun/phenologs-with-oats/outputs/composition_10_12_2020_h09m49s25_5701/words_shared_by_species_melted.csv"
+input_path <- "/Users/irbraun/phenologs-with-oats/outputs/composition_11_22_2020_h12m47s02_5791/words_shared_by_species_melted.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/shared_words.png"
 
 

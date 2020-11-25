@@ -9,7 +9,7 @@ library(ggrepel)
 
 
 # The input and output files that this script uses and creates.
-input_path <- "/Users/irbraun/phenologs-with-oats/outputs/composition_10_12_2020_h09m49s25_5701/token_frequencies.csv"
+input_path <- "/Users/irbraun/phenologs-with-oats/outputs/composition_11_22_2020_h12m47s02_5791/token_frequencies.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/vocabs_compared.png"
 
 

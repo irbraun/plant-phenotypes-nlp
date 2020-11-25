@@ -9,7 +9,7 @@ library(ggrepel)
 
 
 # The input and output files that this script uses and creates.
-input_path <- "/Users/irbraun/phenologs-with-oats/outputs/composition_10_12_2020_h09m49s25_5701/word_sent_distributions.csv"
+input_path <- "/Users/irbraun/phenologs-with-oats/outputs/composition_11_22_2020_h12m47s02_5791/word_sent_distributions.csv"
 word_plot_output_path <- "/Users/irbraun/phenologs-with-oats/figs/word_distributions.png"
 sent_plot_output_path <- "/Users/irbraun/phenologs-with-oats/figs/sent_distributions.png"
 
@@ -31,8 +31,8 @@ height_cm = 10
 # the other species) while still making the plots very easy to interpret because these outliers have been removed.
 # To verify this, just double-check the output of the number of genes removed and percent of genes removed for 
 # each species when running this script, especially if changing these values. For this note, they are 40 and 500.
-sent_limit <- 40
-word_limit <- 400
+sent_limit <- 50
+word_limit <- 500
 
 
 # Reading in the csv file and converting to long format.
