@@ -9,7 +9,7 @@ library(hashmap)
 
 
 
-prepare_dataframe <- function(input_path, num_shown, num_gene_threshold, y_axis_name){
+prepare_dataframe <- function(input_path, num_shown, num_gene_threshold, y_axis_name, top){
   # Read in the input file with distances between all groups, and subset based on those parameters.
   df <- read.csv(file=input_path)
   df <- df %>% filter(n>=num_gene_threshold)
@@ -51,10 +51,13 @@ prepare_dataframe <- function(input_path, num_shown, num_gene_threshold, y_axis_
   df_long[rowSums(is.na(df_long)) > 0,]
   df_long <- df_long %>% drop_na()
   
+  if(top==F){
+    num_shown <- -num_shown
+  }
+  
+  
   # The baseline and curation methods are not applicable for this figure.
   df_long <- df_long %>% filter(!class %in% c("Curation","Baseline"))
-  
-
     groups_to_show <- df_long %>% 
     select(group_id,percentile) %>% 
     group_by(group_id) %>% 
@@ -111,30 +114,43 @@ num_gene_threshold = 3
 width = 30
 height_per_group = 0.35
 y_axis_name = "Phenotype Category"
-df_top <- prepare_dataframe(input_path, num_shown, num_gene_threshold, y_axis_name)
+df_top <- prepare_dataframe(input_path, num_shown, num_gene_threshold, y_axis_name, T)
 
 
 
 
 # Parameters for what to include in the figure.
 input_path <- input_path_plantcyc
-num_shown = 50
+num_shown = 20
 num_gene_threshold = 3
 width = 30
 height_per_group = 0.35
-y_axis_name = "Biochemical Pathway"
-df_bottom <- prepare_dataframe(input_path, num_shown, num_gene_threshold, y_axis_name)
-
-head(df_bottom)
+y_axis_name = "Biochemical Pathway (Top 20)"
+df_middle <- prepare_dataframe(input_path, num_shown, num_gene_threshold, y_axis_name, T)
 
 
+# Parameters for what to include in the figure.
+input_path <- input_path_plantcyc
+num_shown = 20
+num_gene_threshold = 3
+width = 30
+height_per_group = 0.35
+y_axis_name = "Biochemical Pathway (Bottom 20)"
+df_bottom <- prepare_dataframe(input_path, num_shown, num_gene_threshold, y_axis_name, F)
 
 
-df_long_t <- rbind(df_top, df_bottom)
+
+
+
+
+
+df_long_t <- rbind(df_top, df_middle, df_bottom)
 
 
 # Control the order of the facet grid.
-df_long_t$facet = factor(df_long_t$facet, levels=c("Phenotype Category","Biochemical Pathway"), labels=c("Phenotype Category","Biochemical Pathway"))
+df_long_t$facet = factor(df_long_t$facet, 
+levels=c("Phenotype Category","Biochemical Pathway (Top 20)", "Biochemical Pathway (Bottom 20)"), 
+labels=c("Phenotype Category","Biochemical Pathway (Top 20)", "Biochemical Pathway (Bottom 20)"))
 
 
 

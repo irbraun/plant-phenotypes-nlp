@@ -31,12 +31,12 @@ name_to_class = dict(zip(name_df["name_in_notebook"].values, name_df["class"]))
 
 # Input paths from a specific output directory from running the analysis pipeline.
 input_paths = [
-	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_all_pmn_only_within_distances_melted.csv",
-	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_all_kegg_only_within_distances_melted.csv",
-	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_all_subsets_within_distances_melted.csv",
-	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_curated_pmn_only_within_distances_melted.csv",
-	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_curated_kegg_only_within_distances_melted.csv",
-	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_13_2020_h15m38s01_8479_plants/stacked_curated_subsets_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_all_pmn_only_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_all_kegg_only_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_all_subsets_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_curated_pmn_only_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_curated_kegg_only_within_distances_melted.csv",
+	"/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_curated_subsets_within_distances_melted.csv",
 ]
 
 
