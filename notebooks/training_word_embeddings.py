@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[53]:
 
 
 import pandas as pd
@@ -19,6 +19,7 @@ import warnings
 from gensim.parsing.preprocessing import strip_non_alphanum, stem_text, preprocess_string
 from gensim.utils import simple_preprocess
 from gensim.models.callbacks import CallbackAny2Vec
+from gensim.models.keyedvectors import KeyedVectors
 from itertools import product
 from sklearn.metrics import precision_recall_curve
 
@@ -32,7 +33,7 @@ from oats.utils.utils import flatten
 
 # ### 1. Creating datasets of sentences to traing word embedding models
 
-# In[2]:
+# In[3]:
 
 
 # Input paths to text datasets.
@@ -40,7 +41,7 @@ plant_abstracts_corpus_path = "../data/corpus_related_files/untagged_text_corpor
 plant_phenotype_descriptions_path = "../../plant-data/genes_texts_annots.csv"
 
 
-# In[ ]:
+# In[4]:
 
 
 # Preparing the dataset that combines the dataset of plant phenotype descriptions and scrapped abstracts.
@@ -61,6 +62,136 @@ assert len(sentences_from_corpus_and_descriptions) == len(sentences_from_corpus)
 print(len(sentences_from_corpus_and_descriptions))
 print(len(sentences_from_corpus))
 print(len(sentences_from_descriptions))
+
+
+# In[ ]:
+
+
+
+
+
+# ### 1.5 Initalizing weights using the Word2Vec model
+
+# In[6]:
+
+
+enwiki_word2vec_model = gensim.models.Word2Vec.load("../models/wiki_sg/word2vec.bin")
+revised_model = gensim.models.Word2Vec(min_count=1)
+revised_model.build_vocab(sentences_from_corpus_and_descriptions)
+print("done")
+
+
+# In[9]:
+
+
+enwiki_vocab = enwiki_word2vec_model.wv.vocab
+len(enwiki_vocab)
+
+
+# In[11]:
+
+
+dataset_vocab = revised_model.wv.vocab
+len(dataset_vocab)
+
+
+# In[24]:
+
+
+from collections import defaultdict
+preprocessed_token_to_enwiki_tokens = defaultdict(list)
+ctr = 0
+for enwiki_token in enwiki_vocab:
+    preprocessed_token = preprocess_string(enwiki_token)
+    if (len(preprocessed_token)==1):
+        if (preprocessed_token[0] in dataset_vocab):
+            preprocessed_token_to_enwiki_tokens[preprocessed_token[0]].append(enwiki_token)
+    ctr += 1
+    if ctr >100000:
+        print(ctr)
+print('done')
+
+
+# In[25]:
+
+
+preprocessed_token_to_enwiki_tokens
+
+
+# In[30]:
+
+
+enwiki_word2vec_model.wv.vocab['news'].count
+enwiki_word2vec_model.wv.vocab['9news'].count
+
+
+# In[44]:
+
+
+# Map the preprocessed (stemmed) tokens to the most frequent token in the Wikipedia that shares that stem.
+# For example, we want the weights for 'piec' to come from 'piece', rather than a less frequent token like '8-piece'
+preprocessed_token_to_representative_enwiki_token = {}
+for preprocessed_token, enwiki_tokens in preprocessed_token_to_enwiki_tokens.items():
+    counts = np.array([enwiki_word2vec_model.wv.vocab[enwiki_token].count for enwiki_token in enwiki_tokens])
+    most_common_enwiki_token = enwiki_tokens[np.argmax(counts)]
+    preprocessed_token_to_representative_enwiki_token[preprocessed_token] = most_common_enwiki_token
+
+
+# In[46]:
+
+
+# Using that mapping to tokens in the Wikipedia model, get an initial set of weights for each vocabulary tokens.
+preprocessed_token_to_initial_weighs = {}
+for preprocessed_token,enwiki_token in preprocessed_token_to_representative_enwiki_token.items():
+    weights = enwiki_word2vec_model[enwiki_token]
+    preprocessed_token_to_initial_weighs[preprocessed_token] = weights
+
+
+# In[54]:
+
+
+# Saving the initial set of weights from Wikipedia as a keyed vector object from the gensim package.
+# This way, these weights can be used to create an initial model that then gets additionally trained, rather than
+# starting from a set of initial random weights for each token in the datasets vocabulary.
+initial_weights_from_wikipedia_path = "../models/plants_sg/initial_weights_from_wikipedia.kv"
+initial_weights_keyed_vectors = gensim.models.keyedvectors.Word2VecKeyedVectors(vector_size=enwiki_word2vec_model.vector_size)
+for token,weights in preprocessed_token_to_initial_weighs.items():
+    initial_weights_keyed_vectors.add(token, weights)
+initial_weights_keyed_vectors.save(initial_weights_from_wikipedia_path)
+print("done")
+
+
+# In[67]:
+
+
+kv = KeyedVectors.load(initial_weights_from_wikipedia_path)
+
+kv
+
+
+# In[75]:
+
+
+
+model = gensim.models.Word2Vec(sg=1, min_count=1, window=8, size=300, workers=4, alpha=0.025, min_alpha=0.0001)
+model.build_vocab(sentences_from_corpus_and_descriptions)
+
+loss_logger = LossLogger()
+model.intersect_word2vec_format(initial_weights_from_wikipedia_path, binary=True)
+model.train(sentences_from_corpus_and_descriptions, epochs=1, total_examples=model.corpus_count, compute_loss=True, callbacks=[loss_logger])
+print("done")
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
 
 # ### 2. Training and saving models with hyperparameter grid search
@@ -88,7 +219,7 @@ hyperparameter_sets = list(product(
 print(len(hyperparameter_sets))
 
 
-# In[ ]:
+# In[64]:
 
 
 class LossLogger(CallbackAny2Vec):

@@ -1,0 +1,1159 @@
+Rank	Species	Gene	Gene Model	Score	Query	Matches	Internal ID
+1	Maize	brn1		0.575	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown embryo.	2867
+1	Maize	brn1		0.481	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown kernel.	2867
+1	Maize	brn1		0.429	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown aleurone.	2867
+1	Maize	brn1		0.280	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Yellowish brown color in the aleurone layer.	2867
+1	Maize	brn1		0.056	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2867
+1	Maize	brn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Lethal.	2867
+1	Maize	brn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seedling lethal.	2867
+1	Maize	brn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown aleurone.	2867
+1	Maize	brn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2867
+1	Maize	brn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Yellowish brown color in the aleurone layer.	2867
+1	Maize	brn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown embryo.	2867
+1	Maize	brn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown kernel.	2867
+1	Maize	brn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Lethal.	2867
+1	Maize	brn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seedling lethal.	2867
+2	Maize	brt1		0.534	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown roots.	2876
+2	Maize	brt1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Roots senesce prematurely after germination.	2876
+2	Maize	brt1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown roots.	2876
+2	Maize	brt1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Roots senesce prematurely after germination.	2876
+3	Maize	lc1		0.519	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin.	2818
+3	Maize	lc1		0.290	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigment in pericarp.	2818
+3	Maize	lc1		0.255	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigment in auricle.	2818
+3	Maize	lc1		0.229	Reduced levels of anthocyanins in leaves, stems and other tissues.	Strong anthocyanin on leaf blade after 4-6 leaf stage.	2818
+3	Maize	lc1		0.159	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Non-pigmented.	2818
+3	Maize	lc1		0.118	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigment in pericarp.	2818
+3	Maize	lc1		0.104	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigment in auricle.	2818
+3	Maize	lc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin.	2818
+3	Maize	lc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Strong anthocyanin on leaf blade after 4-6 leaf stage.	2818
+3	Maize	lc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Cherry pericarp.	2818
+3	Maize	lc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored leaf.	2818
+3	Maize	lc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green anthers.	2818
+3	Maize	lc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Usually appear to be yellow.	2818
+3	Maize	lc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple auricle.	2818
+3	Maize	lc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Distinct from red auricle.	2818
+3	Maize	lc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Requires Pl1.	2818
+3	Maize	lc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Cherry pericarp.	2818
+3	Maize	lc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored leaf.	2818
+3	Maize	lc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green anthers.	2818
+3	Maize	lc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Non-pigmented.	2818
+3	Maize	lc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Usually appear to be yellow.	2818
+3	Maize	lc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple auricle.	2818
+3	Maize	lc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Distinct from red auricle.	2818
+3	Maize	lc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Requires Pl1.	2818
+4	Maize	bm1	GRMZM5G844562	0.491	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment first visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	222
+4	Maize	bm1	GRMZM5G844562	0.396	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment in vascular bundles of roots.	222
+4	Maize	bm1	GRMZM5G844562	0.367	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown midrib.	222
+4	Maize	bm1	GRMZM5G844562	0.351	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment in vascular bundles of cob.	222
+4	Maize	bm1	GRMZM5G844562	0.327	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	222
+4	Maize	bm1	GRMZM5G844562	0.291	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment in vascular bundles of the sheath, midribs, and blades.	222
+4	Maize	bm1	GRMZM5G844562	0.207	Reduced levels of anthocyanins in leaves, stems and other tissues.	The amount of lignin in the leaves is reduced.	222
+4	Maize	bm1	GRMZM5G844562	0.106	Reduced levels of anthocyanins in leaves, stems and other tissues.	The amount of lignin in the leaves is less than normal.	222
+4	Maize	bm1	GRMZM5G844562	0.089	Reduced levels of anthocyanins in leaves, stems and other tissues.	Reduced lignin content.	222
+4	Maize	bm1	GRMZM5G844562	0.053	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The amount of lignin in the leaves is reduced.	222
+4	Maize	bm1	GRMZM5G844562	0.049	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Reduced lignin content.	222
+4	Maize	bm1	GRMZM5G844562	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Also extending to cob and roots.	222
+4	Maize	bm1	GRMZM5G844562	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The amount of lignin in the leaves is less than normal.	222
+4	Maize	bm1	GRMZM5G844562	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	222
+4	Maize	bm1	GRMZM5G844562	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment in vascular bundles of cob.	222
+4	Maize	bm1	GRMZM5G844562	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment in vascular bundles of roots.	222
+4	Maize	bm1	GRMZM5G844562	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment first visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	222
+4	Maize	bm1	GRMZM5G844562	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Also extending to cob and roots.	222
+4	Maize	bm1	GRMZM5G844562	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	222
+4	Maize	bm1	GRMZM5G844562	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown midrib.	222
+5	Maize	bm3	AC196475.3_FG004	0.491	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment first visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	221
+5	Maize	bm3	AC196475.3_FG004	0.396	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment in vascular bundles of roots.	221
+5	Maize	bm3	AC196475.3_FG004	0.367	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown midrib.	221
+5	Maize	bm3	AC196475.3_FG004	0.351	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment in vascular bundles of cob.	221
+5	Maize	bm3	AC196475.3_FG004	0.327	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	221
+5	Maize	bm3	AC196475.3_FG004	0.291	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment in vascular bundles of the sheath, midribs, and blades.	221
+5	Maize	bm3	AC196475.3_FG004	0.207	Reduced levels of anthocyanins in leaves, stems and other tissues.	The amount of lignin in the leaves is reduced.	221
+5	Maize	bm3	AC196475.3_FG004	0.106	Reduced levels of anthocyanins in leaves, stems and other tissues.	The amount of lignin in the leaves is less than normal.	221
+5	Maize	bm3	AC196475.3_FG004	0.089	Reduced levels of anthocyanins in leaves, stems and other tissues.	Reduced lignin content.	221
+5	Maize	bm3	AC196475.3_FG004	0.053	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The amount of lignin in the leaves is reduced.	221
+5	Maize	bm3	AC196475.3_FG004	0.049	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Reduced lignin content.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Also extending to cob and roots.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The amount of lignin in the leaves is less than normal.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Improved digestibility.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Improved digestibility of forage or silage by ruminants.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment in vascular bundles of cob.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment in vascular bundles of roots.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment first visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Also extending to cob and roots.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown midrib.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Improved digestibility.	221
+5	Maize	bm3	AC196475.3_FG004	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Improved digestibility of forage or silage by ruminants.	221
+6	Maize	a2	GRMZM2G345717	0.484	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green or brown plant.	169
+6	Maize	a2	GRMZM2G345717	0.382	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1.	169
+6	Maize	a2	GRMZM2G345717	0.235	Reduced levels of anthocyanins in leaves, stems and other tissues.	However, anthocyanin pigmented sectors are present.	169
+6	Maize	a2	GRMZM2G345717	0.196	Reduced levels of anthocyanins in leaves, stems and other tissues.	No color in the aleurone, specifically no color due to anthocyanins.	169
+6	Maize	a2	GRMZM2G345717	0.159	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Non-pigmented.	169
+6	Maize	a2	GRMZM2G345717	0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	However, anthocyanin pigmented sectors are present.	169
+6	Maize	a2	GRMZM2G345717	0.090	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless aleurone with pigmented sectors.	169
+6	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored.	169
+6	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthers are green.	169
+6	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored, leading to a colored kernel.	169
+6	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthers are green, rather than the normal yellow.	169
+6	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored aleurone.	169
+6	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1.	169
+6	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Would be purple if with Pr1, Bz1 and Bz2.	169
+6	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless aleurone.	169
+6	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	No color in the aleurone, specifically no color due to anthocyanins.	169
+6	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green anthers.	169
+6	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Usually appear to be yellow.	169
+6	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Spotted aleurone.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthers are green.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored, leading to a colored kernel.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthers are green, rather than the normal yellow.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored aleurone.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Would be purple if with Pr1, Bz1 and Bz2.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless aleurone.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless aleurone with pigmented sectors.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green anthers.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Non-pigmented.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Usually appear to be yellow.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green or brown plant.	169
+6	Maize	a2	GRMZM2G345717	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Spotted aleurone.	169
+7	Maize	a1	GRMZM2G026930	0.484	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green or brown plant.	166
+7	Maize	a1	GRMZM2G026930	0.418	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The pericarp is brown.	166
+7	Maize	a1	GRMZM2G026930	0.418	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pericarp.	166
+7	Maize	a1	GRMZM2G026930	0.382	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1.	166
+7	Maize	a1	GRMZM2G026930	0.355	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Red-brown pericarp.	166
+7	Maize	a1	GRMZM2G026930	0.290	Reduced levels of anthocyanins in leaves, stems and other tissues.	Lack of anthocyanins in aleurone.	166
+7	Maize	a1	GRMZM2G026930	0.235	Reduced levels of anthocyanins in leaves, stems and other tissues.	However, anthocyanin pigmented sectors are present.	166
+7	Maize	a1	GRMZM2G026930	0.220	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Light-colored aleurone, lighter than dilute and less brown than bronze.	166
+7	Maize	a1	GRMZM2G026930	0.196	Reduced levels of anthocyanins in leaves, stems and other tissues.	No color in the aleurone, specifically no color due to anthocyanins.	166
+7	Maize	a1	GRMZM2G026930	0.180	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pale aleurone, with pigmented sectors.	166
+7	Maize	a1	GRMZM2G026930	0.159	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Non-pigmented.	166
+7	Maize	a1	GRMZM2G026930	0.143	Reduced levels of anthocyanins in leaves, stems and other tissues.	Ring or halo of anthocyanin color surrounding the kernel embryonic axis.	166
+7	Maize	a1	GRMZM2G026930	0.120	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pale aleurone.	166
+7	Maize	a1	GRMZM2G026930	0.114	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pigmentation along the sides of the kernel.	166
+7	Maize	a1	GRMZM2G026930	0.099	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Flow pattern pigmentation.	166
+7	Maize	a1	GRMZM2G026930	0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	However, anthocyanin pigmented sectors are present.	166
+7	Maize	a1	GRMZM2G026930	0.090	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless aleurone with pigmented sectors.	166
+7	Maize	a1	GRMZM2G026930	0.079	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pale purple husks.	166
+7	Maize	a1	GRMZM2G026930	0.063	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless/pale aleurone with purple sectors.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthers are green.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	No color in aleurone.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Lack of anthocyanins in aleurone.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seedling dies.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Silks are green.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored, leading to a colored kernel.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthers are green, rather than the normal yellow.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	No color in the aleurone, specifically no color due to anthocyanins.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	In addition, lack of a1 transcript is confirmed.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seedling dies after endosperm is used up.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Silks are green, rather than the normal yellow/white.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	A1 null transcript.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored aleurone.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Would be purple if with Pr1, Bz1 and Bz2.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless aleurone.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Embryonic axis profile/color halo.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	One example of expression is seen in the combination of a1 with R1-scm2.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Ring or halo of anthocyanin color surrounding the kernel embryonic axis.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Not at the crown.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green anthers.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Usually appear to be yellow.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green silks.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Lethal.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple husks.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple plant.	166
+7	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Spotted aleurone.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthers are green.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	No color in aleurone.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seedling dies.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Silks are green.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	The pericarp is brown.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored, leading to a colored kernel.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthers are green, rather than the normal yellow.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	In addition, lack of a1 transcript is confirmed.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seedling dies after endosperm is used up.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Silks are green, rather than the normal yellow/white.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	A1 null transcript.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pericarp.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored aleurone.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Would be purple if with Pr1, Bz1 and Bz2.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless aleurone.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless aleurone with pigmented sectors.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless/pale aleurone with purple sectors.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Embryonic axis profile/color halo.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	One example of expression is seen in the combination of a1 with R1-scm2.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Flow pattern pigmentation.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pigmentation along the sides of the kernel.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Not at the crown.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green anthers.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Non-pigmented.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Usually appear to be yellow.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green or brown plant.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green silks.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Lethal.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pale aleurone.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Light-colored aleurone, lighter than dilute and less brown than bronze.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pale aleurone, with pigmented sectors.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pale purple husks.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple husks.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple plant.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Red-brown pericarp.	166
+7	Maize	a1	GRMZM2G026930	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Spotted aleurone.	166
+8	Maize	brn2		0.481	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown kernel.	2869
+8	Maize	brn2		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Lethal.	2869
+8	Maize	brn2		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown kernel.	2869
+8	Maize	brn2		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Lethal.	2869
+9	Maize	bnk*-N1519C		0.481	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown kernel.	2868
+9	Maize	bnk*-N1519C		0.052	Reduced levels of anthocyanins in leaves, stems and other tissues.	Endosperm has a soft, chalk-like texture, usually a reduced yellow color and an opaque appearance.	2868
+9	Maize	bnk*-N1519C		0.029	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Endosperm has a soft, chalk-like texture, usually a reduced yellow color and an opaque appearance.	2868
+9	Maize	bnk*-N1519C		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Floury endosperm.	2868
+9	Maize	bnk*-N1519C		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Wrinkled kernel.	2868
+9	Maize	bnk*-N1519C		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Kernel appears full but surface has long irregular indentation.	2868
+9	Maize	bnk*-N1519C		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown kernel.	2868
+9	Maize	bnk*-N1519C		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Floury endosperm.	2868
+9	Maize	bnk*-N1519C		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Wrinkled kernel.	2868
+9	Maize	bnk*-N1519C		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Kernel appears full but surface has long irregular indentation.	2868
+10	Maize	bn1		0.429	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown aleurone.	2866
+10	Maize	bn1		0.280	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Yellowish brown color in the aleurone layer.	2866
+10	Maize	bn1		0.196	Reduced levels of anthocyanins in leaves, stems and other tissues.	No color in the aleurone, specifically no color due to anthocyanins.	2866
+10	Maize	bn1		0.056	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2866
+10	Maize	bn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless aleurone.	2866
+10	Maize	bn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	No color in the aleurone, specifically no color due to anthocyanins.	2866
+10	Maize	bn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown aleurone.	2866
+10	Maize	bn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2866
+10	Maize	bn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Yellowish brown color in the aleurone layer.	2866
+10	Maize	bn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless aleurone.	2866
+11	Maize	cpd33	GRMZM5G852378	0.427	Reduced levels of anthocyanins in leaves, stems and other tissues.	Leaves and stem appear to have clonal stripes of anthocyanin.	2845
+11	Maize	cpd33	GRMZM5G852378	0.290	Reduced levels of anthocyanins in leaves, stems and other tissues.	Close examination of these pigmented stripes reveals blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	2845
+11	Maize	cpd33	GRMZM5G852378	0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Blotched plant anthocyanin pigmentation.	2845
+11	Maize	cpd33	GRMZM5G852378	0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Plant anthocyanin pigment blotching.	2845
+11	Maize	cpd33	GRMZM5G852378	0.127	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Close examination of these pigmented stripes reveals blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	2845
+11	Maize	cpd33	GRMZM5G852378	0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Blotched plant anthocyanin pigmentation.	2845
+11	Maize	cpd33	GRMZM5G852378	0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Plant anthocyanin pigment blotching.	2845
+11	Maize	cpd33	GRMZM5G852378	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Leaves and stem appear to have clonal stripes of anthocyanin.	2845
+11	Maize	cpd33	GRMZM5G852378	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Chlorosis.	2845
+11	Maize	cpd33	GRMZM5G852378	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Short plant.	2845
+11	Maize	cpd33	GRMZM5G852378	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Chlorosis.	2845
+11	Maize	cpd33	GRMZM5G852378	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Short plant.	2845
+12	Maize	cpd1		0.427	Reduced levels of anthocyanins in leaves, stems and other tissues.	Leaves and stem appear to have clonal stripes of anthocyanin.	2844
+12	Maize	cpd1		0.290	Reduced levels of anthocyanins in leaves, stems and other tissues.	Close examination of these pigmented stripes reveals blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	2844
+12	Maize	cpd1		0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Blotched plant anthocyanin pigmentation.	2844
+12	Maize	cpd1		0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Plant anthocyanin pigment blotching.	2844
+12	Maize	cpd1		0.127	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Close examination of these pigmented stripes reveals blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	2844
+12	Maize	cpd1		0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Blotched plant anthocyanin pigmentation.	2844
+12	Maize	cpd1		0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Plant anthocyanin pigment blotching.	2844
+12	Maize	cpd1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Leaves and stem appear to have clonal stripes of anthocyanin.	2844
+12	Maize	cpd1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Chlorosis.	2844
+12	Maize	cpd1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Short plant.	2844
+12	Maize	cpd1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Chlorosis.	2844
+12	Maize	cpd1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Short plant.	2844
+13	Maize	spb1		0.427	Reduced levels of anthocyanins in leaves, stems and other tissues.	Leaves and stem appear to have clonal stripes of anthocyanin.	2846
+13	Maize	spb1		0.365	Reduced levels of anthocyanins in leaves, stems and other tissues.	Very pale or weak anthocyanin pigment expression in vegetative tissues.	2846
+13	Maize	spb1		0.290	Reduced levels of anthocyanins in leaves, stems and other tissues.	Close examination of these pigmented stripes reveals blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	2846
+13	Maize	spb1		0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Blotched plant anthocyanin pigmentation.	2846
+13	Maize	spb1		0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Plant anthocyanin pigment blotching.	2846
+13	Maize	spb1		0.151	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Very pale or weak anthocyanin pigment expression in vegetative tissues.	2846
+13	Maize	spb1		0.134	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pigmented sectors.	2846
+13	Maize	spb1		0.127	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Close examination of these pigmented stripes reveals blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	2846
+13	Maize	spb1		0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Blotched plant anthocyanin pigmentation.	2846
+13	Maize	spb1		0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Plant anthocyanin pigment blotching.	2846
+13	Maize	spb1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Leaves and stem appear to have clonal stripes of anthocyanin.	2846
+13	Maize	spb1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored leaf.	2846
+13	Maize	spb1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Per Cone 1 Jul 05.	2846
+13	Maize	spb1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Weak purple plant.	2846
+13	Maize	spb1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored leaf.	2846
+13	Maize	spb1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pigmented sectors.	2846
+13	Maize	spb1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Per Cone 1 Jul 05.	2846
+13	Maize	spb1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Weak purple plant.	2846
+14	Maize	pl1	GRMZM2G701063	0.427	Reduced levels of anthocyanins in leaves, stems and other tissues.	Leaves and stem appear to have clonal stripes of anthocyanin.	164
+14	Maize	pl1	GRMZM2G701063	0.380	Reduced levels of anthocyanins in leaves, stems and other tissues.	Blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	164
+14	Maize	pl1	GRMZM2G701063	0.361	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron has blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	164
+14	Maize	pl1	GRMZM2G701063	0.341	Reduced levels of anthocyanins in leaves, stems and other tissues.	Cell to cell variability in the levels of anthocyanin production.	164
+14	Maize	pl1	GRMZM2G701063	0.290	Reduced levels of anthocyanins in leaves, stems and other tissues.	Close examination of these pigmented stripes reveals blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	164
+14	Maize	pl1	GRMZM2G701063	0.258	Reduced levels of anthocyanins in leaves, stems and other tissues.	Striped stems.	164
+14	Maize	pl1	GRMZM2G701063	0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Blotched plant anthocyanin pigmentation.	164
+14	Maize	pl1	GRMZM2G701063	0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Plant anthocyanin pigment blotching.	164
+14	Maize	pl1	GRMZM2G701063	0.214	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron has blotches of anthocyanin pigmentation.	164
+14	Maize	pl1	GRMZM2G701063	0.139	Reduced levels of anthocyanins in leaves, stems and other tissues.	Striped leaves.	164
+14	Maize	pl1	GRMZM2G701063	0.127	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Close examination of these pigmented stripes reveals blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	164
+14	Maize	pl1	GRMZM2G701063	0.106	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	164
+14	Maize	pl1	GRMZM2G701063	0.100	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron has blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	164
+14	Maize	pl1	GRMZM2G701063	0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Blotched plant anthocyanin pigmentation.	164
+14	Maize	pl1	GRMZM2G701063	0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Plant anthocyanin pigment blotching.	164
+14	Maize	pl1	GRMZM2G701063	0.087	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron has blotches of anthocyanin pigmentation.	164
+14	Maize	pl1	GRMZM2G701063	0.066	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Cell to cell variability in the levels of anthocyanin production.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Striped leaves.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Striped stems.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Leaves and stem appear to have clonal stripes of anthocyanin.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Blotched aleurone.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored patches on colorless (c1) aleurone.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green plant.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple anthers.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Same as red, but with Pl1.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple plant.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Sun-dependent red leaf blade.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Trait requires sunlight for expression.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Blotched aleurone.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored patches on colorless (c1) aleurone.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green plant.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple anthers.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Same as red, but with Pl1.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple plant.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Sun-dependent red leaf blade.	164
+14	Maize	pl1	GRMZM2G701063	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Trait requires sunlight for expression.	164
+15	Maize	b1	GRMZM2G172795	0.427	Reduced levels of anthocyanins in leaves, stems and other tissues.	Leaves and stem appear to have clonal stripes of anthocyanin.	168
+15	Maize	b1	GRMZM2G172795	0.382	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1.	168
+15	Maize	b1	GRMZM2G172795	0.380	Reduced levels of anthocyanins in leaves, stems and other tissues.	Blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	168
+15	Maize	b1	GRMZM2G172795	0.372	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigment in scutellar tissue and embryo.	168
+15	Maize	b1	GRMZM2G172795	0.365	Reduced levels of anthocyanins in leaves, stems and other tissues.	Very pale or weak anthocyanin pigment expression in vegetative tissues.	168
+15	Maize	b1	GRMZM2G172795	0.290	Reduced levels of anthocyanins in leaves, stems and other tissues.	Close examination of these pigmented stripes reveals blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	168
+15	Maize	b1	GRMZM2G172795	0.258	Reduced levels of anthocyanins in leaves, stems and other tissues.	Striped stems.	168
+15	Maize	b1	GRMZM2G172795	0.255	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigment in auricle.	168
+15	Maize	b1	GRMZM2G172795	0.237	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigmented sectors in aleurone.	168
+15	Maize	b1	GRMZM2G172795	0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Blotched plant anthocyanin pigmentation.	168
+15	Maize	b1	GRMZM2G172795	0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Plant anthocyanin pigment blotching.	168
+15	Maize	b1	GRMZM2G172795	0.235	Reduced levels of anthocyanins in leaves, stems and other tissues.	However, anthocyanin pigmented sectors are present.	168
+15	Maize	b1	GRMZM2G172795	0.220	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Light-colored aleurone, lighter than dilute and less brown than bronze.	168
+15	Maize	b1	GRMZM2G172795	0.196	Reduced levels of anthocyanins in leaves, stems and other tissues.	No color in the aleurone, specifically no color due to anthocyanins.	168
+15	Maize	b1	GRMZM2G172795	0.151	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Very pale or weak anthocyanin pigment expression in vegetative tissues.	168
+15	Maize	b1	GRMZM2G172795	0.139	Reduced levels of anthocyanins in leaves, stems and other tissues.	Striped leaves.	168
+15	Maize	b1	GRMZM2G172795	0.127	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Close examination of these pigmented stripes reveals blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	168
+15	Maize	b1	GRMZM2G172795	0.120	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pale aleurone.	168
+15	Maize	b1	GRMZM2G172795	0.106	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	168
+15	Maize	b1	GRMZM2G172795	0.104	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigment in auricle.	168
+15	Maize	b1	GRMZM2G172795	0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigmented sectors in aleurone.	168
+15	Maize	b1	GRMZM2G172795	0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Blotched plant anthocyanin pigmentation.	168
+15	Maize	b1	GRMZM2G172795	0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Plant anthocyanin pigment blotching.	168
+15	Maize	b1	GRMZM2G172795	0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	However, anthocyanin pigmented sectors are present.	168
+15	Maize	b1	GRMZM2G172795	0.090	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless aleurone with pigmented sectors.	168
+15	Maize	b1	GRMZM2G172795	0.086	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigment in scutellar tissue and embryo.	168
+15	Maize	b1	GRMZM2G172795	0.079	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pale purple husks.	168
+15	Maize	b1	GRMZM2G172795	0.060	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Distinct from purple plumule which has pigment in the embro axis only.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Striped leaves.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Striped stems.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored, leading to a colored kernel.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Leaves and stem appear to have clonal stripes of anthocyanin.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	No color in the aleurone, specifically no color due to anthocyanins.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored aleurone.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Would be purple if with Pr1, Bz1 and Bz2.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored glume bar.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored plant.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored scutellum.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Also distinct from embryonic axis profile/color halo trait.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Expression varies between backgrounds.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless aleurone.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green plant.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple auricle.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Distinct from red auricle.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Requires Pl1.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple plant.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple tassel glume bars.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple tassel glume faces.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Striped purple plant.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Twin spots.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Weakly striped purple plant.	168
+15	Maize	b1	GRMZM2G172795	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Weak purple plant.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored, leading to a colored kernel.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored aleurone.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Would be purple if with Pr1, Bz1 and Bz2.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored glume bar.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored plant.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored scutellum.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Distinct from purple plumule which has pigment in the embro axis only.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Also distinct from embryonic axis profile/color halo trait.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Expression varies between backgrounds.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless aleurone.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless aleurone with pigmented sectors.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green plant.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pale aleurone.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Light-colored aleurone, lighter than dilute and less brown than bronze.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pale purple husks.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple auricle.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Distinct from red auricle.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Requires Pl1.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple plant.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple tassel glume bars.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple tassel glume faces.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Striped purple plant.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Twin spots.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Weakly striped purple plant.	168
+15	Maize	b1	GRMZM2G172795	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Weak purple plant.	168
+16	Maize	ch1		0.418	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pericarp.	2875
+16	Maize	ch1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pericarp.	2875
+17	Maize	spc1		0.414	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown leaf blade.	2870
+17	Maize	spc1		0.367	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown midrib.	2870
+17	Maize	spc1		0.327	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2870
+17	Maize	spc1		0.291	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2870
+17	Maize	spc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Also extending to cob and roots.	2870
+17	Maize	spc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Speckled leaf.	2870
+17	Maize	spc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Numerous lighter or darker areas on leaf surface.	2870
+17	Maize	spc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Smaller, more numerous and more evenly distributed than spotted.	2870
+17	Maize	spc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown leaf blade.	2870
+17	Maize	spc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown midrib.	2870
+17	Maize	spc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2870
+17	Maize	spc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Also extending to cob and roots.	2870
+17	Maize	spc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2870
+17	Maize	spc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Speckled leaf.	2870
+17	Maize	spc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Numerous lighter or darker areas on leaf surface.	2870
+17	Maize	spc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Smaller, more numerous and more evenly distributed than spotted.	2870
+18	Maize	p1	GRMZM2G084799	0.382	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Browning silks.	2330
+18	Maize	p1	GRMZM2G084799	0.353	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Silks brown sooner than normal.	2330
+18	Maize	p1	GRMZM2G084799	0.301	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Silks which do not turn brown when wounded lack certain classes of flavonoids, which are oxidized to quinones to give the brown color.	2330
+18	Maize	p1	GRMZM2G084799	0.156	Reduced levels of anthocyanins in leaves, stems and other tissues.	Other tissues are also pigmented, such as the cob, husks, roots and seedlings.	2330
+18	Maize	p1	GRMZM2G084799	0.108	Reduced levels of anthocyanins in leaves, stems and other tissues.	4-6 more nodes and leaves than normal.	2330
+18	Maize	p1	GRMZM2G084799	0.084	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Other tissues are also pigmented, such as the cob, husks, roots and seedlings.	2330
+18	Maize	p1	GRMZM2G084799	0.078	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	But with dark pigmentation at the point of silk attachment.	2330
+18	Maize	p1	GRMZM2G084799	0.075	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Expression ranges from highly variable fine striping, to reduced pericarp pigmentation without striping.	2330
+18	Maize	p1	GRMZM2G084799	0.041	Reduced levels of anthocyanins in leaves, stems and other tissues.	Expression ranges from highly variable fine striping, to reduced pericarp pigmentation without striping.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Delayed flowering.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mature plant 2-3 feet taller and 7-10 days later in flowering.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	4-6 more nodes and leaves than normal.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Diffuse pericarp color.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Dilute pericarp color with P1-RR.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Sectors diffuse-edged rather than sharp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	High negative Ac dosage effect.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mosaic cob.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mosaic pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Nonbrowning silks.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Orange cob.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Orange pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Follows genotype of endosperm (metaxenia) in orp1/opr2.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pericarp on colorless kernels is orange.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Patterned pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Red/black pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Dark red intense pericarp color.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Red cob.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Phlobaphenes (see Term) are polymerized polyphenolic compounds that confer the colors.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Red pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Suppresses Ac.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Effect like that of the Spm/En Suppressor function.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Variegated cob.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Variegated pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	White cap pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	White cob.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	White pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Synonym: colorless pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Silks brown sooner than normal.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Browning silks.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Delayed flowering.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mature plant 2-3 feet taller and 7-10 days later in flowering.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Diffuse pericarp color.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Dilute pericarp color with P1-RR.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Sectors diffuse-edged rather than sharp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	High negative Ac dosage effect.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mosaic cob.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mosaic pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Nonbrowning silks.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Silks which do not turn brown when wounded lack certain classes of flavonoids, which are oxidized to quinones to give the brown color.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Orange cob.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Orange pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Follows genotype of endosperm (metaxenia) in orp1/opr2.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pericarp on colorless kernels is orange.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Patterned pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	But with dark pigmentation at the point of silk attachment.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Red/black pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Dark red intense pericarp color.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Red cob.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Phlobaphenes (see Term) are polymerized polyphenolic compounds that confer the colors.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Red pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Suppresses Ac.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Effect like that of the Spm/En Suppressor function.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Variegated cob.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Variegated pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	White cap pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	White cob.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	White pericarp.	2330
+18	Maize	p1	GRMZM2G084799	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Synonym: colorless pericarp.	2330
+19	Maize	scm1		0.382	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1.	2961
+19	Maize	scm1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored aleurone.	2961
+19	Maize	scm1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored, leading to a colored kernel.	2961
+19	Maize	scm1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1.	2961
+19	Maize	scm1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Would be purple if with Pr1, Bz1 and Bz2.	2961
+19	Maize	scm1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored aleurone.	2961
+19	Maize	scm1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored, leading to a colored kernel.	2961
+19	Maize	scm1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Would be purple if with Pr1, Bz1 and Bz2.	2961
+20	Maize	Sc		0.382	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1.	2960
+20	Maize	Sc		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored aleurone.	2960
+20	Maize	Sc		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored, leading to a colored kernel.	2960
+20	Maize	Sc		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1.	2960
+20	Maize	Sc		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Would be purple if with Pr1, Bz1 and Bz2.	2960
+20	Maize	Sc		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored aleurone.	2960
+20	Maize	Sc		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored, leading to a colored kernel.	2960
+20	Maize	Sc		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Would be purple if with Pr1, Bz1 and Bz2.	2960
+21	Maize	r1	GRMZM5G822829	0.382	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1.	170
+21	Maize	r1	GRMZM5G822829	0.372	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigment in scutellar tissue and embryo.	170
+21	Maize	r1	GRMZM5G822829	0.324	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin or other variation in tissue around silk attachment.	170
+21	Maize	r1	GRMZM5G822829	0.290	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigment in pericarp.	170
+21	Maize	r1	GRMZM5G822829	0.255	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigment in auricle.	170
+21	Maize	r1	GRMZM5G822829	0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1 -PLUS- Pr1 Bz1 and Bz2.	170
+21	Maize	r1	GRMZM5G822829	0.235	Reduced levels of anthocyanins in leaves, stems and other tissues.	However, anthocyanin pigmented sectors are present.	170
+21	Maize	r1	GRMZM5G822829	0.231	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigment in plumule.	170
+21	Maize	r1	GRMZM5G822829	0.229	Reduced levels of anthocyanins in leaves, stems and other tissues.	Strong anthocyanin on leaf blade after 4-6 leaf stage.	170
+21	Maize	r1	GRMZM5G822829	0.225	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless kernels tipped with anthocyanin pigment.	170
+21	Maize	r1	GRMZM5G822829	0.224	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless refers to anthocyanin.	170
+21	Maize	r1	GRMZM5G822829	0.220	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Light-colored aleurone, lighter than dilute and less brown than bronze.	170
+21	Maize	r1	GRMZM5G822829	0.196	Reduced levels of anthocyanins in leaves, stems and other tissues.	No color in the aleurone, specifically no color due to anthocyanins.	170
+21	Maize	r1	GRMZM5G822829	0.180	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pale aleurone, with pigmented sectors.	170
+21	Maize	r1	GRMZM5G822829	0.173	Reduced levels of anthocyanins in leaves, stems and other tissues.	Irregular distribution of color among aleurone cells with appropriate anthocyanin genes.	170
+21	Maize	r1	GRMZM5G822829	0.159	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Non-pigmented.	170
+21	Maize	r1	GRMZM5G822829	0.148	Reduced levels of anthocyanins in leaves, stems and other tissues.	Kernel mostly colorless with anthocyanin pigmented mark ('ink spot') at silk attachment.	170
+21	Maize	r1	GRMZM5G822829	0.120	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pale aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.118	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigment in pericarp.	170
+21	Maize	r1	GRMZM5G822829	0.112	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	'eyed or capped' kernel pigment.	170
+21	Maize	r1	GRMZM5G822829	0.104	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigment in auricle.	170
+21	Maize	r1	GRMZM5G822829	0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	However, anthocyanin pigmented sectors are present.	170
+21	Maize	r1	GRMZM5G822829	0.094	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigment in plumule.	170
+21	Maize	r1	GRMZM5G822829	0.092	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless kernels tipped with anthocyanin pigment.	170
+21	Maize	r1	GRMZM5G822829	0.090	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless aleurone with pigmented sectors.	170
+21	Maize	r1	GRMZM5G822829	0.086	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigment in scutellar tissue and embryo.	170
+21	Maize	r1	GRMZM5G822829	0.077	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pale pink to red anthers.	170
+21	Maize	r1	GRMZM5G822829	0.066	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Distinct from colored scutellum in which the entire germ is pigmented.	170
+21	Maize	r1	GRMZM5G822829	0.062	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Genes are listed where mutation causes change from the reference phenotype (green) to another pigmentation.	170
+21	Maize	r1	GRMZM5G822829	0.060	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Distinct from purple plumule which has pigment in the embro axis only.	170
+21	Maize	r1	GRMZM5G822829	0.060	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Kernel mostly colorless with anthocyanin pigmented mark ('ink spot') at silk attachment.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthers are green.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleurone layer mottled.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Red anthers.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Strong anthocyanin on leaf blade after 4-6 leaf stage.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored, leading to a colored kernel.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthers are green, rather than the normal yellow.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Irregular distribution of color among aleurone cells with appropriate anthocyanin genes.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Typically, R mottling.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Cherry pericarp.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Would be purple if with Pr1, Bz1 and Bz2.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored leaf.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored plant.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored scutellum.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Also distinct from embryonic axis profile/color halo trait.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Expression varies between backgrounds.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	No color in the aleurone, specifically no color due to anthocyanins.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless roots.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless refers to anthocyanin.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green anthers.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Usually appear to be yellow.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green leaf tip.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Lightly stippled.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Marbled aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mottled aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mottled kernel.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Navajo spot kernel.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin or other variation in tissue around silk attachment.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	In some backgrounds, the crown spot can resemble flying eagles, dragon flies, owl eyes, etc.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Nondisjunction.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1 -PLUS- Pr1 Bz1 and Bz2.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple auricle.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Distinct from red auricle.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Requires Pl1.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple cob.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple plumule.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Also reported in B112 (Chase, 1949).	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple sheath.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Red coleoptile.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Red leaf tips.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Red roots.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Spotted aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Stippled.	170
+21	Maize	r1	GRMZM5G822829	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Weakly colored coleoptile, seedlings.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthers are green.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleurone layer mottled.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Red anthers.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored, leading to a colored kernel.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthers are green, rather than the normal yellow.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Typically, R mottling.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pale pink to red anthers.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Cherry pericarp.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Would be purple if with Pr1, Bz1 and Bz2.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored leaf.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored plant.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored scutellum.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Distinct from purple plumule which has pigment in the embro axis only.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Also distinct from embryonic axis profile/color halo trait.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Expression varies between backgrounds.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless aleurone with pigmented sectors.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless roots.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green anthers.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Non-pigmented.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Usually appear to be yellow.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green leaf tip.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Lightly stippled.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Marbled aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mottled aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mottled kernel.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Navajo spot kernel.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	'eyed or capped' kernel pigment.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	In some backgrounds, the crown spot can resemble flying eagles, dragon flies, owl eyes, etc.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Nondisjunction.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pale aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Light-colored aleurone, lighter than dilute and less brown than bronze.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pale aleurone, with pigmented sectors.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple auricle.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Distinct from red auricle.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Requires Pl1.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple cob.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple plumule.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Also reported in B112 (Chase, 1949).	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Distinct from colored scutellum in which the entire germ is pigmented.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple sheath.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Red coleoptile.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Red leaf tips.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Genes are listed where mutation causes change from the reference phenotype (green) to another pigmentation.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Red roots.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Spotted aleurone.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Stippled.	170
+21	Maize	r1	GRMZM5G822829	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Weakly colored coleoptile, seedlings.	170
+22	Maize	mdr1		0.382	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1.	2959
+22	Maize	mdr1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored aleurone.	2959
+22	Maize	mdr1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored, leading to a colored kernel.	2959
+22	Maize	mdr1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1.	2959
+22	Maize	mdr1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Would be purple if with Pr1, Bz1 and Bz2.	2959
+22	Maize	mdr1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mottled aleurone.	2959
+22	Maize	mdr1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored aleurone.	2959
+22	Maize	mdr1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored, leading to a colored kernel.	2959
+22	Maize	mdr1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Would be purple if with Pr1, Bz1 and Bz2.	2959
+22	Maize	mdr1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mottled aleurone.	2959
+23	Maize	beta		0.382	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1.	2958
+23	Maize	beta		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored aleurone.	2958
+23	Maize	beta		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored, leading to a colored kernel.	2958
+23	Maize	beta		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1.	2958
+23	Maize	beta		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Would be purple if with Pr1, Bz1 and Bz2.	2958
+23	Maize	beta		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple husks.	2958
+23	Maize	beta		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored aleurone.	2958
+23	Maize	beta		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored, leading to a colored kernel.	2958
+23	Maize	beta		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Would be purple if with Pr1, Bz1 and Bz2.	2958
+23	Maize	beta		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple husks.	2958
+24	Maize	c1	GRMZM2G005066	0.382	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1.	165
+24	Maize	c1	GRMZM2G005066	0.235	Reduced levels of anthocyanins in leaves, stems and other tissues.	However, anthocyanin pigmented sectors are present.	165
+24	Maize	c1	GRMZM2G005066	0.196	Reduced levels of anthocyanins in leaves, stems and other tissues.	No color in the aleurone, specifically no color due to anthocyanins.	165
+24	Maize	c1	GRMZM2G005066	0.173	Reduced levels of anthocyanins in leaves, stems and other tissues.	Irregular distribution of color among aleurone cells with appropriate anthocyanin genes.	165
+24	Maize	c1	GRMZM2G005066	0.096	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	However, anthocyanin pigmented sectors are present.	165
+24	Maize	c1	GRMZM2G005066	0.090	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless aleurone with pigmented sectors.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleurone layer mottled.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored, leading to a colored kernel.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Irregular distribution of color among aleurone cells with appropriate anthocyanin genes.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Typically, R mottling.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Chromosome breaking, 9S.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Chromosome arm 9s can break which can reveal recessive alleles in clonal patches.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Usually caused by a transposable element.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored aleurone.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Would be purple if with Pr1, Bz1 and Bz2.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colorless aleurone.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	No color in the aleurone, specifically no color due to anthocyanins.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Dilute aleurone color.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleurone color diluted.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Light inducible colored aleurone.	165
+24	Maize	c1	GRMZM2G005066	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mottled kernel.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleurone layer mottled.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored, leading to a colored kernel.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Typically, R mottling.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Chromosome breaking, 9S.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Chromosome arm 9s can break which can reveal recessive alleles in clonal patches.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Usually caused by a transposable element.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored aleurone.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Would be purple if with Pr1, Bz1 and Bz2.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless aleurone.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colorless aleurone with pigmented sectors.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Dilute aleurone color.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleurone color diluted.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Light inducible colored aleurone.	165
+24	Maize	c1	GRMZM2G005066	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mottled kernel.	165
+25	Maize	vp10	GRMZM2G067176	0.382	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1.	167
+25	Maize	vp10	GRMZM2G067176	0.158	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seedling leaves, tassels or top leaves are stuck together.	167
+25	Maize	vp10	GRMZM2G067176	0.132	Reduced levels of anthocyanins in leaves, stems and other tissues.	Viviparous mutants often have other phenotypes, notably colorless aleurone from suppression of anthocyanins (vp1) and white endosperm , from blocks in carotenoid synthesis (lw2, vp5, ps1/vp7).	167
+25	Maize	vp10	GRMZM2G067176	0.117	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Carotenoid pigments in endosperm.	167
+25	Maize	vp10	GRMZM2G067176	0.110	Reduced levels of anthocyanins in leaves, stems and other tissues.	Top leaves stuck together.	167
+25	Maize	vp10	GRMZM2G067176	0.103	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seedling leaves stuck together.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Kernels germinate while still on the ear.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seedling dies after endosperm is used up.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seedling leaves stuck together.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Top leaves stuck together.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Tassels stuck together.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored, leading to a colored kernel.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seedling leaves, tassels or top leaves are stuck together.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Adherent leaf.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored aleurone.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Would be purple if with Pr1, Bz1 and Bz2.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green seedling.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seedling lethal.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Viviparous kernel.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Molecularly characterized mutants are blocked in the biosynthesis of abscisic acid (ABA), or in ABA signaling.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Viviparous mutants often have other phenotypes, notably colorless aleurone from suppression of anthocyanins (vp1) and white endosperm , from blocks in carotenoid synthesis (lw2, vp5, ps1/vp7).	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Viviparous mutants in maize may be kernel lethal , or if rescued prior to ear desiccation, either viable, or seedling lethal.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Viable mutants are known for vp1, which encodes a transcription factor involved in ABA signaling, and vp14, which encodes an NCED enzyme that cleaves carotenoids to provide xanthoxin, an ABA precursor.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seedling lethal mutants include vp5, ps1/vp7 and vp9 , which block production of carotenoid precursors for ABA synthesis .	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Vp10 and vp15, both deficient in synthesis of the molybdenum cofactor(MoCo) required for ABA synthesis and other pathways.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	(Apr 2013 last update).	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Premature germination.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Embryo fails to become dormant.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Yellow endosperm.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Kernels germinate while still on the ear.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seedling dies after endosperm is used up.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Tassels stuck together.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored, leading to a colored kernel.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Adherent leaf.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored aleurone.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Would be purple if with Pr1, Bz1 and Bz2.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green seedling.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seedling lethal.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Viviparous kernel.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Molecularly characterized mutants are blocked in the biosynthesis of abscisic acid (ABA), or in ABA signaling.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Viviparous mutants in maize may be kernel lethal , or if rescued prior to ear desiccation, either viable, or seedling lethal.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Viable mutants are known for vp1, which encodes a transcription factor involved in ABA signaling, and vp14, which encodes an NCED enzyme that cleaves carotenoids to provide xanthoxin, an ABA precursor.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seedling lethal mutants include vp5, ps1/vp7 and vp9 , which block production of carotenoid precursors for ABA synthesis .	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Vp10 and vp15, both deficient in synthesis of the molybdenum cofactor(MoCo) required for ABA synthesis and other pathways.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	(Apr 2013 last update).	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Premature germination.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Embryo fails to become dormant.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Yellow endosperm.	167
+25	Maize	vp10	GRMZM2G067176	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Carotenoid pigments in endosperm.	167
+26	Maize	in1	GRMZM2G042733	0.375	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Expressed as brown pigment in kernels recessive for a1 or a2 or bz1 or bz2.	3153
+26	Maize	in1	GRMZM2G042733	0.220	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Light-colored aleurone, lighter than dilute and less brown than bronze.	3153
+26	Maize	in1	GRMZM2G042733	0.185	Reduced levels of anthocyanins in leaves, stems and other tissues.	Intensifies anthocyanin and related pigments in the aleurone.	3153
+26	Maize	in1	GRMZM2G042733	0.120	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pale aleurone.	3153
+26	Maize	in1	GRMZM2G042733	0.075	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Intensifies anthocyanin and related pigments in the aleurone.	3153
+26	Maize	in1	GRMZM2G042733	0.053	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Variable expression in the pericarp over intensely pigmented kernels homozygous for color factors and in1 in the underlying endosperm (metaxenia).	3153
+26	Maize	in1	GRMZM2G042733	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Dilute aleurone color.	3153
+26	Maize	in1	GRMZM2G042733	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleurone color diluted.	3153
+26	Maize	in1	GRMZM2G042733	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Golden sheen metaxenia.	3153
+26	Maize	in1	GRMZM2G042733	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Intensifier.	3153
+26	Maize	in1	GRMZM2G042733	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Red aleurone to deep red.	3153
+26	Maize	in1	GRMZM2G042733	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Dilute aleurone color.	3153
+26	Maize	in1	GRMZM2G042733	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleurone color diluted.	3153
+26	Maize	in1	GRMZM2G042733	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Golden sheen metaxenia.	3153
+26	Maize	in1	GRMZM2G042733	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Variable expression in the pericarp over intensely pigmented kernels homozygous for color factors and in1 in the underlying endosperm (metaxenia).	3153
+26	Maize	in1	GRMZM2G042733	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Expressed as brown pigment in kernels recessive for a1 or a2 or bz1 or bz2.	3153
+26	Maize	in1	GRMZM2G042733	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Intensifier.	3153
+26	Maize	in1	GRMZM2G042733	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Red aleurone to deep red.	3153
+26	Maize	in1	GRMZM2G042733	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pale aleurone.	3153
+26	Maize	in1	GRMZM2G042733	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Light-colored aleurone, lighter than dilute and less brown than bronze.	3153
+27	Maize	sn1		0.372	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigment in scutellar tissue and embryo.	2887
+27	Maize	sn1		0.290	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigment in pericarp.	2887
+27	Maize	sn1		0.159	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Non-pigmented.	2887
+27	Maize	sn1		0.118	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigment in pericarp.	2887
+27	Maize	sn1		0.086	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigment in scutellar tissue and embryo.	2887
+27	Maize	sn1		0.060	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Distinct from purple plumule which has pigment in the embro axis only.	2887
+27	Maize	sn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Cherry pericarp.	2887
+27	Maize	sn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored leaf.	2887
+27	Maize	sn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored scutellum.	2887
+27	Maize	sn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Also distinct from embryonic axis profile/color halo trait.	2887
+27	Maize	sn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Expression varies between backgrounds.	2887
+27	Maize	sn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green anthers.	2887
+27	Maize	sn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Usually appear to be yellow.	2887
+27	Maize	sn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Light inducible colored pericarp.	2887
+27	Maize	sn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Light inducible colored scutellum.	2887
+27	Maize	sn1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Red coleoptile.	2887
+27	Maize	sn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Cherry pericarp.	2887
+27	Maize	sn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored leaf.	2887
+27	Maize	sn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored scutellum.	2887
+27	Maize	sn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Distinct from purple plumule which has pigment in the embro axis only.	2887
+27	Maize	sn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Also distinct from embryonic axis profile/color halo trait.	2887
+27	Maize	sn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Expression varies between backgrounds.	2887
+27	Maize	sn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green anthers.	2887
+27	Maize	sn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Non-pigmented.	2887
+27	Maize	sn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Usually appear to be yellow.	2887
+27	Maize	sn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Light inducible colored pericarp.	2887
+27	Maize	sn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Light inducible colored scutellum.	2887
+27	Maize	sn1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Red coleoptile.	2887
+28	Maize	bm6		0.367	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown midrib.	2874
+28	Maize	bm6		0.327	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2874
+28	Maize	bm6		0.291	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2874
+28	Maize	bm6		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Also extending to cob and roots.	2874
+28	Maize	bm6		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown midrib.	2874
+28	Maize	bm6		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2874
+28	Maize	bm6		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Also extending to cob and roots.	2874
+28	Maize	bm6		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2874
+29	Maize	bm5	GRMZM2G075333	0.367	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown midrib.	2873
+29	Maize	bm5	GRMZM2G075333	0.327	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2873
+29	Maize	bm5	GRMZM2G075333	0.291	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2873
+29	Maize	bm5	GRMZM2G075333	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Also extending to cob and roots.	2873
+29	Maize	bm5	GRMZM2G075333	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown midrib.	2873
+29	Maize	bm5	GRMZM2G075333	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2873
+29	Maize	bm5	GRMZM2G075333	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Also extending to cob and roots.	2873
+29	Maize	bm5	GRMZM2G075333	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2873
+30	Maize	bm4	GRMZM2G393334	0.367	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown midrib.	2872
+30	Maize	bm4	GRMZM2G393334	0.327	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2872
+30	Maize	bm4	GRMZM2G393334	0.291	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2872
+30	Maize	bm4	GRMZM2G393334	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Also extending to cob and roots.	2872
+30	Maize	bm4	GRMZM2G393334	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown midrib.	2872
+30	Maize	bm4	GRMZM2G393334	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2872
+30	Maize	bm4	GRMZM2G393334	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Also extending to cob and roots.	2872
+30	Maize	bm4	GRMZM2G393334	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2872
+31	Maize	bm2	GRMZM2G347056	0.367	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown midrib.	2871
+31	Maize	bm2	GRMZM2G347056	0.327	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2871
+31	Maize	bm2	GRMZM2G347056	0.291	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2871
+31	Maize	bm2	GRMZM2G347056	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Also extending to cob and roots.	2871
+31	Maize	bm2	GRMZM2G347056	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown midrib.	2871
+31	Maize	bm2	GRMZM2G347056	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2871
+31	Maize	bm2	GRMZM2G347056	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Also extending to cob and roots.	2871
+31	Maize	bm2	GRMZM2G347056	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2871
+32	Maize	bf1	GRMZM2G051219	0.367	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown midrib.	2847
+32	Maize	bf1	GRMZM2G051219	0.327	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2847
+32	Maize	bf1	GRMZM2G051219	0.291	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2847
+32	Maize	bf1	GRMZM2G051219	0.104	Reduced levels of anthocyanins in leaves, stems and other tissues.	Blue fluorescence-leaves.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Blue fluorescence-anthers.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Fluoresces blue under UV light due to anthranilic acid accumulation, in homozygous or heterozygous Bf1 anthers.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Blue fluorescence-leaves.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Fluoresces blue under UV light due to anthranilic acid accumulation.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Blue fluorescent plant.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	When dominant, seedlings and anthers fluoresce blue under ultraviolet light.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthranilic acid present.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Also extending to cob and roots.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Yellow green leaf.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Blue fluorescence-anthers.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Fluoresces blue under UV light due to anthranilic acid accumulation, in homozygous or heterozygous Bf1 anthers.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Fluoresces blue under UV light due to anthranilic acid accumulation.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Blue fluorescent plant.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	When dominant, seedlings and anthers fluoresce blue under ultraviolet light.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthranilic acid present.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown midrib.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Also extending to cob and roots.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2847
+32	Maize	bf1	GRMZM2G051219	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Yellow green leaf.	2847
+33	Maize	skb1		0.361	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron has blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	2843
+33	Maize	skb1		0.100	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron has blotches of anthocyanin pigmentation due to cell to cell variability in the levels of anthocyanin production.	2843
+33	Maize	skb1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Blotched aleurone.	2843
+33	Maize	skb1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored patches on colorless (c1) aleurone.	2843
+33	Maize	skb1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Blotched aleurone.	2843
+33	Maize	skb1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored patches on colorless (c1) aleurone.	2843
+34	Maize	aat1	GRMZM2G387394	0.336	Reduced levels of anthocyanins in leaves, stems and other tissues.	Reduced anthocyanin acylation.	3778
+34	Maize	aat1	GRMZM2G387394	0.123	Reduced levels of anthocyanins in leaves, stems and other tissues.	Inability of certain accessions of maize to produce significant amounts of acylated anthocyanins.	3778
+34	Maize	aat1	GRMZM2G387394	0.044	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Reduced anthocyanin acylation.	3778
+34	Maize	aat1	GRMZM2G387394	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Inability of certain accessions of maize to produce significant amounts of acylated anthocyanins.	3778
+35	Maize	ht4		0.325	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	First appears as orange-brown pigmented infection points.	2892
+35	Maize	ht4		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Chlorotic halo response to E. turcicum.	2892
+35	Maize	ht4		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Later surrounded by circular chlorotic halo approx.	2892
+35	Maize	ht4		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	1 cm in diameter.	2892
+35	Maize	ht4		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Chlorotic halo response to E. turcicum.	2892
+35	Maize	ht4		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	First appears as orange-brown pigmented infection points.	2892
+35	Maize	ht4		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Later surrounded by circular chlorotic halo approx.	2892
+35	Maize	ht4		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	1 cm in diameter.	2892
+36	Maize	mhl1		0.290	Reduced levels of anthocyanins in leaves, stems and other tissues.	Reduced macrohairs.	3784
+36	Maize	mhl1		0.161	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Reduced macrohairs.	3784
+37	Maize	hopi1		0.290	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigment in pericarp.	2886
+37	Maize	hopi1		0.255	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin pigment in auricle.	2886
+37	Maize	hopi1		0.118	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigment in pericarp.	2886
+37	Maize	hopi1		0.104	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin pigment in auricle.	2886
+37	Maize	hopi1		0.077	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pale pink to red anthers.	2886
+37	Maize	hopi1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Cherry pericarp.	2886
+37	Maize	hopi1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Colored plant.	2886
+37	Maize	hopi1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Light inducible colored aleurone.	2886
+37	Maize	hopi1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Light inducible colored pericarp.	2886
+37	Maize	hopi1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Light inducible colored scutellum.	2886
+37	Maize	hopi1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple auricle.	2886
+37	Maize	hopi1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Distinct from red auricle.	2886
+37	Maize	hopi1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Requires Pl1.	2886
+37	Maize	hopi1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Red anthers.	2886
+37	Maize	hopi1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Cherry pericarp.	2886
+37	Maize	hopi1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Colored plant.	2886
+37	Maize	hopi1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Light inducible colored aleurone.	2886
+37	Maize	hopi1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Light inducible colored pericarp.	2886
+37	Maize	hopi1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Light inducible colored scutellum.	2886
+37	Maize	hopi1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple auricle.	2886
+37	Maize	hopi1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Distinct from red auricle.	2886
+37	Maize	hopi1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Requires Pl1.	2886
+37	Maize	hopi1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Red anthers.	2886
+37	Maize	hopi1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pale pink to red anthers.	2886
+38	Maize	ij1	GRMZM2G004583	0.284	Reduced levels of anthocyanins in leaves, stems and other tissues.	Green leaves with white tissue along the edges.	1277
+38	Maize	ij1	GRMZM2G004583	0.159	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seedling leaves are white.	1277
+38	Maize	ij1	GRMZM2G004583	0.154	Reduced levels of anthocyanins in leaves, stems and other tissues.	Tissue between the veins is white, giving the leaf a striped appearance.	1277
+38	Maize	ij1	GRMZM2G004583	0.137	Reduced levels of anthocyanins in leaves, stems and other tissues.	Can be weakly expressed in seedling but expression becomes more clear as tissue matures.	1277
+38	Maize	ij1	GRMZM2G004583	0.103	Reduced levels of anthocyanins in leaves, stems and other tissues.	Many variable white stripes on leaves.	1277
+38	Maize	ij1	GRMZM2G004583	0.099	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Two classes of albino seedlings: Class I characterized by white or pale-yellow endosperm in a genotype that would otherwise produce yellow seeds, and albino seedlings.	1277
+38	Maize	ij1	GRMZM2G004583	0.089	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Class II consists of albino mutants in which pigmentation of the endosperm is not affected.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Leaf is mostly white, with short, thin, green, longitudinal stripes (in the direction of the lateral veins),.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seedling leaves are white.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Leaf is mostly white, with short, thin, green, longitudinal stripes (in the direction of the lateral veins), as in ij1-ref::Ds in the inbred Oh51A.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Albino leaf striping.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Albino seedling.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Some alleles have palegreen or green seedlings, and a few have mutable endosperm and/or seedlings.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Plastid ribosomes absent.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	White margins.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Green leaves with white tissue along the edges.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	White stripe leaf.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Normal green along veins (vascular bundles).	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Tissue between the veins is white, giving the leaf a striped appearance.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Can be weakly expressed in seedling but expression becomes more clear as tissue matures.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Gerry Neuffer, 2010.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	White stripe leaf (iojap-like).	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Many variable white stripes on leaves.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Conditions chloroplast defects that are cytoplasmically inherited.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Leaf is mostly white, with short, thin, green, longitudinal stripes (in the direction of the lateral veins),.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Leaf is mostly white, with short, thin, green, longitudinal stripes (in the direction of the lateral veins), as in ij1-ref::Ds in the inbred Oh51A.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Albino leaf striping.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Albino seedling.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Two classes of albino seedlings: Class I characterized by white or pale-yellow endosperm in a genotype that would otherwise produce yellow seeds, and albino seedlings.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Some alleles have palegreen or green seedlings, and a few have mutable endosperm and/or seedlings.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Class II consists of albino mutants in which pigmentation of the endosperm is not affected.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Plastid ribosomes absent.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	White margins.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	White stripe leaf.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Normal green along veins (vascular bundles).	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Gerry Neuffer, 2010.	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	White stripe leaf (iojap-like).	1277
+38	Maize	ij1	GRMZM2G004583	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Conditions chloroplast defects that are cytoplasmically inherited.	1277
+39	Maize	ysk1		0.261	Reduced levels of anthocyanins in leaves, stems and other tissues.	Strong anthocyanin in affected area.	3866
+39	Maize	ysk1		0.085	Reduced levels of anthocyanins in leaves, stems and other tissues.	Longitudinal yellow streaks top third of mature leaves.	3866
+39	Maize	ysk1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Small plant.	3866
+39	Maize	ysk1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Yellow streak leaf.	3866
+39	Maize	ysk1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Longitudinal yellow streaks top third of mature leaves.	3866
+39	Maize	ysk1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Strong anthocyanin in affected area.	3866
+39	Maize	ysk1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Small plant.	3866
+39	Maize	ysk1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Yellow streak leaf.	3866
+40	Maize	bz2	GRMZM2G016241	0.256	Reduced levels of anthocyanins in leaves, stems and other tissues.	With appropriate complementary factors, mutant is expressed in all tissues competent to form anthocyanins.	219
+40	Maize	bz2	GRMZM2G016241	0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1 -PLUS- Pr1 Bz1 and Bz2.	219
+40	Maize	bz2	GRMZM2G016241	0.148	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Bronze or dilute purple aleurone color, green or brown plant, red pericarp with P. Purple aleurone.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleurone color is bronze.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Whole plant color can be bronze.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Bronze or dilute purple aleurone color.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthers not fluorescent.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	With appropriate complementary factors, mutant is expressed in all tissues competent to form anthocyanins.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Bronze aleurone.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored, leading to a colored kernel.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1 -PLUS- Pr1 Bz1 and Bz2.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple spots on bronze aleurone.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleurone color is bronze.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Whole plant color can be bronze.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Bronze or dilute purple aleurone color.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthers not fluorescent.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Bronze aleurone.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Bronze or dilute purple aleurone color, green or brown plant, red pericarp with P. Purple aleurone.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored, leading to a colored kernel.	219
+40	Maize	bz2	GRMZM2G016241	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple spots on bronze aleurone.	219
+41	Maize	bz1	GRMZM2G165390	0.256	Reduced levels of anthocyanins in leaves, stems and other tissues.	With appropriate complementary factors, mutant is expressed in all tissues competent to form anthocyanins.	218
+41	Maize	bz1	GRMZM2G165390	0.236	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthocyanin color with A1 A2 C1 C2 R1 -PLUS- Pr1 Bz1 and Bz2.	218
+41	Maize	bz1	GRMZM2G165390	0.148	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Bronze or dilute purple aleurone color, green or brown plant, red pericarp with P. Purple aleurone.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleurone color is bronze.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Whole plant color can be bronze.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Shedding tassels viewed under UV light show bright yellow fluorescence in the anthers.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Bronze or dilute purple aleurone color.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthers ARE fluorescent.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	With appropriate complementary factors, mutant is expressed in all tissues competent to form anthocyanins.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seen clearly in tassels of mutant bronze (bz1) plants.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Bronze aleurone.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Aleuron layer is colored, leading to a colored kernel.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Anthocyanin color with A1 A2 C1 C2 R1 -PLUS- Pr1 Bz1 and Bz2.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Purple spots on bronze aleurone.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Yellow-fluorescent anthers.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleurone color is bronze.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Whole plant color can be bronze.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Shedding tassels viewed under UV light show bright yellow fluorescence in the anthers.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Bronze or dilute purple aleurone color.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Anthers ARE fluorescent.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seen clearly in tassels of mutant bronze (bz1) plants.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Bronze aleurone.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Bronze or dilute purple aleurone color, green or brown plant, red pericarp with P. Purple aleurone.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Aleuron layer is colored, leading to a colored kernel.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Purple spots on bronze aleurone.	218
+41	Maize	bz1	GRMZM2G165390	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Yellow-fluorescent anthers.	218
+42	Maize	kn1	GRMZM2G017087	0.246	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Reduced seed set.	1583
+42	Maize	kn1	GRMZM2G017087	0.199	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The number of ovules that develop into a seed is reduced.	1583
+42	Maize	kn1	GRMZM2G017087	0.170	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The number of ovules that develop into a seed is reduced compared to normal.	1583
+42	Maize	kn1	GRMZM2G017087	0.130	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pollen produced, but doesn't result in seed set.	1583
+42	Maize	kn1	GRMZM2G017087	0.114	Reduced levels of anthocyanins in leaves, stems and other tissues.	Reduced seed set.	1583
+42	Maize	kn1	GRMZM2G017087	0.109	Reduced levels of anthocyanins in leaves, stems and other tissues.	Scattered proliferations of tissue at veins on leaf, leading to a bumpy, irregular appearance.	1583
+42	Maize	kn1	GRMZM2G017087	0.094	Reduced levels of anthocyanins in leaves, stems and other tissues.	Reduced tassel branch number.	1583
+42	Maize	kn1	GRMZM2G017087	0.092	Reduced levels of anthocyanins in leaves, stems and other tissues.	The number of ovules that develop into a seed is reduced.	1583
+42	Maize	kn1	GRMZM2G017087	0.079	Reduced levels of anthocyanins in leaves, stems and other tissues.	The number of ovules that develop into a seed is reduced compared to normal.	1583
+42	Maize	kn1	GRMZM2G017087	0.068	Reduced levels of anthocyanins in leaves, stems and other tissues.	Number of tassel spikelets greatly reduced.	1583
+42	Maize	kn1	GRMZM2G017087	0.062	Reduced levels of anthocyanins in leaves, stems and other tissues.	Normal coleoptile, but typically lacks visible elements of the epicotylar shoot such as leaves.	1583
+42	Maize	kn1	GRMZM2G017087	0.052	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Reduced tassel branch number.	1583
+42	Maize	kn1	GRMZM2G017087	0.038	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Number of tassel spikelets greatly reduced.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pollen nonfunctional.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Scattered proliferations of tissue at veins on leaf, leading to a bumpy, irregular appearance.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Defective ear.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	General term to describe a defective growth pattern in the ear or cob.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Knotted leaf.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Limited shoot.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Does not develop to reproductive maturity.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Normal coleoptile, but typically lacks visible elements of the epicotylar shoot such as leaves.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	A variably rudimentary epicotyl.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Limited shoot seedlings can be maintained in the greenhouse for several weeks, during which time they initiated no additional structures before they die.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Sparse tassel spikelets.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pollen nonfunctional.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pollen produced, but doesn't result in seed set.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Defective ear.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	General term to describe a defective growth pattern in the ear or cob.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Knotted leaf.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Limited shoot.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Does not develop to reproductive maturity.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	A variably rudimentary epicotyl.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Limited shoot seedlings can be maintained in the greenhouse for several weeks, during which time they initiated no additional structures before they die.	1583
+42	Maize	kn1	GRMZM2G017087	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Sparse tassel spikelets.	1583
+43	Maize	bet1		0.243	Reduced levels of anthocyanins in leaves, stems and other tissues.	High levels of betaineglycine, a zwitterionic osmoticum.	3315
+43	Maize	bet1		0.135	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	High levels of betaineglycine, a zwitterionic osmoticum.	3315
+43	Maize	bet1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Glycinebetaine deficient.	3315
+43	Maize	bet1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Glycinebetaine high.	3315
+43	Maize	bet1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Salt stress intolerant.	3315
+43	Maize	bet1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Salt stress tolerant.	3315
+43	Maize	bet1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Glycinebetaine deficient.	3315
+43	Maize	bet1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Glycinebetaine high.	3315
+43	Maize	bet1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Salt stress intolerant.	3315
+43	Maize	bet1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Salt stress tolerant.	3315
+44	Maize	als1	GRMZM2G143357	0.239	Reduced levels of anthocyanins in leaves, stems and other tissues.	Both whole plant and callus tissue tolerate high levels of this herbicide.	2714
+44	Maize	als1	GRMZM2G143357	0.055	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Both whole plant and callus tissue tolerate high levels of this herbicide.	2714
+44	Maize	als1	GRMZM2G143357	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	AHAS activity imidazolinone tolerant.	2714
+44	Maize	als1	GRMZM2G143357	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Isolated enzyme (ALS) activity not inhibited by imidazolone.	2714
+44	Maize	als1	GRMZM2G143357	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Imidazolinone tolerant.	2714
+44	Maize	als1	GRMZM2G143357	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Sulfonylurea herbicide sensitive.	2714
+44	Maize	als1	GRMZM2G143357	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Sulfonylurea herbicide tolerant.	2714
+44	Maize	als1	GRMZM2G143357	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	AHAS activity imidazolinone tolerant.	2714
+44	Maize	als1	GRMZM2G143357	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Isolated enzyme (ALS) activity not inhibited by imidazolone.	2714
+44	Maize	als1	GRMZM2G143357	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Imidazolinone tolerant.	2714
+44	Maize	als1	GRMZM2G143357	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Sulfonylurea herbicide sensitive.	2714
+44	Maize	als1	GRMZM2G143357	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Sulfonylurea herbicide tolerant.	2714
+45	Maize	o*-N1119A		0.237	Reduced levels of anthocyanins in leaves, stems and other tissues.	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	3603
+45	Maize	o*-N1119A		0.227	Reduced levels of anthocyanins in leaves, stems and other tissues.	Affected tissue dies.	3603
+45	Maize	o*-N1119A		0.170	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Sometimes bleaches and dries, turns brown or black, and sometimes gets watery before it dries.	3603
+45	Maize	o*-N1119A		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mosaic aleurone color.	3603
+45	Maize	o*-N1119A		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	3603
+45	Maize	o*-N1119A		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The borders are distinct, as opposed to mottled.	3603
+45	Maize	o*-N1119A		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Necrotic leaf.	3603
+45	Maize	o*-N1119A		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Affected tissue dies.	3603
+45	Maize	o*-N1119A		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Patches and streaks are common, but often the necrosis involves the whole leaf, progressing from the tip downward.	3603
+45	Maize	o*-N1119A		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Opaque endosperm.	3603
+45	Maize	o*-N1119A		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Endosperm is opaque and firm, not chalky and not waxy.	3603
+45	Maize	o*-N1119A		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Small kernel.	3603
+45	Maize	o*-N1119A		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Small kernel is the consistent characteristic but variable in other aspects.	3603
+45	Maize	o*-N1119A		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mosaic aleurone color.	3603
+45	Maize	o*-N1119A		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	The borders are distinct, as opposed to mottled.	3603
+45	Maize	o*-N1119A		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Necrotic leaf.	3603
+45	Maize	o*-N1119A		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Sometimes bleaches and dries, turns brown or black, and sometimes gets watery before it dries.	3603
+45	Maize	o*-N1119A		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Patches and streaks are common, but often the necrosis involves the whole leaf, progressing from the tip downward.	3603
+45	Maize	o*-N1119A		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Opaque endosperm.	3603
+45	Maize	o*-N1119A		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Endosperm is opaque and firm, not chalky and not waxy.	3603
+45	Maize	o*-N1119A		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Small kernel.	3603
+45	Maize	o*-N1119A		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Small kernel is the consistent characteristic but variable in other aspects.	3603
+46	Maize	w2	GRMZM2G480171	0.237	Reduced levels of anthocyanins in leaves, stems and other tissues.	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	2759
+46	Maize	w2	GRMZM2G480171	0.185	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pale pale green leaf.	2759
+46	Maize	w2	GRMZM2G480171	0.159	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seedling leaves are white.	2759
+46	Maize	w2	GRMZM2G480171	0.142	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pale green plant.	2759
+46	Maize	w2	GRMZM2G480171	0.099	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Two classes of albino seedlings: Class I characterized by white or pale-yellow endosperm in a genotype that would otherwise produce yellow seeds, and albino seedlings.	2759
+46	Maize	w2	GRMZM2G480171	0.089	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Class II consists of albino mutants in which pigmentation of the endosperm is not affected.	2759
+46	Maize	w2	GRMZM2G480171	0.088	Reduced levels of anthocyanins in leaves, stems and other tissues.	Reduced size to the 7-8 leaf stage, usually becomes small plant.	2759
+46	Maize	w2	GRMZM2G480171	0.049	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Reduced size to the 7-8 leaf stage, usually becomes small plant.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Albino seedling.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seedling leaves are white.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Some alleles have palegreen or green seedlings, and a few have mutable endosperm and/or seedlings.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mosaic aleurone color.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The borders are distinct, as opposed to mottled.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Lighter green seedlings or plants.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Less yellow than yellow green.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Very light green seedling, nearly white.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Pitted kernel.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Surface of kernel strewn with small pits or indentations.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Interior usually floury.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Small seedling.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Spotted/pitted endosperm.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Albino seedling.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Two classes of albino seedlings: Class I characterized by white or pale-yellow endosperm in a genotype that would otherwise produce yellow seeds, and albino seedlings.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Some alleles have palegreen or green seedlings, and a few have mutable endosperm and/or seedlings.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Class II consists of albino mutants in which pigmentation of the endosperm is not affected.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mosaic aleurone color.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	The borders are distinct, as opposed to mottled.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pale green plant.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Lighter green seedlings or plants.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Less yellow than yellow green.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pale pale green leaf.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Very light green seedling, nearly white.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Pitted kernel.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Surface of kernel strewn with small pits or indentations.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Interior usually floury.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Small seedling.	2759
+46	Maize	w2	GRMZM2G480171	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Spotted/pitted endosperm.	2759
+47	Maize	cr4	GRMZM2G051637	0.237	Reduced levels of anthocyanins in leaves, stems and other tissues.	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	1037
+47	Maize	cr4	GRMZM2G051637	0.158	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seedling leaves, tassels or top leaves are stuck together.	1037
+47	Maize	cr4	GRMZM2G051637	0.142	Reduced levels of anthocyanins in leaves, stems and other tissues.	Leaves broad.	1037
+47	Maize	cr4	GRMZM2G051637	0.130	Reduced levels of anthocyanins in leaves, stems and other tissues.	Rough leaves.	1037
+47	Maize	cr4	GRMZM2G051637	0.118	Reduced levels of anthocyanins in leaves, stems and other tissues.	Leaves crinkled.	1037
+47	Maize	cr4	GRMZM2G051637	0.115	Reduced levels of anthocyanins in leaves, stems and other tissues.	Irregular-shaped patches of color and non-color in the aleurone tissue with distince borders.	1037
+47	Maize	cr4	GRMZM2G051637	0.109	Reduced levels of anthocyanins in leaves, stems and other tissues.	Scattered proliferations of tissue at veins on leaf, leading to a bumpy, irregular appearance.	1037
+47	Maize	cr4	GRMZM2G051637	0.108	Reduced levels of anthocyanins in leaves, stems and other tissues.	Irregular-shaped patches of color and non-color in the aleurone tissue with distinct borders.	1037
+47	Maize	cr4	GRMZM2G051637	0.095	Reduced levels of anthocyanins in leaves, stems and other tissues.	Leaves broad and crinkled.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seedling which has an irregular shape.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Irregular-shaped patches of color and non-color in the aleurone tissue with distinct borders.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Irregular-shaped patches of color and non-color in the aleurone tissue with distince borders.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Plant short.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Leaves broad.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Leaves crinkled.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Scattered proliferations of tissue at veins on leaf, leading to a bumpy, irregular appearance.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Compact tassel.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	General descriptive term indicating a disorganized growth habit, producing a seedling which has an irregular shape.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The borders are distinct, as opposed to mottled.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Leaves broad and crinkled.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Thick, club-like tassel.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Adherent leaf.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Seedling leaves, tassels or top leaves are stuck together.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Club tassel.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Crinkled leaf.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Distorted.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Knotted leaf.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mosaic aleurone color.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Rough leaves.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Short plant.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Seedling which has an irregular shape.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Plant short.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Compact tassel.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	General descriptive term indicating a disorganized growth habit, producing a seedling which has an irregular shape.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	The borders are distinct, as opposed to mottled.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Thick, club-like tassel.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Adherent leaf.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Club tassel.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Crinkled leaf.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Distorted.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Knotted leaf.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mosaic aleurone color.	1037
+47	Maize	cr4	GRMZM2G051637	0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Short plant.	1037
+48	Maize	msc2		0.237	Reduced levels of anthocyanins in leaves, stems and other tissues.	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	3602
+48	Maize	msc2		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mosaic aleurone color.	3602
+48	Maize	msc2		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	3602
+48	Maize	msc2		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The borders are distinct, as opposed to mottled.	3602
+48	Maize	msc2		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Opaque endosperm.	3602
+48	Maize	msc2		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Endosperm is opaque and firm, not chalky and not waxy.	3602
+48	Maize	msc2		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mosaic aleurone color.	3602
+48	Maize	msc2		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	The borders are distinct, as opposed to mottled.	3602
+48	Maize	msc2		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Opaque endosperm.	3602
+48	Maize	msc2		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Endosperm is opaque and firm, not chalky and not waxy.	3602
+49	Maize	msc1		0.237	Reduced levels of anthocyanins in leaves, stems and other tissues.	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	3601
+49	Maize	msc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mosaic aleurone color.	3601
+49	Maize	msc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	3601
+49	Maize	msc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The borders are distinct, as opposed to mottled.	3601
+49	Maize	msc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Opaque endosperm.	3601
+49	Maize	msc1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Endosperm is opaque and firm, not chalky and not waxy.	3601
+49	Maize	msc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mosaic aleurone color.	3601
+49	Maize	msc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	The borders are distinct, as opposed to mottled.	3601
+49	Maize	msc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Opaque endosperm.	3601
+49	Maize	msc1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Endosperm is opaque and firm, not chalky and not waxy.	3601
+50	Maize	dap1		0.237	Reduced levels of anthocyanins in leaves, stems and other tissues.	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	3001
+50	Maize	dap1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Dappled aleurone.	3001
+50	Maize	dap1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Patches of normal and abnormal aleurone cells.	3001
+50	Maize	dap1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Mosaic aleurone color.	3001
+50	Maize	dap1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	3001
+50	Maize	dap1		0.000	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	The borders are distinct, as opposed to mottled.	3001
+50	Maize	dap1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Dappled aleurone.	3001
+50	Maize	dap1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Patches of normal and abnormal aleurone cells.	3001
+50	Maize	dap1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	Mosaic aleurone color.	3001
+50	Maize	dap1		0.000	Reduced levels of anthocyanins in leaves, stems and other tissues.	The borders are distinct, as opposed to mottled.	3001

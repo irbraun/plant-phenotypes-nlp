@@ -1,0 +1,1533 @@
+Rank	Species	Gene	Gene Model	Score	Query	Matches	Internal ID
+1	Arabidopsis	TT12	At3g59030	1.000	Yellow seed coat.	Yellow seed coat.	2614
+1	Arabidopsis	TT12	At3g59030	1.000	Pale brown seeds.	Pale brown seeds.	2614
+1	Arabidopsis	TT12	At3g59030	1.000	Average height = 38 cm.	Average height = 38 cm.	2614
+1	Arabidopsis	TT12	At3g59030	1.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	2614
+1	Arabidopsis	TT12	At3g59030	0.193	Yellow seed coat.	Pale brown seeds.	2614
+1	Arabidopsis	TT12	At3g59030	0.193	Pale brown seeds.	Yellow seed coat.	2614
+1	Arabidopsis	TT12	At3g59030	0.163	Pale brown seeds.	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	2614
+1	Arabidopsis	TT12	At3g59030	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale brown seeds.	2614
+1	Arabidopsis	TT12	At3g59030	0.153	Yellow seed coat.	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	2614
+1	Arabidopsis	TT12	At3g59030	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seed coat.	2614
+1	Arabidopsis	TT12	At3g59030	0.000	Yellow seed coat.	Average height = 38 cm.	2614
+1	Arabidopsis	TT12	At3g59030	0.000	Pale brown seeds.	Average height = 38 cm.	2614
+1	Arabidopsis	TT12	At3g59030	0.000	Average height = 38 cm.	Yellow seed coat.	2614
+1	Arabidopsis	TT12	At3g59030	0.000	Average height = 38 cm.	Pale brown seeds.	2614
+1	Arabidopsis	TT12	At3g59030	0.000	Average height = 38 cm.	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	2614
+1	Arabidopsis	TT12	At3g59030	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 38 cm.	2614
+2	Arabidopsis	AHA10	AT1G17260	1.000	Pale brown seeds.	Pale brown seeds.	4110
+2	Arabidopsis	AHA10	AT1G17260	0.193	Yellow seed coat.	Pale brown seeds.	4110
+2	Arabidopsis	AHA10	AT1G17260	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale brown seeds.	4110
+2	Arabidopsis	AHA10	AT1G17260	0.000	Average height = 38 cm.	Pale brown seeds.	4110
+3	Arabidopsis	TT8	At4g09820	1.000	Yellow seed coat.	Yellow seed coat.	2615
+3	Arabidopsis	TT8	At4g09820	0.627	Yellow seed coat.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2615
+3	Arabidopsis	TT8	At4g09820	0.472	Pale brown seeds.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2615
+3	Arabidopsis	TT8	At4g09820	0.193	Pale brown seeds.	Yellow seed coat.	2615
+3	Arabidopsis	TT8	At4g09820	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds due to absence of brown pigment in seed coat (testa).	2615
+3	Arabidopsis	TT8	At4g09820	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seed coat.	2615
+3	Arabidopsis	TT8	At4g09820	0.084	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	2615
+3	Arabidopsis	TT8	At4g09820	0.000	Yellow seed coat.	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	2615
+3	Arabidopsis	TT8	At4g09820	0.000	Pale brown seeds.	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	2615
+3	Arabidopsis	TT8	At4g09820	0.000	Average height = 38 cm.	Yellow seed coat.	2615
+3	Arabidopsis	TT8	At4g09820	0.000	Average height = 38 cm.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2615
+3	Arabidopsis	TT8	At4g09820	0.000	Average height = 38 cm.	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	2615
+4	Arabidopsis	TT2	At5g35550	1.000	Yellow seed coat.	Yellow seed coat.	2618
+4	Arabidopsis	TT2	At5g35550	0.642	Yellow seed coat.	Yellow seeds.	2618
+4	Arabidopsis	TT2	At5g35550	0.627	Yellow seed coat.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2618
+4	Arabidopsis	TT2	At5g35550	0.472	Pale brown seeds.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2618
+4	Arabidopsis	TT2	At5g35550	0.300	Pale brown seeds.	Yellow seeds.	2618
+4	Arabidopsis	TT2	At5g35550	0.238	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds.	2618
+4	Arabidopsis	TT2	At5g35550	0.193	Pale brown seeds.	Yellow seed coat.	2618
+4	Arabidopsis	TT2	At5g35550	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds due to absence of brown pigment in seed coat (testa).	2618
+4	Arabidopsis	TT2	At5g35550	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seed coat.	2618
+4	Arabidopsis	TT2	At5g35550	0.104	Pale brown seeds.	Leaky allele revealed by spotted seeds in DMACA stain.	2618
+4	Arabidopsis	TT2	At5g35550	0.098	Yellow seed coat.	Leaky allele revealed by spotted seeds in DMACA stain.	2618
+4	Arabidopsis	TT2	At5g35550	0.084	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	2618
+4	Arabidopsis	TT2	At5g35550	0.083	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Leaky allele revealed by spotted seeds in DMACA stain.	2618
+4	Arabidopsis	TT2	At5g35550	0.000	Yellow seed coat.	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	2618
+4	Arabidopsis	TT2	At5g35550	0.000	Pale brown seeds.	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	2618
+4	Arabidopsis	TT2	At5g35550	0.000	Average height = 38 cm.	Yellow seed coat.	2618
+4	Arabidopsis	TT2	At5g35550	0.000	Average height = 38 cm.	Yellow seeds.	2618
+4	Arabidopsis	TT2	At5g35550	0.000	Average height = 38 cm.	Leaky allele revealed by spotted seeds in DMACA stain.	2618
+4	Arabidopsis	TT2	At5g35550	0.000	Average height = 38 cm.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2618
+4	Arabidopsis	TT2	At5g35550	0.000	Average height = 38 cm.	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	2618
+5	Arabidopsis	TT6	At3g51240	1.000	Yellow seed coat.	Yellow seed coat.	2612
+5	Arabidopsis	TT6	At3g51240	1.000	Pale brown seeds.	Pale brown seeds.	2612
+5	Arabidopsis	TT6	At3g51240	0.743	Pale brown seeds.	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	2612
+5	Arabidopsis	TT6	At3g51240	0.688	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa), pale brown seeds.	2612
+5	Arabidopsis	TT6	At3g51240	0.642	Yellow seed coat.	Yellow seeds.	2612
+5	Arabidopsis	TT6	At3g51240	0.432	Yellow seed coat.	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	2612
+5	Arabidopsis	TT6	At3g51240	0.413	Yellow seed coat.	Disruption of the synthesis of brown pigment in seed coat (testa).	2612
+5	Arabidopsis	TT6	At3g51240	0.400	Yellow seed coat.	Disruption of the synthesis of brown pigment in seed coat (testa), pale brown seeds.	2612
+5	Arabidopsis	TT6	At3g51240	0.373	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa).	2612
+5	Arabidopsis	TT6	At3g51240	0.300	Pale brown seeds.	Yellow seeds.	2612
+5	Arabidopsis	TT6	At3g51240	0.238	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds.	2612
+5	Arabidopsis	TT6	At3g51240	0.193	Yellow seed coat.	Pale brown seeds.	2612
+5	Arabidopsis	TT6	At3g51240	0.193	Pale brown seeds.	Yellow seed coat.	2612
+5	Arabidopsis	TT6	At3g51240	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	2612
+5	Arabidopsis	TT6	At3g51240	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale brown seeds.	2612
+5	Arabidopsis	TT6	At3g51240	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seed coat.	2612
+5	Arabidopsis	TT6	At3g51240	0.129	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Disruption of the synthesis of brown pigment in seed coat (testa), pale brown seeds.	2612
+5	Arabidopsis	TT6	At3g51240	0.082	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Disruption of the synthesis of brown pigment in seed coat (testa).	2612
+5	Arabidopsis	TT6	At3g51240	0.043	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced levels of anthocyanins in leaves, stems and other tissues.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Yellow seed coat.	Reduced levels of anthocyanins in leaves, stems and other tissues.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Yellow seed coat.	Double mutant.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Yellow seed coat.	Altered phenylpropanoid metabolism.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Yellow seed coat.	Probably deficient in flavonol synthase activity.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Pale brown seeds.	Reduced levels of anthocyanins in leaves, stems and other tissues.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Pale brown seeds.	Double mutant.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Pale brown seeds.	Altered phenylpropanoid metabolism.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Pale brown seeds.	Probably deficient in flavonol synthase activity.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Average height = 38 cm.	Yellow seed coat.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Average height = 38 cm.	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Average height = 38 cm.	Reduced levels of anthocyanins in leaves, stems and other tissues.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Average height = 38 cm.	Double mutant.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Average height = 38 cm.	Disruption of the synthesis of brown pigment in seed coat (testa).	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Average height = 38 cm.	Yellow seeds.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Average height = 38 cm.	Pale brown seeds.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Average height = 38 cm.	Altered phenylpropanoid metabolism.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Average height = 38 cm.	Disruption of the synthesis of brown pigment in seed coat (testa), pale brown seeds.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Average height = 38 cm.	Probably deficient in flavonol synthase activity.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Double mutant.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Altered phenylpropanoid metabolism.	2612
+5	Arabidopsis	TT6	At3g51240	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Probably deficient in flavonol synthase activity.	2612
+6	Arabidopsis	TT4	At5g13930	1.000	Yellow seed coat.	Yellow seed coat.	2617
+6	Arabidopsis	TT4	At5g13930	0.642	Yellow seed coat.	Yellow seeds.	2617
+6	Arabidopsis	TT4	At5g13930	0.638	Yellow seed coat.	Colorless seed coat.	2617
+6	Arabidopsis	TT4	At5g13930	0.627	Yellow seed coat.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2617
+6	Arabidopsis	TT4	At5g13930	0.574	Yellow seed coat.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2617
+6	Arabidopsis	TT4	At5g13930	0.555	Yellow seed coat.	Yellow seeds (lacks brown pigment in seed coat), lacks anthocyanin in leaves and stems.	2617
+6	Arabidopsis	TT4	At5g13930	0.472	Pale brown seeds.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2617
+6	Arabidopsis	TT4	At5g13930	0.436	Yellow seed coat.	Yellow seeds (lacks brown pigment in seed coat), lacks anthocyanin in leaves and stems, lacks flavonols.	2617
+6	Arabidopsis	TT4	At5g13930	0.431	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2617
+6	Arabidopsis	TT4	At5g13930	0.417	Pale brown seeds.	Yellow seeds (lacks brown pigment in seed coat), lacks anthocyanin in leaves and stems.	2617
+6	Arabidopsis	TT4	At5g13930	0.413	Yellow seed coat.	Disruption of the synthesis of brown pigment in seed coat (testa).	2617
+6	Arabidopsis	TT4	At5g13930	0.373	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa).	2617
+6	Arabidopsis	TT4	At5g13930	0.328	Pale brown seeds.	Yellow seeds (lacks brown pigment in seed coat), lacks anthocyanin in leaves and stems, lacks flavonols.	2617
+6	Arabidopsis	TT4	At5g13930	0.300	Pale brown seeds.	Yellow seeds.	2617
+6	Arabidopsis	TT4	At5g13930	0.263	Pale brown seeds.	Pale yellow seeds, no flavonoid in tapetum cells.	2617
+6	Arabidopsis	TT4	At5g13930	0.248	Yellow seed coat.	Pale yellow seeds, no flavonoid in tapetum cells.	2617
+6	Arabidopsis	TT4	At5g13930	0.238	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds.	2617
+6	Arabidopsis	TT4	At5g13930	0.193	Pale brown seeds.	Yellow seed coat.	2617
+6	Arabidopsis	TT4	At5g13930	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds due to absence of brown pigment in seed coat (testa).	2617
+6	Arabidopsis	TT4	At5g13930	0.160	Pale brown seeds.	Colorless seed coat.	2617
+6	Arabidopsis	TT4	At5g13930	0.154	Yellow seed coat.	Pollen has a characteristic lemon-yellow color.	2617
+6	Arabidopsis	TT4	At5g13930	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seed coat.	2617
+6	Arabidopsis	TT4	At5g13930	0.149	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2617
+6	Arabidopsis	TT4	At5g13930	0.144	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds (lacks brown pigment in seed coat), lacks anthocyanin in leaves and stems.	2617
+6	Arabidopsis	TT4	At5g13930	0.127	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Colorless seed coat.	2617
+6	Arabidopsis	TT4	At5g13930	0.113	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds (lacks brown pigment in seed coat), lacks anthocyanin in leaves and stems, lacks flavonols.	2617
+6	Arabidopsis	TT4	At5g13930	0.092	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale yellow seeds, no flavonoid in tapetum cells.	2617
+6	Arabidopsis	TT4	At5g13930	0.082	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Disruption of the synthesis of brown pigment in seed coat (testa).	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Yellow seed coat.	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and mutant plants are yellowish.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Yellow seed coat.	Deficient in chalcone synthase activity and lacks flavonoids.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Yellow seed coat.	Double mutant.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Yellow seed coat.	Altered phenylpropanoid metabolism.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Pale brown seeds.	Pollen has a characteristic lemon-yellow color.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Pale brown seeds.	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and mutant plants are yellowish.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Pale brown seeds.	Deficient in chalcone synthase activity and lacks flavonoids.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Pale brown seeds.	Double mutant.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Pale brown seeds.	Altered phenylpropanoid metabolism.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Yellow seed coat.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Yellow seeds (lacks brown pigment in seed coat), lacks anthocyanin in leaves and stems, lacks flavonols.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Colorless seed coat.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Pollen has a characteristic lemon-yellow color.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and mutant plants are yellowish.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Deficient in chalcone synthase activity and lacks flavonoids.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Double mutant.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Disruption of the synthesis of brown pigment in seed coat (testa).	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Yellow seeds.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Altered phenylpropanoid metabolism.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Yellow seeds (lacks brown pigment in seed coat), lacks anthocyanin in leaves and stems.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Average height = 38 cm.	Pale yellow seeds, no flavonoid in tapetum cells.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pollen has a characteristic lemon-yellow color.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and mutant plants are yellowish.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Deficient in chalcone synthase activity and lacks flavonoids.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Double mutant.	2617
+6	Arabidopsis	TT4	At5g13930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Altered phenylpropanoid metabolism.	2617
+7	Arabidopsis	TT5	At3g55120	1.000	Yellow seed coat.	Yellow seed coat.	2613
+7	Arabidopsis	TT5	At3g55120	0.642	Yellow seed coat.	Yellow seeds.	2613
+7	Arabidopsis	TT5	At3g55120	0.627	Yellow seed coat.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2613
+7	Arabidopsis	TT5	At3g55120	0.574	Yellow seed coat.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2613
+7	Arabidopsis	TT5	At3g55120	0.472	Pale brown seeds.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2613
+7	Arabidopsis	TT5	At3g55120	0.439	Yellow seed coat.	Yellow seeds (lacks brown pigment in seed coat), lacks anthocyanin in leaves and stems, contains only traces of flavonols.	2613
+7	Arabidopsis	TT5	At3g55120	0.431	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2613
+7	Arabidopsis	TT5	At3g55120	0.413	Yellow seed coat.	Disruption of the synthesis of brown pigment in seed coat (testa).	2613
+7	Arabidopsis	TT5	At3g55120	0.373	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa).	2613
+7	Arabidopsis	TT5	At3g55120	0.330	Pale brown seeds.	Yellow seeds (lacks brown pigment in seed coat), lacks anthocyanin in leaves and stems, contains only traces of flavonols.	2613
+7	Arabidopsis	TT5	At3g55120	0.300	Pale brown seeds.	Yellow seeds.	2613
+7	Arabidopsis	TT5	At3g55120	0.238	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds.	2613
+7	Arabidopsis	TT5	At3g55120	0.193	Pale brown seeds.	Yellow seed coat.	2613
+7	Arabidopsis	TT5	At3g55120	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds due to absence of brown pigment in seed coat (testa).	2613
+7	Arabidopsis	TT5	At3g55120	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seed coat.	2613
+7	Arabidopsis	TT5	At3g55120	0.149	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2613
+7	Arabidopsis	TT5	At3g55120	0.114	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds (lacks brown pigment in seed coat), lacks anthocyanin in leaves and stems, contains only traces of flavonols.	2613
+7	Arabidopsis	TT5	At3g55120	0.082	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Disruption of the synthesis of brown pigment in seed coat (testa).	2613
+7	Arabidopsis	TT5	At3g55120	0.024	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Deficient in chalcone isomerase activity and has reduced flavonoid content.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Yellow seed coat.	Double mutant.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Yellow seed coat.	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and stems are brighter green.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Yellow seed coat.	Deficient in chalcone isomerase activity and has reduced flavonoid content.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Yellow seed coat.	Altered phenylpropanoid metabolism.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Pale brown seeds.	Double mutant.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Pale brown seeds.	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and stems are brighter green.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Pale brown seeds.	Deficient in chalcone isomerase activity and has reduced flavonoid content.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Pale brown seeds.	Altered phenylpropanoid metabolism.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Average height = 38 cm.	Yellow seed coat.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Average height = 38 cm.	Yellow seeds (lacks brown pigment in seed coat), lacks anthocyanin in leaves and stems, contains only traces of flavonols.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Average height = 38 cm.	Double mutant.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Average height = 38 cm.	Disruption of the synthesis of brown pigment in seed coat (testa).	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Average height = 38 cm.	Yellow seeds.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Average height = 38 cm.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Average height = 38 cm.	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and stems are brighter green.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Average height = 38 cm.	Deficient in chalcone isomerase activity and has reduced flavonoid content.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Average height = 38 cm.	Altered phenylpropanoid metabolism.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Average height = 38 cm.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Double mutant.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and stems are brighter green.	2613
+7	Arabidopsis	TT5	At3g55120	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Altered phenylpropanoid metabolism.	2613
+8	Arabidopsis	TT3	At5g42800	1.000	Yellow seed coat.	Yellow seed coat.	2619
+8	Arabidopsis	TT3	At5g42800	1.000	Pale brown seeds.	Pale brown seeds.	2619
+8	Arabidopsis	TT3	At5g42800	0.642	Yellow seed coat.	Yellow seeds.	2619
+8	Arabidopsis	TT3	At5g42800	0.627	Yellow seed coat.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2619
+8	Arabidopsis	TT3	At5g42800	0.574	Yellow seed coat.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2619
+8	Arabidopsis	TT3	At5g42800	0.472	Pale brown seeds.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2619
+8	Arabidopsis	TT3	At5g42800	0.431	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2619
+8	Arabidopsis	TT3	At5g42800	0.413	Yellow seed coat.	Disruption of the synthesis of brown pigment in seed coat (testa).	2619
+8	Arabidopsis	TT3	At5g42800	0.373	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa).	2619
+8	Arabidopsis	TT3	At5g42800	0.300	Pale brown seeds.	Yellow seeds.	2619
+8	Arabidopsis	TT3	At5g42800	0.238	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds.	2619
+8	Arabidopsis	TT3	At5g42800	0.193	Yellow seed coat.	Pale brown seeds.	2619
+8	Arabidopsis	TT3	At5g42800	0.193	Pale brown seeds.	Yellow seed coat.	2619
+8	Arabidopsis	TT3	At5g42800	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale brown seeds.	2619
+8	Arabidopsis	TT3	At5g42800	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds due to absence of brown pigment in seed coat (testa).	2619
+8	Arabidopsis	TT3	At5g42800	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seed coat.	2619
+8	Arabidopsis	TT3	At5g42800	0.149	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2619
+8	Arabidopsis	TT3	At5g42800	0.082	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Disruption of the synthesis of brown pigment in seed coat (testa).	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Yellow seed coat.	Angustifolia, apetala, pyrimidine requiring, erecta, long hypocotyl, glabra, brevipedicellus, eceriferum, transparent testa.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Yellow seed coat.	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and mutant plants are yellowish.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Yellow seed coat.	Deficient in dihydroflavonol 4-reductase and lack anthocyanidins.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Yellow seed coat.	Double mutant.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Yellow seed coat.	Altered phenylpropanoid metabolism.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Pale brown seeds.	Angustifolia, apetala, pyrimidine requiring, erecta, long hypocotyl, glabra, brevipedicellus, eceriferum, transparent testa.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Pale brown seeds.	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and mutant plants are yellowish.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Pale brown seeds.	Deficient in dihydroflavonol 4-reductase and lack anthocyanidins.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Pale brown seeds.	Double mutant.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Pale brown seeds.	Altered phenylpropanoid metabolism.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Average height = 38 cm.	Yellow seed coat.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Average height = 38 cm.	Angustifolia, apetala, pyrimidine requiring, erecta, long hypocotyl, glabra, brevipedicellus, eceriferum, transparent testa.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Average height = 38 cm.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Average height = 38 cm.	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and mutant plants are yellowish.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Average height = 38 cm.	Deficient in dihydroflavonol 4-reductase and lack anthocyanidins.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Average height = 38 cm.	Double mutant.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Average height = 38 cm.	Disruption of the synthesis of brown pigment in seed coat (testa).	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Average height = 38 cm.	Yellow seeds.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Average height = 38 cm.	Pale brown seeds.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Average height = 38 cm.	Altered phenylpropanoid metabolism.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Average height = 38 cm.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Angustifolia, apetala, pyrimidine requiring, erecta, long hypocotyl, glabra, brevipedicellus, eceriferum, transparent testa.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and mutant plants are yellowish.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Deficient in dihydroflavonol 4-reductase and lack anthocyanidins.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Double mutant.	2619
+8	Arabidopsis	TT3	At5g42800	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Altered phenylpropanoid metabolism.	2619
+9	Arabidopsis	TT7	At5g07990	1.000	Yellow seed coat.	Yellow seed coat.	2616
+9	Arabidopsis	TT7	At5g07990	0.743	Pale brown seeds.	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	2616
+9	Arabidopsis	TT7	At5g07990	0.688	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa), pale brown seeds.	2616
+9	Arabidopsis	TT7	At5g07990	0.661	Pale brown seeds.	Transparent testa phenotype (pale brown seeds due to reduced levels of brown pigment in seed coat), allelic to tt7-3.	2616
+9	Arabidopsis	TT7	At5g07990	0.642	Yellow seed coat.	Yellow seeds.	2616
+9	Arabidopsis	TT7	At5g07990	0.432	Yellow seed coat.	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	2616
+9	Arabidopsis	TT7	At5g07990	0.413	Yellow seed coat.	Disruption of the synthesis of brown pigment in seed coat (testa).	2616
+9	Arabidopsis	TT7	At5g07990	0.400	Yellow seed coat.	Disruption of the synthesis of brown pigment in seed coat (testa), pale brown seeds.	2616
+9	Arabidopsis	TT7	At5g07990	0.384	Yellow seed coat.	Transparent testa phenotype (pale brown seeds due to reduced levels of brown pigment in seed coat), allelic to tt7-3.	2616
+9	Arabidopsis	TT7	At5g07990	0.373	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa).	2616
+9	Arabidopsis	TT7	At5g07990	0.353	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Faster completion of seed germination at low temperature (10C) compared to wild type.	2616
+9	Arabidopsis	TT7	At5g07990	0.300	Pale brown seeds.	Yellow seeds.	2616
+9	Arabidopsis	TT7	At5g07990	0.238	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds.	2616
+9	Arabidopsis	TT7	At5g07990	0.193	Pale brown seeds.	Yellow seed coat.	2616
+9	Arabidopsis	TT7	At5g07990	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	2616
+9	Arabidopsis	TT7	At5g07990	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seed coat.	2616
+9	Arabidopsis	TT7	At5g07990	0.145	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Transparent testa phenotype (pale brown seeds due to reduced levels of brown pigment in seed coat), allelic to tt7-3.	2616
+9	Arabidopsis	TT7	At5g07990	0.129	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Disruption of the synthesis of brown pigment in seed coat (testa), pale brown seeds.	2616
+9	Arabidopsis	TT7	At5g07990	0.112	Pale brown seeds.	Faster completion of seed germination at low temperature (10C) compared to wild type.	2616
+9	Arabidopsis	TT7	At5g07990	0.105	Yellow seed coat.	Faster completion of seed germination at low temperature (10C) compared to wild type.	2616
+9	Arabidopsis	TT7	At5g07990	0.082	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Disruption of the synthesis of brown pigment in seed coat (testa).	2616
+9	Arabidopsis	TT7	At5g07990	0.056	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Deficient in flavonoid 3'-hydroxylase activity and lacks orthodihydroxy flavonoids, thus accumulating pelargonidin rather than the cyanidin found in wild type plants.	2616
+9	Arabidopsis	TT7	At5g07990	0.043	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced levels of anthocyanins in leaves, stems and other tissues.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Yellow seed coat.	Reduced levels of anthocyanins in leaves, stems and other tissues.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Yellow seed coat.	Deficient in flavonoid 3'-hydroxylase activity and lacks orthodihydroxy flavonoids, thus accumulating pelargonidin rather than the cyanidin found in wild type plants.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Yellow seed coat.	Hypersensitive to abscicic acid, gibberellic acid and paclobutrazol.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Yellow seed coat.	Double mutant.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Yellow seed coat.	Altered phenylpropanoid metabolism.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Pale brown seeds.	Reduced levels of anthocyanins in leaves, stems and other tissues.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Pale brown seeds.	Deficient in flavonoid 3'-hydroxylase activity and lacks orthodihydroxy flavonoids, thus accumulating pelargonidin rather than the cyanidin found in wild type plants.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Pale brown seeds.	Hypersensitive to abscicic acid, gibberellic acid and paclobutrazol.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Pale brown seeds.	Double mutant.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Pale brown seeds.	Altered phenylpropanoid metabolism.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Average height = 38 cm.	Yellow seed coat.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Average height = 38 cm.	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Average height = 38 cm.	Reduced levels of anthocyanins in leaves, stems and other tissues.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Average height = 38 cm.	Deficient in flavonoid 3'-hydroxylase activity and lacks orthodihydroxy flavonoids, thus accumulating pelargonidin rather than the cyanidin found in wild type plants.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Average height = 38 cm.	Faster completion of seed germination at low temperature (10C) compared to wild type.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Average height = 38 cm.	Transparent testa phenotype (pale brown seeds due to reduced levels of brown pigment in seed coat), allelic to tt7-3.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Average height = 38 cm.	Hypersensitive to abscicic acid, gibberellic acid and paclobutrazol.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Average height = 38 cm.	Double mutant.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Average height = 38 cm.	Disruption of the synthesis of brown pigment in seed coat (testa).	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Average height = 38 cm.	Yellow seeds.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Average height = 38 cm.	Altered phenylpropanoid metabolism.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Average height = 38 cm.	Disruption of the synthesis of brown pigment in seed coat (testa), pale brown seeds.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Hypersensitive to abscicic acid, gibberellic acid and paclobutrazol.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Double mutant.	2616
+9	Arabidopsis	TT7	At5g07990	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Altered phenylpropanoid metabolism.	2616
+10	Arabidopsis	GEX2	AT5G49150	1.000	Average height = 38 cm.	Average height = 39 cm.	5606
+10	Arabidopsis	GEX2	AT5G49150	0.000	Yellow seed coat.	No visible phenotype.	5606
+10	Arabidopsis	GEX2	AT5G49150	0.000	Yellow seed coat.	Average height = 39 cm.	5606
+10	Arabidopsis	GEX2	AT5G49150	0.000	Pale brown seeds.	No visible phenotype.	5606
+10	Arabidopsis	GEX2	AT5G49150	0.000	Pale brown seeds.	Average height = 39 cm.	5606
+10	Arabidopsis	GEX2	AT5G49150	0.000	Average height = 38 cm.	No visible phenotype.	5606
+10	Arabidopsis	GEX2	AT5G49150	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No visible phenotype.	5606
+10	Arabidopsis	GEX2	AT5G49150	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 39 cm.	5606
+11	Arabidopsis	FBA2	AT4G38970	1.000	Average height = 38 cm.	Average height = 39 cm.	5333
+11	Arabidopsis	FBA2	AT4G38970	0.000	Yellow seed coat.	Segregating for agamous-like plants (homeotic transformation of stamens to petals, double flowers).	5333
+11	Arabidopsis	FBA2	AT4G38970	0.000	Yellow seed coat.	Average height = 39 cm.	5333
+11	Arabidopsis	FBA2	AT4G38970	0.000	Pale brown seeds.	Segregating for agamous-like plants (homeotic transformation of stamens to petals, double flowers).	5333
+11	Arabidopsis	FBA2	AT4G38970	0.000	Pale brown seeds.	Average height = 39 cm.	5333
+11	Arabidopsis	FBA2	AT4G38970	0.000	Average height = 38 cm.	Segregating for agamous-like plants (homeotic transformation of stamens to petals, double flowers).	5333
+11	Arabidopsis	FBA2	AT4G38970	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating for agamous-like plants (homeotic transformation of stamens to petals, double flowers).	5333
+11	Arabidopsis	FBA2	AT4G38970	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 39 cm.	5333
+12	Arabidopsis	CIPK12	AT4G18700	1.000	Average height = 38 cm.	Average height = 37 cm.	5174
+12	Arabidopsis	CIPK12	AT4G18700	0.000	Yellow seed coat.	No visible phenotype.	5174
+12	Arabidopsis	CIPK12	AT4G18700	0.000	Yellow seed coat.	Average height = 37 cm.	5174
+12	Arabidopsis	CIPK12	AT4G18700	0.000	Pale brown seeds.	No visible phenotype.	5174
+12	Arabidopsis	CIPK12	AT4G18700	0.000	Pale brown seeds.	Average height = 37 cm.	5174
+12	Arabidopsis	CIPK12	AT4G18700	0.000	Average height = 38 cm.	No visible phenotype.	5174
+12	Arabidopsis	CIPK12	AT4G18700	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No visible phenotype.	5174
+12	Arabidopsis	CIPK12	AT4G18700	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 37 cm.	5174
+13	Arabidopsis	SCD2	AT3G48860	1.000	Average height = 38 cm.	Average height = 39 cm.	4965
+13	Arabidopsis	SCD2	AT3G48860	0.000	Yellow seed coat.	Segregating for agamous-like plants (homeotic transformation of stamens to petals, double flowers).	4965
+13	Arabidopsis	SCD2	AT3G48860	0.000	Yellow seed coat.	Average height = 39 cm.	4965
+13	Arabidopsis	SCD2	AT3G48860	0.000	Pale brown seeds.	Segregating for agamous-like plants (homeotic transformation of stamens to petals, double flowers).	4965
+13	Arabidopsis	SCD2	AT3G48860	0.000	Pale brown seeds.	Average height = 39 cm.	4965
+13	Arabidopsis	SCD2	AT3G48860	0.000	Average height = 38 cm.	Segregating for agamous-like plants (homeotic transformation of stamens to petals, double flowers).	4965
+13	Arabidopsis	SCD2	AT3G48860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating for agamous-like plants (homeotic transformation of stamens to petals, double flowers).	4965
+13	Arabidopsis	SCD2	AT3G48860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 39 cm.	4965
+14	Arabidopsis	AT3G18460	AT3G18460	1.000	Average height = 38 cm.	Average height = 42 cm.	4859
+14	Arabidopsis	AT3G18460	AT3G18460	0.000	Yellow seed coat.	Somewhat dark-green plants.	4859
+14	Arabidopsis	AT3G18460	AT3G18460	0.000	Yellow seed coat.	Average height = 42 cm.	4859
+14	Arabidopsis	AT3G18460	AT3G18460	0.000	Pale brown seeds.	Somewhat dark-green plants.	4859
+14	Arabidopsis	AT3G18460	AT3G18460	0.000	Pale brown seeds.	Average height = 42 cm.	4859
+14	Arabidopsis	AT3G18460	AT3G18460	0.000	Average height = 38 cm.	Somewhat dark-green plants.	4859
+14	Arabidopsis	AT3G18460	AT3G18460	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat dark-green plants.	4859
+14	Arabidopsis	AT3G18460	AT3G18460	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 42 cm.	4859
+15	Arabidopsis	TTG2	At2g37260	1.000	Yellow seed coat.	Yellow seed coat.	2621
+15	Arabidopsis	TTG2	At2g37260	0.769	Yellow seed coat.	Pale seed coats.	2621
+15	Arabidopsis	TTG2	At2g37260	0.646	Pale brown seeds.	Pale brown seeds and unbranched trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.555	Yellow seed coat.	Seed coat mucilage absent.	2621
+15	Arabidopsis	TTG2	At2g37260	0.438	Pale brown seeds.	Pale seed coats.	2621
+15	Arabidopsis	TTG2	At2g37260	0.385	Yellow seed coat.	Seed coat paler than wild type, darker than ttg1.	2621
+15	Arabidopsis	TTG2	At2g37260	0.281	Pale brown seeds.	Smaller seeds.	2621
+15	Arabidopsis	TTG2	At2g37260	0.264	Yellow seed coat.	Smaller seeds.	2621
+15	Arabidopsis	TTG2	At2g37260	0.223	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Smaller seeds.	2621
+15	Arabidopsis	TTG2	At2g37260	0.193	Pale brown seeds.	Yellow seed coat.	2621
+15	Arabidopsis	TTG2	At2g37260	0.190	Pale brown seeds.	Seed mucilage defects.	2621
+15	Arabidopsis	TTG2	At2g37260	0.179	Yellow seed coat.	Seed mucilage defects.	2621
+15	Arabidopsis	TTG2	At2g37260	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seed coat.	2621
+15	Arabidopsis	TTG2	At2g37260	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale seed coats.	2621
+15	Arabidopsis	TTG2	At2g37260	0.151	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seed mucilage defects.	2621
+15	Arabidopsis	TTG2	At2g37260	0.144	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seed coat paler than wild type, darker than ttg1.	2621
+15	Arabidopsis	TTG2	At2g37260	0.139	Pale brown seeds.	Seed coat mucilage absent.	2621
+15	Arabidopsis	TTG2	At2g37260	0.125	Yellow seed coat.	Pale brown seeds and unbranched trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.110	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seed coat mucilage absent.	2621
+15	Arabidopsis	TTG2	At2g37260	0.105	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale brown seeds and unbranched trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.097	Pale brown seeds.	Seed coat paler than wild type, darker than ttg1.	2621
+15	Arabidopsis	TTG2	At2g37260	0.065	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced trichome numbers.Trichomes that do form have reduced (e.g.	2621
+15	Arabidopsis	TTG2	At2g37260	0.061	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Trichomes reduced in number.	2621
+15	Arabidopsis	TTG2	At2g37260	0.041	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Trichomes reduced in number, simple.	2621
+15	Arabidopsis	TTG2	At2g37260	0.036	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced number of trichomes and abnormal trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Yellow seed coat.	Abnormal trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Yellow seed coat.	Trichomes reduced in number.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Yellow seed coat.	Trichomes reduced in number, simple.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Yellow seed coat.	Reduced trichome numbers.Trichomes that do form have reduced (e.g.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Yellow seed coat.	Single) branch numbers.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Yellow seed coat.	Clusters of unbranched trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Yellow seed coat.	Reduced number of trichomes and abnormal trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Abnormal trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Trichomes reduced in number.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Trichomes reduced in number, simple.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Reduced trichome numbers.Trichomes that do form have reduced (e.g.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Single) branch numbers.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Clusters of unbranched trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Reduced number of trichomes and abnormal trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Abnormal trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Yellow seed coat.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Seed coat paler than wild type, darker than ttg1.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Trichomes reduced in number.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Seed mucilage defects.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Trichomes reduced in number, simple.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Seed coat mucilage absent.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Pale brown seeds and unbranched trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Reduced trichome numbers.Trichomes that do form have reduced (e.g.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Single) branch numbers.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Clusters of unbranched trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Reduced number of trichomes and abnormal trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Pale seed coats.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Average height = 38 cm.	Smaller seeds.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Abnormal trichomes.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Single) branch numbers.	2621
+15	Arabidopsis	TTG2	At2g37260	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Clusters of unbranched trichomes.	2621
+16	Arabidopsis	CLE44	AT4G13195	1.000	Average height = 38 cm.	Average height = 33 cm.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.445	Yellow seed coat.	Segregating for 15% yellow seeds.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.208	Pale brown seeds.	Segregating for 15% yellow seeds.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.165	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating for 15% yellow seeds.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.000	Yellow seed coat.	Short internodes.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.000	Yellow seed coat.	Short siliques.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.000	Yellow seed coat.	Average height = 33 cm.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.000	Pale brown seeds.	Short internodes.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.000	Pale brown seeds.	Short siliques.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.000	Pale brown seeds.	Average height = 33 cm.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.000	Average height = 38 cm.	Short internodes.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.000	Average height = 38 cm.	Short siliques.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.000	Average height = 38 cm.	Segregating for 15% yellow seeds.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	5128
+16	Arabidopsis	CLE44	AT4G13195	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 33 cm.	5128
+17	Arabidopsis	ARPC3	AT1G60430	1.000	Average height = 38 cm.	Average height = 33 cm.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.445	Yellow seed coat.	Segregating for 15% yellow seeds.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.208	Pale brown seeds.	Segregating for 15% yellow seeds.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.165	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating for 15% yellow seeds.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.000	Yellow seed coat.	Short internodes.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.000	Yellow seed coat.	Short siliques.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.000	Yellow seed coat.	Average height = 33 cm.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.000	Pale brown seeds.	Short internodes.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.000	Pale brown seeds.	Short siliques.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.000	Pale brown seeds.	Average height = 33 cm.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.000	Average height = 38 cm.	Short internodes.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.000	Average height = 38 cm.	Short siliques.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.000	Average height = 38 cm.	Segregating for 15% yellow seeds.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	4306
+17	Arabidopsis	ARPC3	AT1G60430	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 33 cm.	4306
+18	Arabidopsis	SNF4	AT1G09020	1.000	Average height = 38 cm.	Average height = 33 cm.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.445	Yellow seed coat.	Segregating for 15% yellow seeds.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.208	Pale brown seeds.	Segregating for 15% yellow seeds.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.165	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating for 15% yellow seeds.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.000	Yellow seed coat.	Short internodes.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.000	Yellow seed coat.	Short siliques.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.000	Yellow seed coat.	Average height = 33 cm.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.000	Pale brown seeds.	Short internodes.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.000	Pale brown seeds.	Short siliques.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.000	Pale brown seeds.	Average height = 33 cm.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.000	Average height = 38 cm.	Short internodes.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.000	Average height = 38 cm.	Short siliques.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.000	Average height = 38 cm.	Segregating for 15% yellow seeds.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	4056
+18	Arabidopsis	SNF4	AT1G09020	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 33 cm.	4056
+19	Arabidopsis	TT16	At5g23260	1.000	Yellow seed coat.	Yellow seed coat.	111
+19	Arabidopsis	TT16	At5g23260	1.000	Average height = 38 cm.	Average height = 20 cm.	111
+19	Arabidopsis	TT16	At5g23260	0.669	Yellow seed coat.	Abnormal seed coat coloration.	111
+19	Arabidopsis	TT16	At5g23260	0.642	Yellow seed coat.	Yellow seeds.	111
+19	Arabidopsis	TT16	At5g23260	0.300	Pale brown seeds.	Yellow seeds.	111
+19	Arabidopsis	TT16	At5g23260	0.254	Pale brown seeds.	Large seeds.	111
+19	Arabidopsis	TT16	At5g23260	0.239	Yellow seed coat.	Large seeds.	111
+19	Arabidopsis	TT16	At5g23260	0.238	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds.	111
+19	Arabidopsis	TT16	At5g23260	0.201	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Large seeds.	111
+19	Arabidopsis	TT16	At5g23260	0.193	Pale brown seeds.	Yellow seed coat.	111
+19	Arabidopsis	TT16	At5g23260	0.168	Pale brown seeds.	Abnormal seed coat coloration.	111
+19	Arabidopsis	TT16	At5g23260	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seed coat.	111
+19	Arabidopsis	TT16	At5g23260	0.133	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Abnormal seed coat coloration.	111
+19	Arabidopsis	TT16	At5g23260	0.108	Pale brown seeds.	Altered seed pigmentation pattern due to a lack of proanthocyanidin (PA) accumulation in the endothelium.	111
+19	Arabidopsis	TT16	At5g23260	0.101	Yellow seed coat.	Altered seed pigmentation pattern due to a lack of proanthocyanidin (PA) accumulation in the endothelium.	111
+19	Arabidopsis	TT16	At5g23260	0.085	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Altered seed pigmentation pattern due to a lack of proanthocyanidin (PA) accumulation in the endothelium.	111
+19	Arabidopsis	TT16	At5g23260	0.085	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced fertility.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Yellow seed coat.	Small rosettes.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Yellow seed coat.	Slow growth.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Yellow seed coat.	Short internodes.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Yellow seed coat.	Short pedicels.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Yellow seed coat.	Short siliques.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Yellow seed coat.	Reduced fertility.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Yellow seed coat.	Somewhat short plants.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Yellow seed coat.	Average height = 20 cm.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Yellow seed coat.	The inner cell layer of the inner integument showed an abnormal cell shape.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Yellow seed coat.	The endothelial layer may be absent or the identity of this cell layer is changed.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Pale brown seeds.	Small rosettes.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Pale brown seeds.	Slow growth.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Pale brown seeds.	Short internodes.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Pale brown seeds.	Short pedicels.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Pale brown seeds.	Short siliques.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Pale brown seeds.	Reduced fertility.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Pale brown seeds.	Somewhat short plants.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Pale brown seeds.	Average height = 20 cm.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Pale brown seeds.	The inner cell layer of the inner integument showed an abnormal cell shape.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Pale brown seeds.	The endothelial layer may be absent or the identity of this cell layer is changed.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	Abnormal seed coat coloration.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	Large seeds.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	Yellow seeds.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	Small rosettes.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	Slow growth.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	Short internodes.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	Short pedicels.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	Short siliques.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	Reduced fertility.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	Somewhat short plants.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	Yellow seed coat.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	Altered seed pigmentation pattern due to a lack of proanthocyanidin (PA) accumulation in the endothelium.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	The inner cell layer of the inner integument showed an abnormal cell shape.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Average height = 38 cm.	The endothelial layer may be absent or the identity of this cell layer is changed.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small rosettes.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slow growth.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short pedicels.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short plants.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 20 cm.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	The inner cell layer of the inner integument showed an abnormal cell shape.	111
+19	Arabidopsis	TT16	At5g23260	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	The endothelial layer may be absent or the identity of this cell layer is changed.	111
+20	Arabidopsis	AT4G30880	AT4G30880	1.000	Average height = 38 cm.	Average height = 43 cm.	5273
+20	Arabidopsis	AT4G30880	AT4G30880	0.000	Yellow seed coat.	Somewhat small rosettes.	5273
+20	Arabidopsis	AT4G30880	AT4G30880	0.000	Yellow seed coat.	Dark-green plants.	5273
+20	Arabidopsis	AT4G30880	AT4G30880	0.000	Yellow seed coat.	Average height = 43 cm.	5273
+20	Arabidopsis	AT4G30880	AT4G30880	0.000	Pale brown seeds.	Somewhat small rosettes.	5273
+20	Arabidopsis	AT4G30880	AT4G30880	0.000	Pale brown seeds.	Dark-green plants.	5273
+20	Arabidopsis	AT4G30880	AT4G30880	0.000	Pale brown seeds.	Average height = 43 cm.	5273
+20	Arabidopsis	AT4G30880	AT4G30880	0.000	Average height = 38 cm.	Somewhat small rosettes.	5273
+20	Arabidopsis	AT4G30880	AT4G30880	0.000	Average height = 38 cm.	Dark-green plants.	5273
+20	Arabidopsis	AT4G30880	AT4G30880	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat small rosettes.	5273
+20	Arabidopsis	AT4G30880	AT4G30880	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Dark-green plants.	5273
+20	Arabidopsis	AT4G30880	AT4G30880	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 43 cm.	5273
+21	Arabidopsis	GH9B7	AT1G75680	1.000	Average height = 38 cm.	Average height = 39 cm.	4416
+21	Arabidopsis	GH9B7	AT1G75680	0.000	Yellow seed coat.	Somewhat narrow and pointy leaves.	4416
+21	Arabidopsis	GH9B7	AT1G75680	0.000	Yellow seed coat.	Very serrated leaf margins.	4416
+21	Arabidopsis	GH9B7	AT1G75680	0.000	Yellow seed coat.	Average height = 39 cm.	4416
+21	Arabidopsis	GH9B7	AT1G75680	0.000	Pale brown seeds.	Somewhat narrow and pointy leaves.	4416
+21	Arabidopsis	GH9B7	AT1G75680	0.000	Pale brown seeds.	Very serrated leaf margins.	4416
+21	Arabidopsis	GH9B7	AT1G75680	0.000	Pale brown seeds.	Average height = 39 cm.	4416
+21	Arabidopsis	GH9B7	AT1G75680	0.000	Average height = 38 cm.	Somewhat narrow and pointy leaves.	4416
+21	Arabidopsis	GH9B7	AT1G75680	0.000	Average height = 38 cm.	Very serrated leaf margins.	4416
+21	Arabidopsis	GH9B7	AT1G75680	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat narrow and pointy leaves.	4416
+21	Arabidopsis	GH9B7	AT1G75680	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Very serrated leaf margins.	4416
+21	Arabidopsis	GH9B7	AT1G75680	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 39 cm.	4416
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	1.000	Average height = 38 cm.	Average height = 33 cm.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.312	Yellow seed coat.	Green-yellow plants.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Yellow seed coat.	Short siliques.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Yellow seed coat.	Somewhat short plants.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Yellow seed coat.	Average height = 33 cm.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Pale brown seeds.	Green-yellow plants.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Pale brown seeds.	Short siliques.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Pale brown seeds.	Somewhat short plants.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Pale brown seeds.	Average height = 33 cm.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Average height = 38 cm.	Green-yellow plants.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Average height = 38 cm.	Short siliques.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Average height = 38 cm.	Somewhat short plants.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Green-yellow plants.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short plants.	4987
+22	Arabidopsis	LecRK-VIII.1	AT3G53380	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 33 cm.	4987
+23	Arabidopsis	TT1	At1g34790	1.000	Yellow seed coat.	Yellow seed coat.	2611
+23	Arabidopsis	TT1	At1g34790	0.627	Yellow seed coat.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2611
+23	Arabidopsis	TT1	At1g34790	0.472	Pale brown seeds.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2611
+23	Arabidopsis	TT1	At1g34790	0.256	Yellow seed coat.	GA responsive dwarf, transparent testa, yellow seeds.	2611
+23	Arabidopsis	TT1	At1g34790	0.228	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Early flowering compared to wild type.	2611
+23	Arabidopsis	TT1	At1g34790	0.212	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Much reduced fertility compared to wild type Ler.	2611
+23	Arabidopsis	TT1	At1g34790	0.193	Pale brown seeds.	Yellow seed coat.	2611
+23	Arabidopsis	TT1	At1g34790	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds due to absence of brown pigment in seed coat (testa).	2611
+23	Arabidopsis	TT1	At1g34790	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seed coat.	2611
+23	Arabidopsis	TT1	At1g34790	0.120	Pale brown seeds.	GA responsive dwarf, transparent testa, yellow seeds.	2611
+23	Arabidopsis	TT1	At1g34790	0.101	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced pollen levels than wild type Ler and filaments shorter than carpels.	2611
+23	Arabidopsis	TT1	At1g34790	0.095	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	GA responsive dwarf, transparent testa, yellow seeds.	2611
+23	Arabidopsis	TT1	At1g34790	0.088	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Stems are 35% taller than that of wild type Ler.	2611
+23	Arabidopsis	TT1	At1g34790	0.084	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	2611
+23	Arabidopsis	TT1	At1g34790	0.066	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	The initiation of abaxial trichomes occurs marginally earlier than those of wild type Ler.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Yellow seed coat.	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Yellow seed coat.	Segregating (40%) for small, dark-green rosettes with asymmetric leaves.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Yellow seed coat.	Very slow growth, dwarf and sterile plants.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Yellow seed coat.	Early flowering compared to wild type.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Yellow seed coat.	No visible phenotype.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Yellow seed coat.	The initiation of abaxial trichomes occurs marginally earlier than those of wild type Ler.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Yellow seed coat.	Much reduced fertility compared to wild type Ler.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Yellow seed coat.	Reduced pollen levels than wild type Ler and filaments shorter than carpels.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Yellow seed coat.	Stems are 35% taller than that of wild type Ler.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Pale brown seeds.	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Pale brown seeds.	Segregating (40%) for small, dark-green rosettes with asymmetric leaves.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Pale brown seeds.	Very slow growth, dwarf and sterile plants.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Pale brown seeds.	Early flowering compared to wild type.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Pale brown seeds.	No visible phenotype.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Pale brown seeds.	The initiation of abaxial trichomes occurs marginally earlier than those of wild type Ler.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Pale brown seeds.	Much reduced fertility compared to wild type Ler.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Pale brown seeds.	Reduced pollen levels than wild type Ler and filaments shorter than carpels.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Pale brown seeds.	Stems are 35% taller than that of wild type Ler.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Average height = 38 cm.	Yellow seed coat.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Average height = 38 cm.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Average height = 38 cm.	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Average height = 38 cm.	GA responsive dwarf, transparent testa, yellow seeds.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Average height = 38 cm.	Segregating (40%) for small, dark-green rosettes with asymmetric leaves.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Average height = 38 cm.	Very slow growth, dwarf and sterile plants.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Average height = 38 cm.	Early flowering compared to wild type.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Average height = 38 cm.	No visible phenotype.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Average height = 38 cm.	The initiation of abaxial trichomes occurs marginally earlier than those of wild type Ler.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Average height = 38 cm.	Much reduced fertility compared to wild type Ler.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Average height = 38 cm.	Reduced pollen levels than wild type Ler and filaments shorter than carpels.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Average height = 38 cm.	Stems are 35% taller than that of wild type Ler.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating (40%) for small, dark-green rosettes with asymmetric leaves.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Very slow growth, dwarf and sterile plants.	2611
+23	Arabidopsis	TT1	At1g34790	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No visible phenotype.	2611
+24	Arabidopsis	CASP1	AT2G36100	1.000	Average height = 38 cm.	Average height = 20 cm.	4631
+24	Arabidopsis	CASP1	AT2G36100	0.136	Yellow seed coat.	Segregating for very small and yellow-green rosettes that eventually die (30%).	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Yellow seed coat.	Survived plants are short, short internodes.	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Yellow seed coat.	Short siliques.	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Yellow seed coat.	Average height = 20 cm.	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Pale brown seeds.	Segregating for very small and yellow-green rosettes that eventually die (30%).	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Pale brown seeds.	Survived plants are short, short internodes.	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Pale brown seeds.	Short siliques.	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Pale brown seeds.	Average height = 20 cm.	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Average height = 38 cm.	Segregating for very small and yellow-green rosettes that eventually die (30%).	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Average height = 38 cm.	Survived plants are short, short internodes.	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Average height = 38 cm.	Short siliques.	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating for very small and yellow-green rosettes that eventually die (30%).	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Survived plants are short, short internodes.	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	4631
+24	Arabidopsis	CASP1	AT2G36100	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 20 cm.	4631
+25	Arabidopsis	RECA3	AT3G10140	1.000	Average height = 38 cm.	Average height = 28 cm.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.210	Pale brown seeds.	Segregating for very small and pale green rosettes (20%).	4786
+25	Arabidopsis	RECA3	AT3G10140	0.085	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced fertility.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.054	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced apical dominance.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Yellow seed coat.	Segregating for very small and pale green rosettes (20%).	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Yellow seed coat.	Plants look like Ler-0 with very small siliques.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Yellow seed coat.	Reduced apical dominance.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Yellow seed coat.	Reduced fertility.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Yellow seed coat.	Average height = 28 cm.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Pale brown seeds.	Plants look like Ler-0 with very small siliques.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Pale brown seeds.	Reduced apical dominance.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Pale brown seeds.	Reduced fertility.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Pale brown seeds.	Average height = 28 cm.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Average height = 38 cm.	Segregating for very small and pale green rosettes (20%).	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Average height = 38 cm.	Plants look like Ler-0 with very small siliques.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Average height = 38 cm.	Reduced apical dominance.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Average height = 38 cm.	Reduced fertility.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating for very small and pale green rosettes (20%).	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants look like Ler-0 with very small siliques.	4786
+25	Arabidopsis	RECA3	AT3G10140	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 28 cm.	4786
+26	Arabidopsis	AT1G62350	AT1G62350	1.000	Average height = 38 cm.	Average height = 45 cm.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.051	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced fertility in lower inflorescences.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Yellow seed coat.	Flowers lack petals.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Yellow seed coat.	Increased number of lateral inflorescences.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Yellow seed coat.	Reduced fertility in lower inflorescences.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Yellow seed coat.	Average height = 45 cm.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Pale brown seeds.	Flowers lack petals.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Pale brown seeds.	Increased number of lateral inflorescences.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Pale brown seeds.	Reduced fertility in lower inflorescences.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Pale brown seeds.	Average height = 45 cm.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Average height = 38 cm.	Flowers lack petals.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Average height = 38 cm.	Increased number of lateral inflorescences.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Average height = 38 cm.	Reduced fertility in lower inflorescences.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Flowers lack petals.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Increased number of lateral inflorescences.	4320
+26	Arabidopsis	AT1G62350	AT1G62350	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 45 cm.	4320
+27	Arabidopsis	BPC3	AT1G68120	1.000	Average height = 38 cm.	Average height = 33 cm.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.445	Yellow seed coat.	Segregating for 15% yellow seeds.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.208	Pale brown seeds.	Segregating for 15% yellow seeds.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.165	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating for 15% yellow seeds.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.021	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slightly reduced vigor, perforated gynoecium septum, some reduction in female fertility, sporadic ovule abnormalities.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Yellow seed coat.	Slightly reduced vigor, perforated gynoecium septum, some reduction in female fertility, sporadic ovule abnormalities.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Yellow seed coat.	Occasional perforated gynoecium septum, slight reduction in female fertility, sporadic ovule abnormalities.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Yellow seed coat.	No visible phenotype.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Yellow seed coat.	Short internodes.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Yellow seed coat.	Short siliques.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Yellow seed coat.	Average height = 33 cm.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Pale brown seeds.	Slightly reduced vigor, perforated gynoecium septum, some reduction in female fertility, sporadic ovule abnormalities.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Pale brown seeds.	Occasional perforated gynoecium septum, slight reduction in female fertility, sporadic ovule abnormalities.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Pale brown seeds.	No visible phenotype.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Pale brown seeds.	Short internodes.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Pale brown seeds.	Short siliques.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Pale brown seeds.	Average height = 33 cm.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Average height = 38 cm.	Slightly reduced vigor, perforated gynoecium septum, some reduction in female fertility, sporadic ovule abnormalities.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Average height = 38 cm.	Occasional perforated gynoecium septum, slight reduction in female fertility, sporadic ovule abnormalities.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Average height = 38 cm.	No visible phenotype.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Average height = 38 cm.	Short internodes.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Average height = 38 cm.	Short siliques.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Average height = 38 cm.	Segregating for 15% yellow seeds.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Occasional perforated gynoecium septum, slight reduction in female fertility, sporadic ovule abnormalities.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No visible phenotype.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	4361
+27	Arabidopsis	BPC3	AT1G68120	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 33 cm.	4361
+28	Arabidopsis	DRD1	At2g16390	1.000	Average height = 38 cm.	Average height = 36 cm.	1737
+28	Arabidopsis	DRD1	At2g16390	0.032	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced RNA-directed DNA methylation.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Yellow seed coat.	Reduced RNA-directed DNA methylation.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Yellow seed coat.	No visible phenotype.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Yellow seed coat.	Average height = 36 cm.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Yellow seed coat.	Mutations nearly eliminate non-CpG methylation at a target promoter but do not affect rDNA or centromere methylation.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Pale brown seeds.	Reduced RNA-directed DNA methylation.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Pale brown seeds.	No visible phenotype.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Pale brown seeds.	Average height = 36 cm.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Pale brown seeds.	Mutations nearly eliminate non-CpG methylation at a target promoter but do not affect rDNA or centromere methylation.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Average height = 38 cm.	Reduced RNA-directed DNA methylation.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Average height = 38 cm.	No visible phenotype.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Average height = 38 cm.	Mutations nearly eliminate non-CpG methylation at a target promoter but do not affect rDNA or centromere methylation.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No visible phenotype.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 36 cm.	1737
+28	Arabidopsis	DRD1	At2g16390	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Mutations nearly eliminate non-CpG methylation at a target promoter but do not affect rDNA or centromere methylation.	1737
+29	Arabidopsis	RR10	AT4G31920	1.000	Average height = 38 cm.	Average height = 36 cm.	5277
+29	Arabidopsis	RR10	AT4G31920	0.030	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced sensitivity to cytokinin inhibition on root elongation and lateral root formation.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Yellow seed coat.	No visible phenotype.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Yellow seed coat.	Average height = 36 cm.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Yellow seed coat.	Reduced sensitivity to cytokinin inhibition on root elongation and lateral root formation.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Yellow seed coat.	No significant change in the sensitivity to ethylene.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Pale brown seeds.	No visible phenotype.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Pale brown seeds.	Average height = 36 cm.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Pale brown seeds.	Reduced sensitivity to cytokinin inhibition on root elongation and lateral root formation.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Pale brown seeds.	No significant change in the sensitivity to ethylene.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Average height = 38 cm.	No visible phenotype.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Average height = 38 cm.	Reduced sensitivity to cytokinin inhibition on root elongation and lateral root formation.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Average height = 38 cm.	No significant change in the sensitivity to ethylene.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No visible phenotype.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 36 cm.	5277
+29	Arabidopsis	RR10	AT4G31920	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No significant change in the sensitivity to ethylene.	5277
+30	Arabidopsis	SUT2	AT2G02860	1.000	Average height = 38 cm.	Average height = 28 cm.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Yellow seed coat.	Short internodes.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Yellow seed coat.	Upright plants.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Yellow seed coat.	Short siliques.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Yellow seed coat.	Average height = 28 cm.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Pale brown seeds.	Short internodes.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Pale brown seeds.	Upright plants.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Pale brown seeds.	Short siliques.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Pale brown seeds.	Average height = 28 cm.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Average height = 38 cm.	Short internodes.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Average height = 38 cm.	Upright plants.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Average height = 38 cm.	Short siliques.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Upright plants.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	4468
+30	Arabidopsis	SUT2	AT2G02860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 28 cm.	4468
+31	Arabidopsis	TTG1	At5g24520	1.000	Yellow seed coat.	Yellow seed coat.	2620
+31	Arabidopsis	TTG1	At5g24520	1.000	Average height = 38 cm.	Average height = 28 cm.	2620
+31	Arabidopsis	TTG1	At5g24520	1.000	Average height = 38 cm.	Average height = 23 cm.	2620
+31	Arabidopsis	TTG1	At5g24520	0.642	Yellow seed coat.	Yellow seeds.	2620
+31	Arabidopsis	TTG1	At5g24520	0.627	Yellow seed coat.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2620
+31	Arabidopsis	TTG1	At5g24520	0.605	Yellow seed coat.	Transparent seed coat.	2620
+31	Arabidopsis	TTG1	At5g24520	0.574	Yellow seed coat.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2620
+31	Arabidopsis	TTG1	At5g24520	0.553	Yellow seed coat.	Root hair patterning, anthocyanin accumulation, brown seed coat pigmentation, and seed coat mucilage secretion are normal.	2620
+31	Arabidopsis	TTG1	At5g24520	0.483	Yellow seed coat.	Yellow seeds, aberrant seed coat structure, lacks anthocyanin in shoots, lacks trichomes on stem base and leaves.	2620
+31	Arabidopsis	TTG1	At5g24520	0.472	Pale brown seeds.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2620
+31	Arabidopsis	TTG1	At5g24520	0.431	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2620
+31	Arabidopsis	TTG1	At5g24520	0.413	Yellow seed coat.	Disruption of the synthesis of brown pigment in seed coat (testa).	2620
+31	Arabidopsis	TTG1	At5g24520	0.373	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa).	2620
+31	Arabidopsis	TTG1	At5g24520	0.319	Pale brown seeds.	Root hair patterning, anthocyanin accumulation, brown seed coat pigmentation, and seed coat mucilage secretion are normal.	2620
+31	Arabidopsis	TTG1	At5g24520	0.311	Yellow seed coat.	Absence of the ruthenium red-staining seed mucilage, abnormal appearance of cells of dry seed coat in scanning electron microscope.	2620
+31	Arabidopsis	TTG1	At5g24520	0.300	Pale brown seeds.	Yellow seeds.	2620
+31	Arabidopsis	TTG1	At5g24520	0.283	Yellow seed coat.	Yellow green in appearence.	2620
+31	Arabidopsis	TTG1	At5g24520	0.238	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds.	2620
+31	Arabidopsis	TTG1	At5g24520	0.231	Yellow seed coat.	Neither root hair patterning, anthocyanin (flavonoid) biosynthesis, nor seed coat mucilage production are affected in urm23, distinguishing this allele from all other known ttg1 alleles.	2620
+31	Arabidopsis	TTG1	At5g24520	0.210	Pale brown seeds.	Segregating for very small and pale green rosettes (20%).	2620
+31	Arabidopsis	TTG1	At5g24520	0.193	Pale brown seeds.	Yellow seed coat.	2620
+31	Arabidopsis	TTG1	At5g24520	0.163	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds due to absence of brown pigment in seed coat (testa).	2620
+31	Arabidopsis	TTG1	At5g24520	0.158	Pale brown seeds.	Yellow seeds, aberrant seed coat structure, lacks anthocyanin in shoots, lacks trichomes on stem base and leaves.	2620
+31	Arabidopsis	TTG1	At5g24520	0.153	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seed coat.	2620
+31	Arabidopsis	TTG1	At5g24520	0.152	Pale brown seeds.	Transparent seed coat.	2620
+31	Arabidopsis	TTG1	At5g24520	0.149	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2620
+31	Arabidopsis	TTG1	At5g24520	0.126	Pale brown seeds.	Absence of the ruthenium red-staining seed mucilage, abnormal appearance of cells of dry seed coat in scanning electron microscope.	2620
+31	Arabidopsis	TTG1	At5g24520	0.125	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds, aberrant seed coat structure, lacks anthocyanin in shoots, lacks trichomes on stem base and leaves.	2620
+31	Arabidopsis	TTG1	At5g24520	0.120	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Transparent seed coat.	2620
+31	Arabidopsis	TTG1	At5g24520	0.110	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Root hair patterning, anthocyanin accumulation, brown seed coat pigmentation, and seed coat mucilage secretion are normal.	2620
+31	Arabidopsis	TTG1	At5g24520	0.100	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Absence of the ruthenium red-staining seed mucilage, abnormal appearance of cells of dry seed coat in scanning electron microscope.	2620
+31	Arabidopsis	TTG1	At5g24520	0.085	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced fertility.	2620
+31	Arabidopsis	TTG1	At5g24520	0.082	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Disruption of the synthesis of brown pigment in seed coat (testa).	2620
+31	Arabidopsis	TTG1	At5g24520	0.058	Pale brown seeds.	Neither root hair patterning, anthocyanin (flavonoid) biosynthesis, nor seed coat mucilage production are affected in urm23, distinguishing this allele from all other known ttg1 alleles.	2620
+31	Arabidopsis	TTG1	At5g24520	0.054	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced apical dominance.	2620
+31	Arabidopsis	TTG1	At5g24520	0.047	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Leaves reduced in number, often distorted in shape.	2620
+31	Arabidopsis	TTG1	At5g24520	0.046	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Neither root hair patterning, anthocyanin (flavonoid) biosynthesis, nor seed coat mucilage production are affected in urm23, distinguishing this allele from all other known ttg1 alleles.	2620
+31	Arabidopsis	TTG1	At5g24520	0.038	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Cotyledons often reduced in number, or discoid.	2620
+31	Arabidopsis	TTG1	At5g24520	0.025	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	GFP is expressed in all stages of differentiating root epidermal cells, in both hair (H) and non-hair (N) cell types, although preferentially in the N cells.	2620
+31	Arabidopsis	TTG1	At5g24520	0.023	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Severely reduced trichome induction in response to mechanical wounding or methyl jasmonate treatment.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Abnormal root hair development.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Abnormal trichome development.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Abnormal trichome and root hair development.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Anthocyanins absent in leaves, stems and all tissues.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	No trichomes on leaf surfaces or stem base.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Without pollen.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Trichomes absent on stems and leaves.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Severely reduced trichome induction in response to mechanical wounding or methyl jasmonate treatment.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Urm23 behaves as incompletely dominant in the presence of gl1-2 mutation.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Very weak allele of ttg1.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	~5% of leaf trichomes develop next to one another in clusters.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Trichome branch number is not affected.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	No trichomes.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Excessive root hair production.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	GFP is expressed in all stages of differentiating root epidermal cells, in both hair (H) and non-hair (N) cell types, although preferentially in the N cells.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Strong allele.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Apical meristem usually produces no flowers, elongates as pin-like stem.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Cotyledons often reduced in number, or discoid.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Leaves reduced in number, often distorted in shape.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Defective in polar auxin transport.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Segregating for very small and pale green rosettes (20%).	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Plants look like Ler-0 with very small siliques.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Reduced apical dominance.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Reduced fertility.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Average height = 28 cm.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Double mutant.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Small rosettes.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Compact plant.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Slow growth.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Short internodes.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Short siliques.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Average height = 23 cm.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Altered phenylpropanoid metabolism.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Urm23 mutant leaves produce almost normal trichomes with slight clustering phenotype.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Urm23 enhances the hypomorphic gl1-2 allele and results in almost complete glabrousness (loss of trichomes) in normal growth condition.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Urm23 gl1-2 double mutant does not increase trichomes at all in response to wounding or methyl jasmonate treatment.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Urm23 is dominant in gl1-2 background.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Yellow seed coat.	Gl1-2 is incompletely dominant in urm23 background.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Abnormal root hair development.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Abnormal trichome development.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Abnormal trichome and root hair development.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Anthocyanins absent in leaves, stems and all tissues.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	No trichomes on leaf surfaces or stem base.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Without pollen.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Trichomes absent on stems and leaves.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Yellow green in appearence.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Severely reduced trichome induction in response to mechanical wounding or methyl jasmonate treatment.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Urm23 behaves as incompletely dominant in the presence of gl1-2 mutation.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Very weak allele of ttg1.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	~5% of leaf trichomes develop next to one another in clusters.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Trichome branch number is not affected.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	No trichomes.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Excessive root hair production.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	GFP is expressed in all stages of differentiating root epidermal cells, in both hair (H) and non-hair (N) cell types, although preferentially in the N cells.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Strong allele.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Apical meristem usually produces no flowers, elongates as pin-like stem.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Cotyledons often reduced in number, or discoid.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Leaves reduced in number, often distorted in shape.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Defective in polar auxin transport.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Plants look like Ler-0 with very small siliques.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Reduced apical dominance.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Reduced fertility.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Average height = 28 cm.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Double mutant.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Small rosettes.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Compact plant.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Slow growth.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Short internodes.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Short siliques.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Average height = 23 cm.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Altered phenylpropanoid metabolism.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Urm23 mutant leaves produce almost normal trichomes with slight clustering phenotype.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Urm23 enhances the hypomorphic gl1-2 allele and results in almost complete glabrousness (loss of trichomes) in normal growth condition.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Urm23 gl1-2 double mutant does not increase trichomes at all in response to wounding or methyl jasmonate treatment.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Urm23 is dominant in gl1-2 background.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Pale brown seeds.	Gl1-2 is incompletely dominant in urm23 background.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Abnormal root hair development.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Abnormal trichome development.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Yellow seed coat.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Abnormal trichome and root hair development.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Anthocyanins absent in leaves, stems and all tissues.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	No trichomes on leaf surfaces or stem base.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Without pollen.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Yellow seeds.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Trichomes absent on stems and leaves.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Yellow green in appearence.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Severely reduced trichome induction in response to mechanical wounding or methyl jasmonate treatment.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Urm23 behaves as incompletely dominant in the presence of gl1-2 mutation.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Very weak allele of ttg1.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	~5% of leaf trichomes develop next to one another in clusters.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Trichome branch number is not affected.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Root hair patterning, anthocyanin accumulation, brown seed coat pigmentation, and seed coat mucilage secretion are normal.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Transparent seed coat.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	No trichomes.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Excessive root hair production.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	GFP is expressed in all stages of differentiating root epidermal cells, in both hair (H) and non-hair (N) cell types, although preferentially in the N cells.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Strong allele.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Apical meristem usually produces no flowers, elongates as pin-like stem.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Cotyledons often reduced in number, or discoid.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Leaves reduced in number, often distorted in shape.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Defective in polar auxin transport.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Yellow seeds, aberrant seed coat structure, lacks anthocyanin in shoots, lacks trichomes on stem base and leaves.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Segregating for very small and pale green rosettes (20%).	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Plants look like Ler-0 with very small siliques.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Reduced apical dominance.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Reduced fertility.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Double mutant.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Disruption of the synthesis of brown pigment in seed coat (testa).	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Small rosettes.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Compact plant.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Slow growth.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Short internodes.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Short siliques.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Altered phenylpropanoid metabolism.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Absence of the ruthenium red-staining seed mucilage, abnormal appearance of cells of dry seed coat in scanning electron microscope.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Urm23 mutant leaves produce almost normal trichomes with slight clustering phenotype.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Neither root hair patterning, anthocyanin (flavonoid) biosynthesis, nor seed coat mucilage production are affected in urm23, distinguishing this allele from all other known ttg1 alleles.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Urm23 enhances the hypomorphic gl1-2 allele and results in almost complete glabrousness (loss of trichomes) in normal growth condition.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Urm23 gl1-2 double mutant does not increase trichomes at all in response to wounding or methyl jasmonate treatment.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Urm23 is dominant in gl1-2 background.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Average height = 38 cm.	Gl1-2 is incompletely dominant in urm23 background.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Abnormal root hair development.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Abnormal trichome development.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Abnormal trichome and root hair development.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Anthocyanins absent in leaves, stems and all tissues.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No trichomes on leaf surfaces or stem base.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Without pollen.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Trichomes absent on stems and leaves.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow green in appearence.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Urm23 behaves as incompletely dominant in the presence of gl1-2 mutation.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Very weak allele of ttg1.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	~5% of leaf trichomes develop next to one another in clusters.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Trichome branch number is not affected.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No trichomes.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Excessive root hair production.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Strong allele.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Apical meristem usually produces no flowers, elongates as pin-like stem.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Defective in polar auxin transport.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating for very small and pale green rosettes (20%).	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants look like Ler-0 with very small siliques.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 28 cm.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Double mutant.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small rosettes.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Compact plant.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slow growth.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 23 cm.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Altered phenylpropanoid metabolism.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Urm23 mutant leaves produce almost normal trichomes with slight clustering phenotype.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Urm23 enhances the hypomorphic gl1-2 allele and results in almost complete glabrousness (loss of trichomes) in normal growth condition.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Urm23 gl1-2 double mutant does not increase trichomes at all in response to wounding or methyl jasmonate treatment.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Urm23 is dominant in gl1-2 background.	2620
+31	Arabidopsis	TTG1	At5g24520	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Gl1-2 is incompletely dominant in urm23 background.	2620
+32	Arabidopsis	ERF3	AT1G50640	1.000	Average height = 38 cm.	Average height = 37 cm.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.085	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced fertility.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Yellow seed coat.	Slightly dark-green rosettes.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Yellow seed coat.	Short internodes.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Yellow seed coat.	Short siliques.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Yellow seed coat.	Reduced fertility.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Yellow seed coat.	Average height = 37 cm.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Pale brown seeds.	Slightly dark-green rosettes.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Pale brown seeds.	Short internodes.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Pale brown seeds.	Short siliques.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Pale brown seeds.	Reduced fertility.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Pale brown seeds.	Average height = 37 cm.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Average height = 38 cm.	Slightly dark-green rosettes.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Average height = 38 cm.	Short internodes.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Average height = 38 cm.	Short siliques.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Average height = 38 cm.	Reduced fertility.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slightly dark-green rosettes.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	4248
+32	Arabidopsis	ERF3	AT1G50640	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 37 cm.	4248
+33	Arabidopsis	CAC3	AT2G38040	1.000	Average height = 38 cm.	Average height = 28 cm.	4638
+33	Arabidopsis	CAC3	AT2G38040	1.000	Average height = 38 cm.	Average height = 22 cm.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.210	Pale brown seeds.	Segregating for very small and pale green rosettes (20%).	4638
+33	Arabidopsis	CAC3	AT2G38040	0.085	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced fertility.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.054	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced apical dominance.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Yellow seed coat.	Segregating for very small and pale green rosettes (20%).	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Yellow seed coat.	Plants look like Ler-0 with very small siliques.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Yellow seed coat.	Reduced apical dominance.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Yellow seed coat.	Reduced fertility.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Yellow seed coat.	Average height = 28 cm.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Yellow seed coat.	Slow growth.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Yellow seed coat.	Short internodes.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Yellow seed coat.	Short pedicels.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Yellow seed coat.	Short siliques.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Yellow seed coat.	Somewhat short plants.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Yellow seed coat.	Average height = 22 cm.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Pale brown seeds.	Plants look like Ler-0 with very small siliques.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Pale brown seeds.	Reduced apical dominance.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Pale brown seeds.	Reduced fertility.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Pale brown seeds.	Average height = 28 cm.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Pale brown seeds.	Slow growth.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Pale brown seeds.	Short internodes.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Pale brown seeds.	Short pedicels.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Pale brown seeds.	Short siliques.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Pale brown seeds.	Somewhat short plants.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Pale brown seeds.	Average height = 22 cm.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Average height = 38 cm.	Segregating for very small and pale green rosettes (20%).	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Average height = 38 cm.	Plants look like Ler-0 with very small siliques.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Average height = 38 cm.	Reduced apical dominance.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Average height = 38 cm.	Reduced fertility.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Average height = 38 cm.	Slow growth.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Average height = 38 cm.	Short internodes.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Average height = 38 cm.	Short pedicels.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Average height = 38 cm.	Short siliques.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Average height = 38 cm.	Somewhat short plants.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating for very small and pale green rosettes (20%).	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants look like Ler-0 with very small siliques.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 28 cm.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slow growth.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short pedicels.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short plants.	4638
+33	Arabidopsis	CAC3	AT2G38040	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 22 cm.	4638
+34	Arabidopsis	ACA4	At2g41560	1.000	Average height = 38 cm.	Average height = 21 cm.	1378
+34	Arabidopsis	ACA4	At2g41560	1.000	Average height = 38 cm.	Average height = 20 cm.	1378
+34	Arabidopsis	ACA4	At2g41560	1.000	Average height = 38 cm.	Average height = 22 cm.	1378
+34	Arabidopsis	ACA4	At2g41560	0.136	Yellow seed coat.	Segregating for very small and yellow-green rosettes that eventually die (30%).	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Low penetrance of faint chlorotic spots.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Small and dark-green rosettes.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Epinastic leaves (leaf margins curled down) giving the appearance of narrow leaves.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Early flowering (bolting occurs 20 days after planting).	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Short internodes.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Short siliques.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Short plants.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Average height = 21 cm.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Survived plants are short, short internodes.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Average height = 20 cm.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Slow growth.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Short pedicels.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Somewhat short plants.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Yellow seed coat.	Average height = 22 cm.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Low penetrance of faint chlorotic spots.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Small and dark-green rosettes.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Epinastic leaves (leaf margins curled down) giving the appearance of narrow leaves.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Early flowering (bolting occurs 20 days after planting).	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Short internodes.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Short siliques.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Short plants.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Average height = 21 cm.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Segregating for very small and yellow-green rosettes that eventually die (30%).	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Survived plants are short, short internodes.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Average height = 20 cm.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Slow growth.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Short pedicels.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Somewhat short plants.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Pale brown seeds.	Average height = 22 cm.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Average height = 38 cm.	Low penetrance of faint chlorotic spots.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Average height = 38 cm.	Small and dark-green rosettes.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Average height = 38 cm.	Epinastic leaves (leaf margins curled down) giving the appearance of narrow leaves.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Average height = 38 cm.	Early flowering (bolting occurs 20 days after planting).	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Average height = 38 cm.	Short internodes.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Average height = 38 cm.	Short siliques.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Average height = 38 cm.	Short plants.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Average height = 38 cm.	Segregating for very small and yellow-green rosettes that eventually die (30%).	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Average height = 38 cm.	Survived plants are short, short internodes.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Average height = 38 cm.	Slow growth.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Average height = 38 cm.	Short pedicels.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Average height = 38 cm.	Somewhat short plants.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Low penetrance of faint chlorotic spots.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small and dark-green rosettes.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Epinastic leaves (leaf margins curled down) giving the appearance of narrow leaves.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Early flowering (bolting occurs 20 days after planting).	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short plants.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 21 cm.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating for very small and yellow-green rosettes that eventually die (30%).	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Survived plants are short, short internodes.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 20 cm.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slow growth.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short pedicels.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short plants.	1378
+34	Arabidopsis	ACA4	At2g41560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 22 cm.	1378
+35	Arabidopsis	TOC64-V	AT5G09420	1.000	Average height = 38 cm.	Average height = 38 cm.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Yellow seed coat.	Irregular leaf surface and irregular leaf margins.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Yellow seed coat.	Numerous lateral inflorescences, bushy plants.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Yellow seed coat.	Short siliques.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Yellow seed coat.	Average height = 38 cm.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Yellow seed coat.	No visible phenotype.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Pale brown seeds.	Irregular leaf surface and irregular leaf margins.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Pale brown seeds.	Numerous lateral inflorescences, bushy plants.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Pale brown seeds.	Short siliques.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Pale brown seeds.	Average height = 38 cm.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Pale brown seeds.	No visible phenotype.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Average height = 38 cm.	Irregular leaf surface and irregular leaf margins.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Average height = 38 cm.	Numerous lateral inflorescences, bushy plants.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Average height = 38 cm.	Short siliques.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Average height = 38 cm.	No visible phenotype.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Irregular leaf surface and irregular leaf margins.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Numerous lateral inflorescences, bushy plants.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 38 cm.	5401
+35	Arabidopsis	TOC64-V	AT5G09420	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No visible phenotype.	5401
+36	Arabidopsis	AT4G11911	AT4G11911	1.000	Average height = 38 cm.	Average height = 30 cm.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Yellow seed coat.	Small rosettes, slow growth.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Yellow seed coat.	Glabrous plants.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Yellow seed coat.	Leaf margins slightly serrated.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Yellow seed coat.	Short internodes.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Yellow seed coat.	Short siliques, relatively short plants.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Yellow seed coat.	Average height = 30 cm.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Pale brown seeds.	Small rosettes, slow growth.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Pale brown seeds.	Glabrous plants.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Pale brown seeds.	Leaf margins slightly serrated.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Pale brown seeds.	Short internodes.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Pale brown seeds.	Short siliques, relatively short plants.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Pale brown seeds.	Average height = 30 cm.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Average height = 38 cm.	Small rosettes, slow growth.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Average height = 38 cm.	Glabrous plants.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Average height = 38 cm.	Leaf margins slightly serrated.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Average height = 38 cm.	Short internodes.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Average height = 38 cm.	Short siliques, relatively short plants.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small rosettes, slow growth.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Glabrous plants.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Leaf margins slightly serrated.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques, relatively short plants.	5120
+36	Arabidopsis	AT4G11911	AT4G11911	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 30 cm.	5120
+37	Arabidopsis	AT2G27700	AT2G27700	1.000	Average height = 38 cm.	Average height = 22 cm.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Yellow seed coat.	Slow growth.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Yellow seed coat.	Short internodes.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Yellow seed coat.	Short pedicels.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Yellow seed coat.	Short siliques.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Yellow seed coat.	Somewhat short plants.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Yellow seed coat.	Average height = 22 cm.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Pale brown seeds.	Slow growth.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Pale brown seeds.	Short internodes.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Pale brown seeds.	Short pedicels.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Pale brown seeds.	Short siliques.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Pale brown seeds.	Somewhat short plants.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Pale brown seeds.	Average height = 22 cm.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Average height = 38 cm.	Slow growth.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Average height = 38 cm.	Short internodes.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Average height = 38 cm.	Short pedicels.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Average height = 38 cm.	Short siliques.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Average height = 38 cm.	Somewhat short plants.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slow growth.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short pedicels.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short plants.	4567
+37	Arabidopsis	AT2G27700	AT2G27700	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 22 cm.	4567
+38	Arabidopsis	XLG1	AT2G23460	1.000	Average height = 38 cm.	Average height = 22 cm.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Yellow seed coat.	Slow growth.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Yellow seed coat.	Short internodes.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Yellow seed coat.	Short pedicels.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Yellow seed coat.	Short siliques.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Yellow seed coat.	Somewhat short plants.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Yellow seed coat.	Average height = 22 cm.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Pale brown seeds.	Slow growth.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Pale brown seeds.	Short internodes.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Pale brown seeds.	Short pedicels.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Pale brown seeds.	Short siliques.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Pale brown seeds.	Somewhat short plants.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Pale brown seeds.	Average height = 22 cm.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Average height = 38 cm.	Slow growth.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Average height = 38 cm.	Short internodes.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Average height = 38 cm.	Short pedicels.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Average height = 38 cm.	Short siliques.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Average height = 38 cm.	Somewhat short plants.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slow growth.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short pedicels.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short plants.	4548
+38	Arabidopsis	XLG1	AT2G23460	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 22 cm.	4548
+39	Arabidopsis	PEX11A	AT1G47750	1.000	Average height = 38 cm.	Average height = 22 cm.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Yellow seed coat.	Slow growth.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Yellow seed coat.	Short internodes.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Yellow seed coat.	Short pedicels.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Yellow seed coat.	Short siliques.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Yellow seed coat.	Somewhat short plants.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Yellow seed coat.	Average height = 22 cm.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Pale brown seeds.	Slow growth.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Pale brown seeds.	Short internodes.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Pale brown seeds.	Short pedicels.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Pale brown seeds.	Short siliques.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Pale brown seeds.	Somewhat short plants.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Pale brown seeds.	Average height = 22 cm.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Average height = 38 cm.	Slow growth.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Average height = 38 cm.	Short internodes.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Average height = 38 cm.	Short pedicels.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Average height = 38 cm.	Short siliques.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Average height = 38 cm.	Somewhat short plants.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slow growth.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short pedicels.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short plants.	4228
+39	Arabidopsis	PEX11A	AT1G47750	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 22 cm.	4228
+40	Arabidopsis	MSH1	At3g24320	1.000	Average height = 38 cm.	Average height = 20 cm.	2586
+40	Arabidopsis	MSH1	At3g24320	0.725	Yellow seed coat.	Yellow seeds (lacks brown pigment in seed coat).	2586
+40	Arabidopsis	MSH1	At3g24320	0.545	Pale brown seeds.	Yellow seeds (lacks brown pigment in seed coat).	2586
+40	Arabidopsis	MSH1	At3g24320	0.188	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seeds (lacks brown pigment in seed coat).	2586
+40	Arabidopsis	MSH1	At3g24320	0.185	Yellow seed coat.	Plants variegated green, yellow and white.	2586
+40	Arabidopsis	MSH1	At3g24320	0.185	Yellow seed coat.	Green, yellow and white variegated plants.	2586
+40	Arabidopsis	MSH1	At3g24320	0.185	Yellow seed coat.	Plant variegated green, yellow and white.	2586
+40	Arabidopsis	MSH1	At3g24320	0.123	Yellow seed coat.	Green, yellow and white variegated with variation in sector size and shape.	2586
+40	Arabidopsis	MSH1	At3g24320	0.109	Yellow seed coat.	Green, yellow and white variegated plants with sharp demarcation of sectors.	2586
+40	Arabidopsis	MSH1	At3g24320	0.103	Yellow seed coat.	Green, yellow and white variegated, with irregular and diffuse demarcation of sectors.	2586
+40	Arabidopsis	MSH1	At3g24320	0.085	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced fertility.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Variegated leaves.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Variegated, glaborous (marked with gl1).	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Somoclonal variant.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Lacks trichomes on stems and leaves.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Segregating for eceriferum (cer) bright green stems and siliques (aproximately 27 percent).	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Asymmetric rosette leaves, leaf edges slightly curled under, somewhat triangular-shaped leaves.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Small rosettes.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Slow growth.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Short internodes.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Short pedicels.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Short siliques.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Reduced fertility.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Somewhat short plants.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Yellow seed coat.	Average height = 20 cm.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Variegated leaves.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Variegated, glaborous (marked with gl1).	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Somoclonal variant.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Plants variegated green, yellow and white.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Segregating for eceriferum (cer) bright green stems and siliques (aproximately 27 percent).	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Green, yellow and white variegated plants.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Green, yellow and white variegated plants with sharp demarcation of sectors.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Green, yellow and white variegated, with irregular and diffuse demarcation of sectors.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Asymmetric rosette leaves, leaf edges slightly curled under, somewhat triangular-shaped leaves.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Green, yellow and white variegated with variation in sector size and shape.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Plant variegated green, yellow and white.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Small rosettes.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Slow growth.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Short internodes.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Short pedicels.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Short siliques.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Reduced fertility.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Somewhat short plants.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Average height = 20 cm.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Variegated leaves.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Variegated, glaborous (marked with gl1).	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Somoclonal variant.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Plants variegated green, yellow and white.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Lacks trichomes on stems and leaves.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Segregating for eceriferum (cer) bright green stems and siliques (aproximately 27 percent).	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Green, yellow and white variegated plants.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Green, yellow and white variegated plants with sharp demarcation of sectors.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Yellow seeds (lacks brown pigment in seed coat).	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Green, yellow and white variegated, with irregular and diffuse demarcation of sectors.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Asymmetric rosette leaves, leaf edges slightly curled under, somewhat triangular-shaped leaves.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Green, yellow and white variegated with variation in sector size and shape.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Plant variegated green, yellow and white.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Small rosettes.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Slow growth.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Short internodes.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Short pedicels.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Short siliques.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Reduced fertility.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Average height = 38 cm.	Somewhat short plants.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Variegated leaves.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Variegated, glaborous (marked with gl1).	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somoclonal variant.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants variegated green, yellow and white.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lacks trichomes on stems and leaves.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Segregating for eceriferum (cer) bright green stems and siliques (aproximately 27 percent).	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Green, yellow and white variegated plants.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Green, yellow and white variegated plants with sharp demarcation of sectors.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Green, yellow and white variegated, with irregular and diffuse demarcation of sectors.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Asymmetric rosette leaves, leaf edges slightly curled under, somewhat triangular-shaped leaves.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Green, yellow and white variegated with variation in sector size and shape.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plant variegated green, yellow and white.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small rosettes.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slow growth.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short pedicels.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short plants.	2586
+40	Arabidopsis	MSH1	At3g24320	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 20 cm.	2586
+41	Arabidopsis	PGPP1	AT3G58830	1.000	Average height = 38 cm.	Average height = 42 cm.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.118	Pale brown seeds.	Pale-green with reduced PG and chlorophyll contents but no defect in embryo development, defective development of chloroplasts and impaired photosynthetic activity.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.025	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale-green with reduced PG and chlorophyll contents but no defect in embryo development, defective development of chloroplasts and impaired photosynthetic activity.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Yellow seed coat.	Light-green plants.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Yellow seed coat.	Average height = 42 cm.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Yellow seed coat.	Short roots, disorganized columella cells, irregularly divided cells and cellular structure of outer layer root tips deteriorated.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Yellow seed coat.	Pale-green with reduced PG and chlorophyll contents but no defect in embryo development, defective development of chloroplasts and impaired photosynthetic activity.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Yellow seed coat.	Shorter length of main roots (50% reduction at 14 days), proportional reduction in root length and number of lateral roots resulting in unaffected root density, extra division in columella cells in seedlings resulting in abnormal cellular architecture in root apices.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Yellow seed coat.	Root length of 14-day-old seedlings was significantly shorter.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Yellow seed coat.	In 7-day-old seedlings, extra division of columella cells was observed occasionally.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Pale brown seeds.	Light-green plants.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Pale brown seeds.	Average height = 42 cm.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Pale brown seeds.	Short roots, disorganized columella cells, irregularly divided cells and cellular structure of outer layer root tips deteriorated.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Pale brown seeds.	Shorter length of main roots (50% reduction at 14 days), proportional reduction in root length and number of lateral roots resulting in unaffected root density, extra division in columella cells in seedlings resulting in abnormal cellular architecture in root apices.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Pale brown seeds.	Root length of 14-day-old seedlings was significantly shorter.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Pale brown seeds.	In 7-day-old seedlings, extra division of columella cells was observed occasionally.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Average height = 38 cm.	Light-green plants.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Average height = 38 cm.	Short roots, disorganized columella cells, irregularly divided cells and cellular structure of outer layer root tips deteriorated.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Average height = 38 cm.	Pale-green with reduced PG and chlorophyll contents but no defect in embryo development, defective development of chloroplasts and impaired photosynthetic activity.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Average height = 38 cm.	Shorter length of main roots (50% reduction at 14 days), proportional reduction in root length and number of lateral roots resulting in unaffected root density, extra division in columella cells in seedlings resulting in abnormal cellular architecture in root apices.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Average height = 38 cm.	Root length of 14-day-old seedlings was significantly shorter.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Average height = 38 cm.	In 7-day-old seedlings, extra division of columella cells was observed occasionally.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Light-green plants.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 42 cm.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short roots, disorganized columella cells, irregularly divided cells and cellular structure of outer layer root tips deteriorated.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Shorter length of main roots (50% reduction at 14 days), proportional reduction in root length and number of lateral roots resulting in unaffected root density, extra division in columella cells in seedlings resulting in abnormal cellular architecture in root apices.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Root length of 14-day-old seedlings was significantly shorter.	5024
+41	Arabidopsis	PGPP1	AT3G58830	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	In 7-day-old seedlings, extra division of columella cells was observed occasionally.	5024
+42	Arabidopsis	PIN4	At2g01420	1.000	Average height = 38 cm.	Average height = 28 cm.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Yellow seed coat.	Abnormal seedling root cell patterning.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Yellow seed coat.	Embryo defective-Cotyledon.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Yellow seed coat.	Embryo defective.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Yellow seed coat.	Cotyledon.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Yellow seed coat.	No visible phenotype.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Yellow seed coat.	Average height = 28 cm.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Yellow seed coat.	Patterning defects in embryonic and seedling roots.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Pale brown seeds.	Abnormal seedling root cell patterning.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Pale brown seeds.	Embryo defective-Cotyledon.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Pale brown seeds.	Embryo defective.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Pale brown seeds.	Cotyledon.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Pale brown seeds.	No visible phenotype.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Pale brown seeds.	Average height = 28 cm.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Pale brown seeds.	Patterning defects in embryonic and seedling roots.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Average height = 38 cm.	Abnormal seedling root cell patterning.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Average height = 38 cm.	Embryo defective-Cotyledon.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Average height = 38 cm.	Embryo defective.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Average height = 38 cm.	Cotyledon.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Average height = 38 cm.	No visible phenotype.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Average height = 38 cm.	Patterning defects in embryonic and seedling roots.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Abnormal seedling root cell patterning.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Embryo defective-Cotyledon.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Embryo defective.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Cotyledon.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No visible phenotype.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 28 cm.	717
+42	Arabidopsis	PIN4	At2g01420	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Patterning defects in embryonic and seedling roots.	717
+43	Arabidopsis	PIN3	At1g70940	1.000	Average height = 38 cm.	Average height = 36 cm.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Yellow seed coat.	Abnormal phototropism.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Yellow seed coat.	Abnormal root gravitropism.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Yellow seed coat.	No visible phenotype.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Yellow seed coat.	Somewhat short hypocotyls.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Yellow seed coat.	No other plant visible phenotype.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Yellow seed coat.	Average height = 36 cm.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Yellow seed coat.	Phototropic defects similar to those of the d6pk single mutant without statistically significant differences of hypocotyl curvatures under blue light conditions.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Pale brown seeds.	Abnormal phototropism.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Pale brown seeds.	Abnormal root gravitropism.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Pale brown seeds.	No visible phenotype.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Pale brown seeds.	Somewhat short hypocotyls.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Pale brown seeds.	No other plant visible phenotype.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Pale brown seeds.	Average height = 36 cm.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Pale brown seeds.	Phototropic defects similar to those of the d6pk single mutant without statistically significant differences of hypocotyl curvatures under blue light conditions.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Average height = 38 cm.	Abnormal phototropism.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Average height = 38 cm.	Abnormal root gravitropism.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Average height = 38 cm.	No visible phenotype.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Average height = 38 cm.	Somewhat short hypocotyls.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Average height = 38 cm.	No other plant visible phenotype.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Average height = 38 cm.	Phototropic defects similar to those of the d6pk single mutant without statistically significant differences of hypocotyl curvatures under blue light conditions.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Abnormal phototropism.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Abnormal root gravitropism.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No visible phenotype.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short hypocotyls.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No other plant visible phenotype.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 36 cm.	96
+43	Arabidopsis	PIN3	At1g70940	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Phototropic defects similar to those of the d6pk single mutant without statistically significant differences of hypocotyl curvatures under blue light conditions.	96
+44	Arabidopsis	AtMKK2	At4g29810	1.000	Average height = 38 cm.	Average height = 37 cm.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.130	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Mutants have significantly less complex venation architecture compared to wild-type.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Yellow seed coat.	Sensitive to low temperature.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Yellow seed coat.	Sensitive to salt stress.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Yellow seed coat.	Sensitive to low temperature and salt stress.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Yellow seed coat.	Mutants have significantly less complex venation architecture compared to wild-type.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Yellow seed coat.	No visible phenotype.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Yellow seed coat.	Average height = 37 cm.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Yellow seed coat.	Phenotype resembles MPK4 mutant.Leaves are dark green and curled.Constitutively overproduces SA and exhibits enhanced resistance to biotrophic pathogens.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Yellow seed coat.	Insensitive to jasmonic acid.Enhanced basal expression of PR1 other SA dependent genes.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Pale brown seeds.	Sensitive to low temperature.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Pale brown seeds.	Sensitive to salt stress.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Pale brown seeds.	Sensitive to low temperature and salt stress.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Pale brown seeds.	Mutants have significantly less complex venation architecture compared to wild-type.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Pale brown seeds.	No visible phenotype.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Pale brown seeds.	Average height = 37 cm.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Pale brown seeds.	Phenotype resembles MPK4 mutant.Leaves are dark green and curled.Constitutively overproduces SA and exhibits enhanced resistance to biotrophic pathogens.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Pale brown seeds.	Insensitive to jasmonic acid.Enhanced basal expression of PR1 other SA dependent genes.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Average height = 38 cm.	Sensitive to low temperature.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Average height = 38 cm.	Sensitive to salt stress.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Average height = 38 cm.	Sensitive to low temperature and salt stress.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Average height = 38 cm.	Mutants have significantly less complex venation architecture compared to wild-type.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Average height = 38 cm.	No visible phenotype.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Average height = 38 cm.	Phenotype resembles MPK4 mutant.Leaves are dark green and curled.Constitutively overproduces SA and exhibits enhanced resistance to biotrophic pathogens.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Average height = 38 cm.	Insensitive to jasmonic acid.Enhanced basal expression of PR1 other SA dependent genes.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Sensitive to low temperature.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Sensitive to salt stress.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Sensitive to low temperature and salt stress.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No visible phenotype.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 37 cm.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Phenotype resembles MPK4 mutant.Leaves are dark green and curled.Constitutively overproduces SA and exhibits enhanced resistance to biotrophic pathogens.	2121
+44	Arabidopsis	AtMKK2	At4g29810	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Insensitive to jasmonic acid.Enhanced basal expression of PR1 other SA dependent genes.	2121
+45	Arabidopsis	AT5G37490	AT5G37490	1.000	Average height = 38 cm.	Average height = 20 cm.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.085	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced fertility.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Yellow seed coat.	Small rosettes.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Yellow seed coat.	Slow growth.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Yellow seed coat.	Short internodes.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Yellow seed coat.	Short pedicels.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Yellow seed coat.	Short siliques.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Yellow seed coat.	Reduced fertility.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Yellow seed coat.	Somewhat short plants.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Yellow seed coat.	Average height = 20 cm.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Pale brown seeds.	Small rosettes.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Pale brown seeds.	Slow growth.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Pale brown seeds.	Short internodes.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Pale brown seeds.	Short pedicels.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Pale brown seeds.	Short siliques.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Pale brown seeds.	Reduced fertility.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Pale brown seeds.	Somewhat short plants.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Pale brown seeds.	Average height = 20 cm.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Average height = 38 cm.	Small rosettes.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Average height = 38 cm.	Slow growth.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Average height = 38 cm.	Short internodes.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Average height = 38 cm.	Short pedicels.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Average height = 38 cm.	Short siliques.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Average height = 38 cm.	Reduced fertility.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Average height = 38 cm.	Somewhat short plants.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small rosettes.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slow growth.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short pedicels.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short plants.	5540
+45	Arabidopsis	AT5G37490	AT5G37490	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 20 cm.	5540
+46	Arabidopsis	PEX4	AT5G25760	1.000	Average height = 38 cm.	Average height = 24 cm.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.085	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced fertility.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Yellow seed coat.	Compact plant.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Yellow seed coat.	Short internodes.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Yellow seed coat.	Short pedicels.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Yellow seed coat.	Short siliques.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Yellow seed coat.	, numerous lateral inflorescences.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Yellow seed coat.	Reduced fertility.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Yellow seed coat.	Somewhat short plants.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Yellow seed coat.	Average height = 24 cm.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Pale brown seeds.	Compact plant.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Pale brown seeds.	Short internodes.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Pale brown seeds.	Short pedicels.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Pale brown seeds.	Short siliques.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Pale brown seeds.	, numerous lateral inflorescences.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Pale brown seeds.	Reduced fertility.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Pale brown seeds.	Somewhat short plants.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Pale brown seeds.	Average height = 24 cm.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Average height = 38 cm.	Compact plant.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Average height = 38 cm.	Short internodes.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Average height = 38 cm.	Short pedicels.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Average height = 38 cm.	Short siliques.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Average height = 38 cm.	, numerous lateral inflorescences.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Average height = 38 cm.	Reduced fertility.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Average height = 38 cm.	Somewhat short plants.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Compact plant.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short pedicels.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	, numerous lateral inflorescences.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short plants.	5512
+46	Arabidopsis	PEX4	AT5G25760	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 24 cm.	5512
+47	Arabidopsis	CNGC9	AT4G30560	1.000	Average height = 38 cm.	Average height = 20 cm.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.085	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced fertility.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Yellow seed coat.	Small rosettes.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Yellow seed coat.	Slow growth.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Yellow seed coat.	Short internodes.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Yellow seed coat.	Short pedicels.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Yellow seed coat.	Short siliques.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Yellow seed coat.	Reduced fertility.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Yellow seed coat.	Somewhat short plants.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Yellow seed coat.	Average height = 20 cm.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Pale brown seeds.	Small rosettes.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Pale brown seeds.	Slow growth.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Pale brown seeds.	Short internodes.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Pale brown seeds.	Short pedicels.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Pale brown seeds.	Short siliques.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Pale brown seeds.	Reduced fertility.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Pale brown seeds.	Somewhat short plants.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Pale brown seeds.	Average height = 20 cm.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Average height = 38 cm.	Small rosettes.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Average height = 38 cm.	Slow growth.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Average height = 38 cm.	Short internodes.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Average height = 38 cm.	Short pedicels.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Average height = 38 cm.	Short siliques.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Average height = 38 cm.	Reduced fertility.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Average height = 38 cm.	Somewhat short plants.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small rosettes.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slow growth.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short pedicels.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short plants.	5270
+47	Arabidopsis	CNGC9	AT4G30560	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 20 cm.	5270
+48	Arabidopsis	REM22	AT3G17010	1.000	Average height = 38 cm.	Average height = 20 cm.	4843
+48	Arabidopsis	REM22	AT3G17010	0.085	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Reduced fertility.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Yellow seed coat.	Small rosettes.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Yellow seed coat.	Slow growth.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Yellow seed coat.	Short internodes.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Yellow seed coat.	Short pedicels.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Yellow seed coat.	Short siliques.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Yellow seed coat.	Reduced fertility.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Yellow seed coat.	Somewhat short plants.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Yellow seed coat.	Average height = 20 cm.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Pale brown seeds.	Small rosettes.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Pale brown seeds.	Slow growth.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Pale brown seeds.	Short internodes.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Pale brown seeds.	Short pedicels.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Pale brown seeds.	Short siliques.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Pale brown seeds.	Reduced fertility.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Pale brown seeds.	Somewhat short plants.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Pale brown seeds.	Average height = 20 cm.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Average height = 38 cm.	Small rosettes.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Average height = 38 cm.	Slow growth.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Average height = 38 cm.	Short internodes.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Average height = 38 cm.	Short pedicels.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Average height = 38 cm.	Short siliques.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Average height = 38 cm.	Reduced fertility.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Average height = 38 cm.	Somewhat short plants.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small rosettes.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Slow growth.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short pedicels.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short siliques.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Somewhat short plants.	4843
+48	Arabidopsis	REM22	AT3G17010	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 20 cm.	4843
+49	Arabidopsis	AT2G43860	AT2G43860	1.000	Average height = 38 cm.	Average height = 45 cm.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.085	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Very reduced fertility.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Yellow seed coat.	Narrow, pointy leaves.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Yellow seed coat.	Elongated petioles.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Yellow seed coat.	Dark-green plants.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Yellow seed coat.	Numerous thin lateral inflorescences.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Yellow seed coat.	Very reduced fertility.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Yellow seed coat.	Small siliques.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Yellow seed coat.	Tall plants.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Yellow seed coat.	Average height = 45 cm.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Pale brown seeds.	Narrow, pointy leaves.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Pale brown seeds.	Elongated petioles.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Pale brown seeds.	Dark-green plants.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Pale brown seeds.	Numerous thin lateral inflorescences.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Pale brown seeds.	Very reduced fertility.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Pale brown seeds.	Small siliques.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Pale brown seeds.	Tall plants.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Pale brown seeds.	Average height = 45 cm.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Average height = 38 cm.	Narrow, pointy leaves.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Average height = 38 cm.	Elongated petioles.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Average height = 38 cm.	Dark-green plants.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Average height = 38 cm.	Numerous thin lateral inflorescences.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Average height = 38 cm.	Very reduced fertility.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Average height = 38 cm.	Small siliques.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Average height = 38 cm.	Tall plants.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Narrow, pointy leaves.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Elongated petioles.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Dark-green plants.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Numerous thin lateral inflorescences.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small siliques.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Tall plants.	4686
+49	Arabidopsis	AT2G43860	AT2G43860	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 45 cm.	4686
+50	Arabidopsis	CESA4	At5g44030	1.000	Average height = 38 cm.	Average height = 13 cm.	2250
+50	Arabidopsis	CESA4	At5g44030	0.108	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants are darker green and smaller than wild type.	2250
+50	Arabidopsis	CESA4	At5g44030	0.037	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Numerous thin lateral inflorescences, reduced fertility, short siliques.	2250
+50	Arabidopsis	CESA4	At5g44030	0.031	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants have small stature, reduced cellulose and irregular xylem.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Yellow seed coat.	Increased xylem.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Yellow seed coat.	Short inflorescence stems.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Yellow seed coat.	Numerous thin lateral inflorescences, reduced fertility, short siliques.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Yellow seed coat.	Dwarf plants.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Yellow seed coat.	Average height = 13 cm.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Yellow seed coat.	Xylem vessels in the stem are irregular and appear collapsed.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Yellow seed coat.	Plants are darker green and smaller than wild type.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Yellow seed coat.	Stems are weak and leaves tend to be turned down.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Yellow seed coat.	Plants have small stature, reduced cellulose and irregular xylem.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Pale brown seeds.	Increased xylem.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Pale brown seeds.	Short inflorescence stems.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Pale brown seeds.	Numerous thin lateral inflorescences, reduced fertility, short siliques.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Pale brown seeds.	Dwarf plants.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Pale brown seeds.	Average height = 13 cm.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Pale brown seeds.	Xylem vessels in the stem are irregular and appear collapsed.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Pale brown seeds.	Plants are darker green and smaller than wild type.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Pale brown seeds.	Stems are weak and leaves tend to be turned down.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Pale brown seeds.	Plants have small stature, reduced cellulose and irregular xylem.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Average height = 38 cm.	Increased xylem.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Average height = 38 cm.	Short inflorescence stems.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Average height = 38 cm.	Numerous thin lateral inflorescences, reduced fertility, short siliques.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Average height = 38 cm.	Dwarf plants.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Average height = 38 cm.	Xylem vessels in the stem are irregular and appear collapsed.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Average height = 38 cm.	Plants are darker green and smaller than wild type.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Average height = 38 cm.	Stems are weak and leaves tend to be turned down.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Average height = 38 cm.	Plants have small stature, reduced cellulose and irregular xylem.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Increased xylem.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short inflorescence stems.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Dwarf plants.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Average height = 13 cm.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Xylem vessels in the stem are irregular and appear collapsed.	2250
+50	Arabidopsis	CESA4	At5g44030	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Stems are weak and leaves tend to be turned down.	2250

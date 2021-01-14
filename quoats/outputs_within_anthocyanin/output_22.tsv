@@ -1,0 +1,1142 @@
+Rank	Species	Gene	Gene Model	Score	Query	Matches	Internal ID
+1	Arabidopsis	AHA10	AT1G17260	1.000	Pale brown seeds.	Pale brown seeds.	4110
+2	Arabidopsis	TT12	At3g59030	1.000	Pale brown seeds.	Pale brown seeds.	2614
+2	Arabidopsis	TT12	At3g59030	0.193	Pale brown seeds.	Yellow seed coat.	2614
+2	Arabidopsis	TT12	At3g59030	0.163	Pale brown seeds.	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	2614
+2	Arabidopsis	TT12	At3g59030	0.000	Pale brown seeds.	Average height = 38 cm.	2614
+3	Arabidopsis	TT6	At3g51240	1.000	Pale brown seeds.	Pale brown seeds.	2612
+3	Arabidopsis	TT6	At3g51240	0.743	Pale brown seeds.	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	2612
+3	Arabidopsis	TT6	At3g51240	0.688	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa), pale brown seeds.	2612
+3	Arabidopsis	TT6	At3g51240	0.373	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa).	2612
+3	Arabidopsis	TT6	At3g51240	0.300	Pale brown seeds.	Yellow seeds.	2612
+3	Arabidopsis	TT6	At3g51240	0.193	Pale brown seeds.	Yellow seed coat.	2612
+3	Arabidopsis	TT6	At3g51240	0.000	Pale brown seeds.	Reduced levels of anthocyanins in leaves, stems and other tissues.	2612
+3	Arabidopsis	TT6	At3g51240	0.000	Pale brown seeds.	Double mutant.	2612
+3	Arabidopsis	TT6	At3g51240	0.000	Pale brown seeds.	Altered phenylpropanoid metabolism.	2612
+3	Arabidopsis	TT6	At3g51240	0.000	Pale brown seeds.	Probably deficient in flavonol synthase activity.	2612
+4	Arabidopsis	TT3	At5g42800	1.000	Pale brown seeds.	Pale brown seeds.	2619
+4	Arabidopsis	TT3	At5g42800	0.472	Pale brown seeds.	Yellow seeds due to absence of brown pigment in seed coat (testa).	2619
+4	Arabidopsis	TT3	At5g42800	0.431	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	2619
+4	Arabidopsis	TT3	At5g42800	0.373	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa).	2619
+4	Arabidopsis	TT3	At5g42800	0.300	Pale brown seeds.	Yellow seeds.	2619
+4	Arabidopsis	TT3	At5g42800	0.193	Pale brown seeds.	Yellow seed coat.	2619
+4	Arabidopsis	TT3	At5g42800	0.000	Pale brown seeds.	Angustifolia, apetala, pyrimidine requiring, erecta, long hypocotyl, glabra, brevipedicellus, eceriferum, transparent testa.	2619
+4	Arabidopsis	TT3	At5g42800	0.000	Pale brown seeds.	Anthocyanins absent in leaves, stems and all tissues, this is conspicuous in older plants when chlorophyll starts breaking down, and mutant plants are yellowish.	2619
+4	Arabidopsis	TT3	At5g42800	0.000	Pale brown seeds.	Deficient in dihydroflavonol 4-reductase and lack anthocyanidins.	2619
+4	Arabidopsis	TT3	At5g42800	0.000	Pale brown seeds.	Double mutant.	2619
+4	Arabidopsis	TT3	At5g42800	0.000	Pale brown seeds.	Altered phenylpropanoid metabolism.	2619
+5	Arabidopsis	TT10	At5g48100	0.775	Pale brown seeds.	Pale brown seed coat.	1601
+5	Arabidopsis	TT10	At5g48100	0.665	Pale brown seeds.	Pale brown seeds due to reduced levels of brown pigment in the outer layers of the seed coat (testa).	1601
+5	Arabidopsis	TT10	At5g48100	0.638	Pale brown seeds.	Pale brown seed coat with dark-brown chalazal zone.	1601
+5	Arabidopsis	TT10	At5g48100	0.443	Pale brown seeds.	Yellow or pale seed color.	1601
+5	Arabidopsis	TT10	At5g48100	0.410	Pale brown seeds.	Dark-brown seed chalazal zone.	1601
+5	Arabidopsis	TT10	At5g48100	0.337	Pale brown seeds.	Seeds from the homozygous mutant plants were golden yellow in comparison to wild-type or heterozygous plants that were dark brown for newly matured seeds.	1601
+5	Arabidopsis	TT10	At5g48100	0.156	Pale brown seeds.	Seeds get darker after storage.	1601
+6	Arabidopsis	LDOX	AT4G22880	0.743	Pale brown seeds.	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	5203
+6	Arabidopsis	LDOX	AT4G22880	0.000	Pale brown seeds.	Reduced levels of anthocyanins in leaves, stems and other tissues.	5203
+7	Arabidopsis	TT9	AT3G28430	0.743	Pale brown seeds.	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	4932
+7	Arabidopsis	TT9	AT3G28430	0.000	Pale brown seeds.	Approximately wild-type anthocyanin levels observed in leaves, stems and other tissues.	4932
+8	Arabidopsis	TT7	At5g07990	0.743	Pale brown seeds.	Pale brown seeds due to reduced levels of brown pigment in seed coat (testa).	2616
+8	Arabidopsis	TT7	At5g07990	0.688	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa), pale brown seeds.	2616
+8	Arabidopsis	TT7	At5g07990	0.661	Pale brown seeds.	Transparent testa phenotype (pale brown seeds due to reduced levels of brown pigment in seed coat), allelic to tt7-3.	2616
+8	Arabidopsis	TT7	At5g07990	0.373	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa).	2616
+8	Arabidopsis	TT7	At5g07990	0.300	Pale brown seeds.	Yellow seeds.	2616
+8	Arabidopsis	TT7	At5g07990	0.193	Pale brown seeds.	Yellow seed coat.	2616
+8	Arabidopsis	TT7	At5g07990	0.112	Pale brown seeds.	Faster completion of seed germination at low temperature (10C) compared to wild type.	2616
+8	Arabidopsis	TT7	At5g07990	0.000	Pale brown seeds.	Reduced levels of anthocyanins in leaves, stems and other tissues.	2616
+8	Arabidopsis	TT7	At5g07990	0.000	Pale brown seeds.	Deficient in flavonoid 3'-hydroxylase activity and lacks orthodihydroxy flavonoids, thus accumulating pelargonidin rather than the cyanidin found in wild type plants.	2616
+8	Arabidopsis	TT7	At5g07990	0.000	Pale brown seeds.	Hypersensitive to abscicic acid, gibberellic acid and paclobutrazol.	2616
+8	Arabidopsis	TT7	At5g07990	0.000	Pale brown seeds.	Double mutant.	2616
+8	Arabidopsis	TT7	At5g07990	0.000	Pale brown seeds.	Altered phenylpropanoid metabolism.	2616
+9	Arabidopsis	TT19	At5g17220	0.737	Pale brown seeds.	Pale brown seeds, lacks anthocyanins.	1647
+9	Arabidopsis	TT19	At5g17220	0.438	Pale brown seeds.	Pale seed coat.	1647
+9	Arabidopsis	TT19	At5g17220	0.361	Pale brown seeds.	Brown seed coat, however reduced level of flavonoids in the tapetum cells.	1647
+9	Arabidopsis	TT19	At5g17220	0.000	Pale brown seeds.	Unlike the wild type where flavonoids are accumulated in the tapetosomes in the tapetum cells, the mutant has flavonoids accumulated in the cytosol.	1647
+10	Arabidopsis	FAH1	At4g36220	0.688	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa), pale brown seeds.	1396
+10	Arabidopsis	FAH1	At4g36220	0.431	Pale brown seeds.	Disruption of the synthesis of brown pigment in seed coat (testa), yellow seeds.	1396
+10	Arabidopsis	FAH1	At4g36220	0.000	Pale brown seeds.	Low sinapoylmalate levels in leaves.	1396
+10	Arabidopsis	FAH1	At4g36220	0.000	Pale brown seeds.	Altered phenylpropanoid metabolism.	1396
+10	Arabidopsis	FAH1	At4g36220	0.000	Pale brown seeds.	Reduced sinapoyl malate, syringyl lignin and sinpoyl choline, probably due to lack of conversion of ferulate to 5-hydroxyferulate.	1396
+10	Arabidopsis	FAH1	At4g36220	0.000	Pale brown seeds.	May be sensitive to UV-B radiation.	1396
+10	Arabidopsis	FAH1	At4g36220	0.000	Pale brown seeds.	Double mutant.	1396
+10	Arabidopsis	FAH1	At4g36220	0.000	Pale brown seeds.	Double mutants lacked hyper-fluorescent trichomes.	1396
+11	Arabidopsis	CTG156		0.651	Pale brown seeds.	Transparent testa phenotype (somewhat pale brown seeds due to reduced levels of brown pigment in seed coat).	5778
+11	Arabidopsis	CTG156		0.112	Pale brown seeds.	Faster completion of seed germination at low temperature (10C) compared to wild type.	5778
+11	Arabidopsis	CTG156		0.000	Pale brown seeds.	Hypersensitive to abscicic acid, gibberellic acid and paclobutrazol.	5778
+12	Arabidopsis	TTG2	At2g37260	0.646	Pale brown seeds.	Pale brown seeds and unbranched trichomes.	2621
+12	Arabidopsis	TTG2	At2g37260	0.438	Pale brown seeds.	Pale seed coats.	2621
+12	Arabidopsis	TTG2	At2g37260	0.281	Pale brown seeds.	Smaller seeds.	2621
+12	Arabidopsis	TTG2	At2g37260	0.193	Pale brown seeds.	Yellow seed coat.	2621
+12	Arabidopsis	TTG2	At2g37260	0.190	Pale brown seeds.	Seed mucilage defects.	2621
+12	Arabidopsis	TTG2	At2g37260	0.139	Pale brown seeds.	Seed coat mucilage absent.	2621
+12	Arabidopsis	TTG2	At2g37260	0.097	Pale brown seeds.	Seed coat paler than wild type, darker than ttg1.	2621
+12	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Abnormal trichomes.	2621
+12	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Trichomes reduced in number.	2621
+12	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Trichomes reduced in number, simple.	2621
+12	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Reduced trichome numbers.Trichomes that do form have reduced (e.g.	2621
+12	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Single) branch numbers.	2621
+12	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Clusters of unbranched trichomes.	2621
+12	Arabidopsis	TTG2	At2g37260	0.000	Pale brown seeds.	Reduced number of trichomes and abnormal trichomes.	2621
+13	Arabidopsis	AVP1	At1g15690	0.643	Pale brown seeds.	Pale greenish-brown seeds.	23
+13	Arabidopsis	AVP1	At1g15690	0.545	Pale brown seeds.	Yellow seeds (lacks brown pigment in seed coat).	23
+13	Arabidopsis	AVP1	At1g15690	0.438	Pale brown seeds.	Pale seed coat.	23
+13	Arabidopsis	AVP1	At1g15690	0.328	Pale brown seeds.	Pale green leaves.	23
+13	Arabidopsis	AVP1	At1g15690	0.300	Pale brown seeds.	Small seeds.	23
+13	Arabidopsis	AVP1	At1g15690	0.276	Pale brown seeds.	Small, pale green leaves.	23
+13	Arabidopsis	AVP1	At1g15690	0.247	Pale brown seeds.	Viable, pale green phenotype.	23
+13	Arabidopsis	AVP1	At1g15690	0.213	Pale brown seeds.	They developed pale green cotyledons without primary leaves.	23
+13	Arabidopsis	AVP1	At1g15690	0.204	Pale brown seeds.	Pale green embryos, green-yellow seedlings.	23
+13	Arabidopsis	AVP1	At1g15690	0.196	Pale brown seeds.	Slightly smaller than wild type with pale petioles.	23
+13	Arabidopsis	AVP1	At1g15690	0.178	Pale brown seeds.	Abnormal seed mucilage.	23
+13	Arabidopsis	AVP1	At1g15690	0.158	Pale brown seeds.	Seed production and fertility are similar to those of wild-type.	23
+13	Arabidopsis	AVP1	At1g15690	0.153	Pale brown seeds.	Heterozygotes have short siliques and reduced number of seeds.	23
+13	Arabidopsis	AVP1	At1g15690	0.138	Pale brown seeds.	These double mutants produce fewer seeds per silique than wild type plants.	23
+13	Arabidopsis	AVP1	At1g15690	0.123	Pale brown seeds.	Most seeds abort however a small number (6%) were recovered after germination on MS plates.	23
+13	Arabidopsis	AVP1	At1g15690	0.110	Pale brown seeds.	Seed germination and postembryonic development are more sensitive to ABA or stress inhibition.	23
+13	Arabidopsis	AVP1	At1g15690	0.101	Pale brown seeds.	True leaves of unsupplemented plants pale/white, altered steryl-ester metabolism.	23
+13	Arabidopsis	AVP1	At1g15690	0.088	Pale brown seeds.	No obvious gross morphological changes with the exception that siliques are shorter and contained reduced numbers of seed.	23
+13	Arabidopsis	AVP1	At1g15690	0.076	Pale brown seeds.	Hml1-1 seeds have much higher levels of free branched-chain amino acids Ile, Leu and Val.	23
+13	Arabidopsis	AVP1	At1g15690	0.076	Pale brown seeds.	Hml1-2 seeds have much higher levels of free branched-chain amino acids Ile, Leu and Val.	23
+13	Arabidopsis	AVP1	At1g15690	0.069	Pale brown seeds.	Altered sensitivity to hormones such as gibberellic acid (GA), brassinolides (BR), and abscisic acid (ABA) in seed germination and early seedling development, and auxin in root formation.	23
+13	Arabidopsis	AVP1	At1g15690	0.068	Pale brown seeds.	Hml1-1 seeds also have higher Arg, Asp, Gly, His, Ser, Trp and Tyr.	23
+13	Arabidopsis	AVP1	At1g15690	0.068	Pale brown seeds.	Hml1-2 seeds also have higher Arg, Asp, Gly, His, Ser, Trp and Tyr.	23
+13	Arabidopsis	AVP1	At1g15690	0.062	Pale brown seeds.	High levels of free branched-chain amino acids in mature seeds and leaves subjected to prolonged darkness, early senescence in prolonged darkness.	23
+13	Arabidopsis	AVP1	At1g15690	0.051	Pale brown seeds.	Seeds have high levels of free branched-chain amino acids (Ile, Leu and Val), also high levels of Arg, His and Ser, and low levels of Gln and Glu.	23
+13	Arabidopsis	AVP1	At1g15690	0.049	Pale brown seeds.	Seeds have high levels of free branched-chain amino acids (Ile, Leu and Val), also high levels of Arg, Asp, Gly, His, Ser, Trp and Tyr.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Abnormal cotyledon morphology.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Collapsed root tip.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Complete loss of flower formation.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Disorganized vascular patterning.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	High penetrance of complete loss of flowering.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Small rosette.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sterile.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Thick leaves.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Thick roots.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Uneven leaf margins.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Thick leaves with uneven margins.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Shoot defects include: smaller leaves, decreased cell number in leaves, mesophyll and vascular patterning disorganized, cup-shaped cotyledons.Root defects: small cells at apex, columella cell layers reduced to 2, deformed root cap.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Abnormal pollen tube growth (no effect on fertility).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	20% decrease in pectin methylesterase activity compared to wild-type.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Curved, irregular morphology of pollen tubes, which are drastically stunted.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	This phenotype is visible early in the germination process (6h after germination).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The pollen tube remains dramatically shorter as growth procedes (tested at 24h after germination).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	No obvious differences in the morphology of the ungerminated pollen grains.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The average rate of pollen tube elongation is significantly lower than that of wild-type.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Impaired in mucilage release upon imbibition.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Complete female gametophyte defective.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Male gametophyte defective.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	No visible phenotype under typical growth conditions.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Plants are gametophyte lethal.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Both female gametophytes and pollen are affected.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Development of the female gametophyte is abnormal.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Abnormal pollen accounts for approximately 30% of all pollen grains.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Complete loss of ER body formation.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	ER body deficient mutant.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	ER bodies are hardly detected in seedlings and roots.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The plants do not accumulate NAI2 mRNA and protein.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Increased root elongation, dry weight, and proline accumulation.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Mutants lack ER bodies.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Completely sterile.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Defects in meiosis.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Dwarf when grown on nutrient plates.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sensitive to MMS (inducer of genotoxic stress).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Short telomeres.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Completely sterile due to defects in meiosis.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sensitive to genotoxic stress.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	High levels of double-strand breaks.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Hyperaccumulation of AtSPO11-1 in meiocytes.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sterile, produces numerous flowers but small, empty siliques.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Decreased heme levels in roots.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	No other phenotypes detected.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	No visible phenotype.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Decreased heme contents in roots.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Downward-bending cotyledons.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Downward-bending rosette leaves.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Late flowering.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Narrow rosette leaves.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Small rosette leaves.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Small, narrow, downward-bending rosette leaves.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Developmental defects in both seedlings and mature plants, including hypocotyl and cotyledon growth, and reduced number of rosette leaves compared to wildtype.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Smaller rosette, late flowering (especially in short-day conditions), shorter primary root growth and fewer lateral roots compared to wildtype.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Enhanced rack1a-1 phenotype resulting in the following: reduced number of rosette leaves, smaller rosette size, shorter primary root growth and fewer lateral roots compared to both wildtype and rack1a-1 single mutants.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Abnormal floral development.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Abnormal leaf morphology.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Dwarf.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Elevated starch levels.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Diminished growth after leaf emergence, abnormal leaf morphology, ectopic floral development, sterile.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Large starch deposits within the chloroplasts of leaf mesophyll cells.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Curled leaves.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Growth retardation and strongly enhanced basal resistance to virulent H. parasitica.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Spontaneous death of individual cells in leaves of 2-, 3-, and 4-week-old plants.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	SA levels fourfold higher than wild plants.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Small leaves.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Reduced plant growth.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Lower rate of PSII activity and oxygen evolution.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Lower levels of PSII supercomplex accumulation and elevated levels of monomer and dimer building blocks in mutant plants compared with WT.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Embryo defective-Cotyledon.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Embryo defective.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Cotyledon.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Homozygotes not recoverable as mature plants.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The seedlings had short roots, no true leaves and died soon after germination.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Most homozygous embryos abort.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Some can be recovered by germination on MS media.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Those seedlings have short roots, never develop true leaves and die shortly after germination.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Homozygotes have small stature, serrated leaves, an increased number of trichomes on their sepals, short filaments and pistils.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Approximately 5% of the flowers of mutant plants had five petals.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Their fertility was reduced to less than 20% compared to heterozygous plants due to embryonic abortion.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Curly leaves, bushy plant, abormal petal distribution, atrophic anthers, male sterile fused carpels,extra trichomes in flower buds and about 15% of embryos abort.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Embryogenesis was arrested at the torpedo stage.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Accumulate abnormal membrane structures.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	PIN1-GFP lost the polarity and resided on the entire region of the plasma membrane in the cells of the mutant embryos.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Seedling lethality.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Elongation of the primary root was severely affected.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Embryo defective-Globular.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Globular.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Arabidopsis embryos carrying the domino1 mutation grow slowly in comparison with wild type embryos and as a consequence reach only the globular stage at desiccation.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Larger size of the nucleolus that can be observed soon after fertilization in the nuclei of both the embryo and the endosperm.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The ultrastructure of mutant nucleoli is drastically different from wild type.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Embryo defective-Preglobular.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Preglobular.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Developmental arrest of mutant embryos.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Embryo defective-Transition.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Transition.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Abnormal leaf venation.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Few lateral roots under vertical growth.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Long root hairs.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sensitive ABA.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sensitive to drought.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sensitive to freezing.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sensitive to salt stress.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sensitive to drought, freezing, ABA, and salt stress.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Dramatically enhanced expression of ABA- and stress-responsive genes when treated with ABA, low temperature, drought, or salt stress.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Plants are also compromised in tolerance to freezing, drought, and salt stresses.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Upon ABA treatment, plants accumulated more inositol 1, 4, 5-trisphosphate (IP3) than did the wild-type plants.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Kanamycin resistant (30mg/L).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Altered leaf shape.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Slow growth.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Constitutively increased levels of ABA.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Increased expression of genes responsive to high light stress.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Drought-tolerant.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Increased expression of stress-responsive genes.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Increased levels of the polyamine putrescine and accumulation of potential osmoprotective carbohydrate derivatives.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Enhanced cold-induced gene expression of RD29A and other cold responsive genes.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Impaired freezing tolerance and cold acclimation.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sensitive to ABA and variety of stresses.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Dwarf, crinkly leaves, rounded leaf margins,delayed flowering.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Shortened petioles, shortened hypocotyl under various sub-saturating light conditions, delayed flowering time under both long-day and short-day conditions.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Low ascorbate levels.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Ascorbate deficient.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Embryo defective (inferred).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Reduced transmission through pollen.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Pollen grains are viable, but pollen germination is aberrant.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Homozygotes cannot be recovered.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Resistant to 2,4-D-methyl.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Four-fold reduction in esterase activity toward 2,4-D-methyl and pNA in mutant compared to wild type.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Resistant to Piriformospora indica.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The plants do not accumulate PYK10 mRNA.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The amounts of the PYK10 protein were decreased in the leb-1 mutant.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The leb-1 mutant has larger and fewer ER bodies.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	ER bodies in bglu21-1 pyk10-1 is significantly fewer and larger than those in the wild type.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	ER bodies in bglu21-1 leb-1 is significantly fewer and larger than those in the wild type.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Growth of mutants is not promoted by the endophytic fungus Piriformospora indica.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Fewer ER bodies than WT.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	ER body area is larger than WT.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Has 35% of the beta-glucosidase activity of the wild type (Col-0).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Seedling lethal without exogenous thiamine.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Leaves but not cotyledons white, conditional lethal, 4-methyl-5-hydroxyethyl-thiazole or thiamine restores to normal.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Trichomes absent on leaves and stems, some trichomes in leaf margins.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	No trichomes on early leaves, number of trichomes increases on later leaves, concentrating at the leaf margins.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Albino seedlings.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Delayed germination.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Resistant to acifluorfen (herbicide).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Seedling lethal.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Yellow-green embryos.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Yellow-green leaves.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Yellow-green stems.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Heterozygotes: Yellow-green leaves and stems.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Does not accumulate protoporphyrin IX in the presence of acifluorfen whilst wildtype accumulates up to three times more than in the absence of the herbicide.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	More than 80% of the mutants could grow in the presence of 500nM of the PPOX inhibitor, acifluorfen, while 50% and 100% of wildtype seedlings failed to grown on plates containing 50 and 100nM, respectively.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The rate of 5-aminolevulinate (ALA) is one-third of that seen in wildtype, most likely reflecting feedback inhibition.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	When grown on soil or Kvitko medium, the homozygous line dies at the cotyledon stage.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	On medium supplemented with sucrose, the same mutant develops to the flowering stage.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Yellow-green leaves and stems from the juvenile stage until the beginning of flowering.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	At these stages of development, the levels of chlorophylls and carotenoids in the mutant are approximately half of that of wildtype.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	40% of WT Chl levels.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Albino.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Accumulates 3% of WT Chl levels.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Semi-dwarf.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sensitive to high pH.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sensitive to salt.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sensitive to a combination of salt and high pH.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Increased sensitivity to salt stress.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Large cotyledons under red light.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Short hypocotyl under red light.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Short hypocotyl and large cotyledons under red light.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Short roots.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Significantly shorter roots.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	50% reduction in vacuolar invertase (Vac-Inv) activity compared to parental line.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Short roots under vertical growth.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Skewed root growth on tilted agar surface.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Altered pattern of root growth as a result of defective directional cell expansion.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Roots and etiolated hypocotyls are slightly shorter than normal and exhibit a counterclockwise (left-handed) axial rotation bias.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Root growth on inclined hard agar surfaces is left skewed and looped away from the normal downward direction of growth.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	No visible shoot phenotype.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Increased growth in response to sucrose.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Reduced fertility.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Resistant to salt.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sensitive to high light.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Small root system.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Reduced root growth and foliar biomass.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Total vitamin B6 levels were lower than in wild type, measured using yeast bioassay.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Rosette lethal.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Strong knockdown: Rosette lethal.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Weak knockdown: Dwarf.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Altered fatty acid composition (strongly reduced C16 content), 25% reduction of phosphatidylglycerol content, no obvious growth defect.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Susceptible to downy mildew.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Delayed chlorosis and cell death after Erysiphe cichoracearum infection compared to the pen3-1 single mutant.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Susceptible to Hyaloperonospora arabidopsidis isolate Hiks1.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Susceptible to Pseudomonas syringae pv tomato (Pst) DC3000(avrRpm1).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Severe reduction of DC3000(avrRpm1)-induced hypersensitive response.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Enhanced susceptibility to downy mildew, enhanced phenotype of tir 1 mutant plants.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Homozygous are embryo lethal, arrested at the globular stage and do not undergo transition to heart stage.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Examination under UV light of leaves inoculated with <i>Peronospora parasitica</i> revealed occasional plant cell death-associated autofluorescence.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Mutant displays a loss of RPP5 resistance.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Under microscopic analysis, it was estimated that the hypersensitive response was disable by ~95% of pathogen inoculation sites in the mutant.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Examination under UV light of leaves inoculated with <i>Peronospora parasitica</i> did not reveal occasional plant cell death-associated autofluorescence.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The mutant exhibits a significant flg22-induced reduction in bacterial growth, indicating that the gene is most probably not required for flg22-induced bacterial resistance.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Defective in response to changing light intensity.Retarded growth under greenhouse conditions, and produces less anthocyanin under high light.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Atneap1 atneap3 double- knockout showed significantly reduced primary root growth from day 2 to day 8 post-germination.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Comparison of CS25026 to Columbia with and without salt stress (50mM NaCl from weeks 4 to 7 of growth) suggested a trend toward more growth of mutant in salty conditions (P=0.25, mean rosette diameter 21.5 in mutant and 11.5 in widltype).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Necrotic leaf lesions in short day conditions at low light.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Light-induced accumulation of H(2)O(2) and constitutive expression of genes for copper/zinc superoxide dismutase 2 and ascorbate peroxidase 1.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	RAM size was reduced by 25%,mutants germinated in 100 nM 2,4D were highly agravitropic, embryo patterning defects.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Sporophytic maternal effect mutation.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	In heterozygous plants when the mutant allele is transmitted by the female,about half the embryos abort.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Aborted embryos have increased ROS and cell death.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Resistant to infection by Watermelon mosaic virus (WMV).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The plants do not accumulate BGLU21 mRNA and protein.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Shorter primary roots, shorter shoots.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Tiny shoots.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Growth retardation.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Delayed leaf development.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Morphological phenotype similar to wt.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Resistant to kanamycin.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Young and emerging leaf tissues diplayed pronounced chlorosis while these yellow tissues gradually turned green as mutant leaves matured, mutants also have a series of leaf developmental abnormalities including more serrated leaf margin, disorganized mesophyll cells, and altered cotyledon venation patterns.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	And disturbed auxin homeostasis.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Pollen carrying rpl18aB-1 allele shows reduced competition through stigma and reduced transmission.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Transmission is also reduced through the female gametophyte.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Homozygous mutants are embryo lethal.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	They fail to differentiate after the globular stage.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Plant appears phenotypically wild type, but has fewer, heterogenous in size chloroplasts per mesophyll cell than wild type.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Contains one to two greatly enlarged chloroplasts per mesophyll cell.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Chloroplasts contain dots or short filaments of FtsZ1.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Photorespiratory phenotypes of the double homozygous mutant dKO (CS860079 = SALK_062946 x Garlic_169F06) are rescued in the SALK_143478 (CS860078) mutant background.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Average height = 39 cm.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Similar to mia-1 and mia-2.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Early senescence.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Accumulation of high levels of reactive oxygen species.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Segregating for agamous-like plants (homeotic transformation of stamens to petals, double flowers).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Homozygotes are embryo lethal.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Somewhat reduced transmission through the pollen.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Heterozygotes show no obvious growth phenotype.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Homozygotes are embryo lethal with a very early arrest of embryo development, in the pre- globular stage of development.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Reduction in root growth evident from seventh day after germination compared to wild type.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Reduced number of cortical cells in the root meristem.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Altered auxin distribution in root.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Altered expression of PIN1 and PIN7 in root tip.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Increased expression of ARR1.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Carries a T-DNA insertion at atpC1 gene encoding the gamma subunit of the plastid ATP synthase complex.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Mutants are non-photoautotrophic.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Rescued by growing on sucrose-supplemented MS medium.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Mutants have high dark fluorescence level and normal steady state fluorescence level during illumination.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Mutant chloroplasts are deficient with starch grains, have swollen lumen and disordered grana stacks.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Homozygotes have a WT phenotype.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Some embryos are also abnormally shaped.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Plants have several bigger mitochondria with a round shape coexisting with mitochondria of normal shape and size.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Homozygotes: WT phenotype under normal growth conditions.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Under conditions of magnesium stress (under 50 mM Mg2+), germination is poor and plantlet development is severely retarded.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The xik-2 mutant has normal root growth, but its root hairs are only 50% of the length of wild type root hairs, and they have a hooked shape when grown on media with sugar.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The stem trichomes are crooked and wavy and often have abnormally elongated stalks.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The trichomes on the leaves also have size and shape irregularities.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	But, the total number of trichomes is the same for mutants and wild-type plants.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	There are no obvious defects in the aerial tissues of xi-k mutant plants grown under normal conditions.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The root length of the mutant is also normal, but, it has shorter roots hairs than wild- type plants.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	There are decreased rates of movement of Golgi stacks, peroxisomes, and mitochondria in root hairs and leaves.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The xik-1 mutant has normal root growth, but its root hairs are only 49% of the length of wild type root hairs, and they have a hooked shape when grown on media with sugar.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The xi-k / xi-1 double mutant plants are shorter and have smaller rosettes than wild type plants.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Their reduced leaf size results from decreased cell size and decreased cell number.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	In the leaf epidermis, Golgi stacks, peroxisomes, and mitochondria move more slowly in these mutant cells than in wild-type cells.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Root hair length is reduced to ~35% of the wild type root hair length in these double mutants, but their root hair density is very similar to the wild type density.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The overall growth of the xi-k / xi-2 double mutant is normal.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Root hair length is reduced to ~20% of the wild type root hair length in these double mutants, but their root hair density is very similar to the wild type density.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	The xik-3 mutant has normal root growth, but its root hairs are only 77% of the length of wild type root hairs, and they have a hooked shape when grown on media with sugar.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Late flowering under long and short days.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Normal flowering in response to GA and vernalization.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Normal flowering response under long and short days.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Loss of flc supresses the phenotype of hlp1-1.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Comparison of SALK_043717C to Columbia resulted in a trend toward less biomass in the mutant (P=0.16) and more growth over time in the Columbia (exponential growth curve fit began at same level and slope increased more in Columbia, although statistical comparison of curve fits for mutant and wildtype gave P=0.3).	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Homozygote has no obvious visible phenotype.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	No obvious morphological defects.	23
+13	Arabidopsis	AVP1	At1g15690	0.000	Pale brown seeds.	Defective in C-U RNA editing at ndhB (95225).	23
+14	Arabidopsis	EMB1395	At4g13940	0.586	Pale brown seeds.	Purple plants, brown seeds.	1539
+14	Arabidopsis	EMB1395	At4g13940	0.367	Pale brown seeds.	Normal anthocyanin levels, brown seeds, kanamycin and hygromycin sensitive.	1539
+14	Arabidopsis	EMB1395	At4g13940	0.000	Pale brown seeds.	Delayed growth.	1539
+14	Arabidopsis	EMB1395	At4g13940	0.000	Pale brown seeds.	Embryo defective-Globular.	1539
+14	Arabidopsis	EMB1395	At4g13940	0.000	Pale brown seeds.	Null: Embryo defective.	1539
+14	Arabidopsis	EMB1395	At4g13940	0.000	Pale brown seeds.	Globular.	1539
+14	Arabidopsis	EMB1395	At4g13940	0.000	Pale brown seeds.	Knockdown: Delayed growth.	1539
+14	Arabidopsis	EMB1395	At4g13940	0.000	Pale brown seeds.	CHS demethylated, rDNA demethylated.	1539
+14	Arabidopsis	EMB1395	At4g13940	0.000	Pale brown seeds.	Kanamycin and hygromycin resistant.	1539
+14	Arabidopsis	EMB1395	At4g13940	0.000	Pale brown seeds.	No obvious phenotypic abnormalities under non-inducing conditions.	1539
+15	Arabidopsis	PDE316	At1g63680	0.579	Pale brown seeds.	Pale seeds and seedlings.	1903
+15	Arabidopsis	PDE316	At1g63680	0.000	Pale brown seeds.	Seedling lethal (inferred from pigment defect).	1903
+15	Arabidopsis	PDE316	At1g63680	0.000	Pale brown seeds.	White seedlings (albino/albina), lethal.	1903
+16	Arabidopsis	PDE325	At3g51820	0.566	Pale brown seeds.	Pale green seeds.	1632
+16	Arabidopsis	PDE325	At3g51820	0.503	Pale brown seeds.	Pale green seeds and seedlings.	1632
+16	Arabidopsis	PDE325	At3g51820	0.323	Pale brown seeds.	Pale green seedlings.	1632
+17	Arabidopsis	PDE324	At3g04260	0.566	Pale brown seeds.	Pale green seeds.	1630
+17	Arabidopsis	PDE324	At3g04260	0.503	Pale brown seeds.	Pale green seeds and seedlings.	1630
+17	Arabidopsis	PDE324	At3g04260	0.323	Pale brown seeds.	Pale green seedlings.	1630
+18	Arabidopsis	PDE318	At1g80770	0.566	Pale brown seeds.	Pale green seeds.	1625
+18	Arabidopsis	PDE318	At1g80770	0.503	Pale brown seeds.	Pale green seeds and seedlings.	1625
+18	Arabidopsis	PDE318	At1g80770	0.323	Pale brown seeds.	Pale green seedlings.	1625
+19	Arabidopsis	ALB3	At2g28800	0.566	Pale brown seeds.	Pale green seeds.	1626
+19	Arabidopsis	ALB3	At2g28800	0.503	Pale brown seeds.	Pale green seeds and seedlings.	1626
+19	Arabidopsis	ALB3	At2g28800	0.323	Pale brown seeds.	Pale green seedlings.	1626
+19	Arabidopsis	ALB3	At2g28800	0.000	Pale brown seeds.	Albino.	1626
+20	Arabidopsis	PDE323	At2g40930	0.566	Pale brown seeds.	Pale green seeds.	1628
+20	Arabidopsis	PDE323	At2g40930	0.503	Pale brown seeds.	Pale green seeds and seedlings.	1628
+20	Arabidopsis	PDE323	At2g40930	0.323	Pale brown seeds.	Pale green seedlings.	1628
+20	Arabidopsis	PDE323	At2g40930	0.000	Pale brown seeds.	Pigment defective.	1628
+20	Arabidopsis	PDE323	At2g40930	0.000	Pale brown seeds.	No visible phenotype.	1628
+21	Arabidopsis	DGD1	At3g11670	0.566	Pale brown seeds.	Pale green seeds.	1631
+21	Arabidopsis	DGD1	At3g11670	0.503	Pale brown seeds.	Pale green seeds and seedlings.	1631
+21	Arabidopsis	DGD1	At3g11670	0.323	Pale brown seeds.	Pale green seedlings.	1631
+21	Arabidopsis	DGD1	At3g11670	0.261	Pale brown seeds.	Seed pigment defective.	1631
+21	Arabidopsis	DGD1	At3g11670	0.000	Pale brown seeds.	Deficient in the galactolipid digalactosyldiacylglycerol.	1631
+21	Arabidopsis	DGD1	At3g11670	0.000	Pale brown seeds.	Reduced in growth.	1631
+22	Arabidopsis	PDE326	At3g03710	0.566	Pale brown seeds.	Pale green seeds.	1629
+22	Arabidopsis	PDE326	At3g03710	0.503	Pale brown seeds.	Pale green seeds and seedlings.	1629
+22	Arabidopsis	PDE326	At3g03710	0.323	Pale brown seeds.	Pale green seedlings.	1629
+22	Arabidopsis	PDE326	At3g03710	0.093	Pale brown seeds.	Adult mutant plants display a virescent phenotype: young leaves and recently expanded tissues are pale whereas mature tissues are as green as wildtype.	1629
+22	Arabidopsis	PDE326	At3g03710	0.000	Pale brown seeds.	Mutant is unaffected by fosmidomycin treatment.	1629
+22	Arabidopsis	PDE326	At3g03710	0.000	Pale brown seeds.	On fosmidomycin-free medium, the mutant seedlings require more time than wildtype for both greening and development of true leaves.	1629
+22	Arabidopsis	PDE326	At3g03710	0.000	Pale brown seeds.	Viable and fertile under described growth conditions.	1629
+23	Arabidopsis	PDE328	At2g39140	0.566	Pale brown seeds.	Pale green seeds.	1627
+23	Arabidopsis	PDE328	At2g39140	0.503	Pale brown seeds.	Pale green seeds and seedlings.	1627
+23	Arabidopsis	PDE328	At2g39140	0.323	Pale brown seeds.	Pale green seedlings.	1627
+23	Arabidopsis	PDE328	At2g39140	0.000	Pale brown seeds.	Yellow-green and significantly smaller than WT.	1627
+23	Arabidopsis	PDE328	At2g39140	0.000	Pale brown seeds.	Similar to var2-5.	1627
+23	Arabidopsis	PDE328	At2g39140	0.000	Pale brown seeds.	Svr1-1 double mutant.	1627
+23	Arabidopsis	PDE328	At2g39140	0.000	Pale brown seeds.	Not variegated.	1627
+23	Arabidopsis	PDE328	At2g39140	0.000	Pale brown seeds.	Smaller than WT.	1627
+23	Arabidopsis	PDE328	At2g39140	0.000	Pale brown seeds.	Variegation caused by var2 single mutant is suppressed.	1627
+23	Arabidopsis	PDE328	At2g39140	0.000	Pale brown seeds.	WT phenotype.	1627
+23	Arabidopsis	PDE328	At2g39140	0.000	Pale brown seeds.	The single var2 variegated phenotype is suppresed.	1627
+24	Arabidopsis	EMB262	At5g14170	0.566	Pale brown seeds.	Pale green seeds.	1530
+24	Arabidopsis	EMB262	At5g14170	0.248	Pale brown seeds.	White to pale yellow-green embryo.	1530
+24	Arabidopsis	EMB262	At5g14170	0.178	Pale brown seeds.	54.6% aborted seeds in top half of silique.	1530
+24	Arabidopsis	EMB262	At5g14170	0.000	Pale brown seeds.	Dwarf.	1530
+24	Arabidopsis	EMB262	At5g14170	0.000	Pale brown seeds.	Embryo defective-Cotyledon.	1530
+24	Arabidopsis	EMB262	At5g14170	0.000	Pale brown seeds.	Resistant to Agrobacterium transformation in roots.	1530
+24	Arabidopsis	EMB262	At5g14170	0.000	Pale brown seeds.	Null: Embryo defective.	1530
+24	Arabidopsis	EMB262	At5g14170	0.000	Pale brown seeds.	Cotyledon.	1530
+24	Arabidopsis	EMB262	At5g14170	0.000	Pale brown seeds.	Knockdown: Dwarf.	1530
+24	Arabidopsis	EMB262	At5g14170	0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at linear-cotyledon stage.	1530
+24	Arabidopsis	EMB262	At5g14170	0.000	Pale brown seeds.	26.7% mutant.	1530
+25	Arabidopsis	LACS2	At1g49430	0.547	Pale brown seeds.	When the green and normal brown seeds from a mutant plant were germinated separately, the green seeds showed 79% germination compared with 100% germination for the brown seeds.	449
+25	Arabidopsis	LACS2	At1g49430	0.195	Pale brown seeds.	Harvested mutant seeds appeared smaller and darker than seeds from wild-type plants that had been grown alongside the mutants.	449
+25	Arabidopsis	LACS2	At1g49430	0.192	Pale brown seeds.	The smaller bolts of the mutant yielded only 62 mg seed/plant compared with 177 mg seed/plant from wild-type controls.	449
+25	Arabidopsis	LACS2	At1g49430	0.183	Pale brown seeds.	For the mutants, only 72.2% of seeds that had germinated (58% of those sown) produced rosettes.	449
+25	Arabidopsis	LACS2	At1g49430	0.107	Pale brown seeds.	At 19 d, 91.0% of the wild-type seeds that germinated had produced viable rosettes with four to five pairs of true leaves.	449
+25	Arabidopsis	LACS2	At1g49430	0.082	Pale brown seeds.	Examination by light microscopy revealed that 50% of mutant seeds contained green embryos that could be distinguished through the testa.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Dwarf.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Few leaves.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Small leaves.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Wrinkled leaves.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Few, small, wrinkled leaves.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Reduced cutin.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	The lacs1-1 lacs2-3 double mutants had a synergistic phenotype, compared to either of the single mutants, with drastically reduced stem wax and cutin contents, increased cuticle permeability, and severe male sterile in low humidity.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Mutant leaves were small and irregular in shape compared with the wild type.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Both surfaces of mutant leaves differed from the wild type.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Adaxial surfaces of the wild type showed the characteristic jigsaw puzzle shape of pavement cells.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	In the mutant, the cells contained fewer, larger lobes.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Epidermal cells on the abaxial surface of mutants were collapsed.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	This collapsed appearance was consistently seen in views of the abaxial leaf surface of mutant plants but was never observed on the abaxial surface of wild-type leaves or on the adaxial surfaces of either the wild-type or mutant plants.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Mutant rosettes were slower to flower than wildtype plants (34.1 d versus 30.2 d under a 16-h photoperiod).	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Mutant plants produced smaller bolts, but flower morphology and fertility were normal, and siliques were similar in size to those on wild-type plants.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Only 80.0% of mutant seedlings emerged.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	At 6 d, a percentage of the emerged mutant seedlings would not grow and develop into viable plants.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	These seedlings had white cotyledons, and they eventually died.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	At this stage, the mutant had only two to three pairs of true leaves.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Reduced-growth phenotype.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	The cutin layer on the adaxial surface of mutant leaves was not significantly different in cross-sectional thickness from that of control wild-type leaves.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	However, the abaxial cutin layer on mutant leaves was substantially thinner than the wild type.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	The rate of chlorophyll leaching from mutant plants was threefold higher than the rate from wild-type controls.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Increased cuticle permeability compared with WT.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Strongly resistant to infection with Botrytis cinerea strain: infection sites on mutant leaves remained usually symptom free, in contrast to those on Col leaves.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	A number of ester-bound monomers were reduced in the mutant.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Increased resistance to Botrytis infection: the visual phenotypes of the leaves 3 days after inoculation show that the lesions larger than the original infection site represent only 5% of lesions compared to 75% in WT plants.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	Similar phenotype to that described for lacs2-2.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	The distinct osmium-dense cuticular membrane representing insoluble lipid-derived polymers such as cutin, visible at the epidermal outer extracellular matrix of WT plants, could not be seen at the leaf epidermis of the mutant.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	The remaining outer epidermal extracellular matrix sometimes had a distinct laminated structure.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	The mutant showed severe damage at a lower concentration of BASTA compared with WT Col-0 plants.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	The rate of water loss from the mutant is significantly higher than that of Col-0 plants.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	The total amount of omega-hydroxylated fatty acids and their derivatives was reduced 4- to 5-fold in the mutant compared with Col-0.	449
+25	Arabidopsis	LACS2	At1g49430	0.000	Pale brown seeds.	The impact of mutation on the amount of dicarboxylic acids, characteristic of Arabidopsis cutin, was particularly strong, and the amount was reduced to 15-20% of WT amount.	449
+26	Arabidopsis	TH1	At1g22940	0.545	Pale brown seeds.	Yellow seeds (lacks brown pigment in seed coat).	1959
+26	Arabidopsis	TH1	At1g22940	0.000	Pale brown seeds.	Seedling lethal without exogenous thiamine.	1959
+26	Arabidopsis	TH1	At1g22940	0.000	Pale brown seeds.	Leaves but not cotyledons white-yellow, conditional lethal, thiamine phosphate pyrophosphorylase deficient, thiamine restores to normal.	1959
+26	Arabidopsis	TH1	At1g22940	0.000	Pale brown seeds.	Narrow leaves.	1959
+26	Arabidopsis	TH1	At1g22940	0.000	Pale brown seeds.	Narrow and thick leaves.	1959
+26	Arabidopsis	TH1	At1g22940	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves, some trichomes in leaf margins.	1959
+26	Arabidopsis	TH1	At1g22940	0.000	Pale brown seeds.	Trichomes absent on leaves and stems, some trichomes in leaf margins.	1959
+26	Arabidopsis	TH1	At1g22940	0.000	Pale brown seeds.	Leaves but not cotyledons yellow-green, conditional lethal, thiamine phosphate pyrophosphorylase deficient, thiamine restores to normal.	1959
+26	Arabidopsis	TH1	At1g22940	0.000	Pale brown seeds.	Trichomes absent on leaves and stems, some rudimentary trichomes in leaf margins.	1959
+26	Arabidopsis	TH1	At1g22940	0.000	Pale brown seeds.	True leaves of unsupplemented plants white.	1959
+27	Arabidopsis	THIC	At2g29630	0.545	Pale brown seeds.	Yellow seeds (lacks brown pigment in seed coat).	1964
+27	Arabidopsis	THIC	At2g29630	0.270	Pale brown seeds.	Leaves but not cotyledons white/pale.	1964
+27	Arabidopsis	THIC	At2g29630	0.155	Pale brown seeds.	True leaves of unsupplemented plants white or pale.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Albino.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Seedling lethal.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Conditional lethal.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Blocked in the synthesis of the pyrimidine part of Vitamin B1.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	2-5-dimethyl-4-aminopyrimidine or thiamine restores to normal.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Compact rosette, short petioles, blunt siliques.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Angustifolia, apetala, pyrimidine requiring, erecta, long hypocotyl, glabra, brevipedicellus, eceriferum, transparent testa.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Trichomes absent on leaves and stems, some trichomes in leaf margins.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Large rosette leaves, edges curled down.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Rosette leaf edges curled down.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Bright green stems and siliques due to abnormal wax layer.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Asymmetric, lobed and curled down rosette leaves.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Narrow rosette leaves.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Bright green stems and siliques, looks like eceriferum.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Asymmetric, lobed rosette leaves, leaf edges slightly curled under.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Compact plants, blunt siliques.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Leaves but not cotyledons white, conditional lethal.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	High temperature sensitive (28C).	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Narrow leaves, slightly twisted siliques.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Compact rosette and inflorescences, short petioles, blunt siliques.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	A severe reduction (~10-fold) of THIC levels in plants decreases vitamin B1 (thiamin diphosphate (TPP)) levels and also leads to changes in the levels of numerous other metabolites since so many primary metabolic enzymes require a TPP co-factor.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	For example, alanine, asparagine, methionine, phenylalanine, tryptophan, and malate levels rise while fumarate, gentiobiose, and ribose levels decrease.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	ThiC mutants are chlorotic and arrest in their development at the cotyledon stage.The mutant phenotype can be largely rescued by continuous supplementation with thiamin.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Thic1 mutants produce white leaves and die early unless they are grown with thiamine supplements.	1964
+27	Arabidopsis	THIC	At2g29630	0.000	Pale brown seeds.	Total thiamine levels are reduced by roughly 60% in the thic1 mutant.	1964
+28	Arabidopsis	MSH1	At3g24320	0.545	Pale brown seeds.	Yellow seeds (lacks brown pigment in seed coat).	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Variegated leaves.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Variegated, glaborous (marked with gl1).	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Somoclonal variant.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Plants variegated green, yellow and white.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Segregating for eceriferum (cer) bright green stems and siliques (aproximately 27 percent).	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Green, yellow and white variegated plants.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Green, yellow and white variegated plants with sharp demarcation of sectors.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Green, yellow and white variegated, with irregular and diffuse demarcation of sectors.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Asymmetric rosette leaves, leaf edges slightly curled under, somewhat triangular-shaped leaves.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Green, yellow and white variegated with variation in sector size and shape.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Plant variegated green, yellow and white.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Small rosettes.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Slow growth.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Short internodes.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Short pedicels.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Short siliques.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Reduced fertility.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Somewhat short plants.	2586
+28	Arabidopsis	MSH1	At3g24320	0.000	Pale brown seeds.	Average height = 20 cm.	2586
+29	Arabidopsis	AN	At1g01510	0.545	Pale brown seeds.	Yellow seeds (lacks brown pigment in seed coat).	1500
+29	Arabidopsis	AN	At1g01510	0.270	Pale brown seeds.	Leaves but not cotyledons white/pale.	1500
+29	Arabidopsis	AN	At1g01510	0.128	Pale brown seeds.	Reduced stature (dwarf), apical dominance, and seed germination.	1500
+29	Arabidopsis	AN	At1g01510	0.094	Pale brown seeds.	Also restores normal stature, flowering time, apical dominance and seed germination to gai mutants (gai phenotype: semi-dominant mutation with reduced stature, reduced apical dominance, and reduced seed germination.	1500
+29	Arabidopsis	AN	At1g01510	0.089	Pale brown seeds.	Also restores flowering time, apical dominance and seed germination to gai mutants: partially restore normal stature (gai phenotype: semi-dominant mutation with reduced stature, reduced apical dominance, and reduced seed germination.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Narrow floral organs.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Narrow leaves.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Slightly elongated floral organs.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Twisted siliques.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Narrow, slightly elongated floral organs.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves, some rudimentary trichomes in leaf margins, narrow leaves.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Light green plants, sensitive to some amino acids.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Yellow-green cotyledons, leaf margins yellow.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Narrow, thick and slightly serrated leaves.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Lacks trichomes on leaf surface and stems, some rudimentary trichomes in leaf margins.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Bright green stems and siliques, abnormal wax layer.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Fully fertile.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Compact habit, short petioles, blunt siliques.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Lacks trichomes on leaves and stems (glabrous), some trichomes in leaf margins.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Leaves but not cotyledons white-yellow, conditional lethal, thiamine phosphate pyrophosphorylase deficient, thiamine restores to normal.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Angustifolia, apetala, pyrimidine requiring, erecta, long hypocotyl, glabra, brevipedicellus, eceriferum, transparent testa.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Narrow and thick leaves, slightly twisted blunt siliques.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Compact rosettes and inflorescences.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Reduced plant height.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Narrow and thick leaves.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves, some trichomes in leaf margins.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Narrow leaves, slightly twisted siliques.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Compact rosette and inflorescences, short petioles, blunt siliques.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Conditional lethal.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Blocked in the synthesis of the pyrimidine part of vitamin B1.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	2,5-dimethyl-4-aminopyrimidine or thiamine restores to normal.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Increased number of rosette leaves.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Slightly twisted siliques.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Background line for R. Wilson gai and gar mutants.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Gibberellin insensitive.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Increased endogenous levels of gibberellic acid.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Delayed flowering in short days.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Gar1 is semi-dominant or dominant, depending on GAI genotype.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Gar1 restores gibberellin responsiveness in gibberellin insensitive (gai) mutants.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	An phenotype: narrow leaves, increased number of rosette leaves, slightly twisted siliques.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Gar1 closely linked to gai - not genetically separable.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Gar2 is dominant.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Gar2 restores gibberellin responsiveness in gibberellin insensitive (gai) mutants.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Gar3 is semi-dominant.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Essentially normal growth (gai dwarf phenotype is largely suppressed).	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	An phenotype: narrow leaves, slightly twisted siliques.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Essentially normal growth (gai dwarf phenotype is largely suppressed), mutant possibly leaky.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Phenotype not described.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Trichomes of mutant undergo primary but not secondary branching.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Unbranched trichomes.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Predominantly produces unbranched trichomes.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Reduced, but still significant, number of branched trichomes.	1500
+29	Arabidopsis	AN	At1g01510	0.000	Pale brown seeds.	Trichomes have only one branch point.	1500
+30	Arabidopsis	GI	At1g22770	0.545	Pale brown seeds.	Yellow seeds (lacks brown pigment in seed coat).	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Late flowering.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Not later flowering under short days.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Not affected by vernalization.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Flowering occurs about 14 days later than wild type.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Flowering occurs about 16 days later than wild type.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Flowering occurs about 22 days later than wild type.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Delayed flowering (ca.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	2-3x), flowers earlier in long days, produces large rosettes.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	4-6x), little response to long days, produces large rosettes.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Green and white variegated, light sensitive.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Yellow-green cotyledons, leaf margins yellow.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	3-4x), large rosettes with numerous rounded leaves.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves, some trichomes in leaf margins.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Green-yellow plants, lacks chlorophyll-b.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	2-3x), large rosettes with numerous leaves, increased plant height.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Green-yellow plants, reduced chlorophyll-b content.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Dwarf and dark green plants, relatively small rosettes with numerous round leaves.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Small, rolled under and somewhat lobed leaves (like cabbage).	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Small, dark green rosette, looks semi-dwarf with visible internodes (wavy stems), delayed flowering (ca 4x).	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Similar in phenotype to transformants by the rol gene of Agro.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Numerous, narrow, somewhat serrated rosette leaves.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Young leaves have darker veins than intervenal tissue.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Double mutant and tetraploid, spontaneous doubling of chromosomes.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	4x), large rosettes with long, wide leaves.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Observed temperature-dependent effects on both period and rhythm robustness as those seen in gi-11.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Late flowering, unaffected by short days or vernalization, increased number of rosette leaves.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Although at 17°C, the gi mutant and the wild type have no significant period difference (measured by the free-running periods of the leaf movement rhythms), as the temperature increased (22 and 27°C), the period of the mutant becomes significantly shorter than that of the wild type.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Delayed flowering.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	In addition to a shortening of the period, a temperature-dependent increase in the variance of period was seen for the mutant, with the variance increasing from 3.1 at 17°C to 18.0 at 27°C (F test P = 1.8x10-9).	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	Although an increase in the variance of period with temperature was also observed for the wild type, this was not of the same magnitude (from 1.9 at 17°C to 3.8 at 27°C.	1249
+30	Arabidopsis	GI	At1g22770	0.000	Pale brown seeds.	F test P = 4.1x10-3).	1249
+31	Arabidopsis	GL1	At3g27920	0.545	Pale brown seeds.	Yellow seeds (lacks brown pigment in seed coat).	1762
+31	Arabidopsis	GL1	At3g27920	0.270	Pale brown seeds.	Leaves but not cotyledons white/pale.	1762
+31	Arabidopsis	GL1	At3g27920	0.192	Pale brown seeds.	Seeds have a reduced dormancy.	1762
+31	Arabidopsis	GL1	At3g27920	0.190	Pale brown seeds.	Seed germination may be slightly delayed.	1762
+31	Arabidopsis	GL1	At3g27920	0.129	Pale brown seeds.	Many fewer seeds form calluses compared to wild type seeds, and the calluses that do form are delayed and smaller in size.	1762
+31	Arabidopsis	GL1	At3g27920	0.110	Pale brown seeds.	Several GA biosynthesis genes are upregulated in the mutant compared to wild type during seed development.	1762
+31	Arabidopsis	GL1	At3g27920	0.108	Pale brown seeds.	Extreme hypersensitivity of seeds to ionizing radiation.	1762
+31	Arabidopsis	GL1	At3g27920	0.106	Pale brown seeds.	Intermediate hypersensitivity of seeds to ionizing radiation.	1762
+31	Arabidopsis	GL1	At3g27920	0.087	Pale brown seeds.	Germination of the mutant seeds after irradiation with far red light is inhibited by paclobutrazol, an inhibitor of GA biosynthesis.	1762
+31	Arabidopsis	GL1	At3g27920	0.077	Pale brown seeds.	Approximately 40% of mutant seeds germinate after far red/red light treatment, whereas wild type germination was suppressed almost entirely.	1762
+31	Arabidopsis	GL1	At3g27920	0.076	Pale brown seeds.	Irradiation of seeds with gamma rays inhibits the production of the first true leaves at lower doses than required for wt plants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Abnormal trichomes.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Reduced trichomes.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Reduced, abnormal trichomes.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Leaf margins slightly serrated, height = 25-35 cm.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Glabrous (gl1, lacks trichomes on leaves and stems).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Dominant mutation.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	No visible phenotype when grown in soil.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	When grown in vitro, exhibits epinastic growth of leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Root growth is slightly more sensitive to IAA inhibition of elongation.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Gup1-1 leads to enhanced kanamycin resistance in the AIR1-8 background via an nptII gene under control of a tobacco GST promoter.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Also shows an increased mRNA level of GST5 from Arabidopsis (designated At103-1a in van der Kop et.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Kanamycin resistant.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Short and stubby root hairs, lacks trichomes on stems and leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Medium rosette.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Leaf margins slightly serrated.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Glabrous (lacks trichomes on leaves and stems).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Observed flowering time was 24 days after planting.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Average height = 41 cm.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Altered fatty acid composition, glabrous, no other phenotypic effect.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Mechanical wounding largely restore trichome formation of gl1-2 in jasmonate signaling- dependent manner.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	No trichomes on early leaves, number of trichomes increases on later leaves, concentrating at the leaf margins.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves, some rudimentary trichomes in leaf margins, narrow leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Serrated and small leaves, possibly segregates for late flowering.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Narrow leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Light green plants, sensitive to some amino acids.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Erecta phenotype.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Green plants at early stages, green-yellowish bushy plants later.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves, virescent (yellowish plants), erecta phenotype.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Veins darker than interveinal tissues.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves, some rudimentary trichomes in leaf margins.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Narrow, thick and slightly serrated leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Lacks trichomes on leaf surface and stems, some rudimentary trichomes in leaf margins.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Bright green stems and siliques, abnormal wax layer.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Fully fertile.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Compact habit, short petioles, blunt siliques.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Lacks trichomes on leaves and stems (glabrous), some trichomes in leaf margins.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves, some trichomes in leaf margins.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Yellow-green cotyledons, leaf margins yellow.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Delayed flowering (ca.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	3-4x), large rosettes with numerous rounded leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Angustifolia, apetala, pyrimidine requiring, erecta, long hypocotyl, glabra, brevipedicellus, eceriferum, transparent testa.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Green, yellow and white variegated, with irregular and diffuse demarcation of sectors.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Yellow-green plants, lacks trichomes on stems and leaves, some rudimentary trichomes in leaf margins.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Numerous, narrow, somewhat serrated rosette leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Young leaves have darker veins than intervenal tissue.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Narrow and thick leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Leaves but not cotyledons white-yellow, conditional lethal, thiamine phosphate pyrophosphorylase deficient, thiamine restores to normal.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Asymmetric rosette leaves, leaf edges slightly curled under, somewhat triangular-shaped leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Green, yellow and white variegated plants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Conditional lethal.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Blocked in the synthesis of the pyrimidine part of vitamin B1.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	2,5-dimethyl-4-aminopyrimidine or thiamine restores to normal.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Trichomes absent on leaves and stems, some trichomes in leaf margins.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Leaves but not cotyledons white, conditional lethal, 4-methyl-5-hydroxyethyl-thiazole or thiamine restores to normal.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Leaves but not cotyledons white-yellow, growth rate and development improves with addition of vitamin B1 but position of genetic block not determined.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Leaves but not cotyledons yellow-green, conditional lethal, thiamine phosphate pyrophosphorylase deficient, thiamine restores to normal.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Trichomes absent on leaves and stems, some rudimentary trichomes in leaf margins.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Leaves but not cotyledons white-yellow, conditional lethal, thiamine restores to normal.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Narrow leaves, slightly twisted siliques.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Compact rosette and inflorescences, short petioles, blunt siliques.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Late flowering, many leaves rounder, relatively insensitive to vernalization or incandescent light and short days.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Trichomes absent on stems and leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Compact and relatively semi-dwarf plants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Defective in developmental pathways that cannot be rescued by brassinosteroid treatment.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Severely dwarfed stature.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Dark green plants with thickened leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Male sterile.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Reduced apical dominance.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Dark-grown seedlings are de-etiolated.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Sensitive to auxins, cytokinins, ethylene, abscisic acid and gibberellins.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Strong allele.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Valine resistant.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Decreased sensitivity of acetolactate synthase (ALS) to the branched-chain amino acids, valine, leucine and isoleucine.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Reduced shoot apical meristem (SAM).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Unable to complete the vegetative-inflorescence transition, instead enter a vegetative- inflorescence-vegetative-inflorescence development before the individual shoots fully complete the transition to inflorescence growth.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Regular rosette and apparently normal shoot are produced initially, after the inflorescence raceme has elongated, a new secondary rosette of leaves is produced, often two shoots emerge from this secondary rosette.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Aerial rosettes with numerous leaves often abnormally shaped along thin secondary stems.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Small and bushy plants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Reduced number of flowers per inflorescence.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Reduced number of petals, stamens and carpels.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Female sterile.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Weak allele.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Aberrant leaf morphology.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	No clear distinction between the petiole and the leaf blade.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Leaves are narrow and pointed.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	With elongated appearance, small, dark-green, irregularly serrated and curled dawn in the apix.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Leaves are narrow and pointed, with elongated appearance, small, dark-green, irregularly serrated and curled dawn in the apix.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Somewhat late flowering.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Abnormal inflorescence bearing flowers with reduced fertility.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Bushy plants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Leaves are narrow and pointed, with elongated appearance, dark-green, irregularly serrated and curled dawn in the apix.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Long and thin petiols.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Leaves are dark-green, with gross irregular outhgrowths of leaf tissue along the leaf edges, giving an irregular leaf shape appearance, leaf edges curled down and torted.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Asymmetric leaf surface.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Occassionally two leaves come out from a petiol or a complete leaf from another leaf.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Abnormal inflorescence bearing esterile flowers.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Altered leaf development.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Young rosette leaves are small, rounded, distorted with asymmetric surface.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Older rosette leaves are big, with irregular gross (not sharp) serrations and curled (rolled) down margins.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Serrated cauline leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Slow growth rate.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Small plants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Population segregating for gl-1 (lacks trichomes on stems and leaves, some trichomes in leaf margins).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Early flowering.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Photoperiod-insensitive.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Long hypocotyl in light-grown seedlings.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Conditional circadian dysfunction.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Brighter green stems and siliques than wild type.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Defective in normal epicuticular wax deposition.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Very much reduced lobed plates and tube-shaped epicuticular wax structures on the surface of stems and siliques.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Normal fertility.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Reduced camalexin synthesis in response to infection.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Stock segregating for gl1-1 (lacks trichomes on stems and leaves, some trichomes in leaf margins).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Extreme hypersensitivity of seedlings and roots to both UV-B and UV-C radiation under nonphotoreactivating conditions but intermediate hypersensitivity under photoreactivating conditions.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Plants show chlorosis, wilting and extensive cell death following exposure of leaves to small acute fluences of UV radiation that does not affect wt plants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Extreme hypersensitivity of seedlings and roots to UV-B and UV-C radiation under both photoreactivating and nonphotoreactivating conditions.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Ovule defective.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Outer integument initiates in the correct location on the abaxial side of an ovule primordium, however, subsequent growth of the outer integument is reduced, and the outer integument fails to completely enclose the inner integument and nucellus, a protuberance appears on the adaxial side of the ovule, undergoes limited expansion and is partially covered by the reduced outer integument.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	No visible alterations in other aspects of ovule, flower or vegetative development.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Segregating for glabrous phenotype (lacks trichomes on leaves and stems).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Intermediate allele.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Homeotic conversion of sepals (first whorl) to leaf-like.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Some secondary flowers are formed in the axils of the transformed sepals.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Petals often absent (second whorl).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Phenotype varies acropetally, with more complete flower-to-inflorescence conversions in basal flowers and at low temperature, lacks trichomes on stems and leaves, some trichomes in leaf margins.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Determinate inflorescence with terminal compound floral structure consisting of 2 or 3, sometimes incomplete, flowers.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	More severe phenotype at higher temperatures and longer photoperiods.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Susceptible to Pseudomonas syringae pv.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Tomato strain carrying the avirulence gene avrB from the soybean pathogen Pseudomonas syringae pv.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Glycinea.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Lacks trichomes on stem and leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Intermediate/strong allele.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Early-arising flowers completely transformed into inflorescence shoots, late-arising flowers partially transformed.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Petals and stamens absent.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Sterile.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	More severe phenotype under short days and lower temperature.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Plant variegated green, yellow and white.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Ndr1-1 blocks reactive oxygen-dependent induction of salicylic acid biosynthesis, producing race non-specific effects on disease resistance and race-specific effects on systemic acquired resistance (SAR), pathogenesis-related (PR) gene expression and the hypersensitive response (HR).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	No visible phenotype.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Npr1-2 blocks negative feedback on the hypersensitive response (HR).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Reduced expression of pathogenesis-related (PR) genes in response to salicylic acid.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Enhanced susceptibility to the virulent bacterial pathogen Pseudomonas syringae pv.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Maculicola strain ES4326.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Null allele.gl1 lacks trichomes on leaves and stems.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Wild type morphology.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Suppresses silencing of the Superman (SUP) gene, reactivating silent SUP alleles.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Decreases CpNpG and asymmetric DNA methylation as well as histone H3 lysine-9 methylation.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Blocks histone and DNA methylation and the accumulation of 25-nucleotide small interfering RNAs (siRNAs) that correspond to the retroelement AtSN1.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	The kyp-2 mutant has defects in callus formation under laboratory conditions.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Kyp-2 mutants are defective in the process known as alternative lengthening of telomeres, a telomerase-independent process.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	These mutants also show a loss of association between K9-dimethylated H3 histones and telomeric and centromeric DNA via ChIP assays.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Lacks the cytosine methylation at sites of CpNpG trinucleotides (where N is A, C, G or T).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Low level of expression of two retrotransposon-related sequences (Athila and Ta3 sequences).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Suppresses the clark kent allele clk-3.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Absence of trichomes on leaf and stem surfaces.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Severely reduced trichome induction in response to mechanical wounding or methyl jasmonate treatment.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Urm23 behaves as incompletely dominant in the presence of gl1-2 mutation.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Elongated hypocotyl (10-12mm).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Glabrous plants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Requires high CO2 to prevent flux of metabolites into the photorespiratory pathway.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Trp1-101: blue fluorescent under long and short wave UV light.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Resistant to 5-methylanthranilate and 6-methylanthranilate.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Gl1-1: lacks trichomes on stems and leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Weakly blue fluorescent under long and short wave UV light.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Slight cross-resistance to analogs of other amino acids.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Mild root growth phenotypes.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Root length slightly shorter than wild type.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Roots grow downward in response to gravity, but are abnormally straight.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Hairiness is absent on rosette leaves and stems.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Short bent club-like trichomes on margins stem leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Specific accession of Columbia not known.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Adult plants wilt under dessicating conditions.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	After bolting, the wilty phenotype became evident in the shoot apex, cauline leaves and immature siliques of this mutant.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	This phenotype was partially restored by application of 10 &mu.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	M ABA to rosette leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Endogenous ABA levels in fresh and dehydrated tissues of the mutant were about 23% and 2.4%, respectively, of those of the wild type plants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Endogenous levels of 12 amino acids were at least 2-fold greater in wild-type than in the mutant plants after 18 h dehydration.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Amino acids that exhibited marked increases were leucine (152-fold), isoleucine (95-fold), proline (83-fold) and valine (25-fold).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Aspartic acid was the only amino acid which showed a significant reduction in wild-type plants during dehydration.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	In dehydrated tissues of the mutant, 9 amino acids increased more than 2-fold during dehydration, however the increases in the mutant plants were less pronounced than those in wild-type plants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Glycine and alanine showed greater increases in comparison to wild type, whereas the levels of glutamic acid and aspartic acid showed a reduction in the mutant during dehydration.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Free amino acid levels in fresh tissues of the mutant plants at 30 DAI were similar to those in wild type, however the level of proline in the mutant plants was 4-fold higher than that in wild type.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Mutant showed a similar sensitivity to 25 mM trehalose as wild type (inhibition of root growth).	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	The mutant embryos are morphologically normal, although mature embryos are more yellow compared to white wild-type embryos.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	The mutant has smaller rosette leaves and mature plants are not yellowish as has been reported for abal mutants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Under the reported growth conditions, approximately 10% of the dark germinated seedlings of the mutant produced true leaves.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	The dark germinated seedlings of the mutant did not show further growth even after a prolonged period of darkness.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	No visible phenotype compared to Col-0/gl1 wild-type.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Non-photochemical quenching (NPQ) is slightly increased in the mutant.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	In contrast to the ku70 mutant, which undergo telomerase-dependent expansion to more than twice the normal length in a single generation, the ku70 tert double mutant displays accelerated telomere shortening and a precocious onset of genome stability.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Compared to wild type, no secondary thickening or lignification is seen in the anther endothecium, although other tissues in the mutant plant undergo normal secondary thickening.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	As the anther dehydrates the endothecium layer distorts, shearing forces do not develop, and the anther fails to open.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Male-sterile as a result of a failure of anther dehiscence.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Same degree of telomere shortening as in the pot1 ku70 and ku70 tert double mutants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Telomeres in the double mutants shortened at the same rate as in either single mutant.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Telomeres of the same length and sharp banding profile were found in the double mutant, as in their tert and pot1-1 siblings.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Decrease of macronutrients concentration in the MS salt formulation to 1/20X results in a substantial reduction in primary root growth.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Mutant grown in greenhouse or growth chamber exhibits reduced shoot and root biomass relative to the wild-type.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Mutant grown on Pi-deficient medium for 25 days accumulate more anthocyanins than wild- type.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Substantially more pronounced prototypical Pi starvation root architecture responses than sos3-1 or wild-type seedlings.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	On Pi-limited medium, mutant seedlings exhibit an inhibition of primary root growth, an increase of lateral root development and length, and higher root/shoot fresh weight ratio than wild-type.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Enhanced resistance to Pseudomonas syringae DC3000.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Smaller in stature.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Impaired drought tolerance.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Suppression of NaCl sensitivity of sos3-1 seedlings.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	50% of the mitotic nuclei in anaphase from tert mutants with severe growth defects (in the G8 generation) have anaphase bridges, while none are found in comparable wild type controls.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	These anaphase bridges occur disproportionately often between rDNA regions.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	A number of chromosomal defects can also be visualized during metaphase in these mutants.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	About 30% of the leaf mesophyll cells examined in tert G8 mutants have elevated numbers of nucleoli.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Late generation, starting around G3, tert mutants have decreased root meristem size and overall root length.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	This is correlated with decreased telomere length in successive generations suggesting maintenance of meristem activity is coupled to telomere length.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	No obvious phenotypic changes in the first (G1) or second (G2) generation.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	However, starting in G1, the telomeric smear in AtTERT-deficient plants was replaced by several sharp bands.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	By G2 at least 11 discrete telomeric fragments were visible.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Urm23 enhances the hypomorphic gl1-2 allele and results in almost complete glabrousness (loss of trichomes) in normal growth condition.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Urm23 gl1-2 double mutant does not increase trichomes at all in response to wounding or methyl jasmonate treatment.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Urm23 is dominant in gl1-2 background.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Gl1-2 is incompletely dominant in urm23 background.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Urm9 enhances the hypomorphic gl1-2 allele and results in almost complete glabrousness (loss of trichomes) in normal growth condition.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Urm9 gl1-2 double mutant shows strong, but not complete, defect in wounding and jasmonate- induced increase of trichomes.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	GL3-GFP fusion protein is mis-localized in a subset of urm9 gl1-2 epidermal cell nuclei.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Urm9 is recessive in gl1-2 background.	1762
+31	Arabidopsis	GL1	At3g27920	0.000	Pale brown seeds.	Gl1-2 is incompletely dominant in urm9 background.	1762
+32	Arabidopsis	ER	At2g26330	0.545	Pale brown seeds.	Yellow seeds (lacks brown pigment in seed coat).	2252
+32	Arabidopsis	ER	At2g26330	0.270	Pale brown seeds.	Leaves but not cotyledons white/pale.	2252
+32	Arabidopsis	ER	At2g26330	0.094	Pale brown seeds.	Pollen viable and fertile, and fertilization with a single tetrad usually yields four seeds.	2252
+32	Arabidopsis	ER	At2g26330	0.044	Pale brown seeds.	Short siliques, very few seeds, elongated stems, elongated hypocotyls resulted from elongated epidermal and cortex cells, elongated pedicels resulted from elongated epidermal pavement cells and increased cortex cell numbers.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Blunt siliques.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Short inflorescence stems.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Short petioles.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Narrow leaves.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Relatively small plants with slender appearance.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Isogenic for marker loci tested with the Landsberg erecta line (CS20), which is used as a background for many mutants.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Homozygous for wild-type allele of ER, erecta locus (derived from CS3177).	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Round leaves, short petioles, short pedicels, flowers are clustered at the top of the inflorescence, short and wide siliques with blunt tip, short and upright stems, compact inflorescence.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Height = 20-25 cm.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Round leaves, short petioles, short pedicels, flowers are clustered at the top of the inflorescence, short and wide siliques with blunt tip, short and upright stems, compact inflorescence, carries erecta gene.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Medium size rosettes, leaves with rounded tips and short petioles, leaf margins smooth, intermediate flowering time, flowers with short pedicels are clustered at the top of the inflorescence, short and wide siliques with blunt tips, short and compact inflorescence with upright stems, height = 20-25 cm.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Medium rosette.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Round leaves with short petioles.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Leaf margins almost smooth.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Observed flowering time was 26 days after planting.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Short pedicels.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Flowers are clustered at the top of the inflorescence.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Short and wide siliques with blunt tips.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Short and upright stems.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Short internodes.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compact inflorescence.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Average height = 28 cm.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Average height = 30 cm.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Observed flowering time was 27 days after planting.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Average height = 32 cm.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Bright green stems and siliques, reduced wax layer, fully fertile, erecta phenotype.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Delayed flowering on long days, relatively insensitive to vernalization with flowering onset slightly earlier on short days, compact habit, short petioles, blunt siliques.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Erecta phenotype, veins darker than interveinal tissues, delayed flowering on long days, relatively insensitive to vernalization with flowering onset slightly earlier on short days.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Erecta phenotype.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Green plants at early stages, green-yellowish bushy plants later.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Lacks trichomes on stems and leaves, virescent (yellowish plants), erecta phenotype.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Bright green stems and siliques, abnormal wax layer.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Fully fertile.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compact habit, short petioles, blunt siliques.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Lacks trichomes on leaves and stems (glabrous), some trichomes in leaf margins.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Yellow-green, small plants, possibly sensitive to valine.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compact habit.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Conditional lethal.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Blocked in the synthesis of the pyrimidine part of Vitamin B1.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	2-5-dimethyl-4-aminopyrimidine or thiamine restores to normal.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compact rosette, short petioles, blunt siliques.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Angustifolia, apetala, pyrimidine requiring, erecta, long hypocotyl, glabra, brevipedicellus, eceriferum, transparent testa.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compact rosette, short petioles and blunt siliques.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Bright green stems and siliques due to abnormal wax layer.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Narrow and thick leaves, slightly twisted blunt siliques.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compact rosettes and inflorescences.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Reduced plant height.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compact rosettes and inflorescences, upright and blunt siliques, reduced plant height.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Asymmetric, lobed and curled down rosette leaves.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Asymmetric, lobed rosette leaves, leaf edges slightly curled under.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compact plants, blunt siliques.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Leaves but not cotyledons white, conditional lethal.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	High temperature sensitive (28C).	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Narrow leaves, slightly twisted siliques.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compact rosette and inflorescences, short petioles, blunt siliques.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Strong allele.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Altered organ shape, affecting the development of leaves, inflorescences, flowers and siliques expressed throughout much of the plant's life.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compared to Col wt: rounder cotyledons and leaves, shorter petioles, shorter and wider flowers borne on shorter pedicels, flowers are clustered at the top of the inflorescence, shorter and wider siliques that have a blunt tip, shorter and wider inflorescence stems, compact inflorescence.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Weak allele.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Slightly altered organ shape, affecting the development of leaves, inflorescences, flowers and siliques expressed throughout much of the plant's life.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compared to Col wt: rounder cotyledons and leaves, shorter petioles, shorter and wider flowers borne on shorter pedicels (pedicel length is about 80% of the wt), less severe phenotype is obvious in floral apices when compared with other strong alleles, slightly shorter and wider siliques with slightly blunt tips (silique length is about 90 % of the wt), shorter and wider inflorescence stems (plant heigth is about 80 % of wt), slightly compact inflorescence.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Intermediate allele.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Absence of trichomes on leaves and stems, some trichomes on leaf margins.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compared to Ws wild type rounder cotyledons and leaves, shorter petioles, shorter and wider flowers borne on shorter pedicels, flowers are clustered at the top of the inflorescence, shorter and wider siliques that have a blunt tip, shorter and wider inflorescence stems, compact inflorescence.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compact and short inflorescence.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Thick inflorescence stems.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Clustered flower buds at the top of the inflorescence without affecting phyllotaxis.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Increased number of flower buds at the first flowering.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Number of lateral inflorescences is not altered.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Blunt and short siliques.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Siliques have the same width as the wild type.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Leaves and roots are similar to wild type.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Intermediate phenotype (milder than Ler or erecta-105).	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Phb-13 phv-11 cna-2 triple mutants often displayed tri-cotyledons, enlarged SAM, stem fasciation, flowers with extra organs, silique enlargement, and reduced fertility.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Reduced flower diameter compared to tetraploid.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Increased flower diameter compared to diploid.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Plants exhibit reduced lateral shoot meristems (LSMs) of rosette and cauline leaves, meristem-defective flowers, altered leaf morphology (size and shape) and leaf color.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	The percentage of absent LSMs is correlated with the severity of leaf morphology and color, the severity of leaf morphology and color is also correlated with the % of meristem-defective flowers.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	However, the % of absent LSMs is independent of the % of meristem-defective flowers.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Altered leaf polarity.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Transformation of abaxial cell fates to adaxial cell fates in leaves & floral organs, altered organ shape.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Heterozygotes have leaves with adaxial epidermal characters (dark green, glossy, trichome- rich surfaces) around their circumference & exhibit varying degrees of radial symmetry & loss of blade outgrowth.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Some leaves rod like while others are shaped like trumpets (with adaxial tissue on outer surfaces & abaxial tissue on inside of 'bell' of trumpet), leaves grow nearly vertical rather than bending away from the plant.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	All four types of floral organs affected to some degree.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Transformation of abaxial to adaxial fates in leaves and leaf-like organs.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	The most severely affected organs develop with radial symmetry and exhibit adaxial traits around their circumference.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Plants appear superficially wild type in phenotype.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Altered meristem size, organogenesis, and stem cell specification.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Shoot meristems at early developmental stages are significantly larger than wild-type meristems, giving the appearance of a corona or ring-like meristems.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	No visible phenotype.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Altered regulation of the activity of the vascular meristems.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Small rosette.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Rounded leaves.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Observed flowering time was 23 days after planting.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Short and wide siliques with blunt tip.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Observed flowering time was 22 days after planting.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Erecta null phenotype.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Lacks shoot apical meristem (SAM) in seedlings and embryos.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	True leaves do not develop.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Cells in the location of SAM of mature embryos are similar to surrounding cells of the hypocotyl and cotyledons.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Morphology is similar to torpedo stage embryo, indicating that mutant may be blocked in SAM formation.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Sensitive to UV light under photoreactivating conditions.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Leaves become necrotic and wither and plants have reduced growth rate under chronic UV light.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Defective in DNA repair (dimer repair).	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Quartet phenotype: outer walls of the four meiotic products of a pollen mother cell are fused and the pollen grains fail to separate, forming pollen tetrads.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Increased number of stomatal lineage ground cells (SLGCs) that fail to differentiate into stomata.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Excessive asymmetric division and meristemoid formation in cotyledons.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Round leaves, short petioles, short pedicels, flowers are clustered at the top of the inflorescence, short and wide siliques with blunt tips, short and upright stems, compact inflorescence.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Average height = 29 cm.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Angustifolia, Erecta.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Compact rosette leaf, short petiole, round blade.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Increased sensitivity to high temperatures.Plants wilt more quickly after transfer from 22 to 40C.er-105 leaf cells had increased ion leakage than those in the wild-type Col-0 (82% vs. 60%) and a higher occurrence of plasma membrane disruption (71% vs. 46%) 24 h after heat treatment.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Increase in stomatal index with respect to wild type.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Increased number of stomatal lineage ground cells (SLGCs) with respect to single er mutant.	2252
+32	Arabidopsis	ER	At2g26330	0.000	Pale brown seeds.	Altered leaf shape, reduced fertility,elongated hypocotyl resulted from elongated epidermal and cortex cells, elongated pedicel resulted from elongated epidermal pavement cells and increased cortex cell numbers.	2252
+33	Arabidopsis	ARP7	At3g60830	0.542	Pale brown seeds.	Seeds were small, white, or brown and shriveled.	679
+33	Arabidopsis	ARP7	At3g60830	0.132	Pale brown seeds.	Mutant siliques revealed abortion of a significant number of seeds (25%).	679
+33	Arabidopsis	ARP7	At3g60830	0.100	Pale brown seeds.	Eventually the seeds turned brownish and dried out prematurely.	679
+33	Arabidopsis	ARP7	At3g60830	0.089	Pale brown seeds.	Those abnormal seeds contained small, rudimentary embryos that were arrested early during development at torpedo and bent-cotyledon stages.	679
+33	Arabidopsis	ARP7	At3g60830	0.066	Pale brown seeds.	Despite aberrant embryo development, endosperm development, and enlargement of seeds, harboring small mutant embryos appeared normal until the late torpedo stage, after which the endosperm and the integument layers started to disintegrate.	679
+33	Arabidopsis	ARP7	At3g60830	0.000	Pale brown seeds.	Embryo defective-Cotyledon.	679
+33	Arabidopsis	ARP7	At3g60830	0.000	Pale brown seeds.	Embryo defective.	679
+33	Arabidopsis	ARP7	At3g60830	0.000	Pale brown seeds.	Cotyledon.	679
+33	Arabidopsis	ARP7	At3g60830	0.000	Pale brown seeds.	All the heterozygous mutant plants were morphologically similar to wildtype plants under normal growth conditions.	679
+33	Arabidopsis	ARP7	At3g60830	0.000	Pale brown seeds.	The 25% aborted homozygous embryos were rudimentary and arrested at or before the torpedo stage of development.	679
+34	Arabidopsis	PTS	At5g48840	0.531	Pale brown seeds.	The deformed seed turn pale white and then dark brown during the greening stage.	894
+34	Arabidopsis	PTS	At5g48840	0.133	Pale brown seeds.	The deformed seeds contain embryos arrested at the preglobular stage.	894
+34	Arabidopsis	PTS	At5g48840	0.106	Pale brown seeds.	However, they produce a 3:1 ratio of viable to deformed seed upon self-fertilization.	894
+34	Arabidopsis	PTS	At5g48840	0.000	Pale brown seeds.	Embryo defective-Preglobular.	894
+34	Arabidopsis	PTS	At5g48840	0.000	Pale brown seeds.	Embryo defective.	894
+34	Arabidopsis	PTS	At5g48840	0.000	Pale brown seeds.	Preglobular.	894
+34	Arabidopsis	PTS	At5g48840	0.000	Pale brown seeds.	Pts-1 heterozygous mutants do not display any obvious phenotypic abnormalities in plant size, pigmentation, leaf development or flower development.	894
+34	Arabidopsis	PTS	At5g48840	0.000	Pale brown seeds.	Pts-2 heterozygous mutants do not display any obvious phenotypic abnormalities in plant size, pigmentation, leaf development or flower development.	894
+35	Arabidopsis	CH1	At1g44446	0.511	Pale brown seeds.	Pale.	1649
+35	Arabidopsis	CH1	At1g44446	0.279	Pale brown seeds.	Pale yellow-green plants.	1649
+35	Arabidopsis	CH1	At1g44446	0.000	Pale brown seeds.	Yellow-green.	1649
+35	Arabidopsis	CH1	At1g44446	0.000	Pale brown seeds.	Bent club-like hairs on leaf.	1649
+35	Arabidopsis	CH1	At1g44446	0.000	Pale brown seeds.	Yellow green plant with club-like siliques.	1649
+35	Arabidopsis	CH1	At1g44446	0.000	Pale brown seeds.	Green-yellow plants, lacks chlorophyll-b.	1649
+35	Arabidopsis	CH1	At1g44446	0.000	Pale brown seeds.	Green-yellow plants, reduced chlorophyll-b content.	1649
+35	Arabidopsis	CH1	At1g44446	0.000	Pale brown seeds.	Delayed flowering (ca.	1649
+35	Arabidopsis	CH1	At1g44446	0.000	Pale brown seeds.	2-3x), large rosettes with numerous leaves, increased plant height.	1649
+35	Arabidopsis	CH1	At1g44446	0.000	Pale brown seeds.	Green-yellow shoots.	1649
+35	Arabidopsis	CH1	At1g44446	0.000	Pale brown seeds.	Chlorophyll contents decreased by approximately 40% compared to the parental line (ch1-1/GFP-CAO).	1649
+35	Arabidopsis	CH1	At1g44446	0.000	Pale brown seeds.	Significant increase in the expression of the GFP-CAO transgene.	1649
+36	Arabidopsis	EMB2729	At3g20440	0.511	Pale brown seeds.	Pale.	1556
+36	Arabidopsis	EMB2729	At3g20440	0.000	Pale brown seeds.	Dwarf.	1556
+36	Arabidopsis	EMB2729	At3g20440	0.000	Pale brown seeds.	Embryo defective-Transition.	1556
+36	Arabidopsis	EMB2729	At3g20440	0.000	Pale brown seeds.	Null: Embryo defective.	1556
+36	Arabidopsis	EMB2729	At3g20440	0.000	Pale brown seeds.	Transition.	1556
+36	Arabidopsis	EMB2729	At3g20440	0.000	Pale brown seeds.	Knockdown: Dwarf.	1556
+36	Arabidopsis	EMB2729	At3g20440	0.000	Pale brown seeds.	Starch branching enzyme activity unaffected (similar to wild type levels).	1556
+36	Arabidopsis	EMB2729	At3g20440	0.000	Pale brown seeds.	Displays the same profile of polymerization (DP) as the corresponding be2 or be3 mutant.	1556
+36	Arabidopsis	EMB2729	At3g20440	0.000	Pale brown seeds.	Increased starch phosphorylase activity compared to wild type.	1556
+36	Arabidopsis	EMB2729	At3g20440	0.000	Pale brown seeds.	No starch branching enzyme activity detected.	1556
+37	Arabidopsis	GA1	At4g02780	0.511	Pale brown seeds.	Ga: pale.	259
+37	Arabidopsis	GA1	At4g02780	0.140	Pale brown seeds.	Germinates, flowers, and produces seeds without gibberellin treatment.	259
+37	Arabidopsis	GA1	At4g02780	0.126	Pale brown seeds.	Seeds unable to germinate without application of exogenous GA.	259
+37	Arabidopsis	GA1	At4g02780	0.122	Pale brown seeds.	Germinates without, but seed production enhanced by, gibberellin sprays.	259
+37	Arabidopsis	GA1	At4g02780	0.089	Pale brown seeds.	The germination frequency of ga1 mutant seeds showed light dependence in the presence of low to moderate concentrations of exogenous GA3.	259
+37	Arabidopsis	GA1	At4g02780	0.064	Pale brown seeds.	M GA3, the germination frequency was higher in ga1 mutant seeds irradiated with red light versus those irradiated with far-red light.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Complete loss of germination without exogenous GA. Elg: elongated hypocotyls and petioles.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Narrow, epinastic leaves (leaves curl down due to faster growth of top layer of cells.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Early flowering under long and short days.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Increased apical dominance, accelerated flowering.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Gibberellin responsive dwarf.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Small, dark green leaves.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	GA applications restored trichome initiation, although GA concentrations exceeding 10 &#956.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	M caused a decrease, rather than a further increase, in trichome production - an effect also seen with wild-type plants.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	At GA concentrations exceeding 100 &#956.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	M, a reduction in trichome production on cauline leaves and branches was observed.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Mutant flowers are glabrous.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Non-flowering defect.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Nongerminating, male sterile.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Leaky mutant.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Semi-dwarf.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Leaky.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	More dwarf than ga1-5.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Double mutant.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Partially represses several defects of the severe GA deficiency of ga1-3, including: stem growth (about 1/3 as tall as wt, compared to the extreme dwarf stature of ga1-3), leaf abaxial trichome initiation (one to three leaves later than wt), flowering time (flowers earlier than ga1-3, but not as early as wt), and apical dominance (intermediate branching between ga1-3 and wt).	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Gibberellin (GA) responsive.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Dark green dwarf plants which later develop a bushy appearance with flowers poorly developed and male sterility.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Wild type phenotype can be restored by repeated GA applications.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	GA deficient morphology: dark green dwarf plants which later develop a bushy appearance with flowers poorly developed and male sterility.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	ABA levels showed light dependence in the mutant.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Red light irradiation reduced the expression levels of two DELLA genes, GAI and RGA, by threefold to fourfold in this mutant.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Under PHYB-dependent germination conditions (1 h of imbibition followed by a pulse of red or far-red light), the germination frequency of the ga1 mutant reached virtually 100% in the presence of 50 &mu.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	MGA3, irrespective of light conditions.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	However, at concentrations of <50 &mu.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Does not undergo stem elongation.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	GA-signaling promoting root and leaf expansion is not completely abolished.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	No bolting.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	No increase of germination or restoration of male fertility compared to the single ga1-3 mutant.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Rescue of the nonflowering phenotype of ga1-3.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Irrespective of the light conditions, a reduction of the expression levels of two DELLA genes, GAI and RGA, was measured in this double mutant.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	The double mutant germinates almost 100% in response to even 5 &mu.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Partially restored stem height (59% of Ler wild type).	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Early flowering.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Longer carpels than those of the ga1-3 single mutant.	259
+37	Arabidopsis	GA1	At4g02780	0.000	Pale brown seeds.	Stems are 32% taller than that of wild type Ler.	259
+38	Arabidopsis	EMB179		0.481	Pale brown seeds.	Pale yellow-green seeds.	6449
+38	Arabidopsis	EMB179		0.348	Pale brown seeds.	Pale yellow-green to pale green embryo.	6449
+38	Arabidopsis	EMB179		0.178	Pale brown seeds.	64.1*% aborted seeds in top half of silique.	6449
+38	Arabidopsis	EMB179		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at variable globular-linear stage.	6449
+38	Arabidopsis	EMB179		0.000	Pale brown seeds.	19.3% mutant.	6449
+39	Arabidopsis	EMB236		0.481	Pale brown seeds.	Pale yellow-green seeds.	6841
+39	Arabidopsis	EMB236		0.287	Pale brown seeds.	Pale yellow-green embryo.	6841
+39	Arabidopsis	EMB236		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at globular stage, rarely arrests at heart stage.	6841
+39	Arabidopsis	EMB236		0.000	Pale brown seeds.	24.5% mutant.	6841
+40	Arabidopsis	EMB51		0.481	Pale brown seeds.	Pale yellow-green seeds.	7161
+40	Arabidopsis	EMB51		0.287	Pale brown seeds.	Pale yellow-green embryo.	7161
+40	Arabidopsis	EMB51		0.178	Pale brown seeds.	51.4% aborted seeds in top half of silique.	7161
+40	Arabidopsis	EMB51		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at heart, torpedo stage.	7161
+40	Arabidopsis	EMB51		0.000	Pale brown seeds.	26% mutant.	7161
+41	Arabidopsis	EMB149		0.481	Pale brown seeds.	Pale yellow-green seeds.	6194
+41	Arabidopsis	EMB149		0.287	Pale brown seeds.	Pale yellow-green embryo.	6194
+41	Arabidopsis	EMB149		0.178	Pale brown seeds.	55% aborted seeds in top half of silique.	6194
+41	Arabidopsis	EMB149		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at globular-heart stage.	6194
+41	Arabidopsis	EMB149		0.000	Pale brown seeds.	23% mutant.	6194
+42	Arabidopsis	EMB210		0.481	Pale brown seeds.	Pale yellow-green seeds.	6656
+42	Arabidopsis	EMB210		0.283	Pale brown seeds.	White to pale green embryo.	6656
+42	Arabidopsis	EMB210		0.178	Pale brown seeds.	52.9% aborted seeds in top half of silique.	6656
+42	Arabidopsis	EMB210		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at globular-linear stage, monocotyledonous.	6656
+42	Arabidopsis	EMB210		0.000	Pale brown seeds.	23.8% mutant.	6656
+43	Arabidopsis	EMB223		0.481	Pale brown seeds.	Pale yellow-green seeds.	6750
+43	Arabidopsis	EMB223		0.248	Pale brown seeds.	White to pale yellow-green embryos.	6750
+43	Arabidopsis	EMB223		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at globular stage.	6750
+43	Arabidopsis	EMB223		0.000	Pale brown seeds.	26.3% mutant.	6750
+44	Arabidopsis	EMB201		0.481	Pale brown seeds.	Pale yellow-green seeds.	6588
+44	Arabidopsis	EMB201		0.248	Pale brown seeds.	White to pale yellow-green embryo.	6588
+44	Arabidopsis	EMB201		0.178	Pale brown seeds.	51% aborted seeds in top half of silique.	6588
+44	Arabidopsis	EMB201		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at linear stage, reduced cotyledons.	6588
+44	Arabidopsis	EMB201		0.000	Pale brown seeds.	22% mutant.	6588
+45	Arabidopsis	EMB151		0.481	Pale brown seeds.	Pale yellow-green seeds.	6214
+45	Arabidopsis	EMB151		0.248	Pale brown seeds.	White to pale yellow-green embryo.	6214
+45	Arabidopsis	EMB151		0.178	Pale brown seeds.	58.3% aborted seeds in top half of silique.	6214
+45	Arabidopsis	EMB151		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at globular-heart stage.	6214
+45	Arabidopsis	EMB151		0.000	Pale brown seeds.	22.7% mutant.	6214
+46	Arabidopsis	EMB145		0.481	Pale brown seeds.	Pale yellow-green seeds.	6162
+46	Arabidopsis	EMB145		0.248	Pale brown seeds.	White to pale yellow-green embryo.	6162
+46	Arabidopsis	EMB145		0.178	Pale brown seeds.	47.5% aborted seeds in top half of silique.	6162
+46	Arabidopsis	EMB145		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at globular stage, irregular protoderm.	6162
+46	Arabidopsis	EMB145		0.000	Pale brown seeds.	26.3% mutant.	6162
+47	Arabidopsis	EMB131		0.481	Pale brown seeds.	Pale yellow-green seeds.	6055
+47	Arabidopsis	EMB131		0.248	Pale brown seeds.	White to pale yellow-green embryo.	6055
+47	Arabidopsis	EMB131		0.178	Pale brown seeds.	70.0% aborted seeds in top half of silique.	6055
+47	Arabidopsis	EMB131		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at globular stage, elongated.	6055
+47	Arabidopsis	EMB131		0.000	Pale brown seeds.	21.3% mutant.	6055
+48	Arabidopsis	EMB209		0.481	Pale brown seeds.	Pale yellow-green seeds.	6645
+48	Arabidopsis	EMB209		0.348	Pale brown seeds.	Pale yellow-green to pale green embryo.	6645
+48	Arabidopsis	EMB209		0.178	Pale brown seeds.	49.3% aborted seeds in top half of silique.	6645
+48	Arabidopsis	EMB209		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at globular-linear stage.	6645
+48	Arabidopsis	EMB209		0.000	Pale brown seeds.	Monocots and tricots occur.	6645
+48	Arabidopsis	EMB209		0.000	Pale brown seeds.	23.9% mutant.	6645
+49	Arabidopsis	EMB106		0.481	Pale brown seeds.	Pale yellow-green seeds.	5853
+49	Arabidopsis	EMB106		0.422	Pale brown seeds.	White to pale yellow-green seeds.	5853
+49	Arabidopsis	EMB106		0.248	Pale brown seeds.	White to pale yellow-green embryo.	5853
+49	Arabidopsis	EMB106		0.178	Pale brown seeds.	50.8% aborted seeds in top half of silique.	5853
+49	Arabidopsis	EMB106		0.178	Pale brown seeds.	51.6% aborted seeds in top half of silique.	5853
+49	Arabidopsis	EMB106		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at globular stage.	5853
+49	Arabidopsis	EMB106		0.000	Pale brown seeds.	Elongated, triangular embryo.	5853
+49	Arabidopsis	EMB106		0.000	Pale brown seeds.	25.6% mutant.	5853
+49	Arabidopsis	EMB106		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at heart stage, elongated, (emb155).	5853
+49	Arabidopsis	EMB106		0.000	Pale brown seeds.	White embryo.	5853
+49	Arabidopsis	EMB106		0.000	Pale brown seeds.	24.6% mutant.	5853
+50	Arabidopsis	EMB84		0.481	Pale brown seeds.	Pale yellow-green seeds.	7181
+50	Arabidopsis	EMB84		0.178	Pale brown seeds.	42.1% aborted seeds in top half of silique.	7181
+50	Arabidopsis	EMB84		0.000	Pale brown seeds.	Developmental arrest of mutant embryos occurs at globular stage, abnormally large suspensor.	7181
+50	Arabidopsis	EMB84		0.000	Pale brown seeds.	White embryo.	7181
+50	Arabidopsis	EMB84		0.000	Pale brown seeds.	25.6% mutant.	7181

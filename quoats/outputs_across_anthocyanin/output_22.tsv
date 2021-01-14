@@ -1,0 +1,407 @@
+Rank	Species	Gene	Gene Model	Score	Query	Matches	Internal ID
+1	Maize	brn1		0.673	Pale brown seeds.	Brown embryo.	2867
+1	Maize	brn1		0.562	Pale brown seeds.	Brown kernel.	2867
+1	Maize	brn1		0.502	Pale brown seeds.	Brown aleurone.	2867
+1	Maize	brn1		0.328	Pale brown seeds.	Yellowish brown color in the aleurone layer.	2867
+1	Maize	brn1		0.132	Pale brown seeds.	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2867
+1	Maize	brn1		0.000	Pale brown seeds.	Lethal.	2867
+1	Maize	brn1		0.000	Pale brown seeds.	Seedling lethal.	2867
+2	Maize	brt1		0.625	Pale brown seeds.	Brown roots.	2876
+2	Maize	brt1		0.000	Pale brown seeds.	Roots senesce prematurely after germination.	2876
+3	Maize	a1	GRMZM2G026930	0.566	Pale brown seeds.	Green or brown plant.	166
+3	Maize	a1	GRMZM2G026930	0.489	Pale brown seeds.	The pericarp is brown.	166
+3	Maize	a1	GRMZM2G026930	0.489	Pale brown seeds.	Brown pericarp.	166
+3	Maize	a1	GRMZM2G026930	0.416	Pale brown seeds.	Red-brown pericarp.	166
+3	Maize	a1	GRMZM2G026930	0.282	Pale brown seeds.	Pale aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.257	Pale brown seeds.	Light-colored aleurone, lighter than dilute and less brown than bronze.	166
+3	Maize	a1	GRMZM2G026930	0.186	Pale brown seeds.	Pale purple husks.	166
+3	Maize	a1	GRMZM2G026930	0.186	Pale brown seeds.	Pale aleurone, with pigmented sectors.	166
+3	Maize	a1	GRMZM2G026930	0.148	Pale brown seeds.	Colorless/pale aleurone with purple sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Aleuron layer is colored.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Anthers are green.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	No color in aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Lack of anthocyanins in aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Seedling dies.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Silks are green.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Aleuron layer is colored, leading to a colored kernel.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Anthers are green, rather than the normal yellow.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	No color in the aleurone, specifically no color due to anthocyanins.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	However, anthocyanin pigmented sectors are present.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	In addition, lack of a1 transcript is confirmed.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Seedling dies after endosperm is used up.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Silks are green, rather than the normal yellow/white.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	A1 null transcript.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Colored aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Anthocyanin color with A1 A2 C1 C2 R1.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Would be purple if with Pr1, Bz1 and Bz2.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Colorless aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Colorless aleurone with pigmented sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Embryonic axis profile/color halo.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	One example of expression is seen in the combination of a1 with R1-scm2.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Ring or halo of anthocyanin color surrounding the kernel embryonic axis.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Flow pattern pigmentation.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Pigmentation along the sides of the kernel.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Not at the crown.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Green anthers.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Non-pigmented.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Usually appear to be yellow.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Green silks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Lethal.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Purple husks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Purple plant.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Spotted aleurone.	166
+4	Maize	a2	GRMZM2G345717	0.566	Pale brown seeds.	Green or brown plant.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Aleuron layer is colored.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Anthers are green.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Aleuron layer is colored, leading to a colored kernel.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Anthers are green, rather than the normal yellow.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Colored aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Anthocyanin color with A1 A2 C1 C2 R1.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Would be purple if with Pr1, Bz1 and Bz2.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Colorless aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	No color in the aleurone, specifically no color due to anthocyanins.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Colorless aleurone with pigmented sectors.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	However, anthocyanin pigmented sectors are present.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Green anthers.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Non-pigmented.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Usually appear to be yellow.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Spotted aleurone.	169
+5	Maize	brn2		0.562	Pale brown seeds.	Brown kernel.	2869
+5	Maize	brn2		0.000	Pale brown seeds.	Lethal.	2869
+6	Maize	bnk*-N1519C		0.562	Pale brown seeds.	Brown kernel.	2868
+6	Maize	bnk*-N1519C		0.000	Pale brown seeds.	Floury endosperm.	2868
+6	Maize	bnk*-N1519C		0.000	Pale brown seeds.	Endosperm has a soft, chalk-like texture, usually a reduced yellow color and an opaque appearance.	2868
+6	Maize	bnk*-N1519C		0.000	Pale brown seeds.	Wrinkled kernel.	2868
+6	Maize	bnk*-N1519C		0.000	Pale brown seeds.	Kernel appears full but surface has long irregular indentation.	2868
+7	Maize	bn1		0.502	Pale brown seeds.	Brown aleurone.	2866
+7	Maize	bn1		0.328	Pale brown seeds.	Yellowish brown color in the aleurone layer.	2866
+7	Maize	bn1		0.132	Pale brown seeds.	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2866
+7	Maize	bn1		0.000	Pale brown seeds.	Colorless aleurone.	2866
+7	Maize	bn1		0.000	Pale brown seeds.	No color in the aleurone, specifically no color due to anthocyanins.	2866
+8	Maize	ch1		0.489	Pale brown seeds.	Brown pericarp.	2875
+9	Maize	spc1		0.484	Pale brown seeds.	Brown leaf blade.	2870
+9	Maize	spc1		0.429	Pale brown seeds.	Brown midrib.	2870
+9	Maize	spc1		0.292	Pale brown seeds.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2870
+9	Maize	spc1		0.260	Pale brown seeds.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2870
+9	Maize	spc1		0.000	Pale brown seeds.	Also extending to cob and roots.	2870
+9	Maize	spc1		0.000	Pale brown seeds.	Speckled leaf.	2870
+9	Maize	spc1		0.000	Pale brown seeds.	Numerous lighter or darker areas on leaf surface.	2870
+9	Maize	spc1		0.000	Pale brown seeds.	Smaller, more numerous and more evenly distributed than spotted.	2870
+10	Maize	p1	GRMZM2G084799	0.447	Pale brown seeds.	Browning silks.	2330
+10	Maize	p1	GRMZM2G084799	0.413	Pale brown seeds.	Silks brown sooner than normal.	2330
+10	Maize	p1	GRMZM2G084799	0.352	Pale brown seeds.	Silks which do not turn brown when wounded lack certain classes of flavonoids, which are oxidized to quinones to give the brown color.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Colorless pericarp.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Delayed flowering.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Mature plant 2-3 feet taller and 7-10 days later in flowering.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	4-6 more nodes and leaves than normal.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Diffuse pericarp color.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Dilute pericarp color with P1-RR.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Sectors diffuse-edged rather than sharp.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	High negative Ac dosage effect.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Mosaic cob.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Mosaic pericarp.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Nonbrowning silks.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Orange cob.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Orange pericarp.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Follows genotype of endosperm (metaxenia) in orp1/opr2.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Pericarp on colorless kernels is orange.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Patterned pericarp.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Expression ranges from highly variable fine striping, to reduced pericarp pigmentation without striping.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	But with dark pigmentation at the point of silk attachment.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Red/black pericarp.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Dark red intense pericarp color.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Other tissues are also pigmented, such as the cob, husks, roots and seedlings.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Red cob.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Phlobaphenes (see Term) are polymerized polyphenolic compounds that confer the colors.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Red pericarp.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Suppresses Ac.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Effect like that of the Spm/En Suppressor function.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Variegated cob.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Variegated pericarp.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	White cap pericarp.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	White cob.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	White pericarp.	2330
+10	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Synonym: colorless pericarp.	2330
+11	Maize	bm1	GRMZM5G844562	0.438	Pale brown seeds.	Brown pigment first visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	222
+11	Maize	bm1	GRMZM5G844562	0.429	Pale brown seeds.	Brown midrib.	222
+11	Maize	bm1	GRMZM5G844562	0.354	Pale brown seeds.	Brown pigment in vascular bundles of roots.	222
+11	Maize	bm1	GRMZM5G844562	0.313	Pale brown seeds.	Brown pigment in vascular bundles of cob.	222
+11	Maize	bm1	GRMZM5G844562	0.292	Pale brown seeds.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	222
+11	Maize	bm1	GRMZM5G844562	0.260	Pale brown seeds.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	222
+11	Maize	bm1	GRMZM5G844562	0.000	Pale brown seeds.	The amount of lignin in the leaves is reduced.	222
+11	Maize	bm1	GRMZM5G844562	0.000	Pale brown seeds.	Also extending to cob and roots.	222
+11	Maize	bm1	GRMZM5G844562	0.000	Pale brown seeds.	The amount of lignin in the leaves is less than normal.	222
+11	Maize	bm1	GRMZM5G844562	0.000	Pale brown seeds.	Reduced lignin content.	222
+12	Maize	bm3	AC196475.3_FG004	0.438	Pale brown seeds.	Brown pigment first visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	221
+12	Maize	bm3	AC196475.3_FG004	0.429	Pale brown seeds.	Brown midrib.	221
+12	Maize	bm3	AC196475.3_FG004	0.354	Pale brown seeds.	Brown pigment in vascular bundles of roots.	221
+12	Maize	bm3	AC196475.3_FG004	0.313	Pale brown seeds.	Brown pigment in vascular bundles of cob.	221
+12	Maize	bm3	AC196475.3_FG004	0.292	Pale brown seeds.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	221
+12	Maize	bm3	AC196475.3_FG004	0.260	Pale brown seeds.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	221
+12	Maize	bm3	AC196475.3_FG004	0.000	Pale brown seeds.	The amount of lignin in the leaves is reduced.	221
+12	Maize	bm3	AC196475.3_FG004	0.000	Pale brown seeds.	Also extending to cob and roots.	221
+12	Maize	bm3	AC196475.3_FG004	0.000	Pale brown seeds.	The amount of lignin in the leaves is less than normal.	221
+12	Maize	bm3	AC196475.3_FG004	0.000	Pale brown seeds.	Improved digestibility.	221
+12	Maize	bm3	AC196475.3_FG004	0.000	Pale brown seeds.	Improved digestibility of forage or silage by ruminants.	221
+12	Maize	bm3	AC196475.3_FG004	0.000	Pale brown seeds.	Reduced lignin content.	221
+13	Maize	ptac2	GRMZM2G122116	0.434	Pale brown seeds.	Pale pale green leaf.	3739
+13	Maize	ptac2	GRMZM2G122116	0.000	Pale brown seeds.	Very light green seedling, nearly white.	3739
+14	Maize	ptac12	GRMZM5G897926	0.434	Pale brown seeds.	Pale pale green leaf.	3738
+14	Maize	ptac12	GRMZM5G897926	0.000	Pale brown seeds.	Very light green seedling, nearly white.	3738
+15	Maize	prin2	GRMZM2G119906	0.434	Pale brown seeds.	Pale pale green leaf.	3737
+15	Maize	prin2	GRMZM2G119906	0.000	Pale brown seeds.	Very light green seedling, nearly white.	3737
+16	Maize	ppg2		0.434	Pale brown seeds.	Pale pale green leaf.	3736
+16	Maize	ppg2		0.000	Pale brown seeds.	Very light green seedling, nearly white.	3736
+17	Maize	v*-N354B		0.434	Pale brown seeds.	Pale pale green leaf.	3740
+17	Maize	v*-N354B		0.000	Pale brown seeds.	Very light green seedling, nearly white.	3740
+17	Maize	v*-N354B		0.000	Pale brown seeds.	Virescent seedling.	3740
+17	Maize	v*-N354B		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3740
+18	Maize	w2	GRMZM2G480171	0.434	Pale brown seeds.	Pale pale green leaf.	2759
+18	Maize	w2	GRMZM2G480171	0.332	Pale brown seeds.	Pale green plant.	2759
+18	Maize	w2	GRMZM2G480171	0.161	Pale brown seeds.	Two classes of albino seedlings: Class I characterized by white or pale-yellow endosperm in a genotype that would otherwise produce yellow seeds, and albino seedlings.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Albino seedling.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Seedling leaves are white.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Some alleles have palegreen or green seedlings, and a few have mutable endosperm and/or seedlings.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Class II consists of albino mutants in which pigmentation of the endosperm is not affected.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Mosaic aleurone color.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	The borders are distinct, as opposed to mottled.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Lighter green seedlings or plants.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Less yellow than yellow green.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Very light green seedling, nearly white.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Pitted kernel.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Surface of kernel strewn with small pits or indentations.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Interior usually floury.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Small seedling.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Reduced size to the 7-8 leaf stage, usually becomes small plant.	2759
+18	Maize	w2	GRMZM2G480171	0.000	Pale brown seeds.	Spotted/pitted endosperm.	2759
+19	Maize	pg15		0.434	Pale brown seeds.	Pale pale green leaf.	2975
+19	Maize	pg15		0.332	Pale brown seeds.	Pale green plant.	2975
+19	Maize	pg15		0.199	Pale brown seeds.	Sometimes bleaches and dries, turns brown or black, and sometimes gets watery before it dries.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Crossbanded leaf.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Recurring transverse bands of uniform width on leaves.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Affected tissue varies from the rest of the leaf blade either in color (light or dark) or some other characteristic (necrotic, grainy, bleached, etc.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Necrotic leaf.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Affected tissue dies.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Patches and streaks are common, but often the necrosis involves the whole leaf, progressing from the tip downward.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Lighter green seedlings or plants.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Less yellow than yellow green.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Very light green seedling, nearly white.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Piebald leaf.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	White or very light green patches on leaf.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Large irregular pattern that does not follow cell lineage.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Streaked leaf.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Stripes smaller and less uniform than striate.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	May be lighter color on green or normal green on a lighter green background.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Zebra necrotic leaf.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Necrotic tissue appears between veins in regularly spaced crossbands on leaves of half- grown plants.	2975
+19	Maize	pg15		0.000	Pale brown seeds.	Necrotic crossbands are horizontal to the axis of the leaf.	2975
+20	Maize	y9	GRMZM2G011746	0.434	Pale brown seeds.	Pale pale green leaf.	2787
+20	Maize	y9	GRMZM2G011746	0.323	Pale brown seeds.	Pale green seedling.	2787
+20	Maize	y9	GRMZM2G011746	0.284	Pale brown seeds.	Pale yellow endosperm.	2787
+20	Maize	y9	GRMZM2G011746	0.161	Pale brown seeds.	Two classes of albino seedlings: Class I characterized by white or pale-yellow endosperm in a genotype that would otherwise produce yellow seeds, and albino seedlings.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Albino seedling.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Seedling leaves are white.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Some alleles have palegreen or green seedlings, and a few have mutable endosperm and/or seedlings.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Class II consists of albino mutants in which pigmentation of the endosperm is not affected.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Carotenoid deficient.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Lack of carotenoids results in white kernels or leaves in appropriate genotypes (can be seen only when anthocyanins are also absent).	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Lemon white.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	White seedling.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Very light green seedling, nearly white.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Virescent seedling.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Viviparous kernel.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Molecularly characterized mutants are blocked in the biosynthesis of abscisic acid (ABA), or in ABA signaling.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Viviparous mutants often have other phenotypes, notably colorless aleurone from suppression of anthocyanins (vp1) and white endosperm , from blocks in carotenoid synthesis (lw2, vp5, ps1/vp7).	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Viviparous mutants in maize may be kernel lethal , or if rescued prior to ear desiccation, either viable, or seedling lethal.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Viable mutants are known for vp1, which encodes a transcription factor involved in ABA signaling, and vp14, which encodes an NCED enzyme that cleaves carotenoids to provide xanthoxin, an ABA precursor.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Seedling lethal mutants include vp5, ps1/vp7 and vp9 , which block production of carotenoid precursors for ABA synthesis .	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Vp10 and vp15, both deficient in synthesis of the molybdenum cofactor(MoCo) required for ABA synthesis and other pathways.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	(Apr 2013 last update).	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Premature germination.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Embryo fails to become dormant.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	White tipped leaf.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Tips of first 1-2 leaves are white.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Zebra leaf.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Regularly spaced yellow green crossbands on older leaves.	2787
+20	Maize	y9	GRMZM2G011746	0.000	Pale brown seeds.	Enhanced by cool temperatures.	2787
+21	Maize	dek5	GRMZM2G083374	0.434	Pale brown seeds.	Pale pale green leaf.	3097
+21	Maize	dek5	GRMZM2G083374	0.332	Pale brown seeds.	Pale green plant.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Defective kernel.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	A general term describing an improperly developed endosperm that appears not to be wholly functional.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Usually smaller, distorted and otherwise atypical.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Green with white stripes.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Green leaf with white stripes.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Mosaic aleurone color.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Irregular-shaped patches of color and non-color in the aleurone tissue when appropriate genes for anthocyanin are present.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	The borders are distinct, as opposed to mottled.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Opaque endosperm.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Endosperm is opaque and firm, not chalky and not waxy.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Lighter green seedlings or plants.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Less yellow than yellow green.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Very light green seedling, nearly white.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Rough kernel.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Surface of kernel covered with many small irregularities giving it a rough texture.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Shrunken kernel.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Two kinds: 1) a moderately smooth collapse of the crown and sides of the kernel, like sh1.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	And 2) an extreme collapse of endosperm tissue, often associated with a brittle and/or translucent appearance, like sh2 (also see brittle endosperm).	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Small germ.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Striped leaf.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Uniform longitudinal stripes of either white or yellow color on normal green.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Variable longitudinal stripes.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Could be color or necrosis on normal green.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Stripes are on normal (or nearly normal) green leaf blade and sheath.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Gerry Neuffer, 2010.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Sugary kernel.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Kernel is wrinkled, hard and translucent when dry.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Sweet at milk stage.	3097
+21	Maize	dek5	GRMZM2G083374	0.000	Pale brown seeds.	Typical of su1.	3097
+22	Maize	bm6		0.429	Pale brown seeds.	Brown midrib.	2874
+22	Maize	bm6		0.292	Pale brown seeds.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2874
+22	Maize	bm6		0.260	Pale brown seeds.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2874
+22	Maize	bm6		0.000	Pale brown seeds.	Also extending to cob and roots.	2874
+23	Maize	bm5	GRMZM2G075333	0.429	Pale brown seeds.	Brown midrib.	2873
+23	Maize	bm5	GRMZM2G075333	0.292	Pale brown seeds.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2873
+23	Maize	bm5	GRMZM2G075333	0.260	Pale brown seeds.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2873
+23	Maize	bm5	GRMZM2G075333	0.000	Pale brown seeds.	Also extending to cob and roots.	2873
+24	Maize	bm4	GRMZM2G393334	0.429	Pale brown seeds.	Brown midrib.	2872
+24	Maize	bm4	GRMZM2G393334	0.292	Pale brown seeds.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2872
+24	Maize	bm4	GRMZM2G393334	0.260	Pale brown seeds.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2872
+24	Maize	bm4	GRMZM2G393334	0.000	Pale brown seeds.	Also extending to cob and roots.	2872
+25	Maize	bm2	GRMZM2G347056	0.429	Pale brown seeds.	Brown midrib.	2871
+25	Maize	bm2	GRMZM2G347056	0.292	Pale brown seeds.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2871
+25	Maize	bm2	GRMZM2G347056	0.260	Pale brown seeds.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2871
+25	Maize	bm2	GRMZM2G347056	0.000	Pale brown seeds.	Also extending to cob and roots.	2871
+26	Maize	bf1	GRMZM2G051219	0.429	Pale brown seeds.	Brown midrib.	2847
+26	Maize	bf1	GRMZM2G051219	0.292	Pale brown seeds.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2847
+26	Maize	bf1	GRMZM2G051219	0.260	Pale brown seeds.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2847
+26	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds.	Blue fluorescence-anthers.	2847
+26	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds.	Fluoresces blue under UV light due to anthranilic acid accumulation, in homozygous or heterozygous Bf1 anthers.	2847
+26	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds.	Blue fluorescence-leaves.	2847
+26	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds.	Fluoresces blue under UV light due to anthranilic acid accumulation.	2847
+26	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds.	Blue fluorescent plant.	2847
+26	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds.	When dominant, seedlings and anthers fluoresce blue under ultraviolet light.	2847
+26	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds.	Anthranilic acid present.	2847
+26	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds.	Also extending to cob and roots.	2847
+26	Maize	bf1	GRMZM2G051219	0.000	Pale brown seeds.	Yellow green leaf.	2847
+27	Maize	in1	GRMZM2G042733	0.335	Pale brown seeds.	Expressed as brown pigment in kernels recessive for a1 or a2 or bz1 or bz2.	3153
+27	Maize	in1	GRMZM2G042733	0.282	Pale brown seeds.	Pale aleurone.	3153
+27	Maize	in1	GRMZM2G042733	0.257	Pale brown seeds.	Light-colored aleurone, lighter than dilute and less brown than bronze.	3153
+27	Maize	in1	GRMZM2G042733	0.000	Pale brown seeds.	Dilute aleurone color.	3153
+27	Maize	in1	GRMZM2G042733	0.000	Pale brown seeds.	Aleurone color diluted.	3153
+27	Maize	in1	GRMZM2G042733	0.000	Pale brown seeds.	Golden sheen metaxenia.	3153
+27	Maize	in1	GRMZM2G042733	0.000	Pale brown seeds.	Variable expression in the pericarp over intensely pigmented kernels homozygous for color factors and in1 in the underlying endosperm (metaxenia).	3153
+27	Maize	in1	GRMZM2G042733	0.000	Pale brown seeds.	Intensifier.	3153
+27	Maize	in1	GRMZM2G042733	0.000	Pale brown seeds.	Intensifies anthocyanin and related pigments in the aleurone.	3153
+27	Maize	in1	GRMZM2G042733	0.000	Pale brown seeds.	Red aleurone to deep red.	3153
+28	Maize	lpe1	GRMZM5G858417	0.332	Pale brown seeds.	Pale green plant.	3677
+28	Maize	lpe1	GRMZM5G858417	0.323	Pale brown seeds.	Pale green seedling.	3677
+28	Maize	lpe1	GRMZM5G858417	0.000	Pale brown seeds.	Lighter green seedlings or plants.	3677
+28	Maize	lpe1	GRMZM5G858417	0.000	Pale brown seeds.	Less yellow than yellow green.	3677
+29	Maize	yg3	GRMZM2G165521	0.332	Pale brown seeds.	Pale green plant.	3708
+29	Maize	yg3	GRMZM2G165521	0.323	Pale brown seeds.	Pale green seedling.	3708
+29	Maize	yg3	GRMZM2G165521	0.000	Pale brown seeds.	Lighter green seedlings or plants.	3708
+29	Maize	yg3	GRMZM2G165521	0.000	Pale brown seeds.	Less yellow than yellow green.	3708
+29	Maize	yg3	GRMZM2G165521	0.000	Pale brown seeds.	Yellow green leaf.	3708
+30	Maize	pg*-N590B		0.332	Pale brown seeds.	Pale green plant.	3690
+30	Maize	pg*-N590B		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3690
+30	Maize	pg*-N590B		0.000	Pale brown seeds.	Less yellow than yellow green.	3690
+31	Maize	pg*-N1881		0.332	Pale brown seeds.	Pale green plant.	3684
+31	Maize	pg*-N1881		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3684
+31	Maize	pg*-N1881		0.000	Pale brown seeds.	Less yellow than yellow green.	3684
+32	Maize	pg16		0.332	Pale brown seeds.	Pale green plant.	3682
+32	Maize	pg16		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3682
+32	Maize	pg16		0.000	Pale brown seeds.	Less yellow than yellow green.	3682
+33	Maize	pg13		0.332	Pale brown seeds.	Pale green plant.	3681
+33	Maize	pg13		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3681
+33	Maize	pg13		0.000	Pale brown seeds.	Less yellow than yellow green.	3681
+34	Maize	pg12		0.332	Pale brown seeds.	Pale green plant.	3680
+34	Maize	pg12		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3680
+34	Maize	pg12		0.000	Pale brown seeds.	Less yellow than yellow green.	3680
+35	Maize	pg11		0.332	Pale brown seeds.	Pale green plant.	3679
+35	Maize	pg11		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3679
+35	Maize	pg11		0.000	Pale brown seeds.	Less yellow than yellow green.	3679
+36	Maize	pet1		0.332	Pale brown seeds.	Pale green plant.	3678
+36	Maize	pet1		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3678
+36	Maize	pet1		0.000	Pale brown seeds.	Less yellow than yellow green.	3678
+37	Maize	pg*-N526C		0.332	Pale brown seeds.	Pale green plant.	3689
+37	Maize	pg*-N526C		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3689
+37	Maize	pg*-N526C		0.000	Pale brown seeds.	Less yellow than yellow green.	3689
+37	Maize	pg*-N526C		0.000	Pale brown seeds.	Yellow green leaf.	3689
+38	Maize	pg*-N408C		0.332	Pale brown seeds.	Pale green plant.	3687
+38	Maize	pg*-N408C		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3687
+38	Maize	pg*-N408C		0.000	Pale brown seeds.	Less yellow than yellow green.	3687
+38	Maize	pg*-N408C		0.000	Pale brown seeds.	Yellow green leaf.	3687
+39	Maize	yg2		0.332	Pale brown seeds.	Pale green plant.	3707
+39	Maize	yg2		0.323	Pale brown seeds.	Pale green seedling.	3707
+39	Maize	yg2		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3707
+39	Maize	yg2		0.000	Pale brown seeds.	Less yellow than yellow green.	3707
+39	Maize	yg2		0.000	Pale brown seeds.	Virescent seedling.	3707
+39	Maize	yg2		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3707
+39	Maize	yg2		0.000	Pale brown seeds.	White luteus seedling.	3707
+39	Maize	yg2		0.000	Pale brown seeds.	Yellowish-white seedling.	3707
+39	Maize	yg2		0.000	Pale brown seeds.	Yellow green leaf.	3707
+40	Maize	v*-N735		0.332	Pale brown seeds.	Pale green plant.	3702
+40	Maize	v*-N735		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3702
+40	Maize	v*-N735		0.000	Pale brown seeds.	Less yellow than yellow green.	3702
+40	Maize	v*-N735		0.000	Pale brown seeds.	Virescent seedling.	3702
+40	Maize	v*-N735		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3702
+41	Maize	v*-N634A		0.332	Pale brown seeds.	Pale green plant.	3701
+41	Maize	v*-N634A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3701
+41	Maize	v*-N634A		0.000	Pale brown seeds.	Less yellow than yellow green.	3701
+41	Maize	v*-N634A		0.000	Pale brown seeds.	Virescent seedling.	3701
+41	Maize	v*-N634A		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3701
+42	Maize	v*-N470A		0.332	Pale brown seeds.	Pale green plant.	3700
+42	Maize	v*-N470A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3700
+42	Maize	v*-N470A		0.000	Pale brown seeds.	Less yellow than yellow green.	3700
+42	Maize	v*-N470A		0.000	Pale brown seeds.	Virescent seedling.	3700
+42	Maize	v*-N470A		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3700
+43	Maize	pg*-N71A		0.332	Pale brown seeds.	Pale green plant.	3692
+43	Maize	pg*-N71A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3692
+43	Maize	pg*-N71A		0.000	Pale brown seeds.	Less yellow than yellow green.	3692
+43	Maize	pg*-N71A		0.000	Pale brown seeds.	Virescent seedling.	3692
+43	Maize	pg*-N71A		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3692
+44	Maize	pg*-N296A		0.332	Pale brown seeds.	Pale green plant.	3686
+44	Maize	pg*-N296A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3686
+44	Maize	pg*-N296A		0.000	Pale brown seeds.	Less yellow than yellow green.	3686
+44	Maize	pg*-N296A		0.000	Pale brown seeds.	Virescent seedling.	3686
+44	Maize	pg*-N296A		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3686
+45	Maize	pg*-N484A		0.332	Pale brown seeds.	Pale green plant.	3341
+45	Maize	pg*-N484A		0.121	Pale brown seeds.	Tissue between the veins is pale green or grayish green, giving the leaf a striped appearance.	3341
+45	Maize	pg*-N484A		0.000	Pale brown seeds.	Green striped leaf.	3341
+45	Maize	pg*-N484A		0.000	Pale brown seeds.	Normal green along veins (vascular bundles).	3341
+45	Maize	pg*-N484A		0.000	Pale brown seeds.	Can be weakly expressed in seedling but becomes more apparent as tissue matures.	3341
+45	Maize	pg*-N484A		0.000	Pale brown seeds.	Gerry Neuffer, 2010.	3341
+45	Maize	pg*-N484A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3341
+45	Maize	pg*-N484A		0.000	Pale brown seeds.	Less yellow than yellow green.	3341
+46	Maize	ws4		0.332	Pale brown seeds.	Pale green plant.	3704
+46	Maize	ws4		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3704
+46	Maize	ws4		0.000	Pale brown seeds.	Less yellow than yellow green.	3704
+46	Maize	ws4		0.000	Pale brown seeds.	White sheath.	3704
+46	Maize	ws4		0.000	Pale brown seeds.	White leaf sheath culm and husks.	3704
+46	Maize	ws4		0.000	Pale brown seeds.	Normal green leaves.	3704
+47	Maize	spt2		0.332	Pale brown seeds.	Pale green plant.	3695
+47	Maize	spt2		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3695
+47	Maize	spt2		0.000	Pale brown seeds.	Less yellow than yellow green.	3695
+47	Maize	spt2		0.000	Pale brown seeds.	Spotted leaf.	3695
+47	Maize	spt2		0.000	Pale brown seeds.	Small, more or less round areas of light color on dark background (or vice versa).	3695
+47	Maize	spt2		0.000	Pale brown seeds.	Borders often fuzzy.	3695
+48	Maize	spt1		0.332	Pale brown seeds.	Pale green plant.	3694
+48	Maize	spt1		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3694
+48	Maize	spt1		0.000	Pale brown seeds.	Less yellow than yellow green.	3694
+48	Maize	spt1		0.000	Pale brown seeds.	Spotted leaf.	3694
+48	Maize	spt1		0.000	Pale brown seeds.	Small, more or less round areas of light color on dark background (or vice versa).	3694
+48	Maize	spt1		0.000	Pale brown seeds.	Borders often fuzzy.	3694
+49	Maize	pg*-N660A		0.332	Pale brown seeds.	Pale green plant.	3691
+49	Maize	pg*-N660A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3691
+49	Maize	pg*-N660A		0.000	Pale brown seeds.	Less yellow than yellow green.	3691
+49	Maize	pg*-N660A		0.000	Pale brown seeds.	Streaked leaf.	3691
+49	Maize	pg*-N660A		0.000	Pale brown seeds.	Stripes smaller and less uniform than striate.	3691
+49	Maize	pg*-N660A		0.000	Pale brown seeds.	May be lighter color on green or normal green on a lighter green background.	3691
+50	Maize	pg*-N484B		0.332	Pale brown seeds.	Pale green plant.	3688
+50	Maize	pg*-N484B		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3688
+50	Maize	pg*-N484B		0.000	Pale brown seeds.	Less yellow than yellow green.	3688
+50	Maize	pg*-N484B		0.000	Pale brown seeds.	Speckled leaf.	3688
+50	Maize	pg*-N484B		0.000	Pale brown seeds.	Numerous lighter or darker areas on leaf surface.	3688
+50	Maize	pg*-N484B		0.000	Pale brown seeds.	Smaller, more numerous and more evenly distributed than spotted.	3688

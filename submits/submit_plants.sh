@@ -31,17 +31,14 @@ cd notebooks
 
 
 
-python analysis.py --name plants1 --dataset plants --filter --annotations
-python analysis.py --name plants2 --dataset plants --filter --ic --vanilla
-
-#python analysis.py --name plants1 --dataset plants --filter --learning --annotations
-#python analysis.py --name plants2 --dataset plants --filter --bio_small --vanilla
-#python analysis.py --name plants3 --dataset plants --filter --collapsed
-#python analysis.py --name plants4 --dataset plants --filter --baseline --combined
-#python analysis.py --name plants5 --dataset plants --filter --noblecoder
-#python analysis.py --name plants6 --dataset plants --filter --nmf --lda
-#python analysis.py --name plants7 --dataset plants --filter --vocab
-#python analysis.py --name plants8 --dataset plants --filter --bert --biobert
+#python analysis.py --name plants0 --dataset plants --filter --annotations
+python analysis.py --name plants1 --dataset plants --filter --ic --vanilla
+python analysis.py --name plants2 --dataset plants --filter --learning --baseline
+python analysis.py --name plants3 --dataset plants --filter --bio_small --vocab
+python analysis.py --name plants4 --dataset plants --filter --collapsed
+python analysis.py --name plants5 --dataset plants --filter --noblecoder
+python analysis.py --name plants6 --dataset plants --filter --nmf --lda
+python analysis.py --name plants7 --dataset plants --filter --bert --biobert
 cd ../scripts
 python rglob_and_stack.py plants
 cd ../notebooks

@@ -1,0 +1,1273 @@
+Rank	Species	Gene	Gene Model	Score	Query	Matches	Internal ID
+1	Arabidopsis	PDE325	At3g51820	1.000	Pale green seedlings.	Pale green seedlings.	1632
+1	Arabidopsis	PDE325	At3g51820	1.000	Pale green seeds.	Pale green seeds.	1632
+1	Arabidopsis	PDE325	At3g51820	1.000	Pale green seeds and seedlings.	Pale green seeds and seedlings.	1632
+1	Arabidopsis	PDE325	At3g51820	0.888	Pale green seeds.	Pale green seeds and seedlings.	1632
+1	Arabidopsis	PDE325	At3g51820	0.888	Pale green seeds and seedlings.	Pale green seeds.	1632
+1	Arabidopsis	PDE325	At3g51820	0.873	Pale green seedlings.	Pale green seeds and seedlings.	1632
+1	Arabidopsis	PDE325	At3g51820	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1632
+1	Arabidopsis	PDE325	At3g51820	0.709	Pale green seedlings.	Pale green seeds.	1632
+1	Arabidopsis	PDE325	At3g51820	0.709	Pale green seeds.	Pale green seedlings.	1632
+2	Arabidopsis	PDE324	At3g04260	1.000	Pale green seedlings.	Pale green seedlings.	1630
+2	Arabidopsis	PDE324	At3g04260	1.000	Pale green seeds.	Pale green seeds.	1630
+2	Arabidopsis	PDE324	At3g04260	1.000	Pale green seeds and seedlings.	Pale green seeds and seedlings.	1630
+2	Arabidopsis	PDE324	At3g04260	0.888	Pale green seeds.	Pale green seeds and seedlings.	1630
+2	Arabidopsis	PDE324	At3g04260	0.888	Pale green seeds and seedlings.	Pale green seeds.	1630
+2	Arabidopsis	PDE324	At3g04260	0.873	Pale green seedlings.	Pale green seeds and seedlings.	1630
+2	Arabidopsis	PDE324	At3g04260	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1630
+2	Arabidopsis	PDE324	At3g04260	0.709	Pale green seedlings.	Pale green seeds.	1630
+2	Arabidopsis	PDE324	At3g04260	0.709	Pale green seeds.	Pale green seedlings.	1630
+3	Arabidopsis	PDE318	At1g80770	1.000	Pale green seedlings.	Pale green seedlings.	1625
+3	Arabidopsis	PDE318	At1g80770	1.000	Pale green seeds.	Pale green seeds.	1625
+3	Arabidopsis	PDE318	At1g80770	1.000	Pale green seeds and seedlings.	Pale green seeds and seedlings.	1625
+3	Arabidopsis	PDE318	At1g80770	0.888	Pale green seeds.	Pale green seeds and seedlings.	1625
+3	Arabidopsis	PDE318	At1g80770	0.888	Pale green seeds and seedlings.	Pale green seeds.	1625
+3	Arabidopsis	PDE318	At1g80770	0.873	Pale green seedlings.	Pale green seeds and seedlings.	1625
+3	Arabidopsis	PDE318	At1g80770	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1625
+3	Arabidopsis	PDE318	At1g80770	0.709	Pale green seedlings.	Pale green seeds.	1625
+3	Arabidopsis	PDE318	At1g80770	0.709	Pale green seeds.	Pale green seedlings.	1625
+4	Arabidopsis	APG8	At5g51100	1.000	Pale green seedlings.	Pale green seedlings.	1622
+4	Arabidopsis	APG8	At5g51100	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1622
+4	Arabidopsis	APG8	At5g51100	0.709	Pale green seeds.	Pale green seedlings.	1622
+5	Arabidopsis	ALB3	At2g28800	1.000	Pale green seedlings.	Pale green seedlings.	1626
+5	Arabidopsis	ALB3	At2g28800	1.000	Pale green seeds.	Pale green seeds.	1626
+5	Arabidopsis	ALB3	At2g28800	1.000	Pale green seeds and seedlings.	Pale green seeds and seedlings.	1626
+5	Arabidopsis	ALB3	At2g28800	0.888	Pale green seeds.	Pale green seeds and seedlings.	1626
+5	Arabidopsis	ALB3	At2g28800	0.888	Pale green seeds and seedlings.	Pale green seeds.	1626
+5	Arabidopsis	ALB3	At2g28800	0.873	Pale green seedlings.	Pale green seeds and seedlings.	1626
+5	Arabidopsis	ALB3	At2g28800	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1626
+5	Arabidopsis	ALB3	At2g28800	0.709	Pale green seedlings.	Pale green seeds.	1626
+5	Arabidopsis	ALB3	At2g28800	0.709	Pale green seeds.	Pale green seedlings.	1626
+5	Arabidopsis	ALB3	At2g28800	0.000	Pale green seedlings.	Albino.	1626
+5	Arabidopsis	ALB3	At2g28800	0.000	Pale green seeds.	Albino.	1626
+5	Arabidopsis	ALB3	At2g28800	0.000	Pale green seeds and seedlings.	Albino.	1626
+6	Arabidopsis	PDE323	At2g40930	1.000	Pale green seedlings.	Pale green seedlings.	1628
+6	Arabidopsis	PDE323	At2g40930	1.000	Pale green seeds.	Pale green seeds.	1628
+6	Arabidopsis	PDE323	At2g40930	1.000	Pale green seeds and seedlings.	Pale green seeds and seedlings.	1628
+6	Arabidopsis	PDE323	At2g40930	0.888	Pale green seeds.	Pale green seeds and seedlings.	1628
+6	Arabidopsis	PDE323	At2g40930	0.888	Pale green seeds and seedlings.	Pale green seeds.	1628
+6	Arabidopsis	PDE323	At2g40930	0.873	Pale green seedlings.	Pale green seeds and seedlings.	1628
+6	Arabidopsis	PDE323	At2g40930	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1628
+6	Arabidopsis	PDE323	At2g40930	0.709	Pale green seedlings.	Pale green seeds.	1628
+6	Arabidopsis	PDE323	At2g40930	0.709	Pale green seeds.	Pale green seedlings.	1628
+6	Arabidopsis	PDE323	At2g40930	0.000	Pale green seedlings.	Pigment defective.	1628
+6	Arabidopsis	PDE323	At2g40930	0.000	Pale green seedlings.	No visible phenotype.	1628
+6	Arabidopsis	PDE323	At2g40930	0.000	Pale green seeds.	Pigment defective.	1628
+6	Arabidopsis	PDE323	At2g40930	0.000	Pale green seeds.	No visible phenotype.	1628
+6	Arabidopsis	PDE323	At2g40930	0.000	Pale green seeds and seedlings.	Pigment defective.	1628
+6	Arabidopsis	PDE323	At2g40930	0.000	Pale green seeds and seedlings.	No visible phenotype.	1628
+7	Arabidopsis	DAL1	At2g33430	1.000	Pale green seedlings.	Pale green seedlings.	1952
+7	Arabidopsis	DAL1	At2g33430	0.934	Pale green seedlings.	Pale green embryos and seedlings.	1952
+7	Arabidopsis	DAL1	At2g33430	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1952
+7	Arabidopsis	DAL1	At2g33430	0.815	Pale green seeds and seedlings.	Pale green embryos and seedlings.	1952
+7	Arabidopsis	DAL1	At2g33430	0.775	Pale green seedlings.	Pale green embryos.	1952
+7	Arabidopsis	DAL1	At2g33430	0.762	Pale green seeds.	Pale green embryos.	1952
+7	Arabidopsis	DAL1	At2g33430	0.709	Pale green seeds.	Pale green seedlings.	1952
+7	Arabidopsis	DAL1	At2g33430	0.676	Pale green seeds and seedlings.	Pale green embryos.	1952
+7	Arabidopsis	DAL1	At2g33430	0.663	Pale green seeds.	Pale green embryos and seedlings.	1952
+7	Arabidopsis	DAL1	At2g33430	0.177	Pale green seedlings.	Seedling lethal without exogenous sucrose.	1952
+7	Arabidopsis	DAL1	At2g33430	0.155	Pale green seeds and seedlings.	Seedling lethal without exogenous sucrose.	1952
+7	Arabidopsis	DAL1	At2g33430	0.000	Pale green seedlings.	Susceptible to avirulent bacteria.	1952
+7	Arabidopsis	DAL1	At2g33430	0.000	Pale green seeds.	Seedling lethal without exogenous sucrose.	1952
+7	Arabidopsis	DAL1	At2g33430	0.000	Pale green seeds.	Susceptible to avirulent bacteria.	1952
+7	Arabidopsis	DAL1	At2g33430	0.000	Pale green seeds and seedlings.	Susceptible to avirulent bacteria.	1952
+8	Arabidopsis	APG2	At2g01110	1.000	Pale green seedlings.	Pale green seedlings.	1970
+8	Arabidopsis	APG2	At2g01110	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1970
+8	Arabidopsis	APG2	At2g01110	0.781	Pale green seedlings.	Albino and pale green seedlings.	1970
+8	Arabidopsis	APG2	At2g01110	0.709	Pale green seeds.	Pale green seedlings.	1970
+8	Arabidopsis	APG2	At2g01110	0.682	Pale green seeds and seedlings.	Albino and pale green seedlings.	1970
+8	Arabidopsis	APG2	At2g01110	0.619	Pale green seedlings.	Albino and pale green.	1970
+8	Arabidopsis	APG2	At2g01110	0.608	Pale green seeds.	Albino and pale green.	1970
+8	Arabidopsis	APG2	At2g01110	0.554	Pale green seeds.	Albino and pale green seedlings.	1970
+8	Arabidopsis	APG2	At2g01110	0.540	Pale green seeds and seedlings.	Albino and pale green.	1970
+8	Arabidopsis	APG2	At2g01110	0.323	Pale green seedlings.	Seedling lethal.	1970
+8	Arabidopsis	APG2	At2g01110	0.291	Pale green seedlings.	Albino seedlings.	1970
+8	Arabidopsis	APG2	At2g01110	0.282	Pale green seeds and seedlings.	Seedling lethal.	1970
+8	Arabidopsis	APG2	At2g01110	0.254	Pale green seeds and seedlings.	Albino seedlings.	1970
+8	Arabidopsis	APG2	At2g01110	0.000	Pale green seeds.	Albino seedlings.	1970
+8	Arabidopsis	APG2	At2g01110	0.000	Pale green seeds.	Seedling lethal.	1970
+9	Arabidopsis	NARA5	At4g27600	1.000	Pale green seedlings.	Pale green seedlings.	1953
+9	Arabidopsis	NARA5	At4g27600	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1953
+9	Arabidopsis	NARA5	At4g27600	0.709	Pale green seeds.	Pale green seedlings.	1953
+9	Arabidopsis	NARA5	At4g27600	0.177	Pale green seedlings.	Seedling lethal without exogenous sucrose.	1953
+9	Arabidopsis	NARA5	At4g27600	0.155	Pale green seeds and seedlings.	Seedling lethal without exogenous sucrose.	1953
+9	Arabidopsis	NARA5	At4g27600	0.000	Pale green seeds.	Seedling lethal without exogenous sucrose.	1953
+10	Arabidopsis	DGD1	At3g11670	1.000	Pale green seedlings.	Pale green seedlings.	1631
+10	Arabidopsis	DGD1	At3g11670	1.000	Pale green seeds.	Pale green seeds.	1631
+10	Arabidopsis	DGD1	At3g11670	1.000	Pale green seeds and seedlings.	Pale green seeds and seedlings.	1631
+10	Arabidopsis	DGD1	At3g11670	0.888	Pale green seeds.	Pale green seeds and seedlings.	1631
+10	Arabidopsis	DGD1	At3g11670	0.888	Pale green seeds and seedlings.	Pale green seeds.	1631
+10	Arabidopsis	DGD1	At3g11670	0.873	Pale green seedlings.	Pale green seeds and seedlings.	1631
+10	Arabidopsis	DGD1	At3g11670	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1631
+10	Arabidopsis	DGD1	At3g11670	0.709	Pale green seedlings.	Pale green seeds.	1631
+10	Arabidopsis	DGD1	At3g11670	0.709	Pale green seeds.	Pale green seedlings.	1631
+10	Arabidopsis	DGD1	At3g11670	0.317	Pale green seeds.	Seed pigment defective.	1631
+10	Arabidopsis	DGD1	At3g11670	0.282	Pale green seeds and seedlings.	Seed pigment defective.	1631
+10	Arabidopsis	DGD1	At3g11670	0.000	Pale green seedlings.	Seed pigment defective.	1631
+10	Arabidopsis	DGD1	At3g11670	0.000	Pale green seedlings.	Deficient in the galactolipid digalactosyldiacylglycerol.	1631
+10	Arabidopsis	DGD1	At3g11670	0.000	Pale green seedlings.	Reduced in growth.	1631
+10	Arabidopsis	DGD1	At3g11670	0.000	Pale green seeds.	Deficient in the galactolipid digalactosyldiacylglycerol.	1631
+10	Arabidopsis	DGD1	At3g11670	0.000	Pale green seeds.	Reduced in growth.	1631
+10	Arabidopsis	DGD1	At3g11670	0.000	Pale green seeds and seedlings.	Deficient in the galactolipid digalactosyldiacylglycerol.	1631
+10	Arabidopsis	DGD1	At3g11670	0.000	Pale green seeds and seedlings.	Reduced in growth.	1631
+11	Arabidopsis	PDE326	At3g03710	1.000	Pale green seedlings.	Pale green seedlings.	1629
+11	Arabidopsis	PDE326	At3g03710	1.000	Pale green seeds.	Pale green seeds.	1629
+11	Arabidopsis	PDE326	At3g03710	1.000	Pale green seeds and seedlings.	Pale green seeds and seedlings.	1629
+11	Arabidopsis	PDE326	At3g03710	0.888	Pale green seeds.	Pale green seeds and seedlings.	1629
+11	Arabidopsis	PDE326	At3g03710	0.888	Pale green seeds and seedlings.	Pale green seeds.	1629
+11	Arabidopsis	PDE326	At3g03710	0.873	Pale green seedlings.	Pale green seeds and seedlings.	1629
+11	Arabidopsis	PDE326	At3g03710	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1629
+11	Arabidopsis	PDE326	At3g03710	0.709	Pale green seedlings.	Pale green seeds.	1629
+11	Arabidopsis	PDE326	At3g03710	0.709	Pale green seeds.	Pale green seedlings.	1629
+11	Arabidopsis	PDE326	At3g03710	0.208	Pale green seedlings.	Adult mutant plants display a virescent phenotype: young leaves and recently expanded tissues are pale whereas mature tissues are as green as wildtype.	1629
+11	Arabidopsis	PDE326	At3g03710	0.204	Pale green seeds.	Adult mutant plants display a virescent phenotype: young leaves and recently expanded tissues are pale whereas mature tissues are as green as wildtype.	1629
+11	Arabidopsis	PDE326	At3g03710	0.199	Pale green seedlings.	On fosmidomycin-free medium, the mutant seedlings require more time than wildtype for both greening and development of true leaves.	1629
+11	Arabidopsis	PDE326	At3g03710	0.181	Pale green seeds and seedlings.	Adult mutant plants display a virescent phenotype: young leaves and recently expanded tissues are pale whereas mature tissues are as green as wildtype.	1629
+11	Arabidopsis	PDE326	At3g03710	0.174	Pale green seeds and seedlings.	On fosmidomycin-free medium, the mutant seedlings require more time than wildtype for both greening and development of true leaves.	1629
+11	Arabidopsis	PDE326	At3g03710	0.105	Pale green seeds.	On fosmidomycin-free medium, the mutant seedlings require more time than wildtype for both greening and development of true leaves.	1629
+11	Arabidopsis	PDE326	At3g03710	0.000	Pale green seedlings.	Mutant is unaffected by fosmidomycin treatment.	1629
+11	Arabidopsis	PDE326	At3g03710	0.000	Pale green seedlings.	Viable and fertile under described growth conditions.	1629
+11	Arabidopsis	PDE326	At3g03710	0.000	Pale green seeds.	Mutant is unaffected by fosmidomycin treatment.	1629
+11	Arabidopsis	PDE326	At3g03710	0.000	Pale green seeds.	Viable and fertile under described growth conditions.	1629
+11	Arabidopsis	PDE326	At3g03710	0.000	Pale green seeds and seedlings.	Mutant is unaffected by fosmidomycin treatment.	1629
+11	Arabidopsis	PDE326	At3g03710	0.000	Pale green seeds and seedlings.	Viable and fertile under described growth conditions.	1629
+12	Arabidopsis	PDE328	At2g39140	1.000	Pale green seedlings.	Pale green seedlings.	1627
+12	Arabidopsis	PDE328	At2g39140	1.000	Pale green seeds.	Pale green seeds.	1627
+12	Arabidopsis	PDE328	At2g39140	1.000	Pale green seeds and seedlings.	Pale green seeds and seedlings.	1627
+12	Arabidopsis	PDE328	At2g39140	0.888	Pale green seeds.	Pale green seeds and seedlings.	1627
+12	Arabidopsis	PDE328	At2g39140	0.888	Pale green seeds and seedlings.	Pale green seeds.	1627
+12	Arabidopsis	PDE328	At2g39140	0.873	Pale green seedlings.	Pale green seeds and seedlings.	1627
+12	Arabidopsis	PDE328	At2g39140	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1627
+12	Arabidopsis	PDE328	At2g39140	0.709	Pale green seedlings.	Pale green seeds.	1627
+12	Arabidopsis	PDE328	At2g39140	0.709	Pale green seeds.	Pale green seedlings.	1627
+12	Arabidopsis	PDE328	At2g39140	0.236	Pale green seedlings.	Yellow-green and significantly smaller than WT.	1627
+12	Arabidopsis	PDE328	At2g39140	0.232	Pale green seeds.	Yellow-green and significantly smaller than WT.	1627
+12	Arabidopsis	PDE328	At2g39140	0.206	Pale green seeds and seedlings.	Yellow-green and significantly smaller than WT.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seedlings.	Similar to var2-5.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seedlings.	Svr1-1 double mutant.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seedlings.	Not variegated.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seedlings.	Smaller than WT.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seedlings.	Variegation caused by var2 single mutant is suppressed.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seedlings.	WT phenotype.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seedlings.	The single var2 variegated phenotype is suppresed.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds.	Similar to var2-5.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds.	Svr1-1 double mutant.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds.	Not variegated.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds.	Smaller than WT.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds.	Variegation caused by var2 single mutant is suppressed.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds.	WT phenotype.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds.	The single var2 variegated phenotype is suppresed.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds and seedlings.	Similar to var2-5.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds and seedlings.	Svr1-1 double mutant.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds and seedlings.	Not variegated.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds and seedlings.	Smaller than WT.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds and seedlings.	Variegation caused by var2 single mutant is suppressed.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds and seedlings.	WT phenotype.	1627
+12	Arabidopsis	PDE328	At2g39140	0.000	Pale green seeds and seedlings.	The single var2 variegated phenotype is suppresed.	1627
+13	Arabidopsis	SPCH	At5g53210	1.000	Pale green seedlings.	Pale green seedlings.	1623
+13	Arabidopsis	SPCH	At5g53210	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1623
+13	Arabidopsis	SPCH	At5g53210	0.709	Pale green seeds.	Pale green seedlings.	1623
+13	Arabidopsis	SPCH	At5g53210	0.504	Pale green seedlings.	Plants arrest as small pale seedlings.	1623
+13	Arabidopsis	SPCH	At5g53210	0.440	Pale green seeds and seedlings.	Plants arrest as small pale seedlings.	1623
+13	Arabidopsis	SPCH	At5g53210	0.292	Pale green seeds.	Plants arrest as small pale seedlings.	1623
+13	Arabidopsis	SPCH	At5g53210	0.000	Pale green seedlings.	Complete loss of stomata.	1623
+13	Arabidopsis	SPCH	At5g53210	0.000	Pale green seedlings.	Does not express MUTE transcripts.	1623
+13	Arabidopsis	SPCH	At5g53210	0.000	Pale green seedlings.	No asymmetric divisions to create the stomatal lineage are made.	1623
+13	Arabidopsis	SPCH	At5g53210	0.000	Pale green seeds.	Complete loss of stomata.	1623
+13	Arabidopsis	SPCH	At5g53210	0.000	Pale green seeds.	Does not express MUTE transcripts.	1623
+13	Arabidopsis	SPCH	At5g53210	0.000	Pale green seeds.	No asymmetric divisions to create the stomatal lineage are made.	1623
+13	Arabidopsis	SPCH	At5g53210	0.000	Pale green seeds and seedlings.	Complete loss of stomata.	1623
+13	Arabidopsis	SPCH	At5g53210	0.000	Pale green seeds and seedlings.	Does not express MUTE transcripts.	1623
+13	Arabidopsis	SPCH	At5g53210	0.000	Pale green seeds and seedlings.	No asymmetric divisions to create the stomatal lineage are made.	1623
+14	Arabidopsis	ABC4	At1g60600	1.000	Pale green seedlings.	Pale green seedlings.	1946
+14	Arabidopsis	ABC4	At1g60600	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1946
+14	Arabidopsis	ABC4	At1g60600	0.709	Pale green seeds.	Pale green seedlings.	1946
+14	Arabidopsis	ABC4	At1g60600	0.177	Pale green seedlings.	Seedling lethal without exogenous sucrose.	1946
+14	Arabidopsis	ABC4	At1g60600	0.155	Pale green seeds and seedlings.	Seedling lethal without exogenous sucrose.	1946
+14	Arabidopsis	ABC4	At1g60600	0.000	Pale green seedlings.	Abnormal chloroplast development.	1946
+14	Arabidopsis	ABC4	At1g60600	0.000	Pale green seedlings.	Can only be grown on media.Chloroplasts have increased grana stacks and fewer stroma thylakoids.	1946
+14	Arabidopsis	ABC4	At1g60600	0.000	Pale green seedlings.	Decreased photosynthtic efficiency.	1946
+14	Arabidopsis	ABC4	At1g60600	0.000	Pale green seeds.	Abnormal chloroplast development.	1946
+14	Arabidopsis	ABC4	At1g60600	0.000	Pale green seeds.	Seedling lethal without exogenous sucrose.	1946
+14	Arabidopsis	ABC4	At1g60600	0.000	Pale green seeds.	Can only be grown on media.Chloroplasts have increased grana stacks and fewer stroma thylakoids.	1946
+14	Arabidopsis	ABC4	At1g60600	0.000	Pale green seeds.	Decreased photosynthtic efficiency.	1946
+14	Arabidopsis	ABC4	At1g60600	0.000	Pale green seeds and seedlings.	Abnormal chloroplast development.	1946
+14	Arabidopsis	ABC4	At1g60600	0.000	Pale green seeds and seedlings.	Can only be grown on media.Chloroplasts have increased grana stacks and fewer stroma thylakoids.	1946
+14	Arabidopsis	ABC4	At1g60600	0.000	Pale green seeds and seedlings.	Decreased photosynthtic efficiency.	1946
+15	Arabidopsis	PHA	At1g68890	1.000	Pale green seedlings.	Pale green seedlings.	1624
+15	Arabidopsis	PHA	At1g68890	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1624
+15	Arabidopsis	PHA	At1g68890	0.743	Pale green seedlings.	Pale green plants.	1624
+15	Arabidopsis	PHA	At1g68890	0.731	Pale green seeds.	Pale green plants.	1624
+15	Arabidopsis	PHA	At1g68890	0.709	Pale green seeds.	Pale green seedlings.	1624
+15	Arabidopsis	PHA	At1g68890	0.649	Pale green seeds and seedlings.	Pale green plants.	1624
+15	Arabidopsis	PHA	At1g68890	0.323	Pale green seedlings.	Seedling lethal.	1624
+15	Arabidopsis	PHA	At1g68890	0.282	Pale green seeds and seedlings.	Seedling lethal.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seedlings.	High chlorophyll fluorescence.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seedlings.	Defective in phylloquinone biosynthesis.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seedlings.	Exhibits 5-15% of wild-type photosystem I (PSI) activity whereas that of photosystem II (PSII) is only reduced to about 75% of wild-type levels.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seedlings.	High chlorophyll fluorescence (hcf) phenotype associated with photosynthetic lesion.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seedlings.	Levels of chlorophyll are 41% of wild-type levels.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seedlings.	When grown in the presence of the metabolic precursor 1,4-dihydroxy-2-naphtoate (NA), mutant plants exhibit wild-type levels of chlorophyll.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seedlings.	Mutant plants fail to quench the fluorescence efficiently upon illumination, indicating that the limiting step of the linear electron transport lies behind PSII.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seedlings.	Reduced PSI stability.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds.	High chlorophyll fluorescence.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds.	Defective in phylloquinone biosynthesis.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds.	Exhibits 5-15% of wild-type photosystem I (PSI) activity whereas that of photosystem II (PSII) is only reduced to about 75% of wild-type levels.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds.	High chlorophyll fluorescence (hcf) phenotype associated with photosynthetic lesion.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds.	Levels of chlorophyll are 41% of wild-type levels.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds.	When grown in the presence of the metabolic precursor 1,4-dihydroxy-2-naphtoate (NA), mutant plants exhibit wild-type levels of chlorophyll.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds.	Mutant plants fail to quench the fluorescence efficiently upon illumination, indicating that the limiting step of the linear electron transport lies behind PSII.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds.	Reduced PSI stability.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds.	Seedling lethal.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds and seedlings.	High chlorophyll fluorescence.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds and seedlings.	Defective in phylloquinone biosynthesis.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds and seedlings.	Exhibits 5-15% of wild-type photosystem I (PSI) activity whereas that of photosystem II (PSII) is only reduced to about 75% of wild-type levels.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds and seedlings.	High chlorophyll fluorescence (hcf) phenotype associated with photosynthetic lesion.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds and seedlings.	Levels of chlorophyll are 41% of wild-type levels.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds and seedlings.	When grown in the presence of the metabolic precursor 1,4-dihydroxy-2-naphtoate (NA), mutant plants exhibit wild-type levels of chlorophyll.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds and seedlings.	Mutant plants fail to quench the fluorescence efficiently upon illumination, indicating that the limiting step of the linear electron transport lies behind PSII.	1624
+15	Arabidopsis	PHA	At1g68890	0.000	Pale green seeds and seedlings.	Reduced PSI stability.	1624
+16	Arabidopsis	PYG7	At1g22700	1.000	Pale green seedlings.	Pale green seedlings.	1933
+16	Arabidopsis	PYG7	At1g22700	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1933
+16	Arabidopsis	PYG7	At1g22700	0.709	Pale green seeds.	Pale green seedlings.	1933
+16	Arabidopsis	PYG7	At1g22700	0.302	Pale green seedlings.	Seedlings have pale yellow leaves that are thinner and more transparent than wild type.	1933
+16	Arabidopsis	PYG7	At1g22700	0.263	Pale green seeds and seedlings.	Seedlings have pale yellow leaves that are thinner and more transparent than wild type.	1933
+16	Arabidopsis	PYG7	At1g22700	0.214	Pale green seedlings.	Seedling lethal on soil.	1933
+16	Arabidopsis	PYG7	At1g22700	0.186	Pale green seeds and seedlings.	Seedling lethal on soil.	1933
+16	Arabidopsis	PYG7	At1g22700	0.175	Pale green seeds.	Seedlings have pale yellow leaves that are thinner and more transparent than wild type.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seedlings.	Slow growth.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seedlings.	Thin leaves.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seedlings.	Plants grown on sucrose supplemented media have reduced growth rate.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seedlings.	Under UV light they display high chlorophyll fluorescence.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seedlings.	Plants lack functional photosystem I. Chloroplasts are morphologically abnormal with few lamellae and no assimilatory starch.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seeds.	Seedling lethal on soil.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seeds.	Slow growth.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seeds.	Thin leaves.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seeds.	Plants grown on sucrose supplemented media have reduced growth rate.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seeds.	Under UV light they display high chlorophyll fluorescence.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seeds.	Plants lack functional photosystem I. Chloroplasts are morphologically abnormal with few lamellae and no assimilatory starch.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seeds and seedlings.	Slow growth.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seeds and seedlings.	Thin leaves.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seeds and seedlings.	Plants grown on sucrose supplemented media have reduced growth rate.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seeds and seedlings.	Under UV light they display high chlorophyll fluorescence.	1933
+16	Arabidopsis	PYG7	At1g22700	0.000	Pale green seeds and seedlings.	Plants lack functional photosystem I. Chloroplasts are morphologically abnormal with few lamellae and no assimilatory starch.	1933
+17	Arabidopsis	EMB262	At5g14170	1.000	Pale green seeds.	Pale green seeds.	1530
+17	Arabidopsis	EMB262	At5g14170	0.888	Pale green seeds and seedlings.	Pale green seeds.	1530
+17	Arabidopsis	EMB262	At5g14170	0.709	Pale green seedlings.	Pale green seeds.	1530
+17	Arabidopsis	EMB262	At5g14170	0.554	Pale green seedlings.	White to pale yellow-green embryo.	1530
+17	Arabidopsis	EMB262	At5g14170	0.545	Pale green seeds.	White to pale yellow-green embryo.	1530
+17	Arabidopsis	EMB262	At5g14170	0.483	Pale green seeds and seedlings.	White to pale yellow-green embryo.	1530
+17	Arabidopsis	EMB262	At5g14170	0.217	Pale green seeds.	54.6% aborted seeds in top half of silique.	1530
+17	Arabidopsis	EMB262	At5g14170	0.192	Pale green seeds and seedlings.	54.6% aborted seeds in top half of silique.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seedlings.	Dwarf.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seedlings.	Embryo defective-Cotyledon.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seedlings.	Resistant to Agrobacterium transformation in roots.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seedlings.	Null: Embryo defective.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seedlings.	Cotyledon.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seedlings.	Knockdown: Dwarf.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at linear-cotyledon stage.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seedlings.	26.7% mutant.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seedlings.	54.6% aborted seeds in top half of silique.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds.	Dwarf.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds.	Embryo defective-Cotyledon.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds.	Resistant to Agrobacterium transformation in roots.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds.	Null: Embryo defective.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds.	Cotyledon.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds.	Knockdown: Dwarf.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at linear-cotyledon stage.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds.	26.7% mutant.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds and seedlings.	Dwarf.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds and seedlings.	Embryo defective-Cotyledon.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds and seedlings.	Resistant to Agrobacterium transformation in roots.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds and seedlings.	Null: Embryo defective.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds and seedlings.	Cotyledon.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds and seedlings.	Knockdown: Dwarf.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at linear-cotyledon stage.	1530
+17	Arabidopsis	EMB262	At5g14170	0.000	Pale green seeds and seedlings.	26.7% mutant.	1530
+18	Arabidopsis	RDM4	At2g30280	1.000	Pale green seedlings.	Pale green seedlings.	1165
+18	Arabidopsis	RDM4	At2g30280	0.873	Pale green seeds and seedlings.	Pale green seedlings.	1165
+18	Arabidopsis	RDM4	At2g30280	0.709	Pale green seeds.	Pale green seedlings.	1165
+18	Arabidopsis	RDM4	At2g30280	0.417	Pale green seedlings.	Seedlings are pale and grow more slowly than wildtype seedlings, late flowering.	1165
+18	Arabidopsis	RDM4	At2g30280	0.410	Pale green seedlings.	Mutant seedlings are pale and grow slowly.	1165
+18	Arabidopsis	RDM4	At2g30280	0.364	Pale green seeds and seedlings.	Seedlings are pale and grow more slowly than wildtype seedlings, late flowering.	1165
+18	Arabidopsis	RDM4	At2g30280	0.358	Pale green seeds and seedlings.	Mutant seedlings are pale and grow slowly.	1165
+18	Arabidopsis	RDM4	At2g30280	0.237	Pale green seeds.	Mutant seedlings are pale and grow slowly.	1165
+18	Arabidopsis	RDM4	At2g30280	0.227	Pale green seeds.	Increased seed dormancy.	1165
+18	Arabidopsis	RDM4	At2g30280	0.201	Pale green seeds and seedlings.	Increased seed dormancy.	1165
+18	Arabidopsis	RDM4	At2g30280	0.171	Pale green seeds.	Seedlings are pale and grow more slowly than wildtype seedlings, late flowering.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seedlings.	Abnormal phyllotaxy.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seedlings.	Abnormal rosette leaf morphology.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seedlings.	Altered DNA methylation.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seedlings.	Dwarf.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seedlings.	Increased seed dormancy.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seedlings.	Late flowering.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seedlings.	Reduced fertility.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seedlings.	Slow growth.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seedlings.	Floral inflorescences are more closely packed, short internode distances and disturbed phyllotaxy.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seedlings.	Mutants displays defects in plant development and RNA-directed DNA methylation.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seedlings.	Floral inflorescences of mutant plants are more closely packed than those of wild type.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seedlings.	Short internode distances and disturbed phyllotaxy.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds.	Abnormal phyllotaxy.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds.	Abnormal rosette leaf morphology.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds.	Altered DNA methylation.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds.	Dwarf.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds.	Late flowering.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds.	Reduced fertility.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds.	Slow growth.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds.	Floral inflorescences are more closely packed, short internode distances and disturbed phyllotaxy.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds.	Mutants displays defects in plant development and RNA-directed DNA methylation.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds.	Floral inflorescences of mutant plants are more closely packed than those of wild type.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds.	Short internode distances and disturbed phyllotaxy.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds and seedlings.	Abnormal phyllotaxy.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds and seedlings.	Abnormal rosette leaf morphology.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds and seedlings.	Altered DNA methylation.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds and seedlings.	Dwarf.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds and seedlings.	Late flowering.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds and seedlings.	Reduced fertility.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds and seedlings.	Slow growth.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds and seedlings.	Floral inflorescences are more closely packed, short internode distances and disturbed phyllotaxy.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds and seedlings.	Mutants displays defects in plant development and RNA-directed DNA methylation.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds and seedlings.	Floral inflorescences of mutant plants are more closely packed than those of wild type.	1165
+18	Arabidopsis	RDM4	At2g30280	0.000	Pale green seeds and seedlings.	Short internode distances and disturbed phyllotaxy.	1165
+19	Arabidopsis	EMB31		0.943	Pale green seeds.	Pale green to green seeds.	7154
+19	Arabidopsis	EMB31		0.837	Pale green seeds and seedlings.	Pale green to green seeds.	7154
+19	Arabidopsis	EMB31		0.771	Pale green seedlings.	Pale green to green embryo.	7154
+19	Arabidopsis	EMB31		0.758	Pale green seeds.	Pale green to green embryo.	7154
+19	Arabidopsis	EMB31		0.738	Pale green seedlings.	Pale green to green seeds.	7154
+19	Arabidopsis	EMB31		0.673	Pale green seeds and seedlings.	Pale green to green embryo.	7154
+19	Arabidopsis	EMB31		0.106	Pale green seeds.	58.1% aborted seeds in top half of silique (mutant allele possibly disrupts pollen development or pollen-tube growth).	7154
+19	Arabidopsis	EMB31		0.094	Pale green seeds and seedlings.	58.1% aborted seeds in top half of silique (mutant allele possibly disrupts pollen development or pollen-tube growth).	7154
+19	Arabidopsis	EMB31		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (reduced/delayed cotyledons).	7154
+19	Arabidopsis	EMB31		0.000	Pale green seedlings.	23.3% mutant.	7154
+19	Arabidopsis	EMB31		0.000	Pale green seedlings.	58.1% aborted seeds in top half of silique (mutant allele possibly disrupts pollen development or pollen-tube growth).	7154
+19	Arabidopsis	EMB31		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at cotyledon stage (reduced/delayed cotyledons).	7154
+19	Arabidopsis	EMB31		0.000	Pale green seeds.	23.3% mutant.	7154
+19	Arabidopsis	EMB31		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (reduced/delayed cotyledons).	7154
+19	Arabidopsis	EMB31		0.000	Pale green seeds and seedlings.	23.3% mutant.	7154
+20	Arabidopsis	EMB30	At1g13980	0.943	Pale green seeds.	Pale green to green seeds.	610
+20	Arabidopsis	EMB30	At1g13980	0.837	Pale green seeds and seedlings.	Pale green to green seeds.	610
+20	Arabidopsis	EMB30	At1g13980	0.738	Pale green seedlings.	Pale green to green seeds.	610
+20	Arabidopsis	EMB30	At1g13980	0.472	Pale green seedlings.	Green embryo.	610
+20	Arabidopsis	EMB30	At1g13980	0.464	Pale green seeds.	Green embryo.	610
+20	Arabidopsis	EMB30	At1g13980	0.441	Pale green seedlings.	Seedling defective.	610
+20	Arabidopsis	EMB30	At1g13980	0.412	Pale green seeds and seedlings.	Green embryo.	610
+20	Arabidopsis	EMB30	At1g13980	0.385	Pale green seeds and seedlings.	Seedling defective.	610
+20	Arabidopsis	EMB30	At1g13980	0.377	Pale green seedlings.	Embryo and seedling defective.	610
+20	Arabidopsis	EMB30	At1g13980	0.329	Pale green seeds and seedlings.	Embryo and seedling defective.	610
+20	Arabidopsis	EMB30	At1g13980	0.277	Pale green seedlings.	(seedling lethal/embryo defective).	610
+20	Arabidopsis	EMB30	At1g13980	0.242	Pale green seeds and seedlings.	(seedling lethal/embryo defective).	610
+20	Arabidopsis	EMB30	At1g13980	0.217	Pale green seeds.	47.9% aborted seeds in top half of silique.	610
+20	Arabidopsis	EMB30	At1g13980	0.217	Pale green seeds.	47.6% aborted seeds in top half of silique.	610
+20	Arabidopsis	EMB30	At1g13980	0.217	Pale green seeds.	46.1% aborted seeds in top half of silique.	610
+20	Arabidopsis	EMB30	At1g13980	0.192	Pale green seeds and seedlings.	47.9% aborted seeds in top half of silique.	610
+20	Arabidopsis	EMB30	At1g13980	0.192	Pale green seeds and seedlings.	47.6% aborted seeds in top half of silique.	610
+20	Arabidopsis	EMB30	At1g13980	0.192	Pale green seeds and seedlings.	46.1% aborted seeds in top half of silique.	610
+20	Arabidopsis	EMB30	At1g13980	0.106	Pale green seedlings.	Seedlings lack a root and cotyledons and are cone- or ball-shaped.	610
+20	Arabidopsis	EMB30	At1g13980	0.095	Pale green seedlings.	Mutant seedlings that appear to lack apical-basal polarity do possess the the radial pattern of three tissues.	610
+20	Arabidopsis	EMB30	At1g13980	0.093	Pale green seeds and seedlings.	Seedlings lack a root and cotyledons and are cone- or ball-shaped.	610
+20	Arabidopsis	EMB30	At1g13980	0.082	Pale green seeds and seedlings.	Mutant seedlings that appear to lack apical-basal polarity do possess the the radial pattern of three tissues.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	Embryo defective.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (fused cotyledons, rootless).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	26.1% mutant.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	47.9% aborted seeds in top half of silique.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (fused cotyledons).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	27.1% mutant.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	47.6% aborted seeds in top half of silique.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (fused cotyledon).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	24.9% mutant.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	46.1% aborted seeds in top half of silique.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	Mutant embryos exhibit wildtype-like staining patterns for most of the activities analysed: G6PDH, 6PGDH, GK, PGM, PGI and ADH.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	(terminal deletion in the apical-basal pattern of development).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	Axial organization is often lacking.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seedlings.	Vascular cells are present but are not connected together.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	Embryo defective.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	Seedling defective.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	Embryo and seedling defective.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at cotyledon stage (fused cotyledons, rootless).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	26.1% mutant.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at cotyledon stage (fused cotyledons).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	27.1% mutant.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at cotyledon stage (fused cotyledon).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	24.9% mutant.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	Mutant embryos exhibit wildtype-like staining patterns for most of the activities analysed: G6PDH, 6PGDH, GK, PGM, PGI and ADH.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	Seedlings lack a root and cotyledons and are cone- or ball-shaped.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	(terminal deletion in the apical-basal pattern of development).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	Axial organization is often lacking.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	Vascular cells are present but are not connected together.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	Mutant seedlings that appear to lack apical-basal polarity do possess the the radial pattern of three tissues.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds.	(seedling lethal/embryo defective).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds and seedlings.	Embryo defective.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (fused cotyledons, rootless).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds and seedlings.	26.1% mutant.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (fused cotyledons).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds and seedlings.	27.1% mutant.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (fused cotyledon).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds and seedlings.	24.9% mutant.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds and seedlings.	Mutant embryos exhibit wildtype-like staining patterns for most of the activities analysed: G6PDH, 6PGDH, GK, PGM, PGI and ADH.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds and seedlings.	(terminal deletion in the apical-basal pattern of development).	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds and seedlings.	Axial organization is often lacking.	610
+20	Arabidopsis	EMB30	At1g13980	0.000	Pale green seeds and seedlings.	Vascular cells are present but are not connected together.	610
+21	Arabidopsis	EMB150		0.910	Pale green seeds.	Pale yellow-green to pale green seeds.	6206
+21	Arabidopsis	EMB150		0.808	Pale green seeds and seedlings.	Pale yellow-green to pale green seeds.	6206
+21	Arabidopsis	EMB150		0.779	Pale green seedlings.	Pale yellow-green to pale green embryo.	6206
+21	Arabidopsis	EMB150		0.766	Pale green seeds.	Pale yellow-green to pale green embryo.	6206
+21	Arabidopsis	EMB150		0.761	Pale green seedlings.	Pale yellow-green to pale green seeds.	6206
+21	Arabidopsis	EMB150		0.680	Pale green seeds and seedlings.	Pale yellow-green to pale green embryo.	6206
+21	Arabidopsis	EMB150		0.217	Pale green seeds.	50.9% aborted seeds in top half of silique.	6206
+21	Arabidopsis	EMB150		0.192	Pale green seeds and seedlings.	50.9% aborted seeds in top half of silique.	6206
+21	Arabidopsis	EMB150		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at torpedo-linear stage, distorted appearance.	6206
+21	Arabidopsis	EMB150		0.000	Pale green seedlings.	24.1% mutant.	6206
+21	Arabidopsis	EMB150		0.000	Pale green seedlings.	50.9% aborted seeds in top half of silique.	6206
+21	Arabidopsis	EMB150		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at torpedo-linear stage, distorted appearance.	6206
+21	Arabidopsis	EMB150		0.000	Pale green seeds.	24.1% mutant.	6206
+21	Arabidopsis	EMB150		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at torpedo-linear stage, distorted appearance.	6206
+21	Arabidopsis	EMB150		0.000	Pale green seeds and seedlings.	24.1% mutant.	6206
+22	Arabidopsis	EMB120		0.910	Pale green seeds.	Pale yellow-green to pale green seeds.	5963
+22	Arabidopsis	EMB120		0.808	Pale green seeds and seedlings.	Pale yellow-green to pale green seeds.	5963
+22	Arabidopsis	EMB120		0.779	Pale green seedlings.	Pale yellow-green to pale green embryo.	5963
+22	Arabidopsis	EMB120		0.766	Pale green seeds.	Pale yellow-green to pale green embryo.	5963
+22	Arabidopsis	EMB120		0.761	Pale green seedlings.	Pale yellow-green to pale green seeds.	5963
+22	Arabidopsis	EMB120		0.680	Pale green seeds and seedlings.	Pale yellow-green to pale green embryo.	5963
+22	Arabidopsis	EMB120		0.217	Pale green seeds.	56.3% aborted seeds in top half of silique.	5963
+22	Arabidopsis	EMB120		0.192	Pale green seeds and seedlings.	56.3% aborted seeds in top half of silique.	5963
+22	Arabidopsis	EMB120		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage, fat linear.	5963
+22	Arabidopsis	EMB120		0.000	Pale green seedlings.	20.5% mutant.	5963
+22	Arabidopsis	EMB120		0.000	Pale green seedlings.	56.3% aborted seeds in top half of silique.	5963
+22	Arabidopsis	EMB120		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage, fat linear.	5963
+22	Arabidopsis	EMB120		0.000	Pale green seeds.	20.5% mutant.	5963
+22	Arabidopsis	EMB120		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage, fat linear.	5963
+22	Arabidopsis	EMB120		0.000	Pale green seeds and seedlings.	20.5% mutant.	5963
+23	Arabidopsis	EMB225		0.910	Pale green seeds.	Pale yellow-green to pale green seeds.	6766
+23	Arabidopsis	EMB225		0.808	Pale green seeds and seedlings.	Pale yellow-green to pale green seeds.	6766
+23	Arabidopsis	EMB225		0.761	Pale green seedlings.	Pale yellow-green to pale green seeds.	6766
+23	Arabidopsis	EMB225		0.554	Pale green seedlings.	White to pale yellow-green embryo.	6766
+23	Arabidopsis	EMB225		0.545	Pale green seeds.	White to pale yellow-green embryo.	6766
+23	Arabidopsis	EMB225		0.483	Pale green seeds and seedlings.	White to pale yellow-green embryo.	6766
+23	Arabidopsis	EMB225		0.217	Pale green seeds.	53.6% aborted seeds in top half of silique.	6766
+23	Arabidopsis	EMB225		0.192	Pale green seeds and seedlings.	53.6% aborted seeds in top half of silique.	6766
+23	Arabidopsis	EMB225		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at small globular stage, altered suspensor.	6766
+23	Arabidopsis	EMB225		0.000	Pale green seedlings.	25.3% mutant.	6766
+23	Arabidopsis	EMB225		0.000	Pale green seedlings.	53.6% aborted seeds in top half of silique.	6766
+23	Arabidopsis	EMB225		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at small globular stage, altered suspensor.	6766
+23	Arabidopsis	EMB225		0.000	Pale green seeds.	25.3% mutant.	6766
+23	Arabidopsis	EMB225		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at small globular stage, altered suspensor.	6766
+23	Arabidopsis	EMB225		0.000	Pale green seeds and seedlings.	25.3% mutant.	6766
+24	Arabidopsis	EMB43		0.910	Pale green seeds.	Pale yellow-green to pale green seeds.	7160
+24	Arabidopsis	EMB43		0.808	Pale green seeds and seedlings.	Pale yellow-green to pale green seeds.	7160
+24	Arabidopsis	EMB43		0.761	Pale green seedlings.	Pale yellow-green to pale green seeds.	7160
+24	Arabidopsis	EMB43		0.340	Pale green seedlings.	White to green embryo.	7160
+24	Arabidopsis	EMB43		0.335	Pale green seeds.	White to green embryo.	7160
+24	Arabidopsis	EMB43		0.297	Pale green seeds and seedlings.	White to green embryo.	7160
+24	Arabidopsis	EMB43		0.000	Pale green seedlings.	Fat hypocotyls.	7160
+24	Arabidopsis	EMB43		0.000	Pale green seedlings.	14.1% mutant.	7160
+24	Arabidopsis	EMB43		0.000	Pale green seeds.	Fat hypocotyls.	7160
+24	Arabidopsis	EMB43		0.000	Pale green seeds.	14.1% mutant.	7160
+24	Arabidopsis	EMB43		0.000	Pale green seeds and seedlings.	Fat hypocotyls.	7160
+24	Arabidopsis	EMB43		0.000	Pale green seeds and seedlings.	14.1% mutant.	7160
+25	Arabidopsis	EMB163		0.910	Pale green seeds.	Pale yellow-green to pale green seeds.	6320
+25	Arabidopsis	EMB163		0.808	Pale green seeds and seedlings.	Pale yellow-green to pale green seeds.	6320
+25	Arabidopsis	EMB163		0.779	Pale green seedlings.	Pale yellow-green to pale green embryo.	6320
+25	Arabidopsis	EMB163		0.766	Pale green seeds.	Pale yellow-green to pale green embryo.	6320
+25	Arabidopsis	EMB163		0.761	Pale green seedlings.	Pale yellow-green to pale green seeds.	6320
+25	Arabidopsis	EMB163		0.680	Pale green seeds and seedlings.	Pale yellow-green to pale green embryo.	6320
+25	Arabidopsis	EMB163		0.217	Pale green seeds.	51.1% aborted seeds in top half of silique.	6320
+25	Arabidopsis	EMB163		0.192	Pale green seeds and seedlings.	51.1% aborted seeds in top half of silique.	6320
+25	Arabidopsis	EMB163		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at linear stage.	6320
+25	Arabidopsis	EMB163		0.000	Pale green seedlings.	Reduced cotyledons.	6320
+25	Arabidopsis	EMB163		0.000	Pale green seedlings.	26.2% mutant.	6320
+25	Arabidopsis	EMB163		0.000	Pale green seedlings.	51.1% aborted seeds in top half of silique.	6320
+25	Arabidopsis	EMB163		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at linear stage.	6320
+25	Arabidopsis	EMB163		0.000	Pale green seeds.	Reduced cotyledons.	6320
+25	Arabidopsis	EMB163		0.000	Pale green seeds.	26.2% mutant.	6320
+25	Arabidopsis	EMB163		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at linear stage.	6320
+25	Arabidopsis	EMB163		0.000	Pale green seeds and seedlings.	Reduced cotyledons.	6320
+25	Arabidopsis	EMB163		0.000	Pale green seeds and seedlings.	26.2% mutant.	6320
+26	Arabidopsis	AtASP38	At5g02190	0.910	Pale green seeds.	Pale yellow-green to pale green seeds.	850
+26	Arabidopsis	AtASP38	At5g02190	0.808	Pale green seeds and seedlings.	Pale yellow-green to pale green seeds.	850
+26	Arabidopsis	AtASP38	At5g02190	0.779	Pale green seedlings.	Pale yellow-green to pale green embryo.	850
+26	Arabidopsis	AtASP38	At5g02190	0.766	Pale green seeds.	Pale yellow-green to pale green embryo.	850
+26	Arabidopsis	AtASP38	At5g02190	0.761	Pale green seedlings.	Pale yellow-green to pale green seeds.	850
+26	Arabidopsis	AtASP38	At5g02190	0.680	Pale green seeds and seedlings.	Pale yellow-green to pale green embryo.	850
+26	Arabidopsis	AtASP38	At5g02190	0.217	Pale green seeds.	53% aborted seeds in top half of silique.	850
+26	Arabidopsis	AtASP38	At5g02190	0.192	Pale green seeds and seedlings.	53% aborted seeds in top half of silique.	850
+26	Arabidopsis	AtASP38	At5g02190	0.166	Pale green seedlings.	Segregating (40%) for small, dark-green rosettes with asymmetric leaves.	850
+26	Arabidopsis	AtASP38	At5g02190	0.163	Pale green seeds.	Segregating (40%) for small, dark-green rosettes with asymmetric leaves.	850
+26	Arabidopsis	AtASP38	At5g02190	0.145	Pale green seeds and seedlings.	Segregating (40%) for small, dark-green rosettes with asymmetric leaves.	850
+26	Arabidopsis	AtASP38	At5g02190	0.119	Pale green seeds.	Around 10 to 15% of developing seeds from a self-pollinated pcs1/+ plant were homozygous for the mutant allele, and all pcs1/pcs1 seeds were aborted at early stages.	850
+26	Arabidopsis	AtASP38	At5g02190	0.106	Pale green seeds and seedlings.	Around 10 to 15% of developing seeds from a self-pollinated pcs1/+ plant were homozygous for the mutant allele, and all pcs1/pcs1 seeds were aborted at early stages.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	Embryo defective.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	Female gametophyte defective.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	Male gametophyte defective.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	Male and female gametophyte defective.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (globular-cotyledon).	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	25.8% mutant.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	53% aborted seeds in top half of silique.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	Very slow growth, dwarf and sterile plants.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	Around one-third of the ovules from pcs1/+ plants showed abnormal morphology at the stage of flower opening which then turned brown and degenerated a few days post-pollination.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	Around 10 to 15% of developing seeds from a self-pollinated pcs1/+ plant were homozygous for the mutant allele, and all pcs1/pcs1 seeds were aborted at early stages.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	In developing embryos, there was no obvious differences between wt and pcs1 embryos before the heart stage.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	At the torpedo stage, however, pcs1 embryos underwent degeneration.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seedlings.	Degenerated cells were apoptotic, which indicates that the pcs1 mutation causes excessive cell death of embryonic tissues.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds.	Embryo defective.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds.	Female gametophyte defective.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds.	Male gametophyte defective.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds.	Male and female gametophyte defective.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at cotyledon stage (globular-cotyledon).	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds.	25.8% mutant.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds.	Very slow growth, dwarf and sterile plants.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds.	Around one-third of the ovules from pcs1/+ plants showed abnormal morphology at the stage of flower opening which then turned brown and degenerated a few days post-pollination.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds.	In developing embryos, there was no obvious differences between wt and pcs1 embryos before the heart stage.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds.	At the torpedo stage, however, pcs1 embryos underwent degeneration.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds.	Degenerated cells were apoptotic, which indicates that the pcs1 mutation causes excessive cell death of embryonic tissues.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds and seedlings.	Embryo defective.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds and seedlings.	Female gametophyte defective.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds and seedlings.	Male gametophyte defective.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds and seedlings.	Male and female gametophyte defective.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (globular-cotyledon).	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds and seedlings.	25.8% mutant.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds and seedlings.	Very slow growth, dwarf and sterile plants.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds and seedlings.	Around one-third of the ovules from pcs1/+ plants showed abnormal morphology at the stage of flower opening which then turned brown and degenerated a few days post-pollination.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds and seedlings.	In developing embryos, there was no obvious differences between wt and pcs1 embryos before the heart stage.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds and seedlings.	At the torpedo stage, however, pcs1 embryos underwent degeneration.	850
+26	Arabidopsis	AtASP38	At5g02190	0.000	Pale green seeds and seedlings.	Degenerated cells were apoptotic, which indicates that the pcs1 mutation causes excessive cell death of embryonic tissues.	850
+27	Arabidopsis	PDE316	At1g63680	0.868	Pale green seeds and seedlings.	Pale seeds and seedlings.	1903
+27	Arabidopsis	PDE316	At1g63680	0.703	Pale green seeds.	Pale seeds and seedlings.	1903
+27	Arabidopsis	PDE316	At1g63680	0.680	Pale green seedlings.	Pale seeds and seedlings.	1903
+27	Arabidopsis	PDE316	At1g63680	0.207	Pale green seedlings.	White seedlings (albino/albina), lethal.	1903
+27	Arabidopsis	PDE316	At1g63680	0.186	Pale green seedlings.	Seedling lethal (inferred from pigment defect).	1903
+27	Arabidopsis	PDE316	At1g63680	0.180	Pale green seeds and seedlings.	White seedlings (albino/albina), lethal.	1903
+27	Arabidopsis	PDE316	At1g63680	0.162	Pale green seeds and seedlings.	Seedling lethal (inferred from pigment defect).	1903
+27	Arabidopsis	PDE316	At1g63680	0.000	Pale green seeds.	Seedling lethal (inferred from pigment defect).	1903
+27	Arabidopsis	PDE316	At1g63680	0.000	Pale green seeds.	White seedlings (albino/albina), lethal.	1903
+28	Arabidopsis	EMB53		0.861	Pale green seeds.	Pale yellow-green to green seeds.	7163
+28	Arabidopsis	EMB53		0.771	Pale green seedlings.	Pale green to green embryo.	7163
+28	Arabidopsis	EMB53		0.764	Pale green seeds and seedlings.	Pale yellow-green to green seeds.	7163
+28	Arabidopsis	EMB53		0.758	Pale green seeds.	Pale green to green embryo.	7163
+28	Arabidopsis	EMB53		0.674	Pale green seedlings.	Pale yellow-green to green seeds.	7163
+28	Arabidopsis	EMB53		0.673	Pale green seeds and seedlings.	Pale green to green embryo.	7163
+28	Arabidopsis	EMB53		0.217	Pale green seeds.	51.2% aborted seeds in top half of silique.	7163
+28	Arabidopsis	EMB53		0.192	Pale green seeds and seedlings.	51.2% aborted seeds in top half of silique.	7163
+28	Arabidopsis	EMB53		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (globular, distorted cotyledons).	7163
+28	Arabidopsis	EMB53		0.000	Pale green seedlings.	26.7% mutant.	7163
+28	Arabidopsis	EMB53		0.000	Pale green seedlings.	51.2% aborted seeds in top half of silique.	7163
+28	Arabidopsis	EMB53		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at cotyledon stage (globular, distorted cotyledons).	7163
+28	Arabidopsis	EMB53		0.000	Pale green seeds.	26.7% mutant.	7163
+28	Arabidopsis	EMB53		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (globular, distorted cotyledons).	7163
+28	Arabidopsis	EMB53		0.000	Pale green seeds and seedlings.	26.7% mutant.	7163
+29	Arabidopsis	EMB59		0.861	Pale green seeds.	Pale yellow-green to green seeds.	7168
+29	Arabidopsis	EMB59		0.764	Pale green seeds and seedlings.	Pale yellow-green to green seeds.	7168
+29	Arabidopsis	EMB59		0.699	Pale green seedlings.	Pale yellow-green to green embryo.	7168
+29	Arabidopsis	EMB59		0.687	Pale green seeds.	Pale yellow-green to green embryo.	7168
+29	Arabidopsis	EMB59		0.674	Pale green seedlings.	Pale yellow-green to green seeds.	7168
+29	Arabidopsis	EMB59		0.610	Pale green seeds and seedlings.	Pale yellow-green to green embryo.	7168
+29	Arabidopsis	EMB59		0.217	Pale green seeds.	56% aborted seeds in top half of silique.	7168
+29	Arabidopsis	EMB59		0.192	Pale green seeds and seedlings.	56% aborted seeds in top half of silique.	7168
+29	Arabidopsis	EMB59		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (distorted, fused cotyledons).	7168
+29	Arabidopsis	EMB59		0.000	Pale green seedlings.	24% mutant.	7168
+29	Arabidopsis	EMB59		0.000	Pale green seedlings.	56% aborted seeds in top half of silique.	7168
+29	Arabidopsis	EMB59		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at cotyledon stage (distorted, fused cotyledons).	7168
+29	Arabidopsis	EMB59		0.000	Pale green seeds.	24% mutant.	7168
+29	Arabidopsis	EMB59		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at cotyledon stage (distorted, fused cotyledons).	7168
+29	Arabidopsis	EMB59		0.000	Pale green seeds and seedlings.	24% mutant.	7168
+30	Arabidopsis	EMB236		0.850	Pale green seeds.	Pale yellow-green seeds.	6841
+30	Arabidopsis	EMB236		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	6841
+30	Arabidopsis	EMB236		0.641	Pale green seedlings.	Pale yellow-green embryo.	6841
+30	Arabidopsis	EMB236		0.631	Pale green seeds.	Pale yellow-green embryo.	6841
+30	Arabidopsis	EMB236		0.603	Pale green seedlings.	Pale yellow-green seeds.	6841
+30	Arabidopsis	EMB236		0.560	Pale green seeds and seedlings.	Pale yellow-green embryo.	6841
+30	Arabidopsis	EMB236		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage, rarely arrests at heart stage.	6841
+30	Arabidopsis	EMB236		0.000	Pale green seedlings.	24.5% mutant.	6841
+30	Arabidopsis	EMB236		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage, rarely arrests at heart stage.	6841
+30	Arabidopsis	EMB236		0.000	Pale green seeds.	24.5% mutant.	6841
+30	Arabidopsis	EMB236		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage, rarely arrests at heart stage.	6841
+30	Arabidopsis	EMB236		0.000	Pale green seeds and seedlings.	24.5% mutant.	6841
+31	Arabidopsis	EMB179		0.850	Pale green seeds.	Pale yellow-green seeds.	6449
+31	Arabidopsis	EMB179		0.779	Pale green seedlings.	Pale yellow-green to pale green embryo.	6449
+31	Arabidopsis	EMB179		0.766	Pale green seeds.	Pale yellow-green to pale green embryo.	6449
+31	Arabidopsis	EMB179		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	6449
+31	Arabidopsis	EMB179		0.680	Pale green seeds and seedlings.	Pale yellow-green to pale green embryo.	6449
+31	Arabidopsis	EMB179		0.603	Pale green seedlings.	Pale yellow-green seeds.	6449
+31	Arabidopsis	EMB179		0.217	Pale green seeds.	64.1*% aborted seeds in top half of silique.	6449
+31	Arabidopsis	EMB179		0.192	Pale green seeds and seedlings.	64.1*% aborted seeds in top half of silique.	6449
+31	Arabidopsis	EMB179		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at variable globular-linear stage.	6449
+31	Arabidopsis	EMB179		0.000	Pale green seedlings.	19.3% mutant.	6449
+31	Arabidopsis	EMB179		0.000	Pale green seedlings.	64.1*% aborted seeds in top half of silique.	6449
+31	Arabidopsis	EMB179		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at variable globular-linear stage.	6449
+31	Arabidopsis	EMB179		0.000	Pale green seeds.	19.3% mutant.	6449
+31	Arabidopsis	EMB179		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at variable globular-linear stage.	6449
+31	Arabidopsis	EMB179		0.000	Pale green seeds and seedlings.	19.3% mutant.	6449
+32	Arabidopsis	EMB223		0.850	Pale green seeds.	Pale yellow-green seeds.	6750
+32	Arabidopsis	EMB223		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	6750
+32	Arabidopsis	EMB223		0.603	Pale green seedlings.	Pale yellow-green seeds.	6750
+32	Arabidopsis	EMB223		0.554	Pale green seedlings.	White to pale yellow-green embryos.	6750
+32	Arabidopsis	EMB223		0.545	Pale green seeds.	White to pale yellow-green embryos.	6750
+32	Arabidopsis	EMB223		0.483	Pale green seeds and seedlings.	White to pale yellow-green embryos.	6750
+32	Arabidopsis	EMB223		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage.	6750
+32	Arabidopsis	EMB223		0.000	Pale green seedlings.	26.3% mutant.	6750
+32	Arabidopsis	EMB223		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage.	6750
+32	Arabidopsis	EMB223		0.000	Pale green seeds.	26.3% mutant.	6750
+32	Arabidopsis	EMB223		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage.	6750
+32	Arabidopsis	EMB223		0.000	Pale green seeds and seedlings.	26.3% mutant.	6750
+33	Arabidopsis	EMB51		0.850	Pale green seeds.	Pale yellow-green seeds.	7161
+33	Arabidopsis	EMB51		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	7161
+33	Arabidopsis	EMB51		0.641	Pale green seedlings.	Pale yellow-green embryo.	7161
+33	Arabidopsis	EMB51		0.631	Pale green seeds.	Pale yellow-green embryo.	7161
+33	Arabidopsis	EMB51		0.603	Pale green seedlings.	Pale yellow-green seeds.	7161
+33	Arabidopsis	EMB51		0.560	Pale green seeds and seedlings.	Pale yellow-green embryo.	7161
+33	Arabidopsis	EMB51		0.217	Pale green seeds.	51.4% aborted seeds in top half of silique.	7161
+33	Arabidopsis	EMB51		0.192	Pale green seeds and seedlings.	51.4% aborted seeds in top half of silique.	7161
+33	Arabidopsis	EMB51		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at heart, torpedo stage.	7161
+33	Arabidopsis	EMB51		0.000	Pale green seedlings.	26% mutant.	7161
+33	Arabidopsis	EMB51		0.000	Pale green seedlings.	51.4% aborted seeds in top half of silique.	7161
+33	Arabidopsis	EMB51		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at heart, torpedo stage.	7161
+33	Arabidopsis	EMB51		0.000	Pale green seeds.	26% mutant.	7161
+33	Arabidopsis	EMB51		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at heart, torpedo stage.	7161
+33	Arabidopsis	EMB51		0.000	Pale green seeds and seedlings.	26% mutant.	7161
+34	Arabidopsis	EMB149		0.850	Pale green seeds.	Pale yellow-green seeds.	6194
+34	Arabidopsis	EMB149		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	6194
+34	Arabidopsis	EMB149		0.641	Pale green seedlings.	Pale yellow-green embryo.	6194
+34	Arabidopsis	EMB149		0.631	Pale green seeds.	Pale yellow-green embryo.	6194
+34	Arabidopsis	EMB149		0.603	Pale green seedlings.	Pale yellow-green seeds.	6194
+34	Arabidopsis	EMB149		0.560	Pale green seeds and seedlings.	Pale yellow-green embryo.	6194
+34	Arabidopsis	EMB149		0.217	Pale green seeds.	55% aborted seeds in top half of silique.	6194
+34	Arabidopsis	EMB149		0.192	Pale green seeds and seedlings.	55% aborted seeds in top half of silique.	6194
+34	Arabidopsis	EMB149		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular-heart stage.	6194
+34	Arabidopsis	EMB149		0.000	Pale green seedlings.	23% mutant.	6194
+34	Arabidopsis	EMB149		0.000	Pale green seedlings.	55% aborted seeds in top half of silique.	6194
+34	Arabidopsis	EMB149		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular-heart stage.	6194
+34	Arabidopsis	EMB149		0.000	Pale green seeds.	23% mutant.	6194
+34	Arabidopsis	EMB149		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular-heart stage.	6194
+34	Arabidopsis	EMB149		0.000	Pale green seeds and seedlings.	23% mutant.	6194
+35	Arabidopsis	EMB210		0.850	Pale green seeds.	Pale yellow-green seeds.	6656
+35	Arabidopsis	EMB210		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	6656
+35	Arabidopsis	EMB210		0.633	Pale green seedlings.	White to pale green embryo.	6656
+35	Arabidopsis	EMB210		0.623	Pale green seeds.	White to pale green embryo.	6656
+35	Arabidopsis	EMB210		0.603	Pale green seedlings.	Pale yellow-green seeds.	6656
+35	Arabidopsis	EMB210		0.553	Pale green seeds and seedlings.	White to pale green embryo.	6656
+35	Arabidopsis	EMB210		0.217	Pale green seeds.	52.9% aborted seeds in top half of silique.	6656
+35	Arabidopsis	EMB210		0.192	Pale green seeds and seedlings.	52.9% aborted seeds in top half of silique.	6656
+35	Arabidopsis	EMB210		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular-linear stage, monocotyledonous.	6656
+35	Arabidopsis	EMB210		0.000	Pale green seedlings.	23.8% mutant.	6656
+35	Arabidopsis	EMB210		0.000	Pale green seedlings.	52.9% aborted seeds in top half of silique.	6656
+35	Arabidopsis	EMB210		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular-linear stage, monocotyledonous.	6656
+35	Arabidopsis	EMB210		0.000	Pale green seeds.	23.8% mutant.	6656
+35	Arabidopsis	EMB210		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular-linear stage, monocotyledonous.	6656
+35	Arabidopsis	EMB210		0.000	Pale green seeds and seedlings.	23.8% mutant.	6656
+36	Arabidopsis	EMB201		0.850	Pale green seeds.	Pale yellow-green seeds.	6588
+36	Arabidopsis	EMB201		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	6588
+36	Arabidopsis	EMB201		0.603	Pale green seedlings.	Pale yellow-green seeds.	6588
+36	Arabidopsis	EMB201		0.554	Pale green seedlings.	White to pale yellow-green embryo.	6588
+36	Arabidopsis	EMB201		0.545	Pale green seeds.	White to pale yellow-green embryo.	6588
+36	Arabidopsis	EMB201		0.483	Pale green seeds and seedlings.	White to pale yellow-green embryo.	6588
+36	Arabidopsis	EMB201		0.217	Pale green seeds.	51% aborted seeds in top half of silique.	6588
+36	Arabidopsis	EMB201		0.192	Pale green seeds and seedlings.	51% aborted seeds in top half of silique.	6588
+36	Arabidopsis	EMB201		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at linear stage, reduced cotyledons.	6588
+36	Arabidopsis	EMB201		0.000	Pale green seedlings.	22% mutant.	6588
+36	Arabidopsis	EMB201		0.000	Pale green seedlings.	51% aborted seeds in top half of silique.	6588
+36	Arabidopsis	EMB201		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at linear stage, reduced cotyledons.	6588
+36	Arabidopsis	EMB201		0.000	Pale green seeds.	22% mutant.	6588
+36	Arabidopsis	EMB201		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at linear stage, reduced cotyledons.	6588
+36	Arabidopsis	EMB201		0.000	Pale green seeds and seedlings.	22% mutant.	6588
+37	Arabidopsis	EMB151		0.850	Pale green seeds.	Pale yellow-green seeds.	6214
+37	Arabidopsis	EMB151		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	6214
+37	Arabidopsis	EMB151		0.603	Pale green seedlings.	Pale yellow-green seeds.	6214
+37	Arabidopsis	EMB151		0.554	Pale green seedlings.	White to pale yellow-green embryo.	6214
+37	Arabidopsis	EMB151		0.545	Pale green seeds.	White to pale yellow-green embryo.	6214
+37	Arabidopsis	EMB151		0.483	Pale green seeds and seedlings.	White to pale yellow-green embryo.	6214
+37	Arabidopsis	EMB151		0.217	Pale green seeds.	58.3% aborted seeds in top half of silique.	6214
+37	Arabidopsis	EMB151		0.192	Pale green seeds and seedlings.	58.3% aborted seeds in top half of silique.	6214
+37	Arabidopsis	EMB151		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular-heart stage.	6214
+37	Arabidopsis	EMB151		0.000	Pale green seedlings.	22.7% mutant.	6214
+37	Arabidopsis	EMB151		0.000	Pale green seedlings.	58.3% aborted seeds in top half of silique.	6214
+37	Arabidopsis	EMB151		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular-heart stage.	6214
+37	Arabidopsis	EMB151		0.000	Pale green seeds.	22.7% mutant.	6214
+37	Arabidopsis	EMB151		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular-heart stage.	6214
+37	Arabidopsis	EMB151		0.000	Pale green seeds and seedlings.	22.7% mutant.	6214
+38	Arabidopsis	EMB145		0.850	Pale green seeds.	Pale yellow-green seeds.	6162
+38	Arabidopsis	EMB145		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	6162
+38	Arabidopsis	EMB145		0.603	Pale green seedlings.	Pale yellow-green seeds.	6162
+38	Arabidopsis	EMB145		0.554	Pale green seedlings.	White to pale yellow-green embryo.	6162
+38	Arabidopsis	EMB145		0.545	Pale green seeds.	White to pale yellow-green embryo.	6162
+38	Arabidopsis	EMB145		0.483	Pale green seeds and seedlings.	White to pale yellow-green embryo.	6162
+38	Arabidopsis	EMB145		0.217	Pale green seeds.	47.5% aborted seeds in top half of silique.	6162
+38	Arabidopsis	EMB145		0.192	Pale green seeds and seedlings.	47.5% aborted seeds in top half of silique.	6162
+38	Arabidopsis	EMB145		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage, irregular protoderm.	6162
+38	Arabidopsis	EMB145		0.000	Pale green seedlings.	26.3% mutant.	6162
+38	Arabidopsis	EMB145		0.000	Pale green seedlings.	47.5% aborted seeds in top half of silique.	6162
+38	Arabidopsis	EMB145		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage, irregular protoderm.	6162
+38	Arabidopsis	EMB145		0.000	Pale green seeds.	26.3% mutant.	6162
+38	Arabidopsis	EMB145		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage, irregular protoderm.	6162
+38	Arabidopsis	EMB145		0.000	Pale green seeds and seedlings.	26.3% mutant.	6162
+39	Arabidopsis	EMB131		0.850	Pale green seeds.	Pale yellow-green seeds.	6055
+39	Arabidopsis	EMB131		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	6055
+39	Arabidopsis	EMB131		0.603	Pale green seedlings.	Pale yellow-green seeds.	6055
+39	Arabidopsis	EMB131		0.554	Pale green seedlings.	White to pale yellow-green embryo.	6055
+39	Arabidopsis	EMB131		0.545	Pale green seeds.	White to pale yellow-green embryo.	6055
+39	Arabidopsis	EMB131		0.483	Pale green seeds and seedlings.	White to pale yellow-green embryo.	6055
+39	Arabidopsis	EMB131		0.217	Pale green seeds.	70.0% aborted seeds in top half of silique.	6055
+39	Arabidopsis	EMB131		0.192	Pale green seeds and seedlings.	70.0% aborted seeds in top half of silique.	6055
+39	Arabidopsis	EMB131		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage, elongated.	6055
+39	Arabidopsis	EMB131		0.000	Pale green seedlings.	21.3% mutant.	6055
+39	Arabidopsis	EMB131		0.000	Pale green seedlings.	70.0% aborted seeds in top half of silique.	6055
+39	Arabidopsis	EMB131		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage, elongated.	6055
+39	Arabidopsis	EMB131		0.000	Pale green seeds.	21.3% mutant.	6055
+39	Arabidopsis	EMB131		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage, elongated.	6055
+39	Arabidopsis	EMB131		0.000	Pale green seeds and seedlings.	21.3% mutant.	6055
+40	Arabidopsis	EMB209		0.850	Pale green seeds.	Pale yellow-green seeds.	6645
+40	Arabidopsis	EMB209		0.779	Pale green seedlings.	Pale yellow-green to pale green embryo.	6645
+40	Arabidopsis	EMB209		0.766	Pale green seeds.	Pale yellow-green to pale green embryo.	6645
+40	Arabidopsis	EMB209		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	6645
+40	Arabidopsis	EMB209		0.680	Pale green seeds and seedlings.	Pale yellow-green to pale green embryo.	6645
+40	Arabidopsis	EMB209		0.603	Pale green seedlings.	Pale yellow-green seeds.	6645
+40	Arabidopsis	EMB209		0.217	Pale green seeds.	49.3% aborted seeds in top half of silique.	6645
+40	Arabidopsis	EMB209		0.192	Pale green seeds and seedlings.	49.3% aborted seeds in top half of silique.	6645
+40	Arabidopsis	EMB209		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular-linear stage.	6645
+40	Arabidopsis	EMB209		0.000	Pale green seedlings.	Monocots and tricots occur.	6645
+40	Arabidopsis	EMB209		0.000	Pale green seedlings.	23.9% mutant.	6645
+40	Arabidopsis	EMB209		0.000	Pale green seedlings.	49.3% aborted seeds in top half of silique.	6645
+40	Arabidopsis	EMB209		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular-linear stage.	6645
+40	Arabidopsis	EMB209		0.000	Pale green seeds.	Monocots and tricots occur.	6645
+40	Arabidopsis	EMB209		0.000	Pale green seeds.	23.9% mutant.	6645
+40	Arabidopsis	EMB209		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular-linear stage.	6645
+40	Arabidopsis	EMB209		0.000	Pale green seeds and seedlings.	Monocots and tricots occur.	6645
+40	Arabidopsis	EMB209		0.000	Pale green seeds and seedlings.	23.9% mutant.	6645
+41	Arabidopsis	EMB106		0.850	Pale green seeds.	Pale yellow-green seeds.	5853
+41	Arabidopsis	EMB106		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	5853
+41	Arabidopsis	EMB106		0.745	Pale green seeds.	White to pale yellow-green seeds.	5853
+41	Arabidopsis	EMB106		0.661	Pale green seeds and seedlings.	White to pale yellow-green seeds.	5853
+41	Arabidopsis	EMB106		0.603	Pale green seedlings.	Pale yellow-green seeds.	5853
+41	Arabidopsis	EMB106		0.554	Pale green seedlings.	White to pale yellow-green embryo.	5853
+41	Arabidopsis	EMB106		0.545	Pale green seeds.	White to pale yellow-green embryo.	5853
+41	Arabidopsis	EMB106		0.529	Pale green seedlings.	White to pale yellow-green seeds.	5853
+41	Arabidopsis	EMB106		0.483	Pale green seeds and seedlings.	White to pale yellow-green embryo.	5853
+41	Arabidopsis	EMB106		0.217	Pale green seeds.	50.8% aborted seeds in top half of silique.	5853
+41	Arabidopsis	EMB106		0.217	Pale green seeds.	51.6% aborted seeds in top half of silique.	5853
+41	Arabidopsis	EMB106		0.192	Pale green seeds and seedlings.	50.8% aborted seeds in top half of silique.	5853
+41	Arabidopsis	EMB106		0.192	Pale green seeds and seedlings.	51.6% aborted seeds in top half of silique.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seedlings.	Elongated, triangular embryo.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seedlings.	25.6% mutant.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seedlings.	50.8% aborted seeds in top half of silique.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at heart stage, elongated, (emb155).	5853
+41	Arabidopsis	EMB106		0.000	Pale green seedlings.	White embryo.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seedlings.	24.6% mutant.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seedlings.	51.6% aborted seeds in top half of silique.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seeds.	Elongated, triangular embryo.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seeds.	25.6% mutant.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at heart stage, elongated, (emb155).	5853
+41	Arabidopsis	EMB106		0.000	Pale green seeds.	White embryo.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seeds.	24.6% mutant.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seeds and seedlings.	Elongated, triangular embryo.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seeds and seedlings.	25.6% mutant.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at heart stage, elongated, (emb155).	5853
+41	Arabidopsis	EMB106		0.000	Pale green seeds and seedlings.	White embryo.	5853
+41	Arabidopsis	EMB106		0.000	Pale green seeds and seedlings.	24.6% mutant.	5853
+42	Arabidopsis	BIO2	At2g43360	0.850	Pale green seeds.	Pale yellow-green seeds.	786
+42	Arabidopsis	BIO2	At2g43360	0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	786
+42	Arabidopsis	BIO2	At2g43360	0.603	Pale green seedlings.	Pale yellow-green seeds.	786
+42	Arabidopsis	BIO2	At2g43360	0.554	Pale green seedlings.	White to pale yellow-green embryo.	786
+42	Arabidopsis	BIO2	At2g43360	0.545	Pale green seeds.	White to pale yellow-green embryo.	786
+42	Arabidopsis	BIO2	At2g43360	0.483	Pale green seeds and seedlings.	White to pale yellow-green embryo.	786
+42	Arabidopsis	BIO2	At2g43360	0.217	Pale green seeds.	48% aborted seeds in top half of silique.	786
+42	Arabidopsis	BIO2	At2g43360	0.192	Pale green seeds and seedlings.	48% aborted seeds in top half of silique.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seedlings.	Embryo defective-Globular.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seedlings.	Embryo defective.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seedlings.	Globular.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at transition, globular-heart-elongate (early linear) stage .	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seedlings.	26% mutant.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seedlings.	48% aborted seeds in top half of silique.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seeds.	Embryo defective-Globular.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seeds.	Embryo defective.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seeds.	Globular.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at transition, globular-heart-elongate (early linear) stage .	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seeds.	26% mutant.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seeds and seedlings.	Embryo defective-Globular.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seeds and seedlings.	Embryo defective.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seeds and seedlings.	Globular.	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at transition, globular-heart-elongate (early linear) stage .	786
+42	Arabidopsis	BIO2	At2g43360	0.000	Pale green seeds and seedlings.	26% mutant.	786
+43	Arabidopsis	EMB84		0.850	Pale green seeds.	Pale yellow-green seeds.	7181
+43	Arabidopsis	EMB84		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	7181
+43	Arabidopsis	EMB84		0.603	Pale green seedlings.	Pale yellow-green seeds.	7181
+43	Arabidopsis	EMB84		0.217	Pale green seeds.	42.1% aborted seeds in top half of silique.	7181
+43	Arabidopsis	EMB84		0.192	Pale green seeds and seedlings.	42.1% aborted seeds in top half of silique.	7181
+43	Arabidopsis	EMB84		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage, abnormally large suspensor.	7181
+43	Arabidopsis	EMB84		0.000	Pale green seedlings.	White embryo.	7181
+43	Arabidopsis	EMB84		0.000	Pale green seedlings.	25.6% mutant.	7181
+43	Arabidopsis	EMB84		0.000	Pale green seedlings.	42.1% aborted seeds in top half of silique.	7181
+43	Arabidopsis	EMB84		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage, abnormally large suspensor.	7181
+43	Arabidopsis	EMB84		0.000	Pale green seeds.	White embryo.	7181
+43	Arabidopsis	EMB84		0.000	Pale green seeds.	25.6% mutant.	7181
+43	Arabidopsis	EMB84		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage, abnormally large suspensor.	7181
+43	Arabidopsis	EMB84		0.000	Pale green seeds and seedlings.	White embryo.	7181
+43	Arabidopsis	EMB84		0.000	Pale green seeds and seedlings.	25.6% mutant.	7181
+44	Arabidopsis	EMB171		0.850	Pale green seeds.	Pale yellow-green seeds.	6379
+44	Arabidopsis	EMB171		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	6379
+44	Arabidopsis	EMB171		0.603	Pale green seedlings.	Pale yellow-green seeds.	6379
+44	Arabidopsis	EMB171		0.217	Pale green seeds.	51.1% aborted seeds in top half of silique.	6379
+44	Arabidopsis	EMB171		0.192	Pale green seeds and seedlings.	51.1% aborted seeds in top half of silique.	6379
+44	Arabidopsis	EMB171		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage.	6379
+44	Arabidopsis	EMB171		0.000	Pale green seedlings.	White embryo.	6379
+44	Arabidopsis	EMB171		0.000	Pale green seedlings.	25.9% mutant.	6379
+44	Arabidopsis	EMB171		0.000	Pale green seedlings.	51.1% aborted seeds in top half of silique.	6379
+44	Arabidopsis	EMB171		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage.	6379
+44	Arabidopsis	EMB171		0.000	Pale green seeds.	White embryo.	6379
+44	Arabidopsis	EMB171		0.000	Pale green seeds.	25.9% mutant.	6379
+44	Arabidopsis	EMB171		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage.	6379
+44	Arabidopsis	EMB171		0.000	Pale green seeds and seedlings.	White embryo.	6379
+44	Arabidopsis	EMB171		0.000	Pale green seeds and seedlings.	25.9% mutant.	6379
+45	Arabidopsis	EMB115		0.850	Pale green seeds.	Pale yellow-green seeds.	5920
+45	Arabidopsis	EMB115		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	5920
+45	Arabidopsis	EMB115		0.603	Pale green seedlings.	Pale yellow-green seeds.	5920
+45	Arabidopsis	EMB115		0.217	Pale green seeds.	46.7% aborted seeds in top half of silique.	5920
+45	Arabidopsis	EMB115		0.192	Pale green seeds and seedlings.	46.7% aborted seeds in top half of silique.	5920
+45	Arabidopsis	EMB115		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at large globular stage.	5920
+45	Arabidopsis	EMB115		0.000	Pale green seedlings.	White embryo.	5920
+45	Arabidopsis	EMB115		0.000	Pale green seedlings.	25.6% mutant.	5920
+45	Arabidopsis	EMB115		0.000	Pale green seedlings.	46.7% aborted seeds in top half of silique.	5920
+45	Arabidopsis	EMB115		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at large globular stage.	5920
+45	Arabidopsis	EMB115		0.000	Pale green seeds.	White embryo.	5920
+45	Arabidopsis	EMB115		0.000	Pale green seeds.	25.6% mutant.	5920
+45	Arabidopsis	EMB115		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at large globular stage.	5920
+45	Arabidopsis	EMB115		0.000	Pale green seeds and seedlings.	White embryo.	5920
+45	Arabidopsis	EMB115		0.000	Pale green seeds and seedlings.	25.6% mutant.	5920
+46	Arabidopsis	EMB111		0.850	Pale green seeds.	Pale yellow-green seeds.	5893
+46	Arabidopsis	EMB111		0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	5893
+46	Arabidopsis	EMB111		0.603	Pale green seedlings.	Pale yellow-green seeds.	5893
+46	Arabidopsis	EMB111		0.217	Pale green seeds.	50.2% aborted seeds in top half of silique.	5893
+46	Arabidopsis	EMB111		0.192	Pale green seeds and seedlings.	50.2% aborted seeds in top half of silique.	5893
+46	Arabidopsis	EMB111		0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage, elongated.	5893
+46	Arabidopsis	EMB111		0.000	Pale green seedlings.	White embryo.	5893
+46	Arabidopsis	EMB111		0.000	Pale green seedlings.	24% mutant.	5893
+46	Arabidopsis	EMB111		0.000	Pale green seedlings.	50.2% aborted seeds in top half of silique.	5893
+46	Arabidopsis	EMB111		0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage, elongated.	5893
+46	Arabidopsis	EMB111		0.000	Pale green seeds.	White embryo.	5893
+46	Arabidopsis	EMB111		0.000	Pale green seeds.	24% mutant.	5893
+46	Arabidopsis	EMB111		0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage, elongated.	5893
+46	Arabidopsis	EMB111		0.000	Pale green seeds and seedlings.	White embryo.	5893
+46	Arabidopsis	EMB111		0.000	Pale green seeds and seedlings.	24% mutant.	5893
+47	Arabidopsis	SUS2	At5g49190	0.850	Pale green seeds.	Pale yellow-green seeds.	597
+47	Arabidopsis	SUS2	At5g49190	0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	597
+47	Arabidopsis	SUS2	At5g49190	0.745	Pale green seeds.	White to pale yellow-green seeds.	597
+47	Arabidopsis	SUS2	At5g49190	0.661	Pale green seeds and seedlings.	White to pale yellow-green seeds.	597
+47	Arabidopsis	SUS2	At5g49190	0.603	Pale green seedlings.	Pale yellow-green seeds.	597
+47	Arabidopsis	SUS2	At5g49190	0.554	Pale green seedlings.	White to pale yellow-green embryo.	597
+47	Arabidopsis	SUS2	At5g49190	0.545	Pale green seeds.	White to pale yellow-green embryo.	597
+47	Arabidopsis	SUS2	At5g49190	0.529	Pale green seedlings.	White to pale yellow-green seeds.	597
+47	Arabidopsis	SUS2	At5g49190	0.483	Pale green seeds and seedlings.	White to pale yellow-green embryo.	597
+47	Arabidopsis	SUS2	At5g49190	0.217	Pale green seeds.	40.6% aborted seeds in top half of silique.	597
+47	Arabidopsis	SUS2	At5g49190	0.217	Pale green seeds.	49.8% aborted seeds in top half of silique.	597
+47	Arabidopsis	SUS2	At5g49190	0.192	Pale green seeds and seedlings.	40.6% aborted seeds in top half of silique.	597
+47	Arabidopsis	SUS2	At5g49190	0.192	Pale green seeds and seedlings.	49.8% aborted seeds in top half of silique.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Elevated sucrose levels.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Low fructose levels.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Low starch levels.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Abnormal suspensor.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Embryo defective-Globular.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Low fructose and starch levels.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	No other phenotypes detected.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Embryo defective.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Globular.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Developmental arrest of mutant embryos, altered suspensor.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	23.1% mutant.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	40.6% aborted seeds in top half of silique.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Hypomorphic late flowering.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at transition stage, altered suspensor.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	25.9% mutant.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	49.8% aborted seeds in top half of silique.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Mutants grow and reproduce normally, although they are somewhat late flowering.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	No visible phenotype.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	The amounts of glucose, fructose, sucrose, cellulose (roots) and starch in the mutant were not statistically significantly different from those of the equivalent wild-type lines grown under the same conditions at the same time.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	Activity of SUS was reduced by about one-third in roots of the double mutant relative to Col-0, but otherwise the mutant was indistinguishable from Col-0.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seedlings.	When grown in soil or hydroponically, the double mutant line was not obviously different from wild-type controls.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Elevated sucrose levels.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Low fructose levels.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Low starch levels.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Abnormal suspensor.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Embryo defective-Globular.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Low fructose and starch levels.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	No other phenotypes detected.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Embryo defective.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Globular.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Developmental arrest of mutant embryos, altered suspensor.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	23.1% mutant.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Hypomorphic late flowering.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at transition stage, altered suspensor.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	25.9% mutant.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Mutants grow and reproduce normally, although they are somewhat late flowering.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	No visible phenotype.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	The amounts of glucose, fructose, sucrose, cellulose (roots) and starch in the mutant were not statistically significantly different from those of the equivalent wild-type lines grown under the same conditions at the same time.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	Activity of SUS was reduced by about one-third in roots of the double mutant relative to Col-0, but otherwise the mutant was indistinguishable from Col-0.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds.	When grown in soil or hydroponically, the double mutant line was not obviously different from wild-type controls.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Elevated sucrose levels.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Low fructose levels.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Low starch levels.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Abnormal suspensor.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Embryo defective-Globular.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Low fructose and starch levels.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	No other phenotypes detected.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Embryo defective.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Globular.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos, altered suspensor.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	23.1% mutant.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Hypomorphic late flowering.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at transition stage, altered suspensor.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	25.9% mutant.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Mutants grow and reproduce normally, although they are somewhat late flowering.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	No visible phenotype.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	The amounts of glucose, fructose, sucrose, cellulose (roots) and starch in the mutant were not statistically significantly different from those of the equivalent wild-type lines grown under the same conditions at the same time.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	Activity of SUS was reduced by about one-third in roots of the double mutant relative to Col-0, but otherwise the mutant was indistinguishable from Col-0.	597
+47	Arabidopsis	SUS2	At5g49190	0.000	Pale green seeds and seedlings.	When grown in soil or hydroponically, the double mutant line was not obviously different from wild-type controls.	597
+48	Arabidopsis	EMB1275	At1g55350	0.850	Pale green seeds.	Pale yellow-green seeds.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.603	Pale green seedlings.	Pale yellow-green seeds.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.323	Pale green seedlings.	Seedling lethal.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.282	Pale green seeds and seedlings.	Seedling lethal.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.217	Pale green seeds.	50.4% aborted seeds in top half of silique.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.212	Pale green seedlings.	Knockdown: Seedling lethal.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.192	Pale green seeds and seedlings.	50.4% aborted seeds in top half of silique.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.191	Pale green seeds.	In the most severely affected seed, no embryo development could be detected.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.185	Pale green seeds and seedlings.	Knockdown: Seedling lethal.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.174	Pale green seeds.	In less severe mutant seed, embryos develop to the globular stage before developmental arrest.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.169	Pale green seeds and seedlings.	In the most severely affected seed, no embryo development could be detected.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.167	Pale green seeds.	Severity of the phenotype varied between individual mutant seed.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.164	Pale green seeds.	In mutant seed developing an embryo, the endosperm completes the cellularization process and differentiates an aleurone- like layer in the micropylar chamber around the embryo, but this differentiation frequently stops towards the central chamber Wild-type development occurs in about 75% of seeds of the siliques from which mutant seeds were harvested.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.154	Pale green seeds and seedlings.	In less severe mutant seed, embryos develop to the globular stage before developmental arrest.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.149	Pale green seeds and seedlings.	Severity of the phenotype varied between individual mutant seed.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.145	Pale green seeds and seedlings.	In mutant seed developing an embryo, the endosperm completes the cellularization process and differentiates an aleurone- like layer in the micropylar chamber around the embryo, but this differentiation frequently stops towards the central chamber Wild-type development occurs in about 75% of seeds of the siliques from which mutant seeds were harvested.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.101	Pale green seeds.	In such seeds the endosperm develops and cellularizes but fails to differentiate a complete peripheral (aleurone-like) surface layer.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.090	Pale green seeds and seedlings.	In such seeds the endosperm develops and cellularizes but fails to differentiate a complete peripheral (aleurone-like) surface layer.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	Embryo defective-Preglobular.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	Epidermal cell defects.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	Fused cotyledons.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	Null: Embryo defective.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	Preglobular.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	Embryo defective.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at preglobular stage.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	Loss of giant cells in sepals and leaves.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at late preglobular stage.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	23.4% mutant.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	50.4% aborted seeds in top half of silique.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	Abnormal phyllotaxy.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	About 6% tricot seedligs.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	Severity of the phenotype varied between individual mutant seed.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	In the most severely affected seed, no embryo development could be detected.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	In such seeds the endosperm develops and cellularizes but fails to differentiate a complete peripheral (aleurone-like) surface layer.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	In less severe mutant seed, embryos develop to the globular stage before developmental arrest.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	In these embryos the plane of cell division is frequently uncontrolled compared to wild- type, the embryo proper is irregular, lacking a well defined L1 cell layer.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seedlings.	In mutant seed developing an embryo, the endosperm completes the cellularization process and differentiates an aleurone- like layer in the micropylar chamber around the embryo, but this differentiation frequently stops towards the central chamber Wild-type development occurs in about 75% of seeds of the siliques from which mutant seeds were harvested.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Embryo defective-Preglobular.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Epidermal cell defects.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Fused cotyledons.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Seedling lethal.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Null: Embryo defective.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Preglobular.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Knockdown: Seedling lethal.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Embryo defective.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at preglobular stage.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Loss of giant cells in sepals and leaves.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at late preglobular stage.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	23.4% mutant.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	Abnormal phyllotaxy.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	About 6% tricot seedligs.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds.	In these embryos the plane of cell division is frequently uncontrolled compared to wild- type, the embryo proper is irregular, lacking a well defined L1 cell layer.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	Embryo defective-Preglobular.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	Epidermal cell defects.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	Fused cotyledons.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	Null: Embryo defective.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	Preglobular.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	Embryo defective.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at preglobular stage.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	Loss of giant cells in sepals and leaves.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at late preglobular stage.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	23.4% mutant.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	Abnormal phyllotaxy.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	About 6% tricot seedligs.	1553
+48	Arabidopsis	EMB1275	At1g55350	0.000	Pale green seeds and seedlings.	In these embryos the plane of cell division is frequently uncontrolled compared to wild- type, the embryo proper is irregular, lacking a well defined L1 cell layer.	1553
+49	Arabidopsis	SUS1	At1g01040	0.850	Pale green seeds.	Pale yellow-green seeds.	1537
+49	Arabidopsis	SUS1	At1g01040	0.840	Pale green seeds.	White to pale green seeds.	1537
+49	Arabidopsis	SUS1	At1g01040	0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	1537
+49	Arabidopsis	SUS1	At1g01040	0.746	Pale green seeds and seedlings.	White to pale green seeds.	1537
+49	Arabidopsis	SUS1	At1g01040	0.745	Pale green seeds.	White to pale yellow-green seeds.	1537
+49	Arabidopsis	SUS1	At1g01040	0.661	Pale green seeds and seedlings.	White to pale yellow-green seeds.	1537
+49	Arabidopsis	SUS1	At1g01040	0.641	Pale green seedlings.	Pale yellow-green embryo.	1537
+49	Arabidopsis	SUS1	At1g01040	0.631	Pale green seeds.	Pale yellow-green embryo.	1537
+49	Arabidopsis	SUS1	At1g01040	0.603	Pale green seedlings.	Pale yellow-green seeds.	1537
+49	Arabidopsis	SUS1	At1g01040	0.596	Pale green seedlings.	White to pale green seeds.	1537
+49	Arabidopsis	SUS1	At1g01040	0.560	Pale green seeds and seedlings.	Pale yellow-green embryo.	1537
+49	Arabidopsis	SUS1	At1g01040	0.554	Pale green seedlings.	White to pale yellow-green embryo.	1537
+49	Arabidopsis	SUS1	At1g01040	0.545	Pale green seeds.	White to pale yellow-green embryo.	1537
+49	Arabidopsis	SUS1	At1g01040	0.529	Pale green seedlings.	White to pale yellow-green seeds.	1537
+49	Arabidopsis	SUS1	At1g01040	0.483	Pale green seeds and seedlings.	White to pale yellow-green embryo.	1537
+49	Arabidopsis	SUS1	At1g01040	0.217	Pale green seeds.	56.9% aborted seeds in top half of silique.	1537
+49	Arabidopsis	SUS1	At1g01040	0.217	Pale green seeds.	50.5% aborted seeds in top half of silique.	1537
+49	Arabidopsis	SUS1	At1g01040	0.217	Pale green seeds.	49.3% aborted seeds in top half of silique.	1537
+49	Arabidopsis	SUS1	At1g01040	0.192	Pale green seeds and seedlings.	56.9% aborted seeds in top half of silique.	1537
+49	Arabidopsis	SUS1	At1g01040	0.192	Pale green seeds and seedlings.	50.5% aborted seeds in top half of silique.	1537
+49	Arabidopsis	SUS1	At1g01040	0.192	Pale green seeds and seedlings.	49.3% aborted seeds in top half of silique.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Abnormal suspensor.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Embryo defective-Globular.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Female sterile.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Increased carpel number.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Short integuments.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Null: Embryo defective.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Globular.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Knockdown 1: Female sterile due to short integuments.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Knockdown 2: Increased carpel number.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Embryo defective.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Developmental arrest of mutant embryos, altered suspensor.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Altered ovule development.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Integuments fail to cover nucellus.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Reduced plant height.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Reduced length in inflorescence internodes.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Reduced levels of pollen, smaller leaves.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Late flowering, slow growth.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Increased abundance of miRNA precursors.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Indeterminate floral meristems, producing extra whorls of stamens and an indefinite number of carpels.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Unregulated cell division in the center of the flower with normal floral organ identity.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Plants also show other developmental defects including absence of axillary inflorescence meristems and abnormally shaped cotyledons, leaves, sepals, stamens and carpels.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	23.5% mutant.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	56.9% aborted seeds in top half of silique.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Dcl1 mutant-like defects in embryo development in 17% of the selfed progeny.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Partial supression of the early embryonic dcl1 phenotype.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Dcl1 mutant-like defects in embryo development in 25% of the selfed progeny.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Full penetrance of the dcl1 phenotype.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Supression of dcl1 phenotypes in early stages of embryo development (globular and early heart stage).	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Full penetrance of dcl1 phenotype in later stages (late heart and torpedo stage).	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Homozygous mutants are embryo lethal.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Early embryos of homozygous mutants accumulate more chlorophyll, mature earlier than the wild-type, and have abnormal patterns of cell division.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	A second segregating T-DNA insertion slightly increases carpel number.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Reduced levels of pollen.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Smaller leaves than wild type.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Late flowering.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Slow growth.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Reduced length of inflorescence internodes.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage, altered suspensor.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	24.4% mutant.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	50.5% aborted seeds in top half of silique.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at globular stage, abnormally large suspensor.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	White embryo.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	25.8% mutant.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	49.3% aborted seeds in top half of silique.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	No visible phenotype.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	The amounts of glucose, fructose, sucrose, cellulose (roots) and starch in the mutant were not statistically significantly different from those of the equivalent wild-type lines grown under the same conditions at the same time.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	The activity of SUS was reduced to 10% of wild-type levels in leaves of the mutant, and was undetectable (reduced to less than 10% of wild-type levels) in roots.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	The activity of invertase was unaffected in roots of this mutant, but in leaves neutral invertase activity was elevated by about 40%.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	The double mutant line was much more severely affected by flooding.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	After the 4 days of flooding, root weight had increased by only 44% (compared to 72% for wild type), and there was not statistically significant gain in root weight in the 3 days following flooding.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	At the end of the 7-day period, the flooding treatment had reduced the gain in root weight by 71% relative to unflooded control plants (compared to 33% for wild type).	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	The sugar content of leaves was substantially higher than that of the wild-type control.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	This was most pronounced at the end of the night, when glucose and fructose were almost ninefold higher in mutant than wild-type leaves and sucrose was more than twofold higher.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	When grown in soil, the double mutant line was not obviously different from wild-type controls.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seedlings.	However, when grown hydroponically, the mutants grew considerably more slowly.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Abnormal suspensor.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Embryo defective-Globular.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Female sterile.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Increased carpel number.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Short integuments.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Null: Embryo defective.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Globular.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Knockdown 1: Female sterile due to short integuments.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Knockdown 2: Increased carpel number.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Embryo defective.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Developmental arrest of mutant embryos, altered suspensor.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Altered ovule development.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Integuments fail to cover nucellus.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Reduced plant height.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Reduced length in inflorescence internodes.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Reduced levels of pollen, smaller leaves.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Late flowering, slow growth.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Increased abundance of miRNA precursors.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Indeterminate floral meristems, producing extra whorls of stamens and an indefinite number of carpels.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Unregulated cell division in the center of the flower with normal floral organ identity.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Plants also show other developmental defects including absence of axillary inflorescence meristems and abnormally shaped cotyledons, leaves, sepals, stamens and carpels.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	23.5% mutant.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Dcl1 mutant-like defects in embryo development in 17% of the selfed progeny.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Partial supression of the early embryonic dcl1 phenotype.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Dcl1 mutant-like defects in embryo development in 25% of the selfed progeny.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Full penetrance of the dcl1 phenotype.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Supression of dcl1 phenotypes in early stages of embryo development (globular and early heart stage).	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Full penetrance of dcl1 phenotype in later stages (late heart and torpedo stage).	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Homozygous mutants are embryo lethal.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Early embryos of homozygous mutants accumulate more chlorophyll, mature earlier than the wild-type, and have abnormal patterns of cell division.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	A second segregating T-DNA insertion slightly increases carpel number.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Reduced levels of pollen.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Smaller leaves than wild type.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Late flowering.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Slow growth.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Reduced length of inflorescence internodes.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage, altered suspensor.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	24.4% mutant.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at globular stage, abnormally large suspensor.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	White embryo.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	25.8% mutant.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	No visible phenotype.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	The amounts of glucose, fructose, sucrose, cellulose (roots) and starch in the mutant were not statistically significantly different from those of the equivalent wild-type lines grown under the same conditions at the same time.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	The activity of SUS was reduced to 10% of wild-type levels in leaves of the mutant, and was undetectable (reduced to less than 10% of wild-type levels) in roots.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	The activity of invertase was unaffected in roots of this mutant, but in leaves neutral invertase activity was elevated by about 40%.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	The double mutant line was much more severely affected by flooding.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	After the 4 days of flooding, root weight had increased by only 44% (compared to 72% for wild type), and there was not statistically significant gain in root weight in the 3 days following flooding.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	At the end of the 7-day period, the flooding treatment had reduced the gain in root weight by 71% relative to unflooded control plants (compared to 33% for wild type).	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	The sugar content of leaves was substantially higher than that of the wild-type control.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	This was most pronounced at the end of the night, when glucose and fructose were almost ninefold higher in mutant than wild-type leaves and sucrose was more than twofold higher.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	When grown in soil, the double mutant line was not obviously different from wild-type controls.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds.	However, when grown hydroponically, the mutants grew considerably more slowly.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Abnormal suspensor.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Embryo defective-Globular.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Female sterile.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Increased carpel number.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Short integuments.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Null: Embryo defective.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Globular.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Knockdown 1: Female sterile due to short integuments.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Knockdown 2: Increased carpel number.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Embryo defective.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos, altered suspensor.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Altered ovule development.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Integuments fail to cover nucellus.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Reduced plant height.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Reduced length in inflorescence internodes.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Reduced levels of pollen, smaller leaves.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Late flowering, slow growth.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Increased abundance of miRNA precursors.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Indeterminate floral meristems, producing extra whorls of stamens and an indefinite number of carpels.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Unregulated cell division in the center of the flower with normal floral organ identity.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Plants also show other developmental defects including absence of axillary inflorescence meristems and abnormally shaped cotyledons, leaves, sepals, stamens and carpels.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	23.5% mutant.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Dcl1 mutant-like defects in embryo development in 17% of the selfed progeny.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Partial supression of the early embryonic dcl1 phenotype.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Dcl1 mutant-like defects in embryo development in 25% of the selfed progeny.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Full penetrance of the dcl1 phenotype.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Supression of dcl1 phenotypes in early stages of embryo development (globular and early heart stage).	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Full penetrance of dcl1 phenotype in later stages (late heart and torpedo stage).	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Homozygous mutants are embryo lethal.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Early embryos of homozygous mutants accumulate more chlorophyll, mature earlier than the wild-type, and have abnormal patterns of cell division.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	A second segregating T-DNA insertion slightly increases carpel number.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Reduced levels of pollen.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Smaller leaves than wild type.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Late flowering.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Slow growth.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Reduced length of inflorescence internodes.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage, altered suspensor.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	24.4% mutant.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at globular stage, abnormally large suspensor.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	White embryo.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	25.8% mutant.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	No visible phenotype.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	The amounts of glucose, fructose, sucrose, cellulose (roots) and starch in the mutant were not statistically significantly different from those of the equivalent wild-type lines grown under the same conditions at the same time.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	The activity of SUS was reduced to 10% of wild-type levels in leaves of the mutant, and was undetectable (reduced to less than 10% of wild-type levels) in roots.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	The activity of invertase was unaffected in roots of this mutant, but in leaves neutral invertase activity was elevated by about 40%.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	The double mutant line was much more severely affected by flooding.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	After the 4 days of flooding, root weight had increased by only 44% (compared to 72% for wild type), and there was not statistically significant gain in root weight in the 3 days following flooding.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	At the end of the 7-day period, the flooding treatment had reduced the gain in root weight by 71% relative to unflooded control plants (compared to 33% for wild type).	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	The sugar content of leaves was substantially higher than that of the wild-type control.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	This was most pronounced at the end of the night, when glucose and fructose were almost ninefold higher in mutant than wild-type leaves and sucrose was more than twofold higher.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	When grown in soil, the double mutant line was not obviously different from wild-type controls.	1537
+49	Arabidopsis	SUS1	At1g01040	0.000	Pale green seeds and seedlings.	However, when grown hydroponically, the mutants grew considerably more slowly.	1537
+50	Arabidopsis	EMB2284	At1g08260	0.850	Pale green seeds.	Pale yellow-green seeds.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.754	Pale green seeds and seedlings.	Pale yellow-green seeds.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.603	Pale green seedlings.	Pale yellow-green seeds.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.554	Pale green seedlings.	White to pale yellow-green embryo.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.545	Pale green seeds.	White to pale yellow-green embryo.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.483	Pale green seeds and seedlings.	White to pale yellow-green embryo.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.217	Pale green seeds.	47.3% aborted seeds in top half of silique.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.192	Pale green seeds and seedlings.	47.3% aborted seeds in top half of silique.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Dwarf.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Early flowering independent of photoperiod.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Embryo defective-Globular.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Narrow leaves.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Small flowers.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Small leaves.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Null: Embryo defective.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Globular.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Knockdown: Dwarf.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Small, narrow leaves.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Embryo defective.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Developmental arrest of mutant embryos.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Weak allele.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Embryos have altered placement of the root pole, slow embryonic development, longer cell cycles (~35%) and larger cells.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Abnormal division of the hypophysis in the developing root of the embryo, generating a lens cell that is abnormal in shape or abnormally positioned.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Asymmetric development of the provasculature, this ultimately leads to an abnormal root pole which is displaced laterally causing the root-shoot axis to be at an angle to the long axis of the suspensor, giving the embryo a tilted appearance.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Embryos are viable, have larger cells and nuclei than wild-type embryos but the same DNA content, mutant embryos are larger than wild-type embryos at the same developmental stage.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Plants have slow growing roots, slightly delayed flowering, altered floral phyllotaxis, reduced number of ovules, abnormally developing ovules, and reduced fertility.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Developmental arrest of mutant embryos occurs at early globular stage.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Altered protoderm.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	27.3% mutant.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	47.3% aborted seeds in top half of silique.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	No visible phenotype.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Early flowering.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Arrests earlier than til1-4 single mutant.Zygote , one or two celled embryo arrest.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Twenty-five percent of embryos show abnormal cell divisions during embryogenesis-large cells- decreased rate of cell division.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Division of the hypohyseal cell abnormal leading to abnormal placement of the root pole.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Homozygotes show delayed flowering, abnormal floraly phyllotaxy and abnormal ovules.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Sensitive to high temperature.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seedlings.	Defect in basal and acquired thermotolerance.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Dwarf.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Early flowering independent of photoperiod.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Embryo defective-Globular.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Narrow leaves.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Small flowers.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Small leaves.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Null: Embryo defective.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Globular.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Knockdown: Dwarf.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Small, narrow leaves.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Embryo defective.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Developmental arrest of mutant embryos.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Weak allele.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Embryos have altered placement of the root pole, slow embryonic development, longer cell cycles (~35%) and larger cells.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Abnormal division of the hypophysis in the developing root of the embryo, generating a lens cell that is abnormal in shape or abnormally positioned.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Asymmetric development of the provasculature, this ultimately leads to an abnormal root pole which is displaced laterally causing the root-shoot axis to be at an angle to the long axis of the suspensor, giving the embryo a tilted appearance.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Embryos are viable, have larger cells and nuclei than wild-type embryos but the same DNA content, mutant embryos are larger than wild-type embryos at the same developmental stage.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Plants have slow growing roots, slightly delayed flowering, altered floral phyllotaxis, reduced number of ovules, abnormally developing ovules, and reduced fertility.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Developmental arrest of mutant embryos occurs at early globular stage.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Altered protoderm.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	27.3% mutant.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	No visible phenotype.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Early flowering.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Arrests earlier than til1-4 single mutant.Zygote , one or two celled embryo arrest.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Twenty-five percent of embryos show abnormal cell divisions during embryogenesis-large cells- decreased rate of cell division.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Division of the hypohyseal cell abnormal leading to abnormal placement of the root pole.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Homozygotes show delayed flowering, abnormal floraly phyllotaxy and abnormal ovules.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Sensitive to high temperature.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds.	Defect in basal and acquired thermotolerance.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Dwarf.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Early flowering independent of photoperiod.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Embryo defective-Globular.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Narrow leaves.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Small flowers.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Small leaves.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Null: Embryo defective.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Globular.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Knockdown: Dwarf.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Small, narrow leaves.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Embryo defective.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Weak allele.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Embryos have altered placement of the root pole, slow embryonic development, longer cell cycles (~35%) and larger cells.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Abnormal division of the hypophysis in the developing root of the embryo, generating a lens cell that is abnormal in shape or abnormally positioned.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Asymmetric development of the provasculature, this ultimately leads to an abnormal root pole which is displaced laterally causing the root-shoot axis to be at an angle to the long axis of the suspensor, giving the embryo a tilted appearance.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Embryos are viable, have larger cells and nuclei than wild-type embryos but the same DNA content, mutant embryos are larger than wild-type embryos at the same developmental stage.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Plants have slow growing roots, slightly delayed flowering, altered floral phyllotaxis, reduced number of ovules, abnormally developing ovules, and reduced fertility.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Developmental arrest of mutant embryos occurs at early globular stage.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Altered protoderm.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	27.3% mutant.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	No visible phenotype.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Early flowering.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Arrests earlier than til1-4 single mutant.Zygote , one or two celled embryo arrest.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Twenty-five percent of embryos show abnormal cell divisions during embryogenesis-large cells- decreased rate of cell division.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Division of the hypohyseal cell abnormal leading to abnormal placement of the root pole.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Homozygotes show delayed flowering, abnormal floraly phyllotaxy and abnormal ovules.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Sensitive to high temperature.	1541
+50	Arabidopsis	EMB2284	At1g08260	0.000	Pale green seeds and seedlings.	Defect in basal and acquired thermotolerance.	1541

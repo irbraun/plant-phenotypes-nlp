@@ -1,0 +1,523 @@
+Rank	Species	Gene	Gene Model	Score	Query	Matches	Internal ID
+1	Arabidopsis	CH1	At1g44446	0.551	Pale aleurone.	Pale.	1649
+1	Arabidopsis	CH1	At1g44446	0.301	Pale aleurone.	Pale yellow-green plants.	1649
+1	Arabidopsis	CH1	At1g44446	0.110	Reduced pigmentation in aleurone.	Green-yellow plants, reduced chlorophyll-b content.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Reduced pigmentation in aleurone.	Pale.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Reduced pigmentation in aleurone.	Yellow-green.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Reduced pigmentation in aleurone.	Pale yellow-green plants.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Reduced pigmentation in aleurone.	Bent club-like hairs on leaf.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Reduced pigmentation in aleurone.	Yellow green plant with club-like siliques.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Reduced pigmentation in aleurone.	Green-yellow plants, lacks chlorophyll-b.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Reduced pigmentation in aleurone.	Delayed flowering (ca.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Reduced pigmentation in aleurone.	2-3x), large rosettes with numerous leaves, increased plant height.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Reduced pigmentation in aleurone.	Green-yellow shoots.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Reduced pigmentation in aleurone.	Chlorophyll contents decreased by approximately 40% compared to the parental line (ch1-1/GFP-CAO).	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Reduced pigmentation in aleurone.	Significant increase in the expression of the GFP-CAO transgene.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Pale aleurone.	Yellow-green.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Pale aleurone.	Bent club-like hairs on leaf.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Pale aleurone.	Yellow green plant with club-like siliques.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Pale aleurone.	Green-yellow plants, lacks chlorophyll-b.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Pale aleurone.	Green-yellow plants, reduced chlorophyll-b content.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Pale aleurone.	Delayed flowering (ca.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Pale aleurone.	2-3x), large rosettes with numerous leaves, increased plant height.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Pale aleurone.	Green-yellow shoots.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Pale aleurone.	Chlorophyll contents decreased by approximately 40% compared to the parental line (ch1-1/GFP-CAO).	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Pale aleurone.	Significant increase in the expression of the GFP-CAO transgene.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Yellow-green.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale yellow-green plants.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Bent club-like hairs on leaf.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Yellow green plant with club-like siliques.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Green-yellow plants, lacks chlorophyll-b.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Green-yellow plants, reduced chlorophyll-b content.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Delayed flowering (ca.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	2-3x), large rosettes with numerous leaves, increased plant height.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Green-yellow shoots.	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Chlorophyll contents decreased by approximately 40% compared to the parental line (ch1-1/GFP-CAO).	1649
+1	Arabidopsis	CH1	At1g44446	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Significant increase in the expression of the GFP-CAO transgene.	1649
+2	Arabidopsis	EMB2729	At3g20440	0.551	Pale aleurone.	Pale.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Reduced pigmentation in aleurone.	Dwarf.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Reduced pigmentation in aleurone.	Embryo defective-Transition.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Reduced pigmentation in aleurone.	Pale.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Reduced pigmentation in aleurone.	Null: Embryo defective.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Reduced pigmentation in aleurone.	Transition.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Reduced pigmentation in aleurone.	Knockdown: Dwarf.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Reduced pigmentation in aleurone.	Starch branching enzyme activity unaffected (similar to wild type levels).	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Reduced pigmentation in aleurone.	Displays the same profile of polymerization (DP) as the corresponding be2 or be3 mutant.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Reduced pigmentation in aleurone.	Increased starch phosphorylase activity compared to wild type.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Reduced pigmentation in aleurone.	No starch branching enzyme activity detected.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Pale aleurone.	Dwarf.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Pale aleurone.	Embryo defective-Transition.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Pale aleurone.	Null: Embryo defective.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Pale aleurone.	Transition.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Pale aleurone.	Knockdown: Dwarf.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Pale aleurone.	Starch branching enzyme activity unaffected (similar to wild type levels).	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Pale aleurone.	Displays the same profile of polymerization (DP) as the corresponding be2 or be3 mutant.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Pale aleurone.	Increased starch phosphorylase activity compared to wild type.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Pale aleurone.	No starch branching enzyme activity detected.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Dwarf.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Embryo defective-Transition.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Null: Embryo defective.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Transition.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Knockdown: Dwarf.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Starch branching enzyme activity unaffected (similar to wild type levels).	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Displays the same profile of polymerization (DP) as the corresponding be2 or be3 mutant.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Increased starch phosphorylase activity compared to wild type.	1556
+2	Arabidopsis	EMB2729	At3g20440	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	No starch branching enzyme activity detected.	1556
+3	Arabidopsis	GA1	At4g02780	0.551	Pale aleurone.	Ga: pale.	259
+3	Arabidopsis	GA1	At4g02780	0.100	Light-colored aleurone, lighter than dilute and less brown than bronze.	ABA levels showed light dependence in the mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.089	Light-colored aleurone, lighter than dilute and less brown than bronze.	M GA3, the germination frequency was higher in ga1 mutant seeds irradiated with red light versus those irradiated with far-red light.	259
+3	Arabidopsis	GA1	At4g02780	0.075	Light-colored aleurone, lighter than dilute and less brown than bronze.	MGA3, irrespective of light conditions.	259
+3	Arabidopsis	GA1	At4g02780	0.062	Light-colored aleurone, lighter than dilute and less brown than bronze.	The germination frequency of ga1 mutant seeds showed light dependence in the presence of low to moderate concentrations of exogenous GA3.	259
+3	Arabidopsis	GA1	At4g02780	0.049	Light-colored aleurone, lighter than dilute and less brown than bronze.	Irrespective of the light conditions, a reduction of the expression levels of two DELLA genes, GAI and RGA, was measured in this double mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.047	Light-colored aleurone, lighter than dilute and less brown than bronze.	Red light irradiation reduced the expression levels of two DELLA genes, GAI and RGA, by threefold to fourfold in this mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.045	Reduced pigmentation in aleurone.	Red light irradiation reduced the expression levels of two DELLA genes, GAI and RGA, by threefold to fourfold in this mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.040	Light-colored aleurone, lighter than dilute and less brown than bronze.	Under PHYB-dependent germination conditions (1 h of imbibition followed by a pulse of red or far-red light), the germination frequency of the ga1 mutant reached virtually 100% in the presence of 50 &mu.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Complete loss of germination without exogenous GA. Elg: elongated hypocotyls and petioles.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Narrow, epinastic leaves (leaves curl down due to faster growth of top layer of cells.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Early flowering under long and short days.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Ga: pale.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Increased apical dominance, accelerated flowering.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Gibberellin responsive dwarf.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Small, dark green leaves.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	GA applications restored trichome initiation, although GA concentrations exceeding 10 &#956.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	M caused a decrease, rather than a further increase, in trichome production - an effect also seen with wild-type plants.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	At GA concentrations exceeding 100 &#956.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	M, a reduction in trichome production on cauline leaves and branches was observed.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Mutant flowers are glabrous.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Non-flowering defect.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Nongerminating, male sterile.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Leaky mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Semi-dwarf.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Germinates, flowers, and produces seeds without gibberellin treatment.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Leaky.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	More dwarf than ga1-5.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Germinates without, but seed production enhanced by, gibberellin sprays.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Double mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Partially represses several defects of the severe GA deficiency of ga1-3, including: stem growth (about 1/3 as tall as wt, compared to the extreme dwarf stature of ga1-3), leaf abaxial trichome initiation (one to three leaves later than wt), flowering time (flowers earlier than ga1-3, but not as early as wt), and apical dominance (intermediate branching between ga1-3 and wt).	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Gibberellin (GA) responsive.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Dark green dwarf plants which later develop a bushy appearance with flowers poorly developed and male sterility.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Wild type phenotype can be restored by repeated GA applications.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	GA deficient morphology: dark green dwarf plants which later develop a bushy appearance with flowers poorly developed and male sterility.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	ABA levels showed light dependence in the mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	The germination frequency of ga1 mutant seeds showed light dependence in the presence of low to moderate concentrations of exogenous GA3.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Under PHYB-dependent germination conditions (1 h of imbibition followed by a pulse of red or far-red light), the germination frequency of the ga1 mutant reached virtually 100% in the presence of 50 &mu.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	MGA3, irrespective of light conditions.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	However, at concentrations of <50 &mu.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	M GA3, the germination frequency was higher in ga1 mutant seeds irradiated with red light versus those irradiated with far-red light.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Does not undergo stem elongation.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	GA-signaling promoting root and leaf expansion is not completely abolished.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	No bolting.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	No increase of germination or restoration of male fertility compared to the single ga1-3 mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Rescue of the nonflowering phenotype of ga1-3.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Irrespective of the light conditions, a reduction of the expression levels of two DELLA genes, GAI and RGA, was measured in this double mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	The double mutant germinates almost 100% in response to even 5 &mu.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Partially restored stem height (59% of Ler wild type).	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Early flowering.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Longer carpels than those of the ga1-3 single mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Stems are 32% taller than that of wild type Ler.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Reduced pigmentation in aleurone.	Seeds unable to germinate without application of exogenous GA.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Complete loss of germination without exogenous GA. Elg: elongated hypocotyls and petioles.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Narrow, epinastic leaves (leaves curl down due to faster growth of top layer of cells.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Early flowering under long and short days.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Increased apical dominance, accelerated flowering.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Gibberellin responsive dwarf.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Small, dark green leaves.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	GA applications restored trichome initiation, although GA concentrations exceeding 10 &#956.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	M caused a decrease, rather than a further increase, in trichome production - an effect also seen with wild-type plants.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	At GA concentrations exceeding 100 &#956.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	M, a reduction in trichome production on cauline leaves and branches was observed.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Mutant flowers are glabrous.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Non-flowering defect.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Nongerminating, male sterile.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Leaky mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Semi-dwarf.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Germinates, flowers, and produces seeds without gibberellin treatment.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Leaky.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	More dwarf than ga1-5.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Germinates without, but seed production enhanced by, gibberellin sprays.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Double mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Partially represses several defects of the severe GA deficiency of ga1-3, including: stem growth (about 1/3 as tall as wt, compared to the extreme dwarf stature of ga1-3), leaf abaxial trichome initiation (one to three leaves later than wt), flowering time (flowers earlier than ga1-3, but not as early as wt), and apical dominance (intermediate branching between ga1-3 and wt).	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Gibberellin (GA) responsive.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Dark green dwarf plants which later develop a bushy appearance with flowers poorly developed and male sterility.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Wild type phenotype can be restored by repeated GA applications.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	GA deficient morphology: dark green dwarf plants which later develop a bushy appearance with flowers poorly developed and male sterility.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	ABA levels showed light dependence in the mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Red light irradiation reduced the expression levels of two DELLA genes, GAI and RGA, by threefold to fourfold in this mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	The germination frequency of ga1 mutant seeds showed light dependence in the presence of low to moderate concentrations of exogenous GA3.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Under PHYB-dependent germination conditions (1 h of imbibition followed by a pulse of red or far-red light), the germination frequency of the ga1 mutant reached virtually 100% in the presence of 50 &mu.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	MGA3, irrespective of light conditions.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	However, at concentrations of <50 &mu.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	M GA3, the germination frequency was higher in ga1 mutant seeds irradiated with red light versus those irradiated with far-red light.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Does not undergo stem elongation.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	GA-signaling promoting root and leaf expansion is not completely abolished.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	No bolting.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	No increase of germination or restoration of male fertility compared to the single ga1-3 mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Rescue of the nonflowering phenotype of ga1-3.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Irrespective of the light conditions, a reduction of the expression levels of two DELLA genes, GAI and RGA, was measured in this double mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	The double mutant germinates almost 100% in response to even 5 &mu.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Partially restored stem height (59% of Ler wild type).	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Early flowering.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Longer carpels than those of the ga1-3 single mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Stems are 32% taller than that of wild type Ler.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Pale aleurone.	Seeds unable to germinate without application of exogenous GA.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Complete loss of germination without exogenous GA. Elg: elongated hypocotyls and petioles.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Narrow, epinastic leaves (leaves curl down due to faster growth of top layer of cells.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Early flowering under long and short days.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Ga: pale.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Increased apical dominance, accelerated flowering.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Gibberellin responsive dwarf.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Small, dark green leaves.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	GA applications restored trichome initiation, although GA concentrations exceeding 10 &#956.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	M caused a decrease, rather than a further increase, in trichome production - an effect also seen with wild-type plants.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	At GA concentrations exceeding 100 &#956.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	M, a reduction in trichome production on cauline leaves and branches was observed.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Mutant flowers are glabrous.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Non-flowering defect.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Nongerminating, male sterile.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Leaky mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Semi-dwarf.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Germinates, flowers, and produces seeds without gibberellin treatment.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Leaky.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	More dwarf than ga1-5.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Germinates without, but seed production enhanced by, gibberellin sprays.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Double mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Partially represses several defects of the severe GA deficiency of ga1-3, including: stem growth (about 1/3 as tall as wt, compared to the extreme dwarf stature of ga1-3), leaf abaxial trichome initiation (one to three leaves later than wt), flowering time (flowers earlier than ga1-3, but not as early as wt), and apical dominance (intermediate branching between ga1-3 and wt).	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Gibberellin (GA) responsive.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Dark green dwarf plants which later develop a bushy appearance with flowers poorly developed and male sterility.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Wild type phenotype can be restored by repeated GA applications.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	GA deficient morphology: dark green dwarf plants which later develop a bushy appearance with flowers poorly developed and male sterility.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	However, at concentrations of <50 &mu.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Does not undergo stem elongation.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	GA-signaling promoting root and leaf expansion is not completely abolished.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	No bolting.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	No increase of germination or restoration of male fertility compared to the single ga1-3 mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Rescue of the nonflowering phenotype of ga1-3.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	The double mutant germinates almost 100% in response to even 5 &mu.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Partially restored stem height (59% of Ler wild type).	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Early flowering.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Longer carpels than those of the ga1-3 single mutant.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Stems are 32% taller than that of wild type Ler.	259
+3	Arabidopsis	GA1	At4g02780	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Seeds unable to germinate without application of exogenous GA.	259
+4	Arabidopsis	TRM4B	AT2G22400	0.500	Reduced pigmentation in aleurone.	Pigment defective.	4537
+4	Arabidopsis	TRM4B	AT2G22400	0.000	Pale aleurone.	Pigment defective.	4537
+4	Arabidopsis	TRM4B	AT2G22400	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective.	4537
+5	Arabidopsis	PDE323	At2g40930	0.500	Reduced pigmentation in aleurone.	Pigment defective.	1628
+5	Arabidopsis	PDE323	At2g40930	0.348	Pale aleurone.	Pale green seedlings.	1628
+5	Arabidopsis	PDE323	At2g40930	0.342	Pale aleurone.	Pale green seeds.	1628
+5	Arabidopsis	PDE323	At2g40930	0.304	Pale aleurone.	Pale green seeds and seedlings.	1628
+5	Arabidopsis	PDE323	At2g40930	0.000	Reduced pigmentation in aleurone.	Pale green seedlings.	1628
+5	Arabidopsis	PDE323	At2g40930	0.000	Reduced pigmentation in aleurone.	Pale green seeds.	1628
+5	Arabidopsis	PDE323	At2g40930	0.000	Reduced pigmentation in aleurone.	Pale green seeds and seedlings.	1628
+5	Arabidopsis	PDE323	At2g40930	0.000	Reduced pigmentation in aleurone.	No visible phenotype.	1628
+5	Arabidopsis	PDE323	At2g40930	0.000	Pale aleurone.	Pigment defective.	1628
+5	Arabidopsis	PDE323	At2g40930	0.000	Pale aleurone.	No visible phenotype.	1628
+5	Arabidopsis	PDE323	At2g40930	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale green seedlings.	1628
+5	Arabidopsis	PDE323	At2g40930	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale green seeds.	1628
+5	Arabidopsis	PDE323	At2g40930	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale green seeds and seedlings.	1628
+5	Arabidopsis	PDE323	At2g40930	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective.	1628
+5	Arabidopsis	PDE323	At2g40930	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	No visible phenotype.	1628
+6	Arabidopsis	EMB3113	At2g33800	0.500	Reduced pigmentation in aleurone.	Pigment defect.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.410	Pale aleurone.	Pale green.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.312	Reduced pigmentation in aleurone.	Knockdown: Pigment defect.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.119	Pale aleurone.	Pale yellow inner leaves and a developmental defect, serious impairment of chloroplast 16S rRNA processing and accumulation.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.045	Reduced pigmentation in aleurone.	Sca1-1 mutant exhibits a general reduction in size, which translates into rosettes with signicantly reduced projected area when compared with its wild type, Landsberg erecta (Ler).	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Reduced pigmentation in aleurone.	Embryo defective-Preglobular.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Reduced pigmentation in aleurone.	Null: Embryo defective.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Reduced pigmentation in aleurone.	Preglobular.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Reduced pigmentation in aleurone.	Pale green.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Reduced pigmentation in aleurone.	Lower levels of chlorophyll a and chlorophyll b. Mesophyll development defects.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Reduced pigmentation in aleurone.	Pale yellow inner leaves and a developmental defect, serious impairment of chloroplast 16S rRNA processing and accumulation.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Reduced pigmentation in aleurone.	Mutants have significantly lower levels of chlorophyll a and chlorophyll b. Mesophyll defects include large intercellular spaces and a distribution of cell sizes wider than in the wild type.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Pale aleurone.	Embryo defective-Preglobular.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Pale aleurone.	Pigment defect.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Pale aleurone.	Null: Embryo defective.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Pale aleurone.	Preglobular.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Pale aleurone.	Knockdown: Pigment defect.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Pale aleurone.	Lower levels of chlorophyll a and chlorophyll b. Mesophyll development defects.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Pale aleurone.	Sca1-1 mutant exhibits a general reduction in size, which translates into rosettes with signicantly reduced projected area when compared with its wild type, Landsberg erecta (Ler).	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Pale aleurone.	Mutants have significantly lower levels of chlorophyll a and chlorophyll b. Mesophyll defects include large intercellular spaces and a distribution of cell sizes wider than in the wild type.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Embryo defective-Preglobular.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defect.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Null: Embryo defective.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Preglobular.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Knockdown: Pigment defect.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale green.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Lower levels of chlorophyll a and chlorophyll b. Mesophyll development defects.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale yellow inner leaves and a developmental defect, serious impairment of chloroplast 16S rRNA processing and accumulation.	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Sca1-1 mutant exhibits a general reduction in size, which translates into rosettes with signicantly reduced projected area when compared with its wild type, Landsberg erecta (Ler).	1552
+6	Arabidopsis	EMB3113	At2g33800	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Mutants have significantly lower levels of chlorophyll a and chlorophyll b. Mesophyll defects include large intercellular spaces and a distribution of cell sizes wider than in the wild type.	1552
+7	Arabidopsis	EMB2001	At2g22870	0.500	Reduced pigmentation in aleurone.	Pigment defective.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Reduced pigmentation in aleurone.	Embryo defective-Transition.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Reduced pigmentation in aleurone.	Embryo defective.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Reduced pigmentation in aleurone.	Transition.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Reduced pigmentation in aleurone.	Developmental arrest of mutant embryos occurs at transition stage.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Pale aleurone.	Embryo defective-Transition.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Pale aleurone.	Embryo defective.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Pale aleurone.	Transition.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Pale aleurone.	Developmental arrest of mutant embryos occurs at transition stage.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Pale aleurone.	Pigment defective.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Embryo defective-Transition.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Embryo defective.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Transition.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Developmental arrest of mutant embryos occurs at transition stage.	946
+7	Arabidopsis	EMB2001	At2g22870	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective.	946
+8	Arabidopsis	EMB1273	At1g49510	0.500	Reduced pigmentation in aleurone.	Pigment defective.	646
+8	Arabidopsis	EMB1273	At1g49510	0.137	Pale aleurone.	Both cotyledons and true leaves of the mutants were initially albino but gradually became pale green as the plant matured.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Reduced pigmentation in aleurone.	Embryo defective-Cotyledon.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Reduced pigmentation in aleurone.	Embryo defective.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Reduced pigmentation in aleurone.	Cotyledon.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Reduced pigmentation in aleurone.	Developmental arrest of mutant embryos.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Reduced pigmentation in aleurone.	Both cotyledons and true leaves of the mutants were initially albino but gradually became pale green as the plant matured.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Reduced pigmentation in aleurone.	The mutants has a delayed proplastid-to-chloroplast transition.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Pale aleurone.	Embryo defective-Cotyledon.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Pale aleurone.	Embryo defective.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Pale aleurone.	Cotyledon.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Pale aleurone.	Developmental arrest of mutant embryos.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Pale aleurone.	Pigment defective.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Pale aleurone.	The mutants has a delayed proplastid-to-chloroplast transition.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Embryo defective-Cotyledon.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Embryo defective.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Cotyledon.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Developmental arrest of mutant embryos.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Both cotyledons and true leaves of the mutants were initially albino but gradually became pale green as the plant matured.	646
+8	Arabidopsis	EMB1273	At1g49510	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	The mutants has a delayed proplastid-to-chloroplast transition.	646
+9	Arabidopsis	BRIZ1	At2g42160	0.472	Pale aleurone.	Pale embryos.	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Reduced pigmentation in aleurone.	Delayed germination.	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Reduced pigmentation in aleurone.	Pale embryos.	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Reduced pigmentation in aleurone.	Seedling lethal.	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Reduced pigmentation in aleurone.	Growth arrest (embryos are slow to emerge from the seed coat.	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Reduced pigmentation in aleurone.	After emergence, the embryos remain white with unexpanded cotyledons even after twelve days on GM media).	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Pale aleurone.	Delayed germination.	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Pale aleurone.	Seedling lethal.	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Pale aleurone.	Growth arrest (embryos are slow to emerge from the seed coat.	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Pale aleurone.	After emergence, the embryos remain white with unexpanded cotyledons even after twelve days on GM media).	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Delayed germination.	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale embryos.	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Seedling lethal.	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Growth arrest (embryos are slow to emerge from the seed coat.	1981
+9	Arabidopsis	BRIZ1	At2g42160	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	After emergence, the embryos remain white with unexpanded cotyledons even after twelve days on GM media).	1981
+10	Arabidopsis	PDE340	At5g08610	0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	1661
+10	Arabidopsis	PDE340	At5g08610	0.000	Pale aleurone.	Pigment defective embryo.	1661
+10	Arabidopsis	PDE340	At5g08610	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	1661
+11	Arabidopsis	PDE335	At5g02120	0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	1660
+11	Arabidopsis	PDE335	At5g02120	0.000	Pale aleurone.	Pigment defective embryo.	1660
+11	Arabidopsis	PDE335	At5g02120	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	1660
+12	Arabidopsis	PDE346	At4g34830	0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	1659
+12	Arabidopsis	PDE346	At4g34830	0.000	Pale aleurone.	Pigment defective embryo.	1659
+12	Arabidopsis	PDE346	At4g34830	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	1659
+13	Arabidopsis	PDE327	At4g30720	0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	1658
+13	Arabidopsis	PDE327	At4g30720	0.000	Pale aleurone.	Pigment defective embryo.	1658
+13	Arabidopsis	PDE327	At4g30720	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	1658
+14	Arabidopsis	PDE329	At3g55250	0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	1657
+14	Arabidopsis	PDE329	At3g55250	0.000	Pale aleurone.	Pigment defective embryo.	1657
+14	Arabidopsis	PDE329	At3g55250	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	1657
+15	Arabidopsis	PDE345	At2g01140	0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	1656
+15	Arabidopsis	PDE345	At2g01140	0.000	Pale aleurone.	Pigment defective embryo.	1656
+15	Arabidopsis	PDE345	At2g01140	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	1656
+16	Arabidopsis	PDE339	At1g76620	0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	1655
+16	Arabidopsis	PDE339	At1g76620	0.000	Pale aleurone.	Pigment defective embryo.	1655
+16	Arabidopsis	PDE339	At1g76620	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	1655
+17	Arabidopsis	PDE330	At1g20110	0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	1653
+17	Arabidopsis	PDE330	At1g20110	0.000	Pale aleurone.	Pigment defective embryo.	1653
+17	Arabidopsis	PDE330	At1g20110	0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	1653
+18	Arabidopsis	PDE307		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7444
+18	Arabidopsis	PDE307		0.330	Pale aleurone.	Pale mature embryo.	7444
+18	Arabidopsis	PDE307		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7444
+18	Arabidopsis	PDE307		0.000	Pale aleurone.	Pigment defective embryo.	7444
+18	Arabidopsis	PDE307		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7444
+18	Arabidopsis	PDE307		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7444
+19	Arabidopsis	PDE306		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7443
+19	Arabidopsis	PDE306		0.330	Pale aleurone.	Pale mature embryo.	7443
+19	Arabidopsis	PDE306		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7443
+19	Arabidopsis	PDE306		0.000	Pale aleurone.	Pigment defective embryo.	7443
+19	Arabidopsis	PDE306		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7443
+19	Arabidopsis	PDE306		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7443
+20	Arabidopsis	PDE304		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7442
+20	Arabidopsis	PDE304		0.330	Pale aleurone.	Pale mature embryo.	7442
+20	Arabidopsis	PDE304		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7442
+20	Arabidopsis	PDE304		0.000	Pale aleurone.	Pigment defective embryo.	7442
+20	Arabidopsis	PDE304		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7442
+20	Arabidopsis	PDE304		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7442
+21	Arabidopsis	PDE289		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7436
+21	Arabidopsis	PDE289		0.330	Pale aleurone.	Pale mature embryo.	7436
+21	Arabidopsis	PDE289		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7436
+21	Arabidopsis	PDE289		0.000	Pale aleurone.	Pigment defective embryo.	7436
+21	Arabidopsis	PDE289		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7436
+21	Arabidopsis	PDE289		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7436
+22	Arabidopsis	PDE284		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7434
+22	Arabidopsis	PDE284		0.330	Pale aleurone.	Pale mature embryo.	7434
+22	Arabidopsis	PDE284		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7434
+22	Arabidopsis	PDE284		0.000	Pale aleurone.	Pigment defective embryo.	7434
+22	Arabidopsis	PDE284		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7434
+22	Arabidopsis	PDE284		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7434
+23	Arabidopsis	PDE276		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7429
+23	Arabidopsis	PDE276		0.330	Pale aleurone.	Pale mature embryo.	7429
+23	Arabidopsis	PDE276		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7429
+23	Arabidopsis	PDE276		0.000	Pale aleurone.	Pigment defective embryo.	7429
+23	Arabidopsis	PDE276		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7429
+23	Arabidopsis	PDE276		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7429
+24	Arabidopsis	PDE272		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7425
+24	Arabidopsis	PDE272		0.330	Pale aleurone.	Pale mature embryo.	7425
+24	Arabidopsis	PDE272		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7425
+24	Arabidopsis	PDE272		0.000	Pale aleurone.	Pigment defective embryo.	7425
+24	Arabidopsis	PDE272		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7425
+24	Arabidopsis	PDE272		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7425
+25	Arabidopsis	PDE271		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7424
+25	Arabidopsis	PDE271		0.330	Pale aleurone.	Pale mature embryo.	7424
+25	Arabidopsis	PDE271		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7424
+25	Arabidopsis	PDE271		0.000	Pale aleurone.	Pigment defective embryo.	7424
+25	Arabidopsis	PDE271		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7424
+25	Arabidopsis	PDE271		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7424
+26	Arabidopsis	PDE270		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7423
+26	Arabidopsis	PDE270		0.330	Pale aleurone.	Pale mature embryo.	7423
+26	Arabidopsis	PDE270		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7423
+26	Arabidopsis	PDE270		0.000	Pale aleurone.	Pigment defective embryo.	7423
+26	Arabidopsis	PDE270		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7423
+26	Arabidopsis	PDE270		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7423
+27	Arabidopsis	PDE268		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7421
+27	Arabidopsis	PDE268		0.330	Pale aleurone.	Pale mature embryo.	7421
+27	Arabidopsis	PDE268		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7421
+27	Arabidopsis	PDE268		0.000	Pale aleurone.	Pigment defective embryo.	7421
+27	Arabidopsis	PDE268		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7421
+27	Arabidopsis	PDE268		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7421
+28	Arabidopsis	PDE260		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7413
+28	Arabidopsis	PDE260		0.330	Pale aleurone.	Pale mature embryo.	7413
+28	Arabidopsis	PDE260		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7413
+28	Arabidopsis	PDE260		0.000	Pale aleurone.	Pigment defective embryo.	7413
+28	Arabidopsis	PDE260		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7413
+28	Arabidopsis	PDE260		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7413
+29	Arabidopsis	PDE258		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7411
+29	Arabidopsis	PDE258		0.330	Pale aleurone.	Pale mature embryo.	7411
+29	Arabidopsis	PDE258		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7411
+29	Arabidopsis	PDE258		0.000	Pale aleurone.	Pigment defective embryo.	7411
+29	Arabidopsis	PDE258		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7411
+29	Arabidopsis	PDE258		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7411
+30	Arabidopsis	PDE257		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7410
+30	Arabidopsis	PDE257		0.330	Pale aleurone.	Pale mature embryo.	7410
+30	Arabidopsis	PDE257		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7410
+30	Arabidopsis	PDE257		0.000	Pale aleurone.	Pigment defective embryo.	7410
+30	Arabidopsis	PDE257		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7410
+30	Arabidopsis	PDE257		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7410
+31	Arabidopsis	PDE256		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7409
+31	Arabidopsis	PDE256		0.330	Pale aleurone.	Pale mature embryo.	7409
+31	Arabidopsis	PDE256		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7409
+31	Arabidopsis	PDE256		0.000	Pale aleurone.	Pigment defective embryo.	7409
+31	Arabidopsis	PDE256		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7409
+31	Arabidopsis	PDE256		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7409
+32	Arabidopsis	PDE254		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7408
+32	Arabidopsis	PDE254		0.330	Pale aleurone.	Pale mature embryo.	7408
+32	Arabidopsis	PDE254		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7408
+32	Arabidopsis	PDE254		0.000	Pale aleurone.	Pigment defective embryo.	7408
+32	Arabidopsis	PDE254		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7408
+32	Arabidopsis	PDE254		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7408
+33	Arabidopsis	PDE252		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7406
+33	Arabidopsis	PDE252		0.330	Pale aleurone.	Pale mature embryo.	7406
+33	Arabidopsis	PDE252		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7406
+33	Arabidopsis	PDE252		0.000	Pale aleurone.	Pigment defective embryo.	7406
+33	Arabidopsis	PDE252		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7406
+33	Arabidopsis	PDE252		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7406
+34	Arabidopsis	PDE244		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7402
+34	Arabidopsis	PDE244		0.330	Pale aleurone.	Pale mature embryo.	7402
+34	Arabidopsis	PDE244		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7402
+34	Arabidopsis	PDE244		0.000	Pale aleurone.	Pigment defective embryo.	7402
+34	Arabidopsis	PDE244		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7402
+34	Arabidopsis	PDE244		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7402
+35	Arabidopsis	PDE239		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7400
+35	Arabidopsis	PDE239		0.330	Pale aleurone.	Pale mature embryo.	7400
+35	Arabidopsis	PDE239		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7400
+35	Arabidopsis	PDE239		0.000	Pale aleurone.	Pigment defective embryo.	7400
+35	Arabidopsis	PDE239		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7400
+35	Arabidopsis	PDE239		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7400
+36	Arabidopsis	PDE235		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7397
+36	Arabidopsis	PDE235		0.330	Pale aleurone.	Pale mature embryo.	7397
+36	Arabidopsis	PDE235		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7397
+36	Arabidopsis	PDE235		0.000	Pale aleurone.	Pigment defective embryo.	7397
+36	Arabidopsis	PDE235		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7397
+36	Arabidopsis	PDE235		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7397
+37	Arabidopsis	PDE234		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7396
+37	Arabidopsis	PDE234		0.330	Pale aleurone.	Pale mature embryo.	7396
+37	Arabidopsis	PDE234		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7396
+37	Arabidopsis	PDE234		0.000	Pale aleurone.	Pigment defective embryo.	7396
+37	Arabidopsis	PDE234		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7396
+37	Arabidopsis	PDE234		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7396
+38	Arabidopsis	PDE233		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7395
+38	Arabidopsis	PDE233		0.330	Pale aleurone.	Pale mature embryo.	7395
+38	Arabidopsis	PDE233		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7395
+38	Arabidopsis	PDE233		0.000	Pale aleurone.	Pigment defective embryo.	7395
+38	Arabidopsis	PDE233		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7395
+38	Arabidopsis	PDE233		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7395
+39	Arabidopsis	PDE222		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7389
+39	Arabidopsis	PDE222		0.330	Pale aleurone.	Pale mature embryo.	7389
+39	Arabidopsis	PDE222		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7389
+39	Arabidopsis	PDE222		0.000	Pale aleurone.	Pigment defective embryo.	7389
+39	Arabidopsis	PDE222		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7389
+39	Arabidopsis	PDE222		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7389
+40	Arabidopsis	PDE217		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7385
+40	Arabidopsis	PDE217		0.330	Pale aleurone.	Pale mature embryo.	7385
+40	Arabidopsis	PDE217		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7385
+40	Arabidopsis	PDE217		0.000	Pale aleurone.	Pigment defective embryo.	7385
+40	Arabidopsis	PDE217		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7385
+40	Arabidopsis	PDE217		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7385
+41	Arabidopsis	PDE213		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7381
+41	Arabidopsis	PDE213		0.330	Pale aleurone.	Pale mature embryo.	7381
+41	Arabidopsis	PDE213		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7381
+41	Arabidopsis	PDE213		0.000	Pale aleurone.	Pigment defective embryo.	7381
+41	Arabidopsis	PDE213		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7381
+41	Arabidopsis	PDE213		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7381
+42	Arabidopsis	PDE211		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7379
+42	Arabidopsis	PDE211		0.330	Pale aleurone.	Pale mature embryo.	7379
+42	Arabidopsis	PDE211		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7379
+42	Arabidopsis	PDE211		0.000	Pale aleurone.	Pigment defective embryo.	7379
+42	Arabidopsis	PDE211		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7379
+42	Arabidopsis	PDE211		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7379
+43	Arabidopsis	PDE204		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7376
+43	Arabidopsis	PDE204		0.330	Pale aleurone.	Pale mature embryo.	7376
+43	Arabidopsis	PDE204		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7376
+43	Arabidopsis	PDE204		0.000	Pale aleurone.	Pigment defective embryo.	7376
+43	Arabidopsis	PDE204		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7376
+43	Arabidopsis	PDE204		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7376
+44	Arabidopsis	PDE203		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7375
+44	Arabidopsis	PDE203		0.330	Pale aleurone.	Pale mature embryo.	7375
+44	Arabidopsis	PDE203		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7375
+44	Arabidopsis	PDE203		0.000	Pale aleurone.	Pigment defective embryo.	7375
+44	Arabidopsis	PDE203		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7375
+44	Arabidopsis	PDE203		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7375
+45	Arabidopsis	PDE189		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7368
+45	Arabidopsis	PDE189		0.330	Pale aleurone.	Pale mature embryo.	7368
+45	Arabidopsis	PDE189		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7368
+45	Arabidopsis	PDE189		0.000	Pale aleurone.	Pigment defective embryo.	7368
+45	Arabidopsis	PDE189		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7368
+45	Arabidopsis	PDE189		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7368
+46	Arabidopsis	PDE183		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7365
+46	Arabidopsis	PDE183		0.330	Pale aleurone.	Pale mature embryo.	7365
+46	Arabidopsis	PDE183		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7365
+46	Arabidopsis	PDE183		0.000	Pale aleurone.	Pigment defective embryo.	7365
+46	Arabidopsis	PDE183		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7365
+46	Arabidopsis	PDE183		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7365
+47	Arabidopsis	PDE175		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7359
+47	Arabidopsis	PDE175		0.330	Pale aleurone.	Pale mature embryo.	7359
+47	Arabidopsis	PDE175		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7359
+47	Arabidopsis	PDE175		0.000	Pale aleurone.	Pigment defective embryo.	7359
+47	Arabidopsis	PDE175		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7359
+47	Arabidopsis	PDE175		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7359
+48	Arabidopsis	PDE173		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7358
+48	Arabidopsis	PDE173		0.330	Pale aleurone.	Pale mature embryo.	7358
+48	Arabidopsis	PDE173		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7358
+48	Arabidopsis	PDE173		0.000	Pale aleurone.	Pigment defective embryo.	7358
+48	Arabidopsis	PDE173		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7358
+48	Arabidopsis	PDE173		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7358
+49	Arabidopsis	PDE171		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7356
+49	Arabidopsis	PDE171		0.330	Pale aleurone.	Pale mature embryo.	7356
+49	Arabidopsis	PDE171		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7356
+49	Arabidopsis	PDE171		0.000	Pale aleurone.	Pigment defective embryo.	7356
+49	Arabidopsis	PDE171		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7356
+49	Arabidopsis	PDE171		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7356
+50	Arabidopsis	PDE169		0.451	Reduced pigmentation in aleurone.	Pigment defective embryo.	7355
+50	Arabidopsis	PDE169		0.330	Pale aleurone.	Pale mature embryo.	7355
+50	Arabidopsis	PDE169		0.000	Reduced pigmentation in aleurone.	Pale mature embryo.	7355
+50	Arabidopsis	PDE169		0.000	Pale aleurone.	Pigment defective embryo.	7355
+50	Arabidopsis	PDE169		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pigment defective embryo.	7355
+50	Arabidopsis	PDE169		0.000	Light-colored aleurone, lighter than dilute and less brown than bronze.	Pale mature embryo.	7355

@@ -1,0 +1,1521 @@
+Rank	Species	Gene	Gene Model	Score	Query	Matches	Internal ID
+1	Maize	brn1		0.673	Pale brown seeds.	Brown embryo.	2867
+1	Maize	brn1		0.562	Pale brown seeds.	Brown kernel.	2867
+1	Maize	brn1		0.502	Pale brown seeds.	Brown aleurone.	2867
+1	Maize	brn1		0.328	Pale brown seeds.	Yellowish brown color in the aleurone layer.	2867
+1	Maize	brn1		0.132	Pale brown seeds.	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2867
+1	Maize	brn1		0.124	Yellow seed coat.	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2867
+1	Maize	brn1		0.000	Yellow seed coat.	Brown aleurone.	2867
+1	Maize	brn1		0.000	Yellow seed coat.	Yellowish brown color in the aleurone layer.	2867
+1	Maize	brn1		0.000	Yellow seed coat.	Brown embryo.	2867
+1	Maize	brn1		0.000	Yellow seed coat.	Brown kernel.	2867
+1	Maize	brn1		0.000	Yellow seed coat.	Lethal.	2867
+1	Maize	brn1		0.000	Yellow seed coat.	Seedling lethal.	2867
+1	Maize	brn1		0.000	Pale brown seeds.	Lethal.	2867
+1	Maize	brn1		0.000	Pale brown seeds.	Seedling lethal.	2867
+1	Maize	brn1		0.000	Average height = 38 cm.	Brown aleurone.	2867
+1	Maize	brn1		0.000	Average height = 38 cm.	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2867
+1	Maize	brn1		0.000	Average height = 38 cm.	Yellowish brown color in the aleurone layer.	2867
+1	Maize	brn1		0.000	Average height = 38 cm.	Brown embryo.	2867
+1	Maize	brn1		0.000	Average height = 38 cm.	Brown kernel.	2867
+1	Maize	brn1		0.000	Average height = 38 cm.	Lethal.	2867
+1	Maize	brn1		0.000	Average height = 38 cm.	Seedling lethal.	2867
+1	Maize	brn1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brown aleurone.	2867
+1	Maize	brn1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2867
+1	Maize	brn1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellowish brown color in the aleurone layer.	2867
+1	Maize	brn1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brown embryo.	2867
+1	Maize	brn1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brown kernel.	2867
+1	Maize	brn1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lethal.	2867
+1	Maize	brn1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling lethal.	2867
+2	Maize	brt1		0.625	Pale brown seeds.	Brown roots.	2876
+2	Maize	brt1		0.185	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Roots senesce prematurely after germination.	2876
+2	Maize	brt1		0.000	Yellow seed coat.	Brown roots.	2876
+2	Maize	brt1		0.000	Yellow seed coat.	Roots senesce prematurely after germination.	2876
+2	Maize	brt1		0.000	Pale brown seeds.	Roots senesce prematurely after germination.	2876
+2	Maize	brt1		0.000	Average height = 38 cm.	Brown roots.	2876
+2	Maize	brt1		0.000	Average height = 38 cm.	Roots senesce prematurely after germination.	2876
+2	Maize	brt1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brown roots.	2876
+3	Maize	a1	GRMZM2G026930	0.566	Pale brown seeds.	Green or brown plant.	166
+3	Maize	a1	GRMZM2G026930	0.489	Pale brown seeds.	The pericarp is brown.	166
+3	Maize	a1	GRMZM2G026930	0.489	Pale brown seeds.	Brown pericarp.	166
+3	Maize	a1	GRMZM2G026930	0.416	Pale brown seeds.	Red-brown pericarp.	166
+3	Maize	a1	GRMZM2G026930	0.282	Pale brown seeds.	Pale aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.261	Yellow seed coat.	Usually appear to be yellow.	166
+3	Maize	a1	GRMZM2G026930	0.257	Pale brown seeds.	Light-colored aleurone, lighter than dilute and less brown than bronze.	166
+3	Maize	a1	GRMZM2G026930	0.226	Yellow seed coat.	Anthers are green, rather than the normal yellow.	166
+3	Maize	a1	GRMZM2G026930	0.186	Pale brown seeds.	Pale purple husks.	166
+3	Maize	a1	GRMZM2G026930	0.186	Pale brown seeds.	Pale aleurone, with pigmented sectors.	166
+3	Maize	a1	GRMZM2G026930	0.178	Yellow seed coat.	Silks are green, rather than the normal yellow/white.	166
+3	Maize	a1	GRMZM2G026930	0.148	Pale brown seeds.	Colorless/pale aleurone with purple sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Aleuron layer is colored.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Anthers are green.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	No color in aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Lack of anthocyanins in aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Seedling dies.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Silks are green.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	The pericarp is brown.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Aleuron layer is colored, leading to a colored kernel.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	No color in the aleurone, specifically no color due to anthocyanins.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	However, anthocyanin pigmented sectors are present.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	In addition, lack of a1 transcript is confirmed.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Seedling dies after endosperm is used up.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	A1 null transcript.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Brown pericarp.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Colored aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Anthocyanin color with A1 A2 C1 C2 R1.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Would be purple if with Pr1, Bz1 and Bz2.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Colorless aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Colorless aleurone with pigmented sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Colorless/pale aleurone with purple sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Embryonic axis profile/color halo.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	One example of expression is seen in the combination of a1 with R1-scm2.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Ring or halo of anthocyanin color surrounding the kernel embryonic axis.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Flow pattern pigmentation.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Pigmentation along the sides of the kernel.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Not at the crown.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Green anthers.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Non-pigmented.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Green or brown plant.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Green silks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Lethal.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Pale aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Light-colored aleurone, lighter than dilute and less brown than bronze.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Pale aleurone, with pigmented sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Pale purple husks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Purple husks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Purple plant.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Red-brown pericarp.	166
+3	Maize	a1	GRMZM2G026930	0.000	Yellow seed coat.	Spotted aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Aleuron layer is colored.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Anthers are green.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	No color in aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Lack of anthocyanins in aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Seedling dies.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Silks are green.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Aleuron layer is colored, leading to a colored kernel.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Anthers are green, rather than the normal yellow.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	No color in the aleurone, specifically no color due to anthocyanins.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	However, anthocyanin pigmented sectors are present.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	In addition, lack of a1 transcript is confirmed.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Seedling dies after endosperm is used up.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Silks are green, rather than the normal yellow/white.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	A1 null transcript.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Colored aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Anthocyanin color with A1 A2 C1 C2 R1.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Would be purple if with Pr1, Bz1 and Bz2.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Colorless aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Colorless aleurone with pigmented sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Embryonic axis profile/color halo.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	One example of expression is seen in the combination of a1 with R1-scm2.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Ring or halo of anthocyanin color surrounding the kernel embryonic axis.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Flow pattern pigmentation.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Pigmentation along the sides of the kernel.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Not at the crown.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Green anthers.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Non-pigmented.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Usually appear to be yellow.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Green silks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Lethal.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Purple husks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Purple plant.	166
+3	Maize	a1	GRMZM2G026930	0.000	Pale brown seeds.	Spotted aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Aleuron layer is colored.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Anthers are green.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	No color in aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Lack of anthocyanins in aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Seedling dies.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Silks are green.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	The pericarp is brown.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Aleuron layer is colored, leading to a colored kernel.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Anthers are green, rather than the normal yellow.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	No color in the aleurone, specifically no color due to anthocyanins.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	However, anthocyanin pigmented sectors are present.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	In addition, lack of a1 transcript is confirmed.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Seedling dies after endosperm is used up.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Silks are green, rather than the normal yellow/white.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	A1 null transcript.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Brown pericarp.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Colored aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Anthocyanin color with A1 A2 C1 C2 R1.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Would be purple if with Pr1, Bz1 and Bz2.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Colorless aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Colorless aleurone with pigmented sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Colorless/pale aleurone with purple sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Embryonic axis profile/color halo.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	One example of expression is seen in the combination of a1 with R1-scm2.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Ring or halo of anthocyanin color surrounding the kernel embryonic axis.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Flow pattern pigmentation.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Pigmentation along the sides of the kernel.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Not at the crown.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Green anthers.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Non-pigmented.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Usually appear to be yellow.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Green or brown plant.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Green silks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Lethal.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Pale aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Light-colored aleurone, lighter than dilute and less brown than bronze.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Pale aleurone, with pigmented sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Pale purple husks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Purple husks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Purple plant.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Red-brown pericarp.	166
+3	Maize	a1	GRMZM2G026930	0.000	Average height = 38 cm.	Spotted aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Aleuron layer is colored.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Anthers are green.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No color in aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lack of anthocyanins in aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling dies.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Silks are green.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	The pericarp is brown.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Aleuron layer is colored, leading to a colored kernel.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Anthers are green, rather than the normal yellow.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No color in the aleurone, specifically no color due to anthocyanins.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	However, anthocyanin pigmented sectors are present.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	In addition, lack of a1 transcript is confirmed.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling dies after endosperm is used up.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Silks are green, rather than the normal yellow/white.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	A1 null transcript.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brown pericarp.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Colored aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Anthocyanin color with A1 A2 C1 C2 R1.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Would be purple if with Pr1, Bz1 and Bz2.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Colorless aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Colorless aleurone with pigmented sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Colorless/pale aleurone with purple sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Embryonic axis profile/color halo.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	One example of expression is seen in the combination of a1 with R1-scm2.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Ring or halo of anthocyanin color surrounding the kernel embryonic axis.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Flow pattern pigmentation.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pigmentation along the sides of the kernel.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Not at the crown.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Green anthers.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Non-pigmented.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Usually appear to be yellow.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Green or brown plant.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Green silks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lethal.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale aleurone.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Light-colored aleurone, lighter than dilute and less brown than bronze.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale aleurone, with pigmented sectors.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale purple husks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Purple husks.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Purple plant.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Red-brown pericarp.	166
+3	Maize	a1	GRMZM2G026930	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Spotted aleurone.	166
+4	Maize	a2	GRMZM2G345717	0.566	Pale brown seeds.	Green or brown plant.	169
+4	Maize	a2	GRMZM2G345717	0.261	Yellow seed coat.	Usually appear to be yellow.	169
+4	Maize	a2	GRMZM2G345717	0.226	Yellow seed coat.	Anthers are green, rather than the normal yellow.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	Aleuron layer is colored.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	Anthers are green.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	Aleuron layer is colored, leading to a colored kernel.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	Colored aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	Anthocyanin color with A1 A2 C1 C2 R1.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	Would be purple if with Pr1, Bz1 and Bz2.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	Colorless aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	No color in the aleurone, specifically no color due to anthocyanins.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	Colorless aleurone with pigmented sectors.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	However, anthocyanin pigmented sectors are present.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	Green anthers.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	Non-pigmented.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	Green or brown plant.	169
+4	Maize	a2	GRMZM2G345717	0.000	Yellow seed coat.	Spotted aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Aleuron layer is colored.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Anthers are green.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Aleuron layer is colored, leading to a colored kernel.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Anthers are green, rather than the normal yellow.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Colored aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Anthocyanin color with A1 A2 C1 C2 R1.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Would be purple if with Pr1, Bz1 and Bz2.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Colorless aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	No color in the aleurone, specifically no color due to anthocyanins.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Colorless aleurone with pigmented sectors.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	However, anthocyanin pigmented sectors are present.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Green anthers.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Non-pigmented.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Usually appear to be yellow.	169
+4	Maize	a2	GRMZM2G345717	0.000	Pale brown seeds.	Spotted aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Aleuron layer is colored.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Anthers are green.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Aleuron layer is colored, leading to a colored kernel.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Anthers are green, rather than the normal yellow.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Colored aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Anthocyanin color with A1 A2 C1 C2 R1.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Would be purple if with Pr1, Bz1 and Bz2.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Colorless aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	No color in the aleurone, specifically no color due to anthocyanins.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Colorless aleurone with pigmented sectors.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	However, anthocyanin pigmented sectors are present.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Green anthers.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Non-pigmented.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Usually appear to be yellow.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Green or brown plant.	169
+4	Maize	a2	GRMZM2G345717	0.000	Average height = 38 cm.	Spotted aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Aleuron layer is colored.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Anthers are green.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Aleuron layer is colored, leading to a colored kernel.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Anthers are green, rather than the normal yellow.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Colored aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Anthocyanin color with A1 A2 C1 C2 R1.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Would be purple if with Pr1, Bz1 and Bz2.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Colorless aleurone.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No color in the aleurone, specifically no color due to anthocyanins.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Colorless aleurone with pigmented sectors.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	However, anthocyanin pigmented sectors are present.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Green anthers.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Non-pigmented.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Usually appear to be yellow.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Green or brown plant.	169
+4	Maize	a2	GRMZM2G345717	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Spotted aleurone.	169
+5	Maize	brn2		0.562	Pale brown seeds.	Brown kernel.	2869
+5	Maize	brn2		0.000	Yellow seed coat.	Brown kernel.	2869
+5	Maize	brn2		0.000	Yellow seed coat.	Lethal.	2869
+5	Maize	brn2		0.000	Pale brown seeds.	Lethal.	2869
+5	Maize	brn2		0.000	Average height = 38 cm.	Brown kernel.	2869
+5	Maize	brn2		0.000	Average height = 38 cm.	Lethal.	2869
+5	Maize	brn2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brown kernel.	2869
+5	Maize	brn2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lethal.	2869
+6	Maize	bnk*-N1519C		0.562	Pale brown seeds.	Brown kernel.	2868
+6	Maize	bnk*-N1519C		0.116	Yellow seed coat.	Endosperm has a soft, chalk-like texture, usually a reduced yellow color and an opaque appearance.	2868
+6	Maize	bnk*-N1519C		0.027	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Endosperm has a soft, chalk-like texture, usually a reduced yellow color and an opaque appearance.	2868
+6	Maize	bnk*-N1519C		0.000	Yellow seed coat.	Brown kernel.	2868
+6	Maize	bnk*-N1519C		0.000	Yellow seed coat.	Floury endosperm.	2868
+6	Maize	bnk*-N1519C		0.000	Yellow seed coat.	Wrinkled kernel.	2868
+6	Maize	bnk*-N1519C		0.000	Yellow seed coat.	Kernel appears full but surface has long irregular indentation.	2868
+6	Maize	bnk*-N1519C		0.000	Pale brown seeds.	Floury endosperm.	2868
+6	Maize	bnk*-N1519C		0.000	Pale brown seeds.	Endosperm has a soft, chalk-like texture, usually a reduced yellow color and an opaque appearance.	2868
+6	Maize	bnk*-N1519C		0.000	Pale brown seeds.	Wrinkled kernel.	2868
+6	Maize	bnk*-N1519C		0.000	Pale brown seeds.	Kernel appears full but surface has long irregular indentation.	2868
+6	Maize	bnk*-N1519C		0.000	Average height = 38 cm.	Brown kernel.	2868
+6	Maize	bnk*-N1519C		0.000	Average height = 38 cm.	Floury endosperm.	2868
+6	Maize	bnk*-N1519C		0.000	Average height = 38 cm.	Endosperm has a soft, chalk-like texture, usually a reduced yellow color and an opaque appearance.	2868
+6	Maize	bnk*-N1519C		0.000	Average height = 38 cm.	Wrinkled kernel.	2868
+6	Maize	bnk*-N1519C		0.000	Average height = 38 cm.	Kernel appears full but surface has long irregular indentation.	2868
+6	Maize	bnk*-N1519C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brown kernel.	2868
+6	Maize	bnk*-N1519C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Floury endosperm.	2868
+6	Maize	bnk*-N1519C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Wrinkled kernel.	2868
+6	Maize	bnk*-N1519C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Kernel appears full but surface has long irregular indentation.	2868
+7	Maize	ns2	Zm00001d052598	0.533	Average height = 38 cm.	Plants are reduced in height.	1
+7	Maize	ns2	Zm00001d052598	0.217	Average height = 38 cm.	Plants are reduced in height due to extremely shortened internodes but have normal size and number of leaves, ears, tassels, etc.	1
+7	Maize	ns2	Zm00001d052598	0.064	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants are reduced in height.	1
+7	Maize	ns2	Zm00001d052598	0.026	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants are reduced in height due to extremely shortened internodes but have normal size and number of leaves, ears, tassels, etc.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	Plants (stems) do not elongate in response to gibberellins.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	Plants are reduced in height.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	Extremely shortened internodes.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	Plants are reduced in height due to extremely shortened internodes but have normal size and number of leaves, ears, tassels, etc.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	Plants do not elongate in response to gibberellins.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	Brachytic plant.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	Short internodes, stiff erect leaves, short plant.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	No response to gibberellins.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	Exposed ears.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	Husks narrowed.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	Narrow sheath.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	Shortened internodes.	1
+7	Maize	ns2	Zm00001d052598	0.000	Yellow seed coat.	Short plant.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	Plants (stems) do not elongate in response to gibberellins.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	Plants are reduced in height.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	Extremely shortened internodes.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	Plants are reduced in height due to extremely shortened internodes but have normal size and number of leaves, ears, tassels, etc.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	Plants do not elongate in response to gibberellins.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	Brachytic plant.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	Short internodes, stiff erect leaves, short plant.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	No response to gibberellins.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	Exposed ears.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	Husks narrowed.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	Narrow sheath.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	Shortened internodes.	1
+7	Maize	ns2	Zm00001d052598	0.000	Pale brown seeds.	Short plant.	1
+7	Maize	ns2	Zm00001d052598	0.000	Average height = 38 cm.	Plants (stems) do not elongate in response to gibberellins.	1
+7	Maize	ns2	Zm00001d052598	0.000	Average height = 38 cm.	Extremely shortened internodes.	1
+7	Maize	ns2	Zm00001d052598	0.000	Average height = 38 cm.	Plants do not elongate in response to gibberellins.	1
+7	Maize	ns2	Zm00001d052598	0.000	Average height = 38 cm.	Brachytic plant.	1
+7	Maize	ns2	Zm00001d052598	0.000	Average height = 38 cm.	Short internodes, stiff erect leaves, short plant.	1
+7	Maize	ns2	Zm00001d052598	0.000	Average height = 38 cm.	No response to gibberellins.	1
+7	Maize	ns2	Zm00001d052598	0.000	Average height = 38 cm.	Exposed ears.	1
+7	Maize	ns2	Zm00001d052598	0.000	Average height = 38 cm.	Husks narrowed.	1
+7	Maize	ns2	Zm00001d052598	0.000	Average height = 38 cm.	Narrow sheath.	1
+7	Maize	ns2	Zm00001d052598	0.000	Average height = 38 cm.	Shortened internodes.	1
+7	Maize	ns2	Zm00001d052598	0.000	Average height = 38 cm.	Short plant.	1
+7	Maize	ns2	Zm00001d052598	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants (stems) do not elongate in response to gibberellins.	1
+7	Maize	ns2	Zm00001d052598	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Extremely shortened internodes.	1
+7	Maize	ns2	Zm00001d052598	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants do not elongate in response to gibberellins.	1
+7	Maize	ns2	Zm00001d052598	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brachytic plant.	1
+7	Maize	ns2	Zm00001d052598	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes, stiff erect leaves, short plant.	1
+7	Maize	ns2	Zm00001d052598	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No response to gibberellins.	1
+7	Maize	ns2	Zm00001d052598	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Exposed ears.	1
+7	Maize	ns2	Zm00001d052598	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Husks narrowed.	1
+7	Maize	ns2	Zm00001d052598	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Narrow sheath.	1
+7	Maize	ns2	Zm00001d052598	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Shortened internodes.	1
+7	Maize	ns2	Zm00001d052598	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short plant.	1
+8	Maize	ns1	GRMZM2G069028	0.533	Average height = 38 cm.	Plants are reduced in height.	0
+8	Maize	ns1	GRMZM2G069028	0.217	Average height = 38 cm.	Plants are reduced in height due to extremely shortened internodes but have normal size and number of leaves, ears, tassels, etc.	0
+8	Maize	ns1	GRMZM2G069028	0.064	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants are reduced in height.	0
+8	Maize	ns1	GRMZM2G069028	0.055	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Internode elongation reduced.	0
+8	Maize	ns1	GRMZM2G069028	0.026	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants are reduced in height due to extremely shortened internodes but have normal size and number of leaves, ears, tassels, etc.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Plants (stems) do not elongate in response to gibberellins.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Plants are reduced in height.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Extremely shortened internodes.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	The margin domain of both blade and sheath is missing.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Leaves are very narrow along their whole length.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	The plant is shorter.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Internode elongation reduced.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Plants are reduced in height due to extremely shortened internodes but have normal size and number of leaves, ears, tassels, etc.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Plants do not elongate in response to gibberellins.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	The margin domain of both blade and sheath is missing, thus leaves are very narrow along their whole length.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Leaves are just as long as normal sibs.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	The plant is shorter, due to less internode elongation.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Brachytic plant.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Short internodes, stiff erect leaves, short plant.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	No response to gibberellins.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Exposed ears.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Husks narrowed.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Narrow sheath.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Shortened internodes.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Yellow seed coat.	Short plant.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Plants (stems) do not elongate in response to gibberellins.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Plants are reduced in height.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Extremely shortened internodes.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	The margin domain of both blade and sheath is missing.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Leaves are very narrow along their whole length.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	The plant is shorter.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Internode elongation reduced.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Plants are reduced in height due to extremely shortened internodes but have normal size and number of leaves, ears, tassels, etc.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Plants do not elongate in response to gibberellins.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	The margin domain of both blade and sheath is missing, thus leaves are very narrow along their whole length.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Leaves are just as long as normal sibs.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	The plant is shorter, due to less internode elongation.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Brachytic plant.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Short internodes, stiff erect leaves, short plant.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	No response to gibberellins.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Exposed ears.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Husks narrowed.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Narrow sheath.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Shortened internodes.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Pale brown seeds.	Short plant.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Plants (stems) do not elongate in response to gibberellins.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Extremely shortened internodes.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	The margin domain of both blade and sheath is missing.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Leaves are very narrow along their whole length.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	The plant is shorter.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Internode elongation reduced.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Plants do not elongate in response to gibberellins.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	The margin domain of both blade and sheath is missing, thus leaves are very narrow along their whole length.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Leaves are just as long as normal sibs.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	The plant is shorter, due to less internode elongation.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Brachytic plant.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Short internodes, stiff erect leaves, short plant.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	No response to gibberellins.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Exposed ears.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Husks narrowed.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Narrow sheath.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Shortened internodes.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Average height = 38 cm.	Short plant.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants (stems) do not elongate in response to gibberellins.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Extremely shortened internodes.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	The margin domain of both blade and sheath is missing.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Leaves are very narrow along their whole length.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	The plant is shorter.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Plants do not elongate in response to gibberellins.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	The margin domain of both blade and sheath is missing, thus leaves are very narrow along their whole length.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Leaves are just as long as normal sibs.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	The plant is shorter, due to less internode elongation.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brachytic plant.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short internodes, stiff erect leaves, short plant.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No response to gibberellins.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Exposed ears.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Husks narrowed.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Narrow sheath.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Shortened internodes.	0
+8	Maize	ns1	GRMZM2G069028	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short plant.	0
+9	Maize	bn1		0.502	Pale brown seeds.	Brown aleurone.	2866
+9	Maize	bn1		0.328	Pale brown seeds.	Yellowish brown color in the aleurone layer.	2866
+9	Maize	bn1		0.132	Pale brown seeds.	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2866
+9	Maize	bn1		0.124	Yellow seed coat.	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2866
+9	Maize	bn1		0.000	Yellow seed coat.	Brown aleurone.	2866
+9	Maize	bn1		0.000	Yellow seed coat.	Yellowish brown color in the aleurone layer.	2866
+9	Maize	bn1		0.000	Yellow seed coat.	Colorless aleurone.	2866
+9	Maize	bn1		0.000	Yellow seed coat.	No color in the aleurone, specifically no color due to anthocyanins.	2866
+9	Maize	bn1		0.000	Pale brown seeds.	Colorless aleurone.	2866
+9	Maize	bn1		0.000	Pale brown seeds.	No color in the aleurone, specifically no color due to anthocyanins.	2866
+9	Maize	bn1		0.000	Average height = 38 cm.	Brown aleurone.	2866
+9	Maize	bn1		0.000	Average height = 38 cm.	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2866
+9	Maize	bn1		0.000	Average height = 38 cm.	Yellowish brown color in the aleurone layer.	2866
+9	Maize	bn1		0.000	Average height = 38 cm.	Colorless aleurone.	2866
+9	Maize	bn1		0.000	Average height = 38 cm.	No color in the aleurone, specifically no color due to anthocyanins.	2866
+9	Maize	bn1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brown aleurone.	2866
+9	Maize	bn1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	In Bn1, can cause kernel color of white endosperm mutants to appear pale yellow or lemon.	2866
+9	Maize	bn1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellowish brown color in the aleurone layer.	2866
+9	Maize	bn1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Colorless aleurone.	2866
+9	Maize	bn1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	No color in the aleurone, specifically no color due to anthocyanins.	2866
+10	Maize	ch1		0.489	Pale brown seeds.	Brown pericarp.	2875
+10	Maize	ch1		0.000	Yellow seed coat.	Brown pericarp.	2875
+10	Maize	ch1		0.000	Average height = 38 cm.	Brown pericarp.	2875
+10	Maize	ch1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brown pericarp.	2875
+11	Maize	spc1		0.484	Pale brown seeds.	Brown leaf blade.	2870
+11	Maize	spc1		0.429	Pale brown seeds.	Brown midrib.	2870
+11	Maize	spc1		0.292	Pale brown seeds.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2870
+11	Maize	spc1		0.260	Pale brown seeds.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2870
+11	Maize	spc1		0.000	Yellow seed coat.	Brown leaf blade.	2870
+11	Maize	spc1		0.000	Yellow seed coat.	Brown midrib.	2870
+11	Maize	spc1		0.000	Yellow seed coat.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2870
+11	Maize	spc1		0.000	Yellow seed coat.	Also extending to cob and roots.	2870
+11	Maize	spc1		0.000	Yellow seed coat.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2870
+11	Maize	spc1		0.000	Yellow seed coat.	Speckled leaf.	2870
+11	Maize	spc1		0.000	Yellow seed coat.	Numerous lighter or darker areas on leaf surface.	2870
+11	Maize	spc1		0.000	Yellow seed coat.	Smaller, more numerous and more evenly distributed than spotted.	2870
+11	Maize	spc1		0.000	Pale brown seeds.	Also extending to cob and roots.	2870
+11	Maize	spc1		0.000	Pale brown seeds.	Speckled leaf.	2870
+11	Maize	spc1		0.000	Pale brown seeds.	Numerous lighter or darker areas on leaf surface.	2870
+11	Maize	spc1		0.000	Pale brown seeds.	Smaller, more numerous and more evenly distributed than spotted.	2870
+11	Maize	spc1		0.000	Average height = 38 cm.	Brown leaf blade.	2870
+11	Maize	spc1		0.000	Average height = 38 cm.	Brown midrib.	2870
+11	Maize	spc1		0.000	Average height = 38 cm.	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2870
+11	Maize	spc1		0.000	Average height = 38 cm.	Also extending to cob and roots.	2870
+11	Maize	spc1		0.000	Average height = 38 cm.	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2870
+11	Maize	spc1		0.000	Average height = 38 cm.	Speckled leaf.	2870
+11	Maize	spc1		0.000	Average height = 38 cm.	Numerous lighter or darker areas on leaf surface.	2870
+11	Maize	spc1		0.000	Average height = 38 cm.	Smaller, more numerous and more evenly distributed than spotted.	2870
+11	Maize	spc1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brown leaf blade.	2870
+11	Maize	spc1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brown midrib.	2870
+11	Maize	spc1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Brown pigment in vascular bundles of the sheath, midribs, and blades.	2870
+11	Maize	spc1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Also extending to cob and roots.	2870
+11	Maize	spc1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	First visible as a reddish-brown pigmentation of the midrib at the 4-6 leaf stage.	2870
+11	Maize	spc1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Speckled leaf.	2870
+11	Maize	spc1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Numerous lighter or darker areas on leaf surface.	2870
+11	Maize	spc1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Smaller, more numerous and more evenly distributed than spotted.	2870
+12	Maize	p1	GRMZM2G084799	0.447	Pale brown seeds.	Browning silks.	2330
+12	Maize	p1	GRMZM2G084799	0.413	Pale brown seeds.	Silks brown sooner than normal.	2330
+12	Maize	p1	GRMZM2G084799	0.352	Pale brown seeds.	Silks which do not turn brown when wounded lack certain classes of flavonoids, which are oxidized to quinones to give the brown color.	2330
+12	Maize	p1	GRMZM2G084799	0.104	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	High negative Ac dosage effect.	2330
+12	Maize	p1	GRMZM2G084799	0.021	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Expression ranges from highly variable fine striping, to reduced pericarp pigmentation without striping.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Silks brown sooner than normal.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Browning silks.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Colorless pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Delayed flowering.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Mature plant 2-3 feet taller and 7-10 days later in flowering.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	4-6 more nodes and leaves than normal.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Diffuse pericarp color.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Dilute pericarp color with P1-RR.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Sectors diffuse-edged rather than sharp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	High negative Ac dosage effect.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Mosaic cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Mosaic pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Nonbrowning silks.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Silks which do not turn brown when wounded lack certain classes of flavonoids, which are oxidized to quinones to give the brown color.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Orange cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Orange pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Follows genotype of endosperm (metaxenia) in orp1/opr2.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Pericarp on colorless kernels is orange.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Patterned pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Expression ranges from highly variable fine striping, to reduced pericarp pigmentation without striping.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	But with dark pigmentation at the point of silk attachment.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Red/black pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Dark red intense pericarp color.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Other tissues are also pigmented, such as the cob, husks, roots and seedlings.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Red cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Phlobaphenes (see Term) are polymerized polyphenolic compounds that confer the colors.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Red pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Suppresses Ac.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Effect like that of the Spm/En Suppressor function.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Variegated cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Variegated pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	White cap pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	White cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	White pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Yellow seed coat.	Synonym: colorless pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Colorless pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Delayed flowering.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Mature plant 2-3 feet taller and 7-10 days later in flowering.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	4-6 more nodes and leaves than normal.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Diffuse pericarp color.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Dilute pericarp color with P1-RR.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Sectors diffuse-edged rather than sharp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	High negative Ac dosage effect.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Mosaic cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Mosaic pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Nonbrowning silks.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Orange cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Orange pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Follows genotype of endosperm (metaxenia) in orp1/opr2.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Pericarp on colorless kernels is orange.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Patterned pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Expression ranges from highly variable fine striping, to reduced pericarp pigmentation without striping.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	But with dark pigmentation at the point of silk attachment.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Red/black pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Dark red intense pericarp color.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Other tissues are also pigmented, such as the cob, husks, roots and seedlings.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Red cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Phlobaphenes (see Term) are polymerized polyphenolic compounds that confer the colors.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Red pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Suppresses Ac.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Effect like that of the Spm/En Suppressor function.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Variegated cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Variegated pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	White cap pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	White cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	White pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Pale brown seeds.	Synonym: colorless pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Silks brown sooner than normal.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Browning silks.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Colorless pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Delayed flowering.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Mature plant 2-3 feet taller and 7-10 days later in flowering.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	4-6 more nodes and leaves than normal.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Diffuse pericarp color.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Dilute pericarp color with P1-RR.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Sectors diffuse-edged rather than sharp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	High negative Ac dosage effect.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Mosaic cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Mosaic pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Nonbrowning silks.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Silks which do not turn brown when wounded lack certain classes of flavonoids, which are oxidized to quinones to give the brown color.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Orange cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Orange pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Follows genotype of endosperm (metaxenia) in orp1/opr2.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Pericarp on colorless kernels is orange.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Patterned pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Expression ranges from highly variable fine striping, to reduced pericarp pigmentation without striping.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	But with dark pigmentation at the point of silk attachment.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Red/black pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Dark red intense pericarp color.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Other tissues are also pigmented, such as the cob, husks, roots and seedlings.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Red cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Phlobaphenes (see Term) are polymerized polyphenolic compounds that confer the colors.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Red pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Suppresses Ac.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Effect like that of the Spm/En Suppressor function.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Variegated cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Variegated pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	White cap pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	White cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	White pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Average height = 38 cm.	Synonym: colorless pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Silks brown sooner than normal.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Browning silks.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Colorless pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Delayed flowering.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Mature plant 2-3 feet taller and 7-10 days later in flowering.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	4-6 more nodes and leaves than normal.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Diffuse pericarp color.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Dilute pericarp color with P1-RR.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Sectors diffuse-edged rather than sharp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Mosaic cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Mosaic pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Nonbrowning silks.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Silks which do not turn brown when wounded lack certain classes of flavonoids, which are oxidized to quinones to give the brown color.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Orange cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Orange pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Follows genotype of endosperm (metaxenia) in orp1/opr2.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pericarp on colorless kernels is orange.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Patterned pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	But with dark pigmentation at the point of silk attachment.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Red/black pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Dark red intense pericarp color.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Other tissues are also pigmented, such as the cob, husks, roots and seedlings.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Red cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Phlobaphenes (see Term) are polymerized polyphenolic compounds that confer the colors.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Red pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Suppresses Ac.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Effect like that of the Spm/En Suppressor function.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Variegated cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Variegated pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	White cap pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	White cob.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	White pericarp.	2330
+12	Maize	p1	GRMZM2G084799	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Synonym: colorless pericarp.	2330
+13	Maize	yg3	GRMZM2G165521	0.438	Yellow seed coat.	Less yellow than yellow green.	3708
+13	Maize	yg3	GRMZM2G165521	0.332	Pale brown seeds.	Pale green plant.	3708
+13	Maize	yg3	GRMZM2G165521	0.323	Pale brown seeds.	Pale green seedling.	3708
+13	Maize	yg3	GRMZM2G165521	0.301	Yellow seed coat.	Yellow green leaf.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Yellow seed coat.	Pale green plant.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Yellow seed coat.	Lighter green seedlings or plants.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Yellow seed coat.	Pale green seedling.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Pale brown seeds.	Lighter green seedlings or plants.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Pale brown seeds.	Less yellow than yellow green.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Pale brown seeds.	Yellow green leaf.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Average height = 38 cm.	Pale green plant.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Average height = 38 cm.	Less yellow than yellow green.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Average height = 38 cm.	Pale green seedling.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Average height = 38 cm.	Yellow green leaf.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green seedling.	3708
+13	Maize	yg3	GRMZM2G165521	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow green leaf.	3708
+14	Maize	lpe1	GRMZM5G858417	0.438	Yellow seed coat.	Less yellow than yellow green.	3677
+14	Maize	lpe1	GRMZM5G858417	0.332	Pale brown seeds.	Pale green plant.	3677
+14	Maize	lpe1	GRMZM5G858417	0.323	Pale brown seeds.	Pale green seedling.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Yellow seed coat.	Pale green plant.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Yellow seed coat.	Lighter green seedlings or plants.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Yellow seed coat.	Pale green seedling.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Pale brown seeds.	Lighter green seedlings or plants.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Pale brown seeds.	Less yellow than yellow green.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Average height = 38 cm.	Pale green plant.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Average height = 38 cm.	Less yellow than yellow green.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Average height = 38 cm.	Pale green seedling.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3677
+14	Maize	lpe1	GRMZM5G858417	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green seedling.	3677
+15	Maize	pg*-N526C		0.438	Yellow seed coat.	Less yellow than yellow green.	3689
+15	Maize	pg*-N526C		0.332	Pale brown seeds.	Pale green plant.	3689
+15	Maize	pg*-N526C		0.301	Yellow seed coat.	Yellow green leaf.	3689
+15	Maize	pg*-N526C		0.000	Yellow seed coat.	Pale green plant.	3689
+15	Maize	pg*-N526C		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3689
+15	Maize	pg*-N526C		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3689
+15	Maize	pg*-N526C		0.000	Pale brown seeds.	Less yellow than yellow green.	3689
+15	Maize	pg*-N526C		0.000	Pale brown seeds.	Yellow green leaf.	3689
+15	Maize	pg*-N526C		0.000	Average height = 38 cm.	Pale green plant.	3689
+15	Maize	pg*-N526C		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3689
+15	Maize	pg*-N526C		0.000	Average height = 38 cm.	Less yellow than yellow green.	3689
+15	Maize	pg*-N526C		0.000	Average height = 38 cm.	Yellow green leaf.	3689
+15	Maize	pg*-N526C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3689
+15	Maize	pg*-N526C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3689
+15	Maize	pg*-N526C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3689
+15	Maize	pg*-N526C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow green leaf.	3689
+16	Maize	pg*-N408C		0.438	Yellow seed coat.	Less yellow than yellow green.	3687
+16	Maize	pg*-N408C		0.332	Pale brown seeds.	Pale green plant.	3687
+16	Maize	pg*-N408C		0.301	Yellow seed coat.	Yellow green leaf.	3687
+16	Maize	pg*-N408C		0.000	Yellow seed coat.	Pale green plant.	3687
+16	Maize	pg*-N408C		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3687
+16	Maize	pg*-N408C		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3687
+16	Maize	pg*-N408C		0.000	Pale brown seeds.	Less yellow than yellow green.	3687
+16	Maize	pg*-N408C		0.000	Pale brown seeds.	Yellow green leaf.	3687
+16	Maize	pg*-N408C		0.000	Average height = 38 cm.	Pale green plant.	3687
+16	Maize	pg*-N408C		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3687
+16	Maize	pg*-N408C		0.000	Average height = 38 cm.	Less yellow than yellow green.	3687
+16	Maize	pg*-N408C		0.000	Average height = 38 cm.	Yellow green leaf.	3687
+16	Maize	pg*-N408C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3687
+16	Maize	pg*-N408C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3687
+16	Maize	pg*-N408C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3687
+16	Maize	pg*-N408C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow green leaf.	3687
+17	Maize	pg*-N590B		0.438	Yellow seed coat.	Less yellow than yellow green.	3690
+17	Maize	pg*-N590B		0.332	Pale brown seeds.	Pale green plant.	3690
+17	Maize	pg*-N590B		0.000	Yellow seed coat.	Pale green plant.	3690
+17	Maize	pg*-N590B		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3690
+17	Maize	pg*-N590B		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3690
+17	Maize	pg*-N590B		0.000	Pale brown seeds.	Less yellow than yellow green.	3690
+17	Maize	pg*-N590B		0.000	Average height = 38 cm.	Pale green plant.	3690
+17	Maize	pg*-N590B		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3690
+17	Maize	pg*-N590B		0.000	Average height = 38 cm.	Less yellow than yellow green.	3690
+17	Maize	pg*-N590B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3690
+17	Maize	pg*-N590B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3690
+17	Maize	pg*-N590B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3690
+18	Maize	pg*-N1881		0.438	Yellow seed coat.	Less yellow than yellow green.	3684
+18	Maize	pg*-N1881		0.332	Pale brown seeds.	Pale green plant.	3684
+18	Maize	pg*-N1881		0.000	Yellow seed coat.	Pale green plant.	3684
+18	Maize	pg*-N1881		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3684
+18	Maize	pg*-N1881		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3684
+18	Maize	pg*-N1881		0.000	Pale brown seeds.	Less yellow than yellow green.	3684
+18	Maize	pg*-N1881		0.000	Average height = 38 cm.	Pale green plant.	3684
+18	Maize	pg*-N1881		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3684
+18	Maize	pg*-N1881		0.000	Average height = 38 cm.	Less yellow than yellow green.	3684
+18	Maize	pg*-N1881		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3684
+18	Maize	pg*-N1881		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3684
+18	Maize	pg*-N1881		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3684
+19	Maize	pg16		0.438	Yellow seed coat.	Less yellow than yellow green.	3682
+19	Maize	pg16		0.332	Pale brown seeds.	Pale green plant.	3682
+19	Maize	pg16		0.000	Yellow seed coat.	Pale green plant.	3682
+19	Maize	pg16		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3682
+19	Maize	pg16		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3682
+19	Maize	pg16		0.000	Pale brown seeds.	Less yellow than yellow green.	3682
+19	Maize	pg16		0.000	Average height = 38 cm.	Pale green plant.	3682
+19	Maize	pg16		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3682
+19	Maize	pg16		0.000	Average height = 38 cm.	Less yellow than yellow green.	3682
+19	Maize	pg16		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3682
+19	Maize	pg16		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3682
+19	Maize	pg16		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3682
+20	Maize	pg13		0.438	Yellow seed coat.	Less yellow than yellow green.	3681
+20	Maize	pg13		0.332	Pale brown seeds.	Pale green plant.	3681
+20	Maize	pg13		0.000	Yellow seed coat.	Pale green plant.	3681
+20	Maize	pg13		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3681
+20	Maize	pg13		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3681
+20	Maize	pg13		0.000	Pale brown seeds.	Less yellow than yellow green.	3681
+20	Maize	pg13		0.000	Average height = 38 cm.	Pale green plant.	3681
+20	Maize	pg13		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3681
+20	Maize	pg13		0.000	Average height = 38 cm.	Less yellow than yellow green.	3681
+20	Maize	pg13		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3681
+20	Maize	pg13		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3681
+20	Maize	pg13		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3681
+21	Maize	pg12		0.438	Yellow seed coat.	Less yellow than yellow green.	3680
+21	Maize	pg12		0.332	Pale brown seeds.	Pale green plant.	3680
+21	Maize	pg12		0.000	Yellow seed coat.	Pale green plant.	3680
+21	Maize	pg12		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3680
+21	Maize	pg12		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3680
+21	Maize	pg12		0.000	Pale brown seeds.	Less yellow than yellow green.	3680
+21	Maize	pg12		0.000	Average height = 38 cm.	Pale green plant.	3680
+21	Maize	pg12		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3680
+21	Maize	pg12		0.000	Average height = 38 cm.	Less yellow than yellow green.	3680
+21	Maize	pg12		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3680
+21	Maize	pg12		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3680
+21	Maize	pg12		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3680
+22	Maize	pg11		0.438	Yellow seed coat.	Less yellow than yellow green.	3679
+22	Maize	pg11		0.332	Pale brown seeds.	Pale green plant.	3679
+22	Maize	pg11		0.000	Yellow seed coat.	Pale green plant.	3679
+22	Maize	pg11		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3679
+22	Maize	pg11		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3679
+22	Maize	pg11		0.000	Pale brown seeds.	Less yellow than yellow green.	3679
+22	Maize	pg11		0.000	Average height = 38 cm.	Pale green plant.	3679
+22	Maize	pg11		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3679
+22	Maize	pg11		0.000	Average height = 38 cm.	Less yellow than yellow green.	3679
+22	Maize	pg11		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3679
+22	Maize	pg11		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3679
+22	Maize	pg11		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3679
+23	Maize	pet1		0.438	Yellow seed coat.	Less yellow than yellow green.	3678
+23	Maize	pet1		0.332	Pale brown seeds.	Pale green plant.	3678
+23	Maize	pet1		0.000	Yellow seed coat.	Pale green plant.	3678
+23	Maize	pet1		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3678
+23	Maize	pet1		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3678
+23	Maize	pet1		0.000	Pale brown seeds.	Less yellow than yellow green.	3678
+23	Maize	pet1		0.000	Average height = 38 cm.	Pale green plant.	3678
+23	Maize	pet1		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3678
+23	Maize	pet1		0.000	Average height = 38 cm.	Less yellow than yellow green.	3678
+23	Maize	pet1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3678
+23	Maize	pet1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3678
+23	Maize	pet1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3678
+24	Maize	v*-N735		0.438	Yellow seed coat.	Less yellow than yellow green.	3702
+24	Maize	v*-N735		0.332	Pale brown seeds.	Pale green plant.	3702
+24	Maize	v*-N735		0.190	Yellow seed coat.	Seedling white, yellow or palegreen, becomes green, often normal.	3702
+24	Maize	v*-N735		0.000	Yellow seed coat.	Pale green plant.	3702
+24	Maize	v*-N735		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3702
+24	Maize	v*-N735		0.000	Yellow seed coat.	Virescent seedling.	3702
+24	Maize	v*-N735		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3702
+24	Maize	v*-N735		0.000	Pale brown seeds.	Less yellow than yellow green.	3702
+24	Maize	v*-N735		0.000	Pale brown seeds.	Virescent seedling.	3702
+24	Maize	v*-N735		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3702
+24	Maize	v*-N735		0.000	Average height = 38 cm.	Pale green plant.	3702
+24	Maize	v*-N735		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3702
+24	Maize	v*-N735		0.000	Average height = 38 cm.	Less yellow than yellow green.	3702
+24	Maize	v*-N735		0.000	Average height = 38 cm.	Virescent seedling.	3702
+24	Maize	v*-N735		0.000	Average height = 38 cm.	Seedling white, yellow or palegreen, becomes green, often normal.	3702
+24	Maize	v*-N735		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3702
+24	Maize	v*-N735		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3702
+24	Maize	v*-N735		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3702
+24	Maize	v*-N735		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Virescent seedling.	3702
+24	Maize	v*-N735		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling white, yellow or palegreen, becomes green, often normal.	3702
+25	Maize	v*-N634A		0.438	Yellow seed coat.	Less yellow than yellow green.	3701
+25	Maize	v*-N634A		0.332	Pale brown seeds.	Pale green plant.	3701
+25	Maize	v*-N634A		0.190	Yellow seed coat.	Seedling white, yellow or palegreen, becomes green, often normal.	3701
+25	Maize	v*-N634A		0.000	Yellow seed coat.	Pale green plant.	3701
+25	Maize	v*-N634A		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3701
+25	Maize	v*-N634A		0.000	Yellow seed coat.	Virescent seedling.	3701
+25	Maize	v*-N634A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3701
+25	Maize	v*-N634A		0.000	Pale brown seeds.	Less yellow than yellow green.	3701
+25	Maize	v*-N634A		0.000	Pale brown seeds.	Virescent seedling.	3701
+25	Maize	v*-N634A		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3701
+25	Maize	v*-N634A		0.000	Average height = 38 cm.	Pale green plant.	3701
+25	Maize	v*-N634A		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3701
+25	Maize	v*-N634A		0.000	Average height = 38 cm.	Less yellow than yellow green.	3701
+25	Maize	v*-N634A		0.000	Average height = 38 cm.	Virescent seedling.	3701
+25	Maize	v*-N634A		0.000	Average height = 38 cm.	Seedling white, yellow or palegreen, becomes green, often normal.	3701
+25	Maize	v*-N634A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3701
+25	Maize	v*-N634A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3701
+25	Maize	v*-N634A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3701
+25	Maize	v*-N634A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Virescent seedling.	3701
+25	Maize	v*-N634A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling white, yellow or palegreen, becomes green, often normal.	3701
+26	Maize	v*-N470A		0.438	Yellow seed coat.	Less yellow than yellow green.	3700
+26	Maize	v*-N470A		0.332	Pale brown seeds.	Pale green plant.	3700
+26	Maize	v*-N470A		0.190	Yellow seed coat.	Seedling white, yellow or palegreen, becomes green, often normal.	3700
+26	Maize	v*-N470A		0.000	Yellow seed coat.	Pale green plant.	3700
+26	Maize	v*-N470A		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3700
+26	Maize	v*-N470A		0.000	Yellow seed coat.	Virescent seedling.	3700
+26	Maize	v*-N470A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3700
+26	Maize	v*-N470A		0.000	Pale brown seeds.	Less yellow than yellow green.	3700
+26	Maize	v*-N470A		0.000	Pale brown seeds.	Virescent seedling.	3700
+26	Maize	v*-N470A		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3700
+26	Maize	v*-N470A		0.000	Average height = 38 cm.	Pale green plant.	3700
+26	Maize	v*-N470A		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3700
+26	Maize	v*-N470A		0.000	Average height = 38 cm.	Less yellow than yellow green.	3700
+26	Maize	v*-N470A		0.000	Average height = 38 cm.	Virescent seedling.	3700
+26	Maize	v*-N470A		0.000	Average height = 38 cm.	Seedling white, yellow or palegreen, becomes green, often normal.	3700
+26	Maize	v*-N470A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3700
+26	Maize	v*-N470A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3700
+26	Maize	v*-N470A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3700
+26	Maize	v*-N470A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Virescent seedling.	3700
+26	Maize	v*-N470A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling white, yellow or palegreen, becomes green, often normal.	3700
+27	Maize	pg*-N71A		0.438	Yellow seed coat.	Less yellow than yellow green.	3692
+27	Maize	pg*-N71A		0.332	Pale brown seeds.	Pale green plant.	3692
+27	Maize	pg*-N71A		0.190	Yellow seed coat.	Seedling white, yellow or palegreen, becomes green, often normal.	3692
+27	Maize	pg*-N71A		0.000	Yellow seed coat.	Pale green plant.	3692
+27	Maize	pg*-N71A		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3692
+27	Maize	pg*-N71A		0.000	Yellow seed coat.	Virescent seedling.	3692
+27	Maize	pg*-N71A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3692
+27	Maize	pg*-N71A		0.000	Pale brown seeds.	Less yellow than yellow green.	3692
+27	Maize	pg*-N71A		0.000	Pale brown seeds.	Virescent seedling.	3692
+27	Maize	pg*-N71A		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3692
+27	Maize	pg*-N71A		0.000	Average height = 38 cm.	Pale green plant.	3692
+27	Maize	pg*-N71A		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3692
+27	Maize	pg*-N71A		0.000	Average height = 38 cm.	Less yellow than yellow green.	3692
+27	Maize	pg*-N71A		0.000	Average height = 38 cm.	Virescent seedling.	3692
+27	Maize	pg*-N71A		0.000	Average height = 38 cm.	Seedling white, yellow or palegreen, becomes green, often normal.	3692
+27	Maize	pg*-N71A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3692
+27	Maize	pg*-N71A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3692
+27	Maize	pg*-N71A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3692
+27	Maize	pg*-N71A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Virescent seedling.	3692
+27	Maize	pg*-N71A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling white, yellow or palegreen, becomes green, often normal.	3692
+28	Maize	pg*-N296A		0.438	Yellow seed coat.	Less yellow than yellow green.	3686
+28	Maize	pg*-N296A		0.332	Pale brown seeds.	Pale green plant.	3686
+28	Maize	pg*-N296A		0.190	Yellow seed coat.	Seedling white, yellow or palegreen, becomes green, often normal.	3686
+28	Maize	pg*-N296A		0.000	Yellow seed coat.	Pale green plant.	3686
+28	Maize	pg*-N296A		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3686
+28	Maize	pg*-N296A		0.000	Yellow seed coat.	Virescent seedling.	3686
+28	Maize	pg*-N296A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3686
+28	Maize	pg*-N296A		0.000	Pale brown seeds.	Less yellow than yellow green.	3686
+28	Maize	pg*-N296A		0.000	Pale brown seeds.	Virescent seedling.	3686
+28	Maize	pg*-N296A		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3686
+28	Maize	pg*-N296A		0.000	Average height = 38 cm.	Pale green plant.	3686
+28	Maize	pg*-N296A		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3686
+28	Maize	pg*-N296A		0.000	Average height = 38 cm.	Less yellow than yellow green.	3686
+28	Maize	pg*-N296A		0.000	Average height = 38 cm.	Virescent seedling.	3686
+28	Maize	pg*-N296A		0.000	Average height = 38 cm.	Seedling white, yellow or palegreen, becomes green, often normal.	3686
+28	Maize	pg*-N296A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3686
+28	Maize	pg*-N296A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3686
+28	Maize	pg*-N296A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3686
+28	Maize	pg*-N296A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Virescent seedling.	3686
+28	Maize	pg*-N296A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling white, yellow or palegreen, becomes green, often normal.	3686
+29	Maize	yg2		0.438	Yellow seed coat.	Less yellow than yellow green.	3707
+29	Maize	yg2		0.332	Pale brown seeds.	Pale green plant.	3707
+29	Maize	yg2		0.323	Pale brown seeds.	Pale green seedling.	3707
+29	Maize	yg2		0.301	Yellow seed coat.	Yellow green leaf.	3707
+29	Maize	yg2		0.190	Yellow seed coat.	Seedling white, yellow or palegreen, becomes green, often normal.	3707
+29	Maize	yg2		0.000	Yellow seed coat.	Pale green plant.	3707
+29	Maize	yg2		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3707
+29	Maize	yg2		0.000	Yellow seed coat.	Pale green seedling.	3707
+29	Maize	yg2		0.000	Yellow seed coat.	Virescent seedling.	3707
+29	Maize	yg2		0.000	Yellow seed coat.	White luteus seedling.	3707
+29	Maize	yg2		0.000	Yellow seed coat.	Yellowish-white seedling.	3707
+29	Maize	yg2		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3707
+29	Maize	yg2		0.000	Pale brown seeds.	Less yellow than yellow green.	3707
+29	Maize	yg2		0.000	Pale brown seeds.	Virescent seedling.	3707
+29	Maize	yg2		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3707
+29	Maize	yg2		0.000	Pale brown seeds.	White luteus seedling.	3707
+29	Maize	yg2		0.000	Pale brown seeds.	Yellowish-white seedling.	3707
+29	Maize	yg2		0.000	Pale brown seeds.	Yellow green leaf.	3707
+29	Maize	yg2		0.000	Average height = 38 cm.	Pale green plant.	3707
+29	Maize	yg2		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3707
+29	Maize	yg2		0.000	Average height = 38 cm.	Less yellow than yellow green.	3707
+29	Maize	yg2		0.000	Average height = 38 cm.	Pale green seedling.	3707
+29	Maize	yg2		0.000	Average height = 38 cm.	Virescent seedling.	3707
+29	Maize	yg2		0.000	Average height = 38 cm.	Seedling white, yellow or palegreen, becomes green, often normal.	3707
+29	Maize	yg2		0.000	Average height = 38 cm.	White luteus seedling.	3707
+29	Maize	yg2		0.000	Average height = 38 cm.	Yellowish-white seedling.	3707
+29	Maize	yg2		0.000	Average height = 38 cm.	Yellow green leaf.	3707
+29	Maize	yg2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3707
+29	Maize	yg2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3707
+29	Maize	yg2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3707
+29	Maize	yg2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green seedling.	3707
+29	Maize	yg2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Virescent seedling.	3707
+29	Maize	yg2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling white, yellow or palegreen, becomes green, often normal.	3707
+29	Maize	yg2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	White luteus seedling.	3707
+29	Maize	yg2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellowish-white seedling.	3707
+29	Maize	yg2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow green leaf.	3707
+30	Maize	blh*-N487C		0.438	Yellow seed coat.	Less yellow than yellow green.	2837
+30	Maize	blh*-N487C		0.332	Pale brown seeds.	Pale green plant.	2837
+30	Maize	blh*-N487C		0.205	Yellow seed coat.	Loss of green or yellow color from leaves.	2837
+30	Maize	blh*-N487C		0.000	Yellow seed coat.	Bleached leaf.	2837
+30	Maize	blh*-N487C		0.000	Yellow seed coat.	Usually confined to a definite area (sector, patch, leaf tip, etc.	2837
+30	Maize	blh*-N487C		0.000	Yellow seed coat.	Pale green plant.	2837
+30	Maize	blh*-N487C		0.000	Yellow seed coat.	Lighter green seedlings or plants.	2837
+30	Maize	blh*-N487C		0.000	Pale brown seeds.	Bleached leaf.	2837
+30	Maize	blh*-N487C		0.000	Pale brown seeds.	Loss of green or yellow color from leaves.	2837
+30	Maize	blh*-N487C		0.000	Pale brown seeds.	Usually confined to a definite area (sector, patch, leaf tip, etc.	2837
+30	Maize	blh*-N487C		0.000	Pale brown seeds.	Lighter green seedlings or plants.	2837
+30	Maize	blh*-N487C		0.000	Pale brown seeds.	Less yellow than yellow green.	2837
+30	Maize	blh*-N487C		0.000	Average height = 38 cm.	Bleached leaf.	2837
+30	Maize	blh*-N487C		0.000	Average height = 38 cm.	Loss of green or yellow color from leaves.	2837
+30	Maize	blh*-N487C		0.000	Average height = 38 cm.	Usually confined to a definite area (sector, patch, leaf tip, etc.	2837
+30	Maize	blh*-N487C		0.000	Average height = 38 cm.	Pale green plant.	2837
+30	Maize	blh*-N487C		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	2837
+30	Maize	blh*-N487C		0.000	Average height = 38 cm.	Less yellow than yellow green.	2837
+30	Maize	blh*-N487C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Bleached leaf.	2837
+30	Maize	blh*-N487C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Loss of green or yellow color from leaves.	2837
+30	Maize	blh*-N487C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Usually confined to a definite area (sector, patch, leaf tip, etc.	2837
+30	Maize	blh*-N487C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	2837
+30	Maize	blh*-N487C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	2837
+30	Maize	blh*-N487C		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	2837
+31	Maize	oy1	GRMZM2G419806	0.438	Yellow seed coat.	Less yellow than yellow green.	1517
+31	Maize	oy1	GRMZM2G419806	0.332	Pale brown seeds.	Pale green plant.	1517
+31	Maize	oy1	GRMZM2G419806	0.301	Yellow seed coat.	Yellow green leaf.	1517
+31	Maize	oy1	GRMZM2G419806	0.269	Yellow seed coat.	Yellow seedling, no chlorophyll.	1517
+31	Maize	oy1	GRMZM2G419806	0.243	Yellow seed coat.	Luteus yellow seedling.	1517
+31	Maize	oy1	GRMZM2G419806	0.208	Yellow seed coat.	Oil yellow plant.	1517
+31	Maize	oy1	GRMZM2G419806	0.180	Yellow seed coat.	Seedling oily greenish-yellow.	1517
+31	Maize	oy1	GRMZM2G419806	0.121	Pale brown seeds.	Tissue between the veins is pale green or grayish green, giving the leaf a striped appearance.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Yellow seed coat.	Normal green along veins (vascular bundles).	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Yellow seed coat.	Tissue between the veins is pale green or grayish green, giving the leaf a striped appearance.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Yellow seed coat.	Can be weakly expressed in seedling but becomes more apparent as tissue matures.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Yellow seed coat.	Gerry Neuffer, 2010.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Yellow seed coat.	Green striped leaf.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Yellow seed coat.	Pale green plant.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Yellow seed coat.	Lighter green seedlings or plants.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Pale brown seeds.	Normal green along veins (vascular bundles).	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Pale brown seeds.	Can be weakly expressed in seedling but becomes more apparent as tissue matures.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Pale brown seeds.	Gerry Neuffer, 2010.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Pale brown seeds.	Green striped leaf.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Pale brown seeds.	Luteus yellow seedling.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Pale brown seeds.	Yellow seedling, no chlorophyll.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Pale brown seeds.	Oil yellow plant.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Pale brown seeds.	Seedling oily greenish-yellow.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Pale brown seeds.	Lighter green seedlings or plants.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Pale brown seeds.	Less yellow than yellow green.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Pale brown seeds.	Yellow green leaf.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Normal green along veins (vascular bundles).	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Tissue between the veins is pale green or grayish green, giving the leaf a striped appearance.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Can be weakly expressed in seedling but becomes more apparent as tissue matures.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Gerry Neuffer, 2010.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Green striped leaf.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Luteus yellow seedling.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Yellow seedling, no chlorophyll.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Oil yellow plant.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Seedling oily greenish-yellow.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Pale green plant.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Lighter green seedlings or plants.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Less yellow than yellow green.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Average height = 38 cm.	Yellow green leaf.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Normal green along veins (vascular bundles).	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Tissue between the veins is pale green or grayish green, giving the leaf a striped appearance.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Can be weakly expressed in seedling but becomes more apparent as tissue matures.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Gerry Neuffer, 2010.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Green striped leaf.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Luteus yellow seedling.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seedling, no chlorophyll.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Oil yellow plant.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling oily greenish-yellow.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	1517
+31	Maize	oy1	GRMZM2G419806	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow green leaf.	1517
+32	Maize	pg*-N673A		0.438	Yellow seed coat.	Less yellow than yellow green.	3326
+32	Maize	pg*-N673A		0.332	Pale brown seeds.	Pale green plant.	3326
+32	Maize	pg*-N673A		0.301	Yellow seed coat.	Yellow green leaf.	3326
+32	Maize	pg*-N673A		0.000	Yellow seed coat.	Grainy leaf.	3326
+32	Maize	pg*-N673A		0.000	Yellow seed coat.	Virescent, uneven distribution of green color.	3326
+32	Maize	pg*-N673A		0.000	Yellow seed coat.	Like photo printed on coarse-grain paper.	3326
+32	Maize	pg*-N673A		0.000	Yellow seed coat.	Pale green plant.	3326
+32	Maize	pg*-N673A		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3326
+32	Maize	pg*-N673A		0.000	Pale brown seeds.	Grainy leaf.	3326
+32	Maize	pg*-N673A		0.000	Pale brown seeds.	Virescent, uneven distribution of green color.	3326
+32	Maize	pg*-N673A		0.000	Pale brown seeds.	Like photo printed on coarse-grain paper.	3326
+32	Maize	pg*-N673A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3326
+32	Maize	pg*-N673A		0.000	Pale brown seeds.	Less yellow than yellow green.	3326
+32	Maize	pg*-N673A		0.000	Pale brown seeds.	Yellow green leaf.	3326
+32	Maize	pg*-N673A		0.000	Average height = 38 cm.	Grainy leaf.	3326
+32	Maize	pg*-N673A		0.000	Average height = 38 cm.	Virescent, uneven distribution of green color.	3326
+32	Maize	pg*-N673A		0.000	Average height = 38 cm.	Like photo printed on coarse-grain paper.	3326
+32	Maize	pg*-N673A		0.000	Average height = 38 cm.	Pale green plant.	3326
+32	Maize	pg*-N673A		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3326
+32	Maize	pg*-N673A		0.000	Average height = 38 cm.	Less yellow than yellow green.	3326
+32	Maize	pg*-N673A		0.000	Average height = 38 cm.	Yellow green leaf.	3326
+32	Maize	pg*-N673A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Grainy leaf.	3326
+32	Maize	pg*-N673A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Virescent, uneven distribution of green color.	3326
+32	Maize	pg*-N673A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Like photo printed on coarse-grain paper.	3326
+32	Maize	pg*-N673A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3326
+32	Maize	pg*-N673A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3326
+32	Maize	pg*-N673A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3326
+32	Maize	pg*-N673A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow green leaf.	3326
+33	Maize	l*-N113		0.438	Yellow seed coat.	Less yellow than yellow green.	2838
+33	Maize	l*-N113		0.332	Pale brown seeds.	Pale green plant.	2838
+33	Maize	l*-N113		0.269	Yellow seed coat.	Yellow seedling, no chlorophyll.	2838
+33	Maize	l*-N113		0.243	Yellow seed coat.	Luteus yellow seedling.	2838
+33	Maize	l*-N113		0.205	Yellow seed coat.	Loss of green or yellow color from leaves.	2838
+33	Maize	l*-N113		0.000	Yellow seed coat.	Bleached leaf.	2838
+33	Maize	l*-N113		0.000	Yellow seed coat.	Usually confined to a definite area (sector, patch, leaf tip, etc.	2838
+33	Maize	l*-N113		0.000	Yellow seed coat.	Pale green plant.	2838
+33	Maize	l*-N113		0.000	Yellow seed coat.	Lighter green seedlings or plants.	2838
+33	Maize	l*-N113		0.000	Yellow seed coat.	Patched leaf.	2838
+33	Maize	l*-N113		0.000	Yellow seed coat.	Irregular patches of color or texture on a contrasting background.	2838
+33	Maize	l*-N113		0.000	Pale brown seeds.	Bleached leaf.	2838
+33	Maize	l*-N113		0.000	Pale brown seeds.	Loss of green or yellow color from leaves.	2838
+33	Maize	l*-N113		0.000	Pale brown seeds.	Usually confined to a definite area (sector, patch, leaf tip, etc.	2838
+33	Maize	l*-N113		0.000	Pale brown seeds.	Luteus yellow seedling.	2838
+33	Maize	l*-N113		0.000	Pale brown seeds.	Yellow seedling, no chlorophyll.	2838
+33	Maize	l*-N113		0.000	Pale brown seeds.	Lighter green seedlings or plants.	2838
+33	Maize	l*-N113		0.000	Pale brown seeds.	Less yellow than yellow green.	2838
+33	Maize	l*-N113		0.000	Pale brown seeds.	Patched leaf.	2838
+33	Maize	l*-N113		0.000	Pale brown seeds.	Irregular patches of color or texture on a contrasting background.	2838
+33	Maize	l*-N113		0.000	Average height = 38 cm.	Bleached leaf.	2838
+33	Maize	l*-N113		0.000	Average height = 38 cm.	Loss of green or yellow color from leaves.	2838
+33	Maize	l*-N113		0.000	Average height = 38 cm.	Usually confined to a definite area (sector, patch, leaf tip, etc.	2838
+33	Maize	l*-N113		0.000	Average height = 38 cm.	Luteus yellow seedling.	2838
+33	Maize	l*-N113		0.000	Average height = 38 cm.	Yellow seedling, no chlorophyll.	2838
+33	Maize	l*-N113		0.000	Average height = 38 cm.	Pale green plant.	2838
+33	Maize	l*-N113		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	2838
+33	Maize	l*-N113		0.000	Average height = 38 cm.	Less yellow than yellow green.	2838
+33	Maize	l*-N113		0.000	Average height = 38 cm.	Patched leaf.	2838
+33	Maize	l*-N113		0.000	Average height = 38 cm.	Irregular patches of color or texture on a contrasting background.	2838
+33	Maize	l*-N113		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Bleached leaf.	2838
+33	Maize	l*-N113		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Loss of green or yellow color from leaves.	2838
+33	Maize	l*-N113		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Usually confined to a definite area (sector, patch, leaf tip, etc.	2838
+33	Maize	l*-N113		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Luteus yellow seedling.	2838
+33	Maize	l*-N113		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow seedling, no chlorophyll.	2838
+33	Maize	l*-N113		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	2838
+33	Maize	l*-N113		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	2838
+33	Maize	l*-N113		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	2838
+33	Maize	l*-N113		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Patched leaf.	2838
+33	Maize	l*-N113		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Irregular patches of color or texture on a contrasting background.	2838
+34	Maize	pg*-N1885		0.438	Yellow seed coat.	Less yellow than yellow green.	3685
+34	Maize	pg*-N1885		0.332	Pale brown seeds.	Pale green plant.	3685
+34	Maize	pg*-N1885		0.120	Yellow seed coat.	Seedling with well-defined areas of contrasting color (green with yellow, white with green, etc.).	3685
+34	Maize	pg*-N1885		0.000	Yellow seed coat.	Pale green plant.	3685
+34	Maize	pg*-N1885		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3685
+34	Maize	pg*-N1885		0.000	Yellow seed coat.	Sectored leaf.	3685
+34	Maize	pg*-N1885		0.000	Yellow seed coat.	Size and location usually indicative of clonal basis.	3685
+34	Maize	pg*-N1885		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3685
+34	Maize	pg*-N1885		0.000	Pale brown seeds.	Less yellow than yellow green.	3685
+34	Maize	pg*-N1885		0.000	Pale brown seeds.	Sectored leaf.	3685
+34	Maize	pg*-N1885		0.000	Pale brown seeds.	Seedling with well-defined areas of contrasting color (green with yellow, white with green, etc.).	3685
+34	Maize	pg*-N1885		0.000	Pale brown seeds.	Size and location usually indicative of clonal basis.	3685
+34	Maize	pg*-N1885		0.000	Average height = 38 cm.	Pale green plant.	3685
+34	Maize	pg*-N1885		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3685
+34	Maize	pg*-N1885		0.000	Average height = 38 cm.	Less yellow than yellow green.	3685
+34	Maize	pg*-N1885		0.000	Average height = 38 cm.	Sectored leaf.	3685
+34	Maize	pg*-N1885		0.000	Average height = 38 cm.	Seedling with well-defined areas of contrasting color (green with yellow, white with green, etc.).	3685
+34	Maize	pg*-N1885		0.000	Average height = 38 cm.	Size and location usually indicative of clonal basis.	3685
+34	Maize	pg*-N1885		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3685
+34	Maize	pg*-N1885		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3685
+34	Maize	pg*-N1885		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3685
+34	Maize	pg*-N1885		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Sectored leaf.	3685
+34	Maize	pg*-N1885		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling with well-defined areas of contrasting color (green with yellow, white with green, etc.).	3685
+34	Maize	pg*-N1885		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Size and location usually indicative of clonal basis.	3685
+35	Maize	wlv1		0.438	Yellow seed coat.	Less yellow than yellow green.	3703
+35	Maize	wlv1		0.332	Pale brown seeds.	Pale green plant.	3703
+35	Maize	wlv1		0.190	Yellow seed coat.	Seedling white, yellow or palegreen, becomes green, often normal.	3703
+35	Maize	wlv1		0.000	Yellow seed coat.	Pale green plant.	3703
+35	Maize	wlv1		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3703
+35	Maize	wlv1		0.000	Yellow seed coat.	Virescent seedling.	3703
+35	Maize	wlv1		0.000	Yellow seed coat.	White luteus seedling.	3703
+35	Maize	wlv1		0.000	Yellow seed coat.	Yellowish-white seedling.	3703
+35	Maize	wlv1		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3703
+35	Maize	wlv1		0.000	Pale brown seeds.	Less yellow than yellow green.	3703
+35	Maize	wlv1		0.000	Pale brown seeds.	Virescent seedling.	3703
+35	Maize	wlv1		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3703
+35	Maize	wlv1		0.000	Pale brown seeds.	White luteus seedling.	3703
+35	Maize	wlv1		0.000	Pale brown seeds.	Yellowish-white seedling.	3703
+35	Maize	wlv1		0.000	Average height = 38 cm.	Pale green plant.	3703
+35	Maize	wlv1		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3703
+35	Maize	wlv1		0.000	Average height = 38 cm.	Less yellow than yellow green.	3703
+35	Maize	wlv1		0.000	Average height = 38 cm.	Virescent seedling.	3703
+35	Maize	wlv1		0.000	Average height = 38 cm.	Seedling white, yellow or palegreen, becomes green, often normal.	3703
+35	Maize	wlv1		0.000	Average height = 38 cm.	White luteus seedling.	3703
+35	Maize	wlv1		0.000	Average height = 38 cm.	Yellowish-white seedling.	3703
+35	Maize	wlv1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3703
+35	Maize	wlv1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3703
+35	Maize	wlv1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3703
+35	Maize	wlv1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Virescent seedling.	3703
+35	Maize	wlv1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling white, yellow or palegreen, becomes green, often normal.	3703
+35	Maize	wlv1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	White luteus seedling.	3703
+35	Maize	wlv1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellowish-white seedling.	3703
+36	Maize	v*-N245		0.438	Yellow seed coat.	Less yellow than yellow green.	3699
+36	Maize	v*-N245		0.332	Pale brown seeds.	Pale green plant.	3699
+36	Maize	v*-N245		0.190	Yellow seed coat.	Seedling white, yellow or palegreen, becomes green, often normal.	3699
+36	Maize	v*-N245		0.000	Yellow seed coat.	Pale green plant.	3699
+36	Maize	v*-N245		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3699
+36	Maize	v*-N245		0.000	Yellow seed coat.	Virescent seedling.	3699
+36	Maize	v*-N245		0.000	Yellow seed coat.	White luteus seedling.	3699
+36	Maize	v*-N245		0.000	Yellow seed coat.	Yellowish-white seedling.	3699
+36	Maize	v*-N245		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3699
+36	Maize	v*-N245		0.000	Pale brown seeds.	Less yellow than yellow green.	3699
+36	Maize	v*-N245		0.000	Pale brown seeds.	Virescent seedling.	3699
+36	Maize	v*-N245		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3699
+36	Maize	v*-N245		0.000	Pale brown seeds.	White luteus seedling.	3699
+36	Maize	v*-N245		0.000	Pale brown seeds.	Yellowish-white seedling.	3699
+36	Maize	v*-N245		0.000	Average height = 38 cm.	Pale green plant.	3699
+36	Maize	v*-N245		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3699
+36	Maize	v*-N245		0.000	Average height = 38 cm.	Less yellow than yellow green.	3699
+36	Maize	v*-N245		0.000	Average height = 38 cm.	Virescent seedling.	3699
+36	Maize	v*-N245		0.000	Average height = 38 cm.	Seedling white, yellow or palegreen, becomes green, often normal.	3699
+36	Maize	v*-N245		0.000	Average height = 38 cm.	White luteus seedling.	3699
+36	Maize	v*-N245		0.000	Average height = 38 cm.	Yellowish-white seedling.	3699
+36	Maize	v*-N245		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3699
+36	Maize	v*-N245		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3699
+36	Maize	v*-N245		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3699
+36	Maize	v*-N245		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Virescent seedling.	3699
+36	Maize	v*-N245		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling white, yellow or palegreen, becomes green, often normal.	3699
+36	Maize	v*-N245		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	White luteus seedling.	3699
+36	Maize	v*-N245		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellowish-white seedling.	3699
+37	Maize	v*-N114A		0.438	Yellow seed coat.	Less yellow than yellow green.	3698
+37	Maize	v*-N114A		0.332	Pale brown seeds.	Pale green plant.	3698
+37	Maize	v*-N114A		0.190	Yellow seed coat.	Seedling white, yellow or palegreen, becomes green, often normal.	3698
+37	Maize	v*-N114A		0.000	Yellow seed coat.	Pale green plant.	3698
+37	Maize	v*-N114A		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3698
+37	Maize	v*-N114A		0.000	Yellow seed coat.	Virescent seedling.	3698
+37	Maize	v*-N114A		0.000	Yellow seed coat.	White luteus seedling.	3698
+37	Maize	v*-N114A		0.000	Yellow seed coat.	Yellowish-white seedling.	3698
+37	Maize	v*-N114A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3698
+37	Maize	v*-N114A		0.000	Pale brown seeds.	Less yellow than yellow green.	3698
+37	Maize	v*-N114A		0.000	Pale brown seeds.	Virescent seedling.	3698
+37	Maize	v*-N114A		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3698
+37	Maize	v*-N114A		0.000	Pale brown seeds.	White luteus seedling.	3698
+37	Maize	v*-N114A		0.000	Pale brown seeds.	Yellowish-white seedling.	3698
+37	Maize	v*-N114A		0.000	Average height = 38 cm.	Pale green plant.	3698
+37	Maize	v*-N114A		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3698
+37	Maize	v*-N114A		0.000	Average height = 38 cm.	Less yellow than yellow green.	3698
+37	Maize	v*-N114A		0.000	Average height = 38 cm.	Virescent seedling.	3698
+37	Maize	v*-N114A		0.000	Average height = 38 cm.	Seedling white, yellow or palegreen, becomes green, often normal.	3698
+37	Maize	v*-N114A		0.000	Average height = 38 cm.	White luteus seedling.	3698
+37	Maize	v*-N114A		0.000	Average height = 38 cm.	Yellowish-white seedling.	3698
+37	Maize	v*-N114A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3698
+37	Maize	v*-N114A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3698
+37	Maize	v*-N114A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3698
+37	Maize	v*-N114A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Virescent seedling.	3698
+37	Maize	v*-N114A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling white, yellow or palegreen, becomes green, often normal.	3698
+37	Maize	v*-N114A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	White luteus seedling.	3698
+37	Maize	v*-N114A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellowish-white seedling.	3698
+38	Maize	v24		0.438	Yellow seed coat.	Less yellow than yellow green.	3697
+38	Maize	v24		0.332	Pale brown seeds.	Pale green plant.	3697
+38	Maize	v24		0.190	Yellow seed coat.	Seedling white, yellow or palegreen, becomes green, often normal.	3697
+38	Maize	v24		0.000	Yellow seed coat.	Pale green plant.	3697
+38	Maize	v24		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3697
+38	Maize	v24		0.000	Yellow seed coat.	Virescent seedling.	3697
+38	Maize	v24		0.000	Yellow seed coat.	White luteus seedling.	3697
+38	Maize	v24		0.000	Yellow seed coat.	Yellowish-white seedling.	3697
+38	Maize	v24		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3697
+38	Maize	v24		0.000	Pale brown seeds.	Less yellow than yellow green.	3697
+38	Maize	v24		0.000	Pale brown seeds.	Virescent seedling.	3697
+38	Maize	v24		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3697
+38	Maize	v24		0.000	Pale brown seeds.	White luteus seedling.	3697
+38	Maize	v24		0.000	Pale brown seeds.	Yellowish-white seedling.	3697
+38	Maize	v24		0.000	Average height = 38 cm.	Pale green plant.	3697
+38	Maize	v24		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3697
+38	Maize	v24		0.000	Average height = 38 cm.	Less yellow than yellow green.	3697
+38	Maize	v24		0.000	Average height = 38 cm.	Virescent seedling.	3697
+38	Maize	v24		0.000	Average height = 38 cm.	Seedling white, yellow or palegreen, becomes green, often normal.	3697
+38	Maize	v24		0.000	Average height = 38 cm.	White luteus seedling.	3697
+38	Maize	v24		0.000	Average height = 38 cm.	Yellowish-white seedling.	3697
+38	Maize	v24		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3697
+38	Maize	v24		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3697
+38	Maize	v24		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3697
+38	Maize	v24		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Virescent seedling.	3697
+38	Maize	v24		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling white, yellow or palegreen, becomes green, often normal.	3697
+38	Maize	v24		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	White luteus seedling.	3697
+38	Maize	v24		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellowish-white seedling.	3697
+39	Maize	smk*-N1168A		0.438	Yellow seed coat.	Less yellow than yellow green.	3693
+39	Maize	smk*-N1168A		0.332	Pale brown seeds.	Pale green plant.	3693
+39	Maize	smk*-N1168A		0.190	Yellow seed coat.	Seedling white, yellow or palegreen, becomes green, often normal.	3693
+39	Maize	smk*-N1168A		0.000	Yellow seed coat.	Pale green plant.	3693
+39	Maize	smk*-N1168A		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3693
+39	Maize	smk*-N1168A		0.000	Yellow seed coat.	Small kernel.	3693
+39	Maize	smk*-N1168A		0.000	Yellow seed coat.	Small kernel is the consistent characteristic but variable in other aspects.	3693
+39	Maize	smk*-N1168A		0.000	Yellow seed coat.	Virescent seedling.	3693
+39	Maize	smk*-N1168A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3693
+39	Maize	smk*-N1168A		0.000	Pale brown seeds.	Less yellow than yellow green.	3693
+39	Maize	smk*-N1168A		0.000	Pale brown seeds.	Small kernel.	3693
+39	Maize	smk*-N1168A		0.000	Pale brown seeds.	Small kernel is the consistent characteristic but variable in other aspects.	3693
+39	Maize	smk*-N1168A		0.000	Pale brown seeds.	Virescent seedling.	3693
+39	Maize	smk*-N1168A		0.000	Pale brown seeds.	Seedling white, yellow or palegreen, becomes green, often normal.	3693
+39	Maize	smk*-N1168A		0.000	Average height = 38 cm.	Pale green plant.	3693
+39	Maize	smk*-N1168A		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3693
+39	Maize	smk*-N1168A		0.000	Average height = 38 cm.	Less yellow than yellow green.	3693
+39	Maize	smk*-N1168A		0.000	Average height = 38 cm.	Small kernel.	3693
+39	Maize	smk*-N1168A		0.000	Average height = 38 cm.	Small kernel is the consistent characteristic but variable in other aspects.	3693
+39	Maize	smk*-N1168A		0.000	Average height = 38 cm.	Virescent seedling.	3693
+39	Maize	smk*-N1168A		0.000	Average height = 38 cm.	Seedling white, yellow or palegreen, becomes green, often normal.	3693
+39	Maize	smk*-N1168A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3693
+39	Maize	smk*-N1168A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3693
+39	Maize	smk*-N1168A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3693
+39	Maize	smk*-N1168A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small kernel.	3693
+39	Maize	smk*-N1168A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small kernel is the consistent characteristic but variable in other aspects.	3693
+39	Maize	smk*-N1168A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Virescent seedling.	3693
+39	Maize	smk*-N1168A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Seedling white, yellow or palegreen, becomes green, often normal.	3693
+40	Maize	fl*-N1333B		0.438	Yellow seed coat.	Less yellow than yellow green.	3264
+40	Maize	fl*-N1333B		0.332	Pale brown seeds.	Pale green plant.	3264
+40	Maize	fl*-N1333B		0.116	Yellow seed coat.	Endosperm has a soft, chalk-like texture, usually a reduced yellow color and an opaque appearance.	3264
+40	Maize	fl*-N1333B		0.027	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Endosperm has a soft, chalk-like texture, usually a reduced yellow color and an opaque appearance.	3264
+40	Maize	fl*-N1333B		0.000	Yellow seed coat.	Floury endosperm.	3264
+40	Maize	fl*-N1333B		0.000	Yellow seed coat.	Pale green plant.	3264
+40	Maize	fl*-N1333B		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3264
+40	Maize	fl*-N1333B		0.000	Yellow seed coat.	Wrinkled kernel.	3264
+40	Maize	fl*-N1333B		0.000	Yellow seed coat.	Kernel appears full but surface has long irregular indentation.	3264
+40	Maize	fl*-N1333B		0.000	Pale brown seeds.	Floury endosperm.	3264
+40	Maize	fl*-N1333B		0.000	Pale brown seeds.	Endosperm has a soft, chalk-like texture, usually a reduced yellow color and an opaque appearance.	3264
+40	Maize	fl*-N1333B		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3264
+40	Maize	fl*-N1333B		0.000	Pale brown seeds.	Less yellow than yellow green.	3264
+40	Maize	fl*-N1333B		0.000	Pale brown seeds.	Wrinkled kernel.	3264
+40	Maize	fl*-N1333B		0.000	Pale brown seeds.	Kernel appears full but surface has long irregular indentation.	3264
+40	Maize	fl*-N1333B		0.000	Average height = 38 cm.	Floury endosperm.	3264
+40	Maize	fl*-N1333B		0.000	Average height = 38 cm.	Endosperm has a soft, chalk-like texture, usually a reduced yellow color and an opaque appearance.	3264
+40	Maize	fl*-N1333B		0.000	Average height = 38 cm.	Pale green plant.	3264
+40	Maize	fl*-N1333B		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3264
+40	Maize	fl*-N1333B		0.000	Average height = 38 cm.	Less yellow than yellow green.	3264
+40	Maize	fl*-N1333B		0.000	Average height = 38 cm.	Wrinkled kernel.	3264
+40	Maize	fl*-N1333B		0.000	Average height = 38 cm.	Kernel appears full but surface has long irregular indentation.	3264
+40	Maize	fl*-N1333B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Floury endosperm.	3264
+40	Maize	fl*-N1333B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3264
+40	Maize	fl*-N1333B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3264
+40	Maize	fl*-N1333B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3264
+40	Maize	fl*-N1333B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Wrinkled kernel.	3264
+40	Maize	fl*-N1333B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Kernel appears full but surface has long irregular indentation.	3264
+41	Maize	ws4		0.438	Yellow seed coat.	Less yellow than yellow green.	3704
+41	Maize	ws4		0.332	Pale brown seeds.	Pale green plant.	3704
+41	Maize	ws4		0.000	Yellow seed coat.	Pale green plant.	3704
+41	Maize	ws4		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3704
+41	Maize	ws4		0.000	Yellow seed coat.	White sheath.	3704
+41	Maize	ws4		0.000	Yellow seed coat.	White leaf sheath culm and husks.	3704
+41	Maize	ws4		0.000	Yellow seed coat.	Normal green leaves.	3704
+41	Maize	ws4		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3704
+41	Maize	ws4		0.000	Pale brown seeds.	Less yellow than yellow green.	3704
+41	Maize	ws4		0.000	Pale brown seeds.	White sheath.	3704
+41	Maize	ws4		0.000	Pale brown seeds.	White leaf sheath culm and husks.	3704
+41	Maize	ws4		0.000	Pale brown seeds.	Normal green leaves.	3704
+41	Maize	ws4		0.000	Average height = 38 cm.	Pale green plant.	3704
+41	Maize	ws4		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3704
+41	Maize	ws4		0.000	Average height = 38 cm.	Less yellow than yellow green.	3704
+41	Maize	ws4		0.000	Average height = 38 cm.	White sheath.	3704
+41	Maize	ws4		0.000	Average height = 38 cm.	White leaf sheath culm and husks.	3704
+41	Maize	ws4		0.000	Average height = 38 cm.	Normal green leaves.	3704
+41	Maize	ws4		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3704
+41	Maize	ws4		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3704
+41	Maize	ws4		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3704
+41	Maize	ws4		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	White sheath.	3704
+41	Maize	ws4		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	White leaf sheath culm and husks.	3704
+41	Maize	ws4		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Normal green leaves.	3704
+42	Maize	spt2		0.438	Yellow seed coat.	Less yellow than yellow green.	3695
+42	Maize	spt2		0.332	Pale brown seeds.	Pale green plant.	3695
+42	Maize	spt2		0.000	Yellow seed coat.	Pale green plant.	3695
+42	Maize	spt2		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3695
+42	Maize	spt2		0.000	Yellow seed coat.	Spotted leaf.	3695
+42	Maize	spt2		0.000	Yellow seed coat.	Small, more or less round areas of light color on dark background (or vice versa).	3695
+42	Maize	spt2		0.000	Yellow seed coat.	Borders often fuzzy.	3695
+42	Maize	spt2		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3695
+42	Maize	spt2		0.000	Pale brown seeds.	Less yellow than yellow green.	3695
+42	Maize	spt2		0.000	Pale brown seeds.	Spotted leaf.	3695
+42	Maize	spt2		0.000	Pale brown seeds.	Small, more or less round areas of light color on dark background (or vice versa).	3695
+42	Maize	spt2		0.000	Pale brown seeds.	Borders often fuzzy.	3695
+42	Maize	spt2		0.000	Average height = 38 cm.	Pale green plant.	3695
+42	Maize	spt2		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3695
+42	Maize	spt2		0.000	Average height = 38 cm.	Less yellow than yellow green.	3695
+42	Maize	spt2		0.000	Average height = 38 cm.	Spotted leaf.	3695
+42	Maize	spt2		0.000	Average height = 38 cm.	Small, more or less round areas of light color on dark background (or vice versa).	3695
+42	Maize	spt2		0.000	Average height = 38 cm.	Borders often fuzzy.	3695
+42	Maize	spt2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3695
+42	Maize	spt2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3695
+42	Maize	spt2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3695
+42	Maize	spt2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Spotted leaf.	3695
+42	Maize	spt2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small, more or less round areas of light color on dark background (or vice versa).	3695
+42	Maize	spt2		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Borders often fuzzy.	3695
+43	Maize	spt1		0.438	Yellow seed coat.	Less yellow than yellow green.	3694
+43	Maize	spt1		0.332	Pale brown seeds.	Pale green plant.	3694
+43	Maize	spt1		0.000	Yellow seed coat.	Pale green plant.	3694
+43	Maize	spt1		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3694
+43	Maize	spt1		0.000	Yellow seed coat.	Spotted leaf.	3694
+43	Maize	spt1		0.000	Yellow seed coat.	Small, more or less round areas of light color on dark background (or vice versa).	3694
+43	Maize	spt1		0.000	Yellow seed coat.	Borders often fuzzy.	3694
+43	Maize	spt1		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3694
+43	Maize	spt1		0.000	Pale brown seeds.	Less yellow than yellow green.	3694
+43	Maize	spt1		0.000	Pale brown seeds.	Spotted leaf.	3694
+43	Maize	spt1		0.000	Pale brown seeds.	Small, more or less round areas of light color on dark background (or vice versa).	3694
+43	Maize	spt1		0.000	Pale brown seeds.	Borders often fuzzy.	3694
+43	Maize	spt1		0.000	Average height = 38 cm.	Pale green plant.	3694
+43	Maize	spt1		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3694
+43	Maize	spt1		0.000	Average height = 38 cm.	Less yellow than yellow green.	3694
+43	Maize	spt1		0.000	Average height = 38 cm.	Spotted leaf.	3694
+43	Maize	spt1		0.000	Average height = 38 cm.	Small, more or less round areas of light color on dark background (or vice versa).	3694
+43	Maize	spt1		0.000	Average height = 38 cm.	Borders often fuzzy.	3694
+43	Maize	spt1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3694
+43	Maize	spt1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3694
+43	Maize	spt1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3694
+43	Maize	spt1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Spotted leaf.	3694
+43	Maize	spt1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small, more or less round areas of light color on dark background (or vice versa).	3694
+43	Maize	spt1		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Borders often fuzzy.	3694
+44	Maize	pg*-N660A		0.438	Yellow seed coat.	Less yellow than yellow green.	3691
+44	Maize	pg*-N660A		0.332	Pale brown seeds.	Pale green plant.	3691
+44	Maize	pg*-N660A		0.000	Yellow seed coat.	Pale green plant.	3691
+44	Maize	pg*-N660A		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3691
+44	Maize	pg*-N660A		0.000	Yellow seed coat.	Streaked leaf.	3691
+44	Maize	pg*-N660A		0.000	Yellow seed coat.	Stripes smaller and less uniform than striate.	3691
+44	Maize	pg*-N660A		0.000	Yellow seed coat.	May be lighter color on green or normal green on a lighter green background.	3691
+44	Maize	pg*-N660A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3691
+44	Maize	pg*-N660A		0.000	Pale brown seeds.	Less yellow than yellow green.	3691
+44	Maize	pg*-N660A		0.000	Pale brown seeds.	Streaked leaf.	3691
+44	Maize	pg*-N660A		0.000	Pale brown seeds.	Stripes smaller and less uniform than striate.	3691
+44	Maize	pg*-N660A		0.000	Pale brown seeds.	May be lighter color on green or normal green on a lighter green background.	3691
+44	Maize	pg*-N660A		0.000	Average height = 38 cm.	Pale green plant.	3691
+44	Maize	pg*-N660A		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3691
+44	Maize	pg*-N660A		0.000	Average height = 38 cm.	Less yellow than yellow green.	3691
+44	Maize	pg*-N660A		0.000	Average height = 38 cm.	Streaked leaf.	3691
+44	Maize	pg*-N660A		0.000	Average height = 38 cm.	Stripes smaller and less uniform than striate.	3691
+44	Maize	pg*-N660A		0.000	Average height = 38 cm.	May be lighter color on green or normal green on a lighter green background.	3691
+44	Maize	pg*-N660A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3691
+44	Maize	pg*-N660A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3691
+44	Maize	pg*-N660A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3691
+44	Maize	pg*-N660A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Streaked leaf.	3691
+44	Maize	pg*-N660A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Stripes smaller and less uniform than striate.	3691
+44	Maize	pg*-N660A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	May be lighter color on green or normal green on a lighter green background.	3691
+45	Maize	pg*-N484B		0.438	Yellow seed coat.	Less yellow than yellow green.	3688
+45	Maize	pg*-N484B		0.332	Pale brown seeds.	Pale green plant.	3688
+45	Maize	pg*-N484B		0.000	Yellow seed coat.	Pale green plant.	3688
+45	Maize	pg*-N484B		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3688
+45	Maize	pg*-N484B		0.000	Yellow seed coat.	Speckled leaf.	3688
+45	Maize	pg*-N484B		0.000	Yellow seed coat.	Numerous lighter or darker areas on leaf surface.	3688
+45	Maize	pg*-N484B		0.000	Yellow seed coat.	Smaller, more numerous and more evenly distributed than spotted.	3688
+45	Maize	pg*-N484B		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3688
+45	Maize	pg*-N484B		0.000	Pale brown seeds.	Less yellow than yellow green.	3688
+45	Maize	pg*-N484B		0.000	Pale brown seeds.	Speckled leaf.	3688
+45	Maize	pg*-N484B		0.000	Pale brown seeds.	Numerous lighter or darker areas on leaf surface.	3688
+45	Maize	pg*-N484B		0.000	Pale brown seeds.	Smaller, more numerous and more evenly distributed than spotted.	3688
+45	Maize	pg*-N484B		0.000	Average height = 38 cm.	Pale green plant.	3688
+45	Maize	pg*-N484B		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3688
+45	Maize	pg*-N484B		0.000	Average height = 38 cm.	Less yellow than yellow green.	3688
+45	Maize	pg*-N484B		0.000	Average height = 38 cm.	Speckled leaf.	3688
+45	Maize	pg*-N484B		0.000	Average height = 38 cm.	Numerous lighter or darker areas on leaf surface.	3688
+45	Maize	pg*-N484B		0.000	Average height = 38 cm.	Smaller, more numerous and more evenly distributed than spotted.	3688
+45	Maize	pg*-N484B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3688
+45	Maize	pg*-N484B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3688
+45	Maize	pg*-N484B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3688
+45	Maize	pg*-N484B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Speckled leaf.	3688
+45	Maize	pg*-N484B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Numerous lighter or darker areas on leaf surface.	3688
+45	Maize	pg*-N484B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Smaller, more numerous and more evenly distributed than spotted.	3688
+46	Maize	pg*-N1822A		0.438	Yellow seed coat.	Less yellow than yellow green.	3683
+46	Maize	pg*-N1822A		0.332	Pale brown seeds.	Pale green plant.	3683
+46	Maize	pg*-N1822A		0.000	Yellow seed coat.	Pale green plant.	3683
+46	Maize	pg*-N1822A		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3683
+46	Maize	pg*-N1822A		0.000	Yellow seed coat.	Spotted leaf.	3683
+46	Maize	pg*-N1822A		0.000	Yellow seed coat.	Small, more or less round areas of light color on dark background (or vice versa).	3683
+46	Maize	pg*-N1822A		0.000	Yellow seed coat.	Borders often fuzzy.	3683
+46	Maize	pg*-N1822A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3683
+46	Maize	pg*-N1822A		0.000	Pale brown seeds.	Less yellow than yellow green.	3683
+46	Maize	pg*-N1822A		0.000	Pale brown seeds.	Spotted leaf.	3683
+46	Maize	pg*-N1822A		0.000	Pale brown seeds.	Small, more or less round areas of light color on dark background (or vice versa).	3683
+46	Maize	pg*-N1822A		0.000	Pale brown seeds.	Borders often fuzzy.	3683
+46	Maize	pg*-N1822A		0.000	Average height = 38 cm.	Pale green plant.	3683
+46	Maize	pg*-N1822A		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3683
+46	Maize	pg*-N1822A		0.000	Average height = 38 cm.	Less yellow than yellow green.	3683
+46	Maize	pg*-N1822A		0.000	Average height = 38 cm.	Spotted leaf.	3683
+46	Maize	pg*-N1822A		0.000	Average height = 38 cm.	Small, more or less round areas of light color on dark background (or vice versa).	3683
+46	Maize	pg*-N1822A		0.000	Average height = 38 cm.	Borders often fuzzy.	3683
+46	Maize	pg*-N1822A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3683
+46	Maize	pg*-N1822A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3683
+46	Maize	pg*-N1822A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3683
+46	Maize	pg*-N1822A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Spotted leaf.	3683
+46	Maize	pg*-N1822A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small, more or less round areas of light color on dark background (or vice versa).	3683
+46	Maize	pg*-N1822A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Borders often fuzzy.	3683
+47	Maize	cp*-N1294		0.438	Yellow seed coat.	Less yellow than yellow green.	2909
+47	Maize	cp*-N1294		0.332	Pale brown seeds.	Pale green plant.	2909
+47	Maize	cp*-N1294		0.104	Yellow seed coat.	Some variation of normal clear yellow or white color, as though stained reddish or brownish.	2909
+47	Maize	cp*-N1294		0.000	Yellow seed coat.	Collapsed endosperm.	2909
+47	Maize	cp*-N1294		0.000	Yellow seed coat.	Endosperm collapsed and partially defective.	2909
+47	Maize	cp*-N1294		0.000	Yellow seed coat.	Discolored kernel.	2909
+47	Maize	cp*-N1294		0.000	Yellow seed coat.	Pale green plant.	2909
+47	Maize	cp*-N1294		0.000	Yellow seed coat.	Lighter green seedlings or plants.	2909
+47	Maize	cp*-N1294		0.000	Pale brown seeds.	Collapsed endosperm.	2909
+47	Maize	cp*-N1294		0.000	Pale brown seeds.	Endosperm collapsed and partially defective.	2909
+47	Maize	cp*-N1294		0.000	Pale brown seeds.	Discolored kernel.	2909
+47	Maize	cp*-N1294		0.000	Pale brown seeds.	Some variation of normal clear yellow or white color, as though stained reddish or brownish.	2909
+47	Maize	cp*-N1294		0.000	Pale brown seeds.	Lighter green seedlings or plants.	2909
+47	Maize	cp*-N1294		0.000	Pale brown seeds.	Less yellow than yellow green.	2909
+47	Maize	cp*-N1294		0.000	Average height = 38 cm.	Collapsed endosperm.	2909
+47	Maize	cp*-N1294		0.000	Average height = 38 cm.	Endosperm collapsed and partially defective.	2909
+47	Maize	cp*-N1294		0.000	Average height = 38 cm.	Discolored kernel.	2909
+47	Maize	cp*-N1294		0.000	Average height = 38 cm.	Some variation of normal clear yellow or white color, as though stained reddish or brownish.	2909
+47	Maize	cp*-N1294		0.000	Average height = 38 cm.	Pale green plant.	2909
+47	Maize	cp*-N1294		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	2909
+47	Maize	cp*-N1294		0.000	Average height = 38 cm.	Less yellow than yellow green.	2909
+47	Maize	cp*-N1294		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Collapsed endosperm.	2909
+47	Maize	cp*-N1294		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Endosperm collapsed and partially defective.	2909
+47	Maize	cp*-N1294		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Discolored kernel.	2909
+47	Maize	cp*-N1294		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Some variation of normal clear yellow or white color, as though stained reddish or brownish.	2909
+47	Maize	cp*-N1294		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	2909
+47	Maize	cp*-N1294		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	2909
+47	Maize	cp*-N1294		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	2909
+48	Maize	ys1	GRMZM2G156599	0.438	Yellow seed coat.	Less yellow than yellow green.	3414
+48	Maize	ys1	GRMZM2G156599	0.332	Pale brown seeds.	Pale green plant.	3414
+48	Maize	ys1	GRMZM2G156599	0.233	Yellow seed coat.	Yellow stripe leaf.	3414
+48	Maize	ys1	GRMZM2G156599	0.121	Yellow seed coat.	Tissue between the veins (midvein) is yellow, giving the leaf a striped appearance.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Yellow seed coat.	Iron uptake inefficient.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Yellow seed coat.	Pale green plant.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Yellow seed coat.	Lighter green seedlings or plants.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Yellow seed coat.	Normal green along veins (vascular bundles).	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Yellow seed coat.	Weakly expressed in seedling but becomes more apparent as tissue matures.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Yellow seed coat.	Looks like nitrogen or iron deficiency.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Yellow seed coat.	Gerry Neuffer, 2010.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Pale brown seeds.	Iron uptake inefficient.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Pale brown seeds.	Lighter green seedlings or plants.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Pale brown seeds.	Less yellow than yellow green.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Pale brown seeds.	Yellow stripe leaf.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Pale brown seeds.	Normal green along veins (vascular bundles).	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Pale brown seeds.	Tissue between the veins (midvein) is yellow, giving the leaf a striped appearance.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Pale brown seeds.	Weakly expressed in seedling but becomes more apparent as tissue matures.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Pale brown seeds.	Looks like nitrogen or iron deficiency.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Pale brown seeds.	Gerry Neuffer, 2010.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Average height = 38 cm.	Iron uptake inefficient.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Average height = 38 cm.	Pale green plant.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Average height = 38 cm.	Less yellow than yellow green.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Average height = 38 cm.	Yellow stripe leaf.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Average height = 38 cm.	Normal green along veins (vascular bundles).	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Average height = 38 cm.	Tissue between the veins (midvein) is yellow, giving the leaf a striped appearance.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Average height = 38 cm.	Weakly expressed in seedling but becomes more apparent as tissue matures.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Average height = 38 cm.	Looks like nitrogen or iron deficiency.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Average height = 38 cm.	Gerry Neuffer, 2010.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Iron uptake inefficient.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Yellow stripe leaf.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Normal green along veins (vascular bundles).	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Tissue between the veins (midvein) is yellow, giving the leaf a striped appearance.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Weakly expressed in seedling but becomes more apparent as tissue matures.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Looks like nitrogen or iron deficiency.	3414
+48	Maize	ys1	GRMZM2G156599	0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Gerry Neuffer, 2010.	3414
+49	Maize	pg*-N484A		0.438	Yellow seed coat.	Less yellow than yellow green.	3341
+49	Maize	pg*-N484A		0.332	Pale brown seeds.	Pale green plant.	3341
+49	Maize	pg*-N484A		0.121	Pale brown seeds.	Tissue between the veins is pale green or grayish green, giving the leaf a striped appearance.	3341
+49	Maize	pg*-N484A		0.000	Yellow seed coat.	Green striped leaf.	3341
+49	Maize	pg*-N484A		0.000	Yellow seed coat.	Normal green along veins (vascular bundles).	3341
+49	Maize	pg*-N484A		0.000	Yellow seed coat.	Tissue between the veins is pale green or grayish green, giving the leaf a striped appearance.	3341
+49	Maize	pg*-N484A		0.000	Yellow seed coat.	Can be weakly expressed in seedling but becomes more apparent as tissue matures.	3341
+49	Maize	pg*-N484A		0.000	Yellow seed coat.	Gerry Neuffer, 2010.	3341
+49	Maize	pg*-N484A		0.000	Yellow seed coat.	Pale green plant.	3341
+49	Maize	pg*-N484A		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3341
+49	Maize	pg*-N484A		0.000	Pale brown seeds.	Green striped leaf.	3341
+49	Maize	pg*-N484A		0.000	Pale brown seeds.	Normal green along veins (vascular bundles).	3341
+49	Maize	pg*-N484A		0.000	Pale brown seeds.	Can be weakly expressed in seedling but becomes more apparent as tissue matures.	3341
+49	Maize	pg*-N484A		0.000	Pale brown seeds.	Gerry Neuffer, 2010.	3341
+49	Maize	pg*-N484A		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3341
+49	Maize	pg*-N484A		0.000	Pale brown seeds.	Less yellow than yellow green.	3341
+49	Maize	pg*-N484A		0.000	Average height = 38 cm.	Green striped leaf.	3341
+49	Maize	pg*-N484A		0.000	Average height = 38 cm.	Normal green along veins (vascular bundles).	3341
+49	Maize	pg*-N484A		0.000	Average height = 38 cm.	Tissue between the veins is pale green or grayish green, giving the leaf a striped appearance.	3341
+49	Maize	pg*-N484A		0.000	Average height = 38 cm.	Can be weakly expressed in seedling but becomes more apparent as tissue matures.	3341
+49	Maize	pg*-N484A		0.000	Average height = 38 cm.	Gerry Neuffer, 2010.	3341
+49	Maize	pg*-N484A		0.000	Average height = 38 cm.	Pale green plant.	3341
+49	Maize	pg*-N484A		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3341
+49	Maize	pg*-N484A		0.000	Average height = 38 cm.	Less yellow than yellow green.	3341
+49	Maize	pg*-N484A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Green striped leaf.	3341
+49	Maize	pg*-N484A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Normal green along veins (vascular bundles).	3341
+49	Maize	pg*-N484A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Tissue between the veins is pale green or grayish green, giving the leaf a striped appearance.	3341
+49	Maize	pg*-N484A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Can be weakly expressed in seedling but becomes more apparent as tissue matures.	3341
+49	Maize	pg*-N484A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Gerry Neuffer, 2010.	3341
+49	Maize	pg*-N484A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3341
+49	Maize	pg*-N484A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3341
+49	Maize	pg*-N484A		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3341
+50	Maize	smp*-N586B		0.438	Yellow seed coat.	Less yellow than yellow green.	3194
+50	Maize	smp*-N586B		0.332	Pale brown seeds.	Pale green plant.	3194
+50	Maize	smp*-N586B		0.000	Yellow seed coat.	Dwarf plant.	3194
+50	Maize	smp*-N586B		0.000	Yellow seed coat.	Short, compact, broad leaves, andromonoecious.	3194
+50	Maize	smp*-N586B		0.000	Yellow seed coat.	Responds to gibberellins.	3194
+50	Maize	smp*-N586B		0.000	Yellow seed coat.	Pale green plant.	3194
+50	Maize	smp*-N586B		0.000	Yellow seed coat.	Lighter green seedlings or plants.	3194
+50	Maize	smp*-N586B		0.000	Yellow seed coat.	Small plant.	3194
+50	Maize	smp*-N586B		0.000	Pale brown seeds.	Dwarf plant.	3194
+50	Maize	smp*-N586B		0.000	Pale brown seeds.	Short, compact, broad leaves, andromonoecious.	3194
+50	Maize	smp*-N586B		0.000	Pale brown seeds.	Responds to gibberellins.	3194
+50	Maize	smp*-N586B		0.000	Pale brown seeds.	Lighter green seedlings or plants.	3194
+50	Maize	smp*-N586B		0.000	Pale brown seeds.	Less yellow than yellow green.	3194
+50	Maize	smp*-N586B		0.000	Pale brown seeds.	Small plant.	3194
+50	Maize	smp*-N586B		0.000	Average height = 38 cm.	Dwarf plant.	3194
+50	Maize	smp*-N586B		0.000	Average height = 38 cm.	Short, compact, broad leaves, andromonoecious.	3194
+50	Maize	smp*-N586B		0.000	Average height = 38 cm.	Responds to gibberellins.	3194
+50	Maize	smp*-N586B		0.000	Average height = 38 cm.	Pale green plant.	3194
+50	Maize	smp*-N586B		0.000	Average height = 38 cm.	Lighter green seedlings or plants.	3194
+50	Maize	smp*-N586B		0.000	Average height = 38 cm.	Less yellow than yellow green.	3194
+50	Maize	smp*-N586B		0.000	Average height = 38 cm.	Small plant.	3194
+50	Maize	smp*-N586B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Dwarf plant.	3194
+50	Maize	smp*-N586B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Short, compact, broad leaves, andromonoecious.	3194
+50	Maize	smp*-N586B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Responds to gibberellins.	3194
+50	Maize	smp*-N586B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Pale green plant.	3194
+50	Maize	smp*-N586B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Lighter green seedlings or plants.	3194
+50	Maize	smp*-N586B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Less yellow than yellow green.	3194
+50	Maize	smp*-N586B		0.000	Reduced seed dormancy compared to wild type, fresh harvested seeds germinate at high frequency (85% germination with GA).	Small plant.	3194
