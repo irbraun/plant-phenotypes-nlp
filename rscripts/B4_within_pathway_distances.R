@@ -99,9 +99,9 @@ prepare_dataframe <- function(input_path, num_shown, num_gene_threshold, y_axis_
 
 
 
-input_path_subsets <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_all_subsets_within_distances_melted.csv"
-input_path_kegg <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_all_kegg_only_within_distances_melted.csv"
-input_path_plantcyc <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_all_pmn_only_within_distances_melted.csv"
+input_path_subsets <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_16_2021_h11m36s10_2698_plants/stacked_all_subsets_within_distances_melted.csv"
+input_path_kegg <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_16_2021_h11m36s10_2698_plants/stacked_all_kegg_only_within_distances_melted.csv"
+input_path_plantcyc <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_16_2021_h11m36s10_2698_plants/stacked_all_pmn_only_within_distances_melted.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/intragroup_distances.png"
 names_path <- "/Users/irbraun/phenologs-with-oats/names.tsv"
 
@@ -161,7 +161,7 @@ labels=c("Phenotype Category","Biochemical Pathway (Top 20)", "Biochemical Pathw
 num_colors_needed <- length(unique(df_long_t$method))
 
 method_names <- c("Baseline",
-                  "N-Grams",
+                  "TF-IDF",
                   "Annotation",
                   "N-Grams/Annotation",
                   "Topic Modeling",

@@ -1,0 +1,31 @@
+facet,from,to,bin,mean,sd
+Anthocyanin (Arabidopsis),ath,ath,10,5.5,2.62995564
+Anthocyanin (Arabidopsis),ath,ath,20,3.888888889,2.330686329
+Anthocyanin (Arabidopsis),ath,ath,30,1.388888889,1.829963232
+Anthocyanin (Arabidopsis),ath,ath,40,0.888888889,2.051798368
+Anthocyanin (Arabidopsis),ath,ath,50,0.944444444,1.177201117
+Anthocyanin (Arabidopsis),ath,ath,100,4.388888889,4.296495845
+Anthocyanin (Arabidopsis to Maize),ath,zma,10,0.833333333,1.572330189
+Anthocyanin (Arabidopsis to Maize),ath,zma,20,0.388888889,0.825892708
+Anthocyanin (Arabidopsis to Maize),ath,zma,30,0.555555556,1.257078722
+Anthocyanin (Arabidopsis to Maize),ath,zma,40,0.055555556,0.229061424
+Anthocyanin (Arabidopsis to Maize),ath,zma,50,0.333333333,1.154700538
+Anthocyanin (Arabidopsis to Maize),ath,zma,100,10.83333333,3.562926388
+Anthocyanin (Maize to Arabidopsis),zma,ath,10,0.153846154,0.360801212
+Anthocyanin (Maize to Arabidopsis),zma,ath,20,0.230769231,0.575639598
+Anthocyanin (Maize to Arabidopsis),zma,ath,30,0.615384615,0.737820234
+Anthocyanin (Maize to Arabidopsis),zma,ath,40,0.769230769,1.309952797
+Anthocyanin (Maize to Arabidopsis),zma,ath,50,0.307692308,0.605692913
+Anthocyanin (Maize to Arabidopsis),zma,ath,100,15.92307692,2.092533924
+Anthocyanin (Maize),zma,zma,10,2.076923077,1.140953613
+Anthocyanin (Maize),zma,zma,20,4.384615385,1.595110873
+Anthocyanin (Maize),zma,zma,30,2.538461538,1.692307692
+Anthocyanin (Maize),zma,zma,40,0.307692308,0.821313712
+Anthocyanin (Maize),zma,zma,50,0.461538462,0.634323942
+Anthocyanin (Maize),zma,zma,100,2.076923077,2.673561107
+Autophagy (Arabidopsis),ath,ath,10,1.36363636,2.10076727
+Autophagy (Arabidopsis),ath,ath,20,0.54545455,0.65555478
+Autophagy (Arabidopsis),ath,ath,30,0.18181818,0.57495957
+Autophagy (Arabidopsis),ath,ath,40,0,0
+Autophagy (Arabidopsis),ath,ath,50,0,0
+Autophagy (Arabidopsis),ath,ath,100,6.90909091,2.64418901

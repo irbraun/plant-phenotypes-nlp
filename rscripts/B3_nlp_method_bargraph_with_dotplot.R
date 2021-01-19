@@ -11,7 +11,7 @@ library(stringr)
 
 
 # The input and output files that this script uses and creates.
-input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_11_22_2020_h09m43s07_3025_plants/stacked_f1_max.csv"
+input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_16_2021_h11m36s10_2698_plants/stacked_f1_max.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/bargraph_with_points.png"
 names_path <- "/Users/irbraun/phenologs-with-oats/names.tsv"
 
@@ -93,7 +93,7 @@ df_long_t$tokenized <- factor(df_long_t$tokenized,
 num_colors_needed <- length(unique(df_long_t$method))
 
 method_names <- c("Baseline",
-                  "N-Grams",
+                  "TF-IDF",
                   "Annotation",
                   "N-Grams/Annotation",
                   "Topic Modeling",

@@ -11,7 +11,7 @@ library(stringr)
 
 
 # The input and output files that this script uses and creates.
-input_path <- "/Users/irbraun/phenologs-with-oats/app/plots/combined_plot_data.csv"
+input_path <- "/Users/irbraun/phenologs-with-oats/quoats/plots/combined_plot_data.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/tool_query_bargraphs.png"
 
 # Reading in the data.

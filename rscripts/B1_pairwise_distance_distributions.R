@@ -9,7 +9,7 @@ library(stringr)
 
 
 # The input and output files that this script uses and creates.
-input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_12_05_2020_h20m11s49_7088_plants/stacked_histograms.csv"
+input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_16_2021_h11m36s10_2698_plants/stacked_histograms.csv"
 output_dir <- "/Users/irbraun/phenologs-with-oats/figs/pairwise_distributions/"
 
 

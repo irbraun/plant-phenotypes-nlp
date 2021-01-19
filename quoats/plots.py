@@ -64,7 +64,7 @@ dataset.describe()
 
 # Previously out of this list we had 10 of 16 maize genes in the dataset and 16 of 18 Aribidopsis genes. Now we have 13 of 16 maize genes and 18 of 18 Arabidopsis genes.
 
-# In[3]:
+# In[ ]:
 
 
 mapping = dataset.get_species_to_name_to_ids_dictionary(include_synonyms=False, lowercase=True)
@@ -80,7 +80,7 @@ genes["id"] = genes["id"].map(lambda x: x[0])
 genes
 
 
-# In[4]:
+# In[ ]:
 
 
 # Grabbing the texts dictionary from the dataset that we can use to grab the descriptions to query.
@@ -88,7 +88,7 @@ texts = dataset.get_description_dictionary()
 texts[2617]
 
 
-# In[5]:
+# In[ ]:
 
 
 # Prepare dictionaries to hold the resulting arrays.
@@ -102,7 +102,7 @@ resulting_bin_arrays
 
 # ### Searching within the same species
 
-# In[7]:
+# In[ ]:
 
 
 # The searches within the same species.
@@ -176,7 +176,7 @@ for gene in genes.itertuples():
     to_species_code = {"ath":"zma","zma":"ath"}[from_species_code]
     
     # Because these are being passed as strings to the command line, quotes need to be removed now,
-    # isntead of waiting for them to be removed as a preprocessing step of the search strings in the streamlit script.
+    # instead of waiting for them to be removed as a preprocessing step of the search strings in the streamlit script.
     text = text.replace("'","")
     text = text.replace('"','')
     
@@ -225,19 +225,14 @@ output_path = "plots/anthocyanin_plot_data.csv"
 output_df.to_csv(output_path, index=False)
 
 
-# In[ ]:
-
-
-print(stophere)
-
-
 # ### Autophagy genes
 
-# In[ ]:
+# In[4]:
 
 
+os.chdir('/Users/irbraun/phenologs-with-oats/quoats')
 mapping = dataset.get_species_to_name_to_ids_dictionary(include_synonyms=False, lowercase=True)
-genes = pd.read_csv("plots/autophagy_core_genes.csv")
+genes = pd.read_csv("autophagy_core_genes.csv")
 genes["id"] = genes.apply(lambda x: mapping[x["species_code"]].get(x["identifier"].strip().lower(),-1), axis=1)
 genes[genes["id"]!=-1]["id"] = genes[genes["id"]!=-1]["id"].map(lambda x: x[0])
 genes["in_current_dataset"] = genes["id"].map(lambda x: x!=-1)
@@ -251,7 +246,7 @@ genes
 
 # 12 out of the 16 core autophagy genes from the list are present in the dataset, see the core genes file.
 
-# In[ ]:
+# In[5]:
 
 
 # Grabbing the texts dictionary from the dataset that we can use to grab the descriptions to query.
@@ -259,7 +254,7 @@ texts = dataset.get_description_dictionary()
 texts[4688]
 
 
-# In[ ]:
+# In[9]:
 
 
 # Prepare dictionaries to hold the resulting arrays.
@@ -268,7 +263,7 @@ resulting_bin_arrays["ath"]["ath"] = []
 resulting_bin_arrays
 
 
-# In[ ]:
+# In[11]:
 
 
 # The searches within the same species.
@@ -289,7 +284,7 @@ for gene in genes.itertuples():
     text = texts[gene_id]
     
     # Because these are being passed as strings to the command line, quotes need to be removed now,
-    # isntead of waiting for them to be removed as a preprocessing step of the search strings in the streamlit script.
+    # instead of waiting for them to be removed as a preprocessing step of the search strings in the streamlit script.
     text = text.replace("'","")
     text = text.replace('"','')
     
@@ -297,27 +292,27 @@ for gene in genes.itertuples():
     
     path = "/Users/irbraun/phenologs-with-oats/quoats/outputs_within_autophagy/output_{}.tsv".format(ctr)
     os.chdir('/Users/irbraun/quoats')
-    os.system("python main.py -s {} -t identifiers -q '{}:{}' -l {} -o {} -r 0.000 -a tfidf".format(to_species,from_species,identifier,limit,path))
+    os.system("python main.py -s {} -t identifiers -q '{}:{}' -l {} -o {} -r 0.000 -a tfidf".format(species,species,identifier,limit,path))
     time.sleep(4)
-    df = pd.read_csv(path, sep='\t')
-    df = df[["Rank","Internal ID"]]
-    df = df.drop_duplicates()
-    id_to_rank = dict(zip(df["Internal ID"].values,df["Rank"].values))
-    assert rank_for_not_found > limit
-    
-    
-    # For within the same species, get rid of the identical gene (always rank 1).
-    ids_of_interest = [i for i in genes[genes["species"]==species]["id"].values if i != gene_id]
-    ranks = [id_to_rank.get(i, rank_for_not_found) for i in ids_of_interest]
-    resulting_bin_arrays[species_code][species_code].append(np.histogram(ranks, bins=bins)[0])
-    
-    #print(np.array( resulting_bin_arrays[species_code][species_code]))
-    print(ranks)
-    print("done with {} queries".format(ctr))
+    if os.path.exists(path):
+        df = pd.read_csv(path, sep='\t')
+        df = df[["Rank","Internal ID"]]
+        df = df.drop_duplicates()
+        id_to_rank = dict(zip(df["Internal ID"].values,df["Rank"].values))
+        assert rank_for_not_found > limit
+
+
+        # For within the same species, get rid of the identical gene (always rank 1).
+        ids_of_interest = [i for i in genes[genes["species"]==species]["id"].values if i != gene_id]
+        ranks = [id_to_rank.get(i, rank_for_not_found) for i in ids_of_interest]
+        resulting_bin_arrays[species_code][species_code].append(np.histogram(ranks, bins=bins)[0])
+
+        print(ranks)
+        print("done with {} queries".format(ctr))
 print('done with all queries')
 
 
-# In[ ]:
+# In[12]:
 
 
 # Create the output dataframe with the means and standard deviation for each bin and direction.
@@ -333,7 +328,7 @@ output_df = pd.DataFrame(output_rows,columns=names)
 output_df
 
 
-# In[ ]:
+# In[13]:
 
 
 os.chdir('/Users/irbraun/phenologs-with-oats/quoats')

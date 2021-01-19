@@ -2404,7 +2404,7 @@ for (groups,q) in zip(grouping_objects,grouping_names):
 
 
         # Some setup for random sampling for finding p-values.
-        num_sampling_iterations = 10000
+        num_sampling_iterations = 1000
         n_max = within_dist_data["n"].max()
         n_to_n_choose_two = {}
         n = 2
