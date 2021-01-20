@@ -11,7 +11,7 @@ library(stringr)
 
 
 # The input and output files that this script uses and creates.
-input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_16_2021_h11m36s10_2698_plants/stacked_f1_max.csv"
+input_path <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_19_2021_h13m44s23_5388_plants/stacked_f1_max.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/bargraph_with_points.png"
 names_path <- "/Users/irbraun/phenologs-with-oats/names.tsv"
 
@@ -103,7 +103,20 @@ method_names <- c("Baseline",
                   "Curation")
 
 
-method_colors <- c("#333333",   # black
+
+# Grayscale ones.
+method_colors <- c("#555555", 
+                   "#FFFFFF", 
+                   "#FFFFFF", 
+                   "#FFFFFF",
+                   "#FFFFFF", 
+                   "#FFFFFF", 
+                   "#FFFFFF", 
+                   "#FFFFFF", 
+                   "#DDDDDD")
+
+
+method_colors <- c("#555555",   # black
                    "#F09250",   # reddish
                    "#f5cd1f",   # yellow
                    "#a4db89",    # green
@@ -112,9 +125,11 @@ method_colors <- c("#333333",   # black
                    "#fdf49c",   # yellow orange
                    "#dbf859",   # neon green
                    "#DDDDDD")   #gray
- 
 
-method_colors <- c("#333333", 
+
+
+# Colorful ones.
+method_colors <- c("#555555", 
                    "#a4db89", 
                    "#fdf49c", 
                    "#dbf859",
@@ -124,15 +139,8 @@ method_colors <- c("#333333",
                    "#F09250", 
                    "#DDDDDD")
 
-method_colors <- c("#333333", 
-                   "#FFFFFF", 
-                   "#FFFFFF", 
-                   "#FFFFFF",
-                   "#FFFFFF", 
-                   "#FFFFFF", 
-                   "#FFFFFF", 
-                   "#FFFFFF", 
-                   "#DDDDDD")
+
+
 
 color_mapping <- setNames(method_colors, method_names)
 

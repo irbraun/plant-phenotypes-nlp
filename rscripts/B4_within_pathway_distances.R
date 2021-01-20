@@ -99,11 +99,19 @@ prepare_dataframe <- function(input_path, num_shown, num_gene_threshold, y_axis_
 
 
 
-input_path_subsets <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_16_2021_h11m36s10_2698_plants/stacked_all_subsets_within_distances_melted.csv"
-input_path_kegg <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_16_2021_h11m36s10_2698_plants/stacked_all_kegg_only_within_distances_melted.csv"
-input_path_plantcyc <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_16_2021_h11m36s10_2698_plants/stacked_all_pmn_only_within_distances_melted.csv"
+input_path_subsets <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_19_2021_h13m44s23_5388_plants/stacked_all_subsets_within_distances_melted.csv"
+input_path_kegg <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_19_2021_h13m44s23_5388_plants/stacked_all_kegg_only_within_distances_melted.csv"
+input_path_plantcyc <- "/Users/irbraun/phenologs-with-oats/outputs/stacked_01_19_2021_h13m44s23_5388_plants/stacked_all_pmn_only_within_distances_melted.csv"
 output_path <- "/Users/irbraun/phenologs-with-oats/figs/intragroup_distances.png"
 names_path <- "/Users/irbraun/phenologs-with-oats/names.tsv"
+
+
+width = 24
+height_per_group = 0.35
+
+
+
+
 
 
 
@@ -111,20 +119,18 @@ names_path <- "/Users/irbraun/phenologs-with-oats/names.tsv"
 input_path <- input_path_subsets
 num_shown = 50
 num_gene_threshold = 3
-width = 30
-height_per_group = 0.35
+width = width
+height_per_group = height_per_group
 y_axis_name = "Phenotype Category"
 df_top <- prepare_dataframe(input_path, num_shown, num_gene_threshold, y_axis_name, T)
-
-
 
 
 # Parameters for what to include in the figure.
 input_path <- input_path_plantcyc
 num_shown = 20
 num_gene_threshold = 3
-width = 30
-height_per_group = 0.35
+width = width
+height_per_group = height_per_group
 y_axis_name = "Biochemical Pathway (Top 20)"
 df_middle <- prepare_dataframe(input_path, num_shown, num_gene_threshold, y_axis_name, T)
 
@@ -133,8 +139,8 @@ df_middle <- prepare_dataframe(input_path, num_shown, num_gene_threshold, y_axis
 input_path <- input_path_plantcyc
 num_shown = 20
 num_gene_threshold = 3
-width = 30
-height_per_group = 0.35
+width = width
+height_per_group = height_per_group
 y_axis_name = "Biochemical Pathway (Bottom 20)"
 df_bottom <- prepare_dataframe(input_path, num_shown, num_gene_threshold, y_axis_name, F)
 
@@ -212,6 +218,16 @@ df_long_t$significant = factor(df_long_t$significant, levels=c("True","False"), 
 
 
 
+
+# Doing some substring replacement to clean the presented text.
+df_long_t$name_for_plot <- gsub("<i>", "", df_long_t$name_for_plot)
+df_long_t$name_for_plot <- gsub("</i>", "", df_long_t$name_for_plot)
+df_long_t$name_for_plot <- gsub("&alpha;", "alpha", df_long_t$name_for_plot)
+df_long_t$name_for_plot <- gsub("&beta;", "beta", df_long_t$name_for_plot)
+df_long_t$name_for_plot <- gsub("&gamma;", "gamma", df_long_t$name_for_plot)
+
+
+
 # Make the plot.
 #ggplot(df_long_t, aes(x=avg, y=reorder(name_for_plot,-avg), fill=class, colour=significant)) + 
 ggplot(df_long_t, aes(x=avg, y=reorder(name_for_plot,-avg), fill=class)) + 
@@ -220,6 +236,7 @@ ggplot(df_long_t, aes(x=avg, y=reorder(name_for_plot,-avg), fill=class)) +
   #scale_color_manual(name="Significance",values=outline_mapping) +
   geom_point(pch=21, size=3, alpha=0.8) +
   theme_bw() +
+  theme(legend.position="bottom") +
   xlab("Intragroup Distance Percentile")  +
   ylab("")
 
