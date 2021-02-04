@@ -165,17 +165,14 @@ print("done")
 
 
 kv = KeyedVectors.load(initial_weights_from_wikipedia_path)
-
 kv
 
 
 # In[75]:
 
 
-
 model = gensim.models.Word2Vec(sg=1, min_count=1, window=8, size=300, workers=4, alpha=0.025, min_alpha=0.0001)
 model.build_vocab(sentences_from_corpus_and_descriptions)
-
 loss_logger = LossLogger()
 model.intersect_word2vec_format(initial_weights_from_wikipedia_path, binary=True)
 model.train(sentences_from_corpus_and_descriptions, epochs=1, total_examples=model.corpus_count, compute_loss=True, callbacks=[loss_logger])

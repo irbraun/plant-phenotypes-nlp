@@ -24,7 +24,7 @@
 #     - [Reading in the BIOSSES dataset](#biosses)
 #     - [Selecting a dataset to use for the rest of the analysis](#selecting_a_dataset)
 #     
-# - [Part 2. Language Models](#part_2)
+# - [Part 2. Models](#part_2)
 #     - [Word2Vec and Doc2Vec](#word2vec_doc2vec)
 #     - [BERT and BioBERT](#bert_biobert)
 #     - [Loading models](#load_models)
@@ -74,7 +74,7 @@
 # - Python package for loading pretrained BERT models: [PyTorch Pretrained BERT](https://pypi.org/project/pytorch-pretrained-bert/)
 # - For BERT Models pretrained on PubMed and PMC: [BioBERT Paper](https://arxiv.org/abs/1901.08746), [BioBERT Models](https://github.com/naver/biobert-pretrained)
 
-# In[2]:
+# In[1]:
 
 
 import datetime
@@ -145,7 +145,7 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 
-# In[ ]:
+# In[3]:
 
 
 # Set a tag that specifies whether this is being run as a notebook or a script. Some sections are skipped when 
@@ -171,7 +171,7 @@ else:
 # ### Reading in arguments
 # Command line arguments are used to define which subset of the approaches that are evaluated in this notebook are used during a given run. Because the pairwise distances matrices become very large when as the number of genes increases, the number of approaches used (which each generated one distance matrix) can be lowered if the script is using too much memory for datasets that contain many genes. Although there are differences in runtime for each approach where ones that generated larger vectors (n-grams) instead of small embeddings (Word2Vec) take longer, this is not significant compared to how long operations take on the resulting distance matrices, which are all the same size for any given approach, so it is the number of approaches used, not which ones, that matters in reducing the time and memory used for each run. In addition, arguments are also used here to pick which dataset should be used later in the notebook, and whether files should be created for using the results later for the dockerized app (those files are large, they shouldn't be created unless they'll be used).
 
-# In[ ]:
+# In[4]:
 
 
 # Creating the set of arguments that can be used to determine which approaches are run.
@@ -219,7 +219,7 @@ else:
 # ### Defining the input file paths and creating output directory
 # This section specifies the path to the base output directory, and creates all the subfolders inside of it that contain results that pertain to different parts of the analysis. Paths to all the files that are used by this notebook are specified in the subsequent cell.
 
-# In[ ]:
+# In[5]:
 
 
 # Create and name an output directory according to when the notebooks or script was run.
@@ -247,7 +247,7 @@ os.mkdir(os.path.join(OUTPUT_DIR,GROUP_DISTS_DIR))
 
 # ### Data paths
 
-# In[ ]:
+# In[6]:
 
 
 # Paths to different datasets containing gene names, text descriptions, and/or ontology term annotations.
@@ -280,7 +280,7 @@ lloyd_function_hierarchy_path = "../../plant-data/papers/lloyd_meinke_2012/versi
 
 # ### Text corpora paths
 
-# In[ ]:
+# In[7]:
 
 
 # Pathways to text corpora files that are used in this analysis.
@@ -290,7 +290,7 @@ phenotypes_corpus_filename = "../data/corpus_related_files/untagged_text_corpora
 
 # ### Machine learning model paths
 
-# In[ ]:
+# In[8]:
 
 
 # Paths to pretrained or saved models used for embeddings with Word2Vec or Doc2vec.
@@ -315,7 +315,7 @@ word2vec_bio_wikipedia_pubmed_and_pmc_path = "../models/bio_nlp_lab/wikipedia-pu
 
 # ### Ontology related paths
 
-# In[ ]:
+# In[9]:
 
 
 # Path the jar file necessary for running NOBLE Coder.
@@ -335,7 +335,7 @@ pato_pickle_path = "../ontologies/pato.pickle"
 # ### Reading in the dataset of genes and their associated phenotype descriptions and annotations
 # Every dataset that is relevant to this analysis or could be used is read in here and described. This is done even if additional arguments specified that the analysis should just focus on one of them. This is set up this way so that the analysis script will immediately fail if any of these datasets are missing, or if any of the paths are incorrect, this was useful when running locally before moving to a cluster.
 
-# In[ ]:
+# In[10]:
 
 
 # Loading the human dataset of concatenated disease names from ClinVar annotations.
@@ -359,7 +359,7 @@ plant_dataset.filter_has_description()
 plant_dataset.describe()
 
 
-# In[ ]:
+# In[11]:
 
 
 # Which dataset should be used for the rest of the analysis? Useful for changing when running as a notebook.
@@ -379,7 +379,7 @@ dataset.describe()
 # ### Relating the dataset of genes to the dataset of groups or categories
 # This section generates tables that indicate how the genes present in the dataset were mapped to the defined pathways or groups. This includes a summary table that indicates how many genes by species were succcessfully mapped to atleast one pathway or group, as well as a more detailed table describing how many genes from each species were mapped to each particular pathway or group. Additionally, a pairwise group similarity matrix is also generated, where the similarity is given as the Jaccard similarity between two groups based on whether genes are shared by those groups or not. The function defined in this section returns a groupings object that can be used again, as well as the IDs of the genes in the full dataset that were found to be relevant to those particular groupings.
 
-# In[ ]:
+# In[12]:
 
 
 def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filename, group_name_mappings, name):
@@ -453,7 +453,7 @@ def read_in_groupings_object_and_write_summary_tables(dataset, groupings_filenam
 # ### Reading in and relating the pathways from KEGG
 # See dataset description for what files were used to construct these mappings.
 
-# In[ ]:
+# In[13]:
 
 
 # Readin in the dataset of groupings for pathways in KEGG.
@@ -466,7 +466,7 @@ kegg_groups.to_pandas().head(10)
 # ### Reading in and relating the pathways from PlantCyc
 # See dataset description for what files were used to construct these mappings.
 
-# In[ ]:
+# In[14]:
 
 
 # Reading in the dataset of groupings for pathways in PlantCyc.
@@ -475,14 +475,17 @@ pmn_groups, pmn_mapped_ids = read_in_groupings_object_and_write_summary_tables(d
 pmn_groups.to_pandas().head(10)
 
 
-# In[ ]:
+# In[23]:
 
 
 id_to_pmn_group_ids, pmn_group_id_to_ids = pmn_groups.get_groupings_for_dataset(dataset)
 pmn_group_id_to_ids
 texts = dataset.get_description_dictionary()
-for i in pmn_group_id_to_ids["PWY-3982"]:
+for i in pmn_group_id_to_ids["PWY-5098"]:
+    #PWY-762
+    #PWY-3982
     print(texts[i])
+    print()
 
 
 # <a id="subsets_and_classes"></a>
@@ -1731,7 +1734,7 @@ if args.app:
 
 # Add a column for the EQ statement similarity at this point. This way, it will be present when the dataframe that is
 # here is used to create the standard set of numpy arrays.
-if (args.dataset == "plants") and (args.annotations == True):
+if (args.dataset == "plants") and (args.annotations == True or args.ic == True):
     eqs_method = Method(name="eqs", hyperparameters="no hyperparams", group="curated", number=2005)
     eqs_method.name_with_hyperparameters
 
