@@ -197,6 +197,20 @@ method_colors <- c("#333333",
                    "#F09250", 
                    "#F09250", 
                    "#DDDDDD")
+
+
+
+method_colors <- c("#000000", 
+                   "#44BC99", 
+                   "#9ADDFF", 
+                   "#000000",
+                   "#EEDE88", 
+                   "#EE8866", 
+                   "#BACD33", 
+                   "#000000", 
+                   "#000000")
+
+
 color_mapping <- setNames(method_colors, method_names)
 
 

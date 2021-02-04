@@ -142,6 +142,19 @@ method_colors <- c("#555555",
 
 
 
+method_colors <- c("#555555", 
+                   "#44BC99", 
+                   "#9ADDFF", 
+                   "#000000",
+                   "#EEDE88", 
+                   "#EE8866", 
+                   "#BACD33", 
+                   "#000000", 
+                   "#DDDDDD")
+
+
+
+
 color_mapping <- setNames(method_colors, method_names)
 
 
@@ -188,7 +201,7 @@ ggplot(data=NULL) +
 
 
 # Saving the plot to a file.
-ggsave(output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=24, height=7, units=c("cm"), dpi=350, limitsize=FALSE)
+ggsave(output_path, plot=last_plot(), device="png", path=NULL, scale=1, width=16, height=5, units=c("cm"), dpi=350, limitsize=FALSE)
 
 
 
